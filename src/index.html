@@ -1,0 +1,78 @@
+<script src="elementsTab.js"></script>
+<style>
+    li{
+        list-style: none;
+    }
+
+    .tabs li,.element-list, .event-tab, .state-tab{
+        border: 1px black solid;
+    }
+
+    .element-list,
+    .event-tab, .state-tab {
+        min-height:30px;
+    }
+</style>
+<ul class="tabs">
+    <li class="elements">
+        <header>Elements</header>
+        <section class="element-list">
+            <ul>
+                <li>dummy element</li>
+                <li>dummy element</li>
+                <li>dummy element</li>
+                <li>dummy element</li>
+                <li>dummy element</li>
+            </ul>
+            <button id="addElement">Add</button>
+        </section>
+        <section class="events-tab">
+            <header>Events</header>
+            <ul>
+                <li>dummy event</li>
+                <li>dummy event</li>
+                <li>dummy event</li>
+            </ul>
+            <button id="addEvent">Add</button>
+        </section>
+        <section class="states-tab">
+            <header>States</header>
+            <ul>
+                <li>dummy state</li>
+                <li>dummy state</li>
+                <li>dummy state</li>
+            </ul>
+            <button id="addElementState">Add</button>
+        </section>
+    </li>
+    <li class-"component">
+        <header>Component</header>
+        <section class="component-list">
+                <ul>
+                    <li>dummy component</li>
+                    <li>dummy component</li>
+                    <li>dummy component</li>
+                    <li>dummy component</li>
+                </ul>
+                <button id="addComponent">Add</button>
+            </section>
+            <section class="actions-tab">
+                <header>Actions</header>
+                <ul>
+                    <li>dummy action</li>
+                    <li>dummy action</li>
+                </ul>
+                <button id="addAction">Add</button>
+            </section>
+            <section class="states-tab">
+                <header>States</header>
+                <ul>
+                    <li>dummy state</li>
+                    <li>dummy state</li>
+                    <li>dummy state</li>
+                </ul>
+                <button id="addComponentState">Add</button>
+            </section>
+    </li>
+    <section class="preview-tab"></section>
+</ul>
