@@ -3,7 +3,10 @@ let addEvent = document.getElementById("addEvent");
 let addElementState = document.getElementById("addElementState");
 
 const createElement = ()=>{
+    // 1. Find existing solution for this
+
     // 1. prompt jsx element editor with name editing place.
+    $("#includeCodeMirrorEditor").toggle("show")
     // 2. It should allow only valid html elements.
     // 3. Changes should be vislible in below preview pane.
     // 4. Preview pane should also have style editor on it as form of icon from
@@ -12,6 +15,46 @@ const createElement = ()=>{
 }
 
 const createEvent = () => {
+    // 1. Find list of events avilable - should it be mouse/keyboard events or element specific event?
+        /**
+         * hover
+         * click, dblclick, change, blur, focus
+         */
+    // 2. Just show all events
+    /**
+       Touch
+     * *****
+     *  touchstart / touchend
+     *  touchmove / touchcancel
+     * 
+       Timer
+     * *****
+     *  setTimeout / clearTimeout
+     *  setInterval / clearInterval
+     * 
+       Mouse
+     * *****
+     * click / dblclick
+     * mousedown / mouseup
+     * mouseenter / mouseover / mouseleave / mouseout
+     * mousemove
+     * mousewheel
+     * wheel
+     * contextmenu
+     * 
+       Keyboard
+       ********
+     * keydown / keypress / keyup
+     * input
+     * 
+     * Drag / drop
+     * ***********
+     * drag
+     * dragstart / drag / dragend
+     * dragenter / dragover/ dragleave
+     * drop  
+     */
+
     // 0. it should receve some dummy data from the default state. - Object.
     // 1. show list of events available for the element.
     // 2. on click of any event, it should be shown in the lists.

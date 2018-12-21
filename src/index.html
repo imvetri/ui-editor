@@ -1,4 +1,17 @@
-<script src="elementsTab.js"></script>
+
+
+<!--Popup editor resources-->
+<link rel=stylesheet href="../codemirrorEditor/doc/docs.css">
+<link rel="stylesheet" href="../codemirrorEditor/lib/codemirror.css">
+<link rel="stylesheet" href="../codemirrorEditor/addon/hint/show-hint.css">
+<script src="../codemirrorEditor/lib/codemirror.js"></script>
+<script src="../codemirrorEditor/addon/hint/show-hint.js"></script>
+<script src="../codemirrorEditor/addon/hint/javascript-hint.js"></script>
+<script src="../codemirrorEditor/mode/javascript/javascript.js"></script>
+<script src="../codemirrorEditor/mode/markdown/markdown.js"></script>
+
+<script src="jquery.min.js"></script>
+
 <style>
     li{
         list-style: none;
@@ -11,6 +24,16 @@
     .element-list,
     .event-tab, .state-tab {
         min-height:30px;
+    }
+
+    /*
+        By default hide the codemirror markup editor.
+    */
+    #includeCodeMirrorEditor {
+        display: none;
+    }
+    #includeCodeMirrorEditor.show{
+        display: block;
     }
 </style>
 <ul class="tabs">
@@ -76,3 +99,12 @@
     </li>
     <section class="preview-tab"></section>
 </ul>
+
+<div id="includeCodeMirrorEditor">
+
+</div>
+<!--Elements tab scripts-->
+<script src="elementsTab.js"></script>
+<script>
+    $("#includeCodeMirrorEditor").load("/codemirrorEditor/demo/complete.html")
+</script>
