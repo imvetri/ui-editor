@@ -7,7 +7,7 @@
   "author": "Vetrivel <svetrivel.91@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --mode development --open --hot",
+    "start": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production"
   },
   "dependencies": {
