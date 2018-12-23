@@ -1,4 +1,7 @@
 let addElement = document.getElementById("addElement");
+let saveElement = document.getElementById("saveElement");
+let markup = document.getElementById("code");
+let elementName = document.getElementById("elementName");
 let addEvent = document.getElementById("addEvent");
 let addElementState = document.getElementById("addElementState");
 
@@ -6,12 +9,27 @@ const createElement = ()=>{
     // 1. Find existing solution for this
 
     // 1. prompt jsx element editor with name editing place.
-    $("#includeCodeMirrorEditor").toggle("show")
-    // 2. It should allow only valid html elements.
-    // 3. Changes should be vislible in below preview pane.
+    $(".popupEditor").toggle("show")
+    // 2. It should allow only valid html elements. 
+    // 3. Changes should be vislible in below preview pane. on save this data should be available {elementName:"name", markup: "", events: "", states: []}
     // 4. Preview pane should also have style editor on it as form of icon from
     // react studio/ webflow / any inspired place.
     // 5. on save, element title shold be visible on elements tab and selected.
+}
+
+const saveElementDetails = () => {
+    // 1. Fetch element name.
+    let element = {
+      elementName : elementName.value,
+      markup : "",
+      events : [],
+      states : []
+    }
+    // 2. Fetch markup.
+    // 3. Create a new element object and save these data.
+    // 4. Update state of the UI with new details so that events/preview/states tab gets rerendered.
+    // 5. Later organise code or consider using a build system with react.
+
 }
 
 const createEvent = () => {
@@ -69,6 +87,7 @@ const createState = () => {
     // 2. It can receive state from parent.
 }
 addElement.addEventListener("click", createElement);
+saveElement.addEventListener("click", saveElementDetails);
 addEvent.addEventListener("click", createEvent);
 addElementState.addEventListener("click", createState);
 
