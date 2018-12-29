@@ -5,7 +5,7 @@ import ReactDOM from "react-dom";
 
 // Dependencies.
 
-import style from "./style.css";
+import style from "./index.css";
 
 // Components.
 
@@ -16,7 +16,7 @@ import CodeMirror from "react-codemirror";
 class Index extends Component {
     constructor(props) {
         super(props);
-        this.state = { code: "// Code" };
+        this.state = { code: "// Code", hideCodeEditor: true };
     }
     updateCode (newCode) {
 		this.setState({
@@ -31,7 +31,7 @@ class Index extends Component {
             <div className={style.showBackground}>
                 <Elements/>
                 <Components/>
-                <CodeMirror value={this.state.code} onChange={this.updateCode} options={options} />
+                <CodeMirror className={this.state.hideCodeEditor ? style.hidden : ''} value={this.state.code} onChange={this.updateCode} options={options} />
             </div>
         );
     }
