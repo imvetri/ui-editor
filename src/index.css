@@ -1,3 +1,7 @@
 .showBackground{
     background:grey;
 }
+
+.hidden{
+    display: none;
+}
