@@ -1,0 +1,7 @@
+.override {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    height: 300px;
+    width: 300px;
+}
