@@ -5,7 +5,9 @@ import React, { Component } from 'react';
 
 // Styles.
 
-import style from "./element.css";
+import utilStyle from "../utils/style.css";
+import elementStyle from "./element.css";
+import codemirrorCSS from "./codemirror/codemirror.css";
 
 // Dependencies.
 
@@ -25,7 +27,7 @@ class Elements extends Component {
 
     toggleEditor () {
         this.setState({
-            hideCodeEditor: false
+            hideCodeEditor: !this.state.hideCodeEditor
         });
     }
 
@@ -43,7 +45,9 @@ class Elements extends Component {
                         <li>dummy element</li>
                     </ul>
                     <button id="addElement" onClick={this.toggleEditor.bind(this)}>Add</button>
-                    <CodeMirror className={this.state.hideCodeEditor ? style.hidden : ''} value={this.state.code} onChange={this.updateCode.bind(this)} options={options} />
+                    <section className={elementStyle.override}>
+                        <CodeMirror className={this.state.hideCodeEditor ? utilStyle.hidden : ''} value={this.state.code} onChange={this.updateCode.bind(this)} options={options} />
+                    </section>
                 </section>
                 <section className="events-tab">
                     <header>Events</header>
