@@ -20,7 +20,7 @@ class Index extends Component {
     render(){
         return (
             <div className={style.showBackground}>
-                <Elements/>
+                <Elements hideCodeEditor={true}/>
             </div>
         );
     }
