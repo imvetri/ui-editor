@@ -5,24 +5,15 @@ import React, { Component } from 'react';
 
 // Styles.
 
-import cssUtil from "../cssUtils/style.css";
-import elementStyle from "./element.css";
-import codemirrorCSS from "./codemirror/codemirror.css";
 
 // Dependencies.
 
-import CodeMirror from "react-codemirror";
+import PopupEditor from "./popup-editor";
 
 class Elements extends Component {
     constructor(props) {
         super(props);
-        this.state = { code: "// Code", hideCodeEditor: true };
-    }
-
-    updateCode (newCode) {
-		this.setState({
-			code: newCode,
-        });
+        this.state = { hideCodeEditor: true };
     }
 
     toggleEditor () {
@@ -31,8 +22,11 @@ class Elements extends Component {
         });
     }
 
+    updateCode (newCode) {
+        console.log(newCode);
+    }
+
     render() {
-        
         const options = {
 			lineNumbers: true,
         };
@@ -45,14 +39,6 @@ class Elements extends Component {
                         <li>dummy element</li>
                     </ul>
                     <button onClick={this.toggleEditor.bind(this)}>Add</button>
-                    <div className={this.state.hideCodeEditor ? cssUtil.hidden : ''} >
-                        <section className={elementStyle.override}>
-                            <input type="text" placeholder="Enter element name"/>
-                            <button>Save</button>
-                            <button onClick={this.toggleEditor.bind(this)}>Close</button>
-                            <CodeMirror value={this.state.code} onChange={this.updateCode.bind(this)} options={options} />
-                        </section>
-                    </div>
                 </section>
                 <section className="events-tab">
                     <header>Events</header>
@@ -68,6 +54,7 @@ class Elements extends Component {
                     </ul>
                     <button id="addElementState">Add</button>
                 </section>
+                <PopupEditor hideCodeEditor={this.state.hideCodeEditor} onSave={this.updateCode}/>
             </li>
         );
     }
