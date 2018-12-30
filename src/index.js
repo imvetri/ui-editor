@@ -11,27 +11,16 @@ import style from "./index.css";
 
 import Components from "./components/Components";
 import Elements from "./elements/Elements";
-import CodeMirror from "react-codemirror";
 
 class Index extends Component {
     constructor(props) {
         super(props);
-        this.state = { code: "// Code", hideCodeEditor: true };
     }
-    updateCode (newCode) {
-		this.setState({
-			code: newCode,
-		});
-    }
+
     render(){
-        const options = {
-			lineNumbers: true,
-		};
         return (
             <div className={style.showBackground}>
                 <Elements/>
-                <Components/>
-                <CodeMirror className={this.state.hideCodeEditor ? style.hidden : ''} value={this.state.code} onChange={this.updateCode} options={options} />
             </div>
         );
     }
