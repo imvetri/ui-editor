@@ -26,8 +26,13 @@ class Elements extends Component {
     }
 
     updateCode (newElement) {
+        // Mutate the original array. Future, hide mutation behind.
+        let newList = Array.from(this.state.list);
+        newList.push(newElement);
+
+        // Update the state with new values
         this.setState({
-            list: Array.from(this.state.list).push(newElement)
+            list: newList
         })
         this.toggleEditor();
     }
@@ -36,13 +41,17 @@ class Elements extends Component {
         const options = {
 			lineNumbers: true,
         };
+
+
+        // Other neat ways to iterate a markup and return a list?
+        const elementList = this.state.list.map(element=> <li>{element.name}</li>)
         
         return (
             <li className="elements">
                 <header>Elements</header>
                 <section className="element-list">
                     <ul>
-                        <li>dummy element</li>
+                        {elementList}
                     </ul>
                     <button onClick={this.toggleEditor.bind(this)}>Add</button>
                 </section>
