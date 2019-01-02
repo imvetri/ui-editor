@@ -13,7 +13,10 @@ import PopupEditor from "./popup-editor";
 class Elements extends Component {
     constructor(props) {
         super(props);
-        this.state = { hideCodeEditor: true };
+        this.state = { 
+            hideCodeEditor: true,
+            list: []
+        };
     }
 
     toggleEditor () {
@@ -22,8 +25,11 @@ class Elements extends Component {
         });
     }
 
-    updateCode (newCode) {
-        console.log(newCode);
+    updateCode (newElement) {
+        this.setState({
+            list: Array.from(this.state.list).push(newElement)
+        })
+        this.toggleEditor();
     }
 
     render() {
@@ -54,7 +60,7 @@ class Elements extends Component {
                     </ul>
                     <button id="addElementState">Add</button>
                 </section>
-                <PopupEditor hideCodeEditor={this.state.hideCodeEditor} onSave={this.updateCode}/>
+                <PopupEditor hideCodeEditor={this.state.hideCodeEditor} onSave={this.updateCode.bind(this)}/>
             </li>
         );
     }
