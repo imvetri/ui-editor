@@ -5,3 +5,7 @@
     height: 300px;
     width: 300px;
 }
+
+.selected {
+    border: 1px solid green;
+}

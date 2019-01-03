@@ -33,7 +33,9 @@ class PopupEditor extends Component {
     saveElementDetails () {
         this.props.onSave({
             name: this.state.name,
-            markup: this.state.markup
+            markup: this.state.markup,
+            events: [],
+            states: []
         })
     }
 
