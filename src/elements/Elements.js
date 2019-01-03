@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 
 // Styles.
 
+import style from "./element.css";
 
 // Dependencies.
 
@@ -15,7 +16,9 @@ class Elements extends Component {
         super(props);
         this.state = { 
             hideCodeEditor: true,
-            list: []
+            list: [],
+            selectedElement: "",
+            eventName: ""
         };
     }
 
@@ -37,15 +40,52 @@ class Elements extends Component {
         this.toggleEditor();
     }
 
+    updateEventName (e) {
+        this.setState({
+            eventName: e.target.value
+        })
+    }
+
+    addEvent () {
+        debugger;
+        // this seems wrong.
+        let selectedElement = this.state.selectedElement;
+
+        let newState = Object.assign({}, this.state);
+        let elementToBeUpdated = newState.list.find(element=>element.name === selectedElement.name);
+
+        selectedElement.events.push(this.state.eventName);
+        this.setState(newState);
+    }
+
+    updateSelectedElement (e) {
+
+        let selectedElement = this.state.list.find(element=>element.name === e.target.innerText)
+        this.setState({
+            selectedElement
+        })
+
+    }
+
     render() {
         const options = {
 			lineNumbers: true,
         };
 
+        // add class to currently selected element ignoring the rest. 
+        // Why? Anyways we need to know which element is currently being edited/selected
 
+        // className = this.state.selectedElement === element.name ? "selected" : ""
         // Other neat ways to iterate a markup and return a list?
-        const elementList = this.state.list.map(element=> <li>{element.name}</li>)
         
+        const elementList = this.state.list.map((element, index) => 
+            <li key={index} className = {this.state.selectedElement.name === element.name ? style.selected : ""} onClick={this.updateSelectedElement.bind(this)}>{element.name}</li>
+        );
+        
+        const eventList = this.state.selectedElement && this.state.selectedElement.events.map((event, index)=>
+            <li key={index}>{event}</li>
+        )
+
         return (
             <li className="elements">
                 <header>Elements</header>
@@ -58,9 +98,14 @@ class Elements extends Component {
                 <section className="events-tab">
                     <header>Events</header>
                     <ul>
-                        <li>dummy event</li>
+                        {eventList}
+                        <li>
+                            <input type="text" onChange={this.updateEventName.bind(this)}/>
+                        </li>
+                        <li>
+                            <button id="addEvent" onClick={this.addEvent.bind(this)}>Add</button>
+                        </li>
                     </ul>
-                    <button id="addEvent">Add</button>
                 </section>
                 <section className="states-tab">
                     <header>States</header>

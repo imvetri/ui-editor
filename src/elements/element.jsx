@@ -7,6 +7,7 @@ let elementName = document.getElementById("elementName");
 let addEvent = document.getElementById("addEvent");
 let addElementState = document.getElementById("addElementState");
 
+// DONE
 const createElement = ()=>{
     // 1. Find existing solution for this
 
