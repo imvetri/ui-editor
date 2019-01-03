@@ -1,6 +1,3 @@
-
-// Libraries.
-
 import React, { Component } from 'react';
 
 // Styles.
