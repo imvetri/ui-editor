@@ -15,7 +15,11 @@ import CodeMirror from "react-codemirror";
 class PopupEditor extends Component {
     constructor(props) {
         super(props);
-        this.state = { name: "", markup: "<input />", hideCodeEditor: this.props.hideCodeEditor };
+        this.state = { 
+            name: "",
+            markup: this.props.markup || "<code />" , 
+            createMode: this.props.createMode 
+        };
     }
 
     updateMarkup (markup) {
@@ -41,7 +45,7 @@ class PopupEditor extends Component {
 
     toggleEditor () {
         this.setState({
-            hideCodeEditor: !this.state.hideCodeEditor
+            createMode: !this.state.createMode
         });
     }
 
@@ -49,8 +53,9 @@ class PopupEditor extends Component {
         const options = {
 			lineNumbers: true,
         };
+
         return (
-            <div className={this.props.hideCodeEditor && this.state.hideCodeEditor ? cssUtil.hidden : ''} >
+            <div className={this.props.createMode || this.state.createMode ?  '' : cssUtil.hidden} >
                 <section className={elementStyle.override}>
                     <input type="text" placeholder="Enter element name" onChange={this.updateName.bind(this)}/>
                     <button onClick={this.saveElementDetails.bind(this)}>Save</button>
