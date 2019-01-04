@@ -44,7 +44,6 @@ class Elements extends Component {
     }
 
     addEvent () {
-        debugger;
         // this seems wrong.
         let selectedElement = this.state.selectedElement;
 
@@ -52,6 +51,23 @@ class Elements extends Component {
         let elementToBeUpdated = newState.list.find(element=>element.name === selectedElement.name);
 
         selectedElement.events.push(this.state.eventName);
+        this.setState(newState);
+    }
+
+    updateStateName (e) {
+        this.setState({
+            stateName: e.target.value
+        })
+    }
+
+    addState () {
+        // this seems wrong.
+        let selectedElement = this.state.selectedElement;
+
+        let newState = Object.assign({}, this.state);
+        let elementToBeUpdated = newState.list.find(element=>element.name === selectedElement.name);
+
+        selectedElement.states.push(this.state.stateName);
         this.setState(newState);
     }
 
@@ -81,7 +97,11 @@ class Elements extends Component {
         
         const eventList = this.state.selectedElement && this.state.selectedElement.events.map((event, index)=>
             <li key={index}>{event}</li>
-        )
+        );
+
+        const stateList = this.state.selectedElement && this.state.selectedElement.states.map((state, index)=>
+            <li key={index}>{state}</li>
+        );
 
         return (
             <li className="elements">
@@ -107,7 +127,13 @@ class Elements extends Component {
                 <section className="states-tab">
                     <header>States</header>
                     <ul>
-                        <li>dummy state</li>
+                        {stateList}
+                        <li>
+                            <input type="text" onChange={this.updateStateName.bind(this)}/>
+                        </li>
+                        <li>
+                            <button id="addEvent" onClick={this.addState.bind(this)}>Add</button>
+                        </li>
                     </ul>
                     <button id="addElementState">Add</button>
                 </section>
