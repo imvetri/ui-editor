@@ -12,23 +12,35 @@ class Elements extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            hideCodeEditor: true,
+            createMode: false,
             list: [],
             selectedElement: "",
-            eventName: ""
+            eventName: "",
+            markup: "",
+            editMode: false
         };
     }
 
     toggleEditor () {
         this.setState({
-            hideCodeEditor: !this.state.hideCodeEditor
+            createMode: !this.state.createMode
         });
     }
 
     updateCode (newElement) {
-        // Mutate the original array. Future, hide mutation behind.
+        // Mutate the original array. Science fiction. hide mutation behind.
         let newList = Array.from(this.state.list);
-        newList.push(newElement);
+        
+        if(this.state.editMode){
+            // Find the element.
+            // Update the element with new markup.
+            const elementUnderEdit = newList.find(item=> item.name === newElement.name || item.markup === newElement.markup);
+            elementUnderEdit.markup = newElement.markup;
+            elementUnderEdit.name = newElement.name;
+        }
+        else {
+            newList.push(newElement);
+        }
 
         // Update the state with new values
         this.setState({
@@ -80,6 +92,13 @@ class Elements extends Component {
 
     }
 
+    editElementMarkup () {
+        this.setState({
+            editMode: true
+        })
+        this.toggleEditor();
+    }
+
     render() {
         const options = {
 			lineNumbers: true,
@@ -103,6 +122,8 @@ class Elements extends Component {
             <li key={index}>{state}</li>
         );
 
+        const editMarkup = this.state.selectedElement ?  <button onClick={this.editElementMarkup.bind(this)} >Edit</button> : "";
+
         return (
             <li className="elements">
                 <header>Elements</header>
@@ -111,6 +132,7 @@ class Elements extends Component {
                         {elementList}
                     </ul>
                     <button onClick={this.toggleEditor.bind(this)}>Add</button>
+                    {editMarkup}
                 </section>
                 <section className="events-tab">
                     <header>Events</header>
@@ -137,7 +159,7 @@ class Elements extends Component {
                     </ul>
                     <button id="addElementState">Add</button>
                 </section>
-                <PopupEditor hideCodeEditor={this.state.hideCodeEditor} onSave={this.updateCode.bind(this)}/>
+                <PopupEditor createMode={this.state.createMode} markup={this.state.markup} onSave={this.updateCode.bind(this)}/>
             </li>
         );
     }
