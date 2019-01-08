@@ -6,6 +6,7 @@ import style from "./element.css";
 
 // Dependencies.
 
+import extractJsxAttributes from "../js-utils/extract-jsx-attributes";
 import PopupEditor from "./popup-editor";
 
 class Elements extends Component {
@@ -36,6 +37,7 @@ class Elements extends Component {
             // Update the element with new markup.
             const elementUnderEdit = newList.find(item=> item.name === newElement.name || item.markup === newElement.markup);
             elementUnderEdit.markup = newElement.markup;
+            elementUnderEdit.states = extractJsxAttributes(newElement.markup);
             elementUnderEdit.name = newElement.name;
         }
         else {
