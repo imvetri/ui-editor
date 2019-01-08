@@ -8,7 +8,9 @@ const jsxAttributes = new RegExp(/{([^}]+)}/, "g");
 // Public.
 
 const extractJsxAttributes = ( jsx ) => {
-    return jsx.match(jsxAttributes);
+    let attributes = jsx.match(jsxAttributes)
+    return attributes && attributes.map(attribute => attribute.replace("{", "").replace("}", "") );
+
 }
 
 module.exports = {
