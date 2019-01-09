@@ -37,7 +37,7 @@ class Elements extends Component {
             // Update the element with new markup.
             const elementUnderEdit = newList.find(item=> item.name === newElement.name || item.markup === newElement.markup);
             elementUnderEdit.markup = newElement.markup;
-            elementUnderEdit.states = extractJsxAttributes(newElement.markup);
+            elementUnderEdit.states = convertToJson(extractJsxAttributes(newElement.markup));
             elementUnderEdit.name = newElement.name;
         }
         else {
