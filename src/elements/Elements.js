@@ -6,7 +6,11 @@ import style from "./element.css";
 
 // Dependencies.
 
-import extractJsxAttributes from "../js-utils/extract-jsx-attributes";
+import {extractJsxAttributes} from "../js-utils/extract-jsx-attributes";
+import {convertToJson} from "../js-utils/convert-to-json";
+
+// Components.
+
 import PopupEditor from "./popup-editor";
 
 class Elements extends Component {
@@ -37,7 +41,9 @@ class Elements extends Component {
             // Update the element with new markup.
             const elementUnderEdit = newList.find(item=> item.name === newElement.name || item.markup === newElement.markup);
             elementUnderEdit.markup = newElement.markup;
-            elementUnderEdit.states = convertToJson(extractJsxAttributes(newElement.markup));
+
+            let newState = convertToJson(extractJsxAttributes(newElement.markup));
+            elementUnderEdit.states.push( newState );
             elementUnderEdit.name = newElement.name;
         }
         else {
@@ -121,8 +127,10 @@ class Elements extends Component {
         );
 
         const stateList = this.state.selectedElement && this.state.selectedElement.states.map((state, index)=>
-            <li key={index}>{state}</li>
+            <li key={index}>{JSON.stringify(state)}</li>
         );
+
+        console.log(stateList);
 
         const editMarkup = this.state.selectedElement ?  <button onClick={this.editElementMarkup.bind(this)} >Edit</button> : "";
 
