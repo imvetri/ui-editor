@@ -22,18 +22,29 @@ class PopupEditor extends Component {
         };
     }
 
+    /**
+     * Constantly updates the state with new markup that is typed by the user.
+     * @param {String} markup - Element markup that is input by user.
+     */
     updateMarkup (markup) {
 		this.setState({
 			markup: markup,
         });
     }
 
+    /**
+     * Stores the element name input by the user.
+     * @param {Object} event - Input element carrying info about the element name.
+     */
     updateName (event) {
         this.setState({
             name: event.currentTarget.value
         })
     }
 
+    /**
+     * Saves the element details, and calles the onSave props method.
+     */
     saveElementDetails () {
         this.props.onSave({
             name: this.state.name,
@@ -43,6 +54,9 @@ class PopupEditor extends Component {
         })
     }
 
+    /**
+     * Shows/Hides the editor.
+     */
     toggleEditor () {
         this.setState({
             createMode: !this.state.createMode
