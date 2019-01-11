@@ -226,7 +226,7 @@ class Elements extends Component {
                     </ul>
                     <button id="addElementState">Add</button>
                 </section>
-                <PopupJsonEditor json={object}/>
+                <PopupJsonEditor json={object} show={false}/>
                 <PopupMarkupEditor createMode={this.state.createMode} markup={this.state.markup} onSave={this.updateCode.bind(this)}/>
             </li>
         );
