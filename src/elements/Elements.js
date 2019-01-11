@@ -11,7 +11,8 @@ import {convertToJson} from "../js-utils/convert-to-json";
 
 // Components.
 
-import PopupEditor from "./popup-editor";
+import PopupMarkupEditor from "./popup-markup-editor";
+import PopupJsonEditor from "./popup-json-editor";
 
 class Elements extends Component {
     constructor(props) {
@@ -186,6 +187,10 @@ class Elements extends Component {
 
         const editMarkup = this.state.selectedElement ?  <button onClick={this.editElementMarkup.bind(this)} >Edit</button> : "";
 
+        const object = {
+            name: 1
+        };
+
         return (
             <li className="elements">
                 <header>Elements</header>
@@ -221,7 +226,8 @@ class Elements extends Component {
                     </ul>
                     <button id="addElementState">Add</button>
                 </section>
-                <PopupEditor createMode={this.state.createMode} markup={this.state.markup} onSave={this.updateCode.bind(this)}/>
+                <PopupJsonEditor json={object}/>
+                <PopupMarkupEditor createMode={this.state.createMode} markup={this.state.markup} onSave={this.updateCode.bind(this)}/>
             </li>
         );
     }

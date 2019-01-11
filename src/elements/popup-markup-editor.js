@@ -3,16 +3,17 @@
 
 import React, { Component } from 'react';
 
+// Dependencies.
+
+import CodeMirror from "react-codemirror";
+
 // Styles.
 
 import cssUtil from "../css-utils/style.css";
 import elementStyle from "./element.css";
 
-// Dependencies.
 
-import CodeMirror from "react-codemirror";
-
-class PopupEditor extends Component {
+class PopupMarkupEditor extends Component {
     constructor(props) {
         super(props);
         this.state = { 
@@ -81,4 +82,4 @@ class PopupEditor extends Component {
     }
 }
 
-export default PopupEditor;
+export default PopupMarkupEditor;
