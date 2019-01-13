@@ -9,7 +9,7 @@
 const convertToJson = ( attributes ) => {
     let object = {};
     attributes.forEach(attribute=>{
-        object[attribute] = ""
+        object[attribute] = attribute
     })
     return object;
 }
