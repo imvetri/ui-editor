@@ -28,11 +28,15 @@ class PopupJsonEditor extends Component {
         })
     }
 
+    updateReducer(e) {
+
+    }
     render() {
         return (
             <div className={this.props.show || this.state.show ?  '' : cssUtil.hidden}>
                 <div className={elementStyle.override}>
                     <textarea onChange={this.updateJson.bind(this)} value={JSON.stringify(this.state.json||this.props.json, undefined, 4)} />
+                    <textarea onChange={this.updateReducer.bind(this)} value= {this.state.reducer|| this.props.reducer}/>
                     <ObjectInspector data={this.state.json||this.props.json} />
                 </div>
             </div>
