@@ -17,29 +17,27 @@ class PopupJsonEditor extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            json: this.props.json || {},
+            json: undefined,
             show: this.props.show
         }
     }
 
-    updateJson(json) {
+    updateJson(e) {
         this.setState({
-            json: JSON.parse(json)
+            json: JSON.parse(e.target.value)
         })
     }
 
+    updateReducer(e) {
+
+    }
     render() {
-
-        let options = {
-            mode: "application/ld+json",
-            lineNumbers: true
-        };
-
         return (
             <div className={this.props.show || this.state.show ?  '' : cssUtil.hidden}>
                 <div className={elementStyle.override}>
-                    <CodeMirror value={JSON.stringify(this.state.json)} onChange={this.updateJson.bind(this)} options={options} />
-                    <ObjectInspector data={this.state.json} />
+                    <textarea onChange={this.updateJson.bind(this)} value={JSON.stringify(this.state.json||this.props.json, undefined, 4)} />
+                    <textarea onChange={this.updateReducer.bind(this)} value= {this.state.reducer|| this.props.reducer}/>
+                    <ObjectInspector data={this.state.json||this.props.json} />
                 </div>
             </div>
         );
