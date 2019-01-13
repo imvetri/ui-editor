@@ -23,7 +23,9 @@ class Elements extends Component {
             selectedElement: "",
             eventName: "",
             markup: "",
-            editMode: false
+            editMode: false,
+            showJsonEditor: false,
+            selectedState: []
         };
     }
 
@@ -162,6 +164,14 @@ class Elements extends Component {
         this.toggleEditor();
     }
 
+    openJsonEditor (e) {
+        // find the selected state from the selected element.
+        this.setState({
+            selectedState : {name:"name"},
+            showJsonEditor: true
+        })
+    }
+
     render() {
         const options = {
 			lineNumbers: true,
@@ -182,14 +192,10 @@ class Elements extends Component {
         );
 
         const stateList = this.state.selectedElement && this.state.selectedElement.states.map((state, index)=>
-            <li key={index}>{JSON.stringify(state)}</li>
+            <li key={index} onClick={this.openJsonEditor.bind(this)}>{JSON.stringify(state)}</li>
         );
 
         const editMarkup = this.state.selectedElement ?  <button onClick={this.editElementMarkup.bind(this)} >Edit</button> : "";
-
-        const object = {
-            name: 1
-        };
 
         return (
             <li className="elements">
@@ -226,7 +232,7 @@ class Elements extends Component {
                     </ul>
                     <button id="addElementState">Add</button>
                 </section>
-                <PopupJsonEditor json={object} show={false}/>
+                <PopupJsonEditor json={this.state.selectedState} jsonString={JSON.stringify(this.state.selectedState)} show={this.state.showJsonEditor}/>
                 <PopupMarkupEditor createMode={this.state.createMode} markup={this.state.markup} onSave={this.updateCode.bind(this)}/>
             </li>
         );
