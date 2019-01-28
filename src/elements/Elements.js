@@ -13,6 +13,7 @@ import {convertToJson} from "../js-utils/convert-to-json";
 
 import PopupMarkupEditor from "./popup-markup-editor";
 import PopupJsonEditor from "./popup-json-editor";
+import StateReducerViewer from "state-reducer-viewer";
 
 class Elements extends Component {
     constructor(props) {
@@ -110,36 +111,6 @@ class Elements extends Component {
     }
 
     /**
-     * Stores the new state name for the currently selected element.
-     * @param {Object} e - Event carrying info about the state input value.
-     */
-    updateStateName (e) {
-        this.setState({
-            stateName: e.target.value
-        })
-    }
-
-    /**
-     * Saves the stateName to the currently selected element.
-     */
-    addState () {
-        // Get the selected element.
-        let selectedElement = this.state.selectedElement;
-
-        // Create new state.
-        let newState = Object.assign({}, this.state);
-
-        // Find the element to be updaated from the new state.
-        let elementToBeUpdated = newState.list.find(element=>element.name === selectedElement.name);
-
-        // Update the state name to list of existing states.
-        selectedElement.states.push(this.state.stateName);
-        
-        // Set state to new state.
-        this.setState(newState);
-    }
-
-    /**
      * Stores the current element that is selected.
      * @param {Object} e - Event carrying info about the currently selected element.
      */
@@ -191,10 +162,6 @@ class Elements extends Component {
             <li key={index}>{event}</li>
         );
 
-        const stateList = this.state.selectedElement && this.state.selectedElement.states.map((state, index)=>
-            <li key={index} onClick={this.openJsonEditor.bind(this)}>{JSON.stringify(state)}</li>
-        );
-
         const editMarkup = this.state.selectedElement ?  <button onClick={this.editElementMarkup.bind(this)} >Edit</button> : "";
 
         return (
@@ -219,19 +186,7 @@ class Elements extends Component {
                         </li>
                     </ul>
                 </section>
-                <section className="states-tab">
-                    <header>States</header>
-                    <ul>
-                        {stateList}
-                        <li>
-                            <input type="text" onChange={this.updateStateName.bind(this)}/>
-                        </li>
-                        <li>
-                            <button id="addEvent" onClick={this.addState.bind(this)}>Add</button>
-                        </li>
-                    </ul>
-                    <button id="addElementState">Add</button>
-                </section>
+                <StateReducerViewer/>
                 <PopupJsonEditor json={this.state.selectedState} jsonString={JSON.stringify(this.state.selectedState)} show={this.state.showJsonEditor}/>
                 <PopupMarkupEditor createMode={this.state.createMode} markup={this.state.markup} onSave={this.updateCode.bind(this)}/>
             </li>
