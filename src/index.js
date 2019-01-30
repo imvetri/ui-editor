@@ -12,7 +12,6 @@ import style from "./index.css";
 
 import Components from "./components/Components";
 import Elements from "./elements/Elements";
-import StateReducerViewer from "/Users/vshanmugam/Desktop/state-reducer-viewer";
 
 class Index extends Component {
     constructor(props) {
@@ -23,7 +22,6 @@ class Index extends Component {
         return (
             <div className={style.showBackground}>
                 <Elements createMode={false}/>
-                <StateReducerViewer/>
             </div>
         );
     }
