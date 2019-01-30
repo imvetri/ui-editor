@@ -15,6 +15,8 @@ import PopupMarkupEditor from "./popup-markup-editor";
 import PopupJsonEditor from "./popup-json-editor";
 import StateReducerViewer from "state-reducer-viewer";
 
+import dummyState from "./mock/dummyState.js";
+
 class Elements extends Component {
     constructor(props) {
         super(props);
@@ -186,7 +188,7 @@ class Elements extends Component {
                         </li>
                     </ul>
                 </section>
-                <StateReducerViewer/>
+                <StateReducerViewer states={dummyState}/>
                 <PopupJsonEditor json={this.state.selectedState} jsonString={JSON.stringify(this.state.selectedState)} show={this.state.showJsonEditor}/>
                 <PopupMarkupEditor createMode={this.state.createMode} markup={this.state.markup} onSave={this.updateCode.bind(this)}/>
             </li>
