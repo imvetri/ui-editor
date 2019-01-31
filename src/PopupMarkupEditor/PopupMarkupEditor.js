@@ -9,8 +9,7 @@ import CodeMirror from "react-codemirror";
 
 // Styles.
 
-import cssUtil from "../css-utils/style.css";
-import elementStyle from "./element.css";
+import style from "./PopupMarkupEditor.css";
 
 
 class PopupMarkupEditor extends Component {
@@ -70,8 +69,8 @@ class PopupMarkupEditor extends Component {
         };
 
         return (
-            <div className={this.props.createMode || this.state.createMode ?  '' : cssUtil.hidden} >
-                <section className={elementStyle.override}>
+            <div className={this.props.createMode || this.state.createMode ?  '' : style.hidden} >
+                <section className={style.override}>
                     <input type="text" placeholder="Enter element name" onChange={this.updateName.bind(this)}/>
                     <button onClick={this.saveElementDetails.bind(this)}>Save</button>
                     <button onClick={this.toggleEditor.bind(this)}>Close</button>
