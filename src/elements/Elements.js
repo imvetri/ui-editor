@@ -2,20 +2,19 @@ import React, { Component } from 'react';
 
 // Styles.
 
-import style from "./element.css";
+import style from "./Element.css";
 
 // Dependencies.
 
-import {extractJsxAttributes} from "../js-utils/extract-jsx-attributes";
-import {convertToJson} from "../js-utils/convert-to-json";
+import {extractJsxAttributes} from "../common/js/extract-jsx-attributes";
+import {convertToJson} from "../common/js/convert-to-json";
 
 // Components.
 
-import PopupMarkupEditor from "./popup-markup-editor";
-import PopupJsonEditor from "./popup-json-editor";
+import PopupMarkupEditor from "../PopupMarkupEditor/PopupMarkupEditor";
 import StateReducerViewer from "state-reducer-viewer";
 
-import dummyState from "./mock/dummyState.js";
+import dummyState from "../mock/dummyState.js";
 
 class Elements extends Component {
     constructor(props) {
@@ -137,14 +136,6 @@ class Elements extends Component {
         this.toggleEditor();
     }
 
-    openJsonEditor (e) {
-        // find the selected state from the selected element.
-        this.setState({
-            selectedState : {name:"name"},
-            showJsonEditor: true
-        })
-    }
-
     render() {
         const options = {
 			lineNumbers: true,
@@ -189,7 +180,6 @@ class Elements extends Component {
                     </ul>
                 </section>
                 <StateReducerViewer states={dummyState}/>
-                <PopupJsonEditor json={this.state.selectedState} jsonString={JSON.stringify(this.state.selectedState)} show={this.state.showJsonEditor}/>
                 <PopupMarkupEditor createMode={this.state.createMode} markup={this.state.markup} onSave={this.updateCode.bind(this)}/>
             </li>
         );
