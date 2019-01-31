@@ -6,12 +6,11 @@ import ReactDOM from "react-dom";
 // Dependencies.
 
 
-import style from "./index.css";
+import style from "./Index/index.css";
 
 // Components.
 
-import Components from "./components/Components";
-import Elements from "./elements/Elements";
+import Elements from "./Elements/Elements";
 
 class Index extends Component {
     constructor(props) {
