@@ -3,15 +3,6 @@
 import {extractJsxAttributes} from "../../common/js/extract-jsx-attributes";
 import {convertToJson} from "../../common/js/convert-to-json";
 
-export function updateEventName (e) {
-    this.setState({
-        event : {
-            name: e.target.value,
-            reducer: this.state.event.reducer
-        }
-    })
-}
-
 export function updateSelectedElementIndex (e) {
     // Find the element from state that matches the currently selected element.
     let selectedElementIndex = Number(e.target.getAttribute("index"));
@@ -66,45 +57,16 @@ export function saveElement () {
 }
 
 
-export function addEvent () {
+export function addEvent (event) {
     // Create new state.
     let newElements = Object.assign({}, this.state).elements;
 
-    newElements[this.state.selectedElementIndex].events.push({
-        name: this.state.event.name,
-        reducer: this.state.event.reducer,
-    })
+    newElements[this.state.selectedElementIndex].events.push(event)
 
     // Set state to the new state.
     this.setState({
-        elements: newElements,
-        event: {
-            name: "",
-            reducer: ""
-        }
-    });
-}
-
-
-export function saveEvent () {
-    let newElements = Array.from(this.state.elements);
-    newElements[this.state.selectedElementIndex].events.push({
-        name: this.state.event.name,
-        reducer: this.state.event.reducer
-    });
-
-    this.setState({
         elements: newElements
-    })
-}
-
-export function updateReducer (event) {
-    this.setState({
-        event : {
-            name: this.state.event.name,
-            reducer: event.currentTarget.value
-        }
-    })
+    });
 }
 
 export function toggleEditor () {
