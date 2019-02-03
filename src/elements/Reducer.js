@@ -1,7 +1,7 @@
 // Dependencies.
 
-import {extractJsxAttributes} from "../../common/js/extract-jsx-attributes";
-import {convertToJson} from "../../common/js/convert-to-json";
+import {extractJsxAttributes} from "../common/js/extract-jsx-attributes";
+import {convertToJson} from "../common/js/convert-to-json";
 
 export function updateSelectedElementIndex (e) {
     // Find the element from state that matches the currently selected element.

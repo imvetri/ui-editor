@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 // Styles.
 
-import style from "./Elements.css";
+import style from "./Style.css";
 
 
 
@@ -10,12 +10,12 @@ import style from "./Elements.css";
 
 import PopupMarkupEditor from "popup-markup-editor";
 import StateReducerViewer from "state-reducer-viewer";
-import Events from "./Events";
+import Events from "../Events/Events";
 
 // Reducers.
 
-import {save, close, updateName, updateMarkup} from "./reducers/PopupMarkupEditor"
-import {saveEvent, addEvent, updateSelectedElementIndex, saveElement, toggleEditor, setEditMode} from "./reducers/Elements"
+import {save, close, updateName, updateMarkup} from "../PopupMarkupEditor/Reducer"
+import {addEvent, updateSelectedElementIndex, saveElement, toggleEditor, setEditMode} from "./Reducer"
 
 import dummyState from "../mock/dummyState.js";
 
@@ -45,7 +45,6 @@ class Elements extends Component {
         this.addEvent = addEvent.bind(this);
         this.updateSelectedElementIndex = updateSelectedElementIndex.bind(this)
         this.saveElement = saveElement.bind(this);
-        this.saveEvent = saveEvent.bind(this);
         this.toggleEditor = toggleEditor.bind(this);
         this.setEditMode = setEditMode.bind(this);
     }
