@@ -5,7 +5,7 @@ import ReactDOM from "react-dom";
 
 // Reducers.
 
-import { updateEventName, updateReducer, addEvent} from "./reducers/Events";
+import { updateEventName, updateReducer, addEvent} from "./Reducer";
 
 class Events extends Component {
     constructor(props) {
@@ -18,6 +18,7 @@ class Events extends Component {
         }
         this.updateEventName = updateEventName.bind(this);
         this.updateReducer = updateReducer.bind(this);
+        this.addEvent = addEvent.bind(this);
     }
 
     render() {
@@ -35,7 +36,7 @@ class Events extends Component {
                     <li>
                         <input type="text" onChange={this.updateEventName} value={this.state.event.name} />
                         <textarea onChange={this.updateReducer} value={this.state.event.reducer} />
-                        <button onClick={this.addEvent.bind(this)}>Add</button>
+                        <button onClick={this.addEvent}>Add</button>
                     </li>
                 </ul>
             </div>
