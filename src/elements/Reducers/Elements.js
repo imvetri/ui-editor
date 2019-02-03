@@ -1,0 +1,121 @@
+// Dependencies.
+
+import {extractJsxAttributes} from "../../common/js/extract-jsx-attributes";
+import {convertToJson} from "../../common/js/convert-to-json";
+
+export function updateEventName (e) {
+    this.setState({
+        event : {
+            name: e.target.value,
+            reducer: this.state.event.reducer
+        }
+    })
+}
+
+export function updateSelectedElementIndex (e) {
+    // Find the element from state that matches the currently selected element.
+    let selectedElementIndex = Number(e.target.getAttribute("index"));
+
+    // Update the state with selectedElement.
+    this.setState({
+        selectedElementIndex,
+        name: this.state.elements[selectedElementIndex].name,
+        markup: this.state.elements[selectedElementIndex].markup
+    })
+
+}
+
+export function saveElement () {
+    let newElements = Array.from(this.state.elements);
+    
+    if(this.state.editMode){
+        // Find the element.
+        const elementUnderEdit = newElements[this.state.selectedElementIndex];
+
+        // Update the element with new markup.
+        elementUnderEdit.markup = this.state.markup;
+
+        // Get default state by parsing the markup.
+        let defaultState = convertToJson(extractJsxAttributes(this.state.markup));
+
+        // Add default state to element's states.
+        elementUnderEdit.states.push( defaultState );
+
+        // Update element name.
+        elementUnderEdit.name = this.state.name;
+    }
+    else {
+        let newElement = {
+            name: this.state.name,
+            markup: this.state.markup,
+            states: [],
+            events: []
+        };
+
+        newElements.push(newElement);
+    }
+
+    // Update the state with new values.
+    this.setState({
+        elements: newElements,
+        editMode: false
+    });
+
+    // hide the editor.
+    this.toggleEditor();
+}
+
+
+export function addEvent () {
+    // Create new state.
+    let newElements = Object.assign({}, this.state).elements;
+
+    newElements[this.state.selectedElementIndex].events.push({
+        name: this.state.event.name,
+        reducer: this.state.event.reducer,
+    })
+
+    // Set state to the new state.
+    this.setState({
+        elements: newElements,
+        event: {
+            name: "",
+            reducer: ""
+        }
+    });
+}
+
+
+export function saveEvent () {
+    let newElements = Array.from(this.state.elements);
+    newElements[this.state.selectedElementIndex].events.push({
+        name: this.state.event.name,
+        reducer: this.state.event.reducer
+    });
+
+    this.setState({
+        elements: newElements
+    })
+}
+
+export function updateReducer (event) {
+    this.setState({
+        event : {
+            name: this.state.event.name,
+            reducer: event.currentTarget.value
+        }
+    })
+}
+
+export function toggleEditor () {
+    this.setState({
+        show: !this.state.show
+    });
+}
+
+export function setEditMode () {
+    this.setState({
+        editMode: true,
+        show: true
+    })
+}
