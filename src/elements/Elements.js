@@ -4,15 +4,17 @@ import React, { Component } from 'react';
 
 import style from "./Elements.css";
 
-// Dependencies.
 
-import {extractJsxAttributes} from "../common/js/extract-jsx-attributes";
-import {convertToJson} from "../common/js/convert-to-json";
 
 // Components.
 
 import PopupMarkupEditor from "popup-markup-editor";
 import StateReducerViewer from "state-reducer-viewer";
+
+// Reducers.
+
+import {save, close, updateName, updateMarkup} from "./reducers/PopupMarkupEditor"
+import {updateEventName,updateReducer, addEvent, updateSelectedElementIndex, saveElement, saveEvent, toggleEditor, setEditMode} from "./reducers/Elements"
 
 import dummyState from "../mock/dummyState.js";
 
@@ -23,132 +25,30 @@ class Elements extends Component {
             name: "",
             show: false,
             elements: [],
-            eventName: "",
+            event: {
+                name: "",
+                reducer: ""
+            },
             markup: "",
             showJsonEditor: false,
             selectedState: [],
             editMode: false,
             selectedElementIndex: -1
         };
-    }
 
-    toggleEditor () {
-        this.setState({
-            show: !this.state.show,
-            name: "",
-            markup: ""
-        });
-    }
+        this.save = save.bind(this);
+        this.close = close.bind(this);
+        this.updateName = updateName.bind(this);
+        this.updateMarkup = updateMarkup.bind(this);
 
-    updateEventName (e) {
-        this.setState({
-            eventName: e.target.value
-        })
-    }
-
-    addEvent () {
-        // Get the selected element.
-        let selectedElement = this.state.selectedElementIndex;
-
-        // Create new state.
-        let newState = Object.assign({}, this.state);
-
-        // Find the element to be updated from the new state.
-        let elementToBeUpdated = newState.elements.find(element=>element.name === selectedElement.name);
-
-        // Update the event name to the selectedElement.
-        selectedElement.events.push(this.state.eventName);
-
-        // Set state to the new state.
-        this.setState(newState);
-    }
-
-    updateSelectedElementIndex (e) {
-        // Find the element from state that matches the currently selected element.
-        let selectedElementIndex = Number(e.target.getAttribute("index"));
-
-        // Update the state with selectedElement.
-        this.setState({
-            selectedElementIndex,
-            name: this.state.elements[selectedElementIndex].name,
-            markup: this.state.elements[selectedElementIndex].markup
-        })
-
-    }
-    setEditMode () {
-        this.setState({
-            editMode: true,
-            show: true
-        })
-    }
-
-    saveElement () {
-        // Mutate the original array. Science fiction. hide mutation behind.
-        let newElements = Array.from(this.state.elements);
-        
-        if(this.state.editMode){
-            // Find the element.
-            const elementUnderEdit = newElements[this.state.selectedElementIndex];
-
-            // Update the element with new markup.
-            elementUnderEdit.markup = this.state.markup;
-
-            // Get default state by parsing the markup.
-            let defaultState = convertToJson(extractJsxAttributes(this.state.markup));
-
-            // Add default state to element's states.
-            elementUnderEdit.states.push( defaultState );
-
-            // Update element name.
-            elementUnderEdit.name = this.state.name;
-        }
-        else {
-            let newElement = {
-                name: this.state.name,
-                markup: this.state.markup,
-                states: [],
-                events: []
-            };
-
-            newElements.push(newElement);
-        }
-
-        // Update the state with new values.
-        this.setState({
-            elements: newElements,
-            editMode: false
-        });
-
-        // hide the editor.
-        this.toggleEditor();
-    }
-
-    save () {
-        if(this.validation()){
-            this.saveElement();
-        }
-    }
-
-    validation () {
-        return this.state.markup && this.state.name;
-    }
-
-    close () {
-        this.setState({
-            show:false
-        })
-    }
-
-    updateName (event) {
-        this.setState({
-            name: event.currentTarget.value
-        })
-    }
-
-    updateMarkup (event) {
-        this.setState({
-            markup: event.currentTarget.value
-        })
+        this.updateEventName = updateEventName.bind(this);
+        this.addEvent = addEvent.bind(this);
+        this.updateSelectedElementIndex = updateSelectedElementIndex.bind(this)
+        this.saveElement = saveElement.bind(this);
+        this.saveEvent = saveEvent.bind(this);
+        this.updateReducer = updateReducer.bind(this);
+        this.toggleEditor = toggleEditor.bind(this);
+        this.setEditMode = setEditMode.bind(this);
     }
 
     render() {
@@ -164,12 +64,17 @@ class Elements extends Component {
         );
         
         const eventList = this.state.selectedElementIndex>-1 && this.state.elements[this.state.selectedElementIndex].events.map((event, index)=>
-            <li key={index}>{event}</li>
+            <li key={index}>
+                <input type="text" value = {event.name}/>
+                <textarea value = {event.reducer}/>
+                <button onClick = {this.saveEvent.bind(this)}>Save</button>
+            </li>
         );
 
         const editMarkup = <button onClick={this.setEditMode.bind(this)}>Edit</button>;
 
         const selectedElement = this.state.elements[this.state.selectedElementIndex] || {};
+        
         return (
             <li className="elements">
                 <header>Elements</header>
@@ -185,10 +90,9 @@ class Elements extends Component {
                     <ul>
                         {eventList}
                         <li>
-                            <input type="text" onChange={this.updateEventName.bind(this)}/>
-                        </li>
-                        <li>
-                            <button id="addEvent" onClick={this.addEvent.bind(this)}>Add</button>
+                            <input type="text" onChange = {this.updateEventName} value = {this.state.event.name}/>
+                            <textarea onChange = {this.updateReducer} value = {this.state.event.reducer}/>
+                            <button onClick={this.addEvent}>Add</button>
                         </li>
                     </ul>
                 </section>
@@ -197,10 +101,10 @@ class Elements extends Component {
                     show = {this.state.show} 
                     name = {this.state.name} 
                     markup = {this.state.markup} 
-                    save = {this.save.bind(this)} 
-                    close = {this.close.bind(this)}
-                    updateName = {this.updateName.bind(this)}
-                    updateMarkup = {this.updateMarkup.bind(this)}
+                    save = {this.save} 
+                    close = {this.close}
+                    updateName = {this.updateName}
+                    updateMarkup = {this.updateMarkup}
                     />
             </li>
         );
