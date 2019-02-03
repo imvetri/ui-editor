@@ -10,11 +10,12 @@ import style from "./Elements.css";
 
 import PopupMarkupEditor from "popup-markup-editor";
 import StateReducerViewer from "state-reducer-viewer";
+import Events from "./Events";
 
 // Reducers.
 
 import {save, close, updateName, updateMarkup} from "./reducers/PopupMarkupEditor"
-import {updateEventName,updateReducer, addEvent, updateSelectedElementIndex, saveElement, saveEvent, toggleEditor, setEditMode} from "./reducers/Elements"
+import {saveEvent, addEvent, updateSelectedElementIndex, saveElement, toggleEditor, setEditMode} from "./reducers/Elements"
 
 import dummyState from "../mock/dummyState.js";
 
@@ -41,12 +42,10 @@ class Elements extends Component {
         this.updateName = updateName.bind(this);
         this.updateMarkup = updateMarkup.bind(this);
 
-        this.updateEventName = updateEventName.bind(this);
         this.addEvent = addEvent.bind(this);
         this.updateSelectedElementIndex = updateSelectedElementIndex.bind(this)
         this.saveElement = saveElement.bind(this);
         this.saveEvent = saveEvent.bind(this);
-        this.updateReducer = updateReducer.bind(this);
         this.toggleEditor = toggleEditor.bind(this);
         this.setEditMode = setEditMode.bind(this);
     }
@@ -62,14 +61,7 @@ class Elements extends Component {
                 {element.name}
             </li>
         );
-        
-        const eventList = this.state.selectedElementIndex>-1 && this.state.elements[this.state.selectedElementIndex].events.map((event, index)=>
-            <li key={index}>
-                <input type="text" value = {event.name}/>
-                <textarea value = {event.reducer}/>
-                <button onClick = {this.saveEvent.bind(this)}>Save</button>
-            </li>
-        );
+    
 
         const editMarkup = <button onClick={this.setEditMode.bind(this)}>Edit</button>;
 
@@ -87,14 +79,11 @@ class Elements extends Component {
                 </section>
                 <section className="events-tab">
                     <header>Events</header>
-                    <ul>
-                        {eventList}
-                        <li>
-                            <input type="text" onChange = {this.updateEventName} value = {this.state.event.name}/>
-                            <textarea onChange = {this.updateReducer} value = {this.state.event.reducer}/>
-                            <button onClick={this.addEvent}>Add</button>
-                        </li>
-                    </ul>
+                    {this.state.elements[this.state.selectedElementIndex]? 
+                    <Events 
+                        events = {this.state.elements[this.state.selectedElementIndex].events}
+                        addEvent={this.addEvent}
+                        />: ""}
                 </section>
                 <StateReducerViewer states={dummyState}/>
                 <PopupMarkupEditor  
