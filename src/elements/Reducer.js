@@ -57,11 +57,11 @@ export function saveElement () {
 }
 
 
-export function addEvent (event) {
+export function addEvent (events) {
     // Create new state.
     let newElements = Object.assign({}, this.state).elements;
 
-    newElements[this.state.selectedElementIndex].events.push(event)
+    newElements[this.state.selectedElementIndex].events = events;
 
     // Set state to the new state.
     this.setState({

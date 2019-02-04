@@ -5,7 +5,9 @@ import ReactDOM from "react-dom";
 
 // Reducers.
 
-import { updateEventName, updateReducer, addEvent} from "./Reducer";
+import { addEvent } from "./Reducer";
+import { updateEventName, updateReducer } from "./Reducer";
+import { editEventName, editReducer } from "./Reducer";
 
 class Events extends Component {
     constructor(props) {
@@ -14,18 +16,24 @@ class Events extends Component {
             event: {
                 name: "",
                 reducer: ""
-            }
+            },
+            name: "",
+            reducer: "",
+            currentIndex: -1
         }
         this.updateEventName = updateEventName.bind(this);
         this.updateReducer = updateReducer.bind(this);
         this.addEvent = addEvent.bind(this);
+        this.editEventName = addEvent.bind(this);
+        this.editReducer = addEvent.bind(this);
     }
 
     render() {
         const events = this.props.events.map((event, index) =>
             <li key={index}>
-                <input type="text" value={event.name} />
-                <textarea value={event.reducer} />
+                <input type="text" value={event.name} index={index} onChange={this.editEventName}/>
+                <textarea value={event.reducer} index={index} onChange={this.editReducer}/>
+                <button onClick={this.updateEvent}>Edit</button>
             </li>
         );
         return (
