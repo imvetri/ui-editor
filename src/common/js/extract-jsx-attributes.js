@@ -18,7 +18,7 @@ const extractJsxAttributes = ( jsx ) => {
     let attributes = jsx.match(jsxAttributes)
 
     // Remove the braces and return the list.
-    return attributes && attributes.map(attribute => attribute.replace("{", "").replace("}", "") );
+    return attributes && attributes.map(attribute => attribute.replace("{", "").replace("}", "") ) || [];
 
 }
 
