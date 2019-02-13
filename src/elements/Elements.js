@@ -9,7 +9,6 @@ import style from "./Style.css";
 // Components.
 
 import PopupMarkupEditor from "popup-markup-editor";
-import StateReducerViewer from "state-reducer-viewer";
 import Events from "../Events/Events";
 
 // Reducers.
@@ -17,7 +16,6 @@ import Events from "../Events/Events";
 import {save, close, updateName, updateMarkup} from "../PopupMarkupEditor/Reducer"
 import {addEvent, updateSelectedElementIndex, saveElement, toggleEditor, setEditMode} from "./Reducer"
 
-import dummyState from "../mock/dummyState.js";
 
 class Elements extends Component {
     constructor(props) {
@@ -84,7 +82,6 @@ class Elements extends Component {
                         addEvent={this.addEvent}
                         />: ""}
                 </section>
-                <StateReducerViewer states={dummyState}/>
                 <PopupMarkupEditor  
                     show = {this.state.show} 
                     name = {this.state.name} 
