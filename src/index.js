@@ -11,6 +11,13 @@ import style from "./Index/index.css";
 // Components.
 
 import Elements from "./Elements/Elements";
+import Preview from "./Preview/Preview";
+
+
+import InputComponent1 from "./mock/InputComponent1";
+import InputComponent2 from "./mock/InputComponent2";
+
+let Components = [InputComponent1, InputComponent2];
 
 class Index extends Component {
     constructor(props) {

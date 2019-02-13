@@ -17,6 +17,7 @@
     "popup-markup-editor": "file:../popup-markup-editor"
   },
   "devDependencies": {
+    "@babel/standalone": "^7.3.2",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
