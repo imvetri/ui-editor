@@ -52,7 +52,16 @@ class Elements extends Component {
         // Warning: Object.assign doesnt dupe the original object. It overrides only the values.
         // May cause problem with reference types.
         let element = JSON.parse(JSON.stringify(this.state.elements[this.state.selectedElementIndex]));
-        element.state = element.states[0];
+        
+        let state = {};
+
+        Object.keys(element.states[0]).forEach((value)=>{
+            state[value.split("state.")[1]]="dummy";
+        })
+
+        element.markup = element.markup.replace("/>","{...events}/>")
+
+        element.state = state;
         element.children = [];
         delete element.states;
 
@@ -60,8 +69,9 @@ class Elements extends Component {
         let events = {};
         element.events.forEach(event => {
             // Convert events prop values from string to function
-            events[event]=  new Function(element.events[event]);
+            events[event.name]=  new Function(event.reducer);
         });
+        debugger;
         element.events = events;
 
         element.style = {};
