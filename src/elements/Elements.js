@@ -47,22 +47,28 @@ class Elements extends Component {
         this.setEditMode = setEditMode.bind(this);
     }
 
-    publishDetails() {
-        
-        // Warning: Object.assign doesnt dupe the original object. It overrides only the values.
-        // May cause problem with reference types.
-        let element = JSON.parse(JSON.stringify(this.state.elements[this.state.selectedElementIndex]));
-        
+    prepareMarkup (markup){
+        if(!markup.includes("{...events}")){
+            // For markups without closing.
+            if(markup.includes("/>")){
+                markup = markup.replace("/>"," {...events}/>")
+            }
+            // For elements with closing tags.
+            else if(markup.indexOf(">")<markup.indexOf("</")){
+                markup = markup.replace(">", " {...events}>")
+            }
+        }
+        return markup;
+    }
+
+    prepareElement (element) {
         let state = {};
 
         Object.keys(element.states[0]).forEach((value)=>{
             state[value.split("state.")[1]]="dummy";
-        })
+        });
 
-        element.markup = element.markup.replace("/>","{...events}/>")
-
-        element.state = state;
-        element.children = [];
+        element.markup = this.prepareMarkup(element.markup);
         delete element.states;
 
         // Convert events array to object
@@ -71,11 +77,24 @@ class Elements extends Component {
             // Convert events prop values from string to function
             events[event.name]=  new Function(event.reducer);
         });
-        debugger;
+
         element.events = events;
 
-        element.style = {};
-        this.props.onPublish(element);
+        let defaults = {
+            state: state,
+            children: [],
+            style: {}        
+        };
+        return Object.assign(defaults, element);
+    }
+
+    publishDetails() {
+        
+        // Warning: Object.assign doesnt dupe the original object. It overrides only the values.
+        // May cause problem with reference types.
+        let element = JSON.parse(JSON.stringify(this.state.elements[this.state.selectedElementIndex]));
+        
+        this.props.onPublish(this.prepareElement(element));
     }
 
     render() {
