@@ -14,20 +14,27 @@ import Elements from "./Elements/Elements";
 import Preview from "./Preview/Preview";
 
 
-import InputComponent1 from "./mock/InputComponent1";
-import InputComponent2 from "./mock/InputComponent2";
-
-let Components = [InputComponent1, InputComponent2];
+import InputComponent from "./mock/InputComponent2";
 
 class Index extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            components: [InputComponent]
+        }
+    }
+
+    updatePreview(element) {
+        this.setState({
+            components: [element]
+        });
     }
 
     render(){
         return (
             <div className={style.showBackground}>
-                <Elements createMode={false}/>
+                <Elements createMode={false} onPublish={this.updatePreview.bind(this)}/>
+                <Preview components={this.state.components}/>
             </div>
         );
     }
