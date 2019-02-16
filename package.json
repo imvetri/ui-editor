@@ -14,7 +14,7 @@
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-inspector": "^2.3.1",
-    "popup-markup-editor": "file:../popup-markup-editor"
+    "popup-markup-editor": "1.1.0"
   },
   "devDependencies": {
     "@babel/standalone": "^7.3.2",
