@@ -25,8 +25,10 @@ class Index extends Component {
     }
 
     updatePreview(element) {
+        let components = this.state.components;
+        components[0].children.push(element)
         this.setState({
-            components: [element]
+            components
         });
     }
 
