@@ -39,6 +39,7 @@ class Events extends Component {
         return (
 
             <div>
+                <span>Write only the function definition, you have access to state,event argument</span>
                 <ul>
                     {events}
                     <li>

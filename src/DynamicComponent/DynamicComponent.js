@@ -33,7 +33,7 @@ class DynamicComponent extends Component {
             <div className={style.box}>
                 dei
                 {newElement}
-                {this.children.map(component=><DynamicComponent component={component}/>)}
+                {this.children.map((component,index)=><DynamicComponent component={component} key={index}/>)}
             </div>
         );
     }

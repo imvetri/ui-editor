@@ -47,6 +47,27 @@ class Elements extends Component {
         this.setEditMode = setEditMode.bind(this);
     }
 
+    publishDetails() {
+        
+        // Warning: Object.assign doesnt dupe the original object. It overrides only the values.
+        // May cause problem with reference types.
+        let element = JSON.parse(JSON.stringify(this.state.elements[this.state.selectedElementIndex]));
+        element.state = element.states[0];
+        element.children = [];
+        delete element.states;
+
+        // Convert events array to object
+        let events = {};
+        element.events.forEach(event => {
+            // Convert events prop values from string to function
+            events[event]=  new Function(element.events[event]);
+        });
+        element.events = events;
+
+        element.style = {};
+        this.props.onPublish(element);
+    }
+
     render() {
 
         const elementList = this.state.elements.map((element, index) => 
@@ -56,6 +77,7 @@ class Elements extends Component {
                 className = {this.state.selectedElementIndex === index ? style.selected : ""} 
                 onClick = {this.updateSelectedElementIndex.bind(this)}>
                 {element.name}
+                <button onClick={this.publishDetails.bind(this)}>Preview</button>
             </li>
         );
     
