@@ -11,10 +11,10 @@ import style from "./Index/index.css";
 // Components.
 
 import Elements from "./Elements/Elements";
-import Preview from "./Preview/Preview";
+import Preview from "@ui-editor/preview";
 
 
-import InputComponent from "./mock/InputComponent2";
+import InputComponent from "./mock/InputComponent";
 
 class Index extends Component {
     constructor(props) {
