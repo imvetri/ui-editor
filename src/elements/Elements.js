@@ -4,8 +4,6 @@ import React, { Component } from 'react';
 
 import style from "./Style.css";
 
-
-
 // Components.
 
 import PopupMarkupEditor from "popup-markup-editor";
