@@ -42,7 +42,8 @@ export function saveElement () {
             name: this.state.name,
             markup: this.state.markup,
             states: [],
-            events: []
+            events: [],
+            style: this.state.style
         };
 
         newElements.push(newElement);

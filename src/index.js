@@ -4,8 +4,6 @@ import React, {Component} from "react";
 import ReactDOM from "react-dom";
 
 // Dependencies.
-
-
 import style from "./Index/index.css";
 
 // Components.
@@ -20,13 +18,13 @@ class Index extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            components: [InputComponent]
+            components: []
         }
     }
 
     updatePreview(element) {
         let components = this.state.components;
-        components[0].children.push(element)
+        components.push(element)
         this.setState({
             components
         });
