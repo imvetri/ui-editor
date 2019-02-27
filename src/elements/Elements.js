@@ -11,7 +11,7 @@ import Events from "../Events/Events";
 
 // Reducers.
 
-import {save, close, updateName, updateMarkup} from "../PopupMarkupEditor/Reducer"
+import {save, close, updateName, updateMarkup, updateStyle} from "../PopupMarkupEditor/Reducer"
 import {addEvent, updateSelectedElementIndex, saveElement, toggleEditor, setEditMode} from "./Reducer"
 
 
@@ -37,6 +37,7 @@ class Elements extends Component {
         this.close = close.bind(this);
         this.updateName = updateName.bind(this);
         this.updateMarkup = updateMarkup.bind(this);
+        this.updateStyle = updateStyle.bind(this);
 
         this.addEvent = addEvent.bind(this);
         this.updateSelectedElementIndex = updateSelectedElementIndex.bind(this)
@@ -139,6 +140,7 @@ class Elements extends Component {
                     close = {this.close}
                     updateName = {this.updateName}
                     updateMarkup = {this.updateMarkup}
+                    updateStyle = {this.updateStyle}
                     />
             </li>
         );
