@@ -26,3 +26,9 @@
             markup: event.currentTarget.value
         })
     }
+
+    export function updateStyle (event) {
+        this.setState({
+            style: event.currentTarget.value
+        })
+    }
