@@ -18,15 +18,14 @@ class Index extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            components: []
+            components: [],
+            previewComponent: []
         }
     }
 
     updatePreview(element) {
-        let components = this.state.components;
-        components.push(element)
         this.setState({
-            components
+            previewComponent:  [element]
         });
     }
 
@@ -34,7 +33,7 @@ class Index extends Component {
         return (
             <div className={style.showBackground}>
                 <Elements createMode={false} onPublish={this.updatePreview.bind(this)}/>
-                <Preview components={this.state.components}/>
+                <Preview components={this.state.previewComponent}/>
             </div>
         );
     }

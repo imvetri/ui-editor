@@ -63,9 +63,15 @@ class Elements extends Component {
     prepareElement (element) {
         let state = {};
 
-        Object.keys(element.states[0]).forEach((value)=>{
-            state[value.split("state.")[1]]="dummy";
-        });
+        try {
+            Object.keys(element.states[0]).forEach((value)=>{
+                state[value.split("state.")[1]]="dummy";
+            });
+        }
+        catch(e) {
+            console.log(e);
+            console.info("You missed a Ritual. Select the element, then click on edit and save atleast once");
+        }
 
         element.markup = this.prepareMarkup(element.markup);
         delete element.states;
