@@ -21,7 +21,7 @@ class Elements extends Component {
         this.state = { 
             name: "",
             show: false,
-            elements: [],
+            elements: JSON.parse(localStorage.getItem("ui-editor")) || [],
             event: {
                 name: "",
                 reducer: ""

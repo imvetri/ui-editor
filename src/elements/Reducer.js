@@ -55,6 +55,8 @@ export function saveElement () {
         editMode: false
     });
 
+    localStorage.setItem("ui-editor", JSON.stringify(newElements));
+
     // hide the editor.
     this.toggleEditor();
 }
