@@ -43,7 +43,8 @@ export function saveElement () {
             markup: this.state.markup,
             states: [],
             events: [],
-            style: this.state.style
+            style: this.state.style,
+            id: Math.ceil(Math.random()*1000)
         };
 
         newElements.push(newElement);
