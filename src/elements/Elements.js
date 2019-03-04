@@ -135,7 +135,7 @@ class Elements extends Component {
                     {this.state.elements[this.state.selectedElementIndex]? 
                     <Events 
                         events = {this.state.elements[this.state.selectedElementIndex].events}
-                        addEvent={this.addEvent}
+                        addEvent = {this.addEvent}
                         />: ""}
                 </section>
                 <PopupMarkupEditor  
