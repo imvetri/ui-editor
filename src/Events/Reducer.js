@@ -32,6 +32,9 @@ export function addEvent() {
             reducer: ""
         }
     })
+
+    // Fix
+    console.info("If you find the new event is not working in preview, select element -> click edit and save. There is a bug which requires a fix");
 }
 
 export function editEventName(e) {
@@ -51,6 +54,8 @@ export function editReducer(e) {
     let newEvents = this.state.events;
 
     newEvents[index].reducer = e.target.value;
+
+    console.log(e.target.value);
 
     this.setState({
         events: newEvents
