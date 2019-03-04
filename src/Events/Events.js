@@ -25,7 +25,7 @@ class Events extends Component {
         this.updateReducer = updateReducer.bind(this);
         this.addEvent = addEvent.bind(this);
         this.editEventName = addEvent.bind(this);
-        this.editReducer = addEvent.bind(this);
+        this.editReducer = editReducer.bind(this);
     }
 
     render() {
