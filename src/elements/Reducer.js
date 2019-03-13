@@ -14,8 +14,7 @@ export function updateSelectedElementIndex (e) {
         markup: this.state.elements[selectedElementIndex].markup
     })
 
-    console.log(selectedElementIndex);
-
+    this.setEditMode();
 }
 
 export function saveElement () {
