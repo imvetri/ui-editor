@@ -114,10 +114,8 @@ class Elements extends Component {
                 <button onClick={this.publishDetails.bind(this)}>Preview</button>
             </li>
         );
+
     
-
-        const editMarkup = <button onClick={this.setEditMode.bind(this)}>Edit</button>;
-
         const selectedElement = this.state.elements[this.state.selectedElementIndex] || {};
         
         return (
@@ -128,15 +126,14 @@ class Elements extends Component {
                         {elementList}
                     </ul>
                     <button onClick={this.toggleEditor.bind(this)}>Add</button>
-                    {editMarkup}
                 </section>
                 <section className="events-tab">
                     <header>Events</header>
                     {this.state.elements[this.state.selectedElementIndex]? 
                     <Events 
                         events = {this.state.elements[this.state.selectedElementIndex].events}
-                        addEvent={this.addEvent}
-                        />: ""}
+                        addEvent ={this.addEvent}/>
+                        : ""}
                 </section>
                 <PopupMarkupEditor  
                     show = {this.state.show} 
