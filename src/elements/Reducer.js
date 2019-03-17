@@ -42,6 +42,8 @@ export function saveElement () {
             markup: this.state.markup,
             states: [],
             events: [],
+            styleClass: this.state.styleClass,
+            state: this.state.state,
             style: this.state.style,
             id: Math.ceil(Math.random()*1000)
         };
@@ -50,9 +52,17 @@ export function saveElement () {
     }
 
     // Update the state with new values.
+    // 1. Initialise the editState with default values/ empty it.
+    // TODO: remove editMode.
     this.setState({
         elements: newElements,
-        editMode: false
+        editMode: false,
+        name: "",
+        markup: "",
+        state: "",
+        events: [],
+        style: "",
+        styleClass: "",
     });
 
     localStorage.setItem("ui-editor", JSON.stringify(newElements));
