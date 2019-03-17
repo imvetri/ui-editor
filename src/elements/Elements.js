@@ -142,8 +142,11 @@ class Elements extends Component {
                 </section>
                 <PopupMarkupEditor  
                     show = {this.state.show} 
-                    name = {this.state.name} 
-                    markup = {this.state.markup} 
+                    name = {selectedElement.name || this.state.name} 
+                    markup = {selectedElement.markup || this.state.markup} 
+                    styleClass = {selectedElement.styleClass || this.state.styleClass}
+                    style = {selectedElement.style || this.state.style}
+                    state = {selectedElement.state || this.state.state}
                     save = {this.save} 
                     close = {this.close}
                     updateName = {this.updateName}
