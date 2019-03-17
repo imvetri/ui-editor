@@ -32,3 +32,15 @@
             style: event.currentTarget.value
         })
     }
+
+    export function updateStyleClass (event) {
+        this.setState({
+            styleClass: event.currentTarget.value
+        })
+    }
+
+    export function updateState (event) {
+        this.setState({
+            state: event.currentTarget.value
+        })
+    }
