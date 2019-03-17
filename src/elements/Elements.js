@@ -11,7 +11,7 @@ import Events from "../Events/Events";
 
 // Reducers.
 
-import {save, close, updateName, updateMarkup, updateStyle} from "../PopupMarkupEditor/Reducer"
+import {save, close, updateName, updateMarkup, updateStyle, updateStyleClass, updateState} from "../PopupMarkupEditor/Reducer"
 import {addEvent, updateSelectedElementIndex, saveElement, toggleEditor, setEditMode} from "./Reducer"
 
 
@@ -38,6 +38,8 @@ class Elements extends Component {
         this.updateName = updateName.bind(this);
         this.updateMarkup = updateMarkup.bind(this);
         this.updateStyle = updateStyle.bind(this);
+        this.updateState = updateState.bind(this);
+        this.updateStyleClass = updateStyleClass.bind(this);
 
         this.addEvent = addEvent.bind(this);
         this.updateSelectedElementIndex = updateSelectedElementIndex.bind(this)
@@ -131,7 +133,10 @@ class Elements extends Component {
                     <header>Events</header>
                     {this.state.elements[this.state.selectedElementIndex]? 
                     <Events 
+                        markup = {this.state.elements[this.state.selectedElementIndex].markup}
+                        state = {this.state.elements[this.state.selectedElementIndex].state}
                         events = {this.state.elements[this.state.selectedElementIndex].events}
+                        style = {this.state.elements[this.state.selectedElementIndex].style}
                         addEvent ={this.addEvent}/>
                         : ""}
                 </section>
@@ -144,6 +149,8 @@ class Elements extends Component {
                     updateName = {this.updateName}
                     updateMarkup = {this.updateMarkup}
                     updateStyle = {this.updateStyle}
+                    updateStyleClass = {this.updateStyleClass}
+                    updateState = {this.updateState}
                     />
             </li>
         );
