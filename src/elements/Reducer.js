@@ -17,34 +17,30 @@ export function updateSelectedElementIndex (e) {
     this.setEditMode();
 }
 
-export function saveElement () {
+export function saveElement (element) {
+    
+    
     let newElements = Array.from(this.state.elements);
     
     if(this.state.editMode){
         // Find the element.
-        const elementUnderEdit = newElements[this.state.selectedElementIndex];
+        let elementUnderEdit = newElements[this.state.selectedElementIndex];
 
-        // Update the element with new markup.
-        elementUnderEdit.markup = this.state.markup;
+        // Merge.
+        elementUnderEdit = Object.assign(elementUnderEdit, element)
 
-        // Get default state by parsing the markup.
-        let defaultState = convertToJson(extractJsxAttributes(this.state.markup));
-
-        // Add default state to element's states.
-        elementUnderEdit.states.push( defaultState );
-
-        // Update element name.
-        elementUnderEdit.name = this.state.name;
+        // Push it to original list.
+        newElements[this.state.selectedElementIndex] = elementUnderEdit;
     }
     else {
         let newElement = {
-            name: this.state.name,
-            markup: this.state.markup,
+            name: element.name,
+            markup: element.markup,
             states: [],
             events: [],
-            styleClass: this.state.styleClass,
-            state: this.state.state,
-            style: this.state.style,
+            styleClass: element.styleClass,
+            state: element.state,
+            style: element.style,
             id: Math.ceil(Math.random()*1000)
         };
 
@@ -57,12 +53,15 @@ export function saveElement () {
     this.setState({
         elements: newElements,
         editMode: false,
-        name: "",
-        markup: "",
-        state: "",
-        events: [],
-        style: "",
-        styleClass: "",
+        element: {
+            name: element.name,
+            markup: element.markup,
+            styleClass: element.styleClass,
+            style: element.style,
+            state: element.state,
+            event: element.events
+        },
+        show: false
     });
 
     localStorage.setItem("ui-editor", JSON.stringify(newElements));
