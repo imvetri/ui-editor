@@ -2,12 +2,15 @@
 
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import Nodes from "../NodesComponent/Nodes";
 
 // Reducers.
 
 import { addEvent } from "./Reducer";
 import { updateEventName, updateReducer } from "./Reducer";
 import { editEventName, editReducer } from "./Reducer";
+
+import { transpileJSX } from "../common/js/jsxTranspiler";
 
 class Events extends Component {
     constructor(props) {
@@ -36,9 +39,15 @@ class Events extends Component {
                 <button onClick={this.updateEvent}>Edit</button>
             </li>
         );
+        var newElement = transpileJSX(this.props.markup, this.props.style, this.props.state, this.props.events);
+        if(!newElement){
+            console.log("no element got transpiled");
+        }
         return (
 
             <div>
+                Select a tag below to bind the events to.
+                <Nodes node={newElement}/>
                 <span>Write only the function definition, you have access to state,event argument</span>
                 <ul>
                     {events}

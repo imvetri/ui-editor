@@ -13,3 +13,8 @@
 .hide {
     display: none;
 }
+
+textarea {
+    height: 70px;
+    width: 250px;
+}
