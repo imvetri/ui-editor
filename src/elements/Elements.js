@@ -11,33 +11,30 @@ import Events from "../Events/Events";
 
 // Reducers.
 
-import {save, close, updateName, updateMarkup, updateStyle} from "../PopupMarkupEditor/Reducer"
 import {addEvent, updateSelectedElementIndex, saveElement, toggleEditor, setEditMode} from "./Reducer"
 
 
 class Elements extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
-            name: "",
+        this.state = {
+            element: {
+                name: "",
+                markup:"",
+                styleClass: "",
+                style: "",
+                state: "",
+                event: {
+                    name: "",
+                    reducer: ""
+                }
+            },
             show: false,
             elements: JSON.parse(localStorage.getItem("ui-editor")) || [],
-            event: {
-                name: "",
-                reducer: ""
-            },
-            markup: "",
-            showJsonEditor: false,
             selectedState: [],
             editMode: false,
             selectedElementIndex: -1
         };
-
-        this.save = save.bind(this);
-        this.close = close.bind(this);
-        this.updateName = updateName.bind(this);
-        this.updateMarkup = updateMarkup.bind(this);
-        this.updateStyle = updateStyle.bind(this);
 
         this.addEvent = addEvent.bind(this);
         this.updateSelectedElementIndex = updateSelectedElementIndex.bind(this)
@@ -114,11 +111,9 @@ class Elements extends Component {
                 <button onClick={this.publishDetails.bind(this)}>Preview</button>
             </li>
         );
+
     
-
-        const editMarkup = <button onClick={this.setEditMode.bind(this)}>Edit</button>;
-
-        const selectedElement = this.state.elements[this.state.selectedElementIndex] || {};
+        const selectedElement = this.state.elements[this.state.selectedElementIndex] || this.state.element;
         
         return (
             <li className="elements">
@@ -127,27 +122,24 @@ class Elements extends Component {
                     <ul>
                         {elementList}
                     </ul>
-                    <button onClick={this.toggleEditor.bind(this)}>Add</button>
-                    {editMarkup}
+                    <button id="addElement" onClick={this.toggleEditor.bind(this)}>Add</button>
                 </section>
                 <section className="events-tab">
                     <header>Events</header>
                     {this.state.elements[this.state.selectedElementIndex]? 
                     <Events 
-                        events = {this.state.elements[this.state.selectedElementIndex].events}
-                        addEvent = {this.addEvent}
-                        />: ""}
+                        markup = {selectedElement.markup}
+                        state = {selectedElement.state}
+                        events = {selectedElement.events}
+                        style = {selectedElement.style}
+                        addEvent ={this.addEvent}/>
+                        : ""}
                 </section>
-                <PopupMarkupEditor  
-                    show = {this.state.show} 
-                    name = {this.state.name} 
-                    markup = {this.state.markup} 
-                    save = {this.save} 
-                    close = {this.close}
-                    updateName = {this.updateName}
-                    updateMarkup = {this.updateMarkup}
-                    updateStyle = {this.updateStyle}
-                    />
+                {this.state.show ? <PopupMarkupEditor   
+                    element = {selectedElement}
+                    saveAndClose = {this.saveElement}
+                    show = {this.state.show}
+                    /> : null }
             </li>
         );
     }
