@@ -11,35 +11,30 @@ import Events from "../Events/Events";
 
 // Reducers.
 
-import {save, close, updateName, updateMarkup, updateStyle, updateStyleClass, updateState} from "../PopupMarkupEditor/Reducer"
 import {addEvent, updateSelectedElementIndex, saveElement, toggleEditor, setEditMode} from "./Reducer"
 
 
 class Elements extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
-            name: "",
+        this.state = {
+            element: {
+                name: "",
+                markup:"",
+                styleClass: "",
+                style: "",
+                state: "",
+                event: {
+                    name: "",
+                    reducer: ""
+                }
+            },
             show: false,
             elements: JSON.parse(localStorage.getItem("ui-editor")) || [],
-            event: {
-                name: "",
-                reducer: ""
-            },
-            markup: "",
-            showJsonEditor: false,
             selectedState: [],
             editMode: false,
             selectedElementIndex: -1
         };
-
-        this.save = save.bind(this);
-        this.close = close.bind(this);
-        this.updateName = updateName.bind(this);
-        this.updateMarkup = updateMarkup.bind(this);
-        this.updateStyle = updateStyle.bind(this);
-        this.updateState = updateState.bind(this);
-        this.updateStyleClass = updateStyleClass.bind(this);
 
         this.addEvent = addEvent.bind(this);
         this.updateSelectedElementIndex = updateSelectedElementIndex.bind(this)
@@ -118,7 +113,7 @@ class Elements extends Component {
         );
 
     
-        const selectedElement = this.state.elements[this.state.selectedElementIndex] || {};
+        const selectedElement = this.state.elements[this.state.selectedElementIndex] || this.state.element;
         
         return (
             <li className="elements">
@@ -127,34 +122,24 @@ class Elements extends Component {
                     <ul>
                         {elementList}
                     </ul>
-                    <button onClick={this.toggleEditor.bind(this)}>Add</button>
+                    <button id="addElement" onClick={this.toggleEditor.bind(this)}>Add</button>
                 </section>
                 <section className="events-tab">
                     <header>Events</header>
                     {this.state.elements[this.state.selectedElementIndex]? 
                     <Events 
-                        markup = {this.state.elements[this.state.selectedElementIndex].markup}
-                        state = {this.state.elements[this.state.selectedElementIndex].state}
-                        events = {this.state.elements[this.state.selectedElementIndex].events}
-                        style = {this.state.elements[this.state.selectedElementIndex].style}
+                        markup = {selectedElement.markup}
+                        state = {selectedElement.state}
+                        events = {selectedElement.events}
+                        style = {selectedElement.style}
                         addEvent ={this.addEvent}/>
                         : ""}
                 </section>
-                <PopupMarkupEditor  
-                    show = {this.state.show} 
-                    name = {selectedElement.name || this.state.name} 
-                    markup = {selectedElement.markup || this.state.markup} 
-                    styleClass = {selectedElement.styleClass || this.state.styleClass}
-                    style = {selectedElement.style || this.state.style}
-                    state = {selectedElement.state || this.state.state}
-                    save = {this.save} 
-                    close = {this.close}
-                    updateName = {this.updateName}
-                    updateMarkup = {this.updateMarkup}
-                    updateStyle = {this.updateStyle}
-                    updateStyleClass = {this.updateStyleClass}
-                    updateState = {this.updateState}
-                    />
+                {this.state.show ? <PopupMarkupEditor   
+                    element = {selectedElement}
+                    saveAndClose = {this.saveElement}
+                    show = {this.state.show}
+                    /> : null }
             </li>
         );
     }
