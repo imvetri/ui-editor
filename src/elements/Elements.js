@@ -128,10 +128,7 @@ class Elements extends Component {
                     <header>Events</header>
                     {this.state.elements[this.state.selectedElementIndex]? 
                     <Events 
-                        markup = {selectedElement.markup}
-                        state = {selectedElement.state}
-                        events = {selectedElement.events}
-                        style = {selectedElement.style}
+                        element = {selectedElement}
                         addEvent ={this.addEvent}/>
                         : ""}
                 </section>
