@@ -32,14 +32,16 @@ class Events extends Component {
     }
 
     render() {
-        const events = this.props.events.map((event, index) =>
+
+        const element = this.props.element;
+        const events = element.events.map((event, index) =>
             <li key={index}>
                 <input type="text" value={event.name} index={index} onChange={this.editEventName}/>
                 <textarea value={event.reducer} index={index} onChange={this.editReducer}/>
                 <button onClick={this.updateEvent}>Edit</button>
             </li>
         );
-        var newElement = transpileJSX(this.props.markup, this.props.style, this.props.state, this.props.events);
+        var newElement = transpileJSX(element.markup, element.style, element.state, element.events);
         if(!newElement){
             console.log("no element got transpiled");
         }
