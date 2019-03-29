@@ -17,7 +17,7 @@ export function updateEventName (e) {
 }
 
 export function addEvent() {
-    let events = Array.from(this.props.events)
+    let events = Array.from(this.props.element.events)
     
     events.push({
         name: this.state.event.name,
