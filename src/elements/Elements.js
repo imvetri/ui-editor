@@ -11,8 +11,11 @@ import Events from "../Events/Events";
 
 // Reducers.
 
-import {addEvent, updateSelectedElementIndex, saveElement, toggleEditor, setEditMode} from "./Reducer"
+import {updateEvent, updateSelectedElementIndex, saveElement, toggleEditor, setEditMode} from "./Reducer"
 
+// Dependencies.
+
+import prepareElement from "../common/js/prepareElement";
 
 class Elements extends Component {
     constructor(props) {
@@ -36,58 +39,11 @@ class Elements extends Component {
             selectedElementIndex: -1
         };
 
-        this.addEvent = addEvent.bind(this);
+        this.updateEvent = updateEvent.bind(this);
         this.updateSelectedElementIndex = updateSelectedElementIndex.bind(this)
         this.saveElement = saveElement.bind(this);
         this.toggleEditor = toggleEditor.bind(this);
         this.setEditMode = setEditMode.bind(this);
-    }
-
-    prepareMarkup (markup){
-        if(!markup.includes("{...events}")){
-            // For markups without closing.
-            if(markup.includes("/>")){
-                markup = markup.replace("/>"," {...events}/>")
-            }
-            // For elements with closing tags.
-            else if(markup.indexOf(">")<markup.indexOf("</")){
-                markup = markup.replace(">", " {...events}>")
-            }
-        }
-        return markup;
-    }
-
-    prepareElement (element) {
-        let state = {};
-
-        try {
-            Object.keys(element.states[0]).forEach((value)=>{
-                state[value.split("state.")[1]]="dummy";
-            });
-        }
-        catch(e) {
-            console.log(e);
-            console.info("You missed a Ritual. Select the element, then click on edit and save atleast once");
-        }
-
-        element.markup = this.prepareMarkup(element.markup);
-        delete element.states;
-
-        // Convert events array to object
-        let events = {};
-        element.events.forEach(event => {
-            // Convert events prop values from string to function
-            events[event.name]=  new Function(event.reducer);
-        });
-
-        element.events = events;
-
-        let defaults = {
-            state: state,
-            children: [],
-            style: {}        
-        };
-        return Object.assign(defaults, element);
     }
 
     publishDetails() {
@@ -96,7 +52,7 @@ class Elements extends Component {
         // May cause problem with reference types.
         let element = JSON.parse(JSON.stringify(this.state.elements[this.state.selectedElementIndex]));
         
-        this.props.onPublish(this.prepareElement(element));
+        this.props.onPublish(prepareElement(element));
     }
 
     render() {
@@ -128,11 +84,13 @@ class Elements extends Component {
                     <header>Events</header>
                     {this.state.elements[this.state.selectedElementIndex]? 
                     <Events 
+                        key={this.state.selectedElementIndex}
                         element = {selectedElement}
-                        addEvent ={this.addEvent}/>
-                        : ""}
+                        onEventsUpdate ={this.updateEvent}/>
+                        : null }
                 </section>
-                {this.state.show ? <PopupMarkupEditor   
+                {this.state.show ? <PopupMarkupEditor
+                    key = {this.state.selectedElementIndex}
                     element = {selectedElement}
                     saveAndClose = {this.saveElement}
                     show = {this.state.show}

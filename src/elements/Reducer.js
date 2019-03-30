@@ -71,7 +71,7 @@ export function saveElement (element) {
 }
 
 
-export function addEvent (events) {
+export function updateEvent (events) {
     // Create new state.
     let newElements = Object.assign({}, this.state).elements;
 
@@ -81,6 +81,8 @@ export function addEvent (events) {
     this.setState({
         elements: newElements
     });
+
+    localStorage.setItem("ui-editor", JSON.stringify(this.state.elements));
 }
 
 export function toggleEditor () {
