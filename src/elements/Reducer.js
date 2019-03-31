@@ -3,15 +3,15 @@
 import {extractJsxAttributes} from "../common/js/extract-jsx-attributes";
 import {convertToJson} from "../common/js/convert-to-json";
 
-export function updateSelectedElementIndex (e) {
+export function updateselectedIndex (e) {
     // Find the element from state that matches the currently selected element.
-    let selectedElementIndex = Number(e.target.getAttribute("index"));
+    let selectedIndex = Number(e.target.getAttribute("index"));
 
     // Update the state with selectedElement.
     this.setState({
-        selectedElementIndex,
-        name: this.state.elements[selectedElementIndex].name,
-        markup: this.state.elements[selectedElementIndex].markup
+        selectedIndex,
+        name: this.state.elements[selectedIndex].name,
+        markup: this.state.elements[selectedIndex].markup
     })
 
     this.setEditMode();
@@ -24,13 +24,13 @@ export function saveElement (element) {
     
     if(this.state.editMode){
         // Find the element.
-        let elementUnderEdit = newElements[this.state.selectedElementIndex];
+        let elementUnderEdit = newElements[this.state.selectedIndex];
 
         // Merge.
         elementUnderEdit = Object.assign(elementUnderEdit, element)
 
         // Push it to original list.
-        newElements[this.state.selectedElementIndex] = elementUnderEdit;
+        newElements[this.state.selectedIndex] = elementUnderEdit;
     }
     else {
         let newElement = {
@@ -75,7 +75,7 @@ export function updateEvent (events) {
     // Create new state.
     let newElements = Object.assign({}, this.state).elements;
 
-    newElements[this.state.selectedElementIndex].events = events;
+    newElements[this.state.selectedIndex].events = events;
 
     // Set state to the new state.
     this.setState({
