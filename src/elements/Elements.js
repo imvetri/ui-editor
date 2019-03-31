@@ -8,6 +8,7 @@ import style from "./Style.css";
 
 import PopupMarkupEditor from "popup-markup-editor";
 import Events from "../Events/Events";
+import Element from "./Element";
 
 // Reducers.
 
@@ -51,21 +52,19 @@ class Elements extends Component {
         // Warning: Object.assign doesnt dupe the original object. It overrides only the values.
         // May cause problem with reference types.
         let element = JSON.parse(JSON.stringify(this.state.elements[this.state.selectedIndex]));
-        
+
         this.props.onPublish(prepareElement(element));
     }
 
     render() {
 
         const elementList = this.state.elements.map((element, index) => 
-            <li 
+            <Element 
                 key = {index} 
                 index = {index}
-                className = {this.state.selectedIndex === index ? style.selected : ""} 
-                onClick = {this.updateselectedIndex.bind(this)}>
-                {element.name}
-                <button onClick={this.publishDetails.bind(this)}>Preview</button>
-            </li>
+                element = {element}
+                onSelectionChange = {this.updateselectedIndex.bind(this)}
+                onPreview = {this.publishDetails.bind(this)} />
         );
 
     
