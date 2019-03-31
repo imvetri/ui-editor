@@ -11,7 +11,7 @@ import Events from "../Events/Events";
 
 // Reducers.
 
-import {updateEvent, updateSelectedElementIndex, saveElement, toggleEditor, setEditMode} from "./Reducer"
+import {updateEvent, updateselectedIndex, saveElement, toggleEditor, setEditMode} from "./Reducer"
 
 // Dependencies.
 
@@ -36,11 +36,11 @@ class Elements extends Component {
             elements: JSON.parse(localStorage.getItem("ui-editor")) || [],
             selectedState: [],
             editMode: false,
-            selectedElementIndex: -1
+            selectedIndex: -1
         };
 
         this.updateEvent = updateEvent.bind(this);
-        this.updateSelectedElementIndex = updateSelectedElementIndex.bind(this)
+        this.updateselectedIndex = updateselectedIndex.bind(this)
         this.saveElement = saveElement.bind(this);
         this.toggleEditor = toggleEditor.bind(this);
         this.setEditMode = setEditMode.bind(this);
@@ -50,7 +50,7 @@ class Elements extends Component {
         
         // Warning: Object.assign doesnt dupe the original object. It overrides only the values.
         // May cause problem with reference types.
-        let element = JSON.parse(JSON.stringify(this.state.elements[this.state.selectedElementIndex]));
+        let element = JSON.parse(JSON.stringify(this.state.elements[this.state.selectedIndex]));
         
         this.props.onPublish(prepareElement(element));
     }
@@ -61,15 +61,15 @@ class Elements extends Component {
             <li 
                 key = {index} 
                 index = {index}
-                className = {this.state.selectedElementIndex === index ? style.selected : ""} 
-                onClick = {this.updateSelectedElementIndex.bind(this)}>
+                className = {this.state.selectedIndex === index ? style.selected : ""} 
+                onClick = {this.updateselectedIndex.bind(this)}>
                 {element.name}
                 <button onClick={this.publishDetails.bind(this)}>Preview</button>
             </li>
         );
 
     
-        const selectedElement = this.state.elements[this.state.selectedElementIndex] || this.state.element;
+        const selectedElement = this.state.elements[this.state.selectedIndex] || this.state.element;
         
         return (
             <li className="elements">
@@ -82,15 +82,15 @@ class Elements extends Component {
                 </section>
                 <section className="events-tab">
                     <header>Events</header>
-                    {this.state.elements[this.state.selectedElementIndex]? 
+                    {this.state.elements[this.state.selectedIndex]? 
                     <Events 
-                        key={this.state.selectedElementIndex}
+                        key={this.state.selectedIndex}
                         element = {selectedElement}
                         onEventsUpdate ={this.updateEvent}/>
                         : null }
                 </section>
                 {this.state.show ? <PopupMarkupEditor
-                    key = {this.state.selectedElementIndex}
+                    key = {this.state.selectedIndex}
                     element = {selectedElement}
                     saveAndClose = {this.saveElement}
                     show = {this.state.show}
