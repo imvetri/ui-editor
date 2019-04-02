@@ -1,6 +1,6 @@
 # ui-editor
 
-## Tests for popup editor
+## Tests for popup editor -
 
 ### Should allow adding new element
 1. Click "Add".
@@ -34,3 +34,4 @@ What is edit mode
 - [ ] Has elements data
 What is add mode
 - [ ] Has no elements data.
+[Tests are outdated.] Contributions like feature requests, feeback for improvements, ideas are welcome!
