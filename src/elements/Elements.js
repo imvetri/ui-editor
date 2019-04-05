@@ -15,7 +15,7 @@ import {updateEvent, updateSelectedElementIndex, saveElement, toggleEditor, setE
 
 // Dependencies.
 
-import prepareElement from "../common/js/prepareElement";
+import {prepareElement} from "../common/js/prepareElement";
 
 class Elements extends Component {
     constructor(props) {
@@ -51,6 +51,7 @@ class Elements extends Component {
         // Warning: Object.assign doesnt dupe the original object. It overrides only the values.
         // May cause problem with reference types.
         let element = JSON.parse(JSON.stringify(this.state.elements[this.state.selectedElementIndex]));
+        element.state = JSON.parse(element.state);
         
         this.props.onPublish(prepareElement(element));
     }

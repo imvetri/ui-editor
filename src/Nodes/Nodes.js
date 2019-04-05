@@ -20,7 +20,7 @@ class Nodes extends Component {
         }
         return (
             <ul>
-                --
+                <input type="radio" name="tag" value={node.type}/>{node.type}
             </ul>
         );
     }
