@@ -17,9 +17,16 @@ export function updateSelectedElementIndex (e) {
     this.setEditMode();
 }
 
+function hasValidIDs(){
+    return true;
+}
+
 export function saveElement (element) {
     
-    
+    // Number of tags == Number of ID
+    if(hasValidIDs(element.markup)) {
+        console.log("Error. Make sure all elements have ID attribute");
+    }
     let newElements = Array.from(this.state.elements);
     
     if(this.state.editMode){
