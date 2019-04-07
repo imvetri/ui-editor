@@ -10,17 +10,28 @@ class Nodes extends Component {
     render() {
         var node = this.props.node;
         if(node && node.props && Array.isArray(node.props.children)){
-            var children = node.props.children.map(child=><Nodes node={child}/>);
+            var children = node.props.children.map(child=><Nodes node={child} onSelectedElementChanged={this.props.onSelectedElementChanged}/>);
             return (
                 <ul>
-                    <input type="radio" name="tag" value={node.type}/>{node.type}
+                    <input 
+                        type="radio" 
+                        name="selectedElement" 
+                        onChange={this.props.onSelectedElementChanged} 
+                        value={node.type+ node.props.id}/>
+                    {node.type + node.props.id}
                     {children}
                 </ul>
             );
         }
         return (
             <ul>
-                --
+                <input 
+                    type="radio" 
+                    name="selectedElement" 
+                    value={node.type+ node.props.id}
+                    onChange={this.props.onSelectedElementChanged} 
+                    />
+                {node.type + node.props.id}
             </ul>
         );
     }
