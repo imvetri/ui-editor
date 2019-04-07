@@ -29,6 +29,10 @@ class Events extends Component {
 
         this.props.onEventsUpdate(element.events);
     }
+
+    selectedElement(e){
+        e.currentTarget.value
+    }
     render() {
         const element = this.props.element;
         const events = element.events.map((event,index)=><Event key={index} index={index} event={event} onSave={this.updateEvent.bind(this)}/>)
@@ -37,7 +41,7 @@ class Events extends Component {
         return (
             <div>
                 Select a tag below to bind the events to.
-                <Nodes node={newElement}/>
+                <Nodes node={newElement} onSelectedElementChanged={this.selectedElement.bind(this)}/>
                 <span>Write only the function definition, you have access to state, event variables only</span>
                 {events}
                 <Event key={element.events.length} onSave={this.updateEvent.bind(this)}/>
