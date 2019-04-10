@@ -18,7 +18,7 @@ class Events extends Component {
 
     updateEvent(event){
         let element = JSON.parse(JSON.stringify(this.state.element))
-
+        event.id = this.state.selectedElement;
         // Add 
         if(event.index===undefined){
             element.events.push(event);
@@ -31,11 +31,16 @@ class Events extends Component {
     }
 
     selectedElement(e){
-        e.currentTarget.value
+        this.setState({
+            selectedElement: e.currentTarget.value
+        })
     }
     render() {
         const element = this.props.element;
-        const events = element.events.map((event,index)=><Event key={index} index={index} event={event} onSave={this.updateEvent.bind(this)}/>)
+        const events = element.events
+                                .map((event,index)=><Event key={index} index={index} event={event} onSave={this.updateEvent.bind(this)}/>)
+                                .filter(event=>event.props.event.id===this.state.selectedElement)
+        
         var newElement = transpileJSX(element.markup, element.style, element.state, element.events);
 
         return (
