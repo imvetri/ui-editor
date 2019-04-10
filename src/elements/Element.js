@@ -26,7 +26,7 @@ class Element extends Component {
 
         return (
             <li 
-                className = {this.state.selectedIndex === this.props.index ? style.selected : ""}
+                className = {this.props.selectedIndex === this.props.index ? style.selected : ""}
                 onClick = {this.selectionChanged.bind(this)}>
                 {this.props.element.name}
                 <button onClick={this.previewElement.bind(this)}>Preview</button>
