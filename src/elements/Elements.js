@@ -16,7 +16,7 @@ import {updateEvent, updateselectedIndex, saveElement, toggleEditor, setEditMode
 
 // Dependencies.
 
-import prepareElement from "../common/js/prepareElement";
+import {prepareElement} from "../common/js/prepareElement";
 
 class Elements extends Component {
     constructor(props) {
@@ -62,6 +62,7 @@ class Elements extends Component {
             <Element 
                 key = {index} 
                 index = {index}
+                selectedIndex = {this.state.selectedIndex}
                 element = {element}
                 onSelectionChange = {this.updateselectedIndex.bind(this)}
                 onPreview = {this.publishDetails.bind(this)} />

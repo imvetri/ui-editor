@@ -1,4 +1,4 @@
-import prepareMarkup from "./prepareMarkup";
+import {prepareMarkup} from "./prepareMarkup";
 
 export function prepareElement(element) {
     let state = {};
