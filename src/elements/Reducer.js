@@ -36,7 +36,6 @@ export function saveElement (element) {
         let newElement = {
             name: element.name,
             markup: element.markup,
-            states: [],
             events: [],
             styleClass: element.styleClass,
             state: element.state,
