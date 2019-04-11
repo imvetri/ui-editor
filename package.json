@@ -1,6 +1,6 @@
 {
   "name": "ui-editor",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "GUI based UI component builder",
   "main": "index.js",
   "repository": "https://github.com/imvetri/ui-editor.git",
@@ -15,7 +15,7 @@
     "react-dom": "^16.7.0",
     "react-inspector": "^2.3.1",
     "popup-markup-editor": "2.0.0",
-    "@ui-editor/preview": "5.1.0"
+    "@ui-editor/preview": "file:../preview"
   },
   "devDependencies": {
     "@babel/standalone": "^7.3.2",
