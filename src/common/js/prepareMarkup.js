@@ -1,13 +1,15 @@
-export function prepareMarkup (markup){
-    if(!markup.includes("{...events}")){
-        // For markups without closing.
-        if(markup.includes("/>")){
-            markup = markup.replace("/>"," {...events}/>")
+export function prepareMarkup (markup, events){
+    // Find ID from events, 
+    // Replace with variable.
+
+    events.forEach(event=>{
+        let id = "ID"+event.id.split("ID")[1]
+        
+        if(markup.indexOf(id)==-1){
+            console.error(id, " - id is not present in the markup.");
         }
-        // For elements with closing tags.
-        else if(markup.indexOf(">")<markup.indexOf("</")){
-            markup = markup.replace(">", " {...events}>")
-        }
-    }
+        markup = markup.replace(id+'"', id+'"'+" {...event"+id+"}");
+    });
+
     return markup;
 }
