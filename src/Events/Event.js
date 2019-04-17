@@ -8,7 +8,7 @@ import ReactDOM from "react-dom";
 
 import { transpileJSX } from "../common/js/jsxTranspiler";
 
-class Events extends Component {
+class Event extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -51,4 +51,4 @@ class Events extends Component {
     }
 }
 
-export default Events;
+export default Event;
