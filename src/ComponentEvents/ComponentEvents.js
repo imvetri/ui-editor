@@ -7,8 +7,6 @@ import ReactDOM from "react-dom";
 
 import ComponentEvent from "./ComponentEvent";
 
-import { transpileJSX } from "../common/js/jsxTranspiler";
-
 class ComponentEvents extends Component {
     constructor(props) {
         super(props);
@@ -16,37 +14,18 @@ class ComponentEvents extends Component {
     }
 
     updateEvent(event){
-        let element = JSON.parse(JSON.stringify(this.state.element))
-        event.id = this.state.selectedElement;
-        // Add 
-        if(event.index===undefined){
-            element.events.push(event);
-        } else{
-            // Edit
-            element.events[event.index] = event;
-        }
+        let elements = JSON.parse(JSON.stringify(this.state.elements))
 
-        this.props.onEventsUpdate(element.events);
+        this.props.onEventsUpdate(elements);
     }
 
-    selectedElement(e){
-        this.setState({
-            selectedElement: e.currentTarget.value
-        })
-    }
     render() {
-        debugger;
-        const element = this.props.element;
-        const events = element.events
-                                .map((event,index)=><ComponentEvent key={index} index={index} event={event} onSave={this.updateEvent.bind(this)}/>)
-        const filteredEvents = events.filter(event=>event.props.event.id===this.state.selectedElement)
         
         return (
             <div>
                 Component Events
                 <span>You can subscribe to other component's events</span>
-                {events}
-                <ComponentEvent key={element.events.length} onSave={this.updateEvent.bind(this)}/>
+                <ComponentEvent key={this.state.elements.length} onSave={this.updateEvent.bind(this)}/>
             </div>
         );
     }
