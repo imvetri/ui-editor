@@ -8,6 +8,7 @@ import style from "./Style.css";
 
 import PopupMarkupEditor from "popup-markup-editor";
 import Events from "../Events/Events";
+import ComponentEvents from "../ComponentEvents/ComponentEvents";
 import Element from "./Element";
 
 // Reducers.
@@ -81,9 +82,15 @@ class Elements extends Component {
                     <button id="addElement" onClick={this.toggleEditor.bind(this)}>Add</button>
                 </section>
                 <section className="events-tab">
-                    <header>Events</header>
                     {this.state.elements[this.state.selectedIndex]? 
                     <Events 
+                        key={this.state.selectedIndex}
+                        element = {selectedElement}
+                        onEventsUpdate ={this.updateEvent}/>
+                        : null }
+
+                         {this.state.elements[this.state.selectedIndex]? 
+                    <ComponentEvents 
                         key={this.state.selectedIndex}
                         element = {selectedElement}
                         onEventsUpdate ={this.updateEvent}/>
