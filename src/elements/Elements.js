@@ -92,7 +92,7 @@ class Elements extends Component {
                          {this.state.elements[this.state.selectedIndex]? 
                     <ComponentEvents 
                         key={this.state.selectedIndex}
-                        element = {selectedElement}
+                        elements = {selectedElement}
                         onEventsUpdate ={this.updateEvent}/>
                         : null }
                 </section>
