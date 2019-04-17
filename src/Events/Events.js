@@ -7,6 +7,7 @@ import ReactDOM from "react-dom";
 
 import Nodes from "../Nodes/Nodes";
 import Event from "./Event";
+import style from "./Events.css"
 
 import { transpileJSX } from "../common/js/jsxTranspiler";
 
@@ -44,7 +45,8 @@ class Events extends Component {
         var newElement = transpileJSX(element.markup, element.style, element.state, element.events);
 
         return (
-            <div>
+            <div className={style.events}>
+                <header>Events</header>
                 Select a tag below to bind the events to.
                 <Nodes node={newElement} onSelectedElementChanged={this.selectedElement.bind(this)}/>
                 <span>Write only the function definition, you have access to state, event variables only</span>
