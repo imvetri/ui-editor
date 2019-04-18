@@ -14,3 +14,7 @@ textarea {
     height: 70px;
     width: 250px;
 }
+
+.elements{
+    display: flex;
+}
