@@ -8,7 +8,6 @@ import style from "./Style.css";
 
 import PopupMarkupEditor from "popup-markup-editor";
 import Events from "../Events/Events";
-import ComponentEvents from "../ComponentEvents/ComponentEvents";
 import Element from "./Element";
 
 // Reducers.
@@ -54,7 +53,7 @@ class Elements extends Component {
         // May cause problem with reference types.
         let element = JSON.parse(JSON.stringify(this.state.elements[this.state.selectedIndex]));
 
-        this.props.onPublish(prepareElement(element));
+        this.props.onPreview(prepareElement(element));
     }
 
     render() {
@@ -73,9 +72,9 @@ class Elements extends Component {
         const selectedElement = this.state.elements[this.state.selectedIndex] || this.state.element;
         
         return (
-            <li className="elements">
-                <header>Elements</header>
+            <li className={style.elements}>
                 <section className="element-list">
+                    <header>Elements</header>
                     <ul>
                         {elementList}
                     </ul>
@@ -86,13 +85,6 @@ class Elements extends Component {
                     <Events 
                         key={this.state.selectedIndex}
                         element = {selectedElement}
-                        onEventsUpdate ={this.updateEvent}/>
-                        : null }
-
-                         {this.state.elements[this.state.selectedIndex]? 
-                    <ComponentEvents 
-                        key={this.state.selectedIndex}
-                        elements = {selectedElement}
                         onEventsUpdate ={this.updateEvent}/>
                         : null }
                 </section>
