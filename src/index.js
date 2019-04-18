@@ -32,7 +32,7 @@ class Index extends Component {
     render(){
         return (
             <div className={style.showBackground}>
-                <Elements createMode={false} onPublish={this.updatePreview.bind(this)}/>
+                <Elements createMode={false} onPreview={this.updatePreview.bind(this)}/>
                 <Preview components={this.state.previewComponent}/>
             </div>
         );

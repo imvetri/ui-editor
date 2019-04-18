@@ -54,7 +54,7 @@ class Elements extends Component {
         // May cause problem with reference types.
         let element = JSON.parse(JSON.stringify(this.state.elements[this.state.selectedIndex]));
 
-        this.props.onPublish(prepareElement(element));
+        this.props.onPreview(prepareElement(element));
     }
 
     render() {
