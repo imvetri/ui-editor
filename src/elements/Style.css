@@ -1,9 +1,5 @@
 .override {
-    position: absolute;
-    top: 50px;
-    left: 50px;
-    height: 300px;
-    width: 300px;
+    line-height: 0%;
 }
 
 .selected {
@@ -17,4 +13,8 @@
 textarea {
     height: 70px;
     width: 250px;
+}
+
+.elements{
+    display: flex;
 }
