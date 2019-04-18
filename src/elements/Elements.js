@@ -72,7 +72,7 @@ class Elements extends Component {
         const selectedElement = this.state.elements[this.state.selectedIndex] || this.state.element;
         
         return (
-            <li className="elements">
+            <li className={style.elements}>
                 <section className="element-list">
                     <header>Elements</header>
                     <ul>
