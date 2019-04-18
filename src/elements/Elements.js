@@ -8,7 +8,6 @@ import style from "./Style.css";
 
 import PopupMarkupEditor from "popup-markup-editor";
 import Events from "../Events/Events";
-import ComponentEvents from "../ComponentEvents/ComponentEvents";
 import Element from "./Element";
 
 // Reducers.
@@ -74,8 +73,8 @@ class Elements extends Component {
         
         return (
             <li className="elements">
-                <header>Elements</header>
                 <section className="element-list">
+                    <header>Elements</header>
                     <ul>
                         {elementList}
                     </ul>
@@ -86,13 +85,6 @@ class Elements extends Component {
                     <Events 
                         key={this.state.selectedIndex}
                         element = {selectedElement}
-                        onEventsUpdate ={this.updateEvent}/>
-                        : null }
-
-                         {this.state.elements[this.state.selectedIndex]? 
-                    <ComponentEvents 
-                        key={this.state.selectedIndex}
-                        elements = {selectedElement}
                         onEventsUpdate ={this.updateEvent}/>
                         : null }
                 </section>
