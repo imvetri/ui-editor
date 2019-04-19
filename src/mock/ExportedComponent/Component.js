@@ -1,31 +1,35 @@
 import React, { Component } from 'react';
 
-// Styles.
-
-import style from "./Style.css";
-
-class Element extends Component {
+class NestedComponent extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            "name":"vetri",
+            "text":"vel"
+            };
     }
 
+    spanID2Click(){
+        this.setState({
+            "name":"lala"
+        })
+    }
 
-    /*
-    Event callbacks here.
-    */
+    buttonID3Click(){
+        this.setState({
+            "text":"VEL"
+        })
+    }
 
     render() {
 
         return (
-
-            // Markup here.
-            // For all the events, 
-                // Find the tag name. - Tag 
-                // Add string Event name = {this.event.reducer.bind(this)}
-
+            <div id="ID1">
+                <span onClick={this.spanID2Click.bind(this)} id="ID2">{this.state.name}</span>
+                <button onClick={this.buttonID3Click.bind(this)} id="ID3">{this.state.text}</button>
+            </div>
         );
     }
 }
 
-export default Element;
+export default NestedComponent;
