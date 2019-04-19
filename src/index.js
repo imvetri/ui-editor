@@ -9,7 +9,7 @@ import style from "./Index/index.css";
 // Components.
 
 import Elements from "./Elements/Elements";
-import Preview from "@ui-editor/preview";
+import Preview from "./Preview/Preview";
 
 
 import InputComponent from "./mock/InputComponent";
