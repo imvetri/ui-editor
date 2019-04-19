@@ -56,6 +56,10 @@ class Elements extends Component {
         this.props.onPreview(prepareElement(element));
     }
 
+    onExport() {
+        console.log(this.state.elements[this.state.selectedIndex]);
+    }
+
     render() {
 
         const elementList = this.state.elements.map((element, index) => 
@@ -65,7 +69,8 @@ class Elements extends Component {
                 selectedIndex = {this.state.selectedIndex}
                 element = {element}
                 onSelectionChange = {this.updateselectedIndex.bind(this)}
-                onPreview = {this.publishDetails.bind(this)} />
+                onPreview = {this.publishDetails.bind(this)} 
+                onExport = {this.onExport.bind(this)}/>
         );
 
     
