@@ -19,7 +19,7 @@ class Element extends Component {
     }
 
     previewElement(e) {
-        this.props.onPreview(e)
+        this.props.onPreview(e);
     }
 
     render() {
@@ -30,6 +30,7 @@ class Element extends Component {
                 onClick = {this.selectionChanged.bind(this)}>
                 {this.props.element.name}
                 <button onClick={this.previewElement.bind(this)}>Preview</button>
+                <button onClick={this.props.onExport}>Export</button>
             </li>
         );
     }

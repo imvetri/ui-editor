@@ -39,7 +39,6 @@ class Event extends Component {
     }
 
     render() {
-        console.log("Event Render");
 
         return (
             <div>
