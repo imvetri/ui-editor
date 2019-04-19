@@ -17,4 +17,5 @@ textarea {
 
 .elements{
     display: flex;
+    height: 100vh;
 }
