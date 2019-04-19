@@ -6,7 +6,7 @@ import style from "./Style.css";
 
 // Components.
 
-import PopupMarkupEditor from "popup-markup-editor";
+import PopupMarkupEditor from "../PopupMarkupEditor/PopupMarkupEditor";
 import Events from "../Events/Events";
 import Element from "./Element";
 
@@ -74,7 +74,7 @@ class Elements extends Component {
         return (
             <li className={style.elements}>
                 <section className="element-list">
-                    <header>Elements</header>
+                    <h4>Elements</h4>
                     <ul>
                         {elementList}
                     </ul>
