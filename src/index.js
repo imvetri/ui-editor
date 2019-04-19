@@ -12,8 +12,6 @@ import Elements from "./Elements/Elements";
 import Preview from "./Preview/Preview";
 
 
-import InputComponent from "./mock/InputComponent";
-
 class Index extends Component {
     constructor(props) {
         super(props);
