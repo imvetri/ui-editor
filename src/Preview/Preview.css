@@ -1,0 +1,18 @@
+.box {
+    border:1px solid black;
+    padding: 5px;
+    width:30%;
+}
+
+.smallWidth{
+    width: 99%;
+}
+
+.block{
+    display:block;
+    float:right;
+}
+
+.hide { 
+    display: none;
+}
