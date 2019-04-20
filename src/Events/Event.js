@@ -5,9 +5,6 @@ import ReactDOM from "react-dom";
 
 // Reducers.
 
-
-import { transpileJSX } from "../common/js/jsxTranspiler";
-
 class Event extends Component {
     constructor(props) {
         super(props);
