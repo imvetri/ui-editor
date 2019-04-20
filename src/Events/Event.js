@@ -12,7 +12,6 @@ class Event extends Component {
             name: this.props.event? this.props.event.name : "",
             reducer:  this.props.event? this.props.event.reducer: ""
         }
-        console.log("Event Constructor");
     }
 
     updateEventName(e){
