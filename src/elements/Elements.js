@@ -17,6 +17,7 @@ import {updateEvent, updateselectedIndex, saveElement, toggleEditor, setEditMode
 // Dependencies.
 
 import {prepareElement} from "../common/js/prepareElement";
+import {convertToReactcomponent} from "../common/js/convert-to-react-component";
 
 class Elements extends Component {
     constructor(props) {
@@ -57,7 +58,7 @@ class Elements extends Component {
     }
 
     onExport() {
-        console.log(this.state.elements[this.state.selectedIndex]);
+        console.log(convertToReactcomponent(this.state.elements[this.state.selectedIndex]));
     }
 
     render() {
