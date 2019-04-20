@@ -49,7 +49,7 @@ class Events extends Component {
                 <h4>Events</h4>
                 Select a tag below to bind the events to.
                 <Nodes node={newElement} onSelectedElementChanged={this.selectedElement.bind(this)}/>
-                <span>Write only the function definition, you have access to state, event variables only</span>
+                <span>Use argument[0] to access event object. write this.setState(Object) to update state</span>
                 {events}
                 <Event key={element.events.length} onSave={this.updateEvent.bind(this)}/>
             </div>
