@@ -68,9 +68,9 @@ class PopupMarkupEditor extends Component {
                     <h5>Name:</h5>
                     <input type="text" placeholder="Enter element name" value={element.name} onChange={this.updateName.bind(this)}/>
                     <button id="saveAndClose" onClick={this.publishElement.bind(this)}>Save & close</button>
-                    <h5>Markup:</h5>
+                    <h5>Markup: All tags should contain ID selector.</h5>
                     <textarea value={element.markup} onChange={this.updateMarkup.bind(this)} />
-                    <h5>Style by class:</h5>
+                    <h5>Style by class: Under development</h5>
                     <textarea  value={element.styleClass} onChange={this.updateStyleClass.bind(this)} />
                     <h5>Style:</h5>
                     <textarea value={element.style} onChange={this.updateStyle.bind(this)} />
