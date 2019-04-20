@@ -23,14 +23,19 @@ class Element extends Component {
     }
 
     render() {
-
+        // Remove this.props.index, instead use this element instance index. Removes duplicate code
         return (
             <li 
                 className = {this.props.selectedIndex === this.props.index ? style.selected : ""}
-                onClick = {this.selectionChanged.bind(this)}>
+                onClick = {this.selectionChanged.bind(this)}
+                index = {this.props.index}>
                 {this.props.element.name}
-                <button onClick={this.previewElement.bind(this)}>Preview</button>
-                <button onClick={this.props.onExport}>Export</button>
+                <button 
+                    index = {this.props.index} 
+                    onClick={this.previewElement.bind(this)}>Preview</button>
+                <button 
+                    index = {this.props.index}
+                    onClick={this.props.onExport}>Export</button>
             </li>
         );
     }
