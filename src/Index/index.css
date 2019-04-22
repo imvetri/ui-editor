@@ -10,15 +10,15 @@ ul {
     margin-left: -30px;
 }
 
-p {
-    font-size: 13px;
-}
-
-li { 
-    font-size: 15px;
+li , label, p {
+    font-size: 14px;
 }
 
 h3, h4, h5 {
     margin-top:10px;
     margin-bottom:10px;
+}
+
+input, textarea { 
+    font-size: 11px;
 }
