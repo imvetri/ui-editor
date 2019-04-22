@@ -62,15 +62,15 @@ class PopupMarkupEditor extends Component {
         let element = this.state;
         // TODO: Should pass the current data. Instead of accessing it from global
         return (
-            <div draggable="true"  className={(this.props.show ? '' : style.hidden)+" resizable"} >
+            <div className={(this.props.show ? '' : style.hidden)} >
                 <section className={style.override}>                
                     <h4>Editor</h4>
                     <h5>Name:</h5>
                     <input type="text" placeholder="Enter element name" value={element.name} onChange={this.updateName.bind(this)}/>
                     <button id="saveAndClose" onClick={this.publishElement.bind(this)}>Save & close</button>
-                    <h5>Markup:</h5>
+                    <h5>Markup: </h5><p>All tags should contain ID selector.</p>
                     <textarea value={element.markup} onChange={this.updateMarkup.bind(this)} />
-                    <h5>Style by class:</h5>
+                    <h5>Style by class: </h5><p>Under development</p>
                     <textarea  value={element.styleClass} onChange={this.updateStyleClass.bind(this)} />
                     <h5>Style:</h5>
                     <textarea value={element.style} onChange={this.updateStyle.bind(this)} />
