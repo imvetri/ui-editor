@@ -9,3 +9,16 @@ body { margin:0; }
 ul {
     margin-left: -30px;
 }
+
+p {
+    font-size: 13px;
+}
+
+li { 
+    font-size: 15px;
+}
+
+h3, h4, h5 {
+    margin-top:10px;
+    margin-bottom:10px;
+}
