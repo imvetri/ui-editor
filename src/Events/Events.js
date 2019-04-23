@@ -47,7 +47,7 @@ class Events extends Component {
         return (
             <div className={style.events}>
                 <h4>Events</h4>
-                Select a tag below to bind the events to.
+                <p>Select a tag below to bind the events to.</p>
                 <Nodes node={newElement} onSelectedElementChanged={this.selectedElement.bind(this)}/>
                 <p>Use argument[0] to access event object. write this.setState(Object) to update state</p>
                 {events}
