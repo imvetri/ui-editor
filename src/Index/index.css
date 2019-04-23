@@ -4,26 +4,33 @@
 }
 
 body { 
-    margin:0;
     background: #2b2b2b;
     color: #d9d9d9;
     font-family: Arial, sans-serif, Georgia, serif;
 }
 
 ul {
-    margin-left: -30px;
-    background: #404040;
+    border: 1px #404040 solid;
 }
 
 li , label, p {
     font-size: 11px;
 }
 
-h3, h4, h5 {
-    margin-top:10px;
-    margin-bottom:10px;
+h4, h5 {
     border-bottom: 1px solid #333333;
-    padding:4px;
+}
+
+h4 {
+    font-size: 20px;
+    padding: 4px 4px 4px 5px;
+
+}
+
+h5 {
+    font-size: 12px;
+    padding: 4px 4px 4px 5px;
+
 }
 
 input, textarea { 
@@ -31,4 +38,5 @@ input, textarea {
     background: #2b2b2b;
     color: #d9d9d9;
     opacity: 0.75;
+    vertical-align: bottom;
 }
