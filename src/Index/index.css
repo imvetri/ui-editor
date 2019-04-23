@@ -40,3 +40,7 @@ input, textarea {
     opacity: 0.75;
     vertical-align: bottom;
 }
+
+input {
+    -webkit-appearance: textarea;
+}
