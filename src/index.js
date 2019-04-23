@@ -5,6 +5,7 @@ import ReactDOM from "react-dom";
 
 // Dependencies.
 import style from "./Index/index.css";
+import resetStyle from "./Index/reset.css";
 
 // Components.
 
