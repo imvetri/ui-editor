@@ -7,3 +7,8 @@
     padding: 5px;
     height: 100vh;
 }
+
+.editor div{
+    background: rgb(64, 64, 64);
+    margin-top: 10px;
+}
