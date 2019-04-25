@@ -38,6 +38,12 @@ There are no tests in this project. Project is aimed to keep it simple for easy 
  * How to update state after an event.
  * How to export the component and use it in your react projects.
 
+## How it works
+
+ * Preview feature - An inbrowser JSX transpilation takes care of dynamically creating react components. Refer to [DynamicComponent.js](https://github.com/imvetri/ui-editor/blob/master/src/DynamicComponent/DynamicComponent.js)
+ * Export feature - Markup, events with reducers, style, state are stringified. Refer to [convert-to-react-component.js](https://github.com/imvetri/ui-editor/blob/master/src/common/js/convert-to-react-component.js)
+ * Events with tags listed - [jsxTranspiler.js](https://github.com/imvetri/ui-editor/blob/master/src/common/js/jsxTranspiler/index.js) returns parsed content which is rendered using [Nodes.js](https://github.com/imvetri/ui-editor/blob/master/src/Nodes/Nodes.js) component in [Events.js](https://github.com/imvetri/ui-editor/blob/master/src/Events/Events.js)
+
 ## Built With
 
 * nodejs
@@ -51,7 +57,7 @@ There are no tests in this project. Project is aimed to keep it simple for easy 
 
 ## Contributing
 
-Contributions like feature requests, feeback for improvements, ideas are welcome! Feel free to open an issue.
+Contributions like feature requests, feeback for improvements, ideas are welcome! Feel free to open an issue. Most importantly if you would like to know how it works more than what's in [How it works](#How it works), do let us know. We will help you out. Questions will be given importance than below, so please do not hesitate.
 
  * Feedback for improvement - Share reference websites/wireframes/mock.
  * Feature requests - Share the problem statement. Thats is good enough. If you have simple solultion as well, please share that too!.
