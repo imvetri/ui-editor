@@ -1,8 +1,6 @@
-# What is UI-EDITOR?
+# What is ui-editor?
 
-UI-editor is user interfaces builder for web.
-
-Project aims to keep be as simple as possible. It is created and actively maintained by Vetrivel. 
+ui-editor is user interfaces builder for web. It is created and actively maintained by Vetrivel. 
 
 
 ## Getting Started
@@ -44,6 +42,10 @@ There are no tests in this project. Project is aimed to keep it simple for easy 
  * Export feature - Markup, events with reducers, style, state are stringified. Refer to [convert-to-react-component.js](https://github.com/imvetri/ui-editor/blob/master/src/common/js/convert-to-react-component.js)
  * Events with tags listed - [jsxTranspiler.js](https://github.com/imvetri/ui-editor/blob/master/src/common/js/jsxTranspiler/index.js) returns parsed content which is rendered using [Nodes.js](https://github.com/imvetri/ui-editor/blob/master/src/Nodes/Nodes.js) component in [Events.js](https://github.com/imvetri/ui-editor/blob/master/src/Events/Events.js)
 
+## Questions
+
+If you have any questions, do let us know. We will help you out.
+
 ## Built With
 
 * nodejs
@@ -57,7 +59,7 @@ There are no tests in this project. Project is aimed to keep it simple for easy 
 
 ## Contributing
 
-Contributions like feature requests, feeback for improvements, ideas are welcome! Feel free to open an issue. Most importantly if you would like to know how it works more than what's in [How it works](#How it works), do let us know. We will help you out. Questions will be given importance than below, so please do not hesitate.
+Contributions like feature requests, feeback for improvements, ideas are welcome! Feel free to open an issue.
 
  * Feedback for improvement - Share reference websites/wireframes/mock.
  * Feature requests - Share the problem statement. Thats is good enough. If you have simple solultion as well, please share that too!.
