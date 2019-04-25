@@ -1,37 +1,72 @@
-# ui-editor
+# What is UI-EDITOR?
 
-## Tests for popup editor -
+UI-editor is user interfaces builder for web.
 
-### Should allow adding new element
-1. Click "Add".
-2. Enter some text in five input box. Expected - You should see the changes.
-3. Click "SaveAndClose". Expected - You should see an entry in list of elements.
-4. Select element. Expected - You should see green line around it and popup editor opened with new values.
+Project aims to keep be as simple as possible. It is created and actively maintained by Vetrivel. 
 
-### Should allow editing existing element
-### Should allow adding two new element successfully
-### Should allow editing adding two element and editing first element.
 
-popupeditor
-- [x] Should allow adding new element
-    - [x] Click “add”
-    - [x] Enter values into the 5 input box 
-    - [x] Click “SaveAndClose”
-- [x] Should allow editing existing element
-- [ ] Should allow adding two new element successfully
-- [ ] Should allow editing adding two element and editing first element.
-- [ ] Should allow adding events
-- [ ] Should allow previewing events
+## Getting Started
 
-On click of preview
-- [ ] Should show element details.
-- [ ] Should render the elements.
+```
+git clone https://github.com/imvetri/ui-editor.git
+cd ui-editor
+npm i
+npm start
 
-On Click of add
-- [ ] Should show empty fields.
+```
 
-What is edit mode
-- [ ] Has elements data
-What is add mode
-- [ ] Has no elements data.
-[Tests are outdated.] Contributions like feature requests, feeback for improvements, ideas are welcome!
+It comes with a Demo component to play around.
+
+## Running the tests
+
+There are no tests in this project. Project is aimed to keep it simple for easy future maintenance.
+
+
+## Demos
+
+ * Hello world
+ * Popup Modal
+
+## Tutorials
+
+ * How to create a component with markup.
+ * How to pass a state.
+ * How to bind events.
+ * How to write event with callbacks.
+ * How to write event that modify state.
+ * How to read data from an event.
+ * How to update state after an event.
+ * How to export the component and use it in your react projects.
+
+## Built With
+
+* nodejs
+* babel
+* babel/standalone
+* webpack
+* JSX
+* Reactjs
+* lot of npm packages
+
+
+## Contributing
+
+Contributions like feature requests, feeback for improvements, ideas are welcome! Feel free to open an issue.
+
+ * Feedback for improvement - Share reference websites/wireframes/mock.
+ * Feature requests - Share the problem statement. Thats is good enough. If you have simple solultion as well, please share that too!.
+ * CSS - I am looking for ideas for css editing.
+ * DOM events - Project is tested below events. Any valid react events is expected to work.
+   * onMouseLeave
+   * onClick
+ * Browser events - Events such as setTimeout/ other window events are not yet solved. If you have ideas, share a mock please!.
+ * Reuse existing component - How to build subcomponents?. Ideas are welcome with screenshots/mocks.
+   
+
+## License
+
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* Front end community members.
