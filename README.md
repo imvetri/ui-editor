@@ -27,13 +27,10 @@ There are no tests in this project. Project is aimed to keep it simple for easy 
 
 ## Tutorials
 
- * How to create a component with markup.
- * How to pass a state.
- * How to bind events.
- * How to write event with callbacks.
- * How to write event that modify state.
- * How to read data from an event.
- * How to update state after an event.
+ * How to create a component with markup. - ![Alt Text](https://github.com/imvetri/ui-editor/blob/master/gifs/Component_with_static_content.gif)
+ * How to pass a state.![Alt Text](https://github.com/imvetri/ui-editor/blob/master/gifs/Component_receiving_data_from_state.gif)
+ * How to bind events and modify state![Alt Text](https://github.com/imvetri/ui-editor/blob/master/gifs/Component_responding_to_events.gif)
+ * How to read data from an event.![Alt Text](https://github.com/imvetri/ui-editor/blob/master/gifs/Component_accessing_event_object.gif)
  * How to export the component and use it in your react projects.
 
 ## How it works
