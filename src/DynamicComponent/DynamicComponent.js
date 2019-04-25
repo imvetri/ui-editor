@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
 import { transpileJSX } from "../jsxTranspiler";
+import { codeModifier } from "../common/js/codeModifier";
 
 import style from "../Preview/Preview.css";
 
@@ -22,7 +23,7 @@ class DynamicComponent extends Component {
             // Get the function name.
             let functionName = event.name;
             // Bind it to current instance and save it.
-            this[functionName] = (new Function(event.reducer)).bind(this);
+            this[functionName] = (new Function("e",codeModifier(event.reducer))).bind(this);
             // Also replace in the original events object.
             event.reducer = this[functionName];
         });
