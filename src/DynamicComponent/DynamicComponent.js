@@ -22,7 +22,7 @@ class DynamicComponent extends Component {
             // Get the function name.
             let functionName = event.name;
             // Bind it to current instance and save it.
-            this[functionName] = (new Function(event.reducer)).bind(this);
+            this[functionName] = (new Function("e",event.reducer)).bind(this);
             // Also replace in the original events object.
             event.reducer = this[functionName];
         });
