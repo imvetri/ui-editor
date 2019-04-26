@@ -8,6 +8,8 @@ class Nodes extends Component {
         super(props);
     }
     render() {
+
+        // Elements needs to be transpiled properly. JSX did not render properly?
         var node = this.props.node;
         if(node && node.props && Array.isArray(node.props.children)){
             var children = node.props.children.map(child=><Nodes node={child} onSelectedElementChanged={this.props.onSelectedElementChanged}/>);
