@@ -18,7 +18,14 @@ export function transpileJSX(jsx, style, state, events) {
             result = eval(babel.transform(jsx, { presets: ['react'] }).code.replace(/React/g,"_react"));
         } catch(e){
             // Try running assuming _react2.default will be available as alias for React.
+
+            if(result=== undefined)
+            {
+                debugger;
+                console.log(e);
+            }
             result = eval(babel.transform(jsx, { presets: ['react'] }).code.replace(/React/g,"_react2.default"));
+
         }
     }
     finally{
