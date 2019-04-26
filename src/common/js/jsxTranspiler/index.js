@@ -31,5 +31,4 @@ export function transpileJSX(jsx, style, state, events) {
     finally{
         return result;
     }
-    return babel.transform(jsx, { presets: ['react'] }).code;
 }
