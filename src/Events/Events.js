@@ -44,6 +44,15 @@ class Events extends Component {
         
         var newElement = transpileJSX(element.markup, element.style, element.state, element.events);
 
+        if(element.markup.includes("NewComponent")){
+            return (
+                <div className={style.error}>
+                    ERROR : newElement.
+                    <code>developer log: look in console related to eval</code>
+                </div>
+            )
+            debugger;
+        }
         return (
             <div className={style.events}>
                 <h4>Events</h4>
