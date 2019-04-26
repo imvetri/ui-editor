@@ -7,3 +7,9 @@
 .events ul {
     padding-left: 5px;
 }
+
+.error {
+    color: red;
+    position: fixed;
+    right: 150px;
+}
