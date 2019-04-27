@@ -54,7 +54,7 @@ class Elements extends Component {
         // May cause problem with reference types.
         let element = JSON.parse(JSON.stringify(this.state.elements[this.state.selectedIndex]));
 
-        this.props.onPreview(prepareElement(element));
+        this.props.onPreview(prepareElement(element, this.state.elements));
     }
 
     onExport() {
@@ -91,6 +91,7 @@ class Elements extends Component {
                     <Events 
                         key={this.state.selectedIndex}
                         element = {selectedElement}
+                        elements = {this.state.elements}
                         onEventsUpdate ={this.updateEvent}/>
                         : null }
                 </section>

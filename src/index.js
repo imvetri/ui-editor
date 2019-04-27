@@ -18,13 +18,24 @@ class Index extends Component {
         super(props);
         this.state = {
             components: [],
-            previewComponent: []
+            previewComponent: {
+                name: "",
+                markup:"",
+                styleClass: "",
+                style: "",
+                state: "{}",
+                events: [{
+                    id: "ID1",
+                    name: "sdf",
+                    reducer: ""
+                }]
+            }
         }
     }
 
     updatePreview(element) {
         this.setState({
-            previewComponent:  [element]
+            previewComponent:  element
         });
     }
 
@@ -32,7 +43,7 @@ class Index extends Component {
         return (
             <div className={style.showBackground}>
                 <Elements createMode={false} onPreview={this.updatePreview.bind(this)}/>
-                <Preview components={this.state.previewComponent}/>
+                <Preview component={this.state.previewComponent}/>
             </div>
         );
     }
