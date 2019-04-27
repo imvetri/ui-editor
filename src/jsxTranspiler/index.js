@@ -1,6 +1,3 @@
-const babel = require("@babel/standalone");
-import React from "react";
-
 // Dependencies.
 import {storeEventsGlobal } from "./store-events-global";
 import {createStylesheet} from "../common/js/create-stylesheet";
