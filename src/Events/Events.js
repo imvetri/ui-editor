@@ -42,22 +42,7 @@ class Events extends Component {
                                 .map((event,index)=><Event key={index} index={index} event={event} onSave={this.updateEvent.bind(this)}/>)
                                 .filter(event=>event.props.event.id===this.state.selectedElement)
 
-        const otherElements = this.props.elements;
-        const currentElement = otherElements.find(otherElement=>otherElement.name === element.name);
-        const nestedComponent = otherElements.find(otherElement=>otherElement.name==="NewComponent");
-        
-
-        let nestedMarkup,newElement;
-        if(element.markup.includes("NewComponent")){
-            currentElement.nestedComponents = currentElement.nestedComponents || [];
-            nestedMarkup = element.markup.replace("<NewComponent/>",nestedComponent.markup);
-            
-            newElement = compileJSX(nestedMarkup, element.style, JSON.stringify(Object.assign({},JSON.parse(element.state), JSON.parse(nestedComponent.state))), element.events);
-
-        }
-        else {
-            newElement = compileJSX(element.markup, element.style, element.state, element.events);
-        }
+        let newElement = compileJSX(element.markup, element.style, element.state, element.events);
 
         if(!newElement){
             return (
