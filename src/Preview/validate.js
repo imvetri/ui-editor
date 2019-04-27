@@ -24,11 +24,6 @@ const validateComponent = (component ) => {
         console.error(component," Should have state or pass empty object");
         return false;
     }
-    // Should have children.
-    if(!Array.isArray(component.children)){
-        console.error(component," Should have children array, or pass empty array");
-        return false;
-    }
     // Should have style.
     if(!component.style){
         console.error(component, " Should have style object, or pass empty object")
@@ -44,16 +39,10 @@ const validateComponent = (component ) => {
         console.error(component.events, " Should have function has property value");
     }
 
-    return validate(component.children);
 }
 
 const validate = ( components ) => {
-    // Should be an arrray
-    if( !Array.isArray(components) ) {
-        console.error(components, " Should be an array");
-        return false;
-    }
-    return components.every(validateComponent);
+    return validateComponent(components);
 }
 
 module.exports = {

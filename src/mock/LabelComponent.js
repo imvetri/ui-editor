@@ -11,8 +11,7 @@ let LabelComponent = {
     markup: markup,
     state: state,
     style: style,
-    events: {},
-    children: []
+    events: {}
 }
 
 export default LabelComponent;
