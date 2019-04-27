@@ -25,8 +25,7 @@ let InputComponent = {
     markup: markup,
     state: state,
     events: events,
-    style: style,
-    children: [labelComponent]
+    style: style
 }
 
 export default InputComponent;

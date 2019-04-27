@@ -16,7 +16,7 @@ class Preview extends Component {
 
     render() {
         try{
-            validate(this.props.components)
+            validate(this.props.component)
         }
         catch(e){
             console.error(e);
@@ -24,7 +24,7 @@ class Preview extends Component {
         return (
             <div className={style.box}>
                 <h4>Preview</h4>
-                {this.props.components.map(component=><DynamicComponent key={component.id} component={component}/>)}
+                <DynamicComponent key={this.props.component.id} component={this.props.component}/>
             </div>
         );
     }
