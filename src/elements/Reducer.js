@@ -1,6 +1,6 @@
 // Dependencies.
 
-import {convertToJson} from "../common/js/convert-to-json";
+import {convertToJson} from "../utilities/convert-to-json";
 
 export function updateselectedIndex (e) {
     // Find the element from state that matches the currently selected element.
