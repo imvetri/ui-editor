@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
 import { transpileJSX } from "../jsxTranspiler";
-import { codeModifier } from "../common/js/codeModifier";
+import { codeModifier } from "../utilities/codeModifier";
 
 import style from "../Preview/Preview.css";
 

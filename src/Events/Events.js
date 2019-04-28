@@ -9,7 +9,7 @@ import Nodes from "../Nodes/Nodes";
 import Event from "./Event";
 import style from "./Events.css"
 
-import { compileJSX } from "../common/js/compile-jsx";
+import { compileJSX } from "../utilities/compile-jsx";
 
 class Events extends Component {
     constructor(props) {
