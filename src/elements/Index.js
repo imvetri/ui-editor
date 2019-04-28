@@ -6,13 +6,13 @@ import style from "./Style.css";
 
 // Components.
 
-import PopupMarkupEditor from "../PopupMarkupEditor/PopupMarkupEditor";
-import Events from "../Events/Events";
-import Element from "./Element";
+import PopupMarkupEditor from "../PopupMarkupEditor";
+import Events from "../Events";
+import Element from "../Element";
 
 // Reducers.
 
-import {updateEvent, updateselectedIndex, saveElement, toggleEditor, setEditMode} from "./Reducer"
+import {updateEvent, updateselectedIndex, saveElement,toggleEditor, setEditMode} from "./Reducer"
 
 // Dependencies.
 

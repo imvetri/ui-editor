@@ -6,7 +6,7 @@ import ReactDOM from "react-dom";
 import { transpileJSX } from "../jsxTranspiler";
 import { codeModifier } from "../utilities/codeModifier";
 
-import style from "../Preview/Preview.css";
+import style from "../Preview/style.css";
 
 class DynamicComponent extends Component {
     constructor(props) {

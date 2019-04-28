@@ -1,4 +1,4 @@
-import style from "./Preview.css";
+import style from "./style.css";
 
 
 let markup = `<label id="labelComponent" className={style.box}>{state.name}</label>`;
