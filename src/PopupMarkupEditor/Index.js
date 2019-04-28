@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 
 // Styles.
 
-import style from "./PopupMarkupEditor.css";
+import style from "./Style.css";
 
 
 class PopupMarkupEditor extends Component {

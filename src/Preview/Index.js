@@ -4,9 +4,9 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
 
-import style from "./Preview.css";
+import style from "./style.css";
 
-import DynamicComponent from "../DynamicComponent/DynamicComponent";
+import DynamicComponent from "../DynamicComponent";
 import {validate} from "./validate";
 
 class Preview extends Component {
