@@ -1,6 +1,5 @@
 // Dependencies.
 
-import {extractJsxAttributes} from "../common/js/extract-jsx-attributes";
 import {convertToJson} from "../common/js/convert-to-json";
 
 export function updateselectedIndex (e) {
