@@ -1,7 +1,7 @@
 // Dependencies.
 import {storeEventsGlobal } from "./store-events-global";
 import {createStylesheet} from "./create-stylesheet";
-import {compileJSX} from "../common/js/compile-jsx";
+import {compileJSX} from "../utilities/compile-jsx";
 
 // IMPORTANT - Do not rename style,state,events. 
 
