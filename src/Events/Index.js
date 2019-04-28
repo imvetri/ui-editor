@@ -5,9 +5,9 @@ import ReactDOM from "react-dom";
 
 // Dependencies.
 
-import Nodes from "../Nodes/Nodes";
-import Event from "./Event";
-import style from "./Events.css"
+import Nodes from "../Nodes";
+import Event from "../Event";
+import style from "./Style.css"
 
 import { compileJSX } from "../utilities/compile-jsx";
 

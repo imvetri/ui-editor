@@ -9,8 +9,8 @@ import resetStyle from "./Index/reset.css";
 
 // Components.
 
-import Elements from "./Elements/Elements";
-import Preview from "./Preview/Preview";
+import Elements from "./Elements";
+import Preview from "./Preview";
 
 
 class Index extends Component {
