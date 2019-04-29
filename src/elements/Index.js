@@ -6,18 +6,18 @@ import style from "./Style.css";
 
 // Components.
 
-import PopupMarkupEditor from "../PopupMarkupEditor/PopupMarkupEditor";
-import Events from "../Events/Events";
-import Element from "./Element";
+import PopupMarkupEditor from "../PopupMarkupEditor";
+import Events from "../Events";
+import Element from "../Element";
 
 // Reducers.
 
-import {updateEvent, updateselectedIndex, saveElement, toggleEditor, setEditMode} from "./Reducer"
+import {updateEvent, updateselectedIndex, saveElement,toggleEditor, setEditMode} from "./Reducer"
 
 // Dependencies.
 
-import {prepareElement} from "../common/js/prepareElement";
-import {convertToReactcomponent} from "../common/js/convert-to-react-component";
+import {prepareElement} from "../utilities/prepareElement";
+import {convertToReactcomponent} from "../utilities/convert-to-react-component";
 
 class Elements extends Component {
     constructor(props) {
@@ -54,7 +54,7 @@ class Elements extends Component {
         // May cause problem with reference types.
         let element = JSON.parse(JSON.stringify(this.state.elements[this.state.selectedIndex]));
 
-        this.props.onPreview(prepareElement(element));
+        this.props.onPreview(prepareElement(element, this.state.elements));
     }
 
     onExport() {
@@ -91,6 +91,7 @@ class Elements extends Component {
                     <Events 
                         key={this.state.selectedIndex}
                         element = {selectedElement}
+                        elements = {this.state.elements}
                         onEventsUpdate ={this.updateEvent}/>
                         : null }
                 </section>

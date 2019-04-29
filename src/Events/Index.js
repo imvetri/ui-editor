@@ -5,11 +5,11 @@ import ReactDOM from "react-dom";
 
 // Dependencies.
 
-import Nodes from "../Nodes/Nodes";
-import Event from "./Event";
-import style from "./Events.css"
+import Nodes from "../Nodes";
+import Event from "../Event";
+import style from "./Style.css"
 
-import { transpileJSX } from "../common/js/jsxTranspiler";
+import { compileJSX } from "../utilities/compile-jsx";
 
 class Events extends Component {
     constructor(props) {
@@ -41,17 +41,16 @@ class Events extends Component {
         const events = element.events
                                 .map((event,index)=><Event key={index} index={index} event={event} onSave={this.updateEvent.bind(this)}/>)
                                 .filter(event=>event.props.event.id===this.state.selectedElement)
-        
-        var newElement = transpileJSX(element.markup, element.style, element.state, element.events);
 
-        if(element.markup.includes("NewComponent")){
+        let newElement = compileJSX(element.markup, element.style, element.state, element.events);
+
+        if(!newElement){
             return (
                 <div className={style.error}>
                     ERROR : newElement.
                     <code>developer log: look in console related to eval</code>
                 </div>
             )
-            debugger;
         }
         return (
             <div className={style.events}>
