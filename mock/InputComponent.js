@@ -1,4 +1,4 @@
-import style from "./Preview.css";
+import style from "./style.css";
 import labelComponent from "./LabelComponent";
 
 let markup = `<input type='text' id="secondInput" className={style.box} value={state.name} {...events}/>`;
@@ -25,8 +25,7 @@ let InputComponent = {
     markup: markup,
     state: state,
     events: events,
-    style: style,
-    children: [labelComponent]
+    style: style
 }
 
 export default InputComponent;

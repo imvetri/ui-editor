@@ -58,9 +58,9 @@ There are no tests in this project. Project is aimed to keep it simple for easy 
 
 ## How it works
 
- * Preview feature - An inbrowser JSX transpilation takes care of dynamically creating react components. Refer to [DynamicComponent.js](https://github.com/imvetri/ui-editor/blob/master/src/DynamicComponent/DynamicComponent.js)
- * Export feature - Markup, events with reducers, style, state are stringified. Refer to [convert-to-react-component.js](https://github.com/imvetri/ui-editor/blob/master/src/common/js/convert-to-react-component.js)
- * Events with tags listed - [jsxTranspiler.js](https://github.com/imvetri/ui-editor/blob/master/src/common/js/jsxTranspiler/index.js) returns parsed content which is rendered using [Nodes.js](https://github.com/imvetri/ui-editor/blob/master/src/Nodes/Nodes.js) component in [Events.js](https://github.com/imvetri/ui-editor/blob/master/src/Events/Events.js)
+ * Preview feature - An inbrowser JSX transpilation takes care of dynamically creating react components. Refer to [DynamicComponent.js](https://github.com/imvetri/ui-editor/blob/master/src/DynamicComponent/index.js)
+ * Export feature - Markup, events with reducers, style, state are stringified. Refer to [convert-to-react-component.js](https://github.com/imvetri/ui-editor/blob/master/src/utilities/convert-to-react-component.js)
+ * Events with tags listed - [jsxTranspiler.js](https://github.com/imvetri/ui-editor/blob/master/src/utilities/jsxTranspiler/index.js) returns parsed content which is rendered using [Nodes.js](https://github.com/imvetri/ui-editor/blob/master/src/Nodes/Index.js) component in [Events.js](https://github.com/imvetri/ui-editor/blob/master/src/Events/Events.js)
 
 ## Questions
 

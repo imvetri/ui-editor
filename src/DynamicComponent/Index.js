@@ -4,9 +4,9 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
 import { transpileJSX } from "../jsxTranspiler";
-import { codeModifier } from "../common/js/codeModifier";
+import { codeModifier } from "../utilities/codeModifier";
 
-import style from "../Preview/Preview.css";
+import style from "../Preview/style.css";
 
 class DynamicComponent extends Component {
     constructor(props) {
@@ -17,7 +17,6 @@ class DynamicComponent extends Component {
         this.markup = component.markup;	
         this.events = component.events;	
         this.style = component.style;	
-        this.children = component.children;	
 
         this.events.forEach(event=>{
             // Get the function name.
@@ -35,7 +34,6 @@ class DynamicComponent extends Component {
         return (
             <div className={style.box}>
                 {newElement}
-                {this.children.map(component=><DynamicComponent component={component}/>)}
             </div>
         );
     }
