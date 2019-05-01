@@ -27,8 +27,9 @@ import style from "./Style.css"
  * It provides option to choose target tag to bind event. This is populated using element.markup details. 
  * markup is a string type which is passed to getNodeTree that returns react render tree that contains nodes of the tree.
  * 
+ * It returns an object containing result and error. # Dev comment - Always check for error before using result.
  */
-import { getNodeTree } from "../utilities/compile-jsx";
+import { getNodeTree } from "../utilities/get-node-tree.js";
 
 // nodetree is passed to <Nodes /> which takes care of rendering it. <Nodes /> also publishes selected node/teg whenever it is changed.
 
@@ -63,7 +64,7 @@ class Events extends Component {
         this.props.onEventsUpdate(element.events);
     }
 
-    selectedElement(e){
+    selectedElementChanged(e){
         this.setState({
             selectedElement: e.currentTarget.value
         })
@@ -76,24 +77,26 @@ class Events extends Component {
 
         let nodeTree = getNodeTree(element.markup, element.style, element.state, element.events);
 
-        if(!nodeTree){
+        if(nodeTree.error !== undefined){
             return (
                 <div className={style.error}>
-                    ERROR : newElement.
+                    ERROR : {nodeTree.error}
                     <code>developer log: look in console related to eval</code>
                 </div>
             )
         }
-        return (
-            <div className={style.events}>
-                <h4>Events</h4>
-                <p>Select a tag below to bind the events to.</p>
-                <Nodes node={nodeTree} onSelectedElementChanged={this.selectedElement.bind(this)}/>
-                <p>Use argument[0] to access event object. write this.setState(Object) to update state</p>
-                {events}
-                <Event key={element.events.length} onSave={this.updateEvent.bind(this)}/>
-            </div>
-        );
+        else {
+            return (
+                <div className={style.events}>
+                    <h4>Events</h4>
+                    <p>Select a tag below to bind the events to.</p>
+                    <Nodes node={nodeTree.result} onSelectedElementChanged={this.selectedElementChanged.bind(this)}/>
+                    <p>Use argument[0] to access event object. write this.setState(Object) to update state</p>
+                    {events}
+                    <Event key={element.events.length} selectedTagID={this.state.selectedElement} onSave={this.updateEvent.bind(this)}/>
+                </div>
+            );
+        }
     }
 }
 
