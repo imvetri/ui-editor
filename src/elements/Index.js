@@ -16,7 +16,7 @@ import {updateEvent, updateselectedIndex, saveElement,toggleEditor, setEditMode}
 
 // Dependencies.
 
-import {prepareElement} from "../utilities/prepareElement";
+import {prepareElement} from "../utilities/codeGenerator/prepareElement";
 import {convertToReactcomponent} from "../utilities/convert-to-react-component";
 
 class Elements extends Component {

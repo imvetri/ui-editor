@@ -5,11 +5,43 @@ import ReactDOM from "react-dom";
 
 // Dependencies.
 
-import Nodes from "../Nodes";
-import Event from "../Event";
 import style from "./Style.css"
 
-import { compileJSX } from "../utilities/compile-jsx";
+/**
+ * What Events do?
+ * Events render events of an element.
+ * 
+ * What it provides?
+ * Events provide option to choose target tag to bind event
+ * Events provide option to write a event and a callback
+ * 
+ * What does it publish? - onEventsUpdate
+ * 
+ * When is it called ? - onClick of save button
+ * 
+ * What data does onEventsUpdate publish ? - New details of the events.
+ **/
+
+
+/* HOW IT WORKS
+ * It provides option to choose target tag to bind event. This is populated using element.markup details. 
+ * markup is a string type which is passed to getNodeTree that returns react render tree that contains nodes of the tree.
+ * 
+ * It returns an object containing result and error. # Dev comment - Always check for error before using result.
+ */
+import { getNodeTree } from "../utilities/get-node-tree.js";
+
+// nodetree is passed to <Nodes /> which takes care of rendering it. <Nodes /> also publishes selected node/teg whenever it is changed.
+
+import Nodes from "../Nodes";
+
+/*
+ * How it provides option to write event and callback? 
+ * Elements object contains details about event in event property. Each event has name, callback/reducer function, id. It is rendered using <Event />
+ */
+import Event from "../Event";
+
+import MessagesComponent from "../MessagesComponent";
 
 class Events extends Component {
     constructor(props) {
@@ -31,7 +63,7 @@ class Events extends Component {
         this.props.onEventsUpdate(element.events);
     }
 
-    selectedElement(e){
+    selectedElementChanged(e){
         this.setState({
             selectedElement: e.currentTarget.value
         })
@@ -42,26 +74,29 @@ class Events extends Component {
                                 .map((event,index)=><Event key={index} index={index} event={event} onSave={this.updateEvent.bind(this)}/>)
                                 .filter(event=>event.props.event.id===this.state.selectedElement)
 
-        let newElement = compileJSX(element.markup, element.style, element.state, element.events);
+        let nodeTree = getNodeTree(element.markup, element.style, element.state, element.events);
 
-        if(!newElement){
+        if(nodeTree.error !== undefined){
+            let messages = [{
+                type:"error",
+                text:"ERROR : "+nodeTree.error+"developer log: look in console related to eval"
+            }]
             return (
-                <div className={style.error}>
-                    ERROR : newElement.
-                    <code>developer log: look in console related to eval</code>
-                </div>
+                <MessagesComponent messages = {messages}/>
             )
         }
-        return (
-            <div className={style.events}>
-                <h4>Events</h4>
-                <p>Select a tag below to bind the events to.</p>
-                <Nodes node={newElement} onSelectedElementChanged={this.selectedElement.bind(this)}/>
-                <p>Use argument[0] to access event object. write this.setState(Object) to update state</p>
-                {events}
-                <Event key={element.events.length} onSave={this.updateEvent.bind(this)}/>
-            </div>
-        );
+        else {
+            return (
+                <div className={style.events}>
+                    <h4>Events</h4>
+                    <p>Select a tag below to bind the events to.</p>
+                    <Nodes node={nodeTree.result} onSelectedElementChanged={this.selectedElementChanged.bind(this)}/>
+                    <p>Use argument[0] to access event object. write this.setState(Object) to update state</p>
+                    {events}
+                    <Event key={element.events.length} selectedTagID={this.state.selectedElement} onSave={this.updateEvent.bind(this)}/>
+                </div>
+            );
+        }
     }
 }
 
