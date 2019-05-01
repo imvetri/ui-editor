@@ -5,12 +5,44 @@ import ReactDOM from "react-dom";
 
 // Dependencies.
 
-import Nodes from "../Nodes";
-import Event from "../Event";
 import style from "./Style.css"
 
-import { compileJSX } from "../utilities/compile-jsx";
+/**
+ * What Events do?
+ * Events render events of an element.
+ * 
+ * What it provides?
+ * Events provide option to choose target tag to bind event
+ * Events provide option to write a event and a callback
+ * 
+ * What does it publish? - onEventsUpdate
+ * 
+ * When is it called ? - onClick of save button
+ * 
+ * What data does onEventsUpdate publish ? - New details of the events.
+ **/
 
+
+/* HOW IT WORKS
+ * It provides option to choose target tag to bind event. This is populated using element.markup details. 
+ * markup is a string type which is passed to getNodeTree that returns react render tree that contains nodes of the tree.
+ * 
+ */
+import { getNodeTree } from "../utilities/compile-jsx";
+
+// nodetree is passed to <Nodes /> which takes care of rendering it. <Nodes /> also publishes selected node/teg whenever it is changed.
+
+import Nodes from "../Nodes";
+
+/*
+ * How it provides option to write event and callback? 
+ * Elements object contains details about event in event property. Each event has name, callback/reducer function, id. It is rendered using <Event />
+ */
+import Event from "../Event";
+/*
+ * Tags allow us to bind events for components having more than one tag. It checkes tag is selected or not whenever user tries to save the changes.
+ * 
+ */
 class Events extends Component {
     constructor(props) {
         super(props);
@@ -42,7 +74,7 @@ class Events extends Component {
                                 .map((event,index)=><Event key={index} index={index} event={event} onSave={this.updateEvent.bind(this)}/>)
                                 .filter(event=>event.props.event.id===this.state.selectedElement)
 
-        let nodeTree = compileJSX(element.markup, element.style, element.state, element.events);
+        let nodeTree = getNodeTree(element.markup, element.style, element.state, element.events);
 
         if(!nodeTree){
             return (
