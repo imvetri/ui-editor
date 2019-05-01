@@ -40,10 +40,9 @@ import Nodes from "../Nodes";
  * Elements object contains details about event in event property. Each event has name, callback/reducer function, id. It is rendered using <Event />
  */
 import Event from "../Event";
-/*
- * Tags allow us to bind events for components having more than one tag. It checkes tag is selected or not whenever user tries to save the changes.
- * 
- */
+
+import MessagesComponent from "../MessagesComponent";
+
 class Events extends Component {
     constructor(props) {
         super(props);
@@ -78,11 +77,12 @@ class Events extends Component {
         let nodeTree = getNodeTree(element.markup, element.style, element.state, element.events);
 
         if(nodeTree.error !== undefined){
+            let messages = [{
+                type:"error",
+                text:"ERROR : "+nodeTree.error+"developer log: look in console related to eval"
+            }]
             return (
-                <div className={style.error}>
-                    ERROR : {nodeTree.error}
-                    <code>developer log: look in console related to eval</code>
-                </div>
+                <MessagesComponent messages = {messages}/>
             )
         }
         else {
