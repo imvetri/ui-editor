@@ -8,6 +8,8 @@ import { codeModifier } from "../utilities/codeModifier";
 
 import style from "./style.css";
 
+import MessagesComponent from "../MessagesComponent";
+
 class DynamicComponent extends Component {
     constructor(props) {
         super(props);
@@ -32,11 +34,13 @@ class DynamicComponent extends Component {
 
         let transpilationResult = transpileJSX(this.markup, this.style, this.state, this.events);
         if(transpilationResult.error !== undefined){
+            let messages = [{
+                type: "info",
+                text: "INFO: Preview is not working because preview is not clicked. "
+            }]
             return (
-                <div className={style.info}>
-                    <code>INFO: Preview is not working because preview is not clicked.</code>
-                </div>
-            )
+                <MessagesComponent messages={messages} />
+            );
         }
         else {
             return (

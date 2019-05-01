@@ -4,8 +4,8 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
 import style from "./Style.css"
-// Reducers.
 
+import MessagesComponent from "../MessagesComponent";
 class Event extends Component {
     constructor(props) {
         super(props);
@@ -38,15 +38,17 @@ class Event extends Component {
     render() {
 
         if (this.props.selectedTagID === undefined) {
+            let messages = [{
+                text:"INFO: if you clicked/selected any item from the elements pane(left most)",
+                type:"info"
+            },{
+                text:"ERROR: if you are trying to edit/add event without selecting a tag",
+                type:"error"
+            }]
             return (
-                <div className={style.console}>
-                    <div className={style.info}>
-                        <code>INFO: if you clicked/selected any item from the elements pane(left most)</code>
-                    </div>
-                    <div className={style.error}>
-                        <code>ERROR: if you are trying to edit/add event without selecting a tag</code>
-                    </div>
-                </div>
+                <div>
+                    <MessagesComponent messages={messages}/>
+                </div>            
             )
         }
 
