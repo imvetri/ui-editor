@@ -42,9 +42,9 @@ class Events extends Component {
                                 .map((event,index)=><Event key={index} index={index} event={event} onSave={this.updateEvent.bind(this)}/>)
                                 .filter(event=>event.props.event.id===this.state.selectedElement)
 
-        let newElement = compileJSX(element.markup, element.style, element.state, element.events);
+        let nodeTree = compileJSX(element.markup, element.style, element.state, element.events);
 
-        if(!newElement){
+        if(!nodeTree){
             return (
                 <div className={style.error}>
                     ERROR : newElement.
@@ -56,7 +56,7 @@ class Events extends Component {
             <div className={style.events}>
                 <h4>Events</h4>
                 <p>Select a tag below to bind the events to.</p>
-                <Nodes node={newElement} onSelectedElementChanged={this.selectedElement.bind(this)}/>
+                <Nodes node={nodeTree} onSelectedElementChanged={this.selectedElement.bind(this)}/>
                 <p>Use argument[0] to access event object. write this.setState(Object) to update state</p>
                 {events}
                 <Event key={element.events.length} onSave={this.updateEvent.bind(this)}/>
