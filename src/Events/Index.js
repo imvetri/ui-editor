@@ -70,9 +70,10 @@ class Events extends Component {
     }
     render() {
         const element = this.props.element;
+        const selectedElement = this.state.selectedElement;
         const events = element.events
-                                .map((event,index)=><Event key={index} index={index} event={event} onSave={this.updateEvent.bind(this)}/>)
-                                .filter(event=>event.props.event.id===this.state.selectedElement)
+                                .map((event,index)=><Event key={index} index={index} event={event} selectedTagID={selectedElement} onSave={this.updateEvent.bind(this)}/>);
+        const eventsOfSelectedTag = events.filter(event=>event.props.event.id===this.state.selectedElement)
 
         let nodeTree = getNodeTree(element.markup, element.style, element.state, element.events);
 
@@ -92,8 +93,8 @@ class Events extends Component {
                     <p>Select a tag below to bind the events to.</p>
                     <Nodes node={nodeTree.result} onSelectedElementChanged={this.selectedElementChanged.bind(this)}/>
                     <p>Use argument[0] to access event object. write this.setState(Object) to update state</p>
-                    {events}
-                    <Event key={element.events.length} selectedTagID={this.state.selectedElement} onSave={this.updateEvent.bind(this)}/>
+                    {eventsOfSelectedTag}
+                    <Event key={element.events.length} selectedTagID={selectedElement} onSave={this.updateEvent.bind(this)}/>
                 </div>
             );
         }

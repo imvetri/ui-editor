@@ -16,7 +16,6 @@
     "react-inspector": "^2.3.1"
   },
   "devDependencies": {
-    "@babel/standalone": "^7.3.2",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
