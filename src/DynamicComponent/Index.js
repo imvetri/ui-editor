@@ -6,7 +6,9 @@ import ReactDOM from "react-dom";
 import { transpileJSX } from "../jsxTranspiler";
 import { codeModifier } from "../utilities/codeModifier";
 
-import style from "../Preview/style.css";
+import style from "./style.css";
+
+import MessagesComponent from "../MessagesComponent";
 
 class DynamicComponent extends Component {
     constructor(props) {
@@ -30,12 +32,23 @@ class DynamicComponent extends Component {
 
     render() {
 
-        let newElement = transpileJSX(this.markup, this.style, this.state, this.events);
-        return (
-            <div className={style.box}>
-                {newElement}
-            </div>
-        );
+        let transpilationResult = transpileJSX(this.markup, this.style, this.state, this.events);
+        if(transpilationResult.error !== undefined){
+            let messages = [{
+                type: "info",
+                text: "INFO: Preview is not working because preview is not clicked. "
+            }]
+            return (
+                <MessagesComponent messages={messages} />
+            );
+        }
+        else {
+            return (
+                <div className={style.box}>
+                    {transpilationResult.result}
+                </div>
+            );
+        }
     }
 
 }
