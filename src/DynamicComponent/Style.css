@@ -2,3 +2,10 @@
     border:1px solid black;
     width:30%;
 }
+
+
+.info {
+    color: yellow;
+    position: fixed;
+    right: 150px;
+}
