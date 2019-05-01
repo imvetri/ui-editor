@@ -6,7 +6,7 @@ export function prepareMarkup (markup, events){
         let id = "ID"+event.id.split("ID")[1]
         
         if(markup.indexOf(id)==-1){
-            console.error(id, " - id is not present in the markup.");
+            console.error(id, " - id is missing in the markup.");
         }
         markup = markup.replace(id+'"', id+'"'+" {...event"+id+"}");
     });
