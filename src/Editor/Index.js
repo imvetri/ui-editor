@@ -65,11 +65,11 @@ class Editor extends Component {
                         <button id="save" onClick={this.publishElement.bind(this)}>Save</button>    
                     </div>
                     <div>
-                        <h5>Markup: </h5><p>Tags should contain id attribute, if you would like to bind events to it.</p>
+                        <h5>Markup: </h5><p>Tags should contain <code>id</code> attribute, if you would like to bind events to it.</p>
                         <textarea value={element.markup} onChange={this.updateMarkup.bind(this)} />
                     </div>
                     <div>
-                        <h5>Style:</h5>
+                        <h5>Style:</h5><p>Add a <code>className</code> to the markup, write a class here</p>
                         <textarea value={element.style} onChange={this.updateStyle.bind(this)} />
                     </div>
                     <div>
