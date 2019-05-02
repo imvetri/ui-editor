@@ -19,17 +19,17 @@ export function updateselectedIndex (e) {
 export function saveElement (element) {
     
     
-    let newElements = Array.from(this.state.elements);
+    let newComponents = Array.from(this.state.elements);
     
     if(this.state.editMode){
         // Find the element.
-        let elementUnderEdit = newElements[this.state.selectedIndex];
+        let elementUnderEdit = newComponents[this.state.selectedIndex];
 
         // Merge.
         elementUnderEdit = Object.assign(elementUnderEdit, element)
 
         // Push it to original list.
-        newElements[this.state.selectedIndex] = elementUnderEdit;
+        newComponents[this.state.selectedIndex] = elementUnderEdit;
     }
     else {
         let newElement = {
@@ -41,14 +41,14 @@ export function saveElement (element) {
             id: Math.ceil(Math.random()*1000)
         };
 
-        newElements.push(newElement);
+        newComponents.push(newElement);
     }
 
     // Update the state with new values.
     // 1. Initialise the editState with default values/ empty it.
     // TODO: remove editMode.
     this.setState({
-        elements: newElements,
+        elements: newComponents,
         editMode: false,
         element: {
             name: element.name,
@@ -60,7 +60,7 @@ export function saveElement (element) {
         show: false
     });
 
-    localStorage.setItem("ui-editor", JSON.stringify(newElements));
+    localStorage.setItem("ui-editor", JSON.stringify(newComponents));
 
     // hide the editor.
     this.toggleEditor();
@@ -69,13 +69,13 @@ export function saveElement (element) {
 
 export function updateEvent (events) {
     // Create new state.
-    let newElements = Object.assign({}, this.state).elements;
+    let newComponents = Object.assign({}, this.state).elements;
 
-    newElements[this.state.selectedIndex].events = events;
+    newComponents[this.state.selectedIndex].events = events;
 
     // Set state to the new state.
     this.setState({
-        elements: newElements
+        elements: newComponents
     });
 
     localStorage.setItem("ui-editor", JSON.stringify(this.state.elements));

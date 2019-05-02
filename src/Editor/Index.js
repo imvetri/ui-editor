@@ -10,7 +10,7 @@ import React, { Component } from 'react';
 import style from "./Style.css";
 
 
-class PopupMarkupEditor extends Component {
+class Editor extends Component {
     constructor(props) {
         super(props);
         // this.state = {... this.props.element};
@@ -35,12 +35,6 @@ class PopupMarkupEditor extends Component {
         })
     }
 
-    updateStyleClass (event) {
-        this.setState({
-            styleClass: event.currentTarget.value
-        })
-    }
-
     updateState (event) {
         this.setState({
             state: event.currentTarget.value
@@ -52,7 +46,6 @@ class PopupMarkupEditor extends Component {
             name: this.state.name,
             markup: this.state.markup,
             style: this.state.style,
-            styleClass: this.state.styleClass,
             state: this.state.state
         });
     }
@@ -75,10 +68,6 @@ class PopupMarkupEditor extends Component {
                         <textarea value={element.markup} onChange={this.updateMarkup.bind(this)} />
                     </div>
                     <div>
-                        <h5>Style by class: </h5><p>Under development</p>
-                        <textarea  value={element.styleClass} onChange={this.updateStyleClass.bind(this)} />
-                    </div>
-                    <div>
                         <h5>Style:</h5>
                         <textarea value={element.style} onChange={this.updateStyle.bind(this)} />
                     </div>
@@ -92,4 +81,4 @@ class PopupMarkupEditor extends Component {
     }
 }
 
-export default PopupMarkupEditor;
+export default Editor;
