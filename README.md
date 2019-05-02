@@ -75,13 +75,15 @@ If you have any questions, do let us know. We will help you out.
 
 Contributions like feature requests, feeback for improvements, ideas are welcome! Feel free to open an issue.
 
- * Feedback for improvement - Share reference websites/wireframes/mock.
- * Feature requests - Share the problem statement. Thats is good enough. If you have simple solultion as well, please share that too!.
- * CSS - I am looking for ideas for css editing.
+ * Feedback for improvement, Feature requests, Styling. Any ideas you have, share your expectations as a mock via screenshot.
+ 
+## Planned
+
  * DOM events - Project is tested below events. Any valid react events is expected to work.
    * onMouseLeave
    * onClick
  * Browser events - Events such as setTimeout/ other window events are not yet solved. If you have ideas, share a mock please!.
+ * Tests
  * Reuse existing component - How to build subcomponents?. Ideas are welcome with screenshots/mocks.
    
 
@@ -95,6 +97,5 @@ This project is licensed under the GNU General Public License v3.0 - see the [LI
 
 ## Purpose of this project
 
-TBD
-
+tbd
 
