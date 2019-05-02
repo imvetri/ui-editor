@@ -1,6 +1,7 @@
 .console{
     position: fixed;
     right: 150px;
+    bottom: 50px;
 }
 
 .error {

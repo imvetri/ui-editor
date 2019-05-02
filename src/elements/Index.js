@@ -9,6 +9,7 @@ import style from "./Style.css";
 import PopupMarkupEditor from "../PopupMarkupEditor";
 import Events from "../Events";
 import Element from "../Element";
+import MessagesComponent from "../MessagesComponent";
 
 // Reducers.
 
@@ -76,6 +77,20 @@ class Elements extends Component {
 
     
         const selectedElement = this.state.elements[this.state.selectedIndex] || this.state.element;
+
+        let messagesComponent;
+        if(this.state.selectedIndex === -1){
+            let messages = [{
+                type: "info",
+                text: "#1 INFO: Select any element in the left most pane(editor pane) to see its content"
+            },{
+                type: "info",
+                text: "#2 INFO: Click on 'Add' to add an component"
+            }]
+
+            messagesComponent = <MessagesComponent messages={messages} />
+
+        }
         
         return (
             <li className={style.elements}>
@@ -101,6 +116,7 @@ class Elements extends Component {
                     saveAndClose = {this.saveElement}
                     show = {this.state.show}
                     /> : null }
+                {messagesComponent}
             </li>
         );
     }
