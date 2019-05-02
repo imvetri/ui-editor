@@ -71,7 +71,7 @@ class PopupMarkupEditor extends Component {
                         <button id="saveAndClose" onClick={this.publishElement.bind(this)}>Save & close</button>    
                     </div>
                     <div>
-                        <h5>Markup: </h5><p>All tags should contain ID selector.</p>
+                        <h5>Markup: </h5><p>Tags should contain id attribute, if you would like to bind events to it.</p>
                         <textarea value={element.markup} onChange={this.updateMarkup.bind(this)} />
                     </div>
                     <div>
