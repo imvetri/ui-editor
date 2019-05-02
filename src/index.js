@@ -21,7 +21,6 @@ class Index extends Component {
             previewComponent: {
                 name: "",
                 markup:"",
-                styleClass: "",
                 style: "",
                 state: "{}",
                 events: [{

@@ -5,7 +5,8 @@ import ReactDOM from "react-dom";
 
 // Dependencies.
 
-import style from "./Style.css"
+import style from "./Style.css";
+import getHelp from "./Help";
 
 /**
  * What Events do?
@@ -86,7 +87,7 @@ class Events extends Component {
                     <h4>Events</h4>
                     <p>Select a tag below to bind the events to.</p>
                     <Nodes node={nodeTree.result} onSelectedElementChanged={this.selectedElementChanged.bind(this)}/>
-                    <p>Use argument[0] to access event object. write this.setState(Object) to update state</p>
+                    {getHelp()}
                     {eventsOfSelectedTag}
                     <Event key={element.events.length} selectedTagID={selectedElement} onSave={this.updateEvent.bind(this)}/>
                 </div>

@@ -10,7 +10,7 @@ import React, { Component } from 'react';
 import style from "./Style.css";
 
 
-class PopupMarkupEditor extends Component {
+class Editor extends Component {
     constructor(props) {
         super(props);
         // this.state = {... this.props.element};
@@ -35,12 +35,6 @@ class PopupMarkupEditor extends Component {
         })
     }
 
-    updateStyleClass (event) {
-        this.setState({
-            styleClass: event.currentTarget.value
-        })
-    }
-
     updateState (event) {
         this.setState({
             state: event.currentTarget.value
@@ -52,7 +46,6 @@ class PopupMarkupEditor extends Component {
             name: this.state.name,
             markup: this.state.markup,
             style: this.state.style,
-            styleClass: this.state.styleClass,
             state: this.state.state
         });
     }
@@ -62,7 +55,7 @@ class PopupMarkupEditor extends Component {
         let element = this.state;
         // TODO: Should pass the current data. Instead of accessing it from global
         return (
-            <div className={style.editor}>
+            <div className={style.editor+" editor"}>
                 <section className={style.override}>  
                     <h4>Editor</h4>              
                     <div>
@@ -73,10 +66,6 @@ class PopupMarkupEditor extends Component {
                     <div>
                         <h5>Markup: </h5><p>Tags should contain id attribute, if you would like to bind events to it.</p>
                         <textarea value={element.markup} onChange={this.updateMarkup.bind(this)} />
-                    </div>
-                    <div>
-                        <h5>Style by class: </h5><p>Under development</p>
-                        <textarea  value={element.styleClass} onChange={this.updateStyleClass.bind(this)} />
                     </div>
                     <div>
                         <h5>Style:</h5>
@@ -92,4 +81,4 @@ class PopupMarkupEditor extends Component {
     }
 }
 
-export default PopupMarkupEditor;
+export default Editor;
