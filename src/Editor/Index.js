@@ -55,7 +55,7 @@ class Editor extends Component {
         let element = this.state;
         // TODO: Should pass the current data. Instead of accessing it from global
         return (
-            <div className={style.editor}>
+            <div className={style.editor+" editor"}>
                 <section className={style.override}>  
                     <h4>Editor</h4>              
                     <div>

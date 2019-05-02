@@ -100,12 +100,12 @@ class Elements extends Component {
                         onEventsUpdate ={this.updateEvent}/>
                         : null }
                 </section>
-                {this.state.show ? <Editor
+                <Editor
                     key = {this.state.selectedIndex}
                     element = {selectedElement}
                     saveAndClose = {this.saveElement}
                     show = {this.state.show}
-                    /> : null }
+                    />
                 {messagesComponent}
             </li>
         );
