@@ -42,7 +42,7 @@ class Editor extends Component {
     }
 
     publishElement () {
-        this.props.saveAndClose({
+        this.props.onSave({
             name: this.state.name,
             markup: this.state.markup,
             style: this.state.style,
@@ -62,7 +62,7 @@ class Editor extends Component {
                     <div>
                         <h5>Name:</h5>
                         <input type="text" placeholder="Enter element name" value={element.name} onChange={this.updateName.bind(this)}/>
-                        <button id="saveAndClose" onClick={this.publishElement.bind(this)}>Save & close</button>    
+                        <button id="save" onClick={this.publishElement.bind(this)}>Save</button>    
                     </div>
                     <div>
                         <h5>Markup: </h5><p>Tags should contain id attribute, if you would like to bind events to it.</p>
