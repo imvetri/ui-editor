@@ -39,11 +39,8 @@ class Event extends Component {
 
         if (this.props.selectedTagID === undefined) {
             let messages = [{
-                text:"INFO: if you clicked/selected any item from the elements pane(left most)",
+                text:"INFO: Select any tag to bind events from the Events tab",
                 type:"info"
-            },{
-                text:"ERROR: if you are trying to edit/add event without selecting a tag",
-                type:"error"
             }]
             return (
                 <div>
