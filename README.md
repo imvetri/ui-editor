@@ -17,8 +17,11 @@ It comes with a Demo component to play around.
 
 ## Running the tests
 
-There are no tests in this project. Project is aimed to keep it simple for easy future maintenance.
-
+```
+npm start
+npx cypress open
+```
+Watch the tests. Slow it down for demo/tutorials. TODO- Record it and use it in tutorial section
 
 ## Demos
 

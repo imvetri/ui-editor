@@ -32,7 +32,7 @@ class Element extends Component {
                 {this.props.element.name}
                 <button 
                     index = {this.props.index} 
-                    onClick={this.previewElement.bind(this)}>Preview</button>
+                    onClick={this.previewElement.bind(this)} class="preview">Preview</button>
                 <button 
                     index = {this.props.index}
                     onClick={this.props.onExport}>Export</button>
