@@ -1,4 +1,8 @@
 .box {
-    border:1px solid black;
     width:30%;
+}
+
+.preview {
+    border: 1px solid black;
+    padding: 5px;
 }
