@@ -1,7 +1,7 @@
 // Dependencies.
 import {storeEventsGlobal } from "./store-events-global";
 import {createStylesheet} from "./create-stylesheet";
-import {getNodeTree} from "../utilities/get-node-tree";
+import {getNodeTree} from "../get-node-tree";
 
 // IMPORTANT - Do not rename style,state,events. 
 

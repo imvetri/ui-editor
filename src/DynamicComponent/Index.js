@@ -3,12 +3,11 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
-import { transpileJSX } from "../jsxTranspiler";
+import { transpileJSX } from "../utilities/jsxTranspiler";
 import { codeModifier } from "../utilities/codeModifier";
 
 import style from "./style.css";
-
-import MessagesComponent from "../MessagesComponent";
+import getMessages from "./Messages";
 
 class DynamicComponent extends Component {
     constructor(props) {
@@ -34,13 +33,7 @@ class DynamicComponent extends Component {
 
         let transpilationResult = transpileJSX(this.markup, this.style, this.state, this.events);
         if(transpilationResult.error !== undefined){
-            let messages = [{
-                type: "info",
-                text: "INFO: Preview is not working because preview is not clicked. "
-            }]
-            return (
-                <MessagesComponent messages={messages} />
-            );
+            return (getMessages())
         }
         else {
             return (
