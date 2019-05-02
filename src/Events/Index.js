@@ -41,7 +41,7 @@ import Nodes from "../Nodes";
  */
 import Event from "../Event";
 
-import MessagesComponent from "../MessagesComponent";
+import getMessages from "./Messages";
 
 class Events extends Component {
     constructor(props) {
@@ -78,13 +78,7 @@ class Events extends Component {
         let nodeTree = getNodeTree(element.markup, element.style, element.state, element.events);
 
         if(nodeTree.error !== undefined){
-            let messages = [{
-                type:"error",
-                text:"ERROR : "+nodeTree.error+"developer log: look in console related to eval"
-            }]
-            return (
-                <MessagesComponent messages = {messages}/>
-            )
+            return getMessages();
         }
         else {
             return (

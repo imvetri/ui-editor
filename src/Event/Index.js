@@ -4,8 +4,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
 import style from "./Style.css"
-
-import MessagesComponent from "../MessagesComponent";
+import getMessages from "./Messages";
 class Event extends Component {
     constructor(props) {
         super(props);
@@ -38,18 +37,7 @@ class Event extends Component {
     render() {
 
         if (this.props.selectedTagID === undefined) {
-            let messages = [{
-                text:"INFO: if you clicked/selected any item from the elements pane(left most)",
-                type:"info"
-            },{
-                text:"ERROR: if you are trying to edit/add event without selecting a tag",
-                type:"error"
-            }]
-            return (
-                <div>
-                    <MessagesComponent messages={messages}/>
-                </div>            
-            )
+            return getMessages();
         }
 
         return (
