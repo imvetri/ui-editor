@@ -4,8 +4,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
 import style from "./Style.css"
-
-import MessagesComponent from "../MessagesComponent";
+import getMessages from "./Messages";
 class Event extends Component {
     constructor(props) {
         super(props);
@@ -38,19 +37,7 @@ class Event extends Component {
     render() {
 
         if (this.props.selectedTagID === undefined) {
-            let messages = [{
-                text:"INFO: Select any tag to bind events from the Events tab",
-                type:"info"
-            },
-            {
-                text:"INFO: Click 'Preview' to see the component rendered on right most pane(Preview pane)",
-                type:"info"
-            }]
-            return (
-                <div>
-                    <MessagesComponent messages={messages}/>
-                </div>            
-            )
+            return getMessages();
         }
 
         return (
