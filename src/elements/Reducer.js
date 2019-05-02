@@ -18,7 +18,6 @@ export function updateselectedIndex (e) {
 
 export function saveElement (element) {
     
-    
     let newElements = Array.from(this.state.elements);
     
     if(this.state.editMode){
@@ -55,7 +54,7 @@ export function saveElement (element) {
             markup: element.markup,
             style: element.style,
             state: element.state,
-            event: element.events
+            events: element.events
         },
         show: false
     });

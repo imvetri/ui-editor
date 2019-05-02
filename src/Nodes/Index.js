@@ -11,7 +11,7 @@ class Nodes extends Component {
 
         // Elements needs to be transpiled properly. JSX did not render properly?
         var node = this.props.node;
-        if(node && node.props && Array.isArray(node.props.children)){
+        if(node.props && Array.isArray(node.props.children)){
             var children = node.props.children.map((child,index)=><Nodes key={index} node={child} onSelectedElementChanged={this.props.onSelectedElementChanged}/>);
             return (
                 <ul>
