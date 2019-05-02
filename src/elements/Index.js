@@ -29,10 +29,7 @@ class Elements extends Component {
                 markup:"",
                 style: "",
                 state: "",
-                event: {
-                    name: "",
-                    reducer: ""
-                }
+                events: []
             },
             show: false,
             elements: JSON.parse(localStorage.getItem("ui-editor")) || [],
@@ -92,13 +89,11 @@ class Elements extends Component {
                     <button id="addElement" onClick={this.toggleEditor.bind(this)}>Add</button>
                 </section>
                 <section className="events-tab">
-                    {this.state.elements[this.state.selectedIndex]? 
                     <Events 
                         key={this.state.selectedIndex}
                         element = {selectedElement}
                         elements = {this.state.elements}
                         onEventsUpdate ={this.updateEvent}/>
-                        : null }
                 </section>
                 <Editor
                     key = {this.state.selectedIndex}
