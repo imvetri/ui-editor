@@ -46,7 +46,8 @@ class Editor extends Component {
             name: this.state.name,
             markup: this.state.markup,
             style: this.state.style,
-            state: this.state.state
+            state: this.state.state,
+            events: []
         });
     }
 
