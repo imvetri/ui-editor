@@ -9,7 +9,7 @@ import style from "./Style.css";
 import PopupMarkupEditor from "../PopupMarkupEditor";
 import Events from "../Events";
 import Element from "../Element";
-import MessagesComponent from "../MessagesComponent";
+import getMessages from "./Messages";
 
 // Reducers.
 
@@ -80,16 +80,7 @@ class Elements extends Component {
 
         let messagesComponent;
         if(this.state.selectedIndex === -1){
-            let messages = [{
-                type: "info",
-                text: "#1 INFO: Select any element in the left most pane(editor pane) to see its content"
-            },{
-                type: "info",
-                text: "#2 INFO: Click on 'Add' to add an component"
-            }]
-
-            messagesComponent = <MessagesComponent messages={messages} />
-
+            messagesComponent = getMessages();
         }
         
         return (
