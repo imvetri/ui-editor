@@ -80,7 +80,7 @@ class Elements extends Component {
         }
         
         return (
-            <li className={style.elements}>
+            <div className={style.elements}>
                 <section className="element-list">
                     <h4>Elements</h4>
                     <ul>
@@ -98,11 +98,11 @@ class Elements extends Component {
                 <Editor
                     key = {this.state.selectedIndex}
                     element = {selectedElement}
-                    saveAndClose = {this.saveElement}
+                    onSave = {this.saveElement}
                     show = {this.state.show}
                     />
                 {messagesComponent}
-            </li>
+            </div>
         );
     }
 }
