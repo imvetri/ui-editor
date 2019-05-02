@@ -6,7 +6,7 @@ import style from "./Style.css";
 
 // Components.
 
-import PopupMarkupEditor from "../PopupMarkupEditor";
+import Editor from "../Editor";
 import Events from "../Events";
 import Element from "../Element";
 import getMessages from "./Messages";
@@ -27,7 +27,6 @@ class Elements extends Component {
             element: {
                 name: "",
                 markup:"",
-                styleClass: "",
                 style: "",
                 state: "",
                 event: {
@@ -101,7 +100,7 @@ class Elements extends Component {
                         onEventsUpdate ={this.updateEvent}/>
                         : null }
                 </section>
-                {this.state.show ? <PopupMarkupEditor
+                {this.state.show ? <Editor
                     key = {this.state.selectedIndex}
                     element = {selectedElement}
                     saveAndClose = {this.saveElement}
