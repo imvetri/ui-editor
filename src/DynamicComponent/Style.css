@@ -1,4 +1,5 @@
 .box {
+    margin: 5px;
     border:1px solid black;
-    width:30%;
+    padding:5px;
 }
