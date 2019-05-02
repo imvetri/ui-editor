@@ -87,7 +87,6 @@ Contributions like feature requests, feeback for improvements, ideas are welcome
  
 ## Planned
 
- * Browser events - Events such as setTimeout/ other window events are not yet solved.
  * Nested component building.
    
 ## License
