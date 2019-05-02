@@ -1,9 +1,9 @@
 import MessagesComponent from "../MessagesComponent";
 
-function getMessages () {
+function getMessages (error) {
     let messages = [{
         type:"error",
-        text:"ERROR : "+nodeTree.error+"developer log: look in console related to eval"
+        text:"ERROR : "+error+"developer log: look in console related to eval"
     }]
     return (
         <MessagesComponent messages = {messages}/>
