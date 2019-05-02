@@ -1,6 +1,6 @@
 # What is ui-editor?
 
-ui-editor is user interfaces builder for web. It is created and actively maintained by Vetrivel. 
+ui-editor is user interfaces builder for web. It is actively being maintained.
 
 
 ## Getting Started
