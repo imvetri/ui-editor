@@ -81,18 +81,32 @@ class Events extends Component {
         if(nodeTree.error !== undefined){
             return getMessages();
         }
-        else {
+        if(this.state.elements.length===0) {
             return (
                 <div className={style.events}>
                     <h4>Events</h4>
-                    <p>Select a tag below to bind the events to.</p>
-                    <Nodes node={nodeTree.result} onSelectedElementChanged={this.selectedElementChanged.bind(this)}/>
-                    {getHelp()}
-                    {eventsOfSelectedTag}
-                    <Event key={element.events.length} selectedTagID={selectedElement} onSave={this.updateEvent.bind(this)}/>
+                    <p>Looks like you do not have any elements created. Type some markup on the right "Editor" tab</p>
                 </div>
             );
         }
+        if(nodeTree.result === undefined) {
+            return (
+                <div className={style.events}>
+                    <h4>Events</h4>
+                    <p>Select an element to view/add events.</p>
+                </div>
+            );
+        }
+        return (
+            <div className={style.events}>
+                <h4>Events</h4>
+                <p>Select a tag below to bind the events to.</p>
+                <Nodes node={nodeTree.result} onSelectedElementChanged={this.selectedElementChanged.bind(this)}/>
+                {getHelp()}
+                {eventsOfSelectedTag}
+                <Event key={element.events.length} selectedTagID={selectedElement} onSave={this.updateEvent.bind(this)}/>
+            </div>
+        );
     }
 }
 
