@@ -70,7 +70,6 @@ If you have any questions, do let us know. We will help you out.
 
 * nodejs, babel, babel/standalone(Thanks!), webpack, JSX, Reactjs, lot of npm packages.
 
-
 ## Contributing
 
 Contributions like feature requests, feeback for improvements, ideas are welcome! Feel free to open an issue.
@@ -79,14 +78,9 @@ Contributions like feature requests, feeback for improvements, ideas are welcome
  
 ## Planned
 
- * DOM events - Project is tested below events. Any valid react events is expected to work.
-   * onMouseLeave
-   * onClick
- * Browser events - Events such as setTimeout/ other window events are not yet solved. If you have ideas, share a mock please!.
- * Tests
- * Reuse existing component - How to build subcomponents?. Ideas are welcome with screenshots/mocks.
+ * Browser events - Events such as setTimeout/ other window events are not yet solved.
+ * Nested component building.
    
-
 ## License
 
 This project is licensed under the GNU General Public License v3.0 - see the [LICENSE.md](LICENSE.md) file for details
