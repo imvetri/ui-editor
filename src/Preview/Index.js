@@ -23,8 +23,10 @@ class Preview extends Component {
         }
         return (
             <div className={style.box}>
-                <h4>Preview</h4>
-                <DynamicComponent key={this.props.component.id} component={this.props.component}/>
+                <section className={style.preview}>
+                    <h4>Preview</h4>
+                    <DynamicComponent key={this.props.component.id} component={this.props.component}/>
+                </section>
             </div>
         );
     }
