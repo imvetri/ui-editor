@@ -68,13 +68,7 @@ If you have any questions, do let us know. We will help you out.
 
 ## Built With
 
-* nodejs
-* babel
-* babel/standalone
-* webpack
-* JSX
-* Reactjs
-* lot of npm packages
+* nodejs, babel, babel/standalone(Thanks!), webpack, JSX, Reactjs, lot of npm packages.
 
 
 ## Contributing
@@ -97,4 +91,10 @@ This project is licensed under the GNU General Public License v3.0 - see the [LI
 
 ## Acknowledgments
 
-* Front end community members.
+* Open source community members, for making things easier, their efforts made sure that knowledge/information shouldn't be held as property of a company and should be free for access. 
+
+## Purpose of this project
+
+TBD
+
+
