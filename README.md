@@ -13,7 +13,6 @@ npm start
 
 ```
 
-It comes with a Demo component to play around.
 
 ## Running the tests
 
@@ -21,12 +20,19 @@ It comes with a Demo component to play around.
 npm start
 npx cypress open
 ```
-Watch the tests. Slow it down for demo/tutorials. TODO- Record it and use it in tutorial section
+
 
 ## Demos
 
- * Hello world
- * Popup Modal
+
+To see it in action, do below
+
+```
+npx cypress open
+```
+
+run the first test
+
 
 ## Tutorials
 
