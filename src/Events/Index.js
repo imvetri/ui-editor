@@ -79,7 +79,7 @@ class Events extends Component {
         let nodeTree = getNodeTree(element.markup, element.style, element.state, element.events);
 
         if(nodeTree.error !== undefined){
-            return getMessages();
+            return getMessages(nodeTree.error);
         }
         if(this.state.elements.length===0) {
             return (
