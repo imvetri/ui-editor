@@ -25,7 +25,7 @@ class Index extends Component {
                 state: "{}",
                 events: [{
                     id: "ID1",
-                    name: "sdf",
+                    name: "",
                     reducer: ""
                 }]
             }
