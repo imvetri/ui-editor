@@ -41,10 +41,10 @@ class Event extends Component {
         }
 
         return (
-            <div>
+            <div className="event">
                 <input type="text" onChange={this.updateEventName.bind(this)} value={this.state.name} />
                 <textarea onChange={this.updateReducer.bind(this)} value={this.state.reducer} />
-                <button onClick={this.publishEvent.bind(this)}>Save</button>
+                <button onClick={this.publishEvent.bind(this)} id="saveEvent">Save</button>
             </div>
         );
     }
