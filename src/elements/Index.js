@@ -28,7 +28,7 @@ class Elements extends Component {
                 name: "",
                 markup:"",
                 style: "",
-                state: "",
+                state: "{ }",
                 events: []
             },
             show: false,
