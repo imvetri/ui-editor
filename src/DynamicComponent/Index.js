@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
-import { transpileJSX } from "../jsxTranspiler";
+import { transpileJSX } from "../utilities/jsxTranspiler";
 import { codeModifier } from "../utilities/codeModifier";
 
 import style from "./style.css";
