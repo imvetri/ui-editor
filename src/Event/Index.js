@@ -10,7 +10,9 @@ class Event extends Component {
         super(props);
         this.state = {
             name: this.props.event ? this.props.event.name : "",
-            reducer: this.props.event ? this.props.event.reducer : ""
+            reducer: this.props.event ? this.props.event.reducer : "",
+            publishable: this.props.event ? this.props.event.publishable : "",
+            publishName: this.props.event ? this.props.event.publishName : "",
         }
     }
 
@@ -26,11 +28,25 @@ class Event extends Component {
         })
     }
 
+    updatePublishName(e) {
+        this.setState({
+            publishName: e.target.value
+        })
+    }
+
+    updateEventType(e){
+        this.setState({
+            publishable: e.currentTarget.checked
+        })
+    }
+
     publishEvent() {
         this.props.onSave({
             name: this.state.name,
             reducer: this.state.reducer,
-            index: this.props.index
+            index: this.props.index,
+            publishable: this.state.publishable,
+            publishName: this.state.publishName
         })
     }
 
@@ -40,10 +56,19 @@ class Event extends Component {
             return getMessages();
         }
 
+        let publishName = this.state.publishable? <input type="text" onChange={this.updatePublishName.bind(this)} value={this.state.publishName} placeholder="Enter event publish name for other components to subscribe to"/> : null;
+
         return (
             <div className="event">
-                <input type="text" onChange={this.updateEventName.bind(this)} value={this.state.name} />
-                <textarea onChange={this.updateReducer.bind(this)} value={this.state.reducer} />
+                <input type="text" onChange={this.updateEventName.bind(this)} value={this.state.name} placeholder="Enter event name"/>
+                <textarea onChange={this.updateReducer.bind(this)} value={this.state.reducer} placeholder="Enter state reducer"/>
+                <div>
+                    <label>
+                    <input type="checkbox" onChange={this.updateEventType.bind(this)} checked={this.state.publishable? "checked": ""}/>
+                    Publishable
+                    </label>
+                    {publishName}
+                </div>
                 <button onClick={this.publishEvent.bind(this)} id="saveEvent">Save</button>
             </div>
         );
