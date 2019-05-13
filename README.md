@@ -73,7 +73,7 @@ run the first test
 
 ## Questions
 
-If you have any questions, do let us know. We will help you out. you can open an issue/ start a thread https://twitter.com/EditorUi
+If you have any questions, do let us know. We will help you out. you can open an issue
 
 ## Built With
 
