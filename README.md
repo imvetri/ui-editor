@@ -99,4 +99,6 @@ This project is licensed under the GNU General Public License v3.0 - see the [LI
 
 ## Purpose of this project
 
-If you are working as an employee, if the company is pressurising you, its important that we stay chill minded. Solve important problems that saves time of developer not just the busines. Make time for yourself at work. 
+If you are working as an employee, its important that we stay chill minded. Solve important problems that saves time of developer not just the busines. 
+* Make time for yourself at work, if any of your solution saves time for business, that is something you have earned for yourself.
+
