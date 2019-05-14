@@ -1,6 +1,6 @@
 # What is ui-editor?
 
-ui-editor is user interfaces builder for web. It is actively being maintained.
+ui-editor is user interfaces builder for web. It is actively being maintained. There are demos, look into tutorials section.
 
 
 ## Getting Started
