@@ -2,6 +2,9 @@
 
 ui-editor is user interfaces builder for web. It is actively being maintained. There are demos, look into tutorials section.
 
+![Building component with events](https://raw.githubusercontent.com/imvetri/ui-editor/master/gifs/Component_responding_to_events.gif)
+
+
 
 ## Getting Started
 
