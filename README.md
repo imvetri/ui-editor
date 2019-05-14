@@ -4,7 +4,14 @@ ui-editor is user interfaces builder for web. It is actively being maintained. T
 
 ![Building component with events](https://raw.githubusercontent.com/imvetri/ui-editor/master/gifs/Component_responding_to_events.gif)
 
+## Applications
 
+* Cross framework component code generation.
+* GUI.
+* Concept can be applied to any framework of your team's choice.
+* Hides the framework APIs.
+* Component testability for different states.
+* More refining will allow us to cleanup front end development.
 
 ## Getting Started
 
