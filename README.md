@@ -81,13 +81,6 @@ run the first test
  * Export feature - Markup, events with reducers, style, state are stringified. Refer to [convert-to-react-component.js](https://github.com/imvetri/ui-editor/blob/master/src/utilities/convert-to-react-component.js)
  * Events with tags listed - [jsxTranspiler.js](https://github.com/imvetri/ui-editor/blob/master/src/utilities/jsxTranspiler/index.js) returns parsed content which is rendered using [Nodes.js](https://github.com/imvetri/ui-editor/blob/master/src/Nodes/Index.js) component in [Events.js](https://github.com/imvetri/ui-editor/blob/master/src/Events/Events.js)
 
-## Questions
-
-If you have any questions, do let us know. We will help you out. you can open an issue
-
-## Built With
-
-* nodejs, babel, babel/standalone(Thanks!), webpack, JSX, Reactjs, lot of npm packages.
 
 ## Contributing
 
@@ -111,4 +104,8 @@ This project is licensed under the GNU General Public License v3.0 - see the [LI
 
 If you are working as an employee, its important that we stay chill minded. Solve important problems that saves time of developer not just the busines. 
 * Make time for yourself at work, if any of your solution saves time for business, that is something you have earned for yourself.
+
+## Releases
+
+Project will maintain monthly release after some feedback. This is my first time maintaining an open source project, it would be of great help if you could drop some tips.!
 
