@@ -82,7 +82,7 @@ class Elements extends Component {
         return (
             <div className={style.elements}>
                 <section className="element-list">
-                    <h4>Elements</h4>
+                    <h4>Web Components</h4>
                     <ul>
                         {elementList}
                     </ul>
