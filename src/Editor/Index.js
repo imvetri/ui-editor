@@ -60,20 +60,20 @@ class Editor extends Component {
                 <section className={style.override}>  
                     <h4>Editor</h4>              
                     <div>
-                        <h5>Name:</h5>
+                        <h5>Component Name:</h5>
                         <input type="text" placeholder="Enter element name" value={element.name} onChange={this.updateName.bind(this)} id="elementName"/>
                         <button onClick={this.publishElement.bind(this)} id="save">Save</button>    
                     </div>
                     <div>
-                        <h5>Markup: </h5><p>Tags should contain <code>id</code> attribute, if you would like to bind events to it.</p>
+                        <h5>HTML: </h5><p>Tags should contain <code>id</code> attribute, if you would like to bind events to it.</p>
                         <textarea value={element.markup} onChange={this.updateMarkup.bind(this)} id="elementMarkup"/>
                     </div>
                     <div>
-                        <h5>Style:</h5><p>Add a <code>className</code> to the markup, write a class here</p>
+                        <h5>CSS:</h5><p>Add a <code>className</code> to the markup, write a class here</p>
                         <textarea value={element.style} onChange={this.updateStyle.bind(this)} />
                     </div>
                     <div>
-                        <h5>State:</h5>
+                        <h5>Data:</h5>
                         <textarea value={element.state} onChange={this.updateState.bind(this)} id="elementState"/>
                     </div>
                 </section>
