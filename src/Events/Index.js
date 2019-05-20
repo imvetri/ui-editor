@@ -89,22 +89,38 @@ class Events extends Component {
                 </div>
             );
         }
-        if(nodeTree.result === undefined) {
+        if(nodeTree.result === undefined ) {
             return (
                 <div className={style.events}>
                     <h4>Events, Actions, Reducers</h4>
-                    <p>Select an element to view/add events.</p>
+                    <p>Current component does not have a valid markup</p>
                 </div>
             );
+        }
+        if(selectedElement===undefined){
+            return (
+                <div className={style.events}>
+                <h4>Events, Actions, Reducers</h4>
+                <p>Select a tag below to show/add the events.</p>
+                <Nodes node={nodeTree.result} onSelectedElementChanged={this.selectedElementChanged.bind(this)}/>
+                {getHelp()}
+            </div>
+            )
         }
         return (
             <div className={style.events}>
                 <h4>Events, Actions, Reducers</h4>
-                <p>Select a tag below to bind the events to.</p>
+                <p>Select a tag below to show/add the events.</p>
                 <Nodes node={nodeTree.result} onSelectedElementChanged={this.selectedElementChanged.bind(this)}/>
                 {getHelp()}
-                {eventsOfSelectedTag}
-                <Event key={element.events.length} selectedTagID={selectedElement} onSave={this.updateEvent.bind(this)}/>
+                <div className={style.existingEvents}>
+                    <h5>Existing Events</h5>
+                    {eventsOfSelectedTag}
+                </div>
+                <div className={style.newEvent}>
+                    <h5>New Event</h5>
+                    <Event key={element.events.length} selectedTagID={selectedElement} onSave={this.updateEvent.bind(this)}/>
+                </div>
             </div>
         );
     }

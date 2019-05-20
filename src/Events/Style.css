@@ -13,3 +13,11 @@
     position: fixed;
     right: 150px;
 }
+
+.existingEvents {
+    margin-top:15px;
+}
+
+.newEvent {
+    border: 1px solid;
+}
