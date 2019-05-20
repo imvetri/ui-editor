@@ -59,17 +59,18 @@ class Event extends Component {
         let publishName = this.state.publishable? <input type="text" onChange={this.updatePublishName.bind(this)} value={this.state.publishName} placeholder="Enter event publish name for other components to subscribe to"/> : null;
 
         return (
-            <div className="event">
-                <input type="text" onChange={this.updateEventName.bind(this)} value={this.state.name} placeholder="Enter event name"/>
-                <textarea onChange={this.updateReducer.bind(this)} value={this.state.reducer} placeholder="Enter state reducer"/>
+            <div className={style.event}>
+                <input type="text" onChange={this.updateEventName.bind(this)} value={this.state.name} placeholder="Enter event name" title="Event Name"/>
+                <br/>
+                <textarea onChange={this.updateReducer.bind(this)} value={this.state.reducer} placeholder="Enter state reducer" title="Reducer"/>
                 <div>
                     <label>
                     <input type="checkbox" onChange={this.updateEventType.bind(this)} checked={this.state.publishable? "checked": ""}/>
                     Publishable
                     </label>
                     {publishName}
+                    <button onClick={this.publishEvent.bind(this)} id="saveEvent">Save</button>
                 </div>
-                <button onClick={this.publishEvent.bind(this)} id="saveEvent">Save</button>
             </div>
         );
     }
