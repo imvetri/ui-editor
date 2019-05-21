@@ -1,3 +1,8 @@
 .selected {
     border: 1px solid green;
 }
+
+.background {
+    background: rgb(64, 64, 64);
+    border-bottom: 1px solid #333333;
+}
