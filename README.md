@@ -87,6 +87,13 @@ run the first test
 Contributions like feature requests, feeback for improvements, ideas are welcome! Feel free to open an issue.
 
  * Feedback for improvement, Feature requests, Styling. Any ideas you have, share your expectations as a mock via screenshot.
+
+List of files to touch for events 
+ * src/utilities/codeGenerator/prepareMarkup.js 
+ * src/utilities/jsxTranspiler/store-events-global/index.js 
+ * src/Nodes/Index.js 
+ * src/Events/Index.js
+ 
  
 ## Planned
 
