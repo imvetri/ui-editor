@@ -3,13 +3,19 @@ import {storeEventsGlobal } from "./store-events-global";
 import {createStylesheet} from "./create-stylesheet";
 import {getNodeTree} from "../get-node-tree";
 
+import DynamicComponent from "../../DynamicComponent";
 
 function checkNestedComponents(components, markup) {
     return components.filter(component=> markup.includes(component.name)).length >0;
 }
 
 function saveToWindow( component ) {
-    window[component.name] = transpileJSX(component.markup, component.style, component.state, component.events).result;
+    let randomKey = component.id*(~~(Math.random()*10));
+    window[component.name] = <DynamicComponent key={randomKey} component={component}/>
+    
+    // un comment next line, events will show nested component's events
+    // window[component.name] = transpileJSX(component.markup, component.style, component.state, component.events).result;
+
 }
 
 function saveComponentsToWindow( nestedComponents){
