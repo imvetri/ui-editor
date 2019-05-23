@@ -88,6 +88,8 @@ class Events extends Component {
                 </div>
             )
         }
+        // Check if the component has nested components, make it available globally for preview.
+        availNestedComponent(element.markup);
         const selectedTag = this.state.selectedTag;
 
         const events = element.events
