@@ -21,11 +21,13 @@ class Preview extends Component {
         catch(e){
             console.error(e);
         }
+        // Helps to rerender when changes to markup/events are made to the component and preview them.
+        let randomKey = this.props.component.id*(~~(Math.random()*10));
         return (
             <div className={style.box}>
                 <section className={style.preview}>
                     <h4>Preview</h4>
-                    <DynamicComponent key={this.props.component.id} component={this.props.component}/>
+                    <DynamicComponent key={randomKey} component={this.props.component}/>
                 </section>
             </div>
         );
