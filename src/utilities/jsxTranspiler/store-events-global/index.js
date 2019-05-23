@@ -7,7 +7,7 @@ export function storeEventsGlobal(events) {
     // Automatically create ID creation rather than making user to include it.
     events.forEach(event => {
         // Fetch the id from event
-        let id = "ID"+event.id.split("ID")[1]
+        let id = event.id.split("-")[1];
 
         // Store the event.
         /**

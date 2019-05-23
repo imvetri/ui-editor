@@ -3,11 +3,7 @@ export function prepareMarkup (markup, events){
     // Replace with variable.
 
     events.forEach(event=>{
-        let id = "ID"+event.id.split("ID")[1]
-        
-        if(markup.indexOf(id)==-1){
-            console.error(id, " - id is missing in the markup.");
-        }
+        let id = event.id.split("-")[1];
         markup = markup.replace(id+'"', id+'"'+" {...event"+id+"}");
     });
 
