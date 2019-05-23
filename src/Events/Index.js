@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
 // Dependencies.
-import { availNestedComponent } from "../utilities/jsxTranspiler";
+import { availNestedComponent } from "../utilities/nestedComponentSetup";
 
 import style from "./Style.css";
 import getHelp from "./Help";
@@ -89,7 +89,7 @@ class Events extends Component {
             )
         }
         // Check if the component has nested components, make it available globally for preview.
-        availNestedComponent(element.markup);
+        availNestedComponent(element);
         const selectedTag = this.state.selectedTag;
 
         const events = element.events
