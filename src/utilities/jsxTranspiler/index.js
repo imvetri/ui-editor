@@ -12,22 +12,22 @@ function saveToWindow( component ) {
     window[component.name] = transpileJSX(component.markup, component.style, component.state, component.events).result;
 }
 
-function saveComponentsToWindow( markup, nestedComponents){
+function saveComponentsToWindow( nestedComponents){
     // Transpile them and make them global.
     nestedComponents.forEach(saveToWindow);
 }
 
-export function availNestedComponent ( markup ) {
+export function availNestedComponent ( element ) {
 
     // Should be able to detect nested component.
 
     let components= JSON.parse(localStorage.getItem("ui-editor"));
 
-    if(checkNestedComponents(components, markup)){
+    if(checkNestedComponents(components, element.markup)){
         // find all the nested components from the markup.
-        let nestedComponents = components.filter(component=> markup.includes(component.name));
+        let nestedComponents = components.filter(component=> element.markup.includes(component.name));
         
-        saveComponentsToWindow(markup, nestedComponents);
+        saveComponentsToWindow(nestedComponents);
     }
 
 }
