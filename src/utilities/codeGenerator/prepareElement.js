@@ -1,7 +1,8 @@
 import {prepareMarkup} from "./prepareMarkup";
 
-export function prepareElement(element, elements) {
+export function prepareElement(element) {
     let state = {};
+
 
     // touch this code to add markup, events, state.
     element.markup = prepareMarkup(element.markup, element.events);
