@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
 // Dependencies.
+import { availNestedComponent } from "../utilities/jsxTranspiler";
 
 import style from "./Style.css";
 import getHelp from "./Help";
@@ -52,7 +53,7 @@ class Events extends Component {
 
     updateEvent(event){
         let element = JSON.parse(JSON.stringify(this.state.element))
-        event.id = this.state.selectedElement;
+        event.id = this.state.selectedTag;
         // Add 
         if(event.index===undefined){
             element.events.push(event);
@@ -66,22 +67,12 @@ class Events extends Component {
 
     selectedTagChanged(e){
         this.setState({
-            selectedElement: e.currentTarget.value
+            selectedTag: e.currentTarget.value
         })
     }
     render() {
         const element = this.props.element;
-        const selectedElement = this.state.selectedElement;
-        const events = element.events
-                                .map((event,index)=><Event key={index} index={index} event={event} selectedTagID={selectedElement} onSave={this.updateEvent.bind(this)}/>);
-        const eventsOfSelectedTag = events.filter(event=>event.props.event.id===this.state.selectedElement)
-
-        let nodeTree = getNodeTree(element.markup, element.style, element.state, element.events);
-
-        if(nodeTree.error !== undefined){
-            return getMessages(nodeTree.error);
-        }
-        if(this.state.elements.length===0) {
+        if(this.state.elements.length==0) {
             return (
                 <div className={style.events}>
                     <h4>Events, Actions, Reducers</h4>
@@ -89,24 +80,35 @@ class Events extends Component {
                 </div>
             );
         }
-        if(nodeTree.result === undefined ) {
+        if(element.name===undefined && this.state.elements.length!=0){
             return (
                 <div className={style.events}>
                     <h4>Events, Actions, Reducers</h4>
-                    <p>Current component does not have a valid markup</p>
+                    <p>Looks like you have not selected any component. Click on any of the component in the left pane.</p>
+                </div>
+            )
+        }
+        const selectedTag = this.state.selectedTag;
+
+        const events = element.events
+                                .map((event,index)=><Event key={index} index={index} event={event} selectedTagID={selectedTag} onSave={this.updateEvent.bind(this)}/>);
+        const eventsOfSelectedTag = events.filter(event=>event.props.event.id===this.state.selectedTag)
+
+        let nodeTree = getNodeTree(element.markup, element.style, element.state, element.events);
+
+        if(nodeTree.error !== undefined){
+            return getMessages(nodeTree.error);
+        }
+
+        if(nodeTree.result === undefined && this.state.elements.length!=0) {
+            return (
+                <div className={style.events}>
+                    <h4>Events, Actions, Reducers</h4>
+                    <p>Current component does not have a valid markup or no element is selected</p>
                 </div>
             );
         }
-        if(selectedElement===undefined){
-            return (
-                <div className={style.events}>
-                <h4>Events, Actions, Reducers</h4>
-                <p>Select a tag below to show/add the events.</p>
-                <Nodes node={nodeTree.result} onSelectedTagChanged={this.selectedTagChanged.bind(this)}/>
-                {getHelp()}
-            </div>
-            )
-        }
+
         return (
             <div className={style.events}>
                 <h4>Events, Actions, Reducers</h4>
@@ -119,7 +121,7 @@ class Events extends Component {
                 </div>
                 <div className={style.newEvent}>
                     <h5>New Event</h5>
-                    <Event key={element.events.length} selectedTagID={selectedElement} onSave={this.updateEvent.bind(this)}/>
+                    <Event key={element.events.length} selectedTagID={selectedTag} onSave={this.updateEvent.bind(this)}/>
                 </div>
             </div>
         );
