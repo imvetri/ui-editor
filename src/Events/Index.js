@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
 // Dependencies.
-import { availNestedComponent } from "../utilities/jsxTranspiler";
+import { availNestedComponent } from "../utilities/nestedComponentSetup";
 
 import style from "./Style.css";
 import getHelp from "./Help";
