@@ -5,7 +5,7 @@ export function prepareElement(element) {
 
 
     // touch this code to add markup, events, state.
-    element.markup = prepareMarkup(element.markup, element.events);
+    element.markup = prepareMarkup(element);
 
     let defaults = {
         state: state,
