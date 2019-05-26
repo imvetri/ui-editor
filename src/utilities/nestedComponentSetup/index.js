@@ -25,6 +25,7 @@ export function availNestedComponent ( element ) {
 
     // Should be able to detect nested component.
 
+    let components= JSON.parse(localStorage.getItem("ui-editor"));
 
     if(checkNestedComponents(element.markup)){
         // find all the nested components from the markup.
