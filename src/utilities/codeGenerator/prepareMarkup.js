@@ -1,4 +1,4 @@
-export function prepareMarkup (element){
+export function prepareMarkup (element, name){
     // Find ID from events, 
     // Replace with variable.
 
@@ -22,13 +22,13 @@ export function prepareMarkup (element){
      * <input type="text" onClick=function(){} onSubmit=function(){} />
      */
 
-     let markup = element.markup, events = element.events;
+    let markup = element.markup, events = element.events;
 
-    events.forEach(event=>{
-        let id = event.id.split("-")[1];
-        markup = markup.replace(`${id}"`,`${id}" {...event${id}}`);
-    });
-
-    debugger;
+        events.forEach(event=>{
+            let id = event.id.split("-")[1];
+            if(!markup.includes(`{...${name}_event_${id}}`)){
+                markup = markup.replace(`${id}"`,`${id}" {...${name}_event_${id}}`);
+            }
+        });
     return markup;
 }
