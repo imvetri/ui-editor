@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
 // Dependencies.
-import { availNestedComponent } from "../utilities/nestedComponentSetup";
+import { availNestedComponent, checkNestedComponents } from "../utilities/nestedComponentSetup";
 
 import style from "./Style.css";
 import getHelp from "./Help";
@@ -109,6 +109,12 @@ class Events extends Component {
                     <p>Current component does not have a valid markup or no element is selected</p>
                 </div>
             );
+        }
+
+        if(checkNestedComponents(element.markup)){
+            // Render nestedComponent in nodes.
+            // If selected, show in a drop down list of published events.
+
         }
 
         return (

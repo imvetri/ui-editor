@@ -2,7 +2,8 @@
 
 import DynamicComponent from "../../DynamicComponent";
 
-function checkNestedComponents(components, markup) {
+export function checkNestedComponents( markup) {
+    let components= JSON.parse(localStorage.getItem("ui-editor"));
     return components.filter(component=> markup.includes(component.name)).length >0;
 }
 
@@ -26,7 +27,7 @@ export function availNestedComponent ( element ) {
 
     let components= JSON.parse(localStorage.getItem("ui-editor"));
 
-    if(checkNestedComponents(components, element.markup)){
+    if(checkNestedComponents(element.markup)){
         // find all the nested components from the markup.
         let nestedComponents = components.filter(component=> element.markup.includes(component.name));
         
