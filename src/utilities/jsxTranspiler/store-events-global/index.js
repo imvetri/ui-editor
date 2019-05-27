@@ -16,7 +16,8 @@ export function storeEventsGlobal(events) {
          *      onClick: event.reducer
          * }
          * */
-        window["event"+id] = window["event"+id] || {};
-        window["event"+id][event.name] = event.reducer;
+        let eventID = `${name}_event_${id}`
+        window[eventID] = window[eventID] || {};
+        window[eventID][event.name] = event.reducer;
     });
 }
