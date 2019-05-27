@@ -5,11 +5,11 @@ import {getNodeTree} from "../get-node-tree";
 
 // IMPORTANT - Do not rename style,state,events. 
 
-export function transpileJSX(markup, style, state, events) {
+export function transpileJSX(markup, style, state, events, name) {
 
     // Automatically create ID creation rather than making user to include it.
 
-    storeEventsGlobal(events);
+    storeEventsGlobal(events, name);
 
     createStylesheet(style);
 

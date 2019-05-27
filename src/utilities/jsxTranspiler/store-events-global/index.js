@@ -2,7 +2,7 @@
 
 // IMPORTANT - Do not rename style,state,events. 
 
-export function storeEventsGlobal(events) {
+export function storeEventsGlobal(events, name) {
 
     // Automatically create ID creation rather than making user to include it.
     events.forEach(event => {

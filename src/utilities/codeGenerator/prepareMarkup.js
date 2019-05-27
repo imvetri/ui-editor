@@ -26,8 +26,8 @@ export function prepareMarkup (element, name){
 
         events.forEach(event=>{
             let id = event.id.split("-")[1];
-            if(!markup.includes(`{...${name}_event_${id}}`)){
-                markup = markup.replace(`${id}"`,`${id}" {...${name}_event_${id}}`);
+            if(!markup.includes(`{ ...${name}_event_${id}}`)){
+                markup = markup.replace(`${id}"`,`${id}" { ...${name}_event_${id}}`);
             }
         });
     return markup;
