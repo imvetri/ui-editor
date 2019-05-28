@@ -13,7 +13,7 @@ import getMessages from "./Messages";
 
 // Reducers.
 
-import {updateEvent, updateselectedIndex, saveElement,toggleEditor, setEditMode} from "./Reducer"
+import {updateEvent, updateselectedIndex, saveElement,toggleEditor, setEditMode, onDelete} from "./Reducer"
 
 // Dependencies.
 
@@ -38,6 +38,7 @@ class Elements extends Component {
             selectedIndex: -1
         };
 
+        this.onDelete = onDelete.bind(this);
         this.updateEvent = updateEvent.bind(this);
         this.updateselectedIndex = updateselectedIndex.bind(this)
         this.saveElement = saveElement.bind(this);
@@ -68,7 +69,8 @@ class Elements extends Component {
                 element = {element}
                 onSelectionChange = {this.updateselectedIndex.bind(this)}
                 onPreview = {this.publishDetails.bind(this)} 
-                onExport = {this.onExport.bind(this)}/>
+                onExport = {this.onExport.bind(this)}
+                onDelete = {this.onDelete.bind(this)}/>
         );
 
     
