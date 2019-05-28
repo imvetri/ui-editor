@@ -22,6 +22,10 @@ class Element extends Component {
         this.props.onPreview(e);
     }
 
+    deleteElement(e) {
+        this.props.onDelete(e);
+    }
+
     render() {
         // Remove this.props.index, instead use this element instance index. Removes duplicate code
         return (
@@ -37,6 +41,9 @@ class Element extends Component {
                     <button 
                         index = {this.props.index}
                         onClick={this.props.onExport}>Export</button>
+                    <button 
+                        index = {this.props.index}
+                        onClick={this.props.onDelete}>Delete</button>
                     <button disabled={this.props.selectedIndex === this.props.index ? "" : "disabled"}>{this.props.selectedIndex === this.props.index ? "Active" : "Inactive"}</button>
                 </li>
             </ div>
