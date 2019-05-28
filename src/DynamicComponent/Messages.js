@@ -1,9 +1,9 @@
 import MessagesComponent from "../MessagesComponent";
 
-function getMessages () {
+function getMessages (message) {
     let messages = [{
         type: "info",
-        text: "INFO: Preview is not working because preview is not clicked. "
+        text: `INFO: Preview is not working because ${message}`
     }]
     return (
         <MessagesComponent messages={messages} />
