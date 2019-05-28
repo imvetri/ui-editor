@@ -70,6 +70,18 @@ class Events extends Component {
             selectedTag: e.currentTarget.value
         })
     }
+
+    deleteEvent(index){
+
+        // Get current component.
+        let element = JSON.parse(JSON.stringify(this.state.element));
+
+        // Remove the event to be deleted.
+        element.events.splice(index,1);
+
+        // Update elements with new events.
+        this.props.onEventsUpdate(element.events);
+    }
     render() {
         const element = this.props.element;
         if(this.state.elements.length==0) {
@@ -93,7 +105,7 @@ class Events extends Component {
         const selectedTag = this.state.selectedTag;
 
         const events = element.events
-                                .map((event,index)=><Event key={index} index={index} event={event} selectedTagID={selectedTag} onSave={this.updateEvent.bind(this)}/>);
+                                .map((event,index)=><Event key={index} index={index} event={event} selectedTagID={selectedTag} onSave={this.updateEvent.bind(this)} deleteEvent={this.deleteEvent.bind(this)}/>);
         const eventsOfSelectedTag = events.filter(event=>event.props.event.id===this.state.selectedTag)
 
         let nodeTree = getNodeTree(element.markup, element.style, element.state, element.events);
