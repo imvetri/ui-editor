@@ -1,7 +1,5 @@
 // Dependencies.
 
-import {convertToJson} from "../utilities/convert-to-json";
-
 export function updateselectedIndex (e) {
     // Find the element from state that matches the currently selected element.
     let selectedIndex = Number(e.target.getAttribute("index"));

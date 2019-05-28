@@ -4,10 +4,6 @@ import React, { Component } from 'react';
 
 import style from "./Style.css";
 
-// Dependencies.
-
-import {updateselectedIndex} from "./Reducer";
-
 class Element extends Component {
     constructor(props) {
         super(props);
