@@ -35,7 +35,7 @@ class DynamicComponent extends Component {
 
         let transpilationResult = transpileJSX(this.markup, this.style, this.state, this.events, this.component.name);
         if(transpilationResult.error !== undefined){
-            return (getMessages())
+            return (getMessages(transpilationResult.error))
         }
         else {
             return (
