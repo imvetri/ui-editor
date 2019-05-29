@@ -1,7 +1,5 @@
 // Dependencies.
 
-import {convertToJson} from "../utilities/convert-to-json";
-
 export function updateselectedIndex (e) {
     // Find the element from state that matches the currently selected element.
     let selectedIndex = Number(e.target.getAttribute("index"));
@@ -77,7 +75,27 @@ export function updateEvent (events) {
         elements: newElements
     });
 
-    localStorage.setItem("ui-editor", JSON.stringify(this.state.elements));
+    localStorage.setItem("ui-editor", JSON.stringify(newElements));
+}
+
+export function onDelete(e) {
+    
+    // Get all the elements
+    let elements = Array.from(this.state.elements);
+    
+    // Find the index of element to be deleted.
+    let index = Number(e.target.getAttribute("index"));
+
+    // Remove the element from the list
+    elements.splice(index,1);
+
+    // Update the state with new elements.
+    this.setState({
+        elements: elements
+    })
+
+    // Persist the changes.
+    localStorage.setItem("ui-editor", JSON.stringify(elements));
 }
 
 export function toggleEditor () {
