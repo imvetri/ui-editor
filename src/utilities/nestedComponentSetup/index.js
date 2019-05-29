@@ -10,10 +10,6 @@ export function checkNestedComponents( markup) {
 function saveToWindow( component ) {
     let randomKey = component.id*(~~(Math.random()*10));
     window[component.name] = <DynamicComponent key={randomKey} component={component}/>
-    
-    // un comment next line, events will show nested component's events
-    // window[component.name] = transpileJSX(component.markup, component.style, component.state, component.events).result;
-
 }
 
 function saveComponentsToWindow( nestedComponents){

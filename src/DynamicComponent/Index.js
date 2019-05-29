@@ -5,7 +5,7 @@ import ReactDOM from "react-dom";
 
 import { transpileJSX } from "../utilities/jsxTranspiler";
 import { codeModifier } from "../utilities/codeModifier";
-import { prepareMarkup } from "../utilities/codeGenerator/prepareMarkup";
+import { prepareMarkup } from "../utilities/prepareMarkup";
 
 import style from "./style.css";
 import getMessages from "./Messages";
@@ -35,7 +35,7 @@ class DynamicComponent extends Component {
 
         let transpilationResult = transpileJSX(this.markup, this.style, this.state, this.events, this.component.name);
         if(transpilationResult.error !== undefined){
-            return (getMessages())
+            return (getMessages(transpilationResult.error))
         }
         else {
             return (
