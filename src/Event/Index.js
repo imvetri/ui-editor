@@ -50,6 +50,10 @@ class Event extends Component {
         })
     }
 
+    deleteEvent(){
+        this.props.deleteEvent(this.props.index);
+    }
+
     render() {
 
         if (this.props.selectedTagID === undefined) {
@@ -70,6 +74,7 @@ class Event extends Component {
                     </label>
                     {publishName}
                     <button onClick={this.publishEvent.bind(this)} id="saveEvent">Save</button>
+                    <button onClick={this.deleteEvent.bind(this)} id="deleteEvent">Delete</button>
                 </div>
             </div>
         );

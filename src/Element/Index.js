@@ -4,10 +4,6 @@ import React, { Component } from 'react';
 
 import style from "./Style.css";
 
-// Dependencies.
-
-import {updateselectedIndex} from "./Reducer";
-
 class Element extends Component {
     constructor(props) {
         super(props);
@@ -20,6 +16,10 @@ class Element extends Component {
 
     previewElement(e) {
         this.props.onPreview(e);
+    }
+
+    deleteElement(e) {
+        this.props.onDelete(e);
     }
 
     render() {
@@ -37,6 +37,9 @@ class Element extends Component {
                     <button 
                         index = {this.props.index}
                         onClick={this.props.onExport}>Export</button>
+                    <button 
+                        index = {this.props.index}
+                        onClick={this.props.onDelete}>Delete</button>
                     <button disabled={this.props.selectedIndex === this.props.index ? "" : "disabled"}>{this.props.selectedIndex === this.props.index ? "Active" : "Inactive"}</button>
                 </li>
             </ div>
