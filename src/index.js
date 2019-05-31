@@ -40,9 +40,12 @@ class Index extends Component {
 
     render(){
         return (
-            <div className={style.showBackground}>
-                <Elements createMode={false} onPreview={this.updatePreview.bind(this)}/>
-                <Preview component={this.state.previewComponent}/>
+            <div>
+                <h3>Ui-Editor</h3>
+                <div className={style.showBackground}>
+                    <Elements createMode={false} onPreview={this.updatePreview.bind(this)}/>
+                    <Preview component={this.state.previewComponent}/>
+                </div>
             </div>
         );
     }
