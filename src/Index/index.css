@@ -1,6 +1,6 @@
 .showBackground{
     display:flex;
-    height: 100vh;
+    height: 95vh;
 }
 
 body { 
@@ -19,18 +19,6 @@ li , label, p {
 
 h4, h5, h6 {
     border-bottom: 1px solid #333333;
-}
-
-h4 {
-    font-size: 20px;
-    padding: 4px 4px 4px 5px;
-
-}
-
-h5 {
-    font-size: 12px;
-    padding: 4px 4px 4px 5px;
-
 }
 
 input, textarea { 
