@@ -12,22 +12,19 @@ function saveToWindow( component ) {
     window[component.name] = <DynamicComponent key={randomKey} component={component}/>
 }
 
-function saveComponentsToWindow( nestedComponents){
+export function saveComponentsToWindow( nestedComponents){
     // Transpile them and make them global.
     nestedComponents.forEach(saveToWindow);
 }
 
-export function availNestedComponent ( element ) {
-
+export function getNestedComponents (markup) {
     // Should be able to detect nested component.
 
     let components= JSON.parse(localStorage.getItem("ui-editor"));
-
-    if(checkNestedComponents(element.markup)){
+    let nestedComponents = [];
+    if(checkNestedComponents(markup)){
         // find all the nested components from the markup.
-        let nestedComponents = components.filter(component=> element.markup.includes(component.name));
-        
-        saveComponentsToWindow(nestedComponents);
+        nestedComponents = components.filter(component=> markup.includes(component.name));
     }
-
+    return nestedComponents;
 }
