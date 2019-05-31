@@ -84,6 +84,8 @@ class Events extends Component {
     }
     render() {
         const element = this.props.element;
+
+        // Report if no component is created.
         if(this.state.elements.length==0) {
             return (
                 <div className={style.events}>
@@ -92,6 +94,8 @@ class Events extends Component {
                 </div>
             );
         }
+
+        // Report if no component is selected.
         if(element.name===undefined && this.state.elements.length!=0){
             return (
                 <div className={style.events}>
@@ -100,6 +104,7 @@ class Events extends Component {
                 </div>
             )
         }
+
         // Check if the component has nested components, make it available globally for preview.
         availNestedComponent(element);
         const selectedTag = this.state.selectedTag;
@@ -110,10 +115,12 @@ class Events extends Component {
 
         let nodeTree = getNodeTree(element.markup, element.style, element.state, element.events);
 
+        // Report error.
         if(nodeTree.error !== undefined){
             return getMessages(nodeTree.error);
         }
 
+        // Report error if component is not 
         if(nodeTree.result === undefined && this.state.elements.length!=0) {
             return (
                 <div className={style.events}>
