@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
 // Dependencies.
-import { availNestedComponent, checkNestedComponents } from "../utilities/nestedComponentSetup";
+import { saveComponentsToWindow, getNestedComponents } from "../utilities/nestedComponentSetup";
 
 import style from "./Style.css";
 import getHelp from "./Help";
@@ -105,8 +105,15 @@ class Events extends Component {
             )
         }
 
+        let nestedComponents = getNestedComponents(element.markup);
+
         // Check if the component has nested components, make it available globally for preview.
-        availNestedComponent(element);
+        if(nestedComponents.length>0){
+            saveComponentsToWindow(nestedComponents);
+
+            // Render nestedComponent in nodes.
+            // If selected, show in a drop down list of published events.
+        }
         const selectedTag = this.state.selectedTag;
 
         const events = element.events
@@ -128,12 +135,6 @@ class Events extends Component {
                     <p>Current component does not have a valid markup or no element is selected</p>
                 </div>
             );
-        }
-
-        if(checkNestedComponents(element.markup)){
-            // Render nestedComponent in nodes.
-            // If selected, show in a drop down list of published events.
-
         }
 
         return (
