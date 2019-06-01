@@ -42,6 +42,7 @@ class Index extends Component {
         return (
             <div>
                 <h3>Ui-Editor</h3>
+                <p>For more details, visit <a href="https://github.com/imvetri/ui-editor">Github</a></p>
                 <div className={style.showBackground}>
                     <Elements createMode={false} onPreview={this.updatePreview.bind(this)}/>
                     <Preview component={this.state.previewComponent}/>
