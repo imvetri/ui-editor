@@ -1,7 +1,6 @@
 # What is ui-editor?
 
-ui-editor is user interfaces builder for web. It is actively being maintained. [Live demo](https://imvetri.github.io/ui-editor/), look into tutorials section for step by step instructions.
-
+ui-editor is user interfaces builder for web. It is actively being maintained. . If you want to get started right away there is a [demo](https://imvetri.github.io/ui-editor/) and [a getting started page](https://github.com/imvetri/ui-editor/wiki)
 ![Building component with events](https://raw.githubusercontent.com/imvetri/ui-editor/master/gifs/Component_responding_to_events.gif)
 
 ## Applications
