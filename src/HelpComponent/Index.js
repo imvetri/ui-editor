@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 
 import style from "./style.css";
-
+import {close, open} from "./Reducer";
 class HelpComponent extends Component {
     constructor(props) {
         super(props);
@@ -12,13 +12,6 @@ class HelpComponent extends Component {
         }
     }
 
-    close() {
-        this.setState({ showMessage: false });
-    }
-
-    open() {
-        this.setState({ showMessage: true });
-    }
 
     render() {
 
