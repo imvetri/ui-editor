@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 
 import style from "./style.css";
-
+import {close, open} from "./Reducer";
 class HelpComponent extends Component {
     constructor(props) {
         super(props);
@@ -12,26 +12,19 @@ class HelpComponent extends Component {
         }
     }
 
-    close() {
-        this.setState({ showMessage: false });
-    }
-
-    open() {
-        this.setState({ showMessage: true });
-    }
 
     render() {
 
         let message =
             <div>
-                <button onClick={this.close.bind(this)}>Close</button>
+                <button onClick={close.bind(this)}>Close</button>
                 <code>{this.props.text}</code>
             </div>;
 
         return (
             <div>
                 <div>
-                    {this.state.showMessage?"":<button onClick={this.open.bind(this)}>Info !</button>}
+                    {this.state.showMessage?"":<button onClick={open.bind(this)}>Info !</button>}
                 </div>
                 {this.state.showMessage? message: ""}
             </div>
