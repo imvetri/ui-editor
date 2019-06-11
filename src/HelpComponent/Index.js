@@ -17,14 +17,14 @@ class HelpComponent extends Component {
 
         let message =
             <div>
-                <button onClick={this.close.bind(this)}>Close</button>
+                <button onClick={close.bind(this)}>Close</button>
                 <code>{this.props.text}</code>
             </div>;
 
         return (
             <div>
                 <div>
-                    {this.state.showMessage?"":<button onClick={this.open.bind(this)}>Info !</button>}
+                    {this.state.showMessage?"":<button onClick={open.bind(this)}>Info !</button>}
                 </div>
                 {this.state.showMessage? message: ""}
             </div>
