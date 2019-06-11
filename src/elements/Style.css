@@ -17,5 +17,5 @@ textarea {
 
 .elements{
     display: flex;
-    height: 95vh;
+    align-items: stretch;
 }
