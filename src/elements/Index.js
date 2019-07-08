@@ -33,6 +33,7 @@ class Elements extends Component {
                 events: []
             },
             show: false,
+            showConfigurator: false,
             elements: JSON.parse(localStorage.getItem("ui-editor")) || [],
             selectedState: [],
             editMode: false,
@@ -45,6 +46,13 @@ class Elements extends Component {
         this.saveElement = saveElement.bind(this);
         this.toggleEditor = toggleEditor.bind(this);
         this.setEditMode = setEditMode.bind(this);
+    }
+
+    openConfigurator( childComponents ){
+        this.setState({
+            showConfigurator: true,
+            childComponents: childComponents
+        })
     }
 
     publishDetails() {
@@ -103,6 +111,7 @@ class Elements extends Component {
                     element = {selectedElement}
                     onSave = {this.saveElement}
                     show = {this.state.show}
+                    onChildComponentDetected = {this.openConfigurator}
                     />
                 <NestedComponentConfigurator />
                 {messagesComponent}
