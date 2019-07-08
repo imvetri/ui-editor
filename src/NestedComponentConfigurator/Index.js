@@ -5,7 +5,7 @@ import ReactDOM from "react-dom";
 
 import style from "./Style.css"
 
-class NestedComponentConfig extends Component {
+class NestedComponentConfigurator extends Component {
     constructor(props) {
         super(props);
         this.state = {}
@@ -13,12 +13,13 @@ class NestedComponentConfig extends Component {
 
     render() {
 
+        debugger;
         return (
             <div className={style.event}>
-                <input type="text" value={this.state.name} title="Event Name"/>
+                {this.props.childComponents.map(component=><input type="text" value={component}/>)}
             </div>
         );
     }
 }
 
-export default NestedComponentConfig;
+export default NestedComponentConfigurator;
