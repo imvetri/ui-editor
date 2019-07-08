@@ -33,7 +33,7 @@ class Elements extends Component {
                 events: []
             },
             show: false,
-            showConfigurator: false,
+            childComponents:[],
             elements: JSON.parse(localStorage.getItem("ui-editor")) || [],
             selectedState: [],
             editMode: false,
@@ -111,9 +111,10 @@ class Elements extends Component {
                     element = {selectedElement}
                     onSave = {this.saveElement}
                     show = {this.state.show}
-                    onChildComponentDetected = {this.openConfigurator}
+                    onChildComponentDetected = {this.openConfigurator.bind(this)}
                     />
-                <NestedComponentConfigurator />
+                {this.state.childComponents.length>0 ?<NestedComponentConfigurator childComponents={this.state.childComponents}/> : null}
+
                 {messagesComponent}
             </div>
         );
