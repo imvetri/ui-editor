@@ -5,7 +5,7 @@ import ReactDOM from "react-dom";
 
 import style from "./Style.css"
 
-class NestedComponentConfig extends Component {
+class NestedComponentConfigurator extends Component {
     constructor(props) {
         super(props);
         this.state = {}
@@ -21,4 +21,4 @@ class NestedComponentConfig extends Component {
     }
 }
 
-export default NestedComponentConfig;
+export default NestedComponentConfigurator;
