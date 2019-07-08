@@ -9,6 +9,7 @@ import style from "./Style.css";
 import Editor from "../Editor";
 import Events from "../Events";
 import Element from "../Element";
+import NestedComponentConfigurator from "../NestedComponentConfigurator";
 import getMessages from "./Messages";
 
 // Reducers.
@@ -103,6 +104,7 @@ class Elements extends Component {
                     onSave = {this.saveElement}
                     show = {this.state.show}
                     />
+                <NestedComponentConfigurator />
                 {messagesComponent}
             </div>
         );
