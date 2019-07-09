@@ -28,6 +28,15 @@ class Editor extends Component {
         });
     }
 
+    openConfigurator () {
+        
+        // onMouseOut from markup.
+        // Take the selected text.
+        console.log(window.getSelection().toString());
+
+        // Open configurator if a valid nested component is selected.
+    }
+
     render() {
 
         let element = this.state;
@@ -43,7 +52,7 @@ class Editor extends Component {
                     </div>
                     <div>
                         <h5>HTML: </h5><p>Tags should contain <code>id</code> attribute, if you would like to bind events to it.</p>
-                        <textarea value={element.markup} onChange={updateMarkup.bind(this)} id="elementMarkup"/>
+                        <textarea value={element.markup} onMouseOut={this.openConfigurator.bind(this)} onChange={updateMarkup.bind(this)} id="elementMarkup"/>
                     </div>
                     <div>
                         <h5>CSS:</h5><p>Add a <code>className</code> to the markup, write a class here</p>
