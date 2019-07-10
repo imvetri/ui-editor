@@ -8,9 +8,6 @@
 }
 
 .event { 
-    padding-left: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
     border-top: 1px solid #333333;
     background: rgb(64, 64, 64);
 }
