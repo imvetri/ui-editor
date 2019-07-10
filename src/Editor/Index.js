@@ -32,8 +32,19 @@ class Editor extends Component {
         
         // onMouseOut from markup.
         // Take the selected text.
-        console.log(window.getSelection().toString());
+        let selectedText = window.getSelection().toString();
 
+        // Read components details
+        let components = JSON.parse(localStorage.getItem("ui-editor"));
+
+        // Find the component that matches selectedText
+        let targetComponent = components.find(component=>component.name.includes(selectedText));
+
+        // Check if selected text exist in any of component's name
+        if(targetComponent){
+            debugger;
+            // this.openConfigurator
+        }
         // Open configurator if a valid nested component is selected.
     }
 
