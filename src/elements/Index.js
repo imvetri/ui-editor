@@ -9,7 +9,6 @@ import style from "./Style.css";
 import Editor from "../Editor";
 import Events from "../Events";
 import Element from "../Element";
-import NestedComponentConfigurator from "../NestedComponentConfigurator";
 import getMessages from "./Messages";
 
 // Reducers.
@@ -33,7 +32,6 @@ class Elements extends Component {
                 events: []
             },
             show: false,
-            childComponents:[],
             elements: JSON.parse(localStorage.getItem("ui-editor")) || [],
             selectedState: [],
             editMode: false,
@@ -105,8 +103,6 @@ class Elements extends Component {
                     onSave = {this.saveElement}
                     show = {this.state.show}
                     />
-                {this.state.childComponents.length>0 ?<NestedComponentConfigurator childComponents={this.state.childComponents}/> : null}
-
                 {messagesComponent}
             </div>
         );
