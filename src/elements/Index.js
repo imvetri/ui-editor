@@ -48,13 +48,6 @@ class Elements extends Component {
         this.setEditMode = setEditMode.bind(this);
     }
 
-    openConfigurator( childComponents ){
-        this.setState({
-            showConfigurator: true,
-            childComponents: childComponents
-        })
-    }
-
     publishDetails() {
         
         // Warning: Object.assign doesnt dupe the original object. It overrides only the values.
@@ -111,7 +104,6 @@ class Elements extends Component {
                     element = {selectedElement}
                     onSave = {this.saveElement}
                     show = {this.state.show}
-                    onChildComponentDetected = {this.openConfigurator.bind(this)}
                     />
                 {this.state.childComponents.length>0 ?<NestedComponentConfigurator childComponents={this.state.childComponents}/> : null}
 
