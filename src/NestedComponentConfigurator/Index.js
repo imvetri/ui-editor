@@ -21,8 +21,6 @@ class NestedComponentConfigurator extends Component {
 
     render() {
 
-        let components= JSON.parse(localStorage.getItem("ui-editor"));
-
         return (
             <div className={style.event}>
                 {this.props.component.name}
@@ -43,6 +41,7 @@ class NestedComponentConfigurator extends Component {
 
                     <label>
                         List of publishable events of the component.
+                        {this.props.component.events.filter(event=>event.publishable).map(event=><li>{event.publishName}</li>)}
                     </label>
                 </section>
             </div>
