@@ -35,6 +35,7 @@ export function saveElement (element) {
             events: [],
             state: element.state,
             style: element.style,
+            children: [],
             id: Math.ceil(Math.random()*1000)
         };
 
