@@ -23,11 +23,39 @@ class NestedComponentConfigurator extends Component {
         })
     }
 
+    // Save the config details to the parent.children.childName.config
+    saveDetails () {
+        let config = {
+            showCondition: this.state.showCondition,
+            hideCondition: this.state.hideCondition
+        }
+
+        // Fetch child name and the parent from the props.
+        let childName = this.props.child.name;
+        let parent = this.props.parent;
+
+        // Update the parent with child config.
+        parent.children.push({
+            childName: config
+        })
+
+        // Read parent compnent from loca storalge.
+        let components = JSON.parse(localStorage.getItem("ui-editor"));
+
+        let parentComponent = components.find(component=>component.name===parent.name);
+        parentComponent.children = parent.children;
+
+        // Write to local storage.
+        localStorage.setItem("ui-editor", JSON.stringify(components));
+
+
+    }
+
     render() {
 
         return (
             <div className={style.event}>
-                {this.props.component.name}
+                {this.props.child.name}
                 <section>
                     <div>
                         <label>
@@ -48,6 +76,7 @@ class NestedComponentConfigurator extends Component {
                         {this.props.component.events.filter(event=>event.publishable).map(event=><li>{event.publishName}</li>)}
                     </label>
                 </section>
+                <button onClick={this.saveDetails.bind(this)}>Save</button>
             </div>
         );
     }
