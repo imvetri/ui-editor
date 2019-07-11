@@ -11,12 +11,16 @@ class NestedComponentConfigurator extends Component {
         this.state = {}
     }
 
-    updateShowCondition () {
-
+    updateShowCondition (event) {
+        this.setState({
+            showCondition: event.currentTarget.value
+        })
     }
 
-    updateHideCondition () {
-
+    updateHideCondition (event) {
+        this.setState({
+            hideCondition: event.currentTarget.value
+        })
     }
 
     render() {
@@ -28,14 +32,14 @@ class NestedComponentConfigurator extends Component {
                     <div>
                         <label>
                         Show.
-                        <input type="text" onChange={this.updateShowCondition.bind(this)} value={this.state.showCondition} placeholder="Enter show condition name" title="Ex: state.title==='hey'; expression should eval to boolean"/>
+                        <textarea onChange={this.updateShowCondition.bind(this)} value={this.state.showCondition} placeholder="Enter show condition name" title="Ex: state.title==='hey'; expression should eval to boolean"/>
                         </label>
                     </div>
 
                     <div>                    
                         <label>
                             Hide.
-                            <input type="text" onChange={this.updateHideCondition.bind(this)} value={this.state.hideCondition} placeholder="EnExisting Eventster hide condition name" title="Ex: state.title==='hello'; expression should eval to boolean"/>
+                            <textarea onChange={this.updateHideCondition.bind(this)} value={this.state.hideCondition} placeholder="EnExisting Eventster hide condition name" title="Ex: state.title==='hello'; expression should eval to boolean"/>
                         </label>
                     </div>
 
