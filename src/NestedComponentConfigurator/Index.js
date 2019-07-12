@@ -13,6 +13,8 @@ class NestedComponentConfigurator extends Component {
 
         let parent = this.props.parent;
         let updatedParent = JSON.parse(localStorage.getItem("ui-editor")).find(component=>component.name.includes(this.props.parent.name));
+        updatedParent.children[this.props.child.name] = updatedParent.children[this.props.child.name] || {};
+        updatedParent.children[this.props.child.name].config = updatedParent.children[this.props.child.name].config || {};
         this.state.showCondition = updatedParent.children[this.props.child.name].config.showCondition;
         this.state.hideCondition = updatedParent.children[this.props.child.name].config.hideCondition;
     }
