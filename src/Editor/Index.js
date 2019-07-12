@@ -39,6 +39,9 @@ class Editor extends Component {
         // Take the selected text.
         let selectedText = window.getSelection().toString();
 
+        if(selectedText === "" ){
+            return;
+        }
         // Read components details
         let components = JSON.parse(localStorage.getItem("ui-editor"));
 
