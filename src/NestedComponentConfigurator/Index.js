@@ -8,7 +8,13 @@ import style from "./Style.css"
 class NestedComponentConfigurator extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {};
+        // Get the config from local storage for the parent component.
+
+        let parent = this.props.parent;
+        let updatedParent = JSON.parse(localStorage.getItem("ui-editor")).find(component=>component.name.includes(this.props.parent.name));
+        this.state.showCondition = updatedParent.children[this.props.child.name].config.showCondition;
+        this.state.hideCondition = updatedParent.children[this.props.child.name].config.hideCondition;
     }
 
     updateShowCondition (event) {
@@ -35,9 +41,9 @@ class NestedComponentConfigurator extends Component {
         let parent = this.props.parent;
 
         // Update the parent with child config.
-        parent.children.push({
-            childName: config
-        })
+        parent.children[childName] = parent.children[childName] || {};
+
+        parent.children[childName].config = config;
 
         // Read parent compnent from loca storalge.
         let components = JSON.parse(localStorage.getItem("ui-editor"));
@@ -48,7 +54,7 @@ class NestedComponentConfigurator extends Component {
         // Write to local storage.
         localStorage.setItem("ui-editor", JSON.stringify(components));
 
-
+        
     }
 
     render() {
@@ -73,7 +79,7 @@ class NestedComponentConfigurator extends Component {
 
                     <label>
                         List of publishable events of the component.
-                        {this.props.component.events.filter(event=>event.publishable).map(event=><li>{event.publishName}</li>)}
+                        {this.props.child.events.filter(event=>event.publishable).map(event=><li>{event.publishName}</li>)}
                     </label>
                 </section>
                 <button onClick={this.saveDetails.bind(this)}>Save</button>

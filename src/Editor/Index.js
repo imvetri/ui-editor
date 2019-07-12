@@ -30,22 +30,27 @@ class Editor extends Component {
             style: this.state.style,
             state: this.state.state,
             events: [],
-            children: []
+            children: {}
         });
     }
 
     openConfigurator () {
-        
         // onMouseOut from markup.
         // Take the selected text.
         let selectedText = window.getSelection().toString();
 
+        if(selectedText === "" ){
+            return;
+        }
         // Read components details
         let components = JSON.parse(localStorage.getItem("ui-editor"));
 
         // Find the component that matches selectedText
         let child = components.find(component=>component.name.includes(selectedText));
 
+        // Find the parent from the local storage. Because that has  the updated details with child component config.
+        let parent = components.find(component=>component.name.includes(this.state.name));
+        
         // Check if selected text exist in any of component's name
         if(child){
             // this.openConfigurator
@@ -78,7 +83,7 @@ class Editor extends Component {
                     <div>
                         <h5>HTML: </h5><p>Tags should contain <code>id</code> attribute, if you would like to bind events to it.</p>
                         <textarea value={element.markup} onMouseOut={this.openConfigurator.bind(this)} onChange={updateMarkup.bind(this)} id="elementMarkup"/>
-                        {this.state.childComponent ?<NestedComponentConfigurator child={this.state.child} parent={this.state.element}/> : null}
+                        {this.state.child ?<NestedComponentConfigurator child={this.state.child} parent={this.props.element}/> : null}
                     </div>
                     <div>
                         <h5>CSS:</h5><p>Add a <code>className</code> to the markup, write a class here</p>
