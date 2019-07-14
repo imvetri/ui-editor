@@ -13,5 +13,5 @@ export function transpileJSX(markup, style, state, events, name) {
 
     createStylesheet(style);
 
-    return getNodeTree(markup, style, state, events);
+    return getNodeTree.call(this,markup, style, state, events);
 }
