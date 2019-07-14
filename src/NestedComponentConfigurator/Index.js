@@ -16,7 +16,6 @@ class NestedComponentConfigurator extends Component {
         updatedParent.children[this.props.child.name] = updatedParent.children[this.props.child.name] || {};
         updatedParent.children[this.props.child.name].config = updatedParent.children[this.props.child.name].config || {};
         this.state.showCondition = updatedParent.children[this.props.child.name].config.showCondition;
-        this.state.hideCondition = updatedParent.children[this.props.child.name].config.hideCondition;
     }
 
     updateShowCondition (event) {
@@ -25,17 +24,10 @@ class NestedComponentConfigurator extends Component {
         })
     }
 
-    updateHideCondition (event) {
-        this.setState({
-            hideCondition: event.currentTarget.value
-        })
-    }
-
     // Save the config details to the parent.children.childName.config
     saveDetails () {
         let config = {
-            showCondition: this.state.showCondition,
-            hideCondition: this.state.hideCondition
+            showCondition: this.state.showCondition
         }
 
         // Fetch child name and the parent from the props.
@@ -69,13 +61,6 @@ class NestedComponentConfigurator extends Component {
                         <label>
                         Show.
                         <textarea onChange={this.updateShowCondition.bind(this)} value={this.state.showCondition} placeholder="Enter show condition name" title="Ex: state.title==='hey'; expression should eval to boolean"/>
-                        </label>
-                    </div>
-
-                    <div>                    
-                        <label>
-                            Hide.
-                            <textarea onChange={this.updateHideCondition.bind(this)} value={this.state.hideCondition} placeholder="EnExisting Eventster hide condition name" title="Ex: state.title==='hello'; expression should eval to boolean"/>
                         </label>
                     </div>
 
