@@ -4,7 +4,7 @@
 import React, { Component } from 'react';
 
 // Dependencies.
-import NestedComponentConfigurator from "../NestedComponentConfigurator";
+import Configurator from "../Configurator";
 
 // Styles.
 
@@ -12,14 +12,15 @@ import style from "./Style.css";
 import {updateName, updateMarkup, updateStyle, updateState} from "./Reducer";
 
 /**
- * Shows nestedComponentConfigurator on select of valid child component name in the markup and mouseOut from markup
- * Hides nestedComponentConfigurator on mouseLeave from the editor.
+ * Shows Configurator on select of valid child component name in the markup and mouseOut from markup
+ * Hides Configurator on mouseLeave from the editor.
  */
 class Editor extends Component {
     constructor(props) {
         super(props);
         // this.state = {... this.props.element};
         this.state = Object.assign({}, this.props.element);
+        this.state.parent = this.props.element;
         this.state.openConfigurator = false;
     }
 
@@ -30,8 +31,31 @@ class Editor extends Component {
             style: this.state.style,
             state: this.state.state,
             events: [],
-            children: {}
+            children: []
         });
+    }
+
+    getChildConfig(child) {
+        return {   
+                name: child.name,
+                subscribableEvents: child.events.map((event=>{
+                    return {
+                        publishName: event.publishName,
+                        reducer: ""
+                    }
+                }))
+            }
+    }
+
+    initChildDetails(parent, newKid) {
+        let childConfig = parent.children.find(child=>child.name === newKid.name);
+        
+        // Create a child config if it doesnt exist.
+        if(childConfig === undefined){
+            childConfig = this.getChildConfig(newKid);
+            // Push it to parent.
+            parent.children.push(childConfig);
+        }
     }
 
     openConfigurator () {
@@ -50,12 +74,16 @@ class Editor extends Component {
 
         // Find the parent from the local storage. Because that has  the updated details with child component config.
         let parent = components.find(component=>component.name.includes(this.state.name));
-        
+
+        // Initialise parent data with child details.
+        this.initChildDetails(parent, child);
+
         // Check if selected text exist in any of component's name
         if(child){
             // this.openConfigurator
             this.setState({
-                child: child
+                child: child,
+                parent: parent
             })
         }
         // Open configurator if a valid nested component is selected.
@@ -83,8 +111,8 @@ class Editor extends Component {
                     <div>
                         <h5>HTML: </h5><p>Tags should contain <code>id</code> attribute, if you would like to bind events to it.</p>
                         <textarea value={element.markup} onMouseOut={this.openConfigurator.bind(this)} onChange={updateMarkup.bind(this)} id="elementMarkup"/>
-                        {this.state.child ?<NestedComponentConfigurator child={this.state.child} parent={this.props.element}/> : null}
                     </div>
+                    {this.state.child ?<Configurator child={this.state.child} parent={this.state.parent}/> : null}
                     <div>
                         <h5>CSS:</h5><p>Add a <code>className</code> to the markup, write a class here</p>
                         <textarea value={element.style} onChange={updateStyle.bind(this)} />
