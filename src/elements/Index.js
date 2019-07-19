@@ -31,7 +31,6 @@ class Elements extends Component {
                 state: "{ }",
                 events: []
             },
-            show: false,
             elements: JSON.parse(localStorage.getItem("ui-editor")) || [],
             selectedState: [],
             editMode: false,
@@ -101,7 +100,6 @@ class Elements extends Component {
                     key = {this.state.selectedIndex}
                     element = {selectedElement}
                     onSave = {this.saveElement}
-                    show = {this.state.show}
                     />
                 {messagesComponent}
             </div>
