@@ -1,0 +1,8 @@
+.disableEditOverlay {
+    position: absolute;
+    background: brown;
+}
+
+.container {
+    position: relative;
+}
