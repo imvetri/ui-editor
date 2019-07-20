@@ -49,7 +49,6 @@ class Configurator extends Component {
     render() {
 
         // Get the publishable events of selected child. child publishable events === parent subscribed events.
-        debugger;
         let publishableEvents = this.props.parent.children.find(child=>child.name.includes(this.props.child.name)).subscribableEvents;
 
         let props = this.getPropertyContainingProps(this.props.child);

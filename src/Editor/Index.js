@@ -4,8 +4,9 @@
 import React, { Component } from 'react';
 
 // Dependencies.
+//
 import Configurator from "../Configurator";
-
+import ChildComponentReference from "../ChildComponentReference";
 // Styles.
 
 import style from "./Style.css";
@@ -111,6 +112,7 @@ class Editor extends Component {
                     <div>
                         <h5>HTML: </h5><p>Tags should contain <code>id</code> attribute, if you would like to bind events to it.</p>
                         <textarea value={element.markup} onMouseOut={this.openConfigurator.bind(this)} onChange={updateMarkup.bind(this)} id="elementMarkup"/>
+                        {this.state.child ? <ChildComponentReference element={this.state.child}/> :  null}
                     </div>
                     {this.state.child ?<Configurator child={this.state.child} parent={this.state.parent}/> : null}
                     <div>
