@@ -1,6 +1,9 @@
 .disableEditOverlay {
     position: absolute;
     background: brown;
+    top: -100px;
+    left: 400px;
+    z-index: 1;
 }
 
 .container {
