@@ -16,10 +16,20 @@ class Configurator extends Component {
         }
     }
 
-    updateEvent (e) {
+    updateEvent (publishableEvent) {
+        let publishableEvents = this.state.publishableEvents;
+        
+        publishableEvents[publishableEvent.index].publishName = publishableEvent.publishName;
+        publishableEvents[publishableEvent.index].reducer = publishableEvent.reducer;
+        
+        this.props.onChange({
+            subscribableEvents: publishableEvents,
+            properties: this.state.properties
+        });
+
         this.setState({
-            eventName: e.currentTarget.value
-        })
+            subscribableEvents: publishableEvents
+        });
     }
 
     updateProps (property) {
@@ -31,7 +41,7 @@ class Configurator extends Component {
         
         this.props.onChange({
             subscribableEvents: this.state.publishableEvents,
-            properties: this.state.properties
+            properties: properties
         });
 
         this.setState({

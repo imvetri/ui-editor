@@ -38,14 +38,12 @@ class Editor extends Component {
     }
 
     initChildDetails(parent, newKid) {
-        let childConfig = parent.children.find(child=>child.name === newKid.name);
+        let index = parent.children.findIndex(child=>child.name === newKid.name);
         
         // Create a child config if it doesnt exist.
-        if(childConfig === undefined){
-            childConfig = getChildConfig(newKid);
-            // Push it to parent.
-            parent.children.push(childConfig);
-        }
+        let childConfig = getChildConfig(newKid, parent);
+        // Push it to parent.
+        parent.children[index] = childConfig;
     }
 
     openConfigurator () {
@@ -86,9 +84,8 @@ class Editor extends Component {
     }
 
     saveDetails(configuration){
-        let parent = this.state.parent;
         this.setState({
-            parent: parent
+            parent: this.state.parent
         })
 
         writeConfigTolocal(configuration, this.state)
