@@ -8,28 +8,28 @@ class PropConfigurator extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            property: this.props.property ? this.props.property : "",
-            reducer: ""
+            property: this.props.property.property ? this.props.property.property : "",
+            value: this.props.property.value ? this.props.property.value : ""
         }
     }
 
-    updateReducer(e) {
+    updateValue(e) {
         this.setState({
-            reducer: e.target.value
+            value: e.target.value
         })
     }
 
     publishProps() {
         this.props.onSave({
             property: this.state.property,
-            reducer: this.state.reducer,
+            value: this.state.value,
             index: this.props.index
         })
     }
 
     reset(){
         this.setState({
-            reducer: ""
+            value: ""
         })
     }
 
@@ -38,7 +38,7 @@ class PropConfigurator extends Component {
         return (
             <div className={style.event}>
                 <input type="text" value={this.state.property} disabled title="Event published from child. Read only"/>
-                <textarea onChange={this.updateReducer.bind(this)} value={this.state.reducer} placeholder="Enter state reducer" title="Variables allowed to access - childState, state. Please do not ask for event object here. Have your child state any data related to child"/>
+                <textarea onChange={this.updateValue.bind(this)} value={this.state.value} placeholder="Enter value" title="Value can be a literal / object / a function"/>
                 <div>
                     <button onClick={this.reset.bind(this)} title="Resets the code to empty">Reset</button>
                     <button onClick={this.publishProps.bind(this)} >Save</button>
