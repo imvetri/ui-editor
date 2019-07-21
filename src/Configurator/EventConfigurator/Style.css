@@ -28,7 +28,7 @@ label {
     position: absolute;
     background: brown;
     top: 0px;
-    left: -400px;
+    left: -370px;
     z-index: 1;
     pointer-events: none;
     border: 1px solid black;
