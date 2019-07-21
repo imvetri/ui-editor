@@ -8,8 +8,8 @@ class EventConfigurator extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            publishName: this.props.event ? this.props.event.publishName : "",
-            reducer: ""
+            publishName: this.props.event.publishName ? this.props.event.publishName : "",
+            reducer: this.props.event.reducer ? this.props.event.reducer : ""
         }
     }
 
