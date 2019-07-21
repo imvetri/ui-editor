@@ -43,22 +43,51 @@ export function getPropertyContainingProps(obj){
     return props;
 }
 
-export function getChildConfig(child) {
+/**
+ * Merges parentConfig and child config for fresh values.
+ * @param {*} parentConfig  - Parent configuration containing how the child should work. Contains details to pass child configuration.
+ * @param {*} child  - Child element from which the events and props are fetched.
+ */
+function getSubscribableEvents(parentConfig, child) {
+    return child.events.map((event=>{
+        let subscribableEvent = parentConfig.subscribableEvents.find(subscribableEvent=>subscribableEvent.publishName.includes(event.publishName));
+        if(subscribableEvent === undefined){
+            return {
+                publishName: event.publishName,
+                reducer: "",
+                previousReducer: event.reducer
+            }
+        }
+        return {
+            publishName: event.publishName,
+            reducer: subscribableEvent.reducer? subscribableEvent.reducer: "" ,
+            previousReducer: event.reducer
+        }
+    }))
+}
+
+/**
+ * Merges parentproperty configuration using child inout.
+ * @param {*} parent 
+ * @param {*} child 
+ */
+function mergeParentWithChildProps(parent, child){
+    let parentConfig = parent.children.find(kid=>kid.name.includes(child.name))
+    return getPropertyContainingProps(child).map(prop=>{
+        let parentConfigProp = parentConfig.properties.find(property=>property.property.includes(prop))
+        return {
+            property:prop,
+            value:parentConfigProp.value? parentConfigProp.value: ""
+        }
+    })
+}
+
+export function getChildConfig(child, parent) {
+    let parentConfig = parent.children.find(kid=>kid.name.includes(child.name))
     return {   
             name: child.name,
-            subscribableEvents: child.events.map((event=>{
-                return {
-                    publishName: event.publishName,
-                    reducer: "",
-                    previousReducer: event.reducer
-                }
-            })),
-            properties: getPropertyContainingProps(child).map(prop=>{
-                return {
-                    property:prop,
-                    value:""
-                }
-            })
+            subscribableEvents: getSubscribableEvents(parentConfig, child),
+            properties: mergeParentWithChildProps(parent,child)
         }
 }
 
