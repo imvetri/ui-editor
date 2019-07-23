@@ -12,6 +12,7 @@ import ChildComponentReference from "../ChildComponentReference";
 import style from "./Style.css";
 import {updateName, updateMarkup, updateStyle, updateState} from "./Reducer";
 
+import {getChildConfig, writeConfigTolocal} from "./Reducer";
 /**
  * Shows Configurator on select of valid child component name in the markup and mouseOut from markup
  * Hides Configurator on mouseLeave from the editor.
@@ -36,27 +37,13 @@ class Editor extends Component {
         });
     }
 
-    getChildConfig(child) {
-        return {   
-                name: child.name,
-                subscribableEvents: child.events.map((event=>{
-                    return {
-                        publishName: event.publishName,
-                        reducer: ""
-                    }
-                }))
-            }
-    }
-
     initChildDetails(parent, newKid) {
-        let childConfig = parent.children.find(child=>child.name === newKid.name);
+        let index = parent.children.findIndex(child=>child.name === newKid.name);
         
         // Create a child config if it doesnt exist.
-        if(childConfig === undefined){
-            childConfig = this.getChildConfig(newKid);
-            // Push it to parent.
-            parent.children.push(childConfig);
-        }
+        let childConfig = getChildConfig(newKid, parent);
+        // Push it to parent.
+        parent.children[index] = childConfig;
     }
 
     openConfigurator () {
@@ -96,6 +83,14 @@ class Editor extends Component {
         })
     }
 
+    saveDetails(configuration){
+        this.setState({
+            parent: this.state.parent
+        })
+
+        writeConfigTolocal(configuration, this.state)
+    }
+
     render() {
 
         let element = this.state;
@@ -114,7 +109,7 @@ class Editor extends Component {
                         <textarea value={element.markup} onMouseOut={this.openConfigurator.bind(this)} onChange={updateMarkup.bind(this)} id="elementMarkup"/>
                         {this.state.child ? <ChildComponentReference element={this.state.child}/> :  null}
                     </div>
-                    {this.state.child ?<Configurator child={this.state.child} parent={this.state.parent}/> : null}
+                    {this.state.child ?<Configurator child={this.state.child} parent={this.state.parent} onChange={this.saveDetails.bind(this)}/> : null}
                     <div>
                         <h5>CSS:</h5><p>Add a <code>className</code> to the markup, write a class here</p>
                         <textarea value={element.style} onChange={updateStyle.bind(this)} />

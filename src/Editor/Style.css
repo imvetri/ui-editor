@@ -5,9 +5,6 @@
 .override {
     border:1px solid black;
     padding: 5px;
-    position: relative;
-    top: -50px;
-    left: 420px
 }
 
 .editor > div{

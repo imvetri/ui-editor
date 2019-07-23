@@ -14,12 +14,12 @@ class PropsConfigurator extends Component {
         this.state = Object.assign({}, this.props);
     }
 
-    updateProp(event){
-        this.props.onPropsUpdate(event);
+    updateProp(propValue){
+        this.props.onPropsUpdate(propValue);
     }
 
     render() {
-        let existingEvents = this.props.possibleProps.map((property,index)=> <PropConfigurator property={property} onSave={this.updateProp.bind(this)} key={index} index={index}/>);
+        let existingEvents = this.props.properties.map((property,index)=> <PropConfigurator property={property} onSave={this.updateProp.bind(this)} key={index} index={index}/>);
         return (
             <div className={style.events}>
                 <div className={style.existingEvents}>
