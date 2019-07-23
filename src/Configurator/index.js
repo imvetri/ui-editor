@@ -11,64 +11,56 @@ class Configurator extends Component {
     constructor(props) {
         super(props);
         this.state={
-            renderList:""
+            publishableEvents : this.props.parent.children.find(child=>child.name.includes(this.props.child.name)).subscribableEvents,
+            properties : this.props.parent.children.find(child=>child.name.includes(this.props.child.name)).properties
         }
     }
 
-    updateRenderList (e) {
+    updateEvent (publishableEvent) {
+        let publishableEvents = this.state.publishableEvents;
+        
+        publishableEvents[publishableEvent.index].publishName = publishableEvent.publishName;
+        publishableEvents[publishableEvent.index].reducer = publishableEvent.reducer;
+        
+        this.props.onChange({
+            subscribableEvents: publishableEvents,
+            properties: this.state.properties
+        });
+
         this.setState({
-            renderList: e.currentTarget.value
-        })
+            subscribableEvents: publishableEvents
+        });
     }
 
-    updateEvent (e) {
+    updateProps (property) {
+
+        let properties = this.state.properties;
+        
+        properties[property.index].property = property.property;
+        properties[property.index].value = property.value;
+        
+        this.props.onChange({
+            subscribableEvents: this.state.publishableEvents,
+            properties: properties
+        });
+
         this.setState({
-            eventName: e.currentTarget.value
-        })
-    }
-
-    getPropertyContainingProps(obj){
-        // Fetch list of props from child.
-        let props = [];
-        let state;
-        try{
-            state = JSON.parse(obj.state);
-        }
-        catch(e){
-            console.error("Error: Child state is an invalid json, try an online validator on below string")
-            console.log(child.state);
-        }
-        for(let property in state){
-            if(state[property].includes("prop")){
-                props.push(property);
-            }
-        }
-        return props;
+            properties
+        });
     }
 
     render() {
 
-        // Get the publishable events of selected child. child publishable events === parent subscribed events.
-        let publishableEvents = this.props.parent.children.find(child=>child.name.includes(this.props.child.name)).subscribableEvents;
-
-        let props = this.getPropertyContainingProps(this.props.child);
-
         return (
             <div>
                 <h5>Configurator</h5>
-                <section className="renderList">
-                    <label>
-                        Render List
-                        <textarea type="text" value={this.state.renderList} onChange={this.updateRenderList.bind(this)}/>
-                    </label>
-                </section>
                 <section>
                     <EventsConfigurator 
-                        publishableEvents = {publishableEvents}
-                        onEventsUpdate ={this.updateEvent}/>
+                        publishableEvents = {this.state.publishableEvents}
+                        onEventsUpdate ={this.updateEvent.bind(this)}/>
                     <PropsConfigurator  
-                        possibleProps = {props}
-                        onPropsUpdate ={this.updateProps}/>
+                        properties = {this.state.properties}
+                        onPropsUpdate ={this.updateProps.bind(this)}/>
                 </section>
             </div>
         );
@@ -100,7 +92,8 @@ let parent = {
             subscribableEvents: child.events.map((event=>{
                 return {
                     publishName: event.publishName,
-                    reducer: ""
+                    reducer: "",
+                    previousReducer: event.reducer
                 }
             }))
         }
