@@ -1,5 +1,11 @@
+import { codeModifier } from "./codeModifier";
+
 // Elements to  react component.
 const convertToReactcomponent = (element)=>{
+
+    element.events.forEach(event=>{
+        event.id = event.id.replace("-","");
+    })
 
     let getComponentEventedMarkup = (markup, events)=>{
         events.forEach(event=>{
@@ -15,7 +21,7 @@ const convertToReactcomponent = (element)=>{
     let getComponentReducers = (events) => {
         return events.map(event=>{
             let functionName = event.id+event.name;
-            let functionDef = event.reducer;
+            let functionDef = codeModifier(event.reducer);
             return `
     ${functionName} () {
     ${functionDef}
@@ -49,7 +55,7 @@ const convertToReactcomponent = (element)=>{
     let componentState = element.state
     let ReactComponent = 
     `
-    class ${componentName} extends Component {
+    (class ${componentName} extends Component {
     
         constructor(props) {
             super(props);
@@ -62,7 +68,7 @@ const convertToReactcomponent = (element)=>{
     
             return (${componentEventedMarkup})
         }
-    }
+    })
     `
     return ReactComponent;
 }
