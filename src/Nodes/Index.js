@@ -15,6 +15,10 @@ class Nodes extends Component {
                     <span>{node}</span>
             );
         }
+
+        if(node.type.name === "DynamicComponent"){
+            return null;
+        }
         // Check if it contains children.
         if(node.props && Array.isArray(node.props.children)){
             var children = node.props.children.map((child,index)=><Nodes key={index} node={child} onSelectedTagChanged={this.props.onSelectedTagChanged}/>);
