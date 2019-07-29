@@ -11,6 +11,7 @@ import { saveComponentsToWindow, getNestedComponents } from "../utilities/nested
 
 import style from "./style.css";
 import getMessages from "./Messages";
+import { SSL_OP_MICROSOFT_BIG_SSLV3_BUFFER, SSL_OP_TLS_ROLLBACK_BUG, SSL_OP_NETSCAPE_DEMO_CIPHER_CHANGE_BUG } from "constants";
 
 class DynamicComponent extends Component {
     constructor(props) {
@@ -23,56 +24,35 @@ class DynamicComponent extends Component {
         this.markup = prepareMarkup(component, component.name);
         this.events = component.events;	
         this.style = component.style;	
-        this.events.forEach(event=>{
-            /* Get the function name.*/
-            let functionName = event.name;
-            /* Bind it to current instance and save it.*/
-            this[functionName] = (new Function("e",codeModifier(event.reducer))).bind(this);
-            /* Also replace in the original events object. */
-            event.reducer = this[functionName];
-        });
+        debugger;
+        // this.events.forEach(event=>{
+        //     /* Get the function name.*/
+        //     let functionName = event.name;
+        //     /* Bind it to current instance and save it.*/
+        //     this[functionName] = (new Function("e",codeModifier(event.reducer))).bind(this);
+        //     /* Also replace in the original events object. */
+        //     event.reducer = this[functionName];
+        // });
 
         this.anotherComponetString = `<HelloComponent/>`
     }
 
     generatedComponentString(){
-        return `
-        (function RenderTester (_Component) {
-            var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-        
-        function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-        
-        function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-        
-        function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-        
-            _inherits(RenderTester, _Component);
-        
-            function RenderTester(props) {
-                _classCallCheck(this, RenderTester);
-        
-                var _this = _possibleConstructorReturn(this, (RenderTester.__proto__ || Object.getPrototypeOf(RenderTester)).call(this, props));
-        
-                _this.state = {
-                    "a": "yay"
+        return `(class RenderTester extends Component {
+    
+            constructor(props) {
+                super(props);
+                this.state = { 
+                    "a":"yay"
                 };
-                return _this;
             }
         
-            _createClass(RenderTester, [{
-                key: "render",
-                value: function render() {
-        
-                    return React.createElement(
-                        "div",
-                        null,
-                        this.state.a
-                    );
-                }
-            }]);
-        
-            return RenderTester;
-        })(window.Component);`
+            render() {
+                return (<div>
+                    {this.state.a}
+                </div>)
+            }
+        })`
     }
 
     /**
@@ -96,24 +76,20 @@ class DynamicComponent extends Component {
     render() {
 
         let componentString = this.getComponentString(this.component);
-        let result = eval(Babel.transform(componentString, { presets: ['react'] }).code)
-        let anotherResult = eval(this.generatedComponentString());
-        let a = new anotherResult();
+        let result = eval(Babel.transform(componentString, { presets: ['react'], plugins: ["transform-es2015-classes"]  }).code)
 
-        let transpilationResult = transpileJSX.call(this, this.markup, this.style, this.state, this.events, this.component.name);
-        if(transpilationResult.error !== undefined){
-            return (getMessages(transpilationResult.error))
+        if(!result){
+            return null;
         }
-        else {
-            return (
-                <div className={style.box}>
-                    {transpilationResult.result}
-                    <h1>
-                        {a.render()}
-                    </h1>
-                </div>
-            );
-        }
+        let component = new result();
+
+        return (
+            <div className={style.box}>
+                <h1>
+                    {component.render()}
+                </h1>
+            </div>
+        );
     }
 
 }
