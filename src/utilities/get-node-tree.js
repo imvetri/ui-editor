@@ -2,6 +2,7 @@ import React from "react";
 
 // Why? Because importing React as variable at line#2 will be alterted by babel. Keep it as a property, babel will ignore it.
 window.React = React;
+window.Component = React.Component;
 
 export function getNodeTree(jsx, style, state, events) {
     let result, error;
