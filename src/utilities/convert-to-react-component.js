@@ -49,7 +49,6 @@ const convertToReactcomponent = (element)=>{
     let componentState = element.state
     let ReactComponent = 
     `
-    import React, { Component } from 'react';
     class ${componentName} extends Component {
     
         constructor(props) {
@@ -64,9 +63,6 @@ const convertToReactcomponent = (element)=>{
             return (${componentEventedMarkup})
         }
     }
-    
-    export default ${componentName};
-    
     `
     return ReactComponent;
 }
