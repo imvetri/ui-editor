@@ -35,6 +35,46 @@ class DynamicComponent extends Component {
         this.anotherComponetString = `<HelloComponent/>`
     }
 
+    generatedComponentString(){
+        return `
+        (function RenderTester (_Component) {
+            var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+        
+        function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+        
+        function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+        
+        function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+        
+            _inherits(RenderTester, _Component);
+        
+            function RenderTester(props) {
+                _classCallCheck(this, RenderTester);
+        
+                var _this = _possibleConstructorReturn(this, (RenderTester.__proto__ || Object.getPrototypeOf(RenderTester)).call(this, props));
+        
+                _this.state = {
+                    "a": "yay"
+                };
+                return _this;
+            }
+        
+            _createClass(RenderTester, [{
+                key: "render",
+                value: function render() {
+        
+                    return React.createElement(
+                        "div",
+                        null,
+                        this.state.a
+                    );
+                }
+            }]);
+        
+            return RenderTester;
+        })(window.Component);`
+    }
+
     /**
      * 
      * @param {Object} component - containing details about a component
@@ -57,8 +97,8 @@ class DynamicComponent extends Component {
 
         let componentString = this.getComponentString(this.component);
         let result = eval(Babel.transform(componentString, { presets: ['react'] }).code)
-        let anotherResult = eval(Babel.transform(componentString, { presets: ['react'], plugins: ["transform-es2015-classes"]  }).code)
-        
+        let anotherResult = eval(this.generatedComponentString());
+        let a = new anotherResult();
 
         let transpilationResult = transpileJSX.call(this, this.markup, this.style, this.state, this.events, this.component.name);
         if(transpilationResult.error !== undefined){
@@ -69,7 +109,7 @@ class DynamicComponent extends Component {
                 <div className={style.box}>
                     {transpilationResult.result}
                     <h1>
-                        {"anotherResult"}
+                        {a.render()}
                     </h1>
                 </div>
             );
