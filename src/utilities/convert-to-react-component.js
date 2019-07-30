@@ -1,7 +1,21 @@
 import { codeModifier } from "./codeModifier";
 
+function getComponentString(component){
+
+    if(!component.markup[3]){
+        return;
+    }
+    return convertToReactcomponent(component);
+}
+
+function createComponent(component){
+    let componentString = getComponentString(component);
+    return eval(Babel.transform(componentString, { presets: ['react'], plugins: ["transform-es2015-classes"]  }).code)
+}
+
+
 // Elements to  react component.
-const convertToReactcomponent = (element)=>{
+function convertToReactcomponent (element){
 
     element.events.forEach(event=>{
         event.id = event.id.replace("-","");
@@ -53,5 +67,6 @@ const convertToReactcomponent = (element)=>{
 }
 
 module.exports = {
+    createComponent,
     convertToReactcomponent
 }
