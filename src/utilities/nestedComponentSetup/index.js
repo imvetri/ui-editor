@@ -1,6 +1,7 @@
 // Dependencies.
 
 import DynamicComponent from "../../DynamicComponent";
+import {createComponent} from "../convert-to-react-component";
 
 export function checkNestedComponents( markup) {
     let components= JSON.parse(localStorage.getItem("ui-editor"));
@@ -9,7 +10,7 @@ export function checkNestedComponents( markup) {
 
 function saveToWindow( component ) {
     let randomKey = component.id*(~~(Math.random()*10));
-    window[component.name] = <DynamicComponent key={randomKey} component={component}/>
+    window[component.name] = createComponent(component);
 }
 
 export function saveComponentsToWindow( nestedComponents){
