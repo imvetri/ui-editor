@@ -27,25 +27,6 @@ const convertToReactcomponent = (element)=>{
         }).join("\n")
     }
     
-    
-    // element = {
-    //   name: "Nested Component",
-    //   markup: "<div id=\"ID1\">\n<span id=\"ID2\">{state.name}</span>\n<button id=\"ID3\">{state.text}</button>\n</div>",
-    //   events: [
-    //     {
-    //       name: "onClick",
-    //       reducer: "this.setState({\n\"name\":\"lala\"\n})",
-    //       id: "spanID2"
-    //     },
-    //     {
-    //       name: "onClick",
-    //       reducer: "this.setState({\n\"text\":\"VEL\"\n})",
-    //       id: "buttonID3"
-    //     }
-    //   ],
-    //   state: "{\n\"name\":\"vetri\",\n\"text\":\"vel\"\n}"
-    // }
-    
 
     let componentEventedMarkup = getComponentEventedMarkup(element.markup, element.events)
     let componentReducers = getComponentReducers(element.events)
