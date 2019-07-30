@@ -53,7 +53,7 @@ class Events extends Component {
 
     updateEvent(event){
         let element = JSON.parse(JSON.stringify(this.state.element))
-        event.id = this.state.selectedTag;
+        event.id = this.state.selectedTag.split("-")[1];
         // Add 
         if(event.index===undefined){
             element.events.push(event);
@@ -114,11 +114,11 @@ class Events extends Component {
             // Render nestedComponent in nodes.
             // If selected, show in a drop down list of published events.
         }
-        const selectedTag = this.state.selectedTag;
+        const selectedTag = this.state.selectedTag || "";
 
         const events = element.events
                                 .map((event,index)=><Event key={index} index={index} event={event} selectedTagID={selectedTag} onSave={this.updateEvent.bind(this)} deleteEvent={this.deleteEvent.bind(this)}/>);
-        const eventsOfSelectedTag = events.filter(event=>event.props.event.id===this.state.selectedTag)
+        const eventsOfSelectedTag = selectedTag? events.filter(event=>selectedTag.includes(event.props.event.id)): null;
 
         let nodeTree = getNodeTree(element.markup, element.style, element.state, element.events);
 
