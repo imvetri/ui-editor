@@ -9,13 +9,11 @@ const convertToReactcomponent = (element)=>{
 
     let getComponentEventedMarkup = (markup, events)=>{
         events.forEach(event=>{
-            let id = `id="ID${event.id.split("ID")[1]}"`;
+            let id = `id="${event.id}"`;
             markup = markup.replace(id, `${id} ${event.name}={this.${event.id+event.name}.bind(this)}`);
         });
     
         return markup.split("{state.").join("{this.state.")
-    
-        return markup;
     }
     
     let getComponentReducers = (events) => {
@@ -24,7 +22,7 @@ const convertToReactcomponent = (element)=>{
             let functionDef = codeModifier(event.reducer);
             return `
     ${functionName} () {
-    ${functionDef}
+            ${functionDef}
     }`
         }).join("\n")
     }
@@ -48,7 +46,7 @@ const convertToReactcomponent = (element)=>{
     //   state: "{\n\"name\":\"vetri\",\n\"text\":\"vel\"\n}"
     // }
     
-    
+
     let componentEventedMarkup = getComponentEventedMarkup(element.markup, element.events)
     let componentReducers = getComponentReducers(element.events)
     let componentName = element.name.split(" ").join("")
