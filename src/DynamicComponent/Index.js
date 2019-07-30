@@ -3,56 +3,18 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
-import { transpileJSX } from "../utilities/jsxTranspiler";
 import { codeModifier } from "../utilities/codeModifier";
-import { prepareMarkup } from "../utilities/prepareMarkup";
+import {createStylesheet} from "../utilities/jsxTranspiler/create-stylesheet";
 import {convertToReactcomponent} from "../utilities/convert-to-react-component";
-import { saveComponentsToWindow, getNestedComponents } from "../utilities/nestedComponentSetup";
 
 import style from "./style.css";
 import getMessages from "./Messages";
-import { SSL_OP_MICROSOFT_BIG_SSLV3_BUFFER, SSL_OP_TLS_ROLLBACK_BUG, SSL_OP_NETSCAPE_DEMO_CIPHER_CHANGE_BUG } from "constants";
 
 class DynamicComponent extends Component {
     constructor(props) {
         super(props);
-
         let component = this.props.component;
-        this.component = component;
-        this.state = JSON.parse(component.state);
-
-        this.markup = prepareMarkup(component, component.name);
-        this.events = component.events;	
-        this.style = component.style;	
-        debugger;
-        // this.events.forEach(event=>{
-        //     /* Get the function name.*/
-        //     let functionName = event.name;
-        //     /* Bind it to current instance and save it.*/
-        //     this[functionName] = (new Function("e",codeModifier(event.reducer))).bind(this);
-        //     /* Also replace in the original events object. */
-        //     event.reducer = this[functionName];
-        // });
-
-        this.anotherComponetString = `<HelloComponent/>`
-    }
-
-    generatedComponentString(){
-        return `(class RenderTester extends Component {
-    
-            constructor(props) {
-                super(props);
-                this.state = { 
-                    "a":"yay"
-                };
-            }
-        
-            render() {
-                return (<div>
-                    {this.state.a}
-                </div>)
-            }
-        })`
+        createStylesheet(this.style);
     }
 
     /**
@@ -82,11 +44,12 @@ class DynamicComponent extends Component {
             return null;
         }
         let component = new result();
+        let createdComponent = React.createElement(result);
 
         return (
             <div className={style.box}>
                 <h1>
-                    {component.render()}
+                    {createdComponent}
                 </h1>
             </div>
         );
