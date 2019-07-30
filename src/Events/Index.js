@@ -147,6 +147,10 @@ class Events extends Component {
                     <h5>Existing Events</h5>
                     {eventsOfSelectedTag}
                 </div>
+                <div className={style.newEvent}>
+                    <h5>New Event</h5>
+                    <Event key={element.events.length} selectedTagID={selectedTag} onSave={this.updateEvent.bind(this)}/>
+                </div>
             </div>
         );
     }
