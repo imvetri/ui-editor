@@ -67,5 +67,6 @@ function convertToReactcomponent (element){
 }
 
 module.exports = {
-    createComponent
+    createComponent,
+    convertToReactcomponent
 }
