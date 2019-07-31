@@ -10,9 +10,9 @@ import ChildComponentReference from "../ChildComponentReference";
 // Styles.
 
 import style from "./Style.css";
-import {updateName, updateMarkup, updateStyle, updateState} from "./Reducer";
+import {updateName, updateMarkup, updateStyle, updateState, openConfigurator, hideConfigurator, saveDetails} from "./Reducer";
 
-import {getChildConfig, writeConfigTolocal} from "./Reducer";
+import {getChildConfig} from "./Reducer";
 /**
  * Shows Configurator on select of valid child component name in the markup and mouseOut from markup
  * Hides Configurator on mouseLeave from the editor.
@@ -46,57 +46,12 @@ class Editor extends Component {
         parent.children[index] = childConfig;
     }
 
-    openConfigurator () {
-        // onMouseOut from markup.
-        // Take the selected text.
-        let selectedText = window.getSelection().toString();
-
-        if(selectedText === "" ){
-            return;
-        }
-        // Read components details
-        let components = JSON.parse(localStorage.getItem("ui-editor"));
-
-        // Find the component that matches selectedText
-        let child = components.find(component=>component.name.includes(selectedText));
-
-        // Find the parent from the local storage. Because that has  the updated details with child component config.
-        let parent = components.find(component=>component.name.includes(this.state.name));
-
-        // Initialise parent data with child details.
-        this.initChildDetails(parent, child);
-
-        // Check if selected text exist in any of component's name
-        if(child){
-            // this.openConfigurator
-            this.setState({
-                child: child,
-                parent: parent
-            })
-        }
-        // Open configurator if a valid nested component is selected.
-    }
-
-    hideConfigurator(){
-        this.setState({
-            child: false
-        })
-    }
-
-    saveDetails(configuration){
-        this.setState({
-            parent: this.state.parent
-        })
-
-        writeConfigTolocal(configuration, this.state)
-    }
-
     render() {
 
         let element = this.state;
         // TODO: Should pass the current data. Instead of accessing it from global
         return (
-            <div className={style.editor+" editor"} onMouseLeave={this.hideConfigurator.bind(this)}>
+            <div className={style.editor+" editor"} onMouseLeave={hideConfigurator.bind(this)}>
                 <section className={style.override}>  
                     <h4>Editor</h4>              
                     <div>
@@ -106,10 +61,10 @@ class Editor extends Component {
                     </div>
                     <div>
                         <h5>HTML: </h5><p>Tags should contain <code>id</code> attribute, if you would like to bind events to it.</p>
-                        <textarea value={element.markup} onMouseOut={this.openConfigurator.bind(this)} onChange={updateMarkup.bind(this)} id="elementMarkup"/>
+                        <textarea value={element.markup} onMouseOut={openConfigurator.bind(this)} onChange={updateMarkup.bind(this)} id="elementMarkup"/>
                         {this.state.child ? <ChildComponentReference element={this.state.child}/> :  null}
                     </div>
-                    {this.state.child ?<Configurator child={this.state.child} parent={this.state.parent} onChange={this.saveDetails.bind(this)}/> : null}
+                    {this.state.child ?<Configurator child={this.state.child} parent={this.state.parent} onChange={saveDetails.bind(this)}/> : null}
                     <div>
                         <h5>CSS:</h5><p>Add a <code>className</code> to the markup, write a class here</p>
                         <textarea value={element.style} onChange={updateStyle.bind(this)} />
