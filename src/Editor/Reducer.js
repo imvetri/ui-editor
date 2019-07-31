@@ -106,3 +106,49 @@ export function writeConfigTolocal(configuration, state) {
 
     localStorage.setItem("ui-editor", JSON.stringify(components));
 }
+
+
+export function openConfigurator () {
+    // onMouseOut from markup.
+    // Take the selected text.
+    let selectedText = window.getSelection().toString();
+
+    if(selectedText === "" ){
+        return;
+    }
+    // Read components details
+    let components = JSON.parse(localStorage.getItem("ui-editor"));
+
+    // Find the component that matches selectedText
+    let child = components.find(component=>component.name.includes(selectedText));
+
+    // Find the parent from the local storage. Because that has  the updated details with child component config.
+    let parent = components.find(component=>component.name.includes(this.state.name));
+
+    // Initialise parent data with child details.
+    this.initChildDetails(parent, child);
+
+    // Check if selected text exist in any of component's name
+    if(child){
+        // this.openConfigurator
+        this.setState({
+            child: child,
+            parent: parent
+        })
+    }
+    // Open configurator if a valid nested component is selected.
+}
+
+export function hideConfigurator(){
+    this.setState({
+        child: false
+    })
+}
+
+export function saveDetails(configuration){
+    this.setState({
+        parent: this.state.parent
+    })
+
+    writeConfigTolocal(configuration, this.state)
+}
