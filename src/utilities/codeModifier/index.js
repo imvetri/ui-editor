@@ -1,6 +1,6 @@
 export function codeModifier(reducer) {
     return `
-var state = this.state;
+var state = JSON.parse(JSON.stringify(this.state))
 ${reducer}
 this.setState(state);
 console.log(state);
