@@ -27,5 +27,6 @@
         updateEventName,
         updateEventType,
         updatePublishName,
-        updateEventType
+        updateEventType,
+        updateReducer
     }
