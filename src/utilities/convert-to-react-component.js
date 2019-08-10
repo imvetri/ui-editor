@@ -35,7 +35,7 @@ function convertToReactcomponent (element){
             let functionName = event.id+event.name;
             let functionDef = codeModifier(event.reducer);
             return `
-    ${functionName} () {
+    ${functionName} (e) {
             ${functionDef}
     }`
         }).join("\n")

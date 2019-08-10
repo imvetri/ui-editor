@@ -15,7 +15,7 @@ class DynamicComponent extends Component {
     constructor(props) {
         super(props);
         this.component = this.props.component;
-        createStylesheet(this.style);
+        createStylesheet(this.component.style);
     }
 
     render() {
