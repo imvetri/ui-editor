@@ -32,7 +32,7 @@ class Editor extends Component {
             markup: this.state.markup,
             style: this.state.style,
             state: this.state.state,
-            events: [],
+            events: this.state.events,
             children: []
         });
     }
