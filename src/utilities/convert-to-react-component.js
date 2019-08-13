@@ -68,5 +68,5 @@ function convertToReactcomponent (element){
 
 module.exports = {
     createComponent,
-    convertToReactcomponent
+    getComponentString
 }

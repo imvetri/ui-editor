@@ -17,8 +17,8 @@ import {updateEvent, updateselectedIndex, saveElement,toggleEditor, setEditMode,
 
 // Dependencies.
 
-import {prepareElement} from "../utilities/codeGenerator/prepareElement";
-import {convertToReactcomponent} from "../utilities/convert-to-react-component";
+import {prepareElement} from "../utilities/codeGenerator/prepareElement";import {createComponent} from "../utilities/convert-to-react-component";
+import {getComponentString} from "../utilities/convert-to-react-component";
 
 class Elements extends Component {
     constructor(props) {
@@ -55,7 +55,7 @@ class Elements extends Component {
     }
 
     onExport() {
-        console.log(convertToReactcomponent(this.state.elements[this.state.selectedIndex]));
+        console.log(getComponentString(this.state.elements[this.state.selectedIndex]));
     }
 
     render() {
