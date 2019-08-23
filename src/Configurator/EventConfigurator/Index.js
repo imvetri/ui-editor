@@ -1,7 +1,6 @@
 // Libraries.
 
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 
 import {updateReducer, reset} from "./Reducer";
 
