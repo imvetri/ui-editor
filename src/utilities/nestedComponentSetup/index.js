@@ -1,6 +1,5 @@
 // Dependencies.
 
-import DynamicComponent from "../../DynamicComponent";
 import {createComponent} from "../convert-to-react-component";
 
 export function checkNestedComponents( markup) {
