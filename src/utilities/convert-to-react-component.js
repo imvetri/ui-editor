@@ -10,6 +10,7 @@ function getComponentString(component){
 
 function createComponent(component){
     let componentString = getComponentString(component);
+    // eval does not evaluate class if not exclosed in paranthesis.
     return eval(Babel.transform(componentString, { presets: ['react'], plugins: ["transform-es2015-classes"]  }).code)
 }
 
@@ -47,8 +48,8 @@ function convertToReactcomponent (element){
     let componentName = element.name.split(" ").join("")
     let componentState = element.state
     let ReactComponent = 
-    `
-    (class ${componentName} extends Component {
+    `(
+    class ${componentName} extends Component {
     
         constructor(props) {
             super(props);
