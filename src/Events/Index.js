@@ -1,7 +1,6 @@
 // Libraries.
 
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 
 // Dependencies.
 import { saveComponentsToWindow, getNestedComponents } from "../utilities/nestedComponentSetup";
@@ -105,7 +104,7 @@ class Events extends Component {
             )
         }
 
-        let nestedComponents = getNestedComponents(element.markup);
+        let nestedComponents = getNestedComponents(element);
 
         // Check if the component has nested components, make it available globally for preview.
         if(nestedComponents.length>0){
