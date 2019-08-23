@@ -1,7 +1,6 @@
 // Libraries.
 
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 
 import style from "./Style.css"
 import getMessages from "./Messages";
