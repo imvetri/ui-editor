@@ -1,0 +1,236 @@
+[
+    {
+        "name": "EventTester",
+        "markup": "<span id=\"yoman\">{state.content}</span>",
+        "events": [
+            {
+                "name": "onClick",
+                "reducer": "state.content = \"bye\";\n",
+                "index": 0,
+                "publishable": "",
+                "publishName": "",
+                "id": "yoman"
+            }
+        ],
+        "state": "{ \n\"content\":\"yo\"\n}",
+        "style": "",
+        "children": [],
+        "id": 482
+    },
+    {
+        "name": "hey",
+        "markup": "<div>\n<span id=\"hello\">{state.content}</span>\n<EventTester />\n</div>",
+        "events": [
+            {
+                "name": "onClick",
+                "reducer": "state.content = \"buhahaha the one\"",
+                "publishable": "",
+                "publishName": "",
+                "id": "hello"
+            }
+        ],
+        "state": "{ \n\"content\":\"hehehhe\"\n}",
+        "style": "#hello{\n\ncolor:red;\n}",
+        "children": [],
+        "id": 140
+    },
+    {
+        "name": "First",
+        "markup": "<div id=\"text\">{state.name}</div> ",
+        "events": [
+            {
+                "name": "onClick",
+                "reducer": "alert()\ne.stopPropagation()",
+                "index": 0,
+                "publishable": "",
+                "publishName": "",
+                "id": "text"
+            }
+        ],
+        "state": "{ \"name\":\"sdf\"}",
+        "style": "",
+        "children": [],
+        "id": 141
+    },
+    {
+        "name": "showHide",
+        "markup": "<div>\n<button id=\"show\">show</button>\n<button id=\"hide\">hide</button>\n{state.status===\"show\"? <EventTester />:null}\n</div>",
+        "events": [
+            {
+                "name": "onClick",
+                "reducer": "state.status = \"hide\"",
+                "publishable": "",
+                "publishName": "",
+                "id": "hide"
+            },
+            {
+                "name": "onClick",
+                "reducer": "state.status = \"show\"",
+                "publishable": "",
+                "publishName": "",
+                "id": "show"
+            }
+        ],
+        "state": "{\"status\":\"show\" }",
+        "style": "",
+        "children": [],
+        "id": 553
+    },
+    {
+        "name": "HeaderComponent",
+        "markup": "<h1 id=\"sd\">{state.message}</h1>",
+        "events": [
+            {
+                "name": "onClick",
+                "reducer": "state.message = \"Hello my friend\"",
+                "publishable": "",
+                "publishName": "",
+                "id": "sd"
+            }
+        ],
+        "state": "{ \"message\":\"hey\"}",
+        "style": "#sd{\ncolor:red;\n}",
+        "children": [],
+        "id": 40
+    },
+    {
+        "name": "ResizableComponent",
+        "markup": "<div id=\"resize\" >\n<div>content</div>\n</div>",
+        "events": [],
+        "state": "{ \n\"style\": {\n\"position\":\"absolute\",\n\"top\":\"0px\",\n\"left\":\"0px\"\n}\n}",
+        "style": "#resize{\n  resize: both;\n  overflow: auto;\n  border: 1px solid white;\n}",
+        "children": [],
+        "id": 885
+    },
+    {
+        "name": "DraggableComponent",
+        "markup": "<div draggable=\"true\"  id=\"move\" style={state.style} >\n<h1>\n      Elements\n</h1>\n<ResizableComponent />\n</div>",
+        "events": [
+            {
+                "name": "onDragEnd",
+                "reducer": "state.style.top = e.pageY +\"px\"\nstate.style.left = e.pageX +\"px\"",
+                "index": 0,
+                "publishable": "",
+                "publishName": "",
+                "id": "move"
+            }
+        ],
+        "state": "{ \n\"style\": {\n\"position\":\"absolute\",\n\"top\":\"400px\",\n\"left\":\"200px\"\n}\n}",
+        "style": "#move h1{\ncursor: move;\nborder: 1px solid white;\n}\n\n#move {\nborder: 2px solid white;\n}",
+        "children": [],
+        "id": 44
+    },
+    {
+        "name": "ParentComponent",
+        "markup": "<div>\n<div id=\"parent\"><ChildComponent />\n</div>\n<div id=\"child\">\n</div>\n</div>",
+        "events": [
+            {
+                "name": "onDragEnter",
+                "reducer": "e.currentTarget.style.border = \"1px solid white\";\n",
+                "index": 0,
+                "publishable": "",
+                "publishName": "",
+                "id": "parent"
+            },
+            {
+                "name": "onDragLeave",
+                "reducer": "e.currentTarget.style.border = \"\";",
+                "index": 1,
+                "publishable": "",
+                "publishName": "",
+                "id": "parent"
+            },
+            {
+                "name": "onDragEnter",
+                "reducer": "e.currentTarget.style.border = \"1px solid tomato\";\n",
+                "index": 2,
+                "publishable": "",
+                "publishName": "",
+                "id": "child"
+            },
+            {
+                "name": "onDragLeave",
+                "reducer": "e.currentTarget.style.border = \"\";\n",
+                "index": 3,
+                "publishable": "",
+                "publishName": "",
+                "id": "child"
+            },
+            {
+                "name": "onDrop",
+                "reducer": "let child = e.dataTransfer.getData(\"component-name\");\nconsole.log(child)\ndebugger;\nlet components = JSON.parse(localStorage.getItem(\"ui-editor\"))\n\nlet parentName = \"ParentComponent\";\nlet parentComponent = components.find(component=>component.name.includes(parentName))\nlet parentTag = e.currentTarget.id;\nparentComponent.markup = parentComponent.markup.replace(`${parentTag}\">`,`${parentTag}\"><${child} />`)\n\nlocalStorage.setItem(\"ui-editor\",JSON.stringify(components))",
+                "index": 4,
+                "publishable": "",
+                "publishName": "",
+                "id": "parent"
+            },
+            {
+                "name": "onDrop",
+                "reducer": "let componentName =  e.dataTransfer.getData(\"component-name\")\nconsole.log(componentName)\ne.preventDefault();\n",
+                "index": 7,
+                "publishable": "",
+                "publishName": "",
+                "id": "child"
+            },
+            {
+                "name": "onDragOver",
+                "reducer": "e.preventDefault();\n",
+                "publishable": "",
+                "publishName": "",
+                "id": "child"
+            },
+            {
+                "name": "onDragOver",
+                "reducer": "e.preventDefault();\n",
+                "publishable": "",
+                "publishName": "",
+                "id": "parent"
+            }
+        ],
+        "state": "{ }",
+        "style": "#parent{\nbackground: yellow;\nheight: 200px;\nwidth: 200px;\n}\n\n#child{\nbackground: tomato;\nheight: 200px;\nwidth: 200px;\n}",
+        "children": [],
+        "id": 98
+    },
+    {
+        "name": "ChildComponent",
+        "markup": "<div>Child</div>",
+        "events": [],
+        "state": "{ }",
+        "style": "",
+        "children": [],
+        "id": 923
+    },
+    {
+        "name": "DragDrop",
+        "markup": "<div>\n<div>\n   <p id=\"source\" draggable=\"true\">\n     Select this element, drag it to the Drop Zone and then release the selection to move the element.</p>\n </div>\n <div id=\"target\" >Drop Zone</div>\n</div>",
+        "events": [
+            {
+                "name": "onDrop",
+                "reducer": "e.currentTarget.style.background = \"lightyellow\";\n\ne.preventDefault();\nvar data = e.dataTransfer.getData(\"text\");\ne.target.appendChild(document.getElementById(data));",
+                "index": 0,
+                "publishable": "",
+                "publishName": "",
+                "id": "target"
+            },
+            {
+                "name": "onDragStart",
+                "reducer": "e.dataTransfer.setData(\"text\", e.target.id);\n",
+                "publishable": "",
+                "publishName": "",
+                "id": "source"
+            },
+            {
+                "name": "onDragOver",
+                "reducer": "e.preventDefault();\n",
+                "publishable": "",
+                "publishName": "",
+                "id": "target"
+            }
+        ],
+        "state": "{ }",
+        "style": "  #source {\n    color: blue;\n    border: 1px solid black;\n  }\n  #target {\n    border: 1px solid black;\n  }",
+        "children": [],
+        "id": 779
+    }
+]
