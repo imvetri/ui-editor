@@ -3,6 +3,5 @@ export function codeModifier(reducer) {
 var state = JSON.parse(JSON.stringify(this.state))
 ${reducer}
 this.setState(state);
-console.log(state);
 `
 }
