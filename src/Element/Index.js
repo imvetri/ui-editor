@@ -22,10 +22,14 @@ class Element extends Component {
         this.props.onDelete(e);
     }
 
+    handleDrag(e){
+        e.dataTransfer.setData("component-name", event.target.getAttribute("id"));
+    }
+
     render() {
         // Remove this.props.index, instead use this element instance index. Removes duplicate code
         return (
-            <div className={style.background} draggable="true">
+            <div className={style.background} draggable="true" id={this.props.element.name} onDragStart={this.handleDrag.bind(this)}>
                 <li 
                     className = {this.props.selectedIndex === this.props.index ? style.selected : ""}
                     onClick = {this.selectionChanged.bind(this)}
