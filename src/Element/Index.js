@@ -25,7 +25,7 @@ class Element extends Component {
     render() {
         // Remove this.props.index, instead use this element instance index. Removes duplicate code
         return (
-            <div className={style.background}>
+            <div className={style.background} draggable="true">
                 <li 
                     className = {this.props.selectedIndex === this.props.index ? style.selected : ""}
                     onClick = {this.selectionChanged.bind(this)}
