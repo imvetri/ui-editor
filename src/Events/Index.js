@@ -119,7 +119,7 @@ class Events extends Component {
                                 .map((event,index)=><Event key={index} index={index} event={event} selectedTagID={selectedTag} onSave={this.updateEvent.bind(this)} deleteEvent={this.deleteEvent.bind(this)}/>);
         const eventsOfSelectedTag = selectedTag? events.filter(event=>selectedTag.includes(event.props.event.id)): null;
 
-        let nodeTree = getNodeTree(element.markup, element.style, element.state, element.events);
+        let nodeTree = getNodeTree(element.markup, element.style, JSON.parse(element.state), element.events);
 
         // Report error.
         if(nodeTree.error !== undefined){
