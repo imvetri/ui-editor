@@ -6,7 +6,6 @@ import React, { Component } from "react";
 import { saveComponentsToWindow, getNestedComponents } from "../utilities/nestedComponentSetup";
 
 import style from "./Style.css";
-import getHelp from "./Help";
 
 /**
  * What Events do?
@@ -141,7 +140,6 @@ class Events extends Component {
                 <h4>Events, Actions, Reducers</h4>
                 <p>Select a tag below to show/add the events.</p>
                 <Nodes node={nodeTree.result} onSelectedTagChanged={this.selectedTagChanged.bind(this)}/>
-                {getHelp()}
                 <div className={style.existingEvents}>
                     <h5>Existing Events</h5>
                     {eventsOfSelectedTag}
