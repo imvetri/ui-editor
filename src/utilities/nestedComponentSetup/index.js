@@ -1,6 +1,7 @@
 // Dependencies.
 
 import {createComponent} from "../convert-to-react-component";
+import {createStylesheet} from "../jsxTranspiler/create-stylesheet";
 
 export function checkNestedComponents( markup) {
     let components= JSON.parse(localStorage.getItem("ui-editor"));
@@ -9,6 +10,7 @@ export function checkNestedComponents( markup) {
 
 /** Takes a component and converts it as a react component */
 function saveToWindow( component ) {
+    createStylesheet(component.style)
     window[component.name] = createComponent(component);
 }
 
