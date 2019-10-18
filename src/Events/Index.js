@@ -49,13 +49,13 @@ class Events extends Component {
         this.state = Object.assign({}, this.props);
     }
 
-    updateEvent(event){
+    updateEvent(event) {
         let element = JSON.parse(JSON.stringify(this.state.element))
         event.id = this.state.selectedTag.split("-")[1];
         // Add 
-        if(event.index===undefined){
+        if (event.index === undefined) {
             element.events.push(event);
-        } else{
+        } else {
             // Edit
             element.events[event.index] = event;
         }
@@ -63,19 +63,19 @@ class Events extends Component {
         this.props.onEventsUpdate(element.events);
     }
 
-    selectedTagChanged(e){
+    selectedTagChanged(e) {
         this.setState({
             selectedTag: e.currentTarget.value
         })
     }
 
-    deleteEvent(index){
+    deleteEvent(index) {
 
         // Get current component.
         let element = JSON.parse(JSON.stringify(this.state.element));
 
         // Remove the event to be deleted.
-        element.events.splice(index,1);
+        element.events.splice(index, 1);
 
         // Update elements with new events.
         this.props.onEventsUpdate(element.events);
@@ -84,7 +84,7 @@ class Events extends Component {
         const element = this.props.element;
 
         // Report if no component is created.
-        if(this.state.elements.length==0) {
+        if (this.state.elements.length == 0) {
             return (
                 <div className={style.events}>
                     <h4>Events, Actions, Reducers</h4>
@@ -94,7 +94,7 @@ class Events extends Component {
         }
 
         // Report if no component is selected.
-        if(element.name===undefined && this.state.elements.length!=0){
+        if (element.name === undefined && this.state.elements.length != 0) {
             return (
                 <div className={style.events}>
                     <h4>Events, Actions, Reducers</h4>
@@ -106,27 +106,22 @@ class Events extends Component {
         let nestedComponents = getNestedComponents(element);
 
         // Check if the component has nested components, make it available globally for preview.
-        if(nestedComponents.length>0){
+        if (nestedComponents.length > 0) {
             saveComponentsToWindow(nestedComponents);
 
             // Render nestedComponent in nodes.
             // If selected, show in a drop down list of published events.
         }
-        const selectedTag = this.state.selectedTag || "";
-
-        const events = element.events
-                                .map((event,index)=><Event key={index} index={index} event={event} selectedTagID={selectedTag} onSave={this.updateEvent.bind(this)} deleteEvent={this.deleteEvent.bind(this)}/>);
-        const eventsOfSelectedTag = selectedTag? events.filter(event=>selectedTag.includes(event.props.event.id)): null;
 
         let nodeTree = getNodeTree(element.markup, element.style, JSON.parse(element.state), element.events);
 
         // Report error.
-        if(nodeTree.error !== undefined){
+        if (nodeTree.error !== undefined) {
             return getMessages(nodeTree.error);
         }
 
         // Report error if component is not 
-        if(nodeTree.result === undefined && this.state.elements.length!=0) {
+        if (nodeTree.result === undefined && this.state.elements.length != 0) {
             return (
                 <div className={style.events}>
                     <h4>Events, Actions, Reducers</h4>
@@ -135,12 +130,25 @@ class Events extends Component {
             );
         }
 
+        const selectedTag = this.state.selectedTag || "";
+        let eventsOfSelectedTag, events;
+        // Check if it is a child component
+        if (selectedTag.includes("child-component-")) {
+            // Show publishable events of the child so that current component state can be changed.
+            // This is similar to subscribing to an event
+        }
+        else {
+            events = element.events
+                .map((event, index) => <Event key={index} index={index} event={event} selectedTagID={selectedTag} onSave={this.updateEvent.bind(this)} deleteEvent={this.deleteEvent.bind(this)} />);
+            eventsOfSelectedTag = selectedTag ? events.filter(event => selectedTag.includes(event.props.event.id)) : null;
+        }
+
         return (
             <div className={style.events}>
                 <h4>Events, Actions, Reducers</h4>
                 <p>Select a tag below to show/add the events.</p>
                 <div className={style.tags}>
-                    <Nodes node={nodeTree.result} onSelectedTagChanged={this.selectedTagChanged.bind(this)}/>
+                    <Nodes node={nodeTree.result} onSelectedTagChanged={this.selectedTagChanged.bind(this)} />
                 </div>
                 <div className={style.existingEvents}>
                     <h5>Existing Events</h5>
@@ -148,7 +156,7 @@ class Events extends Component {
                 </div>
                 <div className={style.newEvent}>
                     <h5>New Event</h5>
-                    <Event key={element.events.length} selectedTagID={selectedTag} onSave={this.updateEvent.bind(this)}/>
+                    <Event key={element.events.length} selectedTagID={selectedTag} onSave={this.updateEvent.bind(this)} />
                 </div>
             </div>
         );

@@ -53,6 +53,21 @@ class Nodes extends Component {
                 </ul>
             );
         }
+        // nested component.
+        else if(typeof node.type === "function"){
+            return (<ul>
+                <label>
+                    <input 
+                        type="radio" 
+                        name="selectedElement" 
+                        value={"child-component-"+node.type.name}
+                        onChange={this.props.onSelectedTagChanged} 
+                        />
+                    {node.type.name}
+                </label>
+            </ul>
+            );
+        }
         return (
             <ul>
                 <label>
