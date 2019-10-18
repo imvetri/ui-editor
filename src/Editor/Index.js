@@ -5,12 +5,11 @@ import React, { Component } from 'react';
 
 // Dependencies.
 //
-import Configurator from "../Configurator";
 import ChildComponentReference from "../ChildComponentReference";
 // Styles.
 
 import style from "./Style.css";
-import {updateName, updateMarkup, updateStyle, updateState, openConfigurator, hideConfigurator, saveDetails} from "./Reducer";
+import {updateName, updateMarkup, updateStyle, updateState, saveDetails} from "./Reducer";
 
 import {getChildConfig} from "./Reducer";
 /**
@@ -23,7 +22,6 @@ class Editor extends Component {
         // this.state = {... this.props.element};
         this.state = Object.assign({}, this.props.element);
         this.state.parent = this.props.element;
-        this.state.openConfigurator = false;
     }
 
     publishElement () {
@@ -51,7 +49,7 @@ class Editor extends Component {
         let element = this.state;
         // TODO: Should pass the current data. Instead of accessing it from global
         return (
-            <div className={style.editor+" editor"} onMouseLeave={hideConfigurator.bind(this)}>
+            <div className={style.editor+" editor"}>
                 <section className={style.override}>  
                     <h4>Editor</h4>              
                     <div>
@@ -61,10 +59,9 @@ class Editor extends Component {
                     </div>
                     <div>
                         <h5>HTML: </h5><p>Tags should contain <code>id</code> attribute, if you would like to bind events to it.</p>
-                        <textarea value={element.markup} onMouseOut={openConfigurator.bind(this)} onChange={updateMarkup.bind(this)} id="elementMarkup"/>
+                        <textarea value={element.markup} onChange={updateMarkup.bind(this)} id="elementMarkup"/>
                         {this.state.child ? <ChildComponentReference element={this.state.child}/> :  null}
                     </div>
-                    {this.state.child ?<Configurator child={this.state.child} parent={this.state.parent} onChange={saveDetails.bind(this)}/> : null}
                     <div>
                         <h5>CSS:</h5><p>Add a <code>className</code> to the markup, write a class here</p>
                         <textarea value={element.style} onChange={updateStyle.bind(this)} />
