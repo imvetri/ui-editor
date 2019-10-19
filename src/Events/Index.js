@@ -131,15 +131,24 @@ class Events extends Component {
         }
 
         const selectedTag = this.state.selectedTag || "";
-        let eventsOfSelectedTag, events;
+        let eventsOfSelectedTag;
         // Check if it is a child component
         if (selectedTag.includes("child-component-")) {
             // Show publishable events of the child so that current component state can be changed.
             // This is similar to subscribing to an event
+
+            // Get the child component's publishable events
+            let components= JSON.parse(localStorage.getItem("ui-editor"));
+            let childComponentName = selectedTag.split("child-component-")[1];
+            let childComponent = components.find(component=>component.name === childComponentName);
+            let publishableEvents = childComponent.events.filter(event=>event.publishable===true).map(publishableEvent=>publishableEvent.name);
+            eventsOfSelectedTag = selectedTag ? 
+                                publishableEvents.map((event, index) => <Event key={index} index={index} event={event} selectedTagID={selectedTag} eventNames={publishableEvents} onSave={this.updateEvent.bind(this)} deleteEvent={this.deleteEvent.bind(this)} />) :
+                                null;
         }
         else {
-            events = element.events
-                .map((event, index) => <Event key={index} index={index} event={event} selectedTagID={selectedTag} onSave={this.updateEvent.bind(this)} deleteEvent={this.deleteEvent.bind(this)} />);
+            const events = element.events
+                .map((event, index) => <Event key={index} index={index} event={event} selectedTagID={selectedTag} eventNames={[]} onSave={this.updateEvent.bind(this)} deleteEvent={this.deleteEvent.bind(this)} />);
             eventsOfSelectedTag = selectedTag ? events.filter(event => selectedTag.includes(event.props.event.id)) : null;
         }
 
@@ -156,7 +165,7 @@ class Events extends Component {
                 </div>
                 <div className={style.newEvent}>
                     <h5>New Event</h5>
-                    <Event key={element.events.length} selectedTagID={selectedTag} onSave={this.updateEvent.bind(this)} />
+                    <Event key={element.events.length} eventNames={[]} selectedTagID={selectedTag} onSave={this.updateEvent.bind(this)} />
                 </div>
             </div>
         );
