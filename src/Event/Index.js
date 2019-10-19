@@ -38,10 +38,14 @@ class Event extends Component {
         }
 
         let publishName = this.state.publishable? <input type="text" onChange={updatePublishName.bind(this)} value={this.state.publishName} placeholder="Enter event publish name for other components to subscribe to"/> : null;
+        let eventNames = this.props.eventNames.map(eventName=><option value={eventName}></option>)
 
         return (
             <div className={style.event}>
-                <input type="text" onChange={updateEventName.bind(this)} value={this.state.name} placeholder="Enter event name" title="Event Name"/>
+                <input list="browsers" type="text" onChange={updateEventName.bind(this)} value={this.state.name} placeholder="Enter event name" title="Event Name"/>
+                <datalist id="browsers">
+                    {eventNames}
+                </datalist>
                 <br/>
                 <textarea onChange={updateReducer.bind(this)} value={this.state.reducer} placeholder="Enter state reducer" title="Reducer"/>
                 <div>
