@@ -59,6 +59,20 @@ function convertToReactcomponent (component){
     
         return markup.split("{state.").join("{this.state.")
     }
+
+    // checks if state override is on. then adds state prop to child 
+    let getStatedMarkup = (markup)=>{
+        // for all the config.
+        // filter child with overide state is true
+        let config = JSON.parse(component.config);
+        let childrenConfig = Object.keys(config);
+        childrenConfig.forEach(childName=>{
+            if(config[childName].overideState){
+                markup = markup.replace(childName, childName+` state={this.state.${childName}}`)
+            }
+        })
+        return markup;
+    }
     
     let getComponentReducers = (events) => {
         return events.map(event=>{
@@ -83,6 +97,7 @@ function convertToReactcomponent (component){
     
 
     let componentEventedMarkup = getComponentEventedMarkup(component.markup, component.events)
+    let stateOverideMarkup = getStatedMarkup(componentEventedMarkup)
     let componentReducers = getComponentReducers(component.events)
     let componentName = component.name.split(" ").join("")
     let componentState = component.state
@@ -92,14 +107,14 @@ function convertToReactcomponent (component){
     
         constructor(props) {
             super(props);
-            this.state = ${componentState};
+            this.state = this.props.state || ${componentState};
         }
     
         ${componentReducers}
     
         render() {
     
-            return (${componentEventedMarkup})
+            return (${stateOverideMarkup})
         }
     })
     `
