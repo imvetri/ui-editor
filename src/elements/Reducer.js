@@ -36,7 +36,8 @@ export function saveElement (element) {
             state: element.state,
             style: element.style,
             children: [],
-            id: Math.ceil(Math.random()*1000)
+            id: Math.ceil(Math.random()*1000),
+            config:"{}"
         };
 
         newElements.push(newElement);
@@ -53,7 +54,7 @@ export function saveElement (element) {
             markup: element.markup,
             style: element.style,
             state: element.state,
-            events: element.events
+            events: element.events || []
         },
         show: false
     });
@@ -120,7 +121,27 @@ export function updateConfig(config){
     let child = newElements.find(element=>element.name===config.childName);
 
     parent.state = JSON.parse(parent.state);
-    parent.state[child.name] = JSON.parse(child.state);
+
+    if(parent.config === undefined){
+        parent.config = {};
+    }
+    else {
+        parent.config = JSON.parse(parent.config);
+    }
+    parent.config[child.name] = parent.config[child.name] || {}
+    parent.config[child.name].overideState = config.override
+    
+    if(parent.config[child.name].overideState) {    
+        parent.state[child.name] = JSON.parse(child.state);
+    } 
+    else {
+        delete parent.state[child.name];
+        delete parent.config[child.name];
+    }
+
+
+    parent.state = JSON.stringify(parent.state)
+    parent.config = JSON.stringify(parent.config)
 
     this.setState({
         elements: newElements

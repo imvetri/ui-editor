@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
-// Styles.
-
+import {selectionChanged, previewElement, deleteElement, handleDrag} from "./Events";
 import style from "./Style.css";
 
 class Element extends Component {
@@ -10,34 +9,18 @@ class Element extends Component {
         this.state = {};
     }
 
-    selectionChanged(e) {
-        this.props.onSelectionChange(e);
-    }
-
-    previewElement(e) {
-        this.props.onPreview(e);
-    }
-
-    deleteElement(e) {
-        this.props.onDelete(e);
-    }
-
-    handleDrag(e){
-        e.dataTransfer.setData("component-name", event.target.getAttribute("id"));
-    }
-
     render() {
         // Remove this.props.index, instead use this element instance index. Removes duplicate code
         return (
-            <div className={style.background} draggable="true" id={this.props.element.name} onDragStart={this.handleDrag.bind(this)}>
+            <div className={style.background} draggable="true" id={this.props.element.name} onDragStart={handleDrag.bind(this)}>
                 <li 
                     className = {this.props.selectedIndex === this.props.index ? style.selected : ""}
-                    onClick = {this.selectionChanged.bind(this)}
+                    onClick = {selectionChanged.bind(this)}
                     index = {this.props.index}>
                     {this.props.element.name}
                     <button 
                         index = {this.props.index} 
-                        onClick={this.previewElement.bind(this)} className="preview">Preview</button>
+                        onClick={previewElement.bind(this)} className="preview">Preview</button>
                     <button 
                         index = {this.props.index}
                         onClick={this.props.onExport}>Export</button>
