@@ -4,7 +4,7 @@
 import React, { Component } from 'react';
 
 import style from "./Style.css";
-import {updateName, updateMarkup, updateStyle, updateState, saveDetails} from "./Reducer";
+import {updateName, updateMarkup, updateStyle, updateState} from "./Reducer";
 
 /**
  * Shows Configurator on select of valid child component name in the markup and mouseOut from markup
