@@ -104,6 +104,10 @@ class Elements extends Component {
                 <Editor
                     key = {this.state.selectedIndex}
                     element = {selectedElement}
+                    name = {selectedElement.name}
+                    markup = {selectedElement.markup}
+                    style = {selectedElement.style}
+                    state = {selectedElement.state}
                     onSave = {this.saveElement}
                     />
                 {messagesComponent}
