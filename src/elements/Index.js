@@ -13,7 +13,7 @@ import getMessages from "./Messages";
 
 // Reducers.
 
-import {updateEvent, updateselectedIndex, saveElement,toggleEditor, setEditMode, onDelete} from "./Reducer"
+import {updateEvent, updateselectedIndex, saveElement,toggleEditor, setEditMode, onDelete, updateConfig} from "./Reducer"
 
 // Dependencies.
 
@@ -44,6 +44,7 @@ class Elements extends Component {
         this.saveElement = saveElement.bind(this);
         this.toggleEditor = toggleEditor.bind(this);
         this.setEditMode = setEditMode.bind(this);
+        this.updateConfig = updateConfig.bind(this);
     }
 
     publishDetails() {
@@ -97,7 +98,8 @@ class Elements extends Component {
                         key={this.state.selectedIndex}
                         element = {selectedElement}
                         elements = {this.state.elements}
-                        onEventsUpdate ={this.updateEvent}/>
+                        onEventsUpdate ={this.updateEvent}
+                        onConfigUpdate={this.updateConfig}/>
                 </section>
                 <Editor
                     key = {this.state.selectedIndex}

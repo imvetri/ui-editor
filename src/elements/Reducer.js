@@ -111,3 +111,20 @@ export function setEditMode () {
         show: true
     })
 }
+
+export function updateConfig(config){
+    
+    let newElements = Object.assign({}, this.state).elements;
+    
+    let parent = newElements.find(element=>element.name===config.parentName);
+    let child = newElements.find(element=>element.name===config.childName);
+
+    parent.state = JSON.parse(parent.state);
+    parent.state[child.name] = JSON.parse(child.state);
+
+    this.setState({
+        elements: newElements
+    })
+
+    localStorage.setItem("ui-editor", JSON.stringify(newElements));
+}
