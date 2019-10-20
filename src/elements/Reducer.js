@@ -132,13 +132,15 @@ export function updateConfig(config){
     
     if(parent.config[child.name].overideState) {    
         parent.state[child.name] = JSON.parse(child.state);
-        parent.state = JSON.stringify(parent.state);
-        parent.config = JSON.stringify(parent.config);
     } 
     else {
         delete parent.state[child.name];
+        delete parent.config[child.name];
     }
 
+
+    parent.state = JSON.stringify(parent.state)
+    parent.config = JSON.stringify(parent.config)
 
     this.setState({
         elements: newElements
