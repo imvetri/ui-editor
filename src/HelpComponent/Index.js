@@ -2,7 +2,6 @@
 
 import React, { Component } from "react";
 
-import style from "./style.css";
 import {close, open} from "./Reducer";
 class HelpComponent extends Component {
     constructor(props) {
@@ -23,10 +22,11 @@ class HelpComponent extends Component {
 
         return (
             <div>
-                <div>
-                    {this.state.showMessage?"":<button onClick={open.bind(this)}>Info !</button>}
-                </div>
-                {this.state.showMessage? message: ""}
+                                    <h5>Child Configurator</h5>
+                    <label>
+                        <input type="checkbox" onChange={updateEventType.bind(this)} checked={this.state.publishable? "checked": ""}/>
+                        Override child state
+                    </label>  
             </div>
         )
     }

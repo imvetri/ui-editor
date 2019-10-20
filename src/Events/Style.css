@@ -15,7 +15,7 @@
     right: 150px;
 }
 
-.existingEvents,.newEvent {
+.eventBlock {
     background: rgb(64, 64, 64);
     margin-top: 10px;
     padding: 5px;
