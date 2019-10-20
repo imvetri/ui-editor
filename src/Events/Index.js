@@ -134,17 +134,23 @@ class Events extends Component {
         let eventsOfSelectedTag;
         // Check if it is a child component
         if (selectedTag.includes("child-component-")) {
-            // Show publishable events of the child so that current component state can be changed.
-            // This is similar to subscribing to an event
-
-            // Get the child component's publishable events
+            // Get list of components.
             let components= JSON.parse(localStorage.getItem("ui-editor"));
+
+            // Get child component name from the selected tag.
             let childComponentName = selectedTag.split("child-component-")[1];
+
+            // Find the child component from the list of components.
             let childComponent = components.find(component=>component.name === childComponentName);
-            let publishableEvents = childComponent.events.filter(event=>event.publishable===true).map(publishableEvent=>publishableEvent.name);
-            eventsOfSelectedTag = selectedTag ? 
-                                publishableEvents.map((event, index) => <Event key={index} index={index} event={event} selectedTagID={selectedTag} eventNames={publishableEvents} onSave={this.updateEvent.bind(this)} deleteEvent={this.deleteEvent.bind(this)} />) :
-                                null;
+
+            // Find events that are publishable from the child component.
+            let eventNames = childComponent.events.filter(event=>event.publishable===true).map(publishableEvent=>publishableEvent.publishName);
+
+            // Create event view for list of all events
+            const events = element.events.map((event, index) => <Event key={index} index={index} event={event} selectedTagID={selectedTag} eventNames={eventNames} onSave={this.updateEvent.bind(this)} deleteEvent={this.deleteEvent.bind(this)} />);
+
+            // Filter out events that are not part of selectedTag
+            eventsOfSelectedTag = selectedTag ? events.filter(event => selectedTag.includes(event.props.event.id)) : null;
         }
         else {
             const events = element.events
