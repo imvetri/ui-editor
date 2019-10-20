@@ -37,7 +37,7 @@ export function saveElement (element) {
             style: element.style,
             children: [],
             id: Math.ceil(Math.random()*1000),
-            config:{}
+            config:"{}"
         };
 
         newElements.push(newElement);
@@ -54,7 +54,7 @@ export function saveElement (element) {
             markup: element.markup,
             style: element.style,
             state: element.state,
-            events: element.events
+            events: element.events || []
         },
         show: false
     });
