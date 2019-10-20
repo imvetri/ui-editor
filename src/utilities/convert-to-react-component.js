@@ -32,23 +32,27 @@ function convertToReactcomponent (component){
         // This was a easy to think but hard to write a readable code. I know comments wont help.
         let childComponents = getChildComponents(markup);
         if(childComponents.length>0){
-            let markup = "";
             // For each of child components
             childComponents.forEach(child=>{
+
                 // From each of child events filter the publishable events.
                 let publishableEvents = child.events.filter(event=>event.publishable===true);
                 // Filter publishable child events that are in parent.
                 // For each of publishable events
                 // Find which is present in this component.events.name
-                let eventUsedInParent;
-                publishableEvents.forEach(publishableEvent=>{
-                    eventUsedInParent = component.events.find(event=>event.name===publishableEvent.publishName)
-                })
-                let functionDef = codeModifier(eventUsedInParent.reducer);
+                if(publishableEvents.length!=0){
 
-                let props = eventUsedInParent.name+'='+`{function(){${functionDef}}.bind(this)}`
-                // then do markup.replace
-                markup = component.markup.replace(child.name, child.name+" "+props);
+                    let eventUsedInParent;
+                    publishableEvents.forEach(publishableEvent=>{
+                        eventUsedInParent = component.events.find(event=>event.name===publishableEvent.publishName)
+                    })
+                    let functionDef = codeModifier(eventUsedInParent.reducer);
+    
+                    let props = eventUsedInParent.name+'='+`{function(){${functionDef}}.bind(this)}`
+                    // then do markup.replace
+                    markup = component.markup.replace(child.name, child.name+" "+props);
+                }
+
             })
             return markup.split("{state.").join("{this.state.");
         }
