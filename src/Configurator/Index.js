@@ -8,10 +8,10 @@ class Configurator extends Component {
     constructor(props) {
         super(props);
 
-        let child = this.props.parent[this.props.childName];
+        let config = JSON.parse(this.props.parent.config)[this.props.childName] || {overideState:false};
         
         this.state = {
-            override: child && child.config && child.config.override
+            override: config.overideState
         }
     }
 
