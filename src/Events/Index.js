@@ -122,7 +122,7 @@ class Events extends Component {
             // Filter out events that are not part of selectedTag
             eventsOfSelectedTag = selectedTag ? events.filter(event => selectedTag.includes(event.props.event.id)) : null;
 
-            configurator = <Configurator onChange={updateConfiguration.bind(this)} childName={childComponentName} parentName={element.name}/>;
+            configurator = <Configurator onChange={updateConfiguration.bind(this)} childName={childComponentName} parent={element}/>;
         }
         else {
             const events = element.events

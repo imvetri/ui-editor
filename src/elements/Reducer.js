@@ -120,7 +120,25 @@ export function updateConfig(config){
     let child = newElements.find(element=>element.name===config.childName);
 
     parent.state = JSON.parse(parent.state);
-    parent.state[child.name] = JSON.parse(child.state);
+
+    if(parent.config === undefined){
+        parent.config = {};
+    }
+    else {
+        parent.config = JSON.parse(parent.config);
+    }
+    parent.config[child.name] = parent.config[child.name] || {}
+    parent.config[child.name].overideState = config.override
+    
+    if(parent.config[child.name].overideState) {    
+        parent.state[child.name] = JSON.parse(child.state);
+        parent.state = JSON.stringify(parent.state);
+        parent.config = JSON.stringify(parent.config);
+    } 
+    else {
+        delete parent.state[child.name];
+    }
+
 
     this.setState({
         elements: newElements
