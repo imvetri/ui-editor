@@ -42,11 +42,3 @@ export function getPropertyContainingProps(obj){
     }
     return props;
 }
-
-export function saveDetails(configuration){
-    this.setState({
-        parent: this.state.parent
-    })
-
-    writeConfigTolocal(configuration, this.state)
-}
