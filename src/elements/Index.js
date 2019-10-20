@@ -15,11 +15,10 @@ import getMessages from "./Messages";
 
 import {updateEvent, updateselectedIndex, saveElement,toggleEditor, setEditMode, onDelete, updateConfig} from "./Reducer"
 
-// Dependencies.
+// Events.
 
-import { prepareElement } from "../utilities/codeGenerator/prepareElement";
-import { getComponentString } from "../utilities/convert-to-react-component";
-import { getNestedComponents } from "../utilities/nestedComponentSetup";
+import {publishDetails, onExport} from "./Events";
+
 
 class Elements extends Component {
     constructor(props) {
@@ -47,20 +46,7 @@ class Elements extends Component {
         this.updateConfig = updateConfig.bind(this);
     }
 
-    publishDetails() {
-        
-        // Warning: Object.assign doesnt dupe the original object. It overrides only the values.
-        // May cause problem with reference types.
-        let element = JSON.parse(JSON.stringify(this.state.elements[this.state.selectedIndex]));
 
-        this.props.onPreview(prepareElement(element, element.name));
-    }
-
-    onExport() {
-        let nestedComponents = getNestedComponents(this.state.elements[this.state.selectedIndex]);
-
-        console.log(nestedComponents.map(getComponentString).join(""));
-    }
 
     render() {
 
@@ -71,8 +57,8 @@ class Elements extends Component {
                 selectedIndex = {this.state.selectedIndex}
                 element = {element}
                 onSelectionChange = {this.updateselectedIndex.bind(this)}
-                onPreview = {this.publishDetails.bind(this)} 
-                onExport = {this.onExport.bind(this)}
+                onPreview = {publishDetails.bind(this)} 
+                onExport = {onExport.bind(this)}
                 onDelete = {this.onDelete.bind(this)}/>
         );
 
@@ -102,8 +88,12 @@ class Elements extends Component {
                         onConfigUpdate={this.updateConfig}/>
                 </section>
                 <Editor
-                    key = {this.state.selectedIndex}
+                    key = {Math.ceil(Math.random()*1000)}
                     element = {selectedElement}
+                    name = {selectedElement.name}
+                    markup = {selectedElement.markup}
+                    style = {selectedElement.style}
+                    state = {selectedElement.state}
                     onSave = {this.saveElement}
                     />
                 {messagesComponent}
