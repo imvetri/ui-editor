@@ -102,7 +102,7 @@ class Elements extends Component {
                         onConfigUpdate={this.updateConfig}/>
                 </section>
                 <Editor
-                    key = {this.state.selectedIndex}
+                    key = {Math.ceil(Math.random()*1000)}
                     element = {selectedElement}
                     name = {selectedElement.name}
                     markup = {selectedElement.markup}
