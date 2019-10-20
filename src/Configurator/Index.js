@@ -7,8 +7,11 @@ import style from "./Style.css"
 class Configurator extends Component {
     constructor(props) {
         super(props);
+
+        let child = this.props.parent[this.props.childName];
+        
         this.state = {
-            override: false
+            override: child && child.config && child.config.override
         }
     }
 
@@ -20,7 +23,7 @@ class Configurator extends Component {
         this.props.onChange({
             override: !this.state.override,
             childName: this.props.childName,
-            parentName: this.props.parentName
+            parentName: this.props.parent.name
         });
     }
 

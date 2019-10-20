@@ -32,7 +32,5 @@
     }
 
     export function updateConfiguration(config){
-        if(config.override){
-            this.props.onConfigUpdate(config);
-        }
+        this.props.onConfigUpdate(config);
     }
