@@ -3,9 +3,19 @@
 import React, { Component } from "react";
 
 import style from "./Style.css"
+
+// Components.
+
 import getMessages from "./Messages";
 
+// Reducers. 
+
 import {updateEventName, updateEventType, updatePublishName, updateReducer} from "./Reducer";
+
+// Events.
+
+import {publishEvent, deleteEvent} from './Events';
+
 class Event extends Component {
     constructor(props) {
         super(props);
@@ -15,20 +25,6 @@ class Event extends Component {
             publishable: this.props.event ? this.props.event.publishable : "",
             publishName: this.props.event ? this.props.event.publishName : "",
         }
-    }
-
-    publishEvent() {
-        this.props.onSave({
-            name: this.state.name,
-            reducer: this.state.reducer,
-            index: this.props.index,
-            publishable: this.state.publishable,
-            publishName: this.state.publishName
-        })
-    }
-
-    deleteEvent(){
-        this.props.deleteEvent(this.props.index);
     }
 
     render() {
@@ -54,8 +50,8 @@ class Event extends Component {
                     Publishable
                     </label>
                     {publishName}
-                    <button onClick={this.publishEvent.bind(this)} id="saveEvent">Save</button>
-                    <button onClick={this.deleteEvent.bind(this)} id="deleteEvent">Delete</button>
+                    <button onClick={publishEvent.bind(this)} id="saveEvent">Save</button>
+                    <button onClick={deleteEvent.bind(this)} id="deleteEvent">Delete</button>
                 </div>
             </div>
         );
