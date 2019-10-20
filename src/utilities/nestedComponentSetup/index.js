@@ -40,3 +40,8 @@ export function getComponentByName (componentName) {
     let components= JSON.parse(localStorage.getItem("ui-editor"));
     return components.filter(component=> markup.includes(component.name)).length >0;
 }
+
+export function getChildComponents (markup){
+    let components= JSON.parse(localStorage.getItem("ui-editor"));
+    return components.filter(component=> markup.includes(component.name));
+}
