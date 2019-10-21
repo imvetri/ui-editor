@@ -1,6 +1,6 @@
 // Libraries.
 
-import React, {Component} from "react";
+import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
 // Dependencies.
@@ -20,7 +20,7 @@ class Index extends Component {
             components: [],
             previewComponent: {
                 name: "",
-                markup:"",
+                markup: "",
                 style: "",
                 state: "{}",
                 events: [{
@@ -34,22 +34,20 @@ class Index extends Component {
 
     updatePreview(element) {
         this.setState({
-            previewComponent:  element
+            previewComponent: element
         });
     }
 
-    render(){
+    render() {
         return (
             <div>
-                <h3>Ui-Editor</h3>
-                <p>For more details, visit <a href="https://github.com/imvetri/ui-editor">Github</a></p>
-                <div className={style.showBackground}>
-                    <Elements createMode={false} onPreview={this.updatePreview.bind(this)}/>
-                    <Preview component={this.state.previewComponent}/>
+                <div classNameName={style.showBackground}>
+                    <Elements createMode={false} onPreview={this.updatePreview.bind(this)} />
+                    <Preview component={this.state.previewComponent} />
                 </div>
             </div>
         );
     }
 }
 
-ReactDOM.render(<Index/>, document.getElementById("index"));
+ReactDOM.render(<Index />, document.getElementById("index"));
