@@ -41,7 +41,7 @@ class Index extends Component {
     render() {
         return (
             <div>
-                <div classNameName={style.showBackground}>
+                <div className={style.showBackground}>
                     <Elements createMode={false} onPreview={this.updatePreview.bind(this)} />
                     <Preview component={this.state.previewComponent} />
                 </div>
