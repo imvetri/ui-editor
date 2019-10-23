@@ -2,7 +2,7 @@
 
 import React, { Component } from "react";
 
-import style from "./Style.css"
+import "./Style.css"
 
 import CssBuilder from "../CssBuilder";
 
@@ -32,7 +32,7 @@ class Configurator extends Component {
     render() {
 
         return (
-            <div className={style.configurator}>
+            <div className="configurator">
                 <h5>Child Configurator</h5>
                 <label>
                     <input type="checkbox" onChange={this.toggelOverride.bind(this)} checked={this.state.override ? "checked" : ""} />
