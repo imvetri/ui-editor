@@ -50,8 +50,8 @@ body {
 }
 
 .collapsed {
-    border-top-color: transparent;
-    border-bottom-color: #fff;
+    border-left-color: #fff;
+    border-right-color: transparent;
 }
 
 .content {
@@ -62,4 +62,8 @@ body {
     display:flex;
     padding: 4px 0;
     line-height: 24px;
+}
+
+.hide{
+    display:none;
 }
