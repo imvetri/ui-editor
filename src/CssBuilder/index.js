@@ -1,7 +1,7 @@
 import { Component } from "react";
 import React from "react";
 
-import "./style.css";
+import "./cssstyle.lcss";
 import { colorChange
     ,backgroundColorChange
     ,fontSizeChange
