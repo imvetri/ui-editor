@@ -24,7 +24,7 @@ class Preview extends Component {
         return (
             <div className={style.box}>
                 <section className={style.preview}>
-                    <h4>Preview</h4>
+                    <span className="title">Preview</span>
                     <DynamicComponent key={randomKey} component={this.props.component}/>
                 </section>
             </div>
