@@ -10,6 +10,8 @@ class Nodes extends Component {
 
         var node = this.props.node;
 
+        var id = node.props.id ? ("-"+node.props.id) : "";
+
         if(!node){
             return (<span>null</span>)
         }
@@ -29,8 +31,8 @@ class Nodes extends Component {
                             type="radio" 
                             name="selectedElement" 
                             onChange={this.props.onSelectedTagChanged} 
-                            value={node.type+"-"+node.props.id}/>
-                        {node.type +"-"+ node.props.id}
+                            value={node.type + id}/>
+                        {node.type +id}
                     </label>
                     {children}
                 </ul>
@@ -46,8 +48,8 @@ class Nodes extends Component {
                             type="radio" 
                             name="selectedElement" 
                             onChange={this.props.onSelectedTagChanged} 
-                            value={node.type+"-"+ node.props.id}/>
-                        {node.type +"-"+ node.props.id}
+                            value={node.type+id}/>
+                        {node.type +id}
                     </label>
                     <Nodes key={index} node={child} onSelectedTagChanged={this.props.onSelectedTagChanged}/>
                 </ul>
@@ -74,10 +76,10 @@ class Nodes extends Component {
                     <input 
                         type="radio" 
                         name="selectedElement" 
-                        value={node.type+"-"+ node.props.id}
+                        value={node.type+id}
                         onChange={this.props.onSelectedTagChanged} 
                         />
-                    {node.type +"-"+ node.props.id}
+                    {node.type +id}
                 </label>
             </ul>
         );
