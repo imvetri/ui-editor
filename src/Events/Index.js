@@ -38,7 +38,7 @@ class Events extends Component {
         if (this.state.elements.length == 0) {
             return (
                 <div className={style.events}>
-                    <h4>Settings</h4>
+                    <span className="title">Settings</span>
                     <p>Looks like you do not have any Web component created. Type some "html" on the right "Editor" tab</p>
                 </div>
             );
@@ -48,7 +48,7 @@ class Events extends Component {
         if (element.name === undefined && this.state.elements.length != 0) {
             return (
                 <div className={style.events}>
-                    <h4>Settings</h4>
+                    <span className="title">Settings</span>
                     <p>Looks like you have not selected any component. Click on any of the component in the left pane.</p>
                 </div>
             )
@@ -75,7 +75,7 @@ class Events extends Component {
         if (nodeTree.result === undefined && this.state.elements.length != 0) {
             return (
                 <div className={style.events}>
-                    <h4>Settings</h4>
+                    <span className="title">Settings</span>
                 </div>
             );
         }
@@ -112,7 +112,7 @@ class Events extends Component {
 
         return (
             <div className={style.events}>
-                <h4>Settings</h4>
+                <span className="title">Settings</span>
                 <p>Select a tag below to show/add the events.</p>
                 <div className={style.tags}>
                     <Nodes node={nodeTree.result} onSelectedTagChanged={selectedTagChanged.bind(this)} />
