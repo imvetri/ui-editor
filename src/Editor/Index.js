@@ -39,9 +39,11 @@ class Editor extends Component {
         let state= this.state.state;
         // TODO: Should pass the current data. Instead of accessing it from global
         return (
-            <div className={style.editor+" editor"}>
-                <section className={style.override}>  
-                    <h4>Editor</h4>              
+            <div className={"editor"}>
+                <section className={style.override}> 
+                    <div className={style.editor}>
+                        <span className="title">Editor</span>
+                    </div>
                     <div>
                         <h5>Component Name:</h5>
                         <input type="text" placeholder="Enter element name" value={name} onChange={updateName.bind(this)} id="elementName"/>
