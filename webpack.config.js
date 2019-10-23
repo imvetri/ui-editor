@@ -32,6 +32,18 @@ module.exports = {
                         }
                       }
                 ]
+            },
+            {
+                test: /\.lcss$/,
+                use: [
+                    
+                    {
+                        "loader": "style-loader"
+                    },
+                    {
+                        loader: "css-loader"
+                    }
+                ]
             }
         ]
     },
