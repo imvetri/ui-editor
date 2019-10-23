@@ -8,8 +8,7 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --mode development --open",
-    "build": "webpack --mode production",
-    "cypress:open": "cypress open"
+    "build": "webpack --mode production"
   },
   "dependencies": {
     "react": "^16.7.0",
