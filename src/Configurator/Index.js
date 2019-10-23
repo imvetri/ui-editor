@@ -4,6 +4,8 @@ import React, { Component } from "react";
 
 import style from "./Style.css"
 
+import CssBuilder from "../CssBuilder";
+
 class Configurator extends Component {
     constructor(props) {
         super(props);
@@ -36,6 +38,7 @@ class Configurator extends Component {
                     <input type="checkbox" onChange={this.toggelOverride.bind(this)} checked={this.state.override ? "checked" : ""} />
                     Override child state
                 </label>
+                <CssBuilder />
             </div>
         );
     }
