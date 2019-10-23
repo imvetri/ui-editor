@@ -11,6 +11,7 @@ import resetStyle from "./Index/reset.css";
 
 import Elements from "./Elements";
 import Preview from "./Preview";
+import CssBuilder from "./CssBuilder";
 
 
 class Index extends Component {
@@ -42,6 +43,7 @@ class Index extends Component {
         return (
             <div>
                 <div className={style.showBackground}>
+                    <CssBuilder />
                     <Elements createMode={false} onPreview={this.updatePreview.bind(this)} />
                     <Preview component={this.state.previewComponent} />
                 </div>
