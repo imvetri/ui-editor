@@ -113,7 +113,7 @@ class Events extends Component {
         return (
             <div className={style.events}>
                 <span className="title">Settings</span>
-                <p>Select a tag below to show/add the events.</p>
+                <p></p>
                 <div className={style.tags}>
                     <Nodes node={nodeTree.result} onSelectedTagChanged={selectedTagChanged.bind(this)} />
                 </div>

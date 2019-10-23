@@ -1,5 +1,4 @@
 body { 
-    
     background-color: #2C3134;
     color: #d9d9d9;
     font-family: Arial, sans-serif, Georgia, serif;
@@ -27,4 +26,12 @@ input, textarea {
 
 input[type="text"] {
     -webkit-appearance: textarea;
+}
+
+ul label input {
+    width: 10px;
+}
+
+ul {
+    padding-left: 5px;
 }
