@@ -62,6 +62,16 @@ class CssBuilder extends Component {
             'border-color': '',
             'display':''
         }
+        this.state.expanded = true;
+        this.state.className = "panel expanded"
+    }
+
+    toggleCollapse(){
+        this.setState({
+            expanded: !this.state.expanded,
+            className: !this.state.expanded ? "panel collapsed" : "panel expanded",
+            show: this.state.expanded? "content" : "hide content"
+        })
     }
 
     render() {
@@ -70,9 +80,9 @@ class CssBuilder extends Component {
                 <div className="option-group">
                     <p className="option-group-label">
                         <span className="title">Text</span>
-                        <span className="panel expanded"></span>
+                        <span className={this.state.className} onClick={this.toggleCollapse.bind(this)}></span>
                     </p>
-                    <div className="content">
+                    <div className={this.state.show}>
                         <div className="option">
                             <label>Color</label>
                             <input type="color" value={this.state['color']} onChange={colorChange.bind(this)} name="color" />
@@ -183,7 +193,7 @@ class CssBuilder extends Component {
                                 <option value="PX" />
                             </datalist>
                         </div>
-                    </div>
+                    </div> 
                 </div>
 
                 <div className="option-group">
