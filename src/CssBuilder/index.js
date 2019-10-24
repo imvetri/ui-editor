@@ -119,7 +119,7 @@ class CssBuilder extends Component {
                         </div>
 
 
-                        <div className="option">
+                        {/* <div className="option">
                             <label>Font-style</label>
                             <input list="fontsStyle" name="font-style" value={this.state['font-style']} onChange={fontStyleChange.bind(this)}/>
                             <datalist id="fontsStyle">
@@ -160,7 +160,7 @@ class CssBuilder extends Component {
                                 <option value="overline" />
                                 <option value="line-through" />
                             </datalist>
-                        </div>
+                        </div> */}
 
 
                         <div className="option">
@@ -175,7 +175,7 @@ class CssBuilder extends Component {
                         </div>
 
 
-                        <div className="option">
+                        {/* <div className="option">
                             <label>Letter spacing</label>
                             <input type="number" min="8" name="letter-spacing" value={this.state["letter-spacing"]} onChange={letterSpacingChange.bind(this)}/>
                             <input list="letterSpacing" value="PX" />
@@ -192,7 +192,7 @@ class CssBuilder extends Component {
                             <datalist id="wordSpacing">
                                 <option value="PX" />
                             </datalist>
-                        </div>
+                        </div> */}
                     </div> 
                 </div>
 
@@ -203,20 +203,22 @@ class CssBuilder extends Component {
                     </p>
                     <div className="content">
                         <div className="option">
-                            <div>Size</div>
-                            <div>
-                                <label>Width</label>
-                                <input type="number" min="0" name="width" value={this.state.width} onChange={widthChange.bind(this)}/>
+                            <div>                            
+                                <div>Size</div>
+                                <div>
+                                    <label>Width</label>
+                                    <input type="number" min="0" name="width" value={this.state.width} onChange={widthChange.bind(this)}/>
 
-                                <input list="widthunits" value="PX" />
-                                <datalist id="widthunits">
-                                    <option value="PX" />
-                                    <option value="%" />
-                                    <option value="EM" />
-                                    <option value="VW" />
-                                    <option value="VH" />
-                                    <option value="Auto" />
-                                </datalist>
+                                    <input list="widthunits" value="PX" />
+                                    <datalist id="widthunits">
+                                        <option value="PX" />
+                                        <option value="%" />
+                                        <option value="EM" />
+                                        <option value="VW" />
+                                        <option value="VH" />
+                                        <option value="Auto" />
+                                    </datalist>
+                                </div>
                             </div>
                             <div>
                                 <label>Height</label>
@@ -237,8 +239,8 @@ class CssBuilder extends Component {
 
                     <div className="content">
                         <div className="option">
-                            <div>Margin</div>
                             <div>
+                                <div>Margin</div>
                                 <label>Margin-Left</label>
                                 <input type="number" min="0" name="margin-left" value={this.state["margin-left"]} onChange={marginLeftChange.bind(this)} />
 
@@ -299,8 +301,8 @@ class CssBuilder extends Component {
 
                         <div className="content">
                             <div className="option">
-                                <div>Padding</div>
                                 <div>
+                                    <div>Padding</div>
                                     <label>Padding-Left</label>
                                     <input type="number" min="0" name="padding-left" value={this.state["padding-left"]} onChange={paddingLeftChange.bind(this)} />
 
@@ -359,8 +361,8 @@ class CssBuilder extends Component {
 
                         <div className="content">
                             <div className="option">
-                                <div>Border</div>
                                 <div>
+                                    <div>Border</div>
                                     <label>Border-Left</label>
                                     <input type="number" min="0" name="border-left" value={this.state["border-left"]} onChange={borderLeftChange.bind(this)}  />
 
