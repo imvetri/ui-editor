@@ -20,14 +20,13 @@ class Element extends Component {
                     {this.props.element.name}
                     <button 
                         index = {this.props.index} 
-                        onClick={previewElement.bind(this)} className="preview">Preview</button>
+                        onClick={previewElement.bind(this)}><i class="fas fa-eye"></i>Preview</button>
                     <button 
                         index = {this.props.index}
-                        onClick={this.props.onExport}>Export</button>
+                        onClick={this.props.onExport}><i class="fas fa-file-export"></i>Export</button>
                     <button 
                         index = {this.props.index}
-                        onClick={this.props.onDelete}>Delete</button>
-                    <button disabled={this.props.selectedIndex === this.props.index ? "" : "disabled"}>{this.props.selectedIndex === this.props.index ? "Active" : "Inactive"}</button>
+                        onClick={this.props.onDelete}><i class="fa fa-trash"></i>Delete</button>
                 </li>
             </ div>
         );

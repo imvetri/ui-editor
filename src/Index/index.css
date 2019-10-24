@@ -35,3 +35,29 @@ ul label input {
 ul {
     padding-left: 5px;
 }
+
+
+button {
+    color: rgba(255,255,255,0.5);
+    border-color: rgba(0,0,0,0.9);
+    border-width: 1px;
+    padding: 7px;
+    background-color: #343a40;
+    margin-left: 4px;
+}
+
+button i{
+    padding-right:4px;
+}
+
+button:hover {
+    color: #fff;
+}
+
+ul,li, ul label {
+    color: rgba(255,255,255,0.5);
+}
+
+ul label:hover, li:hover{
+    color: #fff;
+}
