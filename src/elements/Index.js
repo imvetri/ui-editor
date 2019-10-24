@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 // Styles.
 
-import style from "./Style.css";
+import "./Style.lcss";
 
 // Components.
 
@@ -71,9 +71,11 @@ class Elements extends Component {
         }
         
         return (
-            <div className={style.elements}>
+            <div className="elements">
                 <section className="element-list">
-                    <span className="title">Components</span>
+                    <div className="title">
+                        <span>Components</span>
+                    </div>
                     <ul>
                         {elementList}
                     </ul>
