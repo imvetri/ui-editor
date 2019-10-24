@@ -33,12 +33,14 @@ class Configurator extends Component {
 
         return (
             <div className="configurator">
-                <h5>Child Configurator</h5>
-                <label>
-                    <input type="checkbox" onChange={this.toggelOverride.bind(this)} checked={this.state.override ? "checked" : ""} />
-                    Override child state
-                </label>
-                <CssBuilder />
+                <span>Child Configurator</span>
+                <div>
+                    <label>
+                        <input type="checkbox" onChange={this.toggelOverride.bind(this)} checked={this.state.override ? "checked" : ""} />
+                        Override child state
+                    </label>
+                    <CssBuilder />
+                </div>
             </div>
         );
     }
