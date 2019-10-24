@@ -50,8 +50,8 @@ class Event extends Component {
                     Publishable
                     </label>
                     {publishName}
-                    <button onClick={publishEvent.bind(this)} id="saveEvent">Save</button>
-                    <button onClick={deleteEvent.bind(this)} id="deleteEvent">Delete</button>
+                    <button onClick={publishEvent.bind(this)} id="saveEvent"><i class="fas fa-save"></i>Save</button>
+                    <button onClick={deleteEvent.bind(this)} id="deleteEvent"><i class="fas fa-trash"></i>Delete</button>
                 </div>
             </div>
         );
