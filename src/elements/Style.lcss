@@ -1,0 +1,35 @@
+.override {
+    line-height: 0%;
+}
+
+.selected {
+    border: 1px solid green;
+}
+
+.hide {
+    display: none;
+}
+
+textarea {
+    height: 70px;
+    width: 250px;
+}
+
+.elements{
+    display: flex;
+    align-items: stretch;
+}
+
+.title{
+    margin-top: 15px;
+    margin-bottom: 11px;
+    /* background: rgb(64, 64, 64); */
+    color: rgba(255,255,255,0.5);
+}
+
+.title span{
+    border: 1px #404040 solid;
+    border-bottom: none;
+    padding: 10px;
+    background: rgb(64, 64, 64);
+}

@@ -47,7 +47,7 @@ class Editor extends Component {
                     <div>
                         <h5>Component Name:</h5>
                         <input type="text" placeholder="Enter element name" value={name} onChange={updateName.bind(this)} id="elementName"/>
-                        <button onClick={this.publishElement.bind(this)} id="save">Save</button>    
+                        <button onClick={this.publishElement.bind(this)} id="save"><i class="fas fa-save"></i>Save</button>    
                     </div>
                     <div>
                         <h5>HTML: </h5><p>Tags should contain <code>id</code> attribute, if you would like to bind events to it.</p>
