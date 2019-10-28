@@ -9,7 +9,6 @@ import "./Style.lcss";
 import Editor from "../Editor";
 import Events from "../Events";
 import Element from "../Element";
-import getMessages from "./Messages";
 
 // Reducers.
 
@@ -65,10 +64,6 @@ class Elements extends Component {
     
         const selectedElement = this.state.elements[this.state.selectedIndex] || this.state.element;
 
-        let messagesComponent;
-        if(this.state.selectedIndex === -1){
-            messagesComponent = getMessages();
-        }
         
         return (
             <div className="elements">
@@ -79,7 +74,6 @@ class Elements extends Component {
                     <ul>
                         {elementList}
                     </ul>
-                    <button id="addElement" onClick={this.toggleEditor.bind(this)}>Add</button>
                 </section>
                 <section className="events-tab">
                     <Events 
@@ -98,7 +92,6 @@ class Elements extends Component {
                     state = {selectedElement.state}
                     onSave = {this.saveElement}
                     />
-                {messagesComponent}
             </div>
         );
     }
