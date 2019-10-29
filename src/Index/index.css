@@ -52,6 +52,7 @@ button i{
 
 button:hover {
     color: #fff;
+    background: rgb(43, 43, 43);
 }
 
 ul,li, ul label {
@@ -60,4 +61,5 @@ ul,li, ul label {
 
 ul label:hover, li:hover{
     color: #fff;
+    background: rgb(43, 43, 43);
 }

@@ -63,6 +63,6 @@ body {
     line-height: 24px;
 }
 
-.hide{
+.hide .content{
     display:none;
 }

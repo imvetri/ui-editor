@@ -6,10 +6,6 @@
     border: 1px solid green;
 }
 
-.hide {
-    display: none;
-}
-
 textarea {
     height: 70px;
     width: 250px;
