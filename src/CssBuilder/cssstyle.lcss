@@ -43,12 +43,12 @@ body {
     float:right;
 }
 
-.expanded {
+.expanded .panel{
     border-top-color: #fff;
     border-bottom-color: transparent;
 }
 
-.collapsed {
+.collapsed .panel{
     border-left-color: #fff;
     border-right-color: transparent;
 }
@@ -63,6 +63,6 @@ body {
     line-height: 24px;
 }
 
-.hide .content{
+.collapsed .content{
     display:none;
 }
