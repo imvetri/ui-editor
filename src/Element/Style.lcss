@@ -6,3 +6,12 @@
     background: rgb(64, 64, 64);
     border-bottom: 1px solid #333333;
 }
+
+.component {
+    display:flex;
+    justify-content: space-between;
+}
+
+.component .componentName{
+    padding:7px;
+}
