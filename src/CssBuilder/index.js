@@ -71,8 +71,8 @@ class CssBuilder extends Component {
         debugger;
         this.setState({
             expanded: !this.state.expanded,
-            className: this.state.expanded ? "panel expanded" : "panel collapsed",
-            show: this.state.expanded? "option-group" : "hide option-group"
+            className: !this.state.expanded ? "panel expanded" : "panel collapsed",
+            show: !this.state.expanded? "option-group" : "hide option-group"
         })
     }
 

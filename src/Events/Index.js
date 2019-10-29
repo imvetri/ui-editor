@@ -120,6 +120,9 @@ class Events extends Component {
                     <Nodes node={nodeTree.result} onSelectedTagChanged={selectedTagChanged.bind(this)} />
                 </div>
                 {configurator}
+                <div className="title">
+                    Style editor
+                </div>
                 <CssBuilder />
                 <div className={style.eventBlock}>
                     <h5>Existing Events</h5>
