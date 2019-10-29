@@ -62,15 +62,35 @@ class CssBuilder extends Component {
             'border-color': '',
             'display':''
         }
-        this.state.expanded = false;
-        this.state.show = "option-group collapsed";
+        this.state.TextExpanded = false;
+        this.state.showText = "option-group collapsed";
+
+        this.state.BoxExpanded = false;
+        this.state.showBox = "option-group collapsed";
+
+        this.state.LayoutExpanded = false;
+        this.state.showLayout = "option-group collapsed";
+        
     }
 
-    toggleCollapse(){
-        debugger;
+    toggleCollapseText(){
         this.setState({
-            expanded: !this.state.expanded,
-            show: !this.state.expanded? "option-group expanded" : "collapsed option-group"
+            TextExpanded: !this.state.TextExpanded,
+            showText: !this.state.TextExpanded? "option-group expanded" : "collapsed option-group"
+        })
+    }
+
+    toggleCollapseBox(){
+        this.setState({
+            BoxExpanded: !this.state.BoxExpanded,
+            showBox: !this.state.BoxExpanded? "option-group expanded" : "collapsed option-group"
+        })
+    }
+
+    toggleCollapseLayout(){
+        this.setState({
+            LayoutExpanded: !this.state.LayoutExpanded,
+            showLayout: !this.state.LayoutExpanded? "option-group expanded" : "collapsed option-group"
         })
     }
 
@@ -78,10 +98,10 @@ class CssBuilder extends Component {
         debugger;
         return (
             <div>
-                <div className={this.state.show}>
+                <div className={this.state.showText}>
                     <p className="option-group-label">
                         <span className="title">Text</span>
-                        <span className="panel" onClick={this.toggleCollapse.bind(this)}></span>
+                        <span className="panel" onClick={this.toggleCollapseText.bind(this)}></span>
                     </p>
                     <div className="content">
                         <div className="option">
@@ -197,10 +217,10 @@ class CssBuilder extends Component {
                     </div> 
                 </div>
 
-                <div className="option-group">
+                <div className={this.state.showBox}>
                     <p className="option-group-label">
                         <span className="title">Box</span>
-                        <span className="panel expanded"></span>
+                        <span className="panel" onClick={this.toggleCollapseBox.bind(this)}></span>
                     </p>
                     <div className="content">
                         <div className="option">
@@ -424,10 +444,10 @@ class CssBuilder extends Component {
                     </div>
 
 
-                    <div className="option-group">
+                    <div className={this.state.showLayout}>
                         <p className="option-group-label">
                             <span className="title">Layout</span>
-                            <span className="panel expanded"></span>
+                            <span className="panel" onClick={this.toggleCollapseText.bind(this)}></span>
                         </p>
                         <div className="content">
                             <div className="option">
