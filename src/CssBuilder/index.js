@@ -62,8 +62,8 @@ class CssBuilder extends Component {
             'border-color': '',
             'display':''
         }
-        this.state.expanded = true;
-        this.state.className = "panel expanded"
+        this.state.expanded = false;
+        this.state.className = "panel collapsed"
     }
 
     toggleCollapse(){
