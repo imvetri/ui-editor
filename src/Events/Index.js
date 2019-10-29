@@ -12,6 +12,8 @@ import Configurator from "../Configurator";
 import Nodes from "../Nodes";
 import Event from "../Event";
 import getMessages from "./Messages";
+import CssBuilder from "../CssBuilder";
+
 // Styles.
 
 import style from "./Style.css";
@@ -118,6 +120,7 @@ class Events extends Component {
                     <Nodes node={nodeTree.result} onSelectedTagChanged={selectedTagChanged.bind(this)} />
                 </div>
                 {configurator}
+                <CssBuilder />
                 <div className={style.eventBlock}>
                     <h5>Existing Events</h5>
                     {eventsOfSelectedTag}
