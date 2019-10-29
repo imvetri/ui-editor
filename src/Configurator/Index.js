@@ -4,7 +4,6 @@ import React, { Component } from "react";
 
 import "./Style.css"
 
-import CssBuilder from "../CssBuilder";
 
 class Configurator extends Component {
     constructor(props) {
@@ -32,16 +31,20 @@ class Configurator extends Component {
     render() {
 
         return (
-            <div className="configurator">
-                <span>Child Configurator</span>
-                <div>
-                    <label>
+
+            <div className="option-group">
+                <p className="option-group-label">
+                    <span className="title">Child Configurations</span>
+                    <span className="panel expanded"></span>
+                </p>
+                <div className="content">
+                    <div className="option">
+                        <label>Override child state</label>
                         <input type="checkbox" onChange={this.toggelOverride.bind(this)} checked={this.state.override ? "checked" : ""} />
-                        Override child state
-                    </label>
-                    <CssBuilder />
+                    </div>
                 </div>
             </div>
+
         );
     }
 }
