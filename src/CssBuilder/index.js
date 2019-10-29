@@ -69,7 +69,7 @@ class CssBuilder extends Component {
     toggleCollapse(){
         this.setState({
             expanded: !this.state.expanded,
-            className: !this.state.expanded ? "panel collapsed" : "panel expanded",
+            className: !this.state.expanded ? "panel expanded" : "panel collapsed",
             show: this.state.expanded? "content" : "hide content"
         })
     }
