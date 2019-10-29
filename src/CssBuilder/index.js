@@ -62,27 +62,30 @@ class CssBuilder extends Component {
             'border-color': '',
             'display':''
         }
-        this.state.expanded = true;
-        this.state.className = "panel expanded"
+        this.state.expanded = false;
+        this.state.className = "panel collapsed";
+        this.state.show = "option-group hide";
     }
 
     toggleCollapse(){
+        debugger;
         this.setState({
             expanded: !this.state.expanded,
-            className: !this.state.expanded ? "panel collapsed" : "panel expanded",
-            show: this.state.expanded? "content" : "hide content"
+            className: !this.state.expanded ? "panel expanded" : "panel collapsed",
+            show: !this.state.expanded? "option-group" : "hide option-group"
         })
     }
 
     render() {
+        debugger;
         return (
             <div>
-                <div className="option-group">
+                <div className={this.state.show}>
                     <p className="option-group-label">
                         <span className="title">Text</span>
                         <span className={this.state.className} onClick={this.toggleCollapse.bind(this)}></span>
                     </p>
-                    <div className={this.state.show}>
+                    <div className="content">
                         <div className="option">
                             <label>Color</label>
                             <input type="color" value={this.state['color']} onChange={colorChange.bind(this)} name="color" />
