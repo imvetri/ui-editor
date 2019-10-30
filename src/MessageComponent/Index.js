@@ -2,7 +2,7 @@
 
 import React, { Component } from "react";
 
-import style from "./style.css";
+import "./style.lcss";
 
 class MessageComponent extends Component {
     constructor(props) {
@@ -23,8 +23,8 @@ class MessageComponent extends Component {
         else{
             console.error(message.type + " is unidentified message type for <MessagesComponent/>. Please use either 'error' or 'info' only. If you require a different type, raise an issue, send a PR")
             return  (
-                <div className={style.console}>
-                    <div className={styl.eerror}>
+                <div className="console">
+                    <div className="eerror">
                         <code>{"error : unidentified message type. Please use either error/ info only"}</code>
                     </div>
                 </div>

@@ -16,7 +16,7 @@ import CssBuilder from "../CssBuilder";
 
 // Styles.
 
-import style from "./Style.css";
+import "./Style.lcss";
 
 // Reducers.
 
@@ -39,7 +39,7 @@ class Events extends Component {
         // Report if no component is created.
         if (this.state.elements.length == 0) {
             return (
-                <div className={style.events}>
+                <div className="events">
                     <div className="title">Settings</div>
                     <p>Looks like you do not have any Web component created. Type some "html" on the right "Editor" tab</p>
                 </div>
@@ -49,7 +49,7 @@ class Events extends Component {
         // Report if no component is selected.
         if (element.name === undefined && this.state.elements.length != 0) {
             return (
-                <div className={style.events}>
+                <div className="events">
                     <div className="title">Settings</div>
                     <p>Looks like you have not selected any component. Click on any of the component in the left pane.</p>
                 </div>
@@ -76,7 +76,7 @@ class Events extends Component {
         // Report error if component is not 
         if (nodeTree.result === undefined && this.state.elements.length != 0) {
             return (
-                <div className={style.events}>
+                <div className="events">
                     <div className="title">Settings</div>
                 </div>
             );
@@ -113,10 +113,10 @@ class Events extends Component {
         }
 
         return (
-            <div className={style.events}>
+            <div className="events">
                 <div className="title">Settings</div>
 
-                <div className={style.tags}>
+                <div className="tags">
                     <Nodes node={nodeTree.result} onSelectedTagChanged={selectedTagChanged.bind(this)} />
                 </div>
                 {configurator}

@@ -2,7 +2,7 @@
 
 import React, { Component } from "react";
 
-import style from "./style.css";
+import "./style.lcss";
 
 import DynamicComponent from "../DynamicComponent";
 import {validate} from "./validate";
@@ -22,8 +22,8 @@ class Preview extends Component {
         // Helps to rerender when changes to markup/events are made to the component and preview them.
         let randomKey = this.props.component.id*(~~(Math.random()*10));
         return (
-            <div className={style.box}>
-                <section className={style.preview}>
+            <div className="box">
+                <section className="preview">
                     <span className="title">Preview</span>
                     <DynamicComponent key={randomKey} component={this.props.component}/>
                 </section>

@@ -4,8 +4,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
 // Dependencies.
-import style from "./Index/index.css";
-import resetStyle from "./Index/reset.css";
+import "./Index/index.css";
 
 // Components.
 
@@ -41,7 +40,7 @@ class Index extends Component {
     render() {
         return (
             <div>
-                <div className={style.showBackground}>
+                <div className="showBackground">
                     <Elements createMode={false} onPreview={this.updatePreview.bind(this)} />
                     <Preview component={this.state.previewComponent} />
                 </div>
