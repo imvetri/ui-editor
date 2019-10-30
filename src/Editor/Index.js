@@ -3,7 +3,7 @@
 
 import React, { Component } from 'react';
 
-import style from "./Style.css";
+import "./Style.lcss";
 import {updateName, updateMarkup, updateStyle, updateState} from "./Reducer";
 
 /**
@@ -39,9 +39,9 @@ class Editor extends Component {
         let state= this.state.state;
         // TODO: Should pass the current data. Instead of accessing it from global
         return (
-            <div className={"editor"}>
-                <section className={style.override}> 
-                    <div className={style.editor}>
+            <div className="editor">
+                <section className="override"> 
+                    <div className="editor">
                         <span className="title">Editor</span>
                     </div>
                     <div>

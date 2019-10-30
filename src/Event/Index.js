@@ -2,7 +2,7 @@
 
 import React, { Component } from "react";
 
-import style from "./Style.css"
+import "./Style.lcss"
 
 // Components.
 
@@ -37,7 +37,7 @@ class Event extends Component {
         let eventNames = this.props.eventNames.map(eventName=><option value={eventName}></option>)
 
         return (
-            <div className={style.event}>
+            <div className="event">
                 <input list="browsers" type="text" onChange={updateEventName.bind(this)} value={this.state.name} placeholder="Enter event name" title="Event Name"/>
                 <datalist id="browsers">
                     {eventNames}
