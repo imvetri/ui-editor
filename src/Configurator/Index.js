@@ -2,7 +2,7 @@
 
 import React, { Component } from "react";
 
-import "./Style.css"
+import "./Style.lcss"
 
 
 class Configurator extends Component {

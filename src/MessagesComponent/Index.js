@@ -2,7 +2,7 @@
 
 import React, { Component } from "react";
 
-import style from "./style.css";
+import "./style.lcss";
 
 import MessageComponent from "../MessageComponent";
 
@@ -15,7 +15,7 @@ class MessagesComponent extends Component {
 
         let messages = this.props.messages;
             return (
-                <div className={style.console}>
+                <div className="console">
                     {messages.map((message,index)=><MessageComponent key={index} message={message}/>)}
                 </div>
             )
