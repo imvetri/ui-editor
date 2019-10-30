@@ -17,7 +17,7 @@ class Nodes extends Component {
         }
         if(typeof node==="string"){
             return (
-                    <span>{node}</span>
+                    <li>{node}</li>
             );
         }
 
