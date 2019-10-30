@@ -5,7 +5,6 @@ import React, { Component } from "react";
 import style from "./style.css";
 
 import DynamicComponent from "../DynamicComponent";
-import FocusBarComponent from "../FocusBarComponent";
 import {validate} from "./validate";
 
 class Preview extends Component {
@@ -26,7 +25,6 @@ class Preview extends Component {
             <div className={style.box}>
                 <section className={style.preview}>
                     <span className="title">Preview</span>
-                    <FocusBarComponent />
                     <DynamicComponent key={randomKey} component={this.props.component}/>
                 </section>
             </div>
