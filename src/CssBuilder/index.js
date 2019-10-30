@@ -95,10 +95,9 @@ class CssBuilder extends Component {
     }
 
     render() {
-        debugger;
         return (
-            <div>
-                <div className={this.state.showText}>
+            <ul>
+                <li className={this.state.showText}>
                     <p className="option-group-label">
                         <span className="title">Text</span>
                         <span className="panel" onClick={this.toggleCollapseText.bind(this)}></span>
@@ -215,9 +214,9 @@ class CssBuilder extends Component {
                             </datalist>
                         </div> */}
                     </div> 
-                </div>
+                </li>
 
-                <div className={this.state.showBox}>
+                <li className={this.state.showBox}>
                     <p className="option-group-label">
                         <span className="title">Box</span>
                         <span className="panel" onClick={this.toggleCollapseBox.bind(this)}></span>
@@ -441,29 +440,29 @@ class CssBuilder extends Component {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </li>
 
 
-                    <div className={this.state.showLayout}>
-                        <p className="option-group-label">
-                            <span className="title">Layout</span>
-                            <span className="panel" onClick={this.toggleCollapseText.bind(this)}></span>
-                        </p>
-                        <div className="content">
-                            <div className="option">
-                                <label>Display</label>
-                                <input list="display" name="display" value={this.state["display"]} onChange={displayChange.bind(this)}   />
+                <li className={this.state.showLayout}>
+                    <p className="option-group-label">
+                        <span className="title">Layout</span>
+                        <span className="panel" onClick={this.toggleCollapseText.bind(this)}></span>
+                    </p>
+                    <div className="content">
+                        <div className="option">
+                            <label>Display</label>
+                            <input list="display" name="display" value={this.state["display"]} onChange={displayChange.bind(this)}   />
 
-                                <datalist id="display">
-                                    <option value="inline" />
-                                    <option value="block" />
-                                    <option value="inline-block" />
-                                    <option value="flex" />
-                                </datalist>
-                            </div>
+                            <datalist id="display">
+                                <option value="inline" />
+                                <option value="block" />
+                                <option value="inline-block" />
+                                <option value="flex" />
+                            </datalist>
                         </div>
                     </div>
-                </div>
+                </li>
+            </ul>
                 );
     }
 }
