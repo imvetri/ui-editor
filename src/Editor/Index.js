@@ -40,28 +40,24 @@ class Editor extends Component {
         // TODO: Should pass the current data. Instead of accessing it from global
         return (
             <div className="editor">
-                <section className="override"> 
-                    <div className="editor">
-                        <span className="title">Editor</span>
-                    </div>
-                    <div>
-                        <h5>Component Name:</h5>
-                        <input type="text" placeholder="Enter element name" value={name} onChange={updateName.bind(this)} id="elementName"/>
-                        <button onClick={this.publishElement.bind(this)} id="save"><i class="fas fa-save"></i>Save</button>    
-                    </div>
-                    <div>
-                        <h5>HTML: </h5><p>Tags should contain <code>id</code> attribute, if you would like to bind events to it.</p>
-                        <textarea value={markup} onChange={updateMarkup.bind(this)} id="elementMarkup"/>
-                    </div>
-                    <div>
-                        <h5>CSS:</h5><p>Add a <code>className</code> to the markup, write a class here</p>
-                        <textarea value={style} onChange={updateStyle.bind(this)} />
-                    </div>
-                    <div>
-                        <h5>Data:</h5>
-                        <textarea value={state} onChange={updateState.bind(this)} id="elementState"/>
-                    </div>
-                </section>
+                <div className="title">Editor</div>
+                <div>
+                    <h5>Component Name:</h5>
+                    <input type="text" placeholder="Enter element name" value={name} onChange={updateName.bind(this)} id="elementName"/>
+                    <button onClick={this.publishElement.bind(this)} id="save"><i class="fas fa-save"></i>Save</button>    
+                </div>
+                <div>
+                    <h5>HTML: </h5><p>Tags should contain <code>id</code> attribute, if you would like to bind events to it.</p>
+                    <textarea value={markup} onChange={updateMarkup.bind(this)} id="elementMarkup"/>
+                </div>
+                <div>
+                    <h5>CSS:</h5><p>Add a <code>className</code> to the markup, write a class here</p>
+                    <textarea value={style} onChange={updateStyle.bind(this)} />
+                </div>
+                <div>
+                    <h5>Data:</h5>
+                    <textarea value={state} onChange={updateState.bind(this)} id="elementState"/>
+                </div>
             </div>
         );
     }
