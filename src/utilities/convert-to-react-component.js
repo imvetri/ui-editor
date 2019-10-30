@@ -95,7 +95,11 @@ function convertToReactcomponent (component){
         }).join("\n")
     }
     
-    let addDataAttributes = (component) => {
+    let addDataAttributes = (component, isExport) => {
+
+        if(!isExport){
+            
+        }
         //Finds the first space. This usually means the tag name ending point. but this will fail becauuse of events for child. but lets give it a try.
         let attributes = {
             "data-componentName": component.name.toUpperCase(),
