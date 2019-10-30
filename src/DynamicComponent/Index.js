@@ -5,7 +5,7 @@ import React, { Component } from "react";
 import {createStylesheet} from "../utilities/jsxTranspiler/create-stylesheet";
 import {createComponent} from "../utilities/convert-to-react-component";
 
-import style from "./style.css";
+import "./style.css";
 
 class DynamicComponent extends Component {
     constructor(props) {
@@ -22,7 +22,7 @@ class DynamicComponent extends Component {
         }        
 
         return (
-            <div className={style.box}>
+            <div className="box">
                 <h1>
                     {React.createElement(result)}
                 </h1>
