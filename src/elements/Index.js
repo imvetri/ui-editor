@@ -67,9 +67,9 @@ class Elements extends Component {
         
         return (
             <div className="elements">
-                <section className="element-list">
+                <section className="container">
                     <div className="title">
-                        <span>Components</span>
+                        Components
                     </div>
                     <ul>
                         {elementList}
