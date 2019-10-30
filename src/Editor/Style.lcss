@@ -2,11 +2,6 @@
     display: none;
 }
 
-.override {
-    border:1px solid black;
-    padding: 5px;
-}
-
 .editor > div{
     background: rgb(64, 64, 64);
     margin-top: 10px;
