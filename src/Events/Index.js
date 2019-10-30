@@ -40,7 +40,7 @@ class Events extends Component {
         if (this.state.elements.length == 0) {
             return (
                 <div className={style.events}>
-                    <span className="title">Settings</span>
+                    <div className="title">Settings</div>
                     <p>Looks like you do not have any Web component created. Type some "html" on the right "Editor" tab</p>
                 </div>
             );
@@ -50,7 +50,7 @@ class Events extends Component {
         if (element.name === undefined && this.state.elements.length != 0) {
             return (
                 <div className={style.events}>
-                    <span className="title">Settings</span>
+                    <div className="title">Settings</div>
                     <p>Looks like you have not selected any component. Click on any of the component in the left pane.</p>
                 </div>
             )
@@ -77,7 +77,7 @@ class Events extends Component {
         if (nodeTree.result === undefined && this.state.elements.length != 0) {
             return (
                 <div className={style.events}>
-                    <span className="title">Settings</span>
+                    <div className="title">Settings</div>
                 </div>
             );
         }
@@ -114,7 +114,7 @@ class Events extends Component {
 
         return (
             <div className={style.events}>
-                <span className="title">Settings</span>
+                <div className="title">Settings</div>
 
                 <div className={style.tags}>
                     <Nodes node={nodeTree.result} onSelectedTagChanged={selectedTagChanged.bind(this)} />
@@ -124,13 +124,27 @@ class Events extends Component {
                     Style editor
                 </div>
                 <CssBuilder />
-                <div className={style.eventBlock}>
-                    <h5>Existing Events</h5>
-                    {eventsOfSelectedTag}
-                </div>
-                <div className={style.eventBlock}>
-                    <h5>New Event</h5>
-                    <Event key={element.events.length} eventNames={[]} selectedTagID={selectedTag} onSave={updateEvent.bind(this)} />
+
+                <div className="title">
+                    Events
+                    <ul>
+                        <li>
+                            <div className="title">
+                                Existing
+                                <div>
+                                    {eventsOfSelectedTag}
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div className="title">
+                                New
+                                <div>
+                                    <Event key={element.events.length} eventNames={[]} selectedTagID={selectedTag} onSave={updateEvent.bind(this)} />
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         );

@@ -13,11 +13,3 @@
     position: fixed;
     right: 150px;
 }
-
-.eventBlock {
-    background: rgb(64, 64, 64);
-    margin-top: 10px;
-    padding: 5px;
-    height: 100px;
-    overflow: scroll;
-}
