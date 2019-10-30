@@ -22,11 +22,11 @@ class Preview extends Component {
         // Helps to rerender when changes to markup/events are made to the component and preview them.
         let randomKey = this.props.component.id*(~~(Math.random()*10));
         return (
-            <div className="box">
-                <section className="preview">
-                    <span className="title">Preview</span>
-                    <DynamicComponent key={randomKey} component={this.props.component}/>
-                </section>
+            <div className="container">
+                <div className="title">
+                    Preview
+                </div>
+                <DynamicComponent key={randomKey} component={this.props.component}/>
             </div>
         );
     }
