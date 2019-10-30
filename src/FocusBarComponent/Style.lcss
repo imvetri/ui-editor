@@ -1,0 +1,45 @@
+.focus-bar {
+    position: absolute;
+    pointer-events: all;
+    white-space: nowrap;
+    top: -20px;
+    height: 20px;
+    background-color: #3E8CE4;
+    border-radius: 2px 2px 0 0;
+    font: 16px/1 Arial, Helvetica, sans-serif;
+    color: #fff;
+}
+
+.focus-bar > span i {
+    vertical-align: middle;
+    font-size: 14px;
+    color: #fff;
+}
+
+.focus-bar .move-handle {
+    cursor: move !important;
+}
+
+.focus-bar > span {
+    padding: 5px;
+}
+
+.focus-bar > span:not(.move-handle):hover {
+    background-color: rgba(0,0,0,0.1);
+}
+
+
+.highlights .focus {
+    pointer-events: none;
+    border: 1px solid #3E8CE4;
+    border-radius: 2px;
+    border-top-left-radius: 0;
+    width: 690px;
+    height: 18px;
+
+    border-width: 1px;
+}
+
+.ui-overlay {
+    position: relative;
+}
