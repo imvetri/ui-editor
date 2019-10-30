@@ -39,25 +39,31 @@ class Editor extends Component {
         let state= this.state.state;
         // TODO: Should pass the current data. Instead of accessing it from global
         return (
-            <div className="editor">
+            <div className="container">
                 <div className="title">Editor</div>
-                <div>
-                    <h5>Component Name:</h5>
+
+                <div className="">
+                    <div className="title">Component Name</div>
                     <input type="text" placeholder="Enter element name" value={name} onChange={updateName.bind(this)} id="elementName"/>
                     <button onClick={this.publishElement.bind(this)} id="save"><i class="fas fa-save"></i>Save</button>    
                 </div>
-                <div>
-                    <h5>HTML: </h5><p>Tags should contain <code>id</code> attribute, if you would like to bind events to it.</p>
-                    <textarea value={markup} onChange={updateMarkup.bind(this)} id="elementMarkup"/>
+                
+                <div className="">
+                    <div className="title">Component Markup</div>
+                    <textarea value={markup} onChange={updateMarkup.bind(this)} id="elementMarkup" title="ID is mandatory for events"/>
                 </div>
-                <div>
-                    <h5>CSS:</h5><p>Add a <code>className</code> to the markup, write a class here</p>
+
+
+                <div className="">
+                    <div className="title">Component CSS</div>
                     <textarea value={style} onChange={updateStyle.bind(this)} />
                 </div>
-                <div>
-                    <h5>Data:</h5>
+
+                <div className="">
+                    <div className="title">Component State</div>
                     <textarea value={state} onChange={updateState.bind(this)} id="elementState"/>
                 </div>
+
             </div>
         );
     }
