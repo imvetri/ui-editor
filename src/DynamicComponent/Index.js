@@ -22,10 +22,8 @@ class DynamicComponent extends Component {
         }        
 
         return (
-            <div className="box">
-                <h1>
-                    {React.createElement(result)}
-                </h1>
+            <div>
+                {React.createElement(result)}
             </div>
         );
     }
