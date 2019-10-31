@@ -23,13 +23,13 @@ class Element extends Component {
                     <span>
                         <button 
                             index = {this.props.index} 
-                            onClick={previewElement.bind(this)}><i class="fas fa-eye"></i>Preview</button>
+                            onClick={previewElement.bind(this)}><i className="fas fa-eye"></i>Preview</button>
                         <button 
                             index = {this.props.index}
-                            onClick={this.props.onExport}><i class="fas fa-file-export"></i>Export</button>
+                            onClick={this.props.onExport}><i className="fas fa-file-export"></i>Export</button>
                         <button 
                             index = {this.props.index}
-                            onClick={this.props.onDelete}><i class="fa fa-trash"></i>Delete</button>
+                            onClick={this.props.onDelete}><i className="fa fa-trash"></i>Delete</button>
                     </span>
                     
                 </li>
