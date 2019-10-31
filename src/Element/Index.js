@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import {selectionChanged, previewElement, deleteElement, handleDrag} from "./Events";
-import  "./Style.lcss";
+import  "./Style.css";
 
 class Element extends Component {
     constructor(props) {

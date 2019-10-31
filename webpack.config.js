@@ -16,7 +16,7 @@ module.exports = {
                 }
             },
             {
-                test: /\.css$/,
+                test: /\.lcss$/,
                 use: [
                     
                     {
@@ -34,7 +34,7 @@ module.exports = {
                 ]
             },
             {
-                test: /\.lcss$/,
+                test: /\.css$/,
                 use: [
                     
                     {

@@ -2,7 +2,7 @@
 
 import React, { Component } from "react";
 
-import "./Style.lcss"
+import "./Style.css"
 
 // Components.
 
