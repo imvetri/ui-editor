@@ -4,3 +4,7 @@
     position:fixed;
     box-shadow: 0px 8px 26px -8px black;
 }
+
+.preview{
+    top:50%;
+}
