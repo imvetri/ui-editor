@@ -1,3 +1,7 @@
 .hidden{
     display: none;
 }
+
+.editor-tab{
+    left: 30%;
+}
