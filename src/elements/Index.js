@@ -75,15 +75,12 @@ class Elements extends Component {
                         {elementList}
                     </ul>
                 </div>
-                <div className="events-tab">
-                    <Events 
-                        key={this.state.selectedIndex}
-                        element = {selectedElement}
-                        elements = {this.state.elements}
-                        onEventsUpdate ={this.updateEvent}
-                        onConfigUpdate={this.updateConfig}/>
-                </div>
-                <div className="editor-tab">
+                <Events 
+                    key={this.state.selectedIndex}
+                    element = {selectedElement}
+                    elements = {this.state.elements}
+                    onEventsUpdate ={this.updateEvent}
+                    onConfigUpdate={this.updateConfig}/>
                     <Editor
                         key = {Math.ceil(Math.random()*1000)}
                         element = {selectedElement}
@@ -93,7 +90,6 @@ class Elements extends Component {
                         state = {selectedElement.state}
                         onSave = {this.saveElement}
                         />
-                </div>
             </div>
         );
     }
