@@ -2,7 +2,7 @@
 
 import React, { Component } from "react";
 
-import "./style.lcss";
+import "./style.css";
 
 import MessageComponent from "../MessageComponent";
 

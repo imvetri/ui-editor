@@ -2,7 +2,7 @@
 
 import React, { Component } from "react";
 
-import "./style.lcss";
+import "./style.css";
 
 import DynamicComponent from "../DynamicComponent";
 import {validate} from "./validate";
