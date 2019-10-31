@@ -45,7 +45,7 @@ class Editor extends Component {
                 <div className="">
                     <div className="title">Component Name</div>
                     <input type="text" placeholder="Enter element name" value={name} onChange={updateName.bind(this)} id="elementName"/>
-                    <button onClick={this.publishElement.bind(this)} id="save"><i class="fas fa-save"></i>Save</button>    
+                    <button onClick={this.publishElement.bind(this)} id="save"><i className="fas fa-save"></i>Save</button>    
                 </div>
                 
                 <div className="">
