@@ -12,8 +12,6 @@ textarea {
 }
 
 .elements{
-    display: flex;
-    align-items: stretch;
     position: fixed;
 }
 
@@ -24,4 +22,8 @@ textarea {
     background: rgb(64, 64, 64);
     margin-top: 10px;
     padding: 5px;
+}
+
+.elements-tab {
+    left:10px;
 }
