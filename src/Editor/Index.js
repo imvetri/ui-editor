@@ -39,7 +39,7 @@ class Editor extends Component {
         let state= this.state.state;
         // TODO: Should pass the current data. Instead of accessing it from global
         return (
-            <div className="container">
+            <div className="container editor-tab">
                 <div className="title">Editor</div>
 
                 <div className="">
