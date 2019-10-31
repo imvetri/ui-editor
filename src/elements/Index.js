@@ -67,31 +67,33 @@ class Elements extends Component {
         
         return (
             <div className="elements">
-                <section className="container">
+                <div className="container elements-tab">
                     <div className="title">
                         Components
                     </div>
                     <ul>
                         {elementList}
                     </ul>
-                </section>
-                <section className="events-tab">
+                </div>
+                <div className="events-tab">
                     <Events 
                         key={this.state.selectedIndex}
                         element = {selectedElement}
                         elements = {this.state.elements}
                         onEventsUpdate ={this.updateEvent}
                         onConfigUpdate={this.updateConfig}/>
-                </section>
-                <Editor
-                    key = {Math.ceil(Math.random()*1000)}
-                    element = {selectedElement}
-                    name = {selectedElement.name}
-                    markup = {selectedElement.markup}
-                    style = {selectedElement.style}
-                    state = {selectedElement.state}
-                    onSave = {this.saveElement}
-                    />
+                </div>
+                <div className="editor-tab">
+                    <Editor
+                        key = {Math.ceil(Math.random()*1000)}
+                        element = {selectedElement}
+                        name = {selectedElement.name}
+                        markup = {selectedElement.markup}
+                        style = {selectedElement.style}
+                        state = {selectedElement.state}
+                        onSave = {this.saveElement}
+                        />
+                </div>
             </div>
         );
     }
