@@ -10,6 +10,7 @@ import "./Index/index.css";
 
 import Elements from "./Elements";
 import Preview from "./Preview";
+import DraggableComponent from "./DraggableComponent";
 
 
 class Index extends Component {
@@ -42,7 +43,9 @@ class Index extends Component {
             <div>
                 <div className="showBackground">
                     <Elements createMode={false} onPreview={this.updatePreview.bind(this)} />
-                    <Preview component={this.state.previewComponent} />
+                    <DraggableComponent>
+                        <Preview component={this.state.previewComponent} />
+                    </DraggableComponent>
                 </div>
             </div>
         );
