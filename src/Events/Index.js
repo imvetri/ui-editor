@@ -113,7 +113,7 @@ class Events extends Component {
         }
 
         return (
-            <div className="container">
+            <div className="container events-tab">
                 <div className="title">Settings</div>
 
                 <div className="tags">
