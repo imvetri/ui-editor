@@ -13,8 +13,8 @@ class DraggableComponent extends Component {
     render() {
 
         return (
-            <div>
-                {props.children}
+            <div className="draggableComponentDaw">
+                {this.props.children}
             </div>
         );
     }
