@@ -16,7 +16,7 @@ import CssBuilder from "../CssBuilder";
 
 // Styles.
 
-import "./Style.lcss";
+import "./Style.css";
 
 // Reducers.
 
