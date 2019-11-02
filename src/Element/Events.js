@@ -3,7 +3,7 @@ export function selectionChanged(e) {
 }
 
 export function previewElement(e) {
-    this.props.onPreview(e);
+    this.props.onPreview(e.currentTarget.parentElement.parentElement.innerText.split("\n")[0]);
 }
 
 export function deleteElement(e) {
