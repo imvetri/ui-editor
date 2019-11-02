@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import {selectionChanged, previewElement, deleteElement, handleDrag} from "./Events";
+import {selectionChanged, previewElement, handleDrag} from "./Events";
 import  "./Style.css";
 
 class Element extends Component {
@@ -14,7 +14,7 @@ class Element extends Component {
         return (
             <div className="background" draggable="true" id={this.props.element.name} onDragStart={handleDrag.bind(this)}>
                 <li 
-                    className = {this.props.selectedIndex === this.props.index ? "selected component" : "component"}
+                    className = "component"
                     onClick = {selectionChanged.bind(this)}
                     index = {this.props.index}>
                     <span className="componentName">
