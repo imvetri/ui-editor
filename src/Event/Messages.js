@@ -9,6 +9,7 @@ function getMessages () {
         text: "#2 INFO: Click on 'Add' to add an component"
     }]
 
+    debugger;
     return <MessagesComponent messages={messages} />;
 }
 

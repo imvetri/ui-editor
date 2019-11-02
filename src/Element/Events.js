@@ -3,11 +3,14 @@ export function selectionChanged(e) {
 }
 
 export function previewElement(e) {
-    this.props.onPreview(e);
+    let componentName = e.currentTarget.parentElement.parentElement.innerText.split("\n")[0];
+    this.props.onPreview(componentName);
 }
 
 export function deleteElement(e) {
-    this.props.onDelete(e);
+    debugger;
+    let componentName = e.currentTarget.parentElement.parentElement.innerText.split("\n")[0];
+    this.props.onDelete(componentName);
 }
 
 export function handleDrag(e){
