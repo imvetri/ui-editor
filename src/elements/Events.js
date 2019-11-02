@@ -4,11 +4,11 @@ import { getComponentString } from "../utilities/convert-to-react-component";
 
 
 
-export function publishDetails() {
+export function publishDetails(componentName) {
         
     // Warning: Object.assign doesnt dupe the original object. It overrides only the values.
     // May cause problem with reference types.
-    let element = JSON.parse(JSON.stringify(this.state.elements[this.state.selectedIndex]));
+    let element = JSON.parse(JSON.stringify(this.state.elements.find(component=>component.name===componentName)));
 
     this.props.onPreview(prepareElement(element, element.name));
 }
