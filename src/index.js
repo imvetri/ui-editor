@@ -15,7 +15,7 @@ import Editor from "./Editor";
 import Events from "./Events";
 
 // Reducers.
-import { updateEvent, updateConfig, saveElement } from "./elements/Reducer";
+import { updateEvent, updateConfig, saveElement, updateselectedIndex, setEditMode } from "./elements/Reducer";
 
 
 class Index extends Component {
@@ -47,7 +47,8 @@ class Index extends Component {
         this.updateConfig = updateConfig.bind(this);
         this.updateEvent = updateEvent.bind(this);
         this.saveElement = saveElement.bind(this);
-
+        this.updateselectedIndex = updateselectedIndex.bind(this);
+        this.setEditMode = setEditMode.bind(this);
     }
 
     updatePreview(element) {
@@ -66,8 +67,8 @@ class Index extends Component {
                     <DraggableComponent>
                         <Elements
                             elements={this.state.elements}
-                            createMode={false}
                             onPreview={this.updatePreview.bind(this)}
+                            onSelection={this.updateselectedIndex}
                         />
                     </DraggableComponent>
                     <DraggableComponent>

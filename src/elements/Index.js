@@ -10,7 +10,7 @@ import Element from "../Element";
 
 // Reducers.
 
-import {updateselectedIndex,toggleEditor, setEditMode, onDelete} from "./Reducer"
+import {toggleEditor, setEditMode, onDelete} from "./Reducer"
 
 // Events.
 
@@ -26,7 +26,6 @@ class Elements extends Component {
         };
 
         this.onDelete = onDelete.bind(this);
-        this.updateselectedIndex = updateselectedIndex.bind(this)
         this.toggleEditor = toggleEditor.bind(this);
         this.setEditMode = setEditMode.bind(this);
     }
@@ -41,7 +40,7 @@ class Elements extends Component {
                 index = {index}
                 selectedIndex = {this.state.selectedIndex}
                 element = {element}
-                onSelectionChange = {this.updateselectedIndex.bind(this)}
+                onSelectionChange = {this.props.onSelection}
                 onPreview = {publishDetails.bind(this)} 
                 onExport = {onExport.bind(this)}
                 onDelete = {this.onDelete.bind(this)}/>
