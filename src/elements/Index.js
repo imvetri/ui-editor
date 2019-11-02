@@ -38,7 +38,6 @@ class Elements extends Component {
             <Element 
                 key = {index} 
                 index = {index}
-                selectedIndex = {this.state.selectedIndex}
                 element = {element}
                 onSelectionChange = {this.props.onSelection}
                 onPreview = {publishDetails.bind(this)} 
