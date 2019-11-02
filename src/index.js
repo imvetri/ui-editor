@@ -42,7 +42,9 @@ class Index extends Component {
         return (
             <div>
                 <div className="showBackground">
-                    <Elements createMode={false} onPreview={this.updatePreview.bind(this)} />
+                    <DraggableComponent>
+                        <Elements createMode={false} onPreview={this.updatePreview.bind(this)} />
+                    </DraggableComponent>
                     <DraggableComponent>
                         <Preview component={this.state.previewComponent} />
                     </DraggableComponent>
