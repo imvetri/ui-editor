@@ -11,13 +11,27 @@ import "./Index/index.css";
 import Elements from "./Elements";
 import Preview from "./Preview";
 import DraggableComponent from "./DraggableComponent";
+import Editor from "./Editor";
+import Events from "./Events";
+
+// Reducers.
+import { updateEvent, updateConfig, saveElement, updateselectedIndex, setEditMode } from "./elements/Reducer";
 
 
 class Index extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            elements: JSON.parse(localStorage.getItem("ui-editor")) || [],
             components: [],
+            selectedIndex: -1,
+            element: {
+                name: "",
+                markup: "",
+                style: "",
+                state: "{ }",
+                events: []
+            },
             previewComponent: {
                 name: "",
                 markup: "",
@@ -30,6 +44,11 @@ class Index extends Component {
                 }]
             }
         }
+        this.updateConfig = updateConfig.bind(this);
+        this.updateEvent = updateEvent.bind(this);
+        this.saveElement = saveElement.bind(this);
+        this.updateselectedIndex = updateselectedIndex.bind(this);
+        this.setEditMode = setEditMode.bind(this);
     }
 
     updatePreview(element) {
@@ -39,10 +58,42 @@ class Index extends Component {
     }
 
     render() {
+
+        const selectedElement = this.state.elements[this.state.selectedIndex] || this.state.element;
+
         return (
             <div>
                 <div className="showBackground">
-                    <Elements createMode={false} onPreview={this.updatePreview.bind(this)} />
+                    <DraggableComponent>
+                        <Elements
+                            elements={this.state.elements}
+                            onPreview={this.updatePreview.bind(this)}
+                            onSelection={this.updateselectedIndex}
+                        />
+                    </DraggableComponent>
+                    <DraggableComponent>
+
+                        <Events
+                            key={this.state.selectedIndex}
+                            element={selectedElement}
+                            elements={this.state.elements}
+                            onEventsUpdate={this.updateEvent}
+                            onConfigUpdate={this.updateConfig}
+                        />
+
+                    </DraggableComponent>
+                    <DraggableComponent>
+                        <Editor
+                            key={Math.ceil(Math.random() * 1000)}
+                            element={selectedElement}
+                            name={selectedElement.name}
+                            markup={selectedElement.markup}
+                            style={selectedElement.style}
+                            state={selectedElement.state}
+                            onSave={this.saveElement}
+                        />
+                    </DraggableComponent>
+
                     <DraggableComponent>
                         <Preview component={this.state.previewComponent} />
                     </DraggableComponent>
