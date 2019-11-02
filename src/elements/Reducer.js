@@ -80,13 +80,13 @@ export function updateEvent (events) {
     localStorage.setItem("ui-editor", JSON.stringify(newElements));
 }
 
-export function onDelete(e) {
-    
+export function onDelete(componentName) {
+    debugger;
     // Get all the elements
     let elements = Array.from(this.state.elements);
     
     // Find the index of element to be deleted.
-    let index = Number(e.target.getAttribute("index"));
+    let index = elements.findIndex(component=>component.name===componentName)
 
     // Remove the element from the list
     elements.splice(index,1);
