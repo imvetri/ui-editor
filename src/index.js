@@ -69,6 +69,7 @@ class Index extends Component {
                             elements={this.state.elements}
                             onPreview={this.updatePreview.bind(this)}
                             onSelection={this.updateselectedIndex}
+                            selectedIndex={this.state.selectedIndex}
                         />
                     </DraggableComponent>
                     <DraggableComponent>

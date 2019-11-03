@@ -14,7 +14,7 @@ class Element extends Component {
         return (
             <div className="background" draggable="true" id={this.props.element.name} onDragStart={handleDrag.bind(this)}>
                 <li 
-                    className = "component"
+                    className = {this.props.index===this.props.selectedIndex ? "selected component": "component"}
                     onClick = {selectionChanged.bind(this)}
                     index = {this.props.index}>
                     <span className="componentName">
