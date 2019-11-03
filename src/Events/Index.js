@@ -128,6 +128,8 @@ class Events extends Component {
 
                 <div className="title">
                     Events
+                </div>
+                <div>
                     <ul>
                         <li>
                             <div className="title">
