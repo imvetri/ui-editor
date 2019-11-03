@@ -15,7 +15,7 @@ import Editor from "./Editor";
 import Events from "./Events";
 
 // Reducers.
-import { updateEvent, updateConfig, saveElement, updateselectedIndex, setEditMode } from "./elements/Reducer";
+import { updateEvent, updateConfig, saveElement, updateselectedIndex, setEditMode } from "./Elements/Reducer";
 
 
 class Index extends Component {
