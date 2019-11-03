@@ -1,7 +1,6 @@
 import MessagesComponent from "../MessagesComponent";
 
 function getMessages (error) {
-    debugger;
 
     let messages = [{
         type:"error",

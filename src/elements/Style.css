@@ -2,10 +2,6 @@
     line-height: 0%;
 }
 
-.selected {
-    border: 1px solid green;
-}
-
 textarea {
     height: 70px;
     width: 450px;
