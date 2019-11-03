@@ -10,7 +10,7 @@ class DraggableComponent extends Component {
         this.state = {
             style: {
                 position: "fixed",
-                top: "400px",
+                top: "30px",
                 left: "200px"
             }
         }
