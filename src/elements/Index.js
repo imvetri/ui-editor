@@ -22,7 +22,8 @@ class Elements extends Component {
         super(props);
         this.state = {
             elements: this.props.elements,
-            editMode: false
+            editMode: false,
+            selectedIndex:0
         };
 
         this.onDelete = onDelete.bind(this);
@@ -38,6 +39,7 @@ class Elements extends Component {
             <Element 
                 key = {index} 
                 index = {index}
+                selectedIndex = {this.props.selectedIndex}
                 element = {element}
                 onSelectionChange = {this.props.onSelection}
                 onPreview = {publishDetails.bind(this)} 
