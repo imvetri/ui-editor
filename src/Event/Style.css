@@ -22,3 +22,11 @@
 label {
     padding-right: 10px;
 }
+
+.event input {
+    margin-left:0px;
+}
+
+.event textarea {
+    margin-top: 8px;
+}
