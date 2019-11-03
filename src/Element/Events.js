@@ -8,7 +8,6 @@ export function previewElement(e) {
 }
 
 export function deleteElement(e) {
-    debugger;
     let componentName = e.currentTarget.parentElement.parentElement.innerText.split("\n")[0];
     this.props.onDelete(componentName);
 }
