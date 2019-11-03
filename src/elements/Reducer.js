@@ -1,14 +1,16 @@
 // Dependencies.
 
 export function updateselectedIndex (e) {
+    let componentName = e.target.innerText.split("\n")[0];
     // Find the element from state that matches the currently selected element.
-    let selectedIndex = Number(e.target.getAttribute("index"));
+    let selectedComponent = this.state.elements.find(component=>component.name===componentName);
+    let selectedIndex = this.state.elements.findIndex(component=>component.name===componentName);
 
     // Update the state with selectedElement.
     this.setState({
         selectedIndex,
-        name: this.state.elements[selectedIndex].name,
-        markup: this.state.elements[selectedIndex].markup
+        name: selectedComponent.name,
+        markup: selectedComponent.markup
     })
 
     this.setEditMode();
@@ -81,7 +83,6 @@ export function updateEvent (events) {
 }
 
 export function onDelete(componentName) {
-    debugger;
     // Get all the elements
     let elements = Array.from(this.state.elements);
     
