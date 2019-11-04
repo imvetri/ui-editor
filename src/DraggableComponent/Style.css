@@ -1,4 +1,5 @@
-#move{
+#move > span{  
+    color: black;
     cursor: move;
-    border: 1px solid white;
+    border: 1px solid black;
 }
