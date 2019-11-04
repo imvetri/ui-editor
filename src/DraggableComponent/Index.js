@@ -29,6 +29,9 @@ class DraggableComponent extends Component {
 
         return (
             <div draggable="true" id="move" onDragEnd={this.moveDiv.bind(this)} style={this.state.style} >
+                <span title="Move" className="move-handle">
+                    <i className="fa fa-arrows-alt"></i>
+                </span>
                 {this.props.children}
             </div>
         );
