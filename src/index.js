@@ -8,7 +8,7 @@ import "./Index/index.css";
 
 // Components.
 
-import Elements from "./Elements";
+import Components from "./Elements";
 import Preview from "./Preview";
 import DraggableComponent from "./DraggableComponent";
 import Editor from "./Editor";
@@ -65,7 +65,7 @@ class Index extends Component {
             <div>
                 <div className="showBackground">
                     <DraggableComponent>
-                        <Elements
+                        <Components
                             elements={this.state.elements}
                             onPreview={this.updatePreview.bind(this)}
                             onSelection={this.updateselectedIndex}
