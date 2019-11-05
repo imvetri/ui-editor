@@ -1,5 +1,15 @@
 #move > span{  
     border: 1px solid black;
     color: black;
+}
+
+#move .move-handle{
     cursor: move;
+}
+
+#move .move-handle,
+#move .minimise-handle,
+#move .maximise-handle {
+    padding-left: 2px;
+    padding-right: 2px;
 }

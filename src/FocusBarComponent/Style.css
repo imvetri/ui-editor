@@ -16,7 +16,7 @@
     color: #fff;
 }
 
-.focus-bar .move-handle {
+.focus-bar .move-handle:first-child {
     cursor: move !important;
 }
 
