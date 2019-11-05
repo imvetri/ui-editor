@@ -17,7 +17,7 @@ import {toggleEditor, setEditMode, onDelete} from "./Reducer"
 import {publishDetails, onExport} from "./Events";
 
 
-class Elements extends Component {
+class Components extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -63,4 +63,4 @@ class Elements extends Component {
     }
 }
 
-export default Elements;
+export default Components;
