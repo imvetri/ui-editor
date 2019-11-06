@@ -7,8 +7,8 @@ import "./style.css";
 class DraggableComponent extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            style: JSON.parse(localStorage.getItem(`ui-editor-settings-draggable-component-${this.props.children.type.name}`)) || {
+        this.state = JSON.parse(localStorage.getItem(`ui-editor-settings-draggable-component-${this.props.children.type.name}`)) || {
+            style:  {
                 position: "fixed",
                 top: "30px",
                 left: "200px"
@@ -25,7 +25,7 @@ class DraggableComponent extends Component {
         this.setState({
             style : state.style
         },()=>{
-            localStorage.setItem(`ui-editor-settings-draggable-component-${this.props.children.type.name}`,JSON.stringify(this.state.style));
+            localStorage.setItem(`ui-editor-settings-draggable-component-${this.props.children.type.name}`,JSON.stringify(this.state));
         })
 
     }
@@ -33,6 +33,8 @@ class DraggableComponent extends Component {
     toggleMinimiseMaximise(e) {
         this.setState({
             minimised: !this.state.minimised
+        },()=>{
+            localStorage.setItem(`ui-editor-settings-draggable-component-${this.props.children.type.name}`,JSON.stringify(this.state));
         })
     }
 
