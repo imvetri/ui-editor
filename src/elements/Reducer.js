@@ -1,7 +1,7 @@
 // Dependencies.
 
 export function updateselectedIndex (e) {
-    let componentName = e.target.innerText.split("\n")[0];
+    let componentName = e.currentTarget.innerText.split("\n")[0];
     // Find the element from state that matches the currently selected element.
     let selectedComponent = this.state.elements.find(component=>component.name===componentName);
     let selectedIndex = this.state.elements.findIndex(component=>component.name===componentName);
