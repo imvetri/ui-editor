@@ -11,9 +11,9 @@ class DraggableComponent extends Component {
             style: JSON.parse(localStorage.getItem(`ui-editor-settings-draggable-component-${this.props.children.type.name}`)) || {
                 position: "fixed",
                 top: "30px",
-                left: "200px",
-                minimised: false
-            }
+                left: "200px"
+            },
+            minimised: false
         }
     }
 
