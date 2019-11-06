@@ -24,9 +24,10 @@ class DraggableComponent extends Component {
         state.style.left = e.pageX +"px"
         this.setState({
             style : state.style
+        },()=>{
+            localStorage.setItem(`ui-editor-settings-draggable-component-${this.props.children.type.name}`,JSON.stringify(this.state.style));
         })
 
-        localStorage.setItem(`ui-editor-settings-draggable-component-${this.props.children.type.name}`,JSON.stringify(state.style));
     }
 
     toggleMinimiseMaximise(e) {
