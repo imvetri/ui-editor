@@ -12,7 +12,7 @@ import Configurator from "../Configurator";
 import Nodes from "../Nodes";
 import Event from "../Event";
 import getMessages from "./Messages";
-import CssBuilder from "../CssBuilder";
+import TagExplorer from "../TagExplorer";
 
 // Styles.
 
@@ -20,7 +20,7 @@ import "./Style.css";
 
 // Reducers.
 
-import {updateEvent, selectedTagChanged, deleteEvent, updateConfiguration} from "./Reducer";
+import { updateEvent, selectedTagChanged, deleteEvent, updateConfiguration } from "./Reducer";
 
 
 // Utils.
@@ -88,16 +88,16 @@ class Events extends Component {
         // Check if it is a child component
         if (selectedTag.includes("child-component-")) {
             // Get list of components.
-            let components= JSON.parse(localStorage.getItem("ui-editor"));
+            let components = JSON.parse(localStorage.getItem("ui-editor"));
 
             // Get child component name from the selected tag.
             let childComponentName = selectedTag.split("child-component-")[1];
 
             // Find the child component from the list of components.
-            let childComponent = components.find(component=>component.name === childComponentName);
+            let childComponent = components.find(component => component.name === childComponentName);
 
             // Find events that are publishable from the child component.
-            let eventNames = childComponent.events.filter(event=>event.publishable===true).map(publishableEvent=>publishableEvent.publishName);
+            let eventNames = childComponent.events.filter(event => event.publishable === true).map(publishableEvent => publishableEvent.publishName);
 
             // Create event view for list of all events
             const events = element.events.map((event, index) => <Event key={index} index={index} event={event} selectedTagID={selectedTag} eventNames={eventNames} onSave={updateEvent.bind(this)} deleteEvent={deleteEvent.bind(this)} />);
@@ -105,7 +105,7 @@ class Events extends Component {
             // Filter out events that are not part of selectedTag
             eventsOfSelectedTag = selectedTag ? events.filter(event => selectedTag.includes(event.props.event.id)) : null;
 
-            configurator = <Configurator onChange={updateConfiguration.bind(this)} childName={childComponentName} parent={element}/>;
+            configurator = <Configurator onChange={updateConfiguration.bind(this)} childName={childComponentName} parent={element} />;
         }
         else {
             const events = element.events
@@ -114,36 +114,43 @@ class Events extends Component {
         }
 
         return (
-            <div className="container events-tab">
-                <div className="title">Settings</div>
-
-                <div className="tags">
-                    <Nodes node={nodeTree.result} onSelectedTagChanged={selectedTagChanged.bind(this)} />
+            <div>
+                <div className="container tag-explorer">
+                    <div className="title">
+                        <TagExplorer node={nodeTree.result} />
+                    </div>
                 </div>
-                {configurator}
+                <div className="container events-tab">
+                    <div className="title">Settings</div>
 
-                <div className="title">
-                    Events
-                </div>
-                <div>
-                    <ul>
-                        <li>
-                            <div className="title">
-                                Existing
-                                <div>
-                                    {eventsOfSelectedTag}
+                    <div className="tags">
+                        <Nodes node={nodeTree.result} onSelectedTagChanged={selectedTagChanged.bind(this)} />
+                    </div>
+                    {configurator}
+
+                    <div className="title">
+                        Events
+                    </div>
+                    <div>
+                        <ul>
+                            <li>
+                                <div className="title">
+                                    Existing
+                                    <div>
+                                        {eventsOfSelectedTag}
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div className="title">
-                                New
-                                <div>
-                                    <Event key={element.events.length} eventNames={[]} selectedTagID={selectedTag} onSave={updateEvent.bind(this)} />
+                            </li>
+                            <li>
+                                <div className="title">
+                                    New
+                                    <div>
+                                        <Event key={element.events.length} eventNames={[]} selectedTagID={selectedTag} onSave={updateEvent.bind(this)} />
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                    </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         );
