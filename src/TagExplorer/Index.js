@@ -2,10 +2,6 @@
 
 import React, { Component } from "react";
 
-// Dependencies.
-
-import { saveComponentsToWindow, getNestedComponents } from "../utilities/nestedComponentSetup";
-
 // Components. 
 
 import Tags from "./Tags";
@@ -13,11 +9,6 @@ import Tags from "./Tags";
 // Styles.
 
 import "./Style.css";
-
-
-// Utils.
-
-import { getNodeTree } from "../utilities/get-node-tree.js";
 
 class TagExplorer extends Component {
     constructor(props) {
