@@ -1,15 +1,4 @@
-.events {
-    border:1px solid black;
-    padding: 5px;
-}
-
 .tags {
     padding-left: 5px;
     overflow:scroll;
-}
-
-.error {
-    color: red;
-    position: fixed;
-    right: 150px;
 }
