@@ -12,7 +12,6 @@ import Configurator from "../Configurator";
 import Nodes from "../Nodes";
 import Event from "../Event";
 import getMessages from "./Messages";
-import TagExplorer from "../TagExplorer";
 
 // Styles.
 
@@ -115,11 +114,6 @@ class Events extends Component {
 
         return (
             <div>
-                <div className="container tag-explorer">
-                    <div className="title">
-                        <TagExplorer node={nodeTree.result} />
-                    </div>
-                </div>
                 <div className="container events-tab">
                     <div className="title">Settings</div>
 
