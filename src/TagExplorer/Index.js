@@ -21,15 +21,20 @@ class TagExplorer extends Component {
 
     render() {
 
-        let nodeTree = this.props.node;
+        let nodeTree = this.props.node.result;
 
+        if(nodeTree===undefined || this.props.node.error!==undefined){
+            return(
+                <div></div>
+            )
+        }
+        
         return (
             <div className="container events-tab">
                 <div className="title">TagExplorer</div>
                 <div className="tags">
                     <Tags node={nodeTree}/>
                 </div>
-                <StyleExplorer />
             </div>
         );
     }
