@@ -13,10 +13,13 @@ import Preview from "./Preview";
 import DraggableComponent from "./DraggableComponent";
 import Editor from "./Editor";
 import Events from "./Events";
+import TagExplorer from "./TagExplorer";
 
 // Reducers.
 import { updateEvent, updateConfig, saveElement, updateselectedIndex, setEditMode } from "./Elements/Reducer";
 
+// Utils
+import { getNodeTree } from "./utilities/get-node-tree.js";
 
 class Index extends Component {
     constructor(props) {
@@ -60,6 +63,7 @@ class Index extends Component {
     render() {
 
         const selectedElement = this.state.elements[this.state.selectedIndex] || this.state.element;
+        let nodeTree = getNodeTree(selectedElement.markup, selectedElement.style, JSON.parse(selectedElement.state), selectedElement.events);
 
         return (
             <div>
@@ -97,6 +101,12 @@ class Index extends Component {
 
                     <DraggableComponent>
                         <Preview component={this.state.previewComponent} />
+                    </DraggableComponent>
+
+
+
+                    <DraggableComponent>
+                        <TagExplorer node={nodeTree} />
                     </DraggableComponent>
                 </div>
             </div>
