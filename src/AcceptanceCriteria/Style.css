@@ -1,18 +1,30 @@
-.selected {
-    border: 1px solid green;
-    background: rgb(43, 43, 43);
+.interact-horizontal,
+.first,
+.second {
+    margin:-4px;
+}
+.interact-horizontal {
+    width:50vw;
+    height:100vh;
+    display: inline-block;
 }
 
-.background {
-    background: rgb(64, 64, 64);
-    border-bottom: 1px solid #333333;
+.first {
+    background-color:tomato;
 }
 
-.component {
-    display:flex;
-    justify-content: space-between;
+.second {
+    background-color: grey;
 }
 
-.component .componentName{
-    padding:7px;
+.slider:hover .first:hover,
+.slider:hover .second:hover {
+    width:60vw;
+    transition: width 1s;
+}
+
+.slider:hover .second:not(:hover),
+.slider:hover .first:not(:hover) {
+    width:40vw;
+    transition: width 1s;
 }

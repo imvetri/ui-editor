@@ -14,6 +14,7 @@ import DraggableComponent from "./DraggableComponent";
 import Editor from "./Editor";
 import Events from "./Events";
 import TagExplorer from "./TagExplorer";
+import AcceptanceCriteria from "./AcceptanceCriteria";
 
 // Reducers.
 import { updateEvent, updateConfig, saveElement, updateselectedIndex, setEditMode } from "./Elements/Reducer";
@@ -67,48 +68,48 @@ class Index extends Component {
 
         return (
             <div>
-                <div className="showBackground">
-                    <DraggableComponent>
-                        <Components
-                            elements={this.state.elements}
-                            onPreview={this.updatePreview.bind(this)}
-                            onSelection={this.updateselectedIndex}
-                            selectedIndex={this.state.selectedIndex}
-                        />
-                    </DraggableComponent>
-                    <DraggableComponent>
+                <DraggableComponent>
+                    <Components
+                        elements={this.state.elements}
+                        onPreview={this.updatePreview.bind(this)}
+                        onSelection={this.updateselectedIndex}
+                        selectedIndex={this.state.selectedIndex}
+                    />
+                </DraggableComponent>
+                <DraggableComponent>
 
-                        <Events
-                            key={this.state.selectedIndex}
-                            element={selectedElement}
-                            elements={this.state.elements}
-                            onEventsUpdate={this.updateEvent}
-                            onConfigUpdate={this.updateConfig}
-                        />
+                    <Events
+                        key={this.state.selectedIndex}
+                        element={selectedElement}
+                        elements={this.state.elements}
+                        onEventsUpdate={this.updateEvent}
+                        onConfigUpdate={this.updateConfig}
+                    />
 
-                    </DraggableComponent>
-                    <DraggableComponent>
-                        <Editor
-                            key={Math.ceil(Math.random() * 1000)}
-                            element={selectedElement}
-                            name={selectedElement.name}
-                            markup={selectedElement.markup}
-                            style={selectedElement.style}
-                            state={selectedElement.state}
-                            onSave={this.saveElement}
-                        />
-                    </DraggableComponent>
+                </DraggableComponent>
+                <DraggableComponent>
+                    <Editor
+                        key={Math.ceil(Math.random() * 1000)}
+                        element={selectedElement}
+                        name={selectedElement.name}
+                        markup={selectedElement.markup}
+                        style={selectedElement.style}
+                        state={selectedElement.state}
+                        onSave={this.saveElement}
+                    />
+                </DraggableComponent>
 
-                    <DraggableComponent>
-                        <Preview component={this.state.previewComponent} />
-                    </DraggableComponent>
-
+                <DraggableComponent>
+                    <Preview component={this.state.previewComponent} />
+                </DraggableComponent>
 
 
-                    <DraggableComponent>
-                        <TagExplorer node={nodeTree} />
-                    </DraggableComponent>
-                </div>
+
+                <DraggableComponent>
+                    <TagExplorer node={nodeTree} />
+                </DraggableComponent>
+
+                <AcceptanceCriteria />
             </div>
         );
     }

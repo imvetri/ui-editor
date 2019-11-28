@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import  "./Style.css";
+import "./Style.css";
 
 class AcceptanceCriteria extends Component {
     constructor(props) {
@@ -10,8 +10,11 @@ class AcceptanceCriteria extends Component {
 
     render() {
         return (
-            <div>
-                
+            <div className="slider">
+                <div className="interact-horizontal first">
+                </div>
+                <div className="interact-horizontal second">
+                </div>
             </div>
         );
     }
