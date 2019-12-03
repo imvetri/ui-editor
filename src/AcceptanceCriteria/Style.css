@@ -6,16 +6,10 @@
     width:50vw;
     height:100vh;
     display: inline-block;
-}
-
-.first {
+    transition: width 1s;
     background-color:tomato;
 }
 
-.slider:hover .first:hover{
-    width:60vw;
-    transition: width 1s;
-}
 .slider{
     position: fixed;
     width: 100vw;
@@ -23,7 +17,28 @@
     z-index: 1;
 }
 
-.slider:hover .first:not(:hover) {
-    width:40vw;
+.snap {
+    background-color: dimgrey;
+    display: inline-block;
+    margin-left: 4px;
+    top: 50%;
+    position: absolute;
+}
+
+.snap span {
+    padding: 5px;
+    background-color: dimgrey;
+}
+
+.snap input {
+    position: absolute;
+    opacity: 0;
+}
+
+.slideIn {
+    width: 1vw;
     transition: width 1s;
+    height:100vh;
+    display: inline-block;
+    background-color:tomato;
 }
