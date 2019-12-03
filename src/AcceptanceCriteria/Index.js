@@ -13,8 +13,6 @@ class AcceptanceCriteria extends Component {
             <div className="slider">
                 <div className="interact-horizontal first">
                 </div>
-                <div className="interact-horizontal second">
-                </div>
             </div>
         );
     }
