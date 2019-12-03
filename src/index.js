@@ -23,7 +23,6 @@ class Index extends Component {
 
         return (
             <div>
-                <AcceptanceCriteria />
                 <Tool />
             </div>
         );
