@@ -7,7 +7,6 @@ import React, { Component } from "react";
 // private - expand/collapse 
 // public  - onClick - Show list of classes. 
 import Tags from "./Tags";
-import StyleExplorer from "../StyleExplorer";
 
 // Styles.
 
