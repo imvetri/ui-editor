@@ -13,6 +13,7 @@ import DraggableComponent from "../DraggableComponent";
 import Editor from "../Editor";
 import Events from "../Events";
 import TagExplorer from "../TagExplorer";
+import StyleExplorer from "../StyleExplorer";
 
 // Reducers.
 import { updateEvent, updateConfig, saveElement, updateselectedIndex, setEditMode } from "../Elements/Reducer";
@@ -105,6 +106,10 @@ class Tool extends Component {
 
                 <DraggableComponent>
                     <TagExplorer node={nodeTree} />
+                </DraggableComponent>
+
+                <DraggableComponent>
+                    <StyleExplorer />
                 </DraggableComponent>
 
             </div>
