@@ -18,7 +18,7 @@ class StyleExplorer extends Component {
     render() {
 
         return (
-            <div className="container events-tab">
+            <div className="container">
                 <div className="title">StyleExplorer</div>
                 <div className="tags">
                 </div>
