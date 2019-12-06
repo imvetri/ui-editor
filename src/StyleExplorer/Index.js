@@ -2,9 +2,7 @@
 
 import React, { Component } from "react";
 
-// Components. 
-
-
+import {getObjectFormat} from "./util";
 // Styles.
 
 import "./Style.css";
@@ -17,10 +15,13 @@ class StyleExplorer extends Component {
 
     render() {
 
+        let style = this.props.style;
+        console.log(getObjectFormat(style));
         return (
-            <div className="container events-tab">
+            <div className="container">
                 <div className="title">StyleExplorer</div>
                 <div className="tags">
+                    {getObjectFormat(style)}
                 </div>
             </div>
         );
