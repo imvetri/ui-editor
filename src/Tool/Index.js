@@ -109,7 +109,7 @@ class Tool extends Component {
                 </DraggableComponent>
 
                 <DraggableComponent>
-                    <StyleExplorer />
+                    <StyleExplorer style={selectedElement.style}/>
                 </DraggableComponent>
 
             </div>
