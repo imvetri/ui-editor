@@ -21,7 +21,7 @@ class StyleExplorer extends Component {
             <div className="container">
                 <div className="title">StyleExplorer</div>
                 <div className="tags">
-                    {getObjectFormat(style)}
+                    {/* {getObjectFormat(style)} */}
                 </div>
             </div>
         );

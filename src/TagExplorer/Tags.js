@@ -19,7 +19,6 @@ class Tags extends Component {
             return (<span>null</span>)
         }
 
-
         // Check if it contains children.
         if(node.props && Array.isArray(node.props.children)){
             var children = node.props.children.map((child,index)=><Tags key={index} node={child}/>);
@@ -56,6 +55,16 @@ class Tags extends Component {
                 <ul>
                     {`<${node.type.name}>`}
                     {`</${node.type.name}>`}
+                </ul>
+            );
+        }
+
+        // check if node is object
+        if(typeof node.type === "object"){
+            return (
+                <ul>
+                    {`<${node.type.id}>`}
+                    {`</${node.type.id}>`}
                 </ul>
             );
         }
