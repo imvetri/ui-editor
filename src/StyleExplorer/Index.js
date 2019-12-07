@@ -2,6 +2,10 @@
 
 import React, { Component } from "react";
 
+// Components.
+
+import Rule from "./Rule";
+
 import {getObjectFormat} from "./util";
 // Styles.
 
@@ -16,12 +20,12 @@ class StyleExplorer extends Component {
     render() {
 
         let style = this.props.style;
-        console.log(getObjectFormat(style));
+        let rules = getObjectFormat(style).map(rule=><Rule rule={rule} />);
         return (
             <div className="container">
                 <div className="title">StyleExplorer</div>
-                <div className="tags">
-                    {/* {getObjectFormat(style)} */}
+                <div>
+                    {rules}
                 </div>
             </div>
         );
