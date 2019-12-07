@@ -13,6 +13,7 @@ class Selector extends Component {
     render() {
         return (
             <div className="container">
+                {this.props.name}
             </div>
         );
     }
