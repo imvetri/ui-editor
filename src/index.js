@@ -9,7 +9,6 @@ import "./Index/index.css";
 // Components.
 
 import Tool from "./Tool";
-import AcceptanceCriteria from "./AcceptanceCriteria";
 
 
 class Index extends Component {
