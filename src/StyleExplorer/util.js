@@ -8,10 +8,16 @@ function convertToObject(rule){
     var selector = rule.split("{")[0].trim();
     var properties = '{'+rule.split("{")[1].split("}")[0].split(";").map(s=>s.trim()).filter(Boolean).map(convertToString).join(",") +'}';
 
-    var obj = {};
-    obj[selector] = JSON.parse(properties)
-    return obj;
+    var declarations = JSON.parse(properties)
 
+    var rule = {};
+    rule[selector] =  Object.keys(declarations).map(key=>{
+        let o ={};
+        o[key] = declarations[key]
+        return o;
+    })
+
+    return rule;
 }
 
 export function getObjectFormat(style){

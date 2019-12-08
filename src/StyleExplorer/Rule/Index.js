@@ -17,7 +17,7 @@ class Rule extends Component {
         return (
             <div className="rules container">
                 <Selector name={Object.keys(this.props.rule)[0]}/>{" {"}
-                <Declaration declaration={Object.values(this.props.rule)[0]}/>
+                <Declaration declarations={Object.values(this.props.rule)[0]} key={Math.ceil(Math.random() * 1000)}/>
                 {"}"}
             </div>
         );
