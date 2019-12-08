@@ -23,7 +23,13 @@ class Property extends Component {
     }
 
     render() {
-        return  <input type="text" value={this.state.value} onBlur={this.valueChanged.bind(this)} onChange={this.updateSelector.bind(this)}/>
+        let autoFocus = this.state.value.includes("addProperty")? "autoFocus": "";
+        return  <input 
+                    type="text" 
+                    value={this.state.value}
+                    onBlur={this.valueChanged.bind(this)} 
+                    autoFocus={autoFocus}
+                    onChange={this.updateSelector.bind(this)}/>
     }
 }
 
