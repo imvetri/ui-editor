@@ -12,9 +12,9 @@ class Selector extends Component {
 
     render() {
         return (
-            <div className="container">
+            <span>
                 {this.props.name}
-            </div>
+            </span>
         );
     }
 }
