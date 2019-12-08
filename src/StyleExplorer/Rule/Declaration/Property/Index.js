@@ -27,8 +27,8 @@ class Property extends Component {
         return  <input 
                     type="text" 
                     value={this.state.value}
-                    onBlur={this.valueChanged.bind(this)} 
                     autoFocus={autoFocus}
+                    onBlur={this.valueChanged.bind(this)} 
                     onChange={this.updateSelector.bind(this)}/>
     }
 }
