@@ -17,8 +17,9 @@ class Rule extends Component {
         console.log(this.props.rule);
         return (
             <div className="container">
-                <Selector name={Object.keys(this.props.rule)[0]}/>
+                <Selector name={Object.keys(this.props.rule)[0]}/>{" {"}
                 <Declaration declaration={Object.values(this.props.rule)[0]}/>
+                {"}"}
             </div>
         );
     }

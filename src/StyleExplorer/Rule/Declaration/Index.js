@@ -19,7 +19,7 @@ class Declaration extends Component {
 
 
         return (
-            <div className="container">
+            <div className="declaration">
                 {Object.keys(this.props.declaration).map(value=> <div><Property value={value}/>:<Value value={this.props.declaration[value]}/></div>)}
             </div>
         );
