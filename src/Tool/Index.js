@@ -109,7 +109,7 @@ class Tool extends Component {
                 </DraggableComponent>
 
                 <DraggableComponent>
-                    <StyleExplorer style={selectedElement.style}/>
+                    <StyleExplorer key={Math.ceil(Math.random() * 1000)} style={selectedElement.style}/>
                 </DraggableComponent>
 
             </div>

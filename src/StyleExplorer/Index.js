@@ -15,15 +15,29 @@ class StyleExplorer extends Component {
     constructor(props) {
         super(props);
         this.state = Object.assign({}, this.props);
+        this.state.rules = getObjectFormat(this.state.style);
+    }
+
+    addRule(){
+        let newRules = Array.from(this.state.rules);
+        newRules.unshift({
+            "a":{
+                a: "a"
+            }
+        })
+        this.setState({
+            rules: newRules
+        })
     }
 
     render() {
 
-        let style = this.props.style;
-        let rules = getObjectFormat(style).map(rule=><Rule rule={rule} />);
+        let rules = this.state.rules.map(rule=><Rule rule={rule} />);
         return (
             <div className="container">
-                <div className="title">StyleExplorer</div>
+                <div className="title">StyleExplorer                
+                    <button onClick={this.addRule.bind(this)}>+</button>
+                </div>
                 {rules}
             </div>
         );
