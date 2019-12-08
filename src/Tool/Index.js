@@ -60,6 +60,10 @@ class Tool extends Component {
         });
     }
 
+    updateStyles(){
+        debugger;
+    }
+
     render() {
 
         const selectedElement = this.state.elements[this.state.selectedIndex] || this.state.element;
@@ -109,7 +113,10 @@ class Tool extends Component {
                 </DraggableComponent>
 
                 <DraggableComponent>
-                    <StyleExplorer key={Math.ceil(Math.random() * 1000)} style={selectedElement.style}/>
+                    <StyleExplorer 
+                        key={Math.ceil(Math.random() * 1000)} 
+                        style={selectedElement.style}
+                        onEdit={this.updateStyles.bind(this)}/>
                 </DraggableComponent>
 
             </div>

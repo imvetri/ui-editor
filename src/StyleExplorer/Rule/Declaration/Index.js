@@ -29,6 +29,7 @@ class Declaration extends Component {
         newObj[currentValue] = declarations[index][previousValue]
         declarations[index] = newObj;
         this.setState({declarations:declarations})
+        this.props.onEdit(declarations)
     }
 
     onValueEdit(previousValue, currentValue, index){
@@ -36,6 +37,8 @@ class Declaration extends Component {
         let key = Object.keys(declarations[index])[0];
         declarations[index][key] = currentValue;
         this.setState({declarations})
+        this.props.onEdit(declarations)
+
     }
 
     render() {

@@ -11,7 +11,7 @@ export function transpileJSX(markup, style, state, events, name) {
 
     storeEventsGlobal(events, name);
 
-    createStylesheet(style);
+    createStylesheet(style, name);
 
     return getNodeTree.call(this,markup, style, state, events);
 }
