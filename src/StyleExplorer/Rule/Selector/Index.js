@@ -10,12 +10,20 @@ class Selector extends Component {
         this.state = Object.assign({}, this.props);
     }
 
+    updateSelector(e){
+        this.setState({
+            name: e.currentTarget.value
+        })
+    }
+
+    valueChanged(){
+        if(this.props.name!==this.state.name){
+            // then selector name changed
+        }
+    }
+
     render() {
-        return (
-            <span>
-                {this.props.name}
-            </span>
-        );
+        return <input type="text" value={this.state.name} onBlur={this.valueChanged.bind(this)} onChange={this.updateSelector.bind(this)}/>
     }
 }
 
