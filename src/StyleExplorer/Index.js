@@ -24,9 +24,7 @@ class StyleExplorer extends Component {
         return (
             <div className="container">
                 <div className="title">StyleExplorer</div>
-                <div className="rules">
-                    {rules}
-                </div>
+                {rules}
             </div>
         );
     }
