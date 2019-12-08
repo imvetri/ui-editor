@@ -18,7 +18,7 @@ class Value extends Component {
 
     valueChanged(){
         if(this.props.name!==this.state.value){
-            // then selector name changed
+            this.props.onEdit(this.props.value, this.state.value, this.props.index);
         }
     }
 
