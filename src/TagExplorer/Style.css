@@ -1,4 +1,7 @@
 .tags {
-    padding-left: 5px;
-    overflow:scroll;
+    font-size: 11px;
+}
+
+.tags li {
+    padding-left:10px;
 }

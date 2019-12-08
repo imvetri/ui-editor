@@ -31,9 +31,9 @@ class TagExplorer extends Component {
         return (
             <div className="container events-tab">
                 <div className="title">TagExplorer</div>
-                <div className="tags">
+                <ul className="tags">
                     <Tags node={nodeTree}/>
-                </div>
+                </ul>
             </div>
         );
     }
