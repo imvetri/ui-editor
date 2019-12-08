@@ -15,12 +15,18 @@ class Declaration extends Component {
         this.state = Object.assign({}, this.props);
     }
 
-    render() {
+    addNewDeclaration(index) {
+        let declarations = this.state.declarations;
+        this.setState({
+            declarations: [...declarations.slice(0,index),{},...declarations.slice(index,declarations.length)]
+        })
+    }
 
+    render() {
 
         return (
             <div className="declaration">
-                {Object.keys(this.props.declaration).map(value=> <div><Property value={value}/>:<Value value={this.props.declaration[value]}/></div>)}
+                {this.state.declarations.map((obj,index)=> <div><Property value={Object.keys(obj)[0]}/>:<Value index={index} value={Object.values(obj)[0]} onNewdeclaration={this.addNewDeclaration.bind(this)}/></div>)}
             </div>
         );
     }
