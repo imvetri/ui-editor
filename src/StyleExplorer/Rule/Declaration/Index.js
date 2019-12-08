@@ -17,6 +17,7 @@ class Declaration extends Component {
 
     addNewDeclaration(index) {
         let declarations = this.state.declarations;
+        index = index+1;
         this.setState({
             declarations: [...declarations.slice(0,index),{addProperty:""},...declarations.slice(index,declarations.length)]
         })
