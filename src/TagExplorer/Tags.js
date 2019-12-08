@@ -23,57 +23,57 @@ class Tags extends Component {
         if(node.props && Array.isArray(node.props.children)){
             var children = node.props.children.map((child,index)=><Tags key={index} node={child}/>);
             return (
-                <ul>
+                <li>
                     {`<${node.type} ${props}>`}
                     {children}
                     {`</${node.type}>`}
-                </ul>
+                </li>
             );
         }
         // if node contains only one children, jsx get transpiled to object rather than array.
         else if(typeof node.props.children === "object"){
             let child = node.props.children;
             return (
-                <ul>
+                <li>
                     {`<${node.type} ${props}>`}
                         <Tags key={index} node={child}/>
                     {`</${node.type}>`}
-                </ul>
+                </li>
             );
         }        // if node contains only one children, jsx get transpiled to object rather than array.
         else if(typeof node.props.children === "string"){
             let child = node.props.children;
             return (
-                <ul>
+                <li>
                     {`<${node.type} ${props}>${child}</${node.type}>`}
-                </ul>
+                </li>
             );
         }
         // nested component.
         else if(typeof node.type === "function"){
             return (
-                <ul>
+                <li>
                     {`<${node.type.name}>`}
                     {`</${node.type.name}>`}
-                </ul>
+                </li>
             );
         }
 
         // check if node is object
         if(typeof node.type === "object"){
             return (
-                <ul>
+                <li>
                     {`<${node.type.id}>`}
                     {`</${node.type.id}>`}
-                </ul>
+                </li>
             );
         }
         return (
-            <ul>
+            <li>
                 {`<${node.type} ${props}>`}
                     {node.type}
                 {`</${node.type}>`}
-            </ul>
+            </li>
         );
     }
 

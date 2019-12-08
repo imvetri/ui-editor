@@ -31,12 +31,11 @@ ul label input {
     width: 10px;
 }
 
-ul {
+ul, li {
     padding-left: 5px;
     margin-top: 0px;
     margin-bottom: 0px;
 }
-
 
 button {
     color: rgba(255,255,255,0.5);
