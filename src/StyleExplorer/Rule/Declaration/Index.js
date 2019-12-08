@@ -17,10 +17,10 @@ class Declaration extends Component {
 
     render() {
 
-        let declarations = Object.keys(this.props.declaration).map(key=> <span><span>{key}</span><span>{this.props.declaration[key]}</span></span>)
+
         return (
             <div className="container">
-                {declarations}
+                {Object.keys(this.props.declaration).map(value=> <div><Property value={value}/>:<Value value={this.props.declaration[value]}/></div>)}
             </div>
         );
     }

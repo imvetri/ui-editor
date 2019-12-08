@@ -12,8 +12,7 @@ class Property extends Component {
 
     render() {
         return (
-            <div className="container">
-            </div>
+            <span>{this.props.value}</span>
         );
     }
 }
