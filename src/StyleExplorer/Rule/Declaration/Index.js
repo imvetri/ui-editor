@@ -23,13 +23,38 @@ class Declaration extends Component {
         })
     }
 
+    onEdit(previousValue, currentValue, index){
+        let declarations = this.state.declarations;
+        let newObj = {};
+        newObj[currentValue] = declarations[index][previousValue]
+        declarations[index] = newObj;
+        this.setState({declarations:declarations})
+    }
+
+    onValueEdit(previousValue, currentValue, index){
+        let declarations = this.state.declarations;
+        let key = Object.keys(declarations[index])[0];
+        declarations[index][key] = currentValue;
+        this.setState({declarations})
+    }
+
     render() {
 
         return (
             <div className="declaration">
                 {this.state.declarations.map((obj,index)=> <div>
-                                <Property key={Math.ceil(Math.random() * 1000)} value={Object.keys(obj)[0]} />:
-                                <Value key={Math.ceil(Math.random() * 1000)} index={index} value={Object.values(obj)[0]} onNewdeclaration={this.addNewDeclaration.bind(this)}/>
+                                <Property 
+                                    index={index}
+                                    key={Math.ceil(Math.random() * 1000)} 
+                                    value={Object.keys(obj)[0]}
+                                    onEdit={this.onEdit.bind(this)} />
+                                    :
+                                <Value 
+                                    key={Math.ceil(Math.random() * 1000)} 
+                                    index={index} 
+                                    value={Object.values(obj)[0]} 
+                                    onNewdeclaration={this.addNewDeclaration.bind(this)}
+                                    onEdit={this.onValueEdit.bind(this)}/>
                 </div>)}
             </div>
         );
