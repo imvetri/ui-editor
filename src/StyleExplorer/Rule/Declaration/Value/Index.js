@@ -22,8 +22,18 @@ class Value extends Component {
         }
     }
 
+    addNew(e){
+        if(e.key== "Enter"){
+            this.props.onNewdeclaration(this.props.index);
+        }
+    }
+
     render() {
-        return <input type="text" value={this.state.value} onBlur={this.valueChanged.bind(this)} onChange={this.updateSelector.bind(this)}/>
+        return <input type="text" 
+                value={this.state.value} 
+                onBlur={this.valueChanged.bind(this)} 
+                onChange={this.updateSelector.bind(this)}
+                onKeyPress={this.addNew.bind(this)}/>
     }
 }
 
