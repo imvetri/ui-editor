@@ -10,7 +10,12 @@ import "./style.css";
 class DynamicComponent extends Component {
     constructor(props) {
         super(props);
-        this.component = this.props.component;
+
+        // can we read from localstorage here? ok
+        let thisComponent = this.props.component;
+        // to fetch fresh data.
+        this.component = JSON.parse(localStorage.getItem("ui-editor")).find(component=>component.name === thisComponent.name) ||this.props.component;
+        
         createStylesheet(this.component.style);
     }
 
