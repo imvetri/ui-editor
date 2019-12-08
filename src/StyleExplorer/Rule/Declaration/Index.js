@@ -18,7 +18,7 @@ class Declaration extends Component {
     addNewDeclaration(index) {
         let declarations = this.state.declarations;
         this.setState({
-            declarations: [...declarations.slice(0,index),{},...declarations.slice(index,declarations.length)]
+            declarations: [...declarations.slice(0,index),{addProperty:""},...declarations.slice(index,declarations.length)]
         })
     }
 
@@ -26,7 +26,10 @@ class Declaration extends Component {
 
         return (
             <div className="declaration">
-                {this.state.declarations.map((obj,index)=> <div><Property value={Object.keys(obj)[0]}/>:<Value index={index} value={Object.values(obj)[0]} onNewdeclaration={this.addNewDeclaration.bind(this)}/></div>)}
+                {this.state.declarations.map((obj,index)=> <div>
+                                <Property key={Math.ceil(Math.random() * 1000)} value={Object.keys(obj)[0]}/>:
+                                <Value key={Math.ceil(Math.random() * 1000)} index={index} value={Object.values(obj)[0]} onNewdeclaration={this.addNewDeclaration.bind(this)}/>
+                </div>)}
             </div>
         );
     }
