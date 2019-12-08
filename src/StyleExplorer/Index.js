@@ -32,7 +32,7 @@ class StyleExplorer extends Component {
 
     render() {
 
-        let rules = this.state.rules.map(rule=><Rule rule={rule} />);
+        let rules = this.state.rules.map((rule,index)=><Rule key={index} rule={rule} />);
         return (
             <div className="container">
                 <div className="title">StyleExplorer                
