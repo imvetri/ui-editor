@@ -23,14 +23,17 @@ class Declaration extends Component {
         })
     }
 
-    onEdit(previousValue, currentValue, index){
+    onEdit(previousValue, currentValue, index) {
         let declarations = this.state.declarations;
         declarations[index].property = currentValue;
-        this.setState({declarations:declarations})
-        this.props.onEdit(declarations)
+        this.setState({declarations:declarations});
+
+        if(declarations[index].value){
+            this.props.onEdit(declarations)
+        }
     }
 
-    onValueEdit(previousValue, currentValue, index){
+    onValueEdit(previousValue, currentValue, index) {
         let declarations = this.state.declarations;
         declarations[index].value = currentValue;
         this.setState({declarations:declarations})
