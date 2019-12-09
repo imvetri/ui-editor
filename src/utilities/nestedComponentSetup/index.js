@@ -10,7 +10,7 @@ export function checkNestedComponents( markup) {
 
 /** Takes a component and converts it as a react component */
 function saveToWindow( component ) {
-    createStylesheet(component.style)
+    createStylesheet(component.style, component.name)
     window[component.name] = createComponent(component);
 }
 

@@ -15,12 +15,49 @@ class Declaration extends Component {
         this.state = Object.assign({}, this.props);
     }
 
-    render() {
+    addNewDeclaration(index) {
+        let declarations = this.state.declarations;
+        index = index+1;
+        this.setState({
+            declarations: [...declarations.slice(0,index),{property:"addProperty", value: ""},...declarations.slice(index,declarations.length)]
+        })
+    }
 
+    onEdit(previousValue, currentValue, index) {
+        let declarations = this.state.declarations;
+        declarations[index].property = currentValue;
+        this.setState({declarations:declarations});
+
+        if(declarations[index].value){
+            this.props.onEdit(declarations)
+        }
+    }
+
+    onValueEdit(previousValue, currentValue, index) {
+        let declarations = this.state.declarations;
+        declarations[index].value = currentValue;
+        this.setState({declarations:declarations})
+        this.props.onEdit(declarations)
+    }
+
+    render() {
 
         return (
             <div className="declaration">
-                {Object.keys(this.props.declaration).map(value=> <div><Property value={value}/>:<Value value={this.props.declaration[value]}/></div>)}
+                {this.state.declarations.map((declaration,index)=> <div>
+                                <Property 
+                                    index={index}
+                                    key={Math.ceil(Math.random() * 1000)} 
+                                    value={declaration.property}
+                                    onEdit={this.onEdit.bind(this)} />
+                                    :
+                                <Value 
+                                    key={Math.ceil(Math.random() * 1000)} 
+                                    index={index} 
+                                    value={declaration.value} 
+                                    onNewdeclaration={this.addNewDeclaration.bind(this)}
+                                    onEdit={this.onValueEdit.bind(this)}/>
+                </div>)}
             </div>
         );
     }
