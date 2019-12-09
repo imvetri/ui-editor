@@ -10,12 +10,15 @@ function convertToObject(rule){
 
     var declarations = JSON.parse(properties)
 
-    var rule = {};
-    rule[selector] =  Object.keys(declarations).map(key=>{
-        let o ={};
-        o[key] = declarations[key]
-        return o;
-    })
+    var rule = {
+        selector: selector,
+        declarations: Object.keys(declarations).map(key=>{
+            return {
+                property: key,
+                value: declarations[key]
+            }
+        })
+    };
 
     return rule;
 }

@@ -102,7 +102,7 @@ function convertToReactcomponent (component){
         }
         //Finds the first space. This usually means the tag name ending point. but this will fail becauuse of events for child. but lets give it a try.
         let attributes = {
-            "data-componentName": component.name.toUpperCase(),
+            "data-componentname": component.name.toUpperCase(),
         }
 
         let attributeString = JSON.stringify(attributes).replace('{"',"").replace("}","").replace(":","=").replace('"',"")

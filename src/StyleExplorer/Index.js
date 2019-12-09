@@ -30,9 +30,13 @@ class StyleExplorer extends Component {
         })
     }
 
+    ruleUpdate() {
+        this.props.onEdit();
+    }
+
     render() {
 
-        let rules = this.state.rules.map((rule,index)=><Rule key={index} rule={rule} />);
+        let rules = this.state.rules.map((rule,index)=><Rule key={index} rule={rule} onUpdate={this.ruleUpdate.bind(this)}/>);
         return (
             <div className="container">
                 <div className="title">StyleExplorer                
