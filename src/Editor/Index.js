@@ -14,12 +14,15 @@ class Editor extends Component {
     constructor(props) {
         super(props);
         // this.state = {... this.props.element};
+        var component = JSON.parse(localStorage.getItem("ui-editor")).find(component=>component.name === this.props.name);
+
         this.state = {
-            name: this.props.name,
-            markup: this.props.markup,
-            state: this.props.state,
-            style: this.props.style,
+            name: component? component.name : "",
+            markup: component? component.markup : "",
+            state: component? component.state : "",
+            style: component? component.style : ""
         };
+
     }
 
     publishElement () {

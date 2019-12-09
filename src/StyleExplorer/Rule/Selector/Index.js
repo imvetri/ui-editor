@@ -19,6 +19,7 @@ class Selector extends Component {
     valueChanged(){
         if(this.props.name!==this.state.name){
             // then selector name changed
+            this.props.onEdit(this.state.name)
         }
     }
 
