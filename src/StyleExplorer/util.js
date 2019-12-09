@@ -8,10 +8,19 @@ function convertToObject(rule){
     var selector = rule.split("{")[0].trim();
     var properties = '{'+rule.split("{")[1].split("}")[0].split(";").map(s=>s.trim()).filter(Boolean).map(convertToString).join(",") +'}';
 
-    var obj = {};
-    obj[selector] = JSON.parse(properties)
-    return obj;
+    var declarations = JSON.parse(properties)
 
+    var rule = {
+        selector: selector,
+        declarations: Object.keys(declarations).map(key=>{
+            return {
+                property: key,
+                value: declarations[key]
+            }
+        })
+    };
+
+    return rule;
 }
 
 export function getObjectFormat(style){
@@ -19,3 +28,13 @@ export function getObjectFormat(style){
     return rules.map(convertToObject);
 }
 
+function ruleToString(rule){
+	return `${rule.selector} {${declarationToString(rule.declarations)}}`
+}
+function declarationToString(declarations){
+	return declarations.map(declaration=>`${declaration.property}:${declaration.value};`)
+}
+
+export function convertToStyleString(rules){
+    return rules.map(ruleToString).join("");
+}

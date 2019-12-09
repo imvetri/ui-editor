@@ -60,11 +60,17 @@ class Tool extends Component {
         });
     }
 
+    updateStyles(){
+        this.setState({
+            previewComponent: this.state.elements[this.state.selectedIndex]
+        })
+    }
+
     render() {
 
         const selectedElement = this.state.elements[this.state.selectedIndex] || this.state.element;
         let nodeTree = getNodeTree(selectedElement.markup, selectedElement.style, JSON.parse(selectedElement.state), selectedElement.events);
-
+        
         return (
             <div>
                 <DraggableComponent>
@@ -109,7 +115,10 @@ class Tool extends Component {
                 </DraggableComponent>
 
                 <DraggableComponent>
-                    <StyleExplorer style={selectedElement.style}/>
+                    <StyleExplorer 
+                        key={Math.ceil(Math.random() * 1000)} 
+                        component={selectedElement}
+                        onEdit={this.updateStyles.bind(this)}/>
                 </DraggableComponent>
 
             </div>
