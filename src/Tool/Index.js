@@ -62,7 +62,8 @@ class Tool extends Component {
 
     updateStyles(){
         this.setState({
-            previewComponent: this.state.elements[this.state.selectedIndex]
+            previewComponent: this.state.elements[this.state.selectedIndex],
+            element: this.state.elements[this.state.selectedIndex]
         })
     }
 
