@@ -13,10 +13,11 @@ class Rule extends Component {
         this.state = Object.assign({}, this.props.rule);
     }
 
-    updateSelector(Selector){
+    updateSelector(selector){
         this.props.onUpdate({
-            
-        })
+            selector: selector,
+            declarations: this.state.declarations
+        }, this.props.index)
     }
 
     updateDeclarations(declarations){
