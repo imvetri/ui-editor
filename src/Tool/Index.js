@@ -117,7 +117,7 @@ class Tool extends Component {
                 <DraggableComponent>
                     <StyleExplorer 
                         key={Math.ceil(Math.random() * 1000)} 
-                        style={selectedElement.style}
+                        component={selectedElement}
                         onEdit={this.updateStyles.bind(this)}/>
                 </DraggableComponent>
 

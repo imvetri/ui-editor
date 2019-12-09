@@ -10,14 +10,34 @@ import Declaration from "./Declaration";
 class Rule extends Component {
     constructor(props) {
         super(props);
-        this.state = Object.assign({}, this.props);
+        this.state = Object.assign({}, this.props.rule);
+    }
+
+    updateSelector(Selector){
+        this.props.onUpdate({
+            
+        })
+    }
+
+    updateDeclarations(declarations){
+
+        this.props.onUpdate({
+            selector: this.state.selector,
+            declarations: declarations
+        },this.props.index)
     }
 
     render() {
         return (
             <div className="rules container">
-                <Selector name={Object.keys(this.props.rule)[0]}/>{" {"}
-                <Declaration declarations={Object.values(this.props.rule)[0]} key={Math.ceil(Math.random() * 1000)}/>
+                <Selector 
+                    name={this.state.selector}
+                    key={Math.ceil(Math.random() * 1000)}
+                    onEdit={this.updateSelector}/>{" {"}
+                <Declaration 
+                    declarations={this.state.declarations} 
+                    key={Math.ceil(Math.random() * 1000)}
+                    onEdit={this.updateDeclarations.bind(this)}/>
                 {"}"}
             </div>
         );
