@@ -61,14 +61,16 @@ class Tool extends Component {
     }
 
     updateStyles(){
-        debugger;
+        this.setState({
+            previewComponent: this.state.elements[this.state.selectedIndex]
+        })
     }
 
     render() {
 
         const selectedElement = this.state.elements[this.state.selectedIndex] || this.state.element;
         let nodeTree = getNodeTree(selectedElement.markup, selectedElement.style, JSON.parse(selectedElement.state), selectedElement.events);
-
+        
         return (
             <div>
                 <DraggableComponent>
