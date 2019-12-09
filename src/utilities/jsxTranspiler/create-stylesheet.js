@@ -4,7 +4,6 @@ export function createStylesheet(style, name) {
 
     let toDelete = [...document.querySelectorAll("[data-component-name='ParentComponent']")];
     toDelete.forEach(item=>{
-        debugger;
         item.remove()
     })
     var dynamicStyle = document.createElement('style');
