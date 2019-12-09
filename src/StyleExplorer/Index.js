@@ -21,18 +21,21 @@ class StyleExplorer extends Component {
     addRule(){
         let newRules = Array.from(this.state.rules);
         newRules.unshift({
-            "a":{
-                a: "a"
-            }
+            selector: "newClass",
+            declarations:[{
+                property: "newProperty",
+                value: ""
+            }]
         })
         this.setState({
             rules: newRules
         })
     }
 
-    ruleUpdate() {
+    ruleUpdate(rule, index) {
 
         var rules = this.state.rules;
+        rules[index] = rule;
 
         var components = JSON.parse(localStorage.getItem("ui-editor"));
         var component = components.find(component=>component.name === this.state.component.name);
@@ -46,7 +49,7 @@ class StyleExplorer extends Component {
 
     render() {
 
-        let rules = this.state.rules.map((rule,index)=><Rule key={Math.ceil(Math.random() * 1000)} index={index} rule={rule} onUpdate={this.ruleUpdate.bind(this)}/>);
+        let rules = this.state.rules.map((rule,index)=><Rule key={Math.ceil(Math.random() * 1000)} index={index} rule={rule} onUpdate={this.ruleUpdate.bind(this)} />);
         return (
             <div className="container">
                 <div className="title">StyleExplorer                
