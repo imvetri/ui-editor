@@ -29,7 +29,6 @@ class Selector extends Component {
 
     render() {
         let autoFocus = this.state.name.includes("newClass")? "autoFocus": "";
-        debugger;
         return <input 
                         type="text" 
                         value={this.state.name} 
