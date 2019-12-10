@@ -23,6 +23,10 @@ class Property extends Component {
         }
     }
 
+    selectText(e){
+        e.currentTarget.select();
+    }
+    
     render() {
         let autoFocus = this.state.value.includes("addProperty")? "autoFocus": "";
         return  <input 
@@ -30,6 +34,7 @@ class Property extends Component {
                     value={this.state.value}
                     autoFocus={autoFocus}
                     onBlur={this.valueChanged.bind(this)} 
+                    onFocus={this.selectText.bind(this)}
                     onChange={this.updateSelector.bind(this)}/>
     }
 }
