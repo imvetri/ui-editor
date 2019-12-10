@@ -5,6 +5,7 @@ window.React = React;
 window.Component = React.Component;
 window.saveVariants = function (componentFn, state) {
 
+    debugger;
     var components =JSON.parse(localStorage.getItem("ui-editor")) 
     var component = components.find(component=>component.name === componentFn.name);
     component.variants = component.variants || [];

@@ -19,6 +19,21 @@ class Preview extends Component {
         catch(e){
             console.error(e);
         }
+        if(this.props.component.variants){
+            var variants = this.props.component.variants.map(variant=>{
+                this.props.component.state = variant;
+                return <DynamicComponent key={randomKey} component={this.props.component}/>
+            });
+            return (
+                <div className="container preview">
+                    <div className="title">
+                        Preview
+                    </div>
+                    {variants}
+                </div>
+            )
+        }
+
         // Helps to rerender when changes to markup/events are made to the component and preview them.
         let randomKey = this.props.component.id*(~~(Math.random()*10));
         return (
