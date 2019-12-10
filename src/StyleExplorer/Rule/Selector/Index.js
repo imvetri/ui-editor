@@ -23,8 +23,20 @@ class Selector extends Component {
         }
     }
 
+    selectText(e){
+        e.currentTarget.select();
+    }
+
     render() {
-        return <input type="text" value={this.state.name} onBlur={this.valueChanged.bind(this)} onChange={this.updateSelector.bind(this)}/>
+        let autoFocus = this.state.name.includes("newClass")? "autoFocus": "";
+        debugger;
+        return <input 
+                        type="text" 
+                        value={this.state.name} 
+                        autoFocus={autoFocus}
+                        onBlur={this.valueChanged.bind(this)} 
+                        onFocus={this.selectText.bind(this)}
+                        onChange={this.updateSelector.bind(this)}/>
     }
 }
 
