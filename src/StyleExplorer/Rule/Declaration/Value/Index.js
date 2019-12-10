@@ -28,11 +28,16 @@ class Value extends Component {
         }
     }
 
+    selectText(e){
+        e.currentTarget.select();
+    }
+    
     render() {
         return <input type="text" 
                 value={this.state.value} 
                 onBlur={this.valueChanged.bind(this)} 
                 onChange={this.updateSelector.bind(this)}
+                onFocus={this.selectText.bind(this)}
                 onKeyPress={this.addNew.bind(this)}/>
     }
 }
