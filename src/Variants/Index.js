@@ -22,7 +22,6 @@ class Variants extends Component {
             <div className="container events-tab">
                 <div className="title">Variants</div>
                 <ul className="tags">
-                    Interact with the component to create a variant.
                     <Preview component={this.state.component} />
                 </ul>
             </div>
