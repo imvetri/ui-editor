@@ -15,7 +15,9 @@ class StyleExplorer extends Component {
     constructor(props) {
         super(props);
         this.state = Object.assign({}, this.props);
-        this.state.rules = getObjectFormat(this.state.component.style);
+
+        var component = JSON.parse(localStorage.getItem("ui-editor")).find(component=>component.name === this.state.component.name);
+        this.state.rules = getObjectFormat(component? component.style : "");
     }
 
     addRule(){
@@ -34,6 +36,11 @@ class StyleExplorer extends Component {
 
     ruleUpdate(rule, index) {
 
+        // Delete if selector is empty
+        if(!rule.selector){
+            rule = undefined;
+        }
+
         var rules = this.state.rules;
         rules[index] = rule;
 
@@ -41,7 +48,7 @@ class StyleExplorer extends Component {
         var component = components.find(component=>component.name === this.state.component.name);
 
         // convert rules to a style string.
-        component.style = convertToStyleString(rules);
+        component.style = convertToStyleString(rules.filter(Boolean));
         
         localStorage.setItem("ui-editor", JSON.stringify(components));
         this.props.onEdit();
