@@ -13,6 +13,7 @@ import DraggableComponent from "../DraggableComponent";
 import Editor from "../Editor";
 import Events from "../Events";
 import TagExplorer from "../TagExplorer";
+import Variants from "../Variants";
 import StyleExplorer from "../StyleExplorer";
 
 // Reducers.
@@ -82,6 +83,7 @@ class Tool extends Component {
                         selectedIndex={this.state.selectedIndex}
                     />
                 </DraggableComponent>
+
                 <DraggableComponent>
 
                     <Events
@@ -93,6 +95,7 @@ class Tool extends Component {
                     />
 
                 </DraggableComponent>
+
                 <DraggableComponent>
                     <Editor
                         key={Math.ceil(Math.random() * 1000)}
@@ -109,8 +112,6 @@ class Tool extends Component {
                     <Preview component={this.state.previewComponent} />
                 </DraggableComponent>
 
-
-
                 <DraggableComponent>
                     <TagExplorer node={nodeTree} />
                 </DraggableComponent>
@@ -120,6 +121,10 @@ class Tool extends Component {
                         key={Math.ceil(Math.random() * 1000)} 
                         component={selectedElement}
                         onEdit={this.updateStyles.bind(this)}/>
+                </DraggableComponent>
+
+                <DraggableComponent>
+                    <Variants component={selectedElement}/>
                 </DraggableComponent>
 
             </div>

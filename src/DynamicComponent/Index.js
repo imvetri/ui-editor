@@ -24,8 +24,8 @@ class DynamicComponent extends Component {
 
         if(!result){
             return null;
-        }        
-
+        }     
+        
         return (
             <div>
                 {React.createElement(result)}
