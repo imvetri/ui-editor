@@ -5,11 +5,11 @@ window.React = React;
 window.Component = React.Component;
 window.saveVariants = function (componentFn, state) {
 
-    debugger;
     var components =JSON.parse(localStorage.getItem("ui-editor")) 
     var component = components.find(component=>component.name === componentFn.name);
     component.variants = component.variants || [];
     component.variants.push(state);
+    component.variants = [...new Set(component.variants.map(JSON.stringify))].map(JSON.parse)
     localStorage.setItem("ui-editor", JSON.stringify(components));
 }
 
