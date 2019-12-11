@@ -20,6 +20,7 @@ class Preview extends Component {
             console.error(e);
         }
 
+
         // Helps to rerender when changes to markup/events are made to the component and preview them.
         let randomKey = this.props.component.id*(~~(Math.random()*10));
         return (
