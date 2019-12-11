@@ -85,7 +85,7 @@ function convertToReactcomponent (component){
                         ${functionDef}
                         e.state = state;
                         this.props.${event.publishName}? this.props.${event.publishName}(e):null;
-                        window.saveVariants(${component.name},state)
+                        window.saveVariants(${window.selectedcomponentname},state)
                     }
                     `
             }

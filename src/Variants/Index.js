@@ -4,7 +4,8 @@ import React, { Component } from "react";
 
 // Components.
 
-import Preview from "../Preview";
+import DynamicComponent from "../DynamicComponent";
+import {validate} from "../Preview/validate";
 
 // Styles.
 
@@ -18,12 +19,33 @@ class Variants extends Component {
 
     render() {
 
+        try{
+            validate(this.props.component)
+        }
+        catch(e){
+            console.error(e);
+        }
+        let randomKey = this.props.component.id*(~~(Math.random()*10));
+
+
+        var component = JSON.parse(JSON.stringify(this.props.component));
+
+        if(component.variants && component.variants.length>0){
+            component.variants = component.variants.filter(Boolean);
+            return (
+                <div className="container events-tab">
+                    <div className="title">Variants</div>
+                    {component.variants.map(variant=>{
+                        component.state = JSON.stringify(Object.assign(JSON.parse(component.state),variant))
+                        return <DynamicComponent key={randomKey} component={component}/>
+                    })}
+                </div>
+            )
+        }
         return (
             <div className="container events-tab">
                 <div className="title">Variants</div>
-                <ul className="tags">
-                    <Preview component={this.state.component} />
-                </ul>
+                <DynamicComponent key={randomKey} component={component}/>
             </div>
         );
     }
