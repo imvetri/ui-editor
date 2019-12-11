@@ -9,12 +9,13 @@ window.saveVariants = function (source, target, state) {
 
     if(source===target){
         var component = components.find(component=>component.name === source.name);
-        component.variants = component.variants || [];
+        component.variants = component.variants || [component.state];
         component.variants.push(state);
         component.variants = [...new Set(component.variants.map(JSON.stringify))].map(JSON.parse).filter(Boolean);
         localStorage.setItem("ui-editor", JSON.stringify(components));
     }
     else{
+
 
         // source is the parent and target is the child.
         // Actual fix
@@ -26,10 +27,16 @@ window.saveVariants = function (source, target, state) {
 
         // temporaryFix
 
-        sourceComponent.variants = sourceComponent.variants || [];
-        var obj = {};
-        obj[targetComponent.name] = state;
-        sourceComponent.variants.push(obj);
+        sourceComponent.variants = sourceComponent.variants || [sourceComponent.state];
+
+        let sourcestate = JSON.parse(sourceComponent.state);
+
+        let newState = {};
+        newState[targetComponent.name] = state;
+
+        sourcestate = Object.assign(sourcestate,newState)
+
+        sourceComponent.variants.push(sourcestate);
         sourceComponent.variants = [...new Set(sourceComponent.variants.map(JSON.stringify))].map(JSON.parse).filter(Boolean);
         localStorage.setItem("ui-editor", JSON.stringify(components));
     }
