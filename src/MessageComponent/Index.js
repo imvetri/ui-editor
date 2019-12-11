@@ -15,7 +15,7 @@ class MessageComponent extends Component {
 
         if(message.type === "error" || message.type=== "info") {
             return (
-                <div className={style[message.type]}>
+                <div className={message.type}>
                     <code>{message.text}</code>
                 </div>
             )

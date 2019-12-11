@@ -6,6 +6,7 @@ export function updateselectedIndex (e) {
     let selectedComponent = this.state.elements.find(component=>component.name===componentName);
     let selectedIndex = this.state.elements.findIndex(component=>component.name===componentName);
 
+    window.selectedcomponentname = selectedComponent.name;
     // Update the state with selectedElement.
     this.setState({
         selectedIndex,
