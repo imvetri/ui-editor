@@ -30,14 +30,16 @@ class Variants extends Component {
 
         var component = JSON.parse(JSON.stringify(this.props.component));
 
+
         if(component.variants && component.variants.length>0){
             component.variants = component.variants.filter(Boolean);
             return (
                 <div className="container events-tab">
                     <div className="title">Variants</div>
                     {component.variants.map(variant=>{
-                        component.state = JSON.stringify(Object.assign(JSON.parse(component.state),variant))
-                        return <DynamicComponent key={randomKey} component={component}/>
+                        let newComponent = JSON.parse(JSON.stringify(component))
+                        newComponent.state = JSON.stringify(Object.assign(JSON.parse(newComponent.state),variant))
+                        return <DynamicComponent key={randomKey} component={newComponent} noFreshFetch={true}/>
                     })}
                 </div>
             )
