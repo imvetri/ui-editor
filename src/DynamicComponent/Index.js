@@ -12,9 +12,12 @@ class DynamicComponent extends Component {
         super(props);
 
         // can we read from localstorage here? ok
-        let thisComponent = this.props.component;
-        // to fetch fresh data.
-        this.component = JSON.parse(localStorage.getItem("ui-editor")).find(component=>component.name === thisComponent.name) ||this.props.component;
+        this.component = this.props.component;
+        
+        if(!this.props.noFreshFetch){
+            // to fetch fresh data.
+            this.component = JSON.parse(localStorage.getItem("ui-editor")).find(component=>component.name === this.component.name) ||this.props.component;
+        }
         
         createStylesheet(this.component.style);
     }
@@ -24,8 +27,8 @@ class DynamicComponent extends Component {
 
         if(!result){
             return null;
-        }        
-
+        }     
+        
         return (
             <div>
                 {React.createElement(result)}
