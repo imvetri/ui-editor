@@ -3,8 +3,9 @@ import React from "react";
 // Why? Because importing React as variable at line#2 will be alterted by babel. Keep it as a property, babel will ignore it.
 window.React = React;
 window.Component = React.Component;
-window.saveVariants = function (source, target, state) {
+window.saveVariants = function (source, target, state, event) {
 
+    debugger;
     var components =JSON.parse(localStorage.getItem("ui-editor")) 
 
     if(source===target){
@@ -27,7 +28,7 @@ window.saveVariants = function (source, target, state) {
 
         // temporaryFix
 
-        sourceComponent.variants = sourceComponent.variants || [sourceComponent.state];
+        sourceComponent.variants = sourceComponent.variants || [JSON.parse(sourceComponent.state)];
 
         let sourcestate = JSON.parse(sourceComponent.state);
 
