@@ -46,9 +46,9 @@ function convertToReactcomponent (component){
                     publishableEvents.forEach(publishableEvent=>{
                         eventUsedInParent = component.events.find(event=>event.name===publishableEvent.publishName)
                     })
-                    let functionDef = codeModifier(eventUsedInParent.reducer);
+                    let functionDef = codeModifier(eventUsedInParent.reducer, component);
     
-                    let props = eventUsedInParent.name+'='+`{function(){${functionDef}}.bind(this)}`
+                    let props = eventUsedInParent.name+'='+`{function(e){${functionDef}}.bind(this)}`
                     // then do markup.replace
                     markup = component.markup.replace(child.name, child.name+" "+props);
                 }
@@ -77,15 +77,15 @@ function convertToReactcomponent (component){
     let getComponentReducers = (events) => {
         return events.map(event=>{
             let functionName = event.id+event.name;
-            let functionDef = codeModifier(event.reducer);
+            let functionDef = codeModifier(event.reducer, component);
 
             if(event.publishable===true){
                 return `
                     ${functionName} (e) {
                         ${functionDef}
                         e.state = state;
+                        debugger;(1)
                         this.props.${event.publishName}? this.props.${event.publishName}(e):null;
-                        window.saveVariants(${window.selectedcomponentname},${component.name},state)
                     }
                     `
             }
