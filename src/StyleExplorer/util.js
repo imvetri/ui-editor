@@ -32,7 +32,7 @@ function ruleToString(rule){
 	return `${rule.selector} {${declarationToString(rule.declarations)}}`
 }
 function declarationToString(declarations){
-	return declarations.map(declaration=>`${declaration.property}:${declaration.value};`)
+	return declarations.map(declaration=>`${declaration.property}:${declaration.value};`).join("")
 }
 
 export function convertToStyleString(rules){
