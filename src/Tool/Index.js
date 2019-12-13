@@ -123,10 +123,6 @@ class Tool extends Component {
                         onEdit={this.updateStyles.bind(this)}/>
                 </DraggableComponent>
 
-                <DraggableComponent>
-                    <Variants component={selectedElement}/>
-                </DraggableComponent>
-
             </div>
         );
     }
