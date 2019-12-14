@@ -37,7 +37,6 @@ class Element extends Component {
                             onClick={this.props.onDelete}><i className="fa fa-trash"></i>Delete</button>
                     </span>
                 </li>
-                <DynamicComponent key={randomKey} component={this.props.element}/>
             </ div>
         );
     }
