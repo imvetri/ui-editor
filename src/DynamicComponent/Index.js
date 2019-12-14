@@ -3,7 +3,9 @@
 import React, { Component } from "react";
 
 import {createStylesheet} from "../utilities/jsxTranspiler/create-stylesheet";
-import {createComponent} from "../utilities/convert-to-react-component";
+
+import { getNestedComponents, saveComponentsToWindow } from "../utilities/nestedComponentSetup";
+
 
 import "./style.css";
 
@@ -41,15 +43,14 @@ class DynamicComponent extends Component {
 
 
     render() {
-        let result = createComponent(this.component)
-
-        if(!result){
-            return null;
-        }     
+        let nestedComponents = getNestedComponents(this.component);
+        if (nestedComponents.length > 0) {
+            saveComponentsToWindow(nestedComponents);
+        }
         
         return (
             <div onDrop={this.onDrop.bind(this)} onDragOver={this.preventDefault.bind(this)}>
-                {React.createElement(result)}
+                {React.createElement(window[this.component.name])}
             </div>
         );
     }
