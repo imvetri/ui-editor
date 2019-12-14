@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
-import {selectionChanged, previewElement, handleDrag} from "./Events";
-
-import DynamicComponent from "../DynamicComponent";
+import {selectionChanged, handleDrag} from "./Events";
 
 import  "./Style.css";
 
@@ -13,7 +11,6 @@ class Element extends Component {
     }
 
     render() {
-        let randomKey = this.props.element.id*(~~(Math.random()*10));
 
         // Remove this.props.index, instead use this element instance index. Removes duplicate code
         return (
@@ -26,9 +23,6 @@ class Element extends Component {
                         {this.props.element.name}
                     </span>
                     <span>
-                        <button 
-                            index = {this.props.index} 
-                            onClick={previewElement.bind(this)}><i className="fas fa-eye"></i>Preview</button>
                         <button 
                             index = {this.props.index}
                             onClick={this.props.onExport}><i className="fas fa-file-export"></i>Export</button>

@@ -34,17 +34,6 @@ class Tool extends Component {
                 style: "",
                 state: "{ }",
                 events: []
-            },
-            previewComponent: {
-                name: "",
-                markup: "",
-                style: "",
-                state: "{}",
-                events: [{
-                    id: "ID1",
-                    name: "",
-                    reducer: ""
-                }]
             }
         }
         this.updateConfig = updateConfig.bind(this);
@@ -62,7 +51,6 @@ class Tool extends Component {
 
     updateStyles(){
         this.setState({
-            previewComponent: this.state.elements[this.state.selectedIndex],
             element: this.state.elements[this.state.selectedIndex]
         })
     }
@@ -77,7 +65,6 @@ class Tool extends Component {
                 <DraggableComponent>
                     <Components
                         elements={this.state.elements}
-                        onPreview={this.updatePreview.bind(this)}
                         onSelection={this.updateselectedIndex}
                         selectedIndex={this.state.selectedIndex}
                     />
@@ -108,7 +95,7 @@ class Tool extends Component {
                 </DraggableComponent>
 
                 <DraggableComponent>
-                    <Preview component={this.state.previewComponent} />
+                    <Preview component={selectedElement} />
                 </DraggableComponent>
 
                 <DraggableComponent>
