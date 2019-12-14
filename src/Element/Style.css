@@ -16,3 +16,7 @@
 .component .componentName{
     padding:7px;
 }
+
+.thumbnail {
+    width: 50px;
+}
