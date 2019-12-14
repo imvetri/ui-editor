@@ -1,6 +1,6 @@
 import React from "react";
 
-import { getNestedComponents } from "./nestedComponentSetup";
+import { saveComponentsToWindow, getNestedComponents } from "./nestedComponentSetup";
 
 
 // Why? Because importing React as variable at line#2 will be alterted by babel. Keep it as a property, babel will ignore it.
