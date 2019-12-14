@@ -42,7 +42,6 @@ class Components extends Component {
                 selectedIndex = {this.props.selectedIndex}
                 element = {element}
                 onSelectionChange = {this.props.onSelection}
-                onPreview = {publishDetails.bind(this)} 
                 onExport = {onExport.bind(this)}
                 onDelete = {this.onDelete.bind(this)}/>
         );
