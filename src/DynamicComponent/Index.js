@@ -47,6 +47,10 @@ class DynamicComponent extends Component {
         if (nestedComponents.length > 0) {
             saveComponentsToWindow(nestedComponents);
         }
+
+        if(!window[this.component.name]){
+            return (<div>Component not rendered</div>)
+        }
         
         return (
             <div onDrop={this.onDrop.bind(this)} onDragOver={this.preventDefault.bind(this)}>
