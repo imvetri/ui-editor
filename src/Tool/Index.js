@@ -13,7 +13,6 @@ import DraggableComponent from "../DraggableComponent";
 import Editor from "../Editor";
 import Events from "../Events";
 import TagExplorer from "../TagExplorer";
-import Variants from "../Variants";
 import StyleExplorer from "../StyleExplorer";
 
 // Reducers.
