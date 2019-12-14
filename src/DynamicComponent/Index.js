@@ -22,6 +22,24 @@ class DynamicComponent extends Component {
         createStylesheet(this.component.style);
     }
 
+    preventDefault(e){
+        let previousTarget = document.querySelectorAll(".droptarget.green");
+        if(previousTarget[0]){
+            previousTarget[0].classList.remove("droptarget")
+            previousTarget[0].classList.remove("green")
+            
+        }
+        e.target.classList.add("droptarget");
+        e.target.classList.add("green");
+        e.preventDefault();
+    }
+
+    onDrop(e){
+        e.preventDefault();
+        var data = e.dataTransfer.getData("component-name");
+    }
+
+
     render() {
         let result = createComponent(this.component)
 
@@ -30,7 +48,7 @@ class DynamicComponent extends Component {
         }     
         
         return (
-            <div>
+            <div onDrop={this.onDrop.bind(this)} onDragOver={this.preventDefault.bind(this)}>
                 {React.createElement(result)}
             </div>
         );
