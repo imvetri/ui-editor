@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 
 import {selectionChanged, previewElement, handleDrag} from "./Events";
+
+import DynamicComponent from "../DynamicComponent";
+
 import  "./Style.css";
 
 class Element extends Component {
@@ -10,6 +13,8 @@ class Element extends Component {
     }
 
     render() {
+        let randomKey = this.props.element.id*(~~(Math.random()*10));
+
         // Remove this.props.index, instead use this element instance index. Removes duplicate code
         return (
             <div className="background" draggable="true" id={this.props.element.name} onDragStart={handleDrag.bind(this)}>
@@ -31,8 +36,8 @@ class Element extends Component {
                             index = {this.props.index}
                             onClick={this.props.onDelete}><i className="fa fa-trash"></i>Delete</button>
                     </span>
-                    
                 </li>
+                <DynamicComponent key={randomKey} component={this.props.element}/>
             </ div>
         );
     }
