@@ -1,5 +1,8 @@
 import React from "react";
 
+import { getNestedComponents } from "./nestedComponentSetup";
+
+
 // Why? Because importing React as variable at line#2 will be alterted by babel. Keep it as a property, babel will ignore it.
 window.React = React;
 window.Component = React.Component;
@@ -43,7 +46,12 @@ window.saveVariants = function (source, target, state, event) {
     }
 }
 
-export function getNodeTree(jsx, style, state, events) {
+export function getNodeTree(element, jsx, style, state, events) {
+    
+    let nestedComponents = getNestedComponents(element);
+    if (nestedComponents.length > 0) {
+        saveComponentsToWindow(nestedComponents);
+    }
     let result, error;
     try{
         result = eval(Babel.transform(jsx, { presets: ['react'] }).code)
