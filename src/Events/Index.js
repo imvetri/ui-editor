@@ -4,7 +4,6 @@ import React, { Component } from "react";
 
 // Dependencies.
 
-import { saveComponentsToWindow, getNestedComponents } from "../utilities/nestedComponentSetup";
 
 // Components. 
 
@@ -56,17 +55,7 @@ class Events extends Component {
             )
         }
 
-        let nestedComponents = getNestedComponents(element);
-
-        // Check if the component has nested components, make it available globally for preview.
-        if (nestedComponents.length > 0) {
-            saveComponentsToWindow(nestedComponents);
-
-            // Render nestedComponent in nodes.
-            // If selected, show in a drop down list of published events.
-        }
-
-        let nodeTree = getNodeTree(element.markup, element.style, JSON.parse(element.state), element.events);
+        let nodeTree = getNodeTree(element, element.markup, element.style, JSON.parse(element.state), element.events);
 
         // Report error.
         if (nodeTree.error !== undefined) {
