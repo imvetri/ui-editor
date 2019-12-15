@@ -16,11 +16,6 @@ class DynamicComponent extends Component {
         // can we read from localstorage here? ok
         this.component = this.props.component;
         
-        if(!this.props.noFreshFetch){
-            // to fetch fresh data.
-            this.component = JSON.parse(localStorage.getItem("ui-editor")).find(component=>component.name === this.component.name) ||this.props.component;
-        }
-        
         createStylesheet(this.component.style);
     }
 

@@ -14,7 +14,7 @@ class Editor extends Component {
     constructor(props) {
         super(props);
         // this.state = {... this.props.element};
-        var component = JSON.parse(localStorage.getItem("ui-editor")).find(component=>component.name === this.props.name);
+        var component = JSON.parse(localStorage.getItem("ui-editor")).length? JSON.parse(localStorage.getItem("ui-editor")).find(component=>component.name === this.props.name): undefined;
 
         this.state = {
             name: component? component.name : "",
