@@ -10,7 +10,7 @@ import Element from "../Element";
 
 // Reducers.
 
-import {toggleEditor, setEditMode, onDelete} from "./Reducer"
+import {setEditMode, onDelete} from "./Reducer"
 
 // Events.
 
@@ -27,7 +27,6 @@ class Components extends Component {
         };
 
         this.onDelete = onDelete.bind(this);
-        this.toggleEditor = toggleEditor.bind(this);
         this.setEditMode = setEditMode.bind(this);
     }
 

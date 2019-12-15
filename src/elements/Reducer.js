@@ -64,8 +64,6 @@ export function saveElement (element) {
 
     localStorage.setItem("ui-editor", JSON.stringify(newElements));
 
-    // hide the editor.
-    this.toggleEditor();
 }
 
 
@@ -100,12 +98,6 @@ export function onDelete(componentName) {
 
     // Persist the changes.
     localStorage.setItem("ui-editor", JSON.stringify(elements));
-}
-
-export function toggleEditor () {
-    this.setState({
-        show: !this.state.show
-    });
 }
 
 export function setEditMode () {
