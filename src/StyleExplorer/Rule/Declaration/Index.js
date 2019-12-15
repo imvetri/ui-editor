@@ -44,7 +44,7 @@ class Declaration extends Component {
 
         return (
             <div className="declaration">
-                {this.state.declarations.map((declaration,index)=> <div>
+                {this.state.declarations.map((declaration,index)=> <div key={index}>
                                 <Property 
                                     index={index}
                                     key={Math.ceil(Math.random() * 1000)} 

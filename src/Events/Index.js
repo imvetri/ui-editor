@@ -4,7 +4,6 @@ import React, { Component } from "react";
 
 // Dependencies.
 
-import { saveComponentsToWindow, getNestedComponents } from "../utilities/nestedComponentSetup";
 
 // Components. 
 
@@ -25,6 +24,7 @@ import { updateEvent, selectedTagChanged, deleteEvent, updateConfiguration } fro
 // Utils.
 
 import { getNodeTree } from "../utilities/get-node-tree.js";
+import { readData } from "../utilities/localStorage";
 
 class Events extends Component {
     constructor(props) {
@@ -56,17 +56,7 @@ class Events extends Component {
             )
         }
 
-        let nestedComponents = getNestedComponents(element);
-
-        // Check if the component has nested components, make it available globally for preview.
-        if (nestedComponents.length > 0) {
-            saveComponentsToWindow(nestedComponents);
-
-            // Render nestedComponent in nodes.
-            // If selected, show in a drop down list of published events.
-        }
-
-        let nodeTree = getNodeTree(element.markup, element.style, JSON.parse(element.state), element.events);
+        let nodeTree = getNodeTree(element, element.markup, element.style, JSON.parse(element.state), element.events);
 
         // Report error.
         if (nodeTree.error !== undefined) {
@@ -87,7 +77,7 @@ class Events extends Component {
         // Check if it is a child component
         if (selectedTag.includes("child-component-")) {
             // Get list of components.
-            let components = JSON.parse(localStorage.getItem("ui-editor"));
+            let components = readData("ui-editor");
 
             // Get child component name from the selected tag.
             let childComponentName = selectedTag.split("child-component-")[1];

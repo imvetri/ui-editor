@@ -7,6 +7,7 @@ import React, { Component } from "react";
 import Rule from "./Rule";
 
 import {getObjectFormat, convertToStyleString} from "./util";
+import {readComponent, writeData, readData} from "../utilities/localStorage";
 // Styles.
 
 import "./Style.css";
@@ -16,7 +17,7 @@ class StyleExplorer extends Component {
         super(props);
         this.state = Object.assign({}, this.props);
 
-        var component = JSON.parse(localStorage.getItem("ui-editor")).find(component=>component.name === this.state.component.name);
+        var component = readComponent(this.state.component.name);
         this.state.rules = getObjectFormat(component? component.style : "");
     }
 
@@ -44,13 +45,13 @@ class StyleExplorer extends Component {
         var rules = this.state.rules;
         rules[index] = rule;
 
-        var components = JSON.parse(localStorage.getItem("ui-editor"));
-        var component = components.find(component=>component.name === this.state.component.name);
+        var components = readData("ui-editor");
+        var component = readComponent(this.state.component.name);
 
         // convert rules to a style string.
         component.style = convertToStyleString(rules.filter(Boolean));
         
-        localStorage.setItem("ui-editor", JSON.stringify(components));
+        writeData("ui-editor",components);
         this.props.onEdit();
     }
 

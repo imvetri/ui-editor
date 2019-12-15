@@ -10,11 +10,12 @@ import Element from "../Element";
 
 // Reducers.
 
-import {toggleEditor, setEditMode, onDelete} from "./Reducer"
+import {onDelete} from "./Reducer"
 
 // Events.
 
-import {publishDetails, onExport} from "./Events";
+import { onExport} from "./Events";
+import {writeData} from "../utilities/localStorage";
 
 
 class Components extends Component {
@@ -22,29 +23,67 @@ class Components extends Component {
         super(props);
         this.state = {
             elements: this.props.elements,
-            editMode: false,
             selectedIndex:0
         };
 
         this.onDelete = onDelete.bind(this);
-        this.toggleEditor = toggleEditor.bind(this);
-        this.setEditMode = setEditMode.bind(this);
     }
 
+    createVariant(component){
 
+        // 1. Update markup.
+        let variant = JSON.parse(JSON.stringify(component));
+        variant.name = "Variant"+variant.name
+        variant.markup = variant.markup.replace(/>(.*?)</g, '>{state.variant}<')
 
+        // 2. Update state.
+        if(typeof variant.state === "string"){
+            variant.state = JSON.parse(variant.state)
+            variant.state.variant = "text"
+        }
+        else if(typeof variant.state === "object"){
+            variant.state.variant = "text"
+        }
+        else{
+            variant.state = {}
+        }
+        variant.state.variant = "text";
+
+        variant.state = JSON.stringify(variant.state);
+
+        return variant;
+    }
+
+    generateVariant(index){
+        /**
+         * 1. Take the current element selected
+         * 2. Remove plain texts and replace it with property
+         * 3. Create the property in the state.
+         */
+        let currentComponent = this.state.elements[index];
+        let variant = this.createVariant(currentComponent);
+
+        let elements = this.state.elements;
+        elements.push(variant);
+
+        this.setState({
+            elements:elements
+        })
+        writeData("ui-editor",elements);
+    }
+    
     render() {
 
-        const elementList = this.state.elements.map((element, index) => 
+        const elementList = this.props.elements.map((element, index) => 
             <Element 
                 key = {index} 
                 index = {index}
                 selectedIndex = {this.props.selectedIndex}
                 element = {element}
                 onSelectionChange = {this.props.onSelection}
-                onPreview = {publishDetails.bind(this)} 
                 onExport = {onExport.bind(this)}
-                onDelete = {this.onDelete.bind(this)}/>
+                onDelete = {this.onDelete}
+                onGenerateVariant = {this.generateVariant.bind(this)}/>
         );
 
         

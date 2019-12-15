@@ -13,20 +13,20 @@ import DraggableComponent from "../DraggableComponent";
 import Editor from "../Editor";
 import Events from "../Events";
 import TagExplorer from "../TagExplorer";
-import Variants from "../Variants";
 import StyleExplorer from "../StyleExplorer";
 
 // Reducers.
-import { updateEvent, updateConfig, saveElement, updateselectedIndex, setEditMode } from "../Elements/Reducer";
+import { updateEvent, updateConfig, saveElement, updateselectedIndex } from "../Elements/Reducer";
 
 // Utils
 import { getNodeTree } from "../utilities/get-node-tree.js";
+import {readData} from "../utilities/localStorage";
 
 class Tool extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            elements: JSON.parse(localStorage.getItem("ui-editor")) || [],
+            elements: readData("ui-editor") || [],
             components: [],
             selectedIndex: -1,
             element: {
@@ -35,24 +35,12 @@ class Tool extends Component {
                 style: "",
                 state: "{ }",
                 events: []
-            },
-            previewComponent: {
-                name: "",
-                markup: "",
-                style: "",
-                state: "{}",
-                events: [{
-                    id: "ID1",
-                    name: "",
-                    reducer: ""
-                }]
             }
         }
         this.updateConfig = updateConfig.bind(this);
         this.updateEvent = updateEvent.bind(this);
         this.saveElement = saveElement.bind(this);
         this.updateselectedIndex = updateselectedIndex.bind(this);
-        this.setEditMode = setEditMode.bind(this);
     }
 
     updatePreview(element) {
@@ -63,22 +51,21 @@ class Tool extends Component {
 
     updateStyles(){
         this.setState({
-            previewComponent: this.state.elements[this.state.selectedIndex],
             element: this.state.elements[this.state.selectedIndex]
         })
     }
 
     render() {
 
-        const selectedElement = this.state.elements[this.state.selectedIndex] || this.state.element;
-        let nodeTree = getNodeTree(selectedElement.markup, selectedElement.style, JSON.parse(selectedElement.state), selectedElement.events);
+        let components = readData("ui-editor") || [];
+        const selectedElement = components[this.state.selectedIndex] || this.state.element;
+        let nodeTree = getNodeTree(selectedElement, selectedElement.markup, selectedElement.style, JSON.parse(selectedElement.state), selectedElement.events);
         
         return (
             <div>
                 <DraggableComponent>
                     <Components
                         elements={this.state.elements}
-                        onPreview={this.updatePreview.bind(this)}
                         onSelection={this.updateselectedIndex}
                         selectedIndex={this.state.selectedIndex}
                     />
@@ -109,7 +96,7 @@ class Tool extends Component {
                 </DraggableComponent>
 
                 <DraggableComponent>
-                    <Preview component={this.state.previewComponent} />
+                    <Preview component={selectedElement} />
                 </DraggableComponent>
 
                 <DraggableComponent>

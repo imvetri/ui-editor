@@ -1,19 +1,23 @@
 import React from "react";
 
+import { saveComponentsToWindow, getNestedComponents } from "./nestedComponentSetup";
+import { readData, writeData } from "./localStorage";
+
+
 // Why? Because importing React as variable at line#2 will be alterted by babel. Keep it as a property, babel will ignore it.
 window.React = React;
 window.Component = React.Component;
 window.saveVariants = function (source, target, state, event) {
 
     debugger;
-    var components =JSON.parse(localStorage.getItem("ui-editor")) 
+    var components = readData("ui-editor");
 
     if(source===target){
         var component = components.find(component=>component.name === source.name);
         component.variants = component.variants || [component.state];
         component.variants.push(state);
         component.variants = [...new Set(component.variants.map(JSON.stringify))].map(JSON.parse).filter(Boolean);
-        localStorage.setItem("ui-editor", JSON.stringify(components));
+        writeData("ui-editor",components);
     }
     else{
 
@@ -43,9 +47,14 @@ window.saveVariants = function (source, target, state, event) {
     }
 }
 
-export function getNodeTree(jsx, style, state, events) {
+export function getNodeTree(element, jsx, style, state, events) {
+    
     let result, error;
     try{
+        let nestedComponents = getNestedComponents(element);
+        if (nestedComponents.length > 0) {
+            saveComponentsToWindow(nestedComponents);
+        }
         result = eval(Babel.transform(jsx, { presets: ['react'] }).code)
     } catch(e){
         error = e;

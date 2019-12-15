@@ -1,4 +1,4 @@
-.selected {
+.selected, .green {
     border: 1px solid green;
     background: rgb(43, 43, 43);
 }
@@ -15,4 +15,8 @@
 
 .component .componentName{
     padding:7px;
+}
+
+.thumbnail {
+    width: 50px;
 }
