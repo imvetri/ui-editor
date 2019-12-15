@@ -11,12 +11,4 @@ export function updateselectedIndex (e) {
         markup: this.state.elements[selectedIndex].markup
     })
 
-    this.setEditMode();
-}
-
-export function setEditMode () {
-    this.setState({
-        editMode: true,
-        show: true
-    })
 }
