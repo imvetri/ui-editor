@@ -38,6 +38,10 @@ class DynamicComponent extends Component {
 
 
     render() {
+
+        if(this.component.name===""){
+            return (<div>Nothing created.</div>)
+        }
         let nestedComponents = getNestedComponents(this.component);
         if (nestedComponents.length > 0) {
             saveComponentsToWindow(nestedComponents);
