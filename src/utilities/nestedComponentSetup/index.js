@@ -6,7 +6,7 @@ import {readData} from "../localStorage";
 
 export function checkNestedComponents( markup) {
 
-    var components = readData("ui-editor") || [];
+    var components = readData("ui-editor");
 
     return components.filter(component=> markup.includes(component.name)).length >0;
 }
