@@ -56,7 +56,8 @@ class Tool extends Component {
 
     render() {
 
-        const selectedElement = this.state.elements[this.state.selectedIndex] || this.state.element;
+        let components = JSON.parse(localStorage.getItem("ui-editor"));
+        const selectedElement = components[this.state.selectedIndex] || this.state.element;
         let nodeTree = getNodeTree(selectedElement, selectedElement.markup, selectedElement.style, JSON.parse(selectedElement.state), selectedElement.events);
         
         return (
