@@ -10,7 +10,6 @@ class Nodes extends Component {
 
         var node = this.props.node;
 
-        var id = node.props.id ? ("-"+node.props.id) : "";
 
         if(!node){
             return (<span>null</span>)
@@ -20,6 +19,7 @@ class Nodes extends Component {
                     <li>{node}</li>
             );
         }
+        var id = node.props.id ? ("-"+node.props.id) : "";
 
         // Check if it contains children.
         if(node.props && Array.isArray(node.props.children)){

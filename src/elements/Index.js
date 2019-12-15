@@ -10,11 +10,11 @@ import Element from "../Element";
 
 // Reducers.
 
-import {setEditMode, onDelete} from "./Reducer"
+import {onDelete} from "./Reducer"
 
 // Events.
 
-import {publishDetails, onExport} from "./Events";
+import { onExport} from "./Events";
 
 
 class Components extends Component {
@@ -22,12 +22,10 @@ class Components extends Component {
         super(props);
         this.state = {
             elements: this.props.elements,
-            editMode: false,
             selectedIndex:0
         };
 
         this.onDelete = onDelete.bind(this);
-        this.setEditMode = setEditMode.bind(this);
     }
 
 

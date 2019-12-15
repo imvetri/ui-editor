@@ -16,7 +16,7 @@ import TagExplorer from "../TagExplorer";
 import StyleExplorer from "../StyleExplorer";
 
 // Reducers.
-import { updateEvent, updateConfig, saveElement, updateselectedIndex, setEditMode } from "../Elements/Reducer";
+import { updateEvent, updateConfig, saveElement, updateselectedIndex } from "../Elements/Reducer";
 
 // Utils
 import { getNodeTree } from "../utilities/get-node-tree.js";
@@ -40,7 +40,6 @@ class Tool extends Component {
         this.updateEvent = updateEvent.bind(this);
         this.saveElement = saveElement.bind(this);
         this.updateselectedIndex = updateselectedIndex.bind(this);
-        this.setEditMode = setEditMode.bind(this);
     }
 
     updatePreview(element) {
