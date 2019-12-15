@@ -96,21 +96,7 @@ function convertToReactcomponent (component){
         }).join("\n")
     }
     
-    let addDataAttributes = (component, isExport) => {
-
-        if(!isExport){
-            
-        }
-        //Finds the first space. This usually means the tag name ending point. but this will fail becauuse of events for child. but lets give it a try.
-        let attributes = {
-            "data-componentname": component.name.toUpperCase(),
-        }
-
-        let attributeString = JSON.stringify(attributes).replace('{"',"").replace("}","").replace(":","=").replace('"',"")
-        return component.markup.replace(" ", ` ${attributeString} `)
-    }
-
-    let componentEventedMarkup = getComponentEventedMarkup(addDataAttributes(component), component.events)
+    let componentEventedMarkup = getComponentEventedMarkup(component.markup, component.events)
     let stateOverideMarkup = getStatedMarkup(componentEventedMarkup)
     let componentReducers = getComponentReducers(component.events)
     let componentName = component.name.split(" ").join("")
