@@ -1,4 +1,7 @@
-export function writeData(){
+export function writeData(key, components){
+    if(key==="ui-editor"){
+        localStorage.setItem("ui-editor", JSON.stringify(components));
+    }
 
 }
 
