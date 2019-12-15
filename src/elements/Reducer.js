@@ -16,7 +16,6 @@ export function updateselectedIndex (e) {
 }
 
 export function saveElement (element) {
-    debugger;
     
     let components = Array.from(this.state.elements);
     
