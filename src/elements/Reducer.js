@@ -13,15 +13,17 @@ export function updateselectedIndex (e) {
         name: selectedComponent.name,
         markup: selectedComponent.markup
     })
-
-    this.setEditMode();
 }
 
 export function saveElement (element) {
+    debugger;
     
-    let newElements = Array.from(this.state.elements);
+    let components = Array.from(this.state.elements);
     
-    if(this.state.editMode){
+    // Check if element exist.
+    let elementExist = components.find(component=>component.name===element.name);
+
+    if(elementExist){
         // Find the element.
         let elementUnderEdit = newElements[this.state.selectedIndex];
 
@@ -29,29 +31,26 @@ export function saveElement (element) {
         elementUnderEdit = Object.assign(elementUnderEdit, element)
 
         // Push it to original list.
-        newElements[this.state.selectedIndex] = elementUnderEdit;
+        components[this.state.selectedIndex] = elementUnderEdit;
     }
+
     else {
         let newElement = {
             name: element.name,
             markup: element.markup,
             events: [],
-            state: element.state,
+            state: element.state || "{}",
             style: element.style,
             children: [],
             id: Math.ceil(Math.random()*1000),
             config:"{}"
         };
 
-        newElements.push(newElement);
+        components.push(newElement);
     }
 
-    // Update the state with new values.
-    // 1. Initialise the editState with default values/ empty it.
-    // TODO: remove editMode.
     this.setState({
-        elements: newElements,
-        editMode: false,
+        elements: components,
         element: {
             name: element.name,
             markup: element.markup,
@@ -59,10 +58,10 @@ export function saveElement (element) {
             state: element.state,
             events: element.events || []
         },
-        show: false
+        selectedIndex: components.length-1
     });
 
-    localStorage.setItem("ui-editor", JSON.stringify(newElements));
+    localStorage.setItem("ui-editor", JSON.stringify(components));
 
 }
 
@@ -98,13 +97,6 @@ export function onDelete(componentName) {
 
     // Persist the changes.
     localStorage.setItem("ui-editor", JSON.stringify(elements));
-}
-
-export function setEditMode () {
-    this.setState({
-        editMode: true,
-        show: true
-    })
 }
 
 export function updateConfig(config){
