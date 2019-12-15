@@ -24,6 +24,7 @@ import { updateEvent, selectedTagChanged, deleteEvent, updateConfiguration } fro
 // Utils.
 
 import { getNodeTree } from "../utilities/get-node-tree.js";
+import { readData } from "../utilities/localStorage";
 
 class Events extends Component {
     constructor(props) {
@@ -76,7 +77,7 @@ class Events extends Component {
         // Check if it is a child component
         if (selectedTag.includes("child-component-")) {
             // Get list of components.
-            let components = JSON.parse(localStorage.getItem("ui-editor"));
+            let components = readData("ui-editor");
 
             // Get child component name from the selected tag.
             let childComponentName = selectedTag.split("child-component-")[1];

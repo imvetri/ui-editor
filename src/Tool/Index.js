@@ -20,12 +20,13 @@ import { updateEvent, updateConfig, saveElement, updateselectedIndex } from "../
 
 // Utils
 import { getNodeTree } from "../utilities/get-node-tree.js";
+import {readData} from "../utilities/localStorage";
 
 class Tool extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            elements: JSON.parse(localStorage.getItem("ui-editor")).length? JSON.parse(localStorage.getItem("ui-editor")): [],
+            elements: readData("ui-editor") || [],
             components: [],
             selectedIndex: -1,
             element: {
@@ -56,7 +57,7 @@ class Tool extends Component {
 
     render() {
 
-        let components = JSON.parse(localStorage.getItem("ui-editor"));
+        let components = readData("ui-editor");
         const selectedElement = components[this.state.selectedIndex] || this.state.element;
         let nodeTree = getNodeTree(selectedElement, selectedElement.markup, selectedElement.style, JSON.parse(selectedElement.state), selectedElement.events);
         
