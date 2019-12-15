@@ -10,6 +10,10 @@ class Element extends Component {
         this.state = {};
     }
 
+    generateVariant(){
+        this.props.onGenerateVariant(this.props.selectedIndex)
+    }
+
     render() {
 
         // Remove this.props.index, instead use this element instance index. Removes duplicate code
@@ -23,6 +27,9 @@ class Element extends Component {
                         {this.props.element.name}
                     </span>
                     <span>
+                        <button 
+                            index = {this.props.index}
+                            onClick={this.generateVariant.bind(this)}><i className="fas fa-file-export"></i>Generate Variant</button>
                         <button 
                             index = {this.props.index}
                             onClick={this.props.onExport}><i className="fas fa-file-export"></i>Export</button>
