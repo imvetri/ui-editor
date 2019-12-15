@@ -25,7 +25,7 @@ export function saveElement (element) {
 
     if(elementExist){
         // Find the element.
-        let elementUnderEdit = newElements[this.state.selectedIndex];
+        let elementUnderEdit = components[this.state.selectedIndex];
 
         // Merge.
         elementUnderEdit = Object.assign(elementUnderEdit, element)
