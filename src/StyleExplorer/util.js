@@ -24,6 +24,9 @@ function convertToObject(rule){
 }
 
 export function getObjectFormat(style){
+    if(!style || style.length==0){
+        return [];
+    }
     var rules = style.split("}").filter(Boolean).map(item=>item+"}");
     return rules.map(convertToObject);
 }

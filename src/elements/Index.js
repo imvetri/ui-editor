@@ -32,7 +32,7 @@ class Components extends Component {
 
     render() {
 
-        const elementList = this.state.elements.map((element, index) => 
+        const elementList = this.props.elements.map((element, index) => 
             <Element 
                 key = {index} 
                 index = {index}
@@ -40,7 +40,7 @@ class Components extends Component {
                 element = {element}
                 onSelectionChange = {this.props.onSelection}
                 onExport = {onExport.bind(this)}
-                onDelete = {this.onDelete.bind(this)}/>
+                onDelete = {this.onDelete}/>
         );
 
         

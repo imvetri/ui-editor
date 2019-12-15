@@ -48,12 +48,12 @@ window.saveVariants = function (source, target, state, event) {
 
 export function getNodeTree(element, jsx, style, state, events) {
     
-    let nestedComponents = getNestedComponents(element);
-    if (nestedComponents.length > 0) {
-        saveComponentsToWindow(nestedComponents);
-    }
     let result, error;
     try{
+        let nestedComponents = getNestedComponents(element);
+        if (nestedComponents.length > 0) {
+            saveComponentsToWindow(nestedComponents);
+        }
         result = eval(Babel.transform(jsx, { presets: ['react'] }).code)
     } catch(e){
         error = e;

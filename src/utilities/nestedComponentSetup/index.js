@@ -4,7 +4,9 @@ import {createComponent} from "../convert-to-react-component";
 import {createStylesheet} from "../jsxTranspiler/create-stylesheet";
 
 export function checkNestedComponents( markup) {
-    let components= JSON.parse(localStorage.getItem("ui-editor"));
+
+    var components = JSON.parse(localStorage.getItem("ui-editor")).length? JSON.parse(localStorage.getItem("ui-editor")): [];
+
     return components.filter(component=> markup.includes(component.name)).length >0;
 }
 
