@@ -81,6 +81,7 @@ export function updateEvent (events) {
 }
 
 export function onDelete(componentName) {
+    debugger;
     // Get all the elements
     let elements = Array.from(this.state.elements);
     

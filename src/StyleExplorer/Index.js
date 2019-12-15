@@ -16,7 +16,7 @@ class StyleExplorer extends Component {
         super(props);
         this.state = Object.assign({}, this.props);
 
-        var component = JSON.parse(localStorage.getItem("ui-editor")).find(component=>component.name === this.state.component.name);
+        var component = JSON.parse(localStorage.getItem("ui-editor")).length? JSON.parse(localStorage.getItem("ui-editor")).find(component=>component.name === this.state.component.name): [];
         this.state.rules = getObjectFormat(component? component.style : "");
     }
 

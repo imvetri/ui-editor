@@ -25,7 +25,7 @@ class Tool extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            elements: JSON.parse(localStorage.getItem("ui-editor")) || [],
+            elements: JSON.parse(localStorage.getItem("ui-editor")).length? JSON.parse(localStorage.getItem("ui-editor")): [],
             components: [],
             selectedIndex: -1,
             element: {
