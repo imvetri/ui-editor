@@ -6,6 +6,8 @@ import React, { Component } from 'react';
 import "./Style.css";
 import {updateName, updateMarkup, updateStyle, updateState} from "./Reducer";
 
+import {readComponent} from "../utilities/localStorage";
+
 /**
  * Shows Configurator on select of valid child component name in the markup and mouseOut from markup
  * Hides Configurator on mouseLeave from the editor.
@@ -13,8 +15,7 @@ import {updateName, updateMarkup, updateStyle, updateState} from "./Reducer";
 class Editor extends Component {
     constructor(props) {
         super(props);
-        // this.state = {... this.props.element};
-        var component = JSON.parse(localStorage.getItem("ui-editor")).length? JSON.parse(localStorage.getItem("ui-editor")).find(component=>component.name === this.props.name): undefined;
+        var component = readComponent(this.props.name);
 
         this.state = {
             name: component? component.name : "",
