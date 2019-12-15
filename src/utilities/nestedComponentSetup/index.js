@@ -2,9 +2,12 @@
 
 import {createComponent} from "../convert-to-react-component";
 import {createStylesheet} from "../jsxTranspiler/create-stylesheet";
+import {readData} from "../localStorage";
 
 export function checkNestedComponents( markup) {
-    let components= JSON.parse(localStorage.getItem("ui-editor"));
+
+    var components = readData("ui-editor");
+
     return components.filter(component=> markup.includes(component.name)).length >0;
 }
 
@@ -24,7 +27,7 @@ export function saveComponentsToWindow( nestedComponents){
 export function getNestedComponents (parent) {
     // Should be able to detect nested component.
 
-    let components= JSON.parse(localStorage.getItem("ui-editor"));
+    let components= readData("ui-editor");
     let nestedComponents = [parent];
     if(checkNestedComponents(parent.markup)){
         // find all the nested components from the markup and push it to nestedComponents.
@@ -36,12 +39,7 @@ export function getNestedComponents (parent) {
     return nestedComponents.filter(component=>component && component.markup);
 }
 
-export function getComponentByName (componentName) {
-    let components= JSON.parse(localStorage.getItem("ui-editor"));
-    return components.filter(component=> markup.includes(component.name)).length >0;
-}
-
 export function getChildComponents (markup){
-    let components= JSON.parse(localStorage.getItem("ui-editor"));
+    let components= readData("ui-editor");
     return components.filter(component=> markup.includes(component.name));
 }

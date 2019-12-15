@@ -3,7 +3,9 @@
 import React, { Component } from "react";
 
 import {createStylesheet} from "../utilities/jsxTranspiler/create-stylesheet";
-import {createComponent} from "../utilities/convert-to-react-component";
+
+import { getNestedComponents, saveComponentsToWindow } from "../utilities/nestedComponentSetup";
+
 
 import "./style.css";
 
@@ -14,24 +16,44 @@ class DynamicComponent extends Component {
         // can we read from localstorage here? ok
         this.component = this.props.component;
         
-        if(!this.props.noFreshFetch){
-            // to fetch fresh data.
-            this.component = JSON.parse(localStorage.getItem("ui-editor")).find(component=>component.name === this.component.name) ||this.props.component;
-        }
-        
         createStylesheet(this.component.style);
     }
 
-    render() {
-        let result = createComponent(this.component)
+    preventDefault(e){
+        let previousTarget = document.querySelectorAll(".droptarget.green");
+        if(previousTarget[0]){
+            previousTarget[0].classList.remove("droptarget")
+            previousTarget[0].classList.remove("green")
+            
+        }
+        e.target.classList.add("droptarget");
+        e.target.classList.add("green");
+        e.preventDefault();
+    }
 
-        if(!result){
-            return null;
-        }     
+    onDrop(e){
+        e.preventDefault();
+        var data = e.dataTransfer.getData("component-name");
+    }
+
+
+    render() {
+
+        if(this.component.name===""){
+            return (<div>Nothing created.</div>)
+        }
+        let nestedComponents = getNestedComponents(this.component);
+        if (nestedComponents.length > 0) {
+            saveComponentsToWindow(nestedComponents);
+        }
+
+        if(!window[this.component.name]){
+            return (<div>Component not rendered</div>)
+        }
         
         return (
-            <div>
-                {React.createElement(result)}
+            <div onDrop={this.onDrop.bind(this)} onDragOver={this.preventDefault.bind(this)}>
+                {React.createElement(window[this.component.name])}
             </div>
         );
     }

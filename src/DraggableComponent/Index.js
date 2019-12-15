@@ -15,19 +15,20 @@ class DraggableComponent extends Component {
             },
             minimised: false
         }
+        this.state.draggable= "false"
     }
 
     moveDiv(e){
-
-        let state = JSON.parse(JSON.stringify(this.state));
-        state.style.top = e.pageY +"px"
-        state.style.left = e.pageX +"px"
-        this.setState({
-            style : state.style
-        },()=>{
-            localStorage.setItem(`ui-editor-settings-draggable-component-${this.props.children.type.name}`,JSON.stringify(this.state));
-        })
-
+        if(e.target.id==="move"){
+            let state = JSON.parse(JSON.stringify(this.state));
+            state.style.top = e.pageY +"px"
+            state.style.left = e.pageX +"px"
+            this.setState({
+                style : state.style
+            },()=>{
+                localStorage.setItem(`ui-editor-settings-draggable-component-${this.props.children.type.name}`,JSON.stringify(this.state));
+            })    
+        }
     }
 
     toggleMinimiseMaximise(e) {
@@ -38,12 +39,24 @@ class DraggableComponent extends Component {
         })
     }
 
+    onMouseEnter() {
+        this.setState({
+            draggable:"true"
+        })
+    }
+
+    onMouseLeave(){
+        this.setState({
+            draggable:"false"
+        })
+    }
+
     render() {
 
         
         return (
-            <div draggable="true" id="move" onDragEnd={this.moveDiv.bind(this)} style={this.state.style} >
-                <span title="Move" className="move-handle">
+            <div draggable={this.state.draggable} id="move" onDragEnd={this.moveDiv.bind(this)} style={this.state.style} >
+                <span title="Move" className="move-handle" onMouseDown={this.onMouseEnter.bind(this)} onMouseUp={this.onMouseLeave.bind(this)}>
                     <i className="fa fa-arrows-alt fa-xs"></i>
                 </span>
                 {

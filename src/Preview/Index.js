@@ -5,7 +5,6 @@ import React, { Component } from "react";
 import "./style.css";
 
 import DynamicComponent from "../DynamicComponent";
-import {validate} from "./validate";
 
 class Preview extends Component {
     constructor(props) {
@@ -13,13 +12,6 @@ class Preview extends Component {
     }
 
     render() {
-        try{
-            validate(this.props.component)
-        }
-        catch(e){
-            console.error(e);
-        }
-
 
         // Helps to rerender when changes to markup/events are made to the component and preview them.
         let randomKey = this.props.component.id*(~~(Math.random()*10));
