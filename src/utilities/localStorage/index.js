@@ -23,5 +23,5 @@ export function readComponent(componentName){
     if(!components){
         return undefined;
     }
-    return components.find(component=>component.name=componentName);
+    return components.find(component=>component.name===componentName);
 }
