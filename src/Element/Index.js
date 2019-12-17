@@ -4,6 +4,8 @@ import {selectionChanged, handleDrag} from "./Events";
 
 import  "./Style.css";
 
+import DynamicComponent from "../DynamicComponent";
+
 class Element extends Component {
     constructor(props) {
         super(props);

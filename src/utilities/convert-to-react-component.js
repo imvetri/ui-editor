@@ -23,6 +23,10 @@ function convertToReactcomponent (component){
         event.id = event.id.replace("-","");
     })
 
+    let getComponentNameInMarkup= (component)=>{
+        return component.markup.replace(">",` data-name='${component.name}'>`)
+    }
+
     let getComponentEventedMarkup = (markup, events)=>{
         events.forEach(event=>{
             let id = `id="${event.id}"`;
@@ -96,7 +100,8 @@ function convertToReactcomponent (component){
         }).join("\n")
     }
     
-    let componentEventedMarkup = getComponentEventedMarkup(component.markup, component.events)
+    let componentNamedMakrup = getComponentNameInMarkup(component);
+    let componentEventedMarkup = getComponentEventedMarkup(componentNamedMakrup, component.events)
     let stateOverideMarkup = getStatedMarkup(componentEventedMarkup)
     let componentReducers = getComponentReducers(component.events)
     let componentName = component.name.split(" ").join("")

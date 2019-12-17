@@ -79,7 +79,12 @@ export function updateEvent (events) {
     localStorage.setItem("ui-editor", JSON.stringify(newElements));
 }
 
-export function onDelete(componentName) {
+export function onDelete(event) {
+    let componentName = event.target.parentElement.parentElement.innerText.split("\n")[0];
+
+    if(this.state.elements.find(component=>component.name===componentName).length<1){
+        return;
+    }
     debugger;
     // Get all the elements
     let elements = Array.from(this.state.elements);
