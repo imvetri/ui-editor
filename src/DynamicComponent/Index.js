@@ -34,7 +34,6 @@ class DynamicComponent extends Component {
 
     onDrop(e){
         e.preventDefault();
-        debugger;
         var child = e.dataTransfer.getData("component-name");
         
         // 1. Fetch the inner text of the target
@@ -44,7 +43,12 @@ class DynamicComponent extends Component {
         var parent = this.state.component;
 
         // 3. Update the markup with child.
-        parent.markup = parent.markup.replace(text, `<${text}${child}/>`);
+        if(text==""){
+            parent.markup = parent.markup.replace("><", `><${child}/><`);
+        }
+        else{
+            parent.markup = parent.markup.replace(text, `${text}<${child}/>`);
+        }
         // 4. Write data.
         writeComponent(parent);
         console.log("component name", child);
