@@ -24,7 +24,6 @@ class History extends Component {
                 </div>
                 <div>
                     <button onClick={this.refreshToPrevious.bind(this)}>Go back</button>
-                    <button onClick={this.refreshToNext.bind(this)}>Go forward</button>
                 </div>
             </div>
         );
