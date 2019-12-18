@@ -1,6 +1,23 @@
+function pushHistory(components){
+    let history = localStorage.getItem("ui-editor-history") || [];
+    history.push(components);
+    localStorage.setItem("ui-editor-history",JSON.stringify(history) );
+}
+
+function popHistory(){
+    
+    let history = localStorage.getItem("ui-editor-history");
+    if(!history){
+        return;
+    }
+    history.pop();
+    localStorage.setItem("ui-editor-history",JSON.stringify(history) );
+}
+
 export function writeData(key, components){
     if(key==="ui-editor"){
         localStorage.setItem("ui-editor", JSON.stringify(components));
+        pushHistory(components);
     }
 
 }
