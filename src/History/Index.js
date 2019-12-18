@@ -9,6 +9,14 @@ class History extends Component {
         super(props);
     }
 
+    refreshToPrevious(){
+        
+    }
+
+    refreshToNext(){
+
+    }
+
     render() {
 
         return (
@@ -17,8 +25,8 @@ class History extends Component {
                     History
                 </div>
                 <div>
-                    <button>Go back</button>
-                    <button>Go forward</button>
+                    <button onClick={this.refreshToPrevious.bind(this)}>Go back</button>
+                    <button onClick={this.refreshToNext.bind(this)}>Go forward</button>
                 </div>
             </div>
         );
