@@ -24,6 +24,7 @@ export function saveElement (element) {
     
     // Check if element exist.
     let elementExist = components.find(component=>component.name===element.name);
+    let selectedIndex = this.state.selectedIndex;
 
     if(elementExist){
         // Find the element.
@@ -48,6 +49,7 @@ export function saveElement (element) {
             config:"{}"
         };
 
+        selectedIndex = components.length-1;
         components.push(newElement);
     }
 
@@ -60,7 +62,7 @@ export function saveElement (element) {
             state: element.state,
             events: element.events || []
         },
-        selectedIndex: components.length-1
+        selectedIndex: selectedIndex
     });
 
     writeData("ui-editor", components)
