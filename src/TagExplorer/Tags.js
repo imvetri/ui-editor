@@ -53,8 +53,7 @@ class Tags extends Component {
         else if(typeof node.type === "function"){
             return (
                 <li>
-                    {`<${node.type.name}>`}
-                    {`</${node.type.name}>`}
+                    {`<${node.type.name}/>`}
                 </li>
             );
         }
