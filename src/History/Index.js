@@ -2,6 +2,8 @@
 
 import React, { Component } from "react";
 
+import { popHistory } from "../utilities/localStorage";
+
 import "./style.css";
 
 class History extends Component {
@@ -10,11 +12,7 @@ class History extends Component {
     }
 
     refreshToPrevious(){
-        
-    }
-
-    refreshToNext(){
-
+        popHistory();
     }
 
     render() {

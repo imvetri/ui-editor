@@ -4,19 +4,24 @@ function pushHistory(components){
     localStorage.setItem("ui-editor-history",JSON.stringify(editorHistory) );
 }
 
-function popHistory(){
+export function popHistory(){
     
-    window.editorHistory = localStorage.getItem("ui-editor-history");
+    let editorHistory = readData("ui-editor-history");
     if(!editorHistory){
         return;
     }
-    editorHistory.pop();
-    localStorage.setItem("ui-editor-history",JSON.stringify(editorHistory) );
+
+    let lastItem = editorHistory.pop();
+    
+    writeData("ui-editor-history", editorHistory, true);
+
+    writeData("ui-editor", lastItem, true);
 }
 
-export function writeData(key, components){
-    if(key==="ui-editor"){
-        localStorage.setItem("ui-editor", JSON.stringify(components));
+export function writeData(key, components, noPush){
+    
+    localStorage.setItem(key, JSON.stringify(components));
+    if(!noPush){
         pushHistory(components);
     }
 }
