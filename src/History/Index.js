@@ -17,8 +17,8 @@ class History extends Component {
                     History
                 </div>
                 <div>
-                    <button>Undo</button>
-                    <button>Redo</button>
+                    <button>Go back</button>
+                    <button>Go forward</button>
                 </div>
             </div>
         );
