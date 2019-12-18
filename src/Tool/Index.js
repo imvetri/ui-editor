@@ -8,12 +8,13 @@ import "../Index/index.css";
 // Components.
 
 import Components from "../Elements";
-import Preview from "../Preview";
 import DraggableComponent from "../DraggableComponent";
 import Editor from "../Editor";
 import Events from "../Events";
-import TagExplorer from "../TagExplorer";
+import History from "../History";
+import Preview from "../Preview";
 import StyleExplorer from "../StyleExplorer";
+import TagExplorer from "../TagExplorer";
 
 // Reducers.
 import { updateEvent, updateConfig, saveElement, updateselectedIndex } from "../Elements/Reducer";
@@ -108,6 +109,10 @@ class Tool extends Component {
                         key={Math.ceil(Math.random() * 1000)} 
                         component={selectedElement}
                         onEdit={this.updateStyles.bind(this)}/>
+                </DraggableComponent>
+
+                <DraggableComponent>
+                    <History/>
                 </DraggableComponent>
 
             </div>

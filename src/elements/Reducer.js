@@ -1,5 +1,8 @@
 // Dependencies.
 
+import {writeData} from "../utilities/localStorage";
+
+
 export function updateselectedIndex (e) {
     let componentName = e.currentTarget.innerText.split("\n")[0];
     // Find the element from state that matches the currently selected element.
@@ -60,8 +63,7 @@ export function saveElement (element) {
         selectedIndex: components.length-1
     });
 
-    localStorage.setItem("ui-editor", JSON.stringify(components));
-
+    writeData("ui-editor", components)
 }
 
 
@@ -76,7 +78,8 @@ export function updateEvent (events) {
         elements: newElements
     });
 
-    localStorage.setItem("ui-editor", JSON.stringify(newElements));
+    writeData("ui-editor", newElements)
+
 }
 
 export function onDelete(event) {
@@ -101,7 +104,8 @@ export function onDelete(event) {
     })
 
     // Persist the changes.
-    localStorage.setItem("ui-editor", JSON.stringify(elements));
+    writeData("ui-editor", elements)
+
 }
 
 export function updateConfig(config){
@@ -138,5 +142,5 @@ export function updateConfig(config){
         elements: newElements
     })
 
-    localStorage.setItem("ui-editor", JSON.stringify(newElements));
+    writeData("ui-editor", newElements)
 }
