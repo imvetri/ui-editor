@@ -3,28 +3,36 @@ import { getChildComponents } from "../utilities/nestedComponentSetup";
 
 function getComponentString(component){
 
-    if(!component.markup[3]){
+    if(!component.idMarkup[3]){
         return;
     }
     return convertToReactcomponent(component);
 }
 
 function createComponent(component){
-    let componentString = getComponentString(component);
+    let componentString = getComponentString(component, {"drag-drop-feature":true});
     // eval does not evaluate class if not exclosed in paranthesis.
     return eval(Babel.transform(componentString, { presets: ['react'], plugins: ["transform-es2015-classes"]  }).code)
 }
 
 
 // Elements to  react component.
-function convertToReactcomponent (component){
+function convertToReactcomponent (component, options){
 
+    /**
+     * 1. if options.drag-drop-feature = true, use idMarkup as property
+     */
+
+    let markup = "markup";
+    if(options && options["drag-drop-feature"]){
+        markup = "idMarkup"
+    }
     component.events.forEach(event=>{
         event.id = event.id.replace("-","");
     })
 
     let getComponentNameInMarkup= (component)=>{
-        return component.markup.replace(">",` data-name='${component.name}'>`)
+        return component[markup].replace(">",` data-name='${component.name}'>`)
     }
 
     let getComponentEventedMarkup = (markup, events)=>{
@@ -53,8 +61,8 @@ function convertToReactcomponent (component){
                     let functionDef = codeModifier(eventUsedInParent.reducer, component);
     
                     let props = eventUsedInParent.name+'='+`{function(e){${functionDef}}.bind(this)}`
-                    // then do markup.replace
-                    markup = component.markup.replace(child.name, child.name+" "+props);
+                    // then do idMarkup.replace
+                    markup = component[markup].replace(child.name, child.name+" "+props);
                 }
 
             })
