@@ -43,7 +43,7 @@ window.saveVariants = function (source, target, state, event) {
 
         sourceComponent.variants.push(sourcestate);
         sourceComponent.variants = [...new Set(sourceComponent.variants.map(JSON.stringify))].map(JSON.parse).filter(Boolean);
-        localStorage.setItem("ui-editor", JSON.stringify(components));
+        writeData("ui-editor",components)
     }
 }
 

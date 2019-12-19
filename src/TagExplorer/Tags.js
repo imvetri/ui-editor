@@ -15,11 +15,20 @@ class Tags extends Component {
 
         props = convertJSONtoHTMLAttributes(props);
 
-        if(!node){
+        if(!node || typeof node === "string"){
             return (<span>null</span>)
         }
-
-        // Check if it contains children.
+        
+        // node
+        if(typeof node.props.children === "string"){
+            let child = node.props.children;
+            return (
+                <li>
+                    {`<${node.type} ${props}>${child}</${node.type}>`}
+                </li>
+            );
+        }
+        // Children
         if(node.props && Array.isArray(node.props.children)){
             var children = node.props.children.map((child,index)=><Tags key={index} node={child}/>);
             return (
@@ -31,7 +40,7 @@ class Tags extends Component {
             );
         }
         // if node contains only one children, jsx get transpiled to object rather than array.
-        else if(typeof node.props.children === "object"){
+        if(typeof node.props.children === "object"){
             let child = node.props.children;
             return (
                 <li>
@@ -40,21 +49,12 @@ class Tags extends Component {
                     {`</${node.type}>`}
                 </li>
             );
-        }        // if node contains only one children, jsx get transpiled to object rather than array.
-        else if(typeof node.props.children === "string"){
-            let child = node.props.children;
-            return (
-                <li>
-                    {`<${node.type} ${props}>${child}</${node.type}>`}
-                </li>
-            );
         }
-        // nested component.
-        else if(typeof node.type === "function"){
+        // Chilren component / Nested component
+        if(typeof node.type === "function"){
             return (
                 <li>
-                    {`<${node.type.name}>`}
-                    {`</${node.type.name}>`}
+                    {`<${node.type.name}/>`}
                 </li>
             );
         }
