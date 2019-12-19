@@ -5,6 +5,7 @@ import React, { Component } from "react";
 import {createStylesheet} from "../utilities/jsxTranspiler/create-stylesheet";
 
 import { getNestedComponents, saveComponentsToWindow } from "../utilities/nestedComponentSetup";
+import { writeComponent } from "../utilities/localStorage";
 
 
 import "./style.css";
@@ -12,11 +13,11 @@ import "./style.css";
 class DynamicComponent extends Component {
     constructor(props) {
         super(props);
-
-        // can we read from localstorage here? ok
-        this.component = this.props.component;
+        this.state = {
+            component: this.props.component
+        }
         
-        createStylesheet(this.component.style);
+        createStylesheet(this.state.component.style);
     }
 
     preventDefault(e){
@@ -33,27 +34,49 @@ class DynamicComponent extends Component {
 
     onDrop(e){
         e.preventDefault();
-        var data = e.dataTransfer.getData("component-name");
+        var child = e.dataTransfer.getData("component-name");
+        
+        // 1. Fetch the inner text of the target
+        var text = e.target.innerText;
+
+        // 2. Fetch the target component from the components list
+        var parent = this.state.component;
+
+        // 3. Update the markup with child.
+        if(text==""){
+            parent.markup = parent.markup.replace("><", `><${child}/><`);
+        }
+        else{
+            parent.markup = parent.markup.replace(text, `${text}<${child}/>`);
+        }
+        // 4. Write data.
+        writeComponent(parent);
+        console.log("component name", child);
+        console.log(e.target);
+        // 5. Trigger reload.
+        this.setState({
+            component: parent
+        })
     }
 
 
     render() {
 
-        if(this.component.name===""){
+        if(this.state.component.name===""){
             return (<div>Nothing created.</div>)
         }
-        let nestedComponents = getNestedComponents(this.component);
+        let nestedComponents = getNestedComponents(this.state.component);
         if (nestedComponents.length > 0) {
             saveComponentsToWindow(nestedComponents);
         }
 
-        if(!window[this.component.name]){
+        if(!window[this.state.component.name]){
             return (<div>Component not rendered</div>)
         }
         
         return (
             <div onDrop={this.onDrop.bind(this)} onDragOver={this.preventDefault.bind(this)}>
-                {React.createElement(window[this.component.name])}
+                {React.createElement(window[this.state.component.name])}
             </div>
         );
     }
