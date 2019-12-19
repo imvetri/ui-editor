@@ -1,3 +1,5 @@
+import {getStartTags} from "../get-start-tags";
+
 function pushHistory(components){
     window.editorHistory = readData("ui-editor-history");
     editorHistory.push(components);
@@ -29,22 +31,34 @@ export function writeData(key, components, noPush){
 // If empty, return empty array.
 
 export function readData(key){
-    if(key==="ui-editor"){
-        let data = JSON.parse(localStorage.getItem("ui-editor"));
 
-        if(data.length){
-            return data;
-        }
+    let components = JSON.parse(localStorage.getItem(key));
+
+    if(components.length){
+
+        // Sets property in components with markup containing uuid. 
+        // This helps to find paremt , child, sibblings for dran and drop
+        components.forEach(component=>{
+            // 1.Get all start tags.
+            let startTags = getStartTags(component.markup);
+            
+            // 2.Save it as new property.
+            component.idMarkup = component.markup;
+
+            // 3.get id tags
+            let idTags = startTags.map((tag, index)=>{
+                return tag.replace(">",` data-uuid="${index}">`)
+            })
+
+            // 4.replace the starttag with idTag
+            startTags.forEach((startTag, index)=>{
+                component.idMarkup = component.idMarkup.replace(startTag, idTags[index])
+            })
+        })
+        return components;
     }
-    if(key==="ui-editor-history"){
-        let data = JSON.parse(localStorage.getItem("ui-editor-history"));
 
-        if(data.length){
-            return data;
-        }
-
-        return [];
-    }
+    return [];
 
 }
 
