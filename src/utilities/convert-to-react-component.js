@@ -1,12 +1,12 @@
 import { codeModifier } from "./codeModifier";
 import { getChildComponents } from "../utilities/nestedComponentSetup";
 
-function getComponentString(component){
+function getComponentString(component, options){
 
     if(!component.idMarkup[3]){
         return;
     }
-    return convertToReactcomponent(component);
+    return convertToReactcomponent(component, options);
 }
 
 function createComponent(component){
