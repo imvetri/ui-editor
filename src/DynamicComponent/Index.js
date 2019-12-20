@@ -35,24 +35,18 @@ class DynamicComponent extends Component {
     onDrop(e){
         e.preventDefault();
         var child = e.dataTransfer.getData("component-name");
-        
-        // 1. Fetch the inner text of the target
-        var text = e.target.innerText;
-
-        // 2. Fetch the target component from the components list
+        /**
+         * 1. Fetch the uuid of the drop target.
+         * 2. Replace the child component name next to the uuid tag of the parent.idMarkup.
+         */
+        var uuid = e.target.getAttribute("data-uuid");
         var parent = this.state.component;
+        parent.idMarkup = parent.idMarkup.replace(`"${uuid}">`,`"${uuid}"><${child}/>`)
 
-        // 3. Update the markup with child.
-        if(text==""){
-            parent.markup = parent.markup.replace("><", `><${child}/><`);
-        }
-        else{
-            parent.markup = parent.markup.replace(text, `${text}<${child}/>`);
-        }
-        // 4. Write data.
-        writeComponent(parent);
-        console.log("component name", child);
-        console.log(e.target);
+        /**
+         * before write, fetch idMakrup with child components into component.markujp.
+         */
+        writeComponent(parent, true);
         // 5. Trigger reload.
         this.setState({
             component: parent
