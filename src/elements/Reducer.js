@@ -90,7 +90,6 @@ export function onDelete(event) {
     if(this.state.elements.find(component=>component.name===componentName).length<1){
         return;
     }
-    debugger;
     // Get all the elements
     let elements = Array.from(this.state.elements);
     
