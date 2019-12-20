@@ -4,8 +4,6 @@ import {selectionChanged, handleDrag} from "./Events";
 
 import  "./Style.css";
 
-import DynamicComponent from "../DynamicComponent";
-
 class Element extends Component {
     constructor(props) {
         super(props);
@@ -20,7 +18,7 @@ class Element extends Component {
 
         // Remove this.props.index, instead use this element instance index. Removes duplicate code
         return (
-            <div className="background" draggable="true" id={this.props.element.name} onDragStart={handleDrag.bind(this)}>
+            <div className="background" draggable="true" id={this.props.element.name} data-name={this.props.element.name} onDragStart={handleDrag.bind(this)}>
                 <li 
                     className = {this.props.index===this.props.selectedIndex ? "selected component": "component"}
                     onClick = {selectionChanged.bind(this)}

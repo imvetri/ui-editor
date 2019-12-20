@@ -6,6 +6,7 @@ import {createStylesheet} from "../utilities/jsxTranspiler/create-stylesheet";
 
 import { getNestedComponents, saveComponentsToWindow } from "../utilities/nestedComponentSetup";
 import { writeComponent } from "../utilities/localStorage";
+import { wrapTool } from "../utilities/wrapTool";
 
 
 import "./style.css";
@@ -21,14 +22,7 @@ class DynamicComponent extends Component {
     }
 
     preventDefault(e){
-        let previousTarget = document.querySelectorAll(".droptarget.green");
-        if(previousTarget[0]){
-            previousTarget[0].classList.remove("droptarget")
-            previousTarget[0].classList.remove("green")
-            
-        }
-        e.target.classList.add("droptarget");
-        e.target.classList.add("green");
+        wrapTool(e)
         e.preventDefault();
     }
 
@@ -67,9 +61,9 @@ class DynamicComponent extends Component {
         if(!window[this.state.component.name]){
             return (<div>Component not rendered</div>)
         }
-        
+
         return (
-            <div onDrop={this.onDrop.bind(this)} onDragOver={this.preventDefault.bind(this)}>
+            <div onDrop={this.onDrop.bind(this)} onDragOver={this.preventDefault.bind(this)} {...this.props.events}>
                 {React.createElement(window[this.state.component.name])}
             </div>
         );
