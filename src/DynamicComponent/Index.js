@@ -51,7 +51,7 @@ class DynamicComponent extends Component {
     render() {
 
         if(this.state.component.name===""){
-            return (<div>Nothing created.</div>)
+            return (<div>No component selected.</div>)
         }
         let nestedComponents = getNestedComponents(this.state.component);
         if (nestedComponents.length > 0) {
