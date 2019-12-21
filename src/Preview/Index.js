@@ -4,8 +4,6 @@ import React, { Component } from "react";
 
 import "./style.css";
 
-import { wrapTool } from "../utilities/wrapTool";
-
 import DynamicComponent from "../DynamicComponent";
 
 class Preview extends Component {
@@ -16,33 +14,46 @@ class Preview extends Component {
         }
     }
 
-    setToEditMode() {
-        // Set overlay.
+    setToDropMode() {
         this.setState({
             events: {
-                onMouseOver: this.showHover.bind(this),
-                onClick: this.showTools.bind(this)
+                onDragOver: function preventDefault(e){
+                    console.log("Drag Over");
+                    // Show drop points. 
+                    e.preventDefault();
+                },
+                onDrop: function onDrop(e){
+                    console.log("DROPPED")
+                    // Remove drop points
+                    e.preventDefault();
+                    var child = e.dataTransfer.getData("component-name");
+                    var uuid = e.target.getAttribute("data-uuid");
+                    parent.idMarkup = parent.idMarkup.replace(`"${uuid}">`,`"${uuid}"><${child}/>`)
+                }
             }
         })
     }
 
-    setToInteractMode() {
-        // Remove overlay.
+    setToEditMode() {
+        // Set overlay.
         this.setState({
-            events: {}
+            events: {
+                onMouseOver: ()=>{
+                    // Show edit tools.
+                    console.log("MOUSE OVER")
+                },
+                onMouseLeave: ()=>{
+                    // Remove edit tools.
+                    console.log("MOUSE LEAVE")
+                }
+            }
         })
     }
 
-    showHover(e){
-        wrapTool(e)
-        e.stopPropagation();
-        console.log(e)
-    }
-
-    showTools(e){
-        // TODO : Change the markup to show the element.
-        e.target.outerHTML = `<span><i className="fas fa-save"></i>${e.target.outerHTML}</span>`
-        debugger;
+    interactiveMode(){
+        this.setState({
+            events: {}
+        })
     }
 
     render() {
@@ -55,8 +66,9 @@ class Preview extends Component {
                     Preview
                 </div>
                 <div>
+                    <button onClick={this.setToDropMode.bind(this)}><i className="fas fa-file-export"></i>Drop</button>
                     <button onClick={this.setToEditMode.bind(this)}><i className="fas fa-file-export"></i>Edit</button>
-                    <button onClick={this.setToInteractMode.bind(this)}><i className="fas fa-file-export"></i>Interact</button>
+                    <button onClick={this.interactiveMode.bind(this)}><i className="fas fa-file-export"></i>Interact</button>
                 </div>
                 <DynamicComponent key={randomKey} component={this.props.component} events={this.state.events}/>
             </div>
