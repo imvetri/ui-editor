@@ -77,7 +77,8 @@ class Preview extends Component {
                     // remove targetChild
                     e.target.classList.remove("targetChild");
                     this.setState({
-                        coordinates: e.target.getBoundingClientRect()
+                        coordinates: e.target.getBoundingClientRect(),
+                        events: {}
                     })
                     // show edit tools
                 }).bind(this)
