@@ -4,3 +4,7 @@
     box-shadow: 0px 8px 26px -8px black;
     background: #2C3134;
 }
+
+.dropPoint{
+    border: 1px solid green;
+}

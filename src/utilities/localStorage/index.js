@@ -20,14 +20,6 @@ export function popHistory(){
     writeData("ui-editor", lastItem, true);
 }
 
-export function writeData(key, components, noPush){
-    
-    localStorage.setItem(key, JSON.stringify(components));
-    if(!noPush){
-        pushHistory(components);
-    }
-}
-
 // puts uuid to start tags of the component.
 function IdMarkup (component) {
     // 1.Get all start tags.
@@ -69,22 +61,38 @@ function noIdMarkup (idMarkup) {
 // If empty, return empty array.
 
 export function readData(key){
+    /**
+     * 1. check in window.
+     * 2. if empty, create and add to it.
+     * 3. return
+     */
+    console.log("READ")
+    if(!window.components){
+        window.components = JSON.parse(localStorage.getItem(key));
+    }
 
-    let components = JSON.parse(localStorage.getItem(key));
-
-    if(components.length ){
+    if(window.components.length ){
 
         if(key==="ui-editor"){
             // Sets property in components with markup containing uuid. 
             // This helps to find paremt , child, sibblings for dran and drop
-            components.forEach(IdMarkup)
+            window.components.forEach(IdMarkup)
         }
 
-        return components;
+        return JSON.parse(JSON.stringify(window.components));
     }
 
     return [];
 
+}
+
+export function writeData(key, components, noPush){
+    console.log("WRITE")
+    window.components = components;
+    localStorage.setItem(key, JSON.stringify(components));
+    if(!noPush){
+        pushHistory(components);
+    }
 }
 
 export function readComponent(componentName){
@@ -95,16 +103,16 @@ export function readComponent(componentName){
     return components.find(component=>component.name===componentName);
 }
 
-export function writeComponent(component, idMarkupModified) {
+export function writeComponent(parent, idMarkupModified) {
     // If only one component is passed
-    if(!Array.isArray(component) && component.name){
+    if(!Array.isArray(parent) && parent.name){
         let components = readData( "ui-editor");
-        let index = components.findIndex(comp=>comp.name === component.name);
+        let index = components.findIndex(comp=>comp.name === parent.name);
         if(idMarkupModified){
             debugger;
-            component.markup = noIdMarkup(component.idMarkup);
+            parent.markup = noIdMarkup(parent.idMarkup);
         }
-        components[index] = component;
+        components[index] = parent;
         writeData("ui-editor", components);
     }
 }
