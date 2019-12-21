@@ -79,7 +79,7 @@ export function readData(key){
             window.components.forEach(IdMarkup)
         }
 
-        return window.components;
+        return JSON.parse(JSON.stringify(window.components));
     }
 
     return [];
@@ -103,16 +103,16 @@ export function readComponent(componentName){
     return components.find(component=>component.name===componentName);
 }
 
-export function writeComponent(component, idMarkupModified) {
+export function writeComponent(parent, idMarkupModified) {
     // If only one component is passed
-    if(!Array.isArray(component) && component.name){
+    if(!Array.isArray(parent) && parent.name){
         let components = readData( "ui-editor");
-        let index = components.findIndex(comp=>comp.name === component.name);
+        let index = components.findIndex(comp=>comp.name === parent.name);
         if(idMarkupModified){
             debugger;
-            component.markup = noIdMarkup(component.idMarkup);
+            parent.markup = noIdMarkup(parent.idMarkup);
         }
-        components[index] = component;
+        components[index] = parent;
         writeData("ui-editor", components);
     }
 }
