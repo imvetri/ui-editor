@@ -10,8 +10,16 @@ class FocusBarComponent extends Component {
     }
 
     render() {
+        let coordinates = this.props.coordinates;
+        let style = {
+            width:coordinates.width||0, 
+            height:coordinates.height||0, 
+            position: "fixed", 
+            top: coordinates.y||0, 
+            left:coordinates.x||0
+        }
         return (
-            <div className="ui-overlay">
+            <div className="ui-overlay" style={style}>
                 <div className="focus-bar">
                     <span title="Move" className="move-handle">
                         <i className="fa fa-arrows-alt"></i>
