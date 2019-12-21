@@ -6,6 +6,10 @@ import "./style.css";
 
 import DynamicComponent from "../DynamicComponent";
 
+// Utilities.
+
+import { writeComponent } from "../utilities/localStorage";
+
 class Preview extends Component {
     constructor(props) {
         super(props);
@@ -17,19 +21,27 @@ class Preview extends Component {
     setToDropMode() {
         this.setState({
             events: {
-                onDragOver: function preventDefault(e){
+                onDragOver: ((e)=>{
+            
+                    var previousDrop = document.querySelector(".dropPoint");
+                    if(previousDrop)
+                        previousDrop.classList.remove("dropPoint");
+                    
+                    e.target.classList.add("dropPoint")
                     console.log("Drag Over");
-                    // Show drop points. 
+                    // Show drop points.
                     e.preventDefault();
-                },
-                onDrop: function onDrop(e){
+                }).bind(this),
+                onDrop: ((e)=>{
+                    // remove drop points.
                     console.log("DROPPED")
-                    // Remove drop points
                     e.preventDefault();
+                    var parent = this.props.component;
                     var child = e.dataTransfer.getData("component-name");
                     var uuid = e.target.getAttribute("data-uuid");
                     parent.idMarkup = parent.idMarkup.replace(`"${uuid}">`,`"${uuid}"><${child}/>`)
-                }
+                    writeComponent(parent, true);
+                }).bind(this)
             }
         })
     }
