@@ -32,7 +32,7 @@ function convertToReactcomponent (component, options){
     })
 
     let getComponentNameInMarkup= (component)=>{
-        return component[markup].replace(">",` data-name='${component.name}'>`)
+        return component[markup].replace(">",` data-name='${component.name}' draggable="true" onDragStart={window.eventCallbacks.handleDrag}>`)
     }
 
     let getComponentEventedMarkup = (markup, events)=>{

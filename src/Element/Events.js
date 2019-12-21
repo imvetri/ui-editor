@@ -3,5 +3,11 @@ export function selectionChanged(e) {
 }
 
 export function handleDrag(e){
-    e.dataTransfer.setData("component-name", event.target.getAttribute("id"));
+
+    let name = event.target.getAttribute("data-name")
+    e.dataTransfer.setData("component-name", name);
 }
+
+window.eventCallbacks = {
+    handleDrag: handleDrag
+};
