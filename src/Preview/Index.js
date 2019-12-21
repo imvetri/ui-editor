@@ -34,6 +34,7 @@ class Preview extends Component {
                 }).bind(this),
                 onDrop: ((e)=>{
                     // remove drop points.
+                    debugger;
                     console.log("DROPPED")
                     e.preventDefault();
                     var parent = this.props.component;
@@ -41,6 +42,9 @@ class Preview extends Component {
                     var uuid = e.target.getAttribute("data-uuid");
                     parent.idMarkup = parent.idMarkup.replace(`"${uuid}">`,`"${uuid}"><${child}/>`)
                     writeComponent(parent, true);
+                    this.setState({
+                        events:{}
+                    })
                 }).bind(this)
             }
         })
