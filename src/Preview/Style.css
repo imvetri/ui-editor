@@ -4,3 +4,12 @@
     box-shadow: 0px 8px 26px -8px black;
     background: #2C3134;
 }
+
+.wrapper{
+    position: relative;
+}
+
+.controls {
+    position: absolute;
+    border-top: none;
+}
