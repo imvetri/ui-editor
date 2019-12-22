@@ -9,6 +9,24 @@ class FocusBarComponent extends Component {
         super(props);
     }
 
+    moveChildUp(){
+        
+        // Remove the child.
+        // Insert the child before the previous child. 
+
+    }
+    moveChildDown(){
+
+        // Remove the child.
+        // Insert the child after the next child. 
+
+    }
+    deleteChild(){
+
+        // Remove the child.
+        // Insert the child after the next child. 
+    }
+
     render() {
         let coordinates = this.props.coordinates;
         let style = {
@@ -21,20 +39,29 @@ class FocusBarComponent extends Component {
         return (
             <div className="ui-overlay" style={style}>
                 <div className="focus-bar">
-                    <span title="Move" className="move-handle">
+                    {/* <span title="Move" className="move-handle">
                         <i className="fa fa-arrows-alt"></i>
+                    </span> */}
+                    <span title="Move up">
+                        <button onClick={this.moveChildUp.bind(this)}>
+                            <i className="fa fa-arrow-up"></i>
+                        </button>
                     </span>
-                    <span title="Select Parent">
-                        <i className="fa fa-arrow-up"></i>
+                    <span title="Move down">
+                        <button onClick={this.moveChildDown.bind(this)}>
+                            <i className="fa fa-arrow-down"></i>
+                        </button>
                     </span>
-                    <span title="Edit">
+                    {/* <span title="Edit">
                         <i className="fa fa-pencil-alt"></i>
-                    </span>
-                    <span title="Duplicate">
+                    </span> */}
+                    {/* <span title="Duplicate">
                         <i className="fa fa-clone"></i>
-                    </span>
+                    </span> */}
                     <span title="Delete">
-                        <i className="fa fa-trash"></i>
+                        <button onClick={this.deleteChild.bind(this)}>
+                            <i className="fa fa-trash"></i>
+                        </button>
                     </span>
                 </div>
                 <div className="highlights">
