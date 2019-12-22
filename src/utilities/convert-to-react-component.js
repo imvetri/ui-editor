@@ -32,7 +32,7 @@ function convertToReactcomponent (component, options){
     })
 
     let getComponentNameInMarkup= (component)=>{
-        return component[markup].replace(">",` data-name='${component.name}' draggable="true" onDragStart={window.eventCallbacks.handleDrag}>`)
+        return component[markup].replace(">",` data-name='${component.name}' {...this.props} draggable="true" onDragStart={window.eventCallbacks.handleDrag}>`)
     }
 
     let getComponentEventedMarkup = (markup, events)=>{
@@ -42,6 +42,7 @@ function convertToReactcomponent (component, options){
         });
 
         // This was a easy to think but hard to write a readable code. I know comments wont help.
+        // Refactor events to preview.setToDropMode style
         let childComponents = getChildComponents(markup);
         if(childComponents.length>0){
             // For each of child components

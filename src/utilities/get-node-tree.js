@@ -9,7 +9,6 @@ window.React = React;
 window.Component = React.Component;
 window.saveVariants = function (source, target, state, event) {
 
-    debugger;
     var components = readData("ui-editor");
 
     if(source===target){

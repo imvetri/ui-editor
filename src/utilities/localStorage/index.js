@@ -44,8 +44,6 @@ function count(string, word) {
  }
 
 function noIdMarkup (idMarkup) {
-    //1. Get all start tags.
-    let startTags = getStartTags(idMarkup);
 
     //2. get id tags.
     let idTagsCount = count(idMarkup,"data-uuid");
@@ -109,7 +107,6 @@ export function writeComponent(parent, idMarkupModified) {
         let components = readData( "ui-editor");
         let index = components.findIndex(comp=>comp.name === parent.name);
         if(idMarkupModified){
-            debugger;
             parent.markup = noIdMarkup(parent.idMarkup);
         }
         components[index] = parent;
