@@ -69,6 +69,13 @@ class Preview extends Component {
                 },
                 // Remove edit tools.
                 onMouseLeave: (e)=>{
+                    let preSelectedchild = document.querySelector(".targetChild")
+                    if(preSelectedchild){
+                        preSelectedchild.classList.remove("targetChild")
+                    }
+                    this.setState({
+                        coordinates:{}
+                    })
                     console.log("MOUSE LEAVE")
                 },
                 onClick: ((e)=>{
