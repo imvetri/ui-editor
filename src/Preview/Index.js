@@ -41,7 +41,7 @@ class Preview extends Component {
                     var parent = this.props.component;
                     var child = e.dataTransfer.getData("component-name");
                     var uuid = e.target.getAttribute("data-uuid");
-                    parent.idMarkup = parent.idMarkup.replace(`"${uuid}">`,`"${uuid}"><${child}/>`)
+                    parent.idMarkup = parent.idMarkup.replace(`"${uuid}">`,`"${uuid}"><${child}></${child}>`)
                     writeComponent(parent, true);
                     this.setState({
                         events:{}
