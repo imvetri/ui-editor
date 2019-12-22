@@ -28,7 +28,6 @@ class Preview extends Component {
                     var previousDrop = document.querySelector(".dropPoint");
                     if(previousDrop)
                         previousDrop.classList.remove("dropPoint");
-                    
                     e.target.classList.add("dropPoint")
                     console.log("Drag Over");
                     // Show drop points.
