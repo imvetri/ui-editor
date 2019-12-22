@@ -36,7 +36,6 @@ class Preview extends Component {
                 }).bind(this),
                 onDrop: ((e)=>{
                     // remove drop points.
-                    debugger;
                     console.log("DROPPED")
                     e.preventDefault();
                     var parent = this.props.component;
@@ -107,7 +106,7 @@ class Preview extends Component {
                     <button onClick={this.interactiveMode.bind(this)}><i className="fas fa-file-export"></i>Interact</button>
                 </div>
                 <DynamicComponent key={randomKey} component={this.props.component} events={this.state.events}/>
-                <FocusBarComponent coordinates={this.state.coordinates}/>
+                <FocusBarComponent coordinates={this.state.coordinates} component={this.props.component}/>
             </div>
         );
     }
