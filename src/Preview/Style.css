@@ -8,3 +8,7 @@
 .dropPoint{
     border: 1px solid green;
 }
+
+.targetChild{
+    border: 1px solid #3E8CE4;
+}
