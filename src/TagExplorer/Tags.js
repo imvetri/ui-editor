@@ -44,9 +44,9 @@ class Tags extends Component {
             let child = node.props.children;
             return (
                 <li>
-                    {`<${node.type.name} ${props}>`}
+                    {`<${(node.type.name || node.type)} ${props}>`}
                         <Tags key={index} node={child}/>
-                    {`</${node.type.name}>`}
+                    {`</${(node.type.name || node.type)}>`}
                 </li>
             );
         }
