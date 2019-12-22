@@ -107,7 +107,6 @@ export function writeComponent(parent, idMarkupModified) {
         let components = readData( "ui-editor");
         let index = components.findIndex(comp=>comp.name === parent.name);
         if(idMarkupModified){
-            debugger;
             parent.markup = noIdMarkup(parent.idMarkup);
         }
         components[index] = parent;
