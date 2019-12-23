@@ -16,7 +16,8 @@ class Preview extends Component {
         super(props);
         this.state = {
             events: {},
-            coordinates:{}
+            coordinates:{},
+            target: {}
         }
     }
 
@@ -83,7 +84,8 @@ class Preview extends Component {
                     e.target.classList.remove("targetChild");
                     this.setState({
                         coordinates: e.target.getBoundingClientRect(),
-                        events: {}
+                        events: {},
+                        target: e.target
                     })
                     // show edit tools
                 }).bind(this)
@@ -112,7 +114,7 @@ class Preview extends Component {
                     <button onClick={this.interactiveMode.bind(this)}><i className="fas fa-file-export"></i>Interact</button>
                 </div>
                 <DynamicComponent key={randomKey} component={this.props.component} events={this.state.events}/>
-                <FocusBarComponent coordinates={this.state.coordinates} component={this.props.component}/>
+                <FocusBarComponent coordinates={this.state.coordinates} component={this.props.component} target={this.state.target}/>
             </div>
         );
     }
