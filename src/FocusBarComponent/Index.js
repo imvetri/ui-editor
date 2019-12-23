@@ -5,6 +5,7 @@ import React, { Component } from "react";
 import "./style.css";
 
 import { deleteSubComponent } from "./getComponentMarkup";
+import { writeComponent } from "../utilities/localStorage";
 
 class FocusBarComponent extends Component {
     constructor(props) {
@@ -38,11 +39,14 @@ class FocusBarComponent extends Component {
 
     }
     deleteChild(){
+        debugger;
         var target = this.props.target;
         var targetUuid = `data-uuid="${target.getAttribute("data-uuid")}"`;
         var tag = target.getAttribute("data-name");
-        var newMarkup = deleteSubComponent(this.props.component.idMarkup, targetUuid, tag)
-        // Remove the child.
+        this.props.component.idMarkup = deleteSubComponent(this.props.component.idMarkup, targetUuid, tag);
+        writeComponent(this.props.component, true)
+        this.props.refresh();
+        // Remove the chil d.
         // Insert the child after the next child. 
     }
 
@@ -53,7 +57,8 @@ class FocusBarComponent extends Component {
             height:coordinates.height||0, 
             position: "fixed", 
             top: coordinates.y||0, 
-            left:coordinates.x||0
+            left:coordinates.x||0,
+            display: this.props.hide? "none": "block"
         }
         return (
             <div className="ui-overlay" style={style}>
