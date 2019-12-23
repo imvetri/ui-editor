@@ -9,7 +9,7 @@ import FocusBarComponent from "../FocusBarComponent";
 
 // Utilities.
 
-import { writeComponent } from "../utilities/localStorage";
+import { createComponent } from "../utilities/Component";
 
 class Preview extends Component {
     constructor(props) {
@@ -30,19 +30,15 @@ class Preview extends Component {
                     if(previousDrop)
                         previousDrop.classList.remove("dropPoint");
                     e.target.classList.add("dropPoint")
-                    console.log("Drag Over");
                     // Show drop points.
                     e.preventDefault();
                 }).bind(this),
                 onDrop: ((e)=>{
-                    // remove drop points.
-                    console.log("DROPPED")
                     e.preventDefault();
                     var parent = this.props.component;
                     var child = e.dataTransfer.getData("component-name");
                     var uuid = e.target.getAttribute("data-uuid");
-                    parent.idMarkup = parent.idMarkup.replace(`"${uuid}">`,`"${uuid}"><${child}></${child}>`)
-                    writeComponent(parent, true);
+                    createComponent(parent, child, uuid)
                     this.setState({
                         events:{}
                     })
