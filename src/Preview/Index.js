@@ -99,6 +99,13 @@ class Preview extends Component {
         })
     }
 
+    refresh(){
+        this.setState({
+            events:{},
+            hideTool: true
+        })
+    }
+
     render() {
 
         // Helps to rerender when changes to markup/events are made to the component and preview them.
@@ -114,7 +121,12 @@ class Preview extends Component {
                     <button onClick={this.interactiveMode.bind(this)}><i className="fas fa-file-export"></i>Interact</button>
                 </div>
                 <DynamicComponent key={randomKey} component={this.props.component} events={this.state.events}/>
-                <FocusBarComponent coordinates={this.state.coordinates} component={this.props.component} target={this.state.target}/>
+                <FocusBarComponent 
+                    coordinates={this.state.coordinates} 
+                    component={this.props.component} 
+                    target={this.state.target}
+                    refresh={this.refresh.bind(this)}
+                    hide={this.state.hideTool}/>
             </div>
         );
     }
