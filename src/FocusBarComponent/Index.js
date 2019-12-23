@@ -4,14 +4,30 @@ import React, { Component } from "react";
 
 import "./style.css";
 
+import { deleteSubComponent } from "./getComponentMarkup";
+
 class FocusBarComponent extends Component {
     constructor(props) {
         super(props);
     }
 
-    moveChildUp(){
-        
-        // Remove the child.
+    getElement(uuid){
+        var idMarkup = this.props.component.idMarkup;
+        /**
+         * 1. Find index of first < before uuid
+         * 2. Find index of current tag />
+         * 3. Remove the string.
+         * 4. Place it
+         */
+    }
+
+    moveChildUp(e){
+        /**
+         * 1. get target uuid
+         * 2. get element containing uuid
+         */
+        var targetUuid = target.getAttribute("data-uuid");
+
         // Insert the child before the previous child. 
 
     }
@@ -22,7 +38,10 @@ class FocusBarComponent extends Component {
 
     }
     deleteChild(){
-
+        var target = this.props.target;
+        var targetUuid = `data-uuid="${target.getAttribute("data-uuid")}"`;
+        var tag = target.getAttribute("data-name");
+        var newMarkup = deleteSubComponent(this.props.component.idMarkup, targetUuid, tag)
         // Remove the child.
         // Insert the child after the next child. 
     }
