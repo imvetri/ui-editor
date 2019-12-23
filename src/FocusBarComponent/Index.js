@@ -4,14 +4,20 @@ import React, { Component } from "react";
 
 import "./style.css";
 
+import { deleteComponent } from "../utilities/Component";
+
 class FocusBarComponent extends Component {
     constructor(props) {
         super(props);
     }
 
-    moveChildUp(){
-        
-        // Remove the child.
+    moveChildUp(e){
+        /**
+         * 1. get target uuid
+         * 2. get element containing uuid
+         */
+        var targetUuid = target.getAttribute("data-uuid");
+
         // Insert the child before the previous child. 
 
     }
@@ -22,9 +28,10 @@ class FocusBarComponent extends Component {
 
     }
     deleteChild(){
-
-        // Remove the child.
-        // Insert the child after the next child. 
+        var tag = this.props.target.getAttribute("data-name");
+        var uuid = this.props.target.getAttribute("data-uuid")
+        deleteComponent(this.props.component, tag, uuid);
+        this.props.refresh();
     }
 
     render() {
@@ -34,7 +41,8 @@ class FocusBarComponent extends Component {
             height:coordinates.height||0, 
             position: "fixed", 
             top: coordinates.y||0, 
-            left:coordinates.x||0
+            left:coordinates.x||0,
+            display: this.props.hide? "none": "block"
         }
         return (
             <div className="ui-overlay" style={style}>

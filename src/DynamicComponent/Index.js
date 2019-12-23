@@ -5,7 +5,6 @@ import React, { Component } from "react";
 import {createStylesheet} from "../utilities/jsxTranspiler/create-stylesheet";
 
 import { getNestedComponents, saveComponentsToWindow } from "../utilities/nestedComponentSetup";
-import { writeComponent } from "../utilities/localStorage";
 
 
 import "./style.css";
