@@ -48,8 +48,8 @@ class Nodes extends Component {
                             type="radio" 
                             name="selectedElement" 
                             onChange={this.props.onSelectedTagChanged} 
-                            value={node.type+id}/>
-                        {node.type +id}
+                            value={(node.type.name || node.type)+id}/>
+                        {(node.type.name || node.type)}
                     </label>
                     <Nodes key={index} node={child} onSelectedTagChanged={this.props.onSelectedTagChanged}/>
                 </ul>

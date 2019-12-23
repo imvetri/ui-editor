@@ -9,14 +9,15 @@ import FocusBarComponent from "../FocusBarComponent";
 
 // Utilities.
 
-import { writeComponent } from "../utilities/localStorage";
+import { createComponent } from "../utilities/Component";
 
 class Preview extends Component {
     constructor(props) {
         super(props);
         this.state = {
             events: {},
-            coordinates:{}
+            coordinates:{},
+            target: {}
         }
     }
 
@@ -29,19 +30,15 @@ class Preview extends Component {
                     if(previousDrop)
                         previousDrop.classList.remove("dropPoint");
                     e.target.classList.add("dropPoint")
-                    console.log("Drag Over");
                     // Show drop points.
                     e.preventDefault();
                 }).bind(this),
                 onDrop: ((e)=>{
-                    // remove drop points.
-                    console.log("DROPPED")
                     e.preventDefault();
                     var parent = this.props.component;
                     var child = e.dataTransfer.getData("component-name");
                     var uuid = e.target.getAttribute("data-uuid");
-                    parent.idMarkup = parent.idMarkup.replace(`"${uuid}">`,`"${uuid}"><${child}></${child}>`)
-                    writeComponent(parent, true);
+                    createComponent(parent, child, uuid)
                     this.setState({
                         events:{}
                     })
@@ -69,6 +66,13 @@ class Preview extends Component {
                 },
                 // Remove edit tools.
                 onMouseLeave: (e)=>{
+                    let preSelectedchild = document.querySelector(".targetChild")
+                    if(preSelectedchild){
+                        preSelectedchild.classList.remove("targetChild")
+                    }
+                    this.setState({
+                        coordinates:{}
+                    })
                     console.log("MOUSE LEAVE")
                 },
                 onClick: ((e)=>{
@@ -76,7 +80,8 @@ class Preview extends Component {
                     e.target.classList.remove("targetChild");
                     this.setState({
                         coordinates: e.target.getBoundingClientRect(),
-                        events: {}
+                        events: {},
+                        target: e.target
                     })
                     // show edit tools
                 }).bind(this)
@@ -87,6 +92,13 @@ class Preview extends Component {
     interactiveMode(){
         this.setState({
             events: {}
+        })
+    }
+
+    refresh(){
+        this.setState({
+            events:{},
+            hideTool: true
         })
     }
 
@@ -105,7 +117,12 @@ class Preview extends Component {
                     <button onClick={this.interactiveMode.bind(this)}><i className="fas fa-file-export"></i>Interact</button>
                 </div>
                 <DynamicComponent key={randomKey} component={this.props.component} events={this.state.events}/>
-                <FocusBarComponent coordinates={this.state.coordinates} component={this.props.component}/>
+                <FocusBarComponent 
+                    coordinates={this.state.coordinates} 
+                    component={this.props.component} 
+                    target={this.state.target}
+                    refresh={this.refresh.bind(this)}
+                    hide={this.state.hideTool}/>
             </div>
         );
     }
