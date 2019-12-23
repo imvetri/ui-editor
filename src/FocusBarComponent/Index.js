@@ -4,22 +4,11 @@ import React, { Component } from "react";
 
 import "./style.css";
 
-import { deleteSubComponent } from "./getComponentMarkup";
-import { writeComponent } from "../utilities/localStorage";
+import { deleteComponent } from "../utilities/Component";
 
 class FocusBarComponent extends Component {
     constructor(props) {
         super(props);
-    }
-
-    getElement(uuid){
-        var idMarkup = this.props.component.idMarkup;
-        /**
-         * 1. Find index of first < before uuid
-         * 2. Find index of current tag />
-         * 3. Remove the string.
-         * 4. Place it
-         */
     }
 
     moveChildUp(e){
@@ -39,15 +28,10 @@ class FocusBarComponent extends Component {
 
     }
     deleteChild(){
-        debugger;
-        var target = this.props.target;
-        var targetUuid = `data-uuid="${target.getAttribute("data-uuid")}"`;
-        var tag = target.getAttribute("data-name");
-        this.props.component.idMarkup = deleteSubComponent(this.props.component.idMarkup, targetUuid, tag);
-        writeComponent(this.props.component, true)
+        var tag = this.props.target.getAttribute("data-name");
+        var uuid = this.props.target.getAttribute("data-uuid")
+        deleteComponent(this.props.component, tag, uuid);
         this.props.refresh();
-        // Remove the chil d.
-        // Insert the child after the next child. 
     }
 
     render() {
