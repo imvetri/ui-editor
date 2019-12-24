@@ -15,6 +15,10 @@ export function popHistory(){
 
     let lastItem = editorHistory.pop();
     
+    if(!editorHistory){
+        return;
+    }
+
     writeData("ui-editor-history", editorHistory, true);
 
     writeData("ui-editor", lastItem, true);
