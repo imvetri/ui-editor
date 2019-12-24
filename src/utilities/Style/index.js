@@ -32,12 +32,12 @@ export function getObjectFormat(style){
 }
 
 function ruleToString(rule){
-	return `${rule.selector} {${declarationToString(rule.declarations)}}`
+	return `${rule.selector}    {\n${declarationToString(rule.declarations)}\n}`
 }
 function declarationToString(declarations){
-	return declarations.map(declaration=>`${declaration.property}:${declaration.value};`).join("")
+	return declarations.map(declaration=>`    ${declaration.property}:     ${declaration.value};`).join("\n")
 }
 
 export function convertToStyleString(rules){
-    return rules.map(ruleToString).join("");
+    return rules.map(ruleToString).join("\n");
 }
