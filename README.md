@@ -1,14 +1,12 @@
 # UI editor
 
-UI editor is a Rapid Component Library Builder. Concept of UI has been in existence for nearly 40 years still it hasn't changed, but concepts to build it keeps changing. 
+UI editor is a Rapid Component Library Builder. Concept of UI has been in existence for nearly 40 years still it hasn't changed, but concepts to build keeps changing. 
 
-Web browsers like IE, chrome, firefox, and safari had their fight decades back and now Web frameworks like ReactJS, Angular, Vue, svelte and nextJS etc.. are fighting too. Any problem that gets repeated should get addressed from its root. 
+Web browsers like IE, chrome, firefox, and safari had their race decades back and now Web frameworks like ReactJS, Angular, Vue, svelte and nextJS etc...
 
-Web platform is just HTML, css, Javascript. This project aims to speed up building UI building concept for web browsing platforms.
+Web platform is just HTML, css, Javascript. This project aims to speed up building UI building workflow for web browsing platforms.
 
-## Applications
 
-* Framework specific component code generation.
 
 ## Getting Started
 
