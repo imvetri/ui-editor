@@ -2,8 +2,7 @@
     position: absolute;
     pointer-events: all;
     white-space: nowrap;
-    top: -20px;
-    height: 20px;
+    bottom: -28px;
     background-color: #3E8CE4;
     border-radius: 2px 2px 0 0;
     font: 16px/1 Arial, Helvetica, sans-serif;
@@ -20,8 +19,10 @@
     cursor: move !important;
 }
 
-.focus-bar > span {
-    padding: 5px;
+
+.focus-bar button {
+    background-color : #3E8CE4;
+    border-color: white;
 }
 
 .focus-bar > span:not(.move-handle):hover {
