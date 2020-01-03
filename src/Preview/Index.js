@@ -76,12 +76,21 @@ class Preview extends Component {
                     console.log("MOUSE LEAVE")
                 },
                 onClick: ((e)=>{
+                    debugger;
                     // remove targetChild
                     e.target.classList.remove("targetChild");
+
+                    // untill it finds the parent with data-uuid attribute
+                    let target =  e.target;
+                    
+                    while(!target.getAttribute("data-name")){
+                        target = target.parentElement;
+                    }
+
                     this.setState({
                         coordinates: e.target.getBoundingClientRect(),
                         events: {},
-                        target: e.target
+                        target: target
                     })
                     // show edit tools
                 }).bind(this)
@@ -95,7 +104,7 @@ class Preview extends Component {
         })
     }
 
-    refresh(){
+    refresh( ){
         this.setState({
             events:{},
             hideTool: true
