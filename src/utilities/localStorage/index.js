@@ -69,19 +69,27 @@ export function readData(key){
      * 3. return
      */
     console.log("READ")
-    if(!window.components){
-        window.components = JSON.parse(localStorage.getItem(key));
-    }
+    if(key ==="ui-editor"){
+        if(!window.components ){
+            window.components = JSON.parse(localStorage.getItem(key)) || [];
+        }
+            
+        
+        if(window.components.length ){
 
-    if(window.components.length ){
-
-        if(key==="ui-editor"){
             // Sets property in components with markup containing uuid. 
             // This helps to find paremt , child, sibblings for dran and drop
             window.components.forEach(IdMarkup)
-        }
 
-        return JSON.parse(JSON.stringify(window.components));
+
+            return JSON.parse(JSON.stringify(window.components));
+        }
+    }
+    if(key==="ui-editor-history"){
+        let history = JSON.parse(localStorage.getItem(key));
+        
+        if(history)
+            return history;
     }
 
     return [];

@@ -4,33 +4,34 @@ import React, { Component } from "react";
 
 import "./style.css";
 
-import { deleteComponent } from "../utilities/Component";
+import { deleteComponent, moveComponentUp, moveComponentDown } from "../utilities/Component";
 
 class FocusBarComponent extends Component {
     constructor(props) {
         super(props);
     }
 
-    moveChildUp(e){
-        /**
-         * 1. get target uuid
-         * 2. get element containing uuid
-         */
-        var targetUuid = target.getAttribute("data-uuid");
-
-        // Insert the child before the previous child. 
-
-    }
-    moveChildDown(){
-
-        // Remove the child.
-        // Insert the child after the next child. 
-
-    }
     deleteChild(){
+
         var tag = this.props.target.getAttribute("data-name");
         var uuid = this.props.target.getAttribute("data-uuid")
-        deleteComponent(this.props.component, tag, uuid);
+        deleteComponent(this.props.component, tag, Number(uuid));
+        this.props.refresh();
+    }
+
+    moveUp(){
+
+        var tag = this.props.target.getAttribute("data-name");
+        var uuid = this.props.target.getAttribute("data-uuid")
+        moveComponentUp(this.props.component, tag, Number(uuid));
+        this.props.refresh();
+    }
+
+    moveDown(){
+
+        var tag = this.props.target.getAttribute("data-name");
+        var uuid = this.props.target.getAttribute("data-uuid")
+        moveComponentDown(this.props.component, tag, Number(uuid));
         this.props.refresh();
     }
 
@@ -51,13 +52,13 @@ class FocusBarComponent extends Component {
                         <i className="fa fa-arrows-alt"></i>
                     </span> */}
                     <span title="Move up">
-                        <button onClick={this.moveChildUp.bind(this)}>
-                            <i className="fa fa-arrow-up"></i>
+                        <button onClick={this.moveUp.bind(this)}>
+                            <i className="fa fa-arrow-up fa-xs"></i>
                         </button>
                     </span>
                     <span title="Move down">
-                        <button onClick={this.moveChildDown.bind(this)}>
-                            <i className="fa fa-arrow-down"></i>
+                        <button onClick={this.moveDown.bind(this)}>
+                            <i className="fa fa-arrow-down fa-xs"></i>
                         </button>
                     </span>
                     {/* <span title="Edit">
@@ -68,7 +69,7 @@ class FocusBarComponent extends Component {
                     </span> */}
                     <span title="Delete">
                         <button onClick={this.deleteChild.bind(this)}>
-                            <i className="fa fa-trash"></i>
+                            <i className="fa fa-trash fa-xs"></i>
                         </button>
                     </span>
                 </div>
