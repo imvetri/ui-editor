@@ -9,8 +9,17 @@ function getComponentString(component, options){
     return convertToReactcomponent(component, options);
 }
 
-function createComponent(component){
-    let componentString = getComponentString(component, {"drag-drop-feature":true});
+function createComponent(component, mode){
+
+    let componentString;
+
+    if(mode==="INTERACTIVE"){
+        componentString = getComponentString(component);
+
+    }
+    else {
+        componentString = getComponentString(component, {"drag-drop-feature":true});
+    }
     // eval does not evaluate class if not exclosed in paranthesis.
     return eval(Babel.transform(componentString, { presets: ['react'], plugins: ["transform-es2015-classes"]  }).code)
 }
@@ -55,15 +64,15 @@ function convertToReactcomponent (component, options){
                 // Find which is present in this component.events.name
                 if(publishableEvents.length!=0){
 
-                    let eventUsedInParent;
-                    publishableEvents.forEach(publishableEvent=>{
-                        eventUsedInParent = component.events.find(event=>event.name===publishableEvent.publishName)
-                    })
-                    let functionDef = codeModifier(eventUsedInParent.reducer, component);
+                    // let eventUsedInParent;
+                    // publishableEvents.forEach(publishableEvent=>{
+                    //     eventUsedInParent = component.events.find(event=>event.name===publishableEvent.publishName)
+                    // })
+                    // let functionDef = codeModifier(eventUsedInParent.reducer, component);
     
-                    let props = eventUsedInParent.name+'='+`{function(e){${functionDef}}.bind(this)}`
-                    // then do idMarkup.replace
-                    markup = component[markup].replace(child.name, child.name+" "+props);
+                    // let props = eventUsedInParent.name+'='+`{function(e){${functionDef}}.bind(this)}`
+                    // // then do idMarkup.replace
+                    // markup = component[markup].replace(child.name, child.name+" "+props);
                 }
 
             })
@@ -80,9 +89,36 @@ function convertToReactcomponent (component, options){
         let config = JSON.parse(component.config);
         let childrenConfig = Object.keys(config);
         childrenConfig.forEach(childName=>{
-            if(config[childName].overideState){
+
+            // PRECAUTION : Edit markup only for showHideProp
+            if(config[childName].showHideProp && !config[childName].override){
+                let childMarkup = `<${childName}></${childName}>`;
+                let showHideChild = `{this.state.showHideChild ? ${childMarkup}: null}`
+                if(markup.includes(childMarkup)){
+                    markup = markup.replace(childMarkup, showHideChild)
+                }
+            }
+
+            // PRECAUTION: Edit markup only for override
+            if(config[childName].override && !config[childName].showHideProp){
                 markup = markup.replace(childName, childName+` state={this.state.${childName}}`)
             }
+
+            // PRECAUTION: Edit markup for both changes.
+            if(config[childName].showHideProp && config[childName].override){
+
+                //1. show or hide
+                let childMarkup = `<${childName}></${childName}>`;
+                let showHideChild = `this.state.${showHideChild} ? ${childMarkup}: null`
+                if(markup.includes(childMarkup)){
+                    markup = markup.replace(childMarkup, showHideChild)
+                }
+
+                //2. override state.
+                markup = markup.replace(childName, childName+` state={this.state.${childName}}`)
+
+            }
+
         })
         return markup;
     }

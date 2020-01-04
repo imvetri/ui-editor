@@ -26,7 +26,7 @@ class DynamicComponent extends Component {
         }
         let nestedComponents = getNestedComponents(this.state.component);
         if (nestedComponents.length > 0) {
-            saveComponentsToWindow(nestedComponents);
+            saveComponentsToWindow(nestedComponents, this.props.mode);
         }
 
         if(!window[this.state.component.name]){
