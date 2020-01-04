@@ -100,8 +100,6 @@ class Preview extends Component {
                         hideTool: false
                     })
 
-                    
-                    // this.props.onSelectedTag("child-component-"+target.getAttribute("data-name"))
                 }).bind(this)
             }
         })
