@@ -57,12 +57,6 @@ class Tool extends Component {
         })
     }
 
-    updateSelectedTag(tagName){
-        this.setState({
-            selectedTag: tagName
-        })
-    }
-
     render() {
 
         let components = readData("ui-editor") || [];
@@ -108,8 +102,7 @@ class Tool extends Component {
                     <DraggableComponent>
                         <Preview 
                             key={Math.ceil(Math.random() * 1000)}
-                            component={selectedElement} 
-                            onSelectedTag={this.updateSelectedTag.bind(this)}/>
+                            component={selectedElement}/>
                     </DraggableComponent>
     
                     <DraggableComponent>
