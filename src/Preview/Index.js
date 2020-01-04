@@ -10,6 +10,7 @@ import FocusBarComponent from "../FocusBarComponent";
 // Utilities.
 
 import { createComponent } from "../utilities/Component";
+import { readComponent } from "../utilities/localStorage";
 
 class Preview extends Component {
     constructor(props) {
@@ -17,7 +18,8 @@ class Preview extends Component {
         this.state = {
             events: {},
             coordinates:{},
-            target: {}
+            target: {},
+            component: this.props.component
         }
     }
 
@@ -71,7 +73,8 @@ class Preview extends Component {
                         preSelectedchild.classList.remove("targetChild")
                     }
                     this.setState({
-                        coordinates:{}
+                        coordinates:{},
+                        events:{}
                     })
                     console.log("MOUSE LEAVE")
                 },
@@ -88,9 +91,9 @@ class Preview extends Component {
                     }
 
                     this.setState({
-                        coordinates: e.target.getBoundingClientRect(),
-                        events: {},
-                        target: target
+                        coordinates: target.getBoundingClientRect(),
+                        target: target,
+                        hideTool: false
                     })
                     // show edit tools
                 }).bind(this)
@@ -106,8 +109,8 @@ class Preview extends Component {
 
     refresh( ){
         this.setState({
-            events:{},
-            hideTool: true
+            hideTool: true,
+            component: readComponent(this.state.component.name)
         })
     }
 
@@ -125,10 +128,10 @@ class Preview extends Component {
                     <button onClick={this.setToEditMode.bind(this)}><i className="fas fa-file-export"></i>Edit</button>
                     <button onClick={this.interactiveMode.bind(this)}><i className="fas fa-file-export"></i>Interact</button>
                 </div>
-                <DynamicComponent key={randomKey} component={this.props.component} events={this.state.events}/>
+                <DynamicComponent key={randomKey} component={this.state.component || this.props.component} events={this.state.events}/>
                 <FocusBarComponent 
                     coordinates={this.state.coordinates} 
-                    component={this.props.component} 
+                    component={this.state.component || this.props.component} 
                     target={this.state.target}
                     refresh={this.refresh.bind(this)}
                     hide={this.state.hideTool}/>
