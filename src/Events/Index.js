@@ -30,7 +30,7 @@ class Events extends Component {
     constructor(props) {
         super(props);
         this.state = Object.assign({}, this.props);
-        this.state.selectedTag = "";
+        this.state.selectedTag = this.props.selectedTag;
     }
 
     render() {

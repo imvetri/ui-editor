@@ -30,6 +30,7 @@ class Tool extends Component {
             elements: readData("ui-editor") || [],
             components: [],
             selectedIndex: -1,
+            selectedTag : "",
             element: {
                 name: "",
                 markup: "",
@@ -56,6 +57,12 @@ class Tool extends Component {
         })
     }
 
+    updateSelectedTag(tagName){
+        this.setState({
+            selectedTag: tagName
+        })
+    }
+
     render() {
 
         let components = readData("ui-editor") || [];
@@ -76,8 +83,9 @@ class Tool extends Component {
                     <DraggableComponent>
     
                         <Events
-                            key={this.state.selectedIndex}
+                            key={Math.ceil(Math.random() * 1000)}
                             element={selectedElement}
+                            selectedTag={this.state.selectedTag}
                             elements={this.state.elements}
                             onEventsUpdate={this.updateEvent}
                             onConfigUpdate={this.updateConfig}
@@ -100,7 +108,8 @@ class Tool extends Component {
                     <DraggableComponent>
                         <Preview 
                             key={Math.ceil(Math.random() * 1000)}
-                            component={selectedElement} />
+                            component={selectedElement} 
+                            onSelectedTag={this.updateSelectedTag.bind(this)}/>
                     </DraggableComponent>
     
                     <DraggableComponent>

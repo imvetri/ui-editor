@@ -49,6 +49,10 @@ class Preview extends Component {
         })
     }
 
+    notInMarkup(name){
+        return !this.state.component.markup.includes(name);
+    }
+
     setToEditMode() {
         // Set overlay.
         this.setState({
@@ -79,14 +83,13 @@ class Preview extends Component {
                     console.log("MOUSE LEAVE")
                 },
                 onClick: ((e)=>{
-                    debugger;
                     // remove targetChild
                     e.target.classList.remove("targetChild");
 
                     // untill it finds the parent with data-uuid attribute
                     let target =  e.target;
                     
-                    while(!target.getAttribute("data-name")){
+                    while(!target.getAttribute("data-name") && this.notInMarkup(target.getAttribute("data-name") ) ){
                         target = target.parentElement;
                     }
 
@@ -95,7 +98,9 @@ class Preview extends Component {
                         target: target,
                         hideTool: false
                     })
-                    // show edit tools
+
+                    
+                    // this.props.onSelectedTag("child-component-"+target.getAttribute("data-name"))
                 }).bind(this)
             }
         })
