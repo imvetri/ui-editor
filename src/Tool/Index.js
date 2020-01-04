@@ -98,7 +98,9 @@ class Tool extends Component {
                     </DraggableComponent>
     
                     <DraggableComponent>
-                        <Preview component={selectedElement} />
+                        <Preview 
+                            key={Math.ceil(Math.random() * 1000)}
+                            component={selectedElement} />
                     </DraggableComponent>
     
                     <DraggableComponent>
