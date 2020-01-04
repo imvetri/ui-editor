@@ -89,7 +89,8 @@ class Preview extends Component {
                     // untill it finds the parent with data-uuid attribute
                     let target =  e.target;
                     
-                    while(!target.getAttribute("data-name") && this.notInMarkup(target.getAttribute("data-name") ) ){
+                    while(this.notInMarkup(target.getAttribute("data-name") ) ){
+                        
                         target = target.parentElement;
                     }
 
