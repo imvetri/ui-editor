@@ -19,7 +19,8 @@ class Preview extends Component {
             events: {},
             coordinates:{},
             target: {},
-            component: this.props.component
+            component: this.props.component,
+            mode: "INTERACTIVE"
         }
     }
 
@@ -107,7 +108,8 @@ class Preview extends Component {
 
     interactiveMode(){
         this.setState({
-            events: {}
+            events: {},
+            mode: "INTERACTIVE"
         })
     }
 
@@ -132,7 +134,7 @@ class Preview extends Component {
                     <button onClick={this.setToEditMode.bind(this)}><i className="fas fa-file-export"></i>Edit</button>
                     <button onClick={this.interactiveMode.bind(this)}><i className="fas fa-file-export"></i>Interact</button>
                 </div>
-                <DynamicComponent key={randomKey} component={this.state.component || this.props.component} events={this.state.events}/>
+                <DynamicComponent key={randomKey} component={this.state.component || this.props.component} mode={this.state.mode} events={this.state.events}/>
                 <FocusBarComponent 
                     coordinates={this.state.coordinates} 
                     component={this.state.component || this.props.component} 
