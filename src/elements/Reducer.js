@@ -124,20 +124,18 @@ export function updateConfig(config){
     else {
         parent.config = JSON.parse(parent.config);
     }
-    parent.config[child.name] = parent.config[child.name] || {}
-    parent.config[child.name].overideState = config.override
+    parent.config[child.name] = config.config;
     
-    if(parent.config[child.name].overideState) {    
+    if(parent.config[child.name].override) {    
         parent.state[child.name] = JSON.parse(child.state);
     } 
     else {
         delete parent.state[child.name];
-        delete parent.config[child.name];
     }
 
 
     parent.state = JSON.stringify(parent.state)
-    parent.config = JSON.stringify(parent.config)
+    parent.config= JSON.stringify(parent.config)
 
     this.setState({
         elements: newElements

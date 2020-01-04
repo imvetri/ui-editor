@@ -9,10 +9,11 @@ class Configurator extends Component {
     constructor(props) {
         super(props);
 
-        let config = JSON.parse(this.props.parent.config)[this.props.childName] || {overideState:false};
+        let config = JSON.parse(this.props.parent.config)[this.props.childName] || { override: false, showHideProp: ""}
         
         this.state = {
-            override: config.overideState
+            override: config.override,
+            showHideProp: config.showHideProp
         }
     }
 
@@ -22,7 +23,27 @@ class Configurator extends Component {
         })
 
         this.props.onChange({
-            override: !this.state.override,
+            config: {
+                showHideProp: this.state.showHideProp,
+                override: !this.state.override
+            },
+            childName: this.props.childName,
+            parentName: this.props.parent.name
+        });
+    }
+
+    showHideProp(e){
+        this.setState({
+            showHideProp: e.target.value
+        })
+    }
+
+    saveConfig(){
+        this.props.onChange({
+            config: {
+                showHideProp: this.state.showHideProp,
+                override: this.state.override
+            },
             childName: this.props.childName,
             parentName: this.props.parent.name
         });
@@ -32,17 +53,19 @@ class Configurator extends Component {
 
         return (
 
-            <div className="option-group">
-                <p className="option-group-label">
-                    <span className="title">Child Configurations</span>
-                    <span className="panel expanded"></span>
-                </p>
-                <div className="content">
-                    <div className="option">
-                        <label>Override child state</label>
+            <div>
+                <div className="title">Child Configurations</div>
+                <ul>
+                    <li>
+                        <label>Override state</label>
                         <input type="checkbox" onChange={this.toggelOverride.bind(this)} checked={this.state.override ? "checked" : ""} />
-                    </div>
-                </div>
+                    </li>
+                    <li>
+                        <label>Show/Hide State property</label>
+                        <input type="text" onChange={this.showHideProp.bind(this)} value={this.state.showHideProp} />
+                        <button onClick={this.saveConfig.bind(this)}><i className="fas fa-save"></i></button>
+                    </li>
+                </ul>
             </div>
 
         );
