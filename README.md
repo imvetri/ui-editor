@@ -21,11 +21,11 @@ npm start
 
 ## Tutorials
 
-<details><summary>How to create a component with markup.</summary>
-<p>
-![Alt Text](https://github.com/imvetri/ui-editor/blob/master/gifs/Component_with_static_content.gif)
-</p>
-</details>
+`[linky](docs/01.Components.md)`
+`[linky](docs/02.Tools.md)`
+`[linky](docs/03.Request.md)`
+
+If you need tutorial on a specific topic / question that you have, Please open an issue.
 
 
 ## Request Feature
