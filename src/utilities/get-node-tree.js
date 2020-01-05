@@ -52,7 +52,7 @@ export function getNodeTree(element, jsx, style, state, events) {
     try{
         let nestedComponents = getNestedComponents(element);
         if (nestedComponents.length > 0) {
-            saveComponentsToWindow(nestedComponents);
+            saveComponentsToWindow(nestedComponents, "INTERACTIVE");
         }
         result = eval(Babel.transform(jsx, { presets: ['react'] }).code)
     } catch(e){
