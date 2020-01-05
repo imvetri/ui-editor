@@ -12,15 +12,17 @@ export function checkNestedComponents( markup) {
 }
 
 /** Takes a component and converts it as a react component */
-function saveToWindow( component ) {
+function saveToWindow( component , mode) {
     createStylesheet(component.style, component.name)
-    window[component.name] = createComponent(component);
+    window[component.name] = createComponent(component, mode);
 }
 
 /** Takes components and saves them to window as react Object */
-export function saveComponentsToWindow( nestedComponents){
+export function saveComponentsToWindow( nestedComponents, mode){
     // Transpile them and make them global.
-    nestedComponents.forEach(saveToWindow);
+    nestedComponents.forEach(function(component){
+        saveToWindow(component, mode)
+    });
 }
 
 /** Takes markup and returns children component objects. */
