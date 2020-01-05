@@ -43,5 +43,5 @@ export function getNestedComponents (parent) {
 
 export function getChildComponents (markup){
     let components= readData("ui-editor");
-    return components.filter(component=> markup.includes(component.name));
+    return components.filter(component=> markup.includes(`<${component.name}`));
 }

@@ -1,5 +1,4 @@
 import { codeModifier } from "./codeModifier";
-import { getChildComponents } from "../utilities/nestedComponentSetup";
 
 function getComponentString(component, options){
 
@@ -41,43 +40,25 @@ function convertToReactcomponent (component, options){
     })
 
     let getComponentNameInMarkup= (component)=>{
+        if(!options){
+            return component[markup];
+        }
         return component[markup].replace(">",` data-name='${component.name}' {...this.props} draggable="true" onDragStart={window.eventCallbacks.handleDrag}>{this.props.children}`)
     }
 
     let getComponentEventedMarkup = (markup, events)=>{
         events.forEach(event=>{
             let id = `id="${event.id}"`;
-            markup = markup.replace(id, `${id} ${event.name}={this.${event.id+event.name}.bind(this)}`);
+            // check if markup contains the id.
+            if(markup.includes(id)){
+                markup = markup.replace(id, `${id} ${event.name}={this.${event.id+event.name}.bind(this)}`);
+            }
+            // its a child component.
+            else{
+                markup = markup.replace(`<${event.id}`,`<${event.id} ${event.name}={this.${event.id+event.name}.bind(this)}`)
+            }
+                
         });
-
-        // This was a easy to think but hard to write a readable code. I know comments wont help.
-        // Refactor events to preview.setToDropMode style
-        let childComponents = getChildComponents(markup);
-        if(childComponents.length>0){
-            // For each of child components
-            childComponents.forEach(child=>{
-
-                // From each of child events filter the publishable events.
-                let publishableEvents = child.events.filter(event=>event.publishable===true);
-                // Filter publishable child events that are in parent.
-                // For each of publishable events
-                // Find which is present in this component.events.name
-                if(publishableEvents.length!=0){
-
-                    // let eventUsedInParent;
-                    // publishableEvents.forEach(publishableEvent=>{
-                    //     eventUsedInParent = component.events.find(event=>event.name===publishableEvent.publishName)
-                    // })
-                    // let functionDef = codeModifier(eventUsedInParent.reducer, component);
-    
-                    // let props = eventUsedInParent.name+'='+`{function(e){${functionDef}}.bind(this)}`
-                    // // then do idMarkup.replace
-                    // markup = component[markup].replace(child.name, child.name+" "+props);
-                }
-
-            })
-            return markup.split("{state.").join("{this.state.");
-        }
     
         return markup.split("{state.").join("{this.state.")
     }
@@ -93,7 +74,7 @@ function convertToReactcomponent (component, options){
             // PRECAUTION : Edit markup only for showHideProp
             if(config[childName].showHideProp && !config[childName].override){
                 let childMarkup = `<${childName}></${childName}>`;
-                let showHideChild = `{this.state.showHideChild ? ${childMarkup}: null}`
+                let showHideChild = `{this.state.${config[childName].showHideProp} ? ${childMarkup}: null}`
                 if(markup.includes(childMarkup)){
                     markup = markup.replace(childMarkup, showHideChild)
                 }
@@ -146,8 +127,8 @@ function convertToReactcomponent (component, options){
     }
     
     let componentNamedMakrup = getComponentNameInMarkup(component);
-    let componentEventedMarkup = getComponentEventedMarkup(componentNamedMakrup, component.events)
-    let stateOverideMarkup = getStatedMarkup(componentEventedMarkup)
+    let stateOverideMarkup = getStatedMarkup(componentNamedMakrup)
+    let componentEventedMarkup = getComponentEventedMarkup(stateOverideMarkup, component.events)
     let componentReducers = getComponentReducers(component.events)
     let componentName = component.name.split(" ").join("")
     let componentState = component.state
@@ -164,7 +145,7 @@ function convertToReactcomponent (component, options){
     
         render() {
     
-            return (${stateOverideMarkup})
+            return (${componentEventedMarkup})
         }
     })
     `
