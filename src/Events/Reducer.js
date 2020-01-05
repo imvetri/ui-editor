@@ -1,7 +1,14 @@
 
     export function updateEvent(event) {
         let element = JSON.parse(JSON.stringify(this.state.element))
-        event.id = this.state.selectedTag.split("-")[1];
+
+        // Keep the child component name as the ID. Will cause problem in future for list rendering boy.
+        if(this.state.selectedTag.includes("child-component-")){
+            event.id = this.state.selectedTag.split("child-component-")[1]
+        }
+        else{
+            event.id = this.state.selectedTag.split("-")[1];
+        }
         // Add 
         if (event.index === undefined) {
             element.events.push(event);
