@@ -131,13 +131,20 @@ function convertToReactcomponent (component, options){
     let componentEventedMarkup = getComponentEventedMarkup(stateOverideMarkup, component.events)
     let componentReducers = getComponentReducers(component.events)
     let componentName = component.name.split(" ").join("")
-    let componentState = component.state
+    let componentState = component.state;
     let ReactComponent = 
     `(
     class ${componentName} extends Component {
     
         constructor(props) {
             super(props);
+            (function createStylesheet() {
+
+                var dynamicStyle = document.createElement('style');
+                dynamicStyle.type = 'text/css';
+                dynamicStyle.innerHTML = \`${component.style}\`;
+                document.body.appendChild(dynamicStyle)
+            } )()
             this.state = this.props.state || ${componentState};
         }
     

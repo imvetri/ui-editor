@@ -43,10 +43,12 @@ class Preview extends Component {
                     var uuid = e.target.getAttribute("data-uuid");
                     createComponent(parent, child, uuid)
                     this.setState({
-                        events:{}
+                        events:{},
+                        mode: "INTERACTIVE"
                     })
                 }).bind(this)
-            }
+            },
+            mode: ""
         })
     }
 
@@ -102,7 +104,8 @@ class Preview extends Component {
                     })
 
                 }).bind(this)
-            }
+            },
+            mode: ""
         })
     }
 

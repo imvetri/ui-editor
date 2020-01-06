@@ -67,7 +67,6 @@ export function moveSubComponentUp(markup, uuid, tag) {
  * @param { String } tag 
  */
 export function moveSubComponentDown(markup, uuid, tag) {
-    debugger;
     let componentMarkup = getComponentMarkup(markup, `data-uuid="${uuid}"`, tag);
     let nextTag = getComponentMarkup(markup, uuid+1, findTag(markup , uuid+1))
     return markup.replace(nextTag, componentMarkup ).replace(componentMarkup, nextTag  );

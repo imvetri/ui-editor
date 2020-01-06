@@ -68,7 +68,7 @@ export function readData(key){
      * 2. if empty, create and add to it.
      * 3. return
      */
-    console.log("READ")
+    // TODO: DO NOT CALL readDATA more than necessary. Save everything to window!
     if(key ==="ui-editor"){
         if(!window.components ){
             window.components = JSON.parse(localStorage.getItem(key)) || [];
@@ -86,10 +86,10 @@ export function readData(key){
         }
     }
     if(key==="ui-editor-history"){
-        let history = JSON.parse(localStorage.getItem(key));
+        let history = localStorage.getItem(key);
         
         if(history)
-            return history;
+            return JSON.parse(history);
     }
 
     return [];
