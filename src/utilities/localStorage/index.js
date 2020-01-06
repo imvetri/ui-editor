@@ -86,10 +86,10 @@ export function readData(key){
         }
     }
     if(key==="ui-editor-history"){
-        let history = JSON.parse(localStorage.getItem(key));
+        let history = localStorage.getItem(key);
         
         if(history)
-            return history;
+            return JSON.parse(history);
     }
 
     return [];
