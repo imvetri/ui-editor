@@ -89,17 +89,34 @@ class Events extends Component {
             eventNames = childComponent.events.filter(event => event.publishable === true).map(publishableEvent => publishableEvent.publishName);
             
             // Create event view for list of all events
-            let events = element.events.filter(event=>eventNames.find(eventName =>eventName  === event.name))
-            events = events.map((event, index) => <Event key={index} index={index} event={event} selectedTagID={selectedTag} eventNames={eventNames} onSave={updateEvent.bind(this)} deleteEvent={deleteEvent.bind(this)} />);
+            let events = element.events.filter(event=>eventNames.find(eventName =>eventName  === event.name && event.id===childComponent.name))
+            events = events.map((event, index) => <Event 
+                                                        key={Math.ceil(Math.random() * 1000)} 
+                                                        index={index} event={event} 
+                                                        selectedTagID={selectedTag} 
+                                                        eventNames={eventNames} 
+                                                        onSave={updateEvent.bind(this)} 
+                                                        deleteEvent={deleteEvent.bind(this)} />);
 
             // Filter out events that are not part of selectedTag
             eventsOfSelectedTag = selectedTag ? events : null;
 
-            configurator = <Configurator key={Math.ceil(Math.random() * 1000)} onChange={updateConfiguration.bind(this)} childName={childComponentName} parent={element} />;
+            configurator = <Configurator
+                                key={Math.ceil(Math.random() * 1000)} 
+                                onChange={updateConfiguration.bind(this)} 
+                                childName={childComponentName} 
+                                parent={element} />;
         }
         else {
             const events = element.events
-                .map((event, index) => <Event key={index} index={index} event={event} selectedTagID={selectedTag} eventNames={eventNames} onSave={updateEvent.bind(this)} deleteEvent={deleteEvent.bind(this)} />);
+                .map((event, index) => <Event 
+                                            key={Math.ceil(Math.random() * 1000)} 
+                                            index={index} 
+                                            event={event} 
+                                            selectedTagID={selectedTag} 
+                                            eventNames={eventNames} 
+                                            onSave={updateEvent.bind(this)} 
+                                            deleteEvent={deleteEvent.bind(this)} />);
             eventsOfSelectedTag = selectedTag ? events.filter(event => selectedTag.includes(event.props.event.id)) : null;
         }
 
@@ -130,7 +147,11 @@ class Events extends Component {
                                 <div className="title">
                                     New
                                     <div>
-                                        <Event key={element.events.length} eventNames={eventNames} selectedTagID={selectedTag} onSave={updateEvent.bind(this)} />
+                                        <Event 
+                                            key={element.events.length} 
+                                            eventNames={eventNames} 
+                                            selectedTagID={selectedTag} 
+                                            onSave={updateEvent.bind(this)} />
                                     </div>
                                 </div>
                             </li>
