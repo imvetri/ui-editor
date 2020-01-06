@@ -7,5 +7,8 @@ export function onExport() {
     let uniqueComponents = [...new Set(nestedComponents.map(com=>com.name))].map(name=>{
         return this.state.elements.find(element=>element.name===name)
     })
-    console.log(uniqueComponents.map(getComponentString).join(""));
+    const removeParanthesis = (component)=>{
+       return component.replace("(","").replace("})","}")
+    }
+    console.log(uniqueComponents.map(getComponentString).map(removeParanthesis).join(""));
 }
