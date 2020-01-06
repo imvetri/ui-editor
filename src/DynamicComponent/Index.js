@@ -16,7 +16,6 @@ class DynamicComponent extends Component {
             component: this.props.component
         }
         
-        createStylesheet(this.state.component.style);
     }
 
     render() {
