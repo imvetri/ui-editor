@@ -144,7 +144,7 @@ function convertToReactcomponent (component, options){
                 dynamicStyle.type = 'text/css';
                 dynamicStyle.innerHTML = \`${component.style}\`;
                 document.body.appendChild(dynamicStyle)
-            })()
+            } )()
             this.state = this.props.state || ${componentState};
         }
     
