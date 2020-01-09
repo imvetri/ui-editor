@@ -14,7 +14,8 @@ class Assets extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            class: "drop_zone"
+            class: "drop_zone",
+            imageURL:""
         };
     }
 
@@ -36,6 +37,9 @@ class Assets extends Component {
         window.iDB.get("uiEditor", name).then(data=>{
             var img = document.createElement("img");
             img.href = data.result;
+            this.setState({
+                imageURL: data.result
+            })
             document.body.append(img)
         })
         window.iDB.put("uiEditor", {name: name, result: result})
@@ -91,6 +95,9 @@ class Assets extends Component {
                     </div>
                     <div onDrop={this.dropHandler.bind(this)} onDragOver={this.dragOverHandler.bind(this)} onDragLeave={this.dragLeaveHandler.bind(this)} className={this.state.class}>
                         <p>Drag one or more files to this Drop Zone ...</p>
+                    </div>
+                    <div className="tinyThumbnail">
+                        <img src={this.state.imageURL}></img>
                     </div>
                     <ul>
                         {assets}
