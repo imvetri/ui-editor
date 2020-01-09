@@ -9,3 +9,8 @@
         width:  200px;
     height: 100px;
   }
+
+  .tinyThumbnail,
+  .tinyThumbnail img{
+    width:200px;
+  }
