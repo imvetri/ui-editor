@@ -33,8 +33,7 @@ class Assets extends Component {
     }
 
     writeToDB(result, name){
-        debugger;
-        window.iDB.get("uiEditor", name).then(data=>{
+        window.iDB.get(name).then(data=>{
             var img = document.createElement("img");
             img.href = data.result;
             this.setState({
@@ -42,7 +41,7 @@ class Assets extends Component {
             })
             document.body.append(img)
         })
-        window.iDB.put("uiEditor", {name: name, result: result})
+        window.iDB.put({name: name, result: result})
     }
 
     dropHandler(ev) {
