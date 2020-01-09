@@ -41,7 +41,6 @@ class Assets extends Component {
             // Use DataTransfer interface to access the file(s)
             for (var i = 0; i < ev.dataTransfer.files.length; i++) {
                 console.log('... file[' + i + '].name = ' + ev.dataTransfer.files[i].name);
-                debugger;
                 var reader = new FileReader();
                 var file = ev.dataTransfer.files[i];
                 //attach event handlers here...
@@ -61,8 +60,8 @@ class Assets extends Component {
                 }.bindToEventHandler(file);
             }
         
+        window.iDB && window.iDB.put && window.iDB.put("uiEditor", {name: "dolf", species: "pitler"});
 
-        debugger;
         this.setState({
             class: "drop_zone"
         })
@@ -70,6 +69,7 @@ class Assets extends Component {
 
     dragOverHandler(ev) {
         console.log('File(s) in drop zone');
+
         this.setState({
             class: "drag_over"
         })
@@ -85,8 +85,6 @@ class Assets extends Component {
     }
 
     render() {
-        debugger;
-        window.iDB && window.iDB.put && window.iDB.put("testStore", {name: "dolf", species: "pitler"});
 
         let assets = [];
         return (
