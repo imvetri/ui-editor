@@ -10,7 +10,6 @@ import Asset from "./Asset";
 import {indexedDB} from "../utilities/indexedDB/indexeDB"
 
 
-
 class Assets extends Component {
     constructor(props) {
         super(props);
@@ -19,48 +18,45 @@ class Assets extends Component {
         };
     }
 
+    appendToBody(file){
+        var bin = this.result;
+        var newFile = document.createElement('div');
+        newFile.innerHTML = 'Loaded : ' + file.name + ' size ' + file.size + ' B';
+        document.body.appendChild(newFile);
+
+
+        var img = document.createElement("img");
+        img.file = file;
+        img.src = bin;
+        newFile.appendChild(img);
+    }
+
+    writeToDB(result, name){
+        debugger;
+        window.iDB.get("uiEditor", name).then(data=>{
+            var img = document.createElement("img");
+            img.href = data.result;
+            document.body.append(img)
+        })
+        window.iDB.put("uiEditor", {name: name, result: result})
+    }
+
     dropHandler(ev) {
-        console.log('File(s) dropped');
-
-        Function.prototype.bindToEventHandler = function bindToEventHandler() {
-            var handler = this;
-            var boundParameters = Array.prototype.slice.call(arguments);
-            console.log(boundParameters);
-            //create closure
-            return function(e) {
-              e = e || window.event; // get window.event if e argument missing (in IE)   
-              boundParameters.unshift(e);
-              handler.apply(this, boundParameters);
-            }
-          };
-
-        // Prevent default behavior (Prevent file from being opened)
         ev.preventDefault();
 
+        [].forEach.call(ev.dataTransfer.files, (file)=>{
+            var reader = new FileReader();
+            debugger;
+            reader.readAsDataURL(file);
+            debugger;
+            reader.onloadend =  function (event,b) {
+                // 1. append to body
+                // 2. write to db.
+                this.appendToBody(file);
+                this.writeToDB(event.target.result, file.name);
 
-            // Use DataTransfer interface to access the file(s)
-            for (var i = 0; i < ev.dataTransfer.files.length; i++) {
-                console.log('... file[' + i + '].name = ' + ev.dataTransfer.files[i].name);
-                var reader = new FileReader();
-                var file = ev.dataTransfer.files[i];
-                //attach event handlers here...
-
-                reader.readAsDataURL(file);
-                reader.onloadend =  function (e, file) {
-                    var bin = this.result;
-                    var newFile = document.createElement('div');
-                    newFile.innerHTML = 'Loaded : ' + file.name + ' size ' + file.size + ' B';
-                    document.body.appendChild(newFile);
-
-
-                    var img = document.createElement("img");
-                    img.file = file;
-                    img.src = bin;
-                    newFile.appendChild(img);
-                }.bindToEventHandler(file);
-            }
-        
-        window.iDB && window.iDB.put && window.iDB.put("uiEditor", {name: "dolf", species: "pitler"});
+            }.bind(this);
+        })
 
         this.setState({
             class: "drop_zone"
