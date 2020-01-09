@@ -100,6 +100,15 @@ function convertToReactcomponent (component, options){
 
             }
 
+            // PRECAUTION: Edit markup for rendering list. Should not use other configuration while using this.
+            if(config[childName].renderListProp && !config[childName].override && !config[childName].showHideChild){
+                let childMarkup = `<${childName}></${childName}>`;
+
+                let childMarkupWithProps = `<${childName} state={item} key={i}></${childName}>`;
+                let renderListMarkup = `{this.state.${config[childName].renderListProp}.map((item,i)=>${childMarkupWithProps})}`;
+
+                markup =  markup.replace(childMarkup, renderListMarkup);   
+            }
         })
         return markup;
     }

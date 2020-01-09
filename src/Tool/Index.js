@@ -7,6 +7,7 @@ import "../Index/index.css";
 
 // Components.
 
+import Assets from "../Assets";
 import Components from "../Elements";
 import DraggableComponent from "../DraggableComponent";
 import Editor from "../Editor";
@@ -72,6 +73,10 @@ class Tool extends Component {
                             onSelection={this.updateselectedIndex}
                             selectedIndex={this.state.selectedIndex}
                         />
+                    </DraggableComponent>
+
+                    <DraggableComponent>
+                        <Assets/>
                     </DraggableComponent>
     
                     <DraggableComponent>
