@@ -63,7 +63,17 @@ export function MindexedDB(databaseName, objectStores) {
 	}
 
 	this.getAll = function() {
+		let os = this.cs(this.store);
 
+		return new Promise(function(resolve, reject) {
+			var response = os.getAll();
+			response.onsuccess = function() {
+				resolve(response.result);
+			};
+			response.onerror = function() {
+				reject(response.error);
+			};
+		});
 	}
 
 	this.close = function() {
