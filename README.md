@@ -4,9 +4,19 @@ UI editor is a Rapid Component Library Builder. Concept of UI has been in existe
 
 Web browsers like IE, chrome, firefox, and safari had their race decades back and now Web frameworks like ReactJS, Angular, Vue, svelte and nextJS etc...
 
-Web platform is just HTML, css, Javascript. This project aims to speed up building UI building workflow for web browsing platforms.
+This project aims to speed up building UI building workflow for web browsing platforms and to get rid of component code refactoring tasks.
 
 
+Demo - https://imvetri.github.io/ui-editor/
+Tutorials - 
+1. [Getting Started](https://vimeo.com/386239335)
+2. [Create simple component](https://vimeo.com/386239365)
+3. [Create simple component with content from state](https://vimeo.com/386239387)
+4. [Create component with dynamic content](https://vimeo.com/386239417)
+5. [Create component with dynamic style](https://vimeo.com/386239443)
+6. [Compose bigger components using smaller components](https://vimeo.com/386239481)
+7. [How to subscribe to child component's event from parent](https://vimeo.com/386239513)
+8. [Show off - Code generation](https://vimeo.com/386239546)
 
 ## Getting Started
 
@@ -18,23 +28,10 @@ npm start
 
 ```
 
+## Request Feature / Feebacks / Bugs
 
-## Tutorials
+ * Please feel free to open an issue
 
-`[linky](docs/01.Components.md)`
-`[linky](docs/02.Tools.md)`
-`[linky](docs/03.Request.md)`
-
-If you need tutorial on a specific topic / question that you have, Please open an issue.
-
-
-## Request Feature
-
- * 
-
-## Report Bug
- 
- *
 
 
 ## License
