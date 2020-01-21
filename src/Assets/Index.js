@@ -15,7 +15,8 @@ class Assets extends Component {
         super(props);
         this.state = {
             class: "drop_zone",
-            imageURL:""
+            imageURL:"",
+            assets: []
         };
     }
 
@@ -33,8 +34,7 @@ class Assets extends Component {
     }
 
     writeToDB(result, name){
-        debugger;
-        window.iDB.get("uiEditor", name).then(data=>{
+        window.iDB.get(name).then(data=>{
             var img = document.createElement("img");
             img.href = data.result;
             this.setState({
@@ -42,7 +42,7 @@ class Assets extends Component {
             })
             document.body.append(img)
         })
-        window.iDB.put("uiEditor", {name: name, result: result})
+        window.iDB.put({name: name, result: result})
     }
 
     dropHandler(ev) {
@@ -84,22 +84,28 @@ class Assets extends Component {
         })
     }
 
+    fetchFromDB(){
+        window.iDB.getAll().then(data=>{
+            this.setState({
+                assets: data
+            })
+        });
+    }
+
     render() {
 
-        let assets = [];
+        let assets = this.state.assets.map(item=> <Asset imageURL={item.result}/>);
         return (
             <div className="elements">
                 <div className="container elements-tab">
                     <div className="title">
                         Assets
                     </div>
+                    <button onClick={this.fetchFromDB.bind(this)}>Load Assets</button>
                     <div onDrop={this.dropHandler.bind(this)} onDragOver={this.dragOverHandler.bind(this)} onDragLeave={this.dragLeaveHandler.bind(this)} className={this.state.class}>
                         <p>Drag one or more files to this Drop Zone ...</p>
                     </div>
-                    <div className="tinyThumbnail">
-                        <img src={this.state.imageURL}></img>
-                    </div>
-                    <ul>
+                    <ul className="contain">
                         {assets}
                     </ul>
                 </div>
