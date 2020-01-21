@@ -7,8 +7,8 @@ Web browsers like IE, chrome, firefox, and safari had their race decades back an
 This project aims to speed up building UI building workflow for web browsing platforms and to get rid of component code refactoring tasks.
 
 
-Demo - https://imvetri.github.io/ui-editor/
-Tutorials - 
+## Demo - https://imvetri.github.io/ui-editor/
+## Tutorials - 
 1. [Getting Started](https://vimeo.com/386239335)
 2. [Create simple component](https://vimeo.com/386239365)
 3. [Create simple component with content from state](https://vimeo.com/386239387)
