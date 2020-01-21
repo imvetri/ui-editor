@@ -72,13 +72,13 @@ class Tool extends Component {
                             elements={this.state.elements}
                             onSelection={this.updateselectedIndex}
                             selectedIndex={this.state.selectedIndex}
-                            name="Components"
+                            title="Components"
                         />
                     </DraggableComponent>
 
                     <DraggableComponent>
                         <Assets 
-                            name="Assets"
+                            title="Assets"
                         />
                     </DraggableComponent>
     
@@ -91,7 +91,7 @@ class Tool extends Component {
                             elements={this.state.elements}
                             onEventsUpdate={this.updateEvent}
                             onConfigUpdate={this.updateConfig}
-                            name="Events"
+                            title="Events"
                         />
     
                     </DraggableComponent>
@@ -105,7 +105,7 @@ class Tool extends Component {
                             style={selectedElement.style}
                             state={selectedElement.state}
                             onSave={this.saveElement}
-                            name="Editor"
+                            title="Editor"
                         />
                     </DraggableComponent>
     
@@ -113,14 +113,14 @@ class Tool extends Component {
                         <Preview 
                             key={Math.ceil(Math.random() * 1000)}
                             component={selectedElement}
-                            name="Preview"
+                            title="Preview"
                         />
                     </DraggableComponent>
     
                     <DraggableComponent>
                         <TagExplorer 
                             node={nodeTree} 
-                            name="TagExplorer"
+                            title="TagExplorer"
                         />
                     </DraggableComponent>
     
@@ -129,13 +129,13 @@ class Tool extends Component {
                             key={Math.ceil(Math.random() * 1000)} 
                             component={selectedElement}
                             onEdit={this.updateStyles.bind(this)}
-                            name="StyleExplorer"
+                            title="StyleExplorer"
                         />
                     </DraggableComponent>
     
                     <DraggableComponent>
                         <History
-                            name="History"
+                            title="History"
                         />
                     </DraggableComponent>
     
