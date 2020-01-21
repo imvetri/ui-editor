@@ -12,8 +12,9 @@ class Asset extends Component {
 
         // Remove this.props.index, instead use this element instance index. Removes duplicate code
         return (
-            <div className="background">
-            </ div>
+            <div className="tinyThumbnail">
+                <img src={this.props.imageURL}></img>
+            </div>
         );
     }
 }

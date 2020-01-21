@@ -3,6 +3,7 @@ export function MindexedDB(databaseName, objectStores) {
 	this.idb = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
 	this.db = databaseName;
 	this.objStrs = Array.isArray(objectStores) ? objectStores : [objectStores];
+	this.store = "uiEditor";
 
 	this.connect = function(key) {
 		var conn = this.idb.open(this.db, 1);
@@ -33,8 +34,8 @@ export function MindexedDB(databaseName, objectStores) {
 		return tx.objectStore(store);
 	}
 
-	this.put = function(store, obj) {
-		let os = this.cs(store);
+	this.put = function(obj) {
+		let os = this.cs(this.store);
 
 		return new Promise(function(resolve, reject) {
 			var response = os.put(obj);
@@ -47,11 +48,25 @@ export function MindexedDB(databaseName, objectStores) {
 		});
 	}
 
-	this.get = function(store, key) {
-		let os = this.cs(store);
+	this.get = function(key) {
+		let os = this.cs(this.store);
 
 		return new Promise(function(resolve, reject) {
 			var response = os.get(key);
+			response.onsuccess = function() {
+				resolve(response.result);
+			};
+			response.onerror = function() {
+				reject(response.error);
+			};
+		});
+	}
+
+	this.getAll = function() {
+		let os = this.cs(this.store);
+
+		return new Promise(function(resolve, reject) {
+			var response = os.getAll();
 			response.onsuccess = function() {
 				resolve(response.result);
 			};
