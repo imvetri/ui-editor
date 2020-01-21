@@ -7,6 +7,7 @@ import "./style.css";
 class DraggableComponent extends Component {
     constructor(props) {
         super(props);
+        debugger;
         this.state = JSON.parse(localStorage.getItem(`ui-editor-settings-draggable-component-${this.props.children.type.name}`)) || {
             style:  {
                 position: "fixed",
