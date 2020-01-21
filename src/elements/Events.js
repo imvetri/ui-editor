@@ -10,5 +10,7 @@ export function onExport() {
     const removeParanthesis = (component)=>{
        return component.replace("(","").replace("})","}")
     }
-    console.log(uniqueComponents.map(getComponentString).map(removeParanthesis).join(""));
+    console.log(uniqueComponents.map(function(component){
+        return getComponentString(component)
+    }).map(removeParanthesis).join(""));
 }
