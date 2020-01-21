@@ -8,7 +8,7 @@ class DraggableComponent extends Component {
     constructor(props) {
         super(props);
         debugger;
-        this.state = JSON.parse(localStorage.getItem(`ui-editor-settings-draggable-component-${this.props.children.props.name}`)) || {
+        this.state = JSON.parse(localStorage.getItem(`ui-editor-settings-draggable-component-${this.props.children.props.title}`)) || {
             style:  {
                 position: "fixed",
                 top: "30px",
@@ -27,7 +27,7 @@ class DraggableComponent extends Component {
             this.setState({
                 style : state.style
             },()=>{
-                localStorage.setItem(`ui-editor-settings-draggable-component-${this.props.children.props.name}`,JSON.stringify(this.state));
+                localStorage.setItem(`ui-editor-settings-draggable-component-${this.props.children.props.title}`,JSON.stringify(this.state));
             })    
         }
     }
@@ -36,7 +36,7 @@ class DraggableComponent extends Component {
         this.setState({
             minimised: !this.state.minimised
         },()=>{
-            localStorage.setItem(`ui-editor-settings-draggable-component-${this.props.children.props.name}`,JSON.stringify(this.state));
+            localStorage.setItem(`ui-editor-settings-draggable-component-${this.props.children.props.title}`,JSON.stringify(this.state));
         })
     }
 
