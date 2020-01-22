@@ -8,7 +8,7 @@ This project aims to **speed up UI building workflow** for web browsing platform
 
 
 ## Demo - https://imvetri.github.io/ui-editor/
-## Tutorials - 
+## Video Tutorials - 
 1. [Getting Started](https://vimeo.com/386239335)
 2. [Create simple component](https://vimeo.com/386239365)
 3. [Create simple component with content from state](https://vimeo.com/386239387)
