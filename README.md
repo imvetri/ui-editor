@@ -1,6 +1,6 @@
 # UI editor
 
-UI editor is a Rapid Component Library Builder. Concept of UI has been in existence for nearly 40 years still it hasn't changed, but concepts to build keeps changing. 
+UI editor is a Rapid Component Library Builder. Concept of UI has been in existence for nearly 40 years still it hasn't changed, but concepts to build it - **keeps on changing**. 
 
 Web browsers like IE, chrome, firefox, and safari had their race decades back and now Web frameworks like ReactJS, Angular, Vue, svelte and nextJS etc...
 
