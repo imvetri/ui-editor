@@ -19,6 +19,7 @@ This project aims to **speed up UI building workflow** for web browsing platform
 8. [Show off - Code generation](https://vimeo.com/386239546)
 
 ## Getting Started
+Install nodeJS and npm then run below code.
 
 ```
 git clone https://github.com/imvetri/ui-editor.git
