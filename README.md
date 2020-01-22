@@ -1,10 +1,10 @@
 # UI editor
 
-UI editor is a Rapid Component Library Builder. Concept of UI has been in existence for nearly 40 years still it hasn't changed, but concepts to build it - **keeps on changing**. 
+UI editor is a Rapid Component Library Builder. Concept of UI has been in existence for nearly 40 years still it hasn't changed, but concepts to build it - **keeps.on.changing**. 
 
 Web browsers like IE, chrome, firefox, and safari had their race decades back and now Web frameworks like ReactJS, Angular, Vue, svelte and nextJS etc...
 
-This project aims to **speed up UI building workflow** for web browsing platforms and **get rid of component code refactoring** tasks.
+This project aims to **speed.up.UI.building.workflow** for web browsing platforms and **get.rid.of.component.code.refactoring** tasks.
 
 
 ## Demo - https://imvetri.github.io/ui-editor/
