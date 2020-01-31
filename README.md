@@ -1,8 +1,6 @@
-# UI editor - DONT LEARN FRAMEWORKS. BUILD TOOLS TO GET RID OF IT.  Snap out of web development. Its not healthy.
+# UI editor - 
 
-UI editor is a Rapid Component Library Builder. Concept of UI has been in existence for nearly 40 years still it hasn't changed, but concepts to build it - **keeps on changing**. 
-
-Web browsers like IE, chrome, firefox, and safari had their race decades back and now Web frameworks like ReactJS, Angular, Vue, svelte and nextJS etc...
+UI editor is a Rapid Component Library Builder. Do not learn frameworks. Build tools to get rid of it. Snap out of web development. Its not healthy.
 
 
 ## Demo - https://imvetri.github.io/ui-editor/
