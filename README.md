@@ -1,4 +1,4 @@
-# UI editor TLDR - DONT LEARN FRAMEWORKS. BUILD TOOLS TO GET RID OF IT.
+# UI editor - DONT LEARN FRAMEWORKS. BUILD TOOLS TO GET RID OF IT.
 
 UI editor is a Rapid Component Library Builder. Concept of UI has been in existence for nearly 40 years still it hasn't changed, but concepts to build it - **keeps on changing**. 
 
