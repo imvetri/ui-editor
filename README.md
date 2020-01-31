@@ -1,7 +1,6 @@
-# UI editor - 
+## UI editor
 
-UI editor is a Rapid Component Library Builder. Do not learn frameworks. Build tools to get rid of it. Snap out of web development. Its not healthy.
-
+UI editor is a Rapid Component Library Builder and a code generator. The tool helps to generate code for web development frameworks.
 
 ## Demo - https://imvetri.github.io/ui-editor/
 
