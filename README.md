@@ -1,13 +1,24 @@
-# UI editor - DONT LEARN FRAMEWORKS. BUILD TOOLS TO GET RID OF IT.
+# UI editor - DONT LEARN FRAMEWORKS. BUILD TOOLS TO GET RID OF IT.  Snap out of web development. Its not healthy.
 
 UI editor is a Rapid Component Library Builder. Concept of UI has been in existence for nearly 40 years still it hasn't changed, but concepts to build it - **keeps on changing**. 
 
 Web browsers like IE, chrome, firefox, and safari had their race decades back and now Web frameworks like ReactJS, Angular, Vue, svelte and nextJS etc...
 
-This project aims to **speed up UI building workflow** for web browsing platforms and **get rid of component code refactoring** tasks.
-
 
 ## Demo - https://imvetri.github.io/ui-editor/
+
+## Why code generators are good
+1. Gets rid of code refactoring.
+2. Speeds up ui building process.
+3. Actual problem becomes simpler.
+
+## Problems of web development
+1. Learning framework is not my cup of tea.
+2. Learning framework is a waste of time.
+3. Frameworks change.
+4. There is too much competition. 
+5. Makes your suffocate, Memory loss.
+
 
 ## Step-by-step Tutorials - 
 1. [Getting started](https://github.com/imvetri/ui-editor/wiki/Getting-Started)
