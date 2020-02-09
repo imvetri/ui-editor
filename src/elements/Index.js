@@ -71,6 +71,10 @@ class Components extends Component {
         })
         writeData("ui-editor",elements);
     }
+
+    addFolder(){
+        
+    }
     
     render() {
 
@@ -92,6 +96,10 @@ class Components extends Component {
                 <div className="container elements-tab">
                     <div className="title">
                         Components
+                    </div>
+                    <div className="Controls">
+                        <button><i class="fa fa-plus" aria-hidden="true"></i>Add Component</button>
+                        <button onClick={this.addFolder.bind(this)}><i class="fa fa-folder" aria-hidden="true"></i>Add Folder</button>
                     </div>
                     <ul>
                         {elementList}
