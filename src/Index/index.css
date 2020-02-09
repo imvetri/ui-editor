@@ -25,6 +25,10 @@ input, textarea {
 
 input[type="text"] {
     -webkit-appearance: textarea;
+    color: rgba(255,255,255,0.5);
+    border-color: rgba(0,0,0,0.9);
+    border-width: 1px;
+    padding: 7px;
 }
 
 ul label input {
