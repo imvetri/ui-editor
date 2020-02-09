@@ -7,7 +7,7 @@ import "./Style.css";
 // Components.
 
 import Element from "../Element";
-
+import Folder from "../Folder";
 // Reducers.
 
 import {onDelete} from "./Reducer"
@@ -23,7 +23,8 @@ class Components extends Component {
         super(props);
         this.state = {
             elements: this.props.elements,
-            selectedIndex:0
+            selectedIndex:0,
+            showNewFolder: false
         };
 
         this.onDelete = onDelete.bind(this);
@@ -71,6 +72,12 @@ class Components extends Component {
         })
         writeData("ui-editor",elements);
     }
+
+    addFolder(){
+        this.setState({
+            showNewFolder: true
+        })
+    }
     
     render() {
 
@@ -86,6 +93,8 @@ class Components extends Component {
                 onGenerateVariant = {this.generateVariant.bind(this)}/>
         );
 
+        const newFolder = <Folder/>;
+
         
         return (
             <div className="elements">
@@ -93,7 +102,12 @@ class Components extends Component {
                     <div className="title">
                         Components
                     </div>
+                    <div className="Controls">
+                        <button><i class="fa fa-plus" aria-hidden="true"></i>Add Component</button>
+                        <button onClick={this.addFolder.bind(this)}><i class="fa fa-folder" aria-hidden="true"></i>Add Folder</button>
+                    </div>
                     <ul>
+                        {this.state.showNewFolder? newFolder: null}
                         {elementList}
                     </ul>
                 </div>
