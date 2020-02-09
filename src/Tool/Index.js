@@ -116,13 +116,13 @@ class Tool extends Component {
                             title="Preview"
                         />
                     </DraggableComponent>
-    
+{/*     
                     <DraggableComponent>
                         <TagExplorer 
                             node={nodeTree} 
                             title="TagExplorer"
                         />
-                    </DraggableComponent>
+                    </DraggableComponent> */}
     
                     <DraggableComponent>
                         <StyleExplorer 
