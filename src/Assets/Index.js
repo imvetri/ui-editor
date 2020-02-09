@@ -50,9 +50,7 @@ class Assets extends Component {
 
         [].forEach.call(ev.dataTransfer.files, (file)=>{
             var reader = new FileReader();
-            debugger;
             reader.readAsDataURL(file);
-            debugger;
             reader.onloadend =  function (event,b) {
                 // 1. append to body
                 // 2. write to db.
@@ -86,6 +84,12 @@ class Assets extends Component {
 
     fetchFromDB(){
         window.iDB.getAll().then(data=>{
+            // save it to window
+            window.assets = {};
+            data.forEach(image=>{
+                window.assets[image.name] = image.result
+            });
+
             this.setState({
                 assets: data
             })
