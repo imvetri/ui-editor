@@ -20,3 +20,11 @@
 .thumbnail {
     width: 50px;
 }
+
+.hideAdditionals span:not(.componentName){
+    display:none;
+}
+
+.hideAdditionals {
+    display: inline-block;
+}

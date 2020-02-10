@@ -14,11 +14,15 @@ class Element extends Component {
         this.props.onGenerateVariant(this.props.selectedIndex)
     }
 
+    restoreClass(event){
+        event.target.classList.remove("hideAdditionals");
+    }
+
     render() {
 
         // Remove this.props.index, instead use this element instance index. Removes duplicate code
         return (
-            <div className="background" draggable="true" id={this.props.element.name} data-name={this.props.element.name} onDragStart={handleDrag.bind(this)}>
+            <div className="background" draggable="true" id={this.props.element.name} data-name={this.props.element.name} onDragStart={handleDrag.bind(this)} onDragEnd={this.restoreClass}>
                 <li 
                     className = {this.props.index===this.props.selectedIndex ? "selected component": "component"}
                     onClick = {selectionChanged.bind(this)}

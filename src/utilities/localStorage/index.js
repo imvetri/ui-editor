@@ -91,17 +91,27 @@ export function readData(key){
         if(history)
             return JSON.parse(history);
     }
+    if(key ==="folders"){
+        let folders = localStorage.getItem(key)
+        return JSON.parse(folders);
+    }
 
     return [];
 
 }
 
 export function writeData(key, components, noPush){
-    console.log("WRITE")
-    window.components = components;
-    localStorage.setItem(key, JSON.stringify(components));
-    if(!noPush){
-        pushHistory(components);
+    if(key=="folders"){
+        console.log("writing folders")
+        localStorage.setItem(key, JSON.stringify(components));
+    }
+    if(key=="ui-editor"){
+        console.log("WRITE")
+        window.components = components;
+        localStorage.setItem(key, JSON.stringify(components));
+        if(!noPush){
+            pushHistory(components);
+        }
     }
 }
 
