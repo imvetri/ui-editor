@@ -22,7 +22,7 @@ import { updateEvent, updateConfig, saveElement, updateselectedIndex } from "../
 
 // Utils
 import { getNodeTree } from "../utilities/get-node-tree.js";
-import {readData} from "../utilities/localStorage";
+import {readData, writeData} from "../utilities/localStorage";
 
 class Tool extends Component {
     constructor(props) {
@@ -38,7 +38,8 @@ class Tool extends Component {
                 style: "",
                 state: "{ }",
                 events: []
-            }
+            },
+            folders: readData("folders") || []
         }
         this.updateConfig = updateConfig.bind(this);
         this.updateEvent = updateEvent.bind(this);
@@ -58,6 +59,13 @@ class Tool extends Component {
         })
     }
 
+    updateFolders(folders){
+        this.setState({
+            folders: folders
+        })
+        writeData("folders", folders)
+    }
+
     render() {
 
         let components = readData("ui-editor") || [];
@@ -71,7 +79,9 @@ class Tool extends Component {
                         <Components
                             elements={this.state.elements}
                             onSelection={this.updateselectedIndex}
+                            onFoldersUpdate={this.updateFolders.bind(this)}
                             selectedIndex={this.state.selectedIndex}
+                            folders={this.state.folders}
                             title="Components"
                         />
                     </DraggableComponent>
