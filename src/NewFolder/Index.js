@@ -23,12 +23,18 @@ class NewFolder extends Component {
     }
 
     saveFolderName(){
-        this.props.onNewFolder(this.state.folderName)
+        this.props.onNewFolder({
+            name:this.state.folderName,
+            contents:[]
+        })
     }
 
     saveFolderNameOnEnter(e){
         if(e.key==="Enter"){
-            this.props.onNewFolder(this.state.folderName)
+            this.props.onNewFolder({
+                name:this.state.folderName,
+                contents:[]
+            })
         }
     }
 

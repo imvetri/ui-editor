@@ -81,9 +81,9 @@ class Components extends Component {
         })
     }
 
-    saveNewFolder(folderName){
+    saveNewFolder(folder){
         let folders = Array.from(this.state.folders);
-        folders.push(folderName);
+        folders.push(folder);
         this.setState({
             folders: folders,
             showNewFolder: false
@@ -92,11 +92,14 @@ class Components extends Component {
     }
 
     updateFolderContent(folders){
+        let stateFolders = Array.from(this.props.folders);
+        let incomingFolder = stateFolders.find(folder=>folder.name===folders.name);
+        incomingFolder.contents = folders.contents;
         this.setState({
             folders: folders,
             showNewFolder: false
         })
-        this.props.onFoldersUpdate(folders)
+        this.props.onFoldersUpdate(stateFolders)
     }
     
     render() {
@@ -124,7 +127,7 @@ class Components extends Component {
                         <button onClick={this.addFolder.bind(this)}><i className="fa fa-folder"></i>Add Folder</button>
                     </div>
                     <ul>
-                        {this.state.folders.map((folder,index)=><Folder folder={folder} key={index} onFolderItemUpdate={this.updateFolderContent.bind(this)}/>)}
+                        {this.props.folders.map((folder,index)=><Folder folder={folder} key={index} onFolderItemUpdate={this.updateFolderContent.bind(this)}/>)}
                         {this.state.showNewFolder? <NewFolder onNewFolder={this.saveNewFolder.bind(this)}/>:null}
                         {elementList}
                     </ul>
