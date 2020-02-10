@@ -26,7 +26,7 @@ class Components extends Component {
             elements: this.props.elements,
             selectedIndex:0,
             showNewFolder: false,
-            folders: []
+            folders: this.props.folders
         };
 
         this.onDelete = onDelete.bind(this);
@@ -88,6 +88,15 @@ class Components extends Component {
             folders: folders,
             showNewFolder: false
         })
+        this.props.onFoldersUpdate(folders)
+    }
+
+    updateFolderContent(folders){
+        this.setState({
+            folders: folders,
+            showNewFolder: false
+        })
+        this.props.onFoldersUpdate(folders)
     }
     
     render() {
@@ -115,7 +124,7 @@ class Components extends Component {
                         <button onClick={this.addFolder.bind(this)}><i className="fa fa-folder"></i>Add Folder</button>
                     </div>
                     <ul>
-                        {this.state.folders.map((folder,index)=><Folder folder={folder} key={index}/>)}
+                        {this.state.folders.map((folder,index)=><Folder folder={folder} key={index} onFolderItemUpdate={this.updateFolderContent.bind(this)}/>)}
                         {this.state.showNewFolder? <NewFolder onNewFolder={this.saveNewFolder.bind(this)}/>:null}
                         {elementList}
                     </ul>
