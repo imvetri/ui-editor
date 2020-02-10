@@ -5,6 +5,7 @@ export function selectionChanged(e) {
 export function handleDrag(e){
 
     let name = event.target.getAttribute("data-name")
+    event.target.classList.add("hideAdditionals");
     e.dataTransfer.setData("component-name", name);
 }
 

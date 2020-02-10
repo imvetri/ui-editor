@@ -12,7 +12,8 @@ class Folder extends Component {
         this.state = {
             status: "fa fa-folder",
             newFolderClass: "newFolder",
-            folder: this.props.folder
+            folder: this.props.folder.name,
+            contents: this.props.folder.contents
         };
     }
 
@@ -34,7 +35,13 @@ class Folder extends Component {
 
     dropHandler(ev) {
         ev.preventDefault();
-
+        let componentName = ev.dataTransfer.getData("component-name");
+        let contents = Array.from(this.state.contents);
+        contents.push(componentName)
+        this.props.onFolderItemUpdate({
+            name: this.state.folder,
+            contents : contents
+        })
         this.setState({
             newFolderClass: "newFolder"
         })

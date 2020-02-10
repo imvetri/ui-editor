@@ -3,6 +3,10 @@ input.folder{
     background:none;
 }
 
+.newFolder{
+    user-select: none;
+}
+
 .newFolder i{
     color: rgba(255,255,255,0.5);
     border-color: rgba(0,0,0,0.9);
@@ -19,6 +23,6 @@ input.folder{
         color: rgba(255,255,255,0.5);
     }
     to {
-        color: green;
+        color: white;
     }
 }
