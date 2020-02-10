@@ -61,7 +61,7 @@ class Folder extends Component {
         return (
         <div className={this.state.newFolderClass} onDrop={this.dropHandler.bind(this)} onDragOver={this.dragOverHandler.bind(this)} onDragLeave={this.dragLeaveHandler.bind(this)} >
             <i className={this.state.status} onClick={this.toggleFolder.bind(this)}></i>
-            <input type="text" className="folder" autoFocus={true} placeholder="Enter folder name" value={this.state.folder}/>
+            <input type="text" className="folder" placeholder="Enter folder name" value={this.state.folder}/>
         </div>
         );
     }
