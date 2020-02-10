@@ -11,7 +11,9 @@ class Folder extends Component {
         super(props);
         this.state = {
             status: "fa fa-folder",
-            newFolderClass: "newFolder"
+            newFolderClass: "newFolder",
+            folder: this.props.folder.name,
+            contents: this.props.folder.contents
         };
     }
 
@@ -33,7 +35,13 @@ class Folder extends Component {
 
     dropHandler(ev) {
         ev.preventDefault();
-
+        let componentName = ev.dataTransfer.getData("component-name");
+        let contents = Array.from(this.state.contents);
+        contents.push(componentName)
+        this.props.onFolderItemUpdate({
+            name: this.state.folder,
+            contents : contents
+        })
         this.setState({
             newFolderClass: "newFolder"
         })
@@ -59,8 +67,8 @@ class Folder extends Component {
 
         return (
         <div className={this.state.newFolderClass} onDrop={this.dropHandler.bind(this)} onDragOver={this.dragOverHandler.bind(this)} onDragLeave={this.dragLeaveHandler.bind(this)} >
-            <i class={this.state.status} onClick={this.toggleFolder.bind(this)} aria-hidden="true"></i>
-            <input type="text" className="folder" autoFocus={true} placeholder="Enter folder name"/>
+            <i className={this.state.status} onClick={this.toggleFolder.bind(this)}></i>
+            <input type="text" className="folder" placeholder="Enter folder name" value={this.state.folder}/>
         </div>
         );
     }

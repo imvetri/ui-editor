@@ -8,6 +8,7 @@ import "./Style.css";
 
 import Element from "../Element";
 import Folder from "../Folder";
+import NewFolder from "../NewFolder";
 // Reducers.
 
 import {onDelete} from "./Reducer"
@@ -24,7 +25,8 @@ class Components extends Component {
         this.state = {
             elements: this.props.elements,
             selectedIndex:0,
-            showNewFolder: false
+            showNewFolder: false,
+            folders: this.props.folders
         };
 
         this.onDelete = onDelete.bind(this);
@@ -78,6 +80,27 @@ class Components extends Component {
             showNewFolder: true
         })
     }
+
+    saveNewFolder(folder){
+        let folders = Array.from(this.state.folders);
+        folders.push(folder);
+        this.setState({
+            folders: folders,
+            showNewFolder: false
+        })
+        this.props.onFoldersUpdate(folders)
+    }
+
+    updateFolderContent(folders){
+        let stateFolders = Array.from(this.props.folders);
+        let incomingFolder = stateFolders.find(folder=>folder.name===folders.name);
+        incomingFolder.contents = folders.contents;
+        this.setState({
+            folders: folders,
+            showNewFolder: false
+        })
+        this.props.onFoldersUpdate(stateFolders)
+    }
     
     render() {
 
@@ -92,9 +115,6 @@ class Components extends Component {
                 onDelete = {this.onDelete}
                 onGenerateVariant = {this.generateVariant.bind(this)}/>
         );
-
-        const newFolder = <Folder/>;
-
         
         return (
             <div className="elements">
@@ -103,11 +123,12 @@ class Components extends Component {
                         Components
                     </div>
                     <div className="Controls">
-                        <button><i class="fa fa-plus" aria-hidden="true"></i>Add Component</button>
-                        <button onClick={this.addFolder.bind(this)}><i class="fa fa-folder" aria-hidden="true"></i>Add Folder</button>
+                        <button><i className="fa fa-plus"></i>Add Component</button>
+                        <button onClick={this.addFolder.bind(this)}><i className="fa fa-folder"></i>Add Folder</button>
                     </div>
                     <ul>
-                        {this.state.showNewFolder? newFolder: null}
+                        {this.props.folders.map((folder,index)=><Folder folder={folder} key={index} onFolderItemUpdate={this.updateFolderContent.bind(this)}/>)}
+                        {this.state.showNewFolder? <NewFolder onNewFolder={this.saveNewFolder.bind(this)}/>:null}
                         {elementList}
                     </ul>
                 </div>
