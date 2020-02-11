@@ -18,7 +18,7 @@ import StyleExplorer from "../StyleExplorer";
 import TagExplorer from "../TagExplorer";
 
 // Reducers.
-import { updateEvent, updateConfig, saveElement, updateselectedIndex } from "../Elements/Reducer";
+import { updateEvent, updateConfig, saveElement, updateselectedIndex } from "./Reducer";
 
 // Utils
 import { getNodeTree } from "../utilities/get-node-tree.js";
