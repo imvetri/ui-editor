@@ -24,7 +24,6 @@ class Components extends Component {
         super(props);
         this.state = {
             elements: this.props.elements,
-            selectedIndex:0,
             showNewFolder: false,
             folders: this.props.folders
         };
@@ -108,7 +107,7 @@ class Components extends Component {
             <Element 
                 key = {index} 
                 index = {index}
-                selectedIndex = {this.props.selectedIndex}
+                selectedComponent = {this.props.selectedComponent}
                 element = {element}
                 onSelectionChange = {this.props.onSelection}
                 onExport = {onExport.bind(this)}
@@ -125,7 +124,7 @@ class Components extends Component {
                 <Element 
                     key = {index} 
                     index = {index}
-                    selectedIndex = {this.props.selectedIndex}
+                    selectedComponent = {this.props.selectedComponent}
                     element = {element}
                     onSelectionChange = {this.props.onSelection}
                     onExport = {onExport.bind(this)}
