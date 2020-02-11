@@ -13,7 +13,8 @@ class Folder extends Component {
             status: "fa fa-folder",
             newFolderClass: "newFolder",
             folder: this.props.folder.name,
-            contents: this.props.folder.contents
+            contents: this.props.folder.contents,
+            components: this.props.folder.components
         };
     }
 
@@ -71,7 +72,7 @@ class Folder extends Component {
             <i className={this.state.status} onClick={this.toggleFolder.bind(this)}></i>
             <input type="text" className="folder" placeholder="Enter folder name" value={this.state.folder}/>
             <ul>
-                {this.state.contents.map(content=><li>{content}</li>)}
+                {this.props.folder.components}
             </ul>
         </div>
         );
