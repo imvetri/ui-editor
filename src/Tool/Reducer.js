@@ -4,8 +4,9 @@ import {writeData} from "../utilities/localStorage";
 export function updateEvent (events) {
     // Create new state.
     let newElements = Object.assign({}, this.state).elements;
+    let selectedComponent = newElements.find(element=>element.name===this.state.selectedComponent.name)
 
-    newElements[this.state.selectedIndex].events = events;
+    selectedComponent.events = events;
 
     // Set state to the new state.
     this.setState({
@@ -59,17 +60,17 @@ export function saveElement (element) {
     
     // Check if element exist.
     let elementExist = components.find(component=>component.name===element.name);
-    let selectedIndex = this.state.selectedIndex;
-
+    let selectedComponent = components.find(component=>component.name===this.state.selectedComponent.name);
+    let selectedIndex = components.findIndex(component=>component.name===this.state.selectedComponent.name);
     if(elementExist){
         // Find the element.
-        let elementUnderEdit = components[this.state.selectedIndex];
+        let elementUnderEdit = selectedComponent;
 
         // Merge.
         elementUnderEdit = Object.assign(elementUnderEdit, element)
 
         // Push it to original list.
-        components[this.state.selectedIndex] = elementUnderEdit;
+        components[selectedIndex] = elementUnderEdit;
     }
 
     else {
@@ -96,25 +97,21 @@ export function saveElement (element) {
             style: element.style,
             state: element.state,
             events: element.events || []
-        },
-        selectedIndex: selectedIndex
+        }
     });
 
     writeData("ui-editor", components)
 }
 
 
-export function updateselectedIndex (e) {
+export function updateSelectedComponent (e) {
     let componentName = e.currentTarget.innerText.split("\n")[0];
     // Find the element from state that matches the currently selected element.
     let selectedComponent = this.state.elements.find(component=>component.name===componentName);
-    let selectedIndex = this.state.elements.findIndex(component=>component.name===componentName);
 
     window.selectedcomponentname = selectedComponent.name;
     // Update the state with selectedElement.
     this.setState({
-        selectedIndex,
-        name: selectedComponent.name,
-        markup: selectedComponent.markup
+        selectedComponent
     })
 }

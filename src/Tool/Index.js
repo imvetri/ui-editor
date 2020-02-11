@@ -18,7 +18,7 @@ import StyleExplorer from "../StyleExplorer";
 import TagExplorer from "../TagExplorer";
 
 // Reducers.
-import { updateEvent, updateConfig, saveElement, updateselectedIndex } from "./Reducer";
+import { updateEvent, updateConfig, saveElement, updateSelectedComponent } from "./Reducer";
 
 // Utils
 import { getNodeTree } from "../utilities/get-node-tree.js";
@@ -30,7 +30,6 @@ class Tool extends Component {
         this.state = {
             elements: readData("ui-editor") || [],
             components: [],
-            selectedIndex: -1,
             selectedTag : "",
             element: {
                 name: "",
@@ -39,12 +38,13 @@ class Tool extends Component {
                 state: "{ }",
                 events: []
             },
+            selectedComponent: "",
             folders: readData("folders") || []
         }
         this.updateConfig = updateConfig.bind(this);
         this.updateEvent = updateEvent.bind(this);
         this.saveElement = saveElement.bind(this);
-        this.updateselectedIndex = updateselectedIndex.bind(this);
+        this.updateSelectedComponent = updateSelectedComponent.bind(this);
     }
 
     updatePreview(element) {
@@ -55,7 +55,7 @@ class Tool extends Component {
 
     updateStyles(){
         this.setState({
-            element: this.state.elements[this.state.selectedIndex]
+            element: this.state.selectedComponent
         })
     }
 
@@ -67,20 +67,17 @@ class Tool extends Component {
     }
 
     render() {
-
-        let components = readData("ui-editor") || [];
-        const selectedElement = components[this.state.selectedIndex] || this.state.element;
-        let nodeTree = getNodeTree(selectedElement, selectedElement.markup, selectedElement.style, JSON.parse(selectedElement.state), selectedElement.events);
+        const selectedElement = this.state.selectedComponent || this.state.element;
         
         try {
             return (
                 <div>
                     <DraggableComponent>
                         <Components
-                            elements={this.state.elements}
-                            onSelection={this.updateselectedIndex}
+                            onSelection={this.updateSelectedComponent}
                             onFoldersUpdate={this.updateFolders.bind(this)}
-                            selectedIndex={this.state.selectedIndex}
+                            elements={this.state.elements}
+                            selectedComponent={this.state.selectedComponent}
                             folders={this.state.folders}
                             title="Components"
                         />
@@ -126,13 +123,6 @@ class Tool extends Component {
                             title="Preview"
                         />
                     </DraggableComponent>
-{/*     
-                    <DraggableComponent>
-                        <TagExplorer 
-                            node={nodeTree} 
-                            title="TagExplorer"
-                        />
-                    </DraggableComponent> */}
     
                     <DraggableComponent>
                         <StyleExplorer 
