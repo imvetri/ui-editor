@@ -7,11 +7,13 @@ import  "./Style.css";
 class Element extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            selectedComponent: this.props.selectedComponent
+        };
     }
 
     generateVariant(){
-        this.props.onGenerateVariant(this.props.selectedIndex)
+        this.props.onGenerateVariant(this.props.selectedComponent)
     }
 
     restoreClass(event){
@@ -24,7 +26,7 @@ class Element extends Component {
         return (
             <div className="background" draggable="true" id={this.props.element.name} data-name={this.props.element.name} onDragStart={handleDrag.bind(this)} onDragEnd={this.restoreClass}>
                 <li 
-                    className = {this.props.index===this.props.selectedIndex ? "selected component": "component"}
+                    className = {this.props.element.name===this.props.selectedComponent.name ? "selected component": "component"}
                     onClick = {selectionChanged.bind(this)}
                     index = {this.props.index}>
                     <span className="componentName">
