@@ -43,7 +43,8 @@ class Folder extends Component {
             contents : contents
         })
         this.setState({
-            newFolderClass: "newFolder"
+            newFolderClass: "newFolder",
+            contents: contents
         })
         console.log("Drop");
     }
@@ -69,6 +70,9 @@ class Folder extends Component {
         <div className={this.state.newFolderClass} onDrop={this.dropHandler.bind(this)} onDragOver={this.dragOverHandler.bind(this)} onDragLeave={this.dragLeaveHandler.bind(this)} >
             <i className={this.state.status} onClick={this.toggleFolder.bind(this)}></i>
             <input type="text" className="folder" placeholder="Enter folder name" value={this.state.folder}/>
+            <ul>
+                {this.state.contents.map(content=><li>{content}</li>)}
+            </ul>
         </div>
         );
     }
