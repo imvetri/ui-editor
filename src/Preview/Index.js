@@ -20,7 +20,8 @@ class Preview extends Component {
             coordinates:{},
             target: {},
             component: this.props.component,
-            mode: "INTERACTIVE"
+            mode: "INTERACTIVE",
+            hideTool: true
         }
     }
 
@@ -112,7 +113,8 @@ class Preview extends Component {
     interactiveMode(){
         this.setState({
             events: {},
-            mode: "INTERACTIVE"
+            mode: "INTERACTIVE",
+            hideTool: true
         })
     }
 
