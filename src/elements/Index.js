@@ -115,7 +115,25 @@ class Components extends Component {
                 onDelete = {this.onDelete}
                 onGenerateVariant = {this.generateVariant.bind(this)}/>
         );
+
+        const contents = this.props.elements.filter(element=>this.props.folders.find(folder=>folder.name===element.name))
         
+        this.props.folders.forEach(folder=>{
+            folder.components = folder.contents.map(item=>{
+                return this.props.elements.find(element=>element.name===item)
+            }).map((element,index)=>
+                <Element 
+                    key = {index} 
+                    index = {index}
+                    selectedIndex = {this.props.selectedIndex}
+                    element = {element}
+                    onSelectionChange = {this.props.onSelection}
+                    onExport = {onExport.bind(this)}
+                    onDelete = {this.onDelete}
+                    onGenerateVariant = {this.generateVariant.bind(this)}/>
+                );
+        })
+
         return (
             <div className="elements">
                 <div className="container elements-tab">
@@ -127,7 +145,7 @@ class Components extends Component {
                         <button onClick={this.addFolder.bind(this)}><i className="fa fa-folder"></i>Add Folder</button>
                     </div>
                     <ul>
-                        {this.props.folders.map((folder,index)=><Folder folder={folder} key={index} onFolderItemUpdate={this.updateFolderContent.bind(this)}/>)}
+                        {this.props.folders.map((folder,index)=><Folder contents={contents} folder={folder} key={index} onFolderItemUpdate={this.updateFolderContent.bind(this)}/>)}
                         {this.state.showNewFolder? <NewFolder onNewFolder={this.saveNewFolder.bind(this)}/>:null}
                         {elementList}
                     </ul>
