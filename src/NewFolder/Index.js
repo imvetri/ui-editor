@@ -33,7 +33,8 @@ class NewFolder extends Component {
         if(e.key==="Enter"){
             this.props.onNewFolder({
                 name:this.state.folderName,
-                contents:[]
+                contents:[],
+                type:"folder"
             })
         }
     }

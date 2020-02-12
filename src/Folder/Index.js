@@ -3,78 +3,55 @@ import React, { Component } from 'react';
 // Styles.
 
 import "./Style.css";
+import Componentt from "../Componentt";
+import {onExport, onDelete} from "./Events"
 
-// Components.
+import {deleteFolder, toggleFolder, selectFolder, deselectFolder} from "./Reducer";
+import {dropHandler, dragOverHandler, dragLeaveHandler} from "./Events";
 
 class Folder extends Component {
     constructor(props) {
         super(props);
         this.state = {
             status: "fa fa-folder",
-            newFolderClass: "newFolder",
+            folderClass: "newFolder",
             folder: this.props.folder.name,
-            contents: this.props.folder.contents,
-            components: this.props.folder.components
+            contents: this.props.folder.contents
         };
-    }
 
-    openFolder(){
-        this.setState({
-            status: "fa fa-folder-open"
-        })
-    }
-
-    closeFolder(){
-        this.setState({
-            status: "fa fa-folder"
-        })
-    }
-
-    toggleFolder(){
-        this.state.status === "fa fa-folder"?  this.openFolder() : this.closeFolder();
-    }
-
-    dropHandler(ev) {
-        ev.preventDefault();
-        let componentName = ev.dataTransfer.getData("component-name");
-        let contents = Array.from(this.state.contents);
-        contents.push(componentName)
-        this.props.onFolderItemUpdate({
-            name: this.state.folder,
-            contents : contents
-        })
-        this.setState({
-            newFolderClass: "newFolder",
-            contents: contents
-        })
-        console.log("Drop");
-    }
-
-    dragOverHandler(ev) {
-        ev.preventDefault();
-        this.setState({
-            newFolderClass: "newFolder dragOver"
-        })
-        console.log("Drag");
-    }
-
-    dragLeaveHandler(e) {
-        console.log("drag");
-        this.setState({
-            newFolderClass: "newFolder"
-        })
+        window.addEventListener("keydown", deleteFolder.bind(this))
     }
 
     render() {
 
+        const components = this.props.components.map((element, index) => 
+        <Componentt 
+            key = {index} 
+            element = {element}
+            selectedComponent = {this.props.selectedComponent}
+                onSelectionChange = {this.props.onSelection}
+                onExport = {onExport.bind(this)}
+                onDelete = {onDelete.bind(this)}
+            />
+        );
+        if(this.props.folder.type=="NewFolder"){
+
+        }
+        if(this.props.folder.type=="Folder"){
+
+        }
+        if(this.props.folder.type=="noFolder"){
+            return (<ul>
+                {components}
+            </ul>)
+        }
         return (
-        <div className={this.state.newFolderClass} onDrop={this.dropHandler.bind(this)} onDragOver={this.dragOverHandler.bind(this)} onDragLeave={this.dragLeaveHandler.bind(this)} >
-            <i className={this.state.status} onClick={this.toggleFolder.bind(this)}></i>
-            <input type="text" className="folder" placeholder="Enter folder name" value={this.state.folder}/>
-            <ul>
-                {this.props.folder.components}
-            </ul>
-        </div>
+            <div className={this.state.folderClass} onMouseOver={selectFolder.bind(this)} onMouseLeave={deselectFolder.bind(this)} onDrop={dropHandler.bind(this)} onDragOver={dragOverHandler.bind(this)} onDragLeave={dragLeaveHandler.bind(this)} >
+                <i className={this.state.status} onClick={toggleFolder.bind(this)}></i>
+                <input type="text" className="folder" placeholder="Enter folder name" value={this.state.folder}/>
+                <ul>
+                </ul>
+            </div>
         );
     }
 }
