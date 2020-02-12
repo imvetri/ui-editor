@@ -3,10 +3,7 @@ import React, { Component } from 'react';
 // Styles.
 
 import "./Style.css";
-import Componentt from "../Componentt";
 import Folder from "../Folder";
-
-import {onExport, onDelete} from "./Events"
 
 class Folders extends Component {
     constructor(props) {
@@ -18,19 +15,12 @@ class Folders extends Component {
     }
 
     render() {
-
-        const components = this.props.components.map((element, index) => 
-        <Componentt 
-            key = {index} 
-            element = {element}
+        return this.props.folders.map(folder=> <Folder
+            folder={folder} 
+            components={components} 
             selectedComponent = {this.props.selectedComponent}
-                onSelectionChange = {this.props.onSelection}
-                onExport = {onExport.bind(this)}
-                onDelete = {onDelete.bind(this)}
-            />
-        );
-
-        return this.props.folders.map(folder=> <Folder folder={folder} components={components}  />)
+            onSelection = {this.props.onSelection}
+            onFolderUpdate={this.props.onFoldersUpdate} />)
     }
 }
 

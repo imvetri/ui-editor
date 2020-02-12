@@ -20,7 +20,7 @@ class DynamicComponent extends Component {
 
     render() {
 
-        if(this.state.component.name===""){
+        if(this.state.component.name===undefined){
             return (<div>No component selected.</div>)
         }
         let nestedComponents = getNestedComponents(this.state.component);

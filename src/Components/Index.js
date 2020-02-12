@@ -42,9 +42,10 @@ class Components extends Component {
                         <Folders 
                             components={this.props.elements} 
                             folders={this.props.folders} 
+                            selectedComponent={this.props.selectedComponent}
                             showNewFolder={this.state.showNewFolder}
                                 onFoldersUpdate={this.props.onFoldersUpdate}
-                                onSelectionChange = {this.props.onSelection}
+                                onSelection = {this.props.onSelection}
                             />
                     </ul>
                 </div>
