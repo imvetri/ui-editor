@@ -22,19 +22,12 @@ class NewFolder extends Component {
         })
     }
 
-    saveFolderName(){
-        this.props.onNewFolder({
-            name:this.state.folderName,
-            contents:[]
-        })
-    }
-
     saveFolderNameOnEnter(e){
         if(e.key==="Enter"){
             this.props.onNewFolder({
                 name:this.state.folderName,
                 contents:[],
-                type:"folder"
+                type:"Folder"
             })
         }
     }
@@ -51,7 +44,6 @@ class NewFolder extends Component {
                 placeholder="Enter folder name"
                 value = {this.state.folderName}
                 onChange={this.folderNameChanged.bind(this)}
-                onMouseLeave={this.saveFolderName.bind(this)}
                 onKeyPress={this.saveFolderNameOnEnter.bind(this)}/>
         </div>
         );

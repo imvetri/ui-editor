@@ -15,8 +15,9 @@ class Folder extends Component {
         this.state = {
             status: "fa fa-folder",
             folderClass: "newFolder",
-            folder: this.props.folder.name,
-            contents: this.props.folder.contents
+            name: this.props.folder.name,
+            contents: this.props.folder.contents,
+            type: this.props.folder.type
         };
 
         window.addEventListener("keydown", deleteFolder.bind(this))
@@ -38,21 +39,25 @@ class Folder extends Component {
 
         }
         if(this.props.folder.type=="Folder"){
-
+            return (
+                <div className={this.state.folderClass} 
+                    onMouseOver={selectFolder.bind(this)} 
+                    onMouseLeave={deselectFolder.bind(this)} 
+                    onDrop={dropHandler.bind(this)} 
+                    onDragOver={dragOverHandler.bind(this)} 
+                    onDragLeave={dragLeaveHandler.bind(this)} >
+                    <i className={this.state.status} onClick={toggleFolder.bind(this)}></i>
+                    <input type="text" className="folder" placeholder="Enter folder name" value={this.state.name}/>
+                    <ul>
+                    </ul>
+                </div>
+            );
         }
         if(this.props.folder.type=="noFolder"){
             return (<ul>
                 {components}
             </ul>)
         }
-        return (
-            <div className={this.state.folderClass} onMouseOver={selectFolder.bind(this)} onMouseLeave={deselectFolder.bind(this)} onDrop={dropHandler.bind(this)} onDragOver={dragOverHandler.bind(this)} onDragLeave={dragLeaveHandler.bind(this)} >
-                <i className={this.state.status} onClick={toggleFolder.bind(this)}></i>
-                <input type="text" className="folder" placeholder="Enter folder name" value={this.state.folder}/>
-                <ul>
-                </ul>
-            </div>
-        );
     }
 }
 

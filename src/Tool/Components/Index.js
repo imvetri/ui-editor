@@ -7,6 +7,7 @@ import "./Style.css";
 // Components.
 
 import Folders from "./Folders";
+import NewFolder from "./NewFolder"
 
 // Events.
 
@@ -14,7 +15,7 @@ class Components extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            elements: this.props.elements,
+            components: this.props.components,
             showNewFolder: false,
             folders: this.props.folders
         };
@@ -23,6 +24,15 @@ class Components extends Component {
     addFolder(){
         this.setState({
             showNewFolder: true
+        })
+    }
+
+    newFolder(folder){
+        let folders = Array.from(this.state.folders)
+        folders.unshift(folder);
+        this.setState({
+            folders,
+            showNewFolder: false
         })
     }
 
@@ -39,9 +49,10 @@ class Components extends Component {
                         <button onClick={this.addFolder.bind(this)}><i className="fa fa-folder"></i>Add Folder</button>
                     </div>
                     <ul>
+                        {this.state.showNewFolder? <NewFolder onNewFolder={this.newFolder.bind(this)}/>:null}
                         <Folders 
-                            components={this.props.elements} 
-                            folders={this.props.folders} 
+                            components={this.state.components} 
+                            folders={this.state.folders} 
                             selectedComponent={this.props.selectedComponent}
                             showNewFolder={this.state.showNewFolder}
                                 onFoldersUpdate={this.props.onFoldersUpdate}

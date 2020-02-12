@@ -4,7 +4,7 @@
         let componentName = ev.dataTransfer.getData("component-name");
         let contents = Array.from(this.state.contents);
         contents.push(componentName)
-        this.props.onFolderItemUpdate({
+        this.props.onFolderUpdate({
             name: this.state.folder,
             contents : contents,
             type:"folder"
