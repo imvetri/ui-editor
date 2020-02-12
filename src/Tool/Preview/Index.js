@@ -4,13 +4,13 @@ import React, { Component } from "react";
 
 import "./style.css";
 
-import DynamicComponent from "../DynamicComponent";
-import FocusBarComponent from "../FocusBarComponent";
+import DynamicComponent from "./DynamicComponent";
+import FocusBarComponent from "./FocusBarComponent";
 
 // Utilities.
 
-import { createComponent } from "../utilities/Component";
-import { readComponent } from "../utilities/localStorage";
+import { createComponent } from "../../utilities/Component";
+import { readComponent } from "../../utilities/localStorage";
 
 class Preview extends Component {
     constructor(props) {
