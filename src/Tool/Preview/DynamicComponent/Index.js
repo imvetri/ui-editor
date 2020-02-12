@@ -2,9 +2,9 @@
 
 import React, { Component } from "react";
 
-import {createStylesheet} from "../utilities/jsxTranspiler/create-stylesheet";
+import {createStylesheet} from "../../../utilities/jsxTranspiler/create-stylesheet";
 
-import { getNestedComponents, saveComponentsToWindow } from "../utilities/nestedComponentSetup";
+import { getNestedComponents, saveComponentsToWindow } from "../../../utilities/nestedComponentSetup";
 
 
 import "./style.css";

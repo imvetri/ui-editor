@@ -1,7 +1,7 @@
 // Libraries.
 
 import React, { Component } from "react";
-import {convertJSONtoHTMLAttributes} from "../utilities/convertJSONtoHTMLAttributes";
+import {convertJSONtoHTMLAttributes} from "../../utilities/convertJSONtoHTMLAttributes";
 class Tags extends Component {
     constructor(props) {
         super(props);
