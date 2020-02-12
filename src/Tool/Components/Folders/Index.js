@@ -15,12 +15,23 @@ class Folders extends Component {
     }
 
     checkFolder(data){
-        debugger
-        this.props.onFoldersUpdate(data);
+        let folders = Array.from(this.state.folders);
+        let folder = folders.find(folder=>folder.name===data.name);
+
+        if(!folder){
+            console.log(`Folder not found, adding ${JSON.stringify(data)}to list of folders ${JSON.stringify(folders)}`);
+            folders.push(data);
+        } else {
+            console.log(`Folder found, updating the folder content from ${folder.contents} to ${data.content}`)
+            folder.contents = data.contents;
+        }
+        
+
+        this.props.onFoldersUpdate(folders);
     }
 
     render() {
-        return this.props.folders.map((folder, index)=> <Folder
+        return this.props.folders.map((folder)=> <Folder
             key={Math.ceil(Math.random() * 1000)} 
             folder={folder} 
             components={components} 

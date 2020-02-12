@@ -5,7 +5,7 @@
         let contents = Array.from(this.state.contents);
         contents.push(componentName)
         this.props.onFolderUpdate({
-            name: this.state.folder,
+            name: this.state.name,
             contents : contents,
             type:"folder"
         })

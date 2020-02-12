@@ -34,6 +34,7 @@ class Components extends Component {
             folders,
             showNewFolder: false
         })
+        this.props.onFoldersUpdate(folders)
     }
 
     render() {

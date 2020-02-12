@@ -35,10 +35,7 @@ class Folder extends Component {
                 onDelete = {onDelete.bind(this)}
             />
         );
-        if(this.props.folder.type=="NewFolder"){
-
-        }
-        if(this.props.folder.type=="Folder"){
+        if(this.props.folder.type=="folder"){
             return (
                 <div className={this.state.folderClass} 
                     onMouseOver={selectFolder.bind(this)} 
