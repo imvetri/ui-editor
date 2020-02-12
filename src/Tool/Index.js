@@ -8,28 +8,27 @@ import "../Index/index.css";
 // Components.
 
 import Assets from "../Assets";
-import Components from "../Elements";
+import Components from "../Components";
 import DraggableComponent from "../DraggableComponent";
 import Editor from "../Editor";
 import Events from "../Events";
 import History from "../History";
 import Preview from "../Preview";
 import StyleExplorer from "../StyleExplorer";
-import TagExplorer from "../TagExplorer";
 
 // Reducers.
 import { updateEvent, updateConfig, saveElement, updateSelectedComponent } from "./Reducer";
 
 // Utils
-import { getNodeTree } from "../utilities/get-node-tree.js";
 import {readData, writeData} from "../utilities/localStorage";
 
 class Tool extends Component {
     constructor(props) {
         super(props);
+        let elements = readData("ui-editor") || [];
+        let elementNames = elements.map(element=>element.name);
         this.state = {
-            elements: readData("ui-editor") || [],
-            components: [],
+            elements: elements,
             selectedTag : "",
             element: {
                 name: "",
@@ -39,7 +38,11 @@ class Tool extends Component {
                 events: []
             },
             selectedComponent: "",
-            folders: readData("folders") || []
+            folders: readData("folders") || [{
+                type: "noFolder",
+                contents: elementNames,
+                name: ""
+            }]
         }
         this.updateConfig = updateConfig.bind(this);
         this.updateEvent = updateEvent.bind(this);
@@ -68,23 +71,23 @@ class Tool extends Component {
 
     render() {
         const selectedElement = this.state.selectedComponent || this.state.element;
-        
         try {
             return (
                 <div>
                     <DraggableComponent>
                         <Components
-                            onSelection={this.updateSelectedComponent}
-                            onFoldersUpdate={this.updateFolders.bind(this)}
                             elements={this.state.elements}
-                            selectedComponent={this.state.selectedComponent}
                             folders={this.state.folders}
+                            selectedComponent={this.state.selectedComponent}
                             title="Components"
+
+                                onSelection={this.updateSelectedComponent}
+                                onFoldersUpdate={this.updateFolders.bind(this)}
                         />
                     </DraggableComponent>
 
                     <DraggableComponent>
-                        <Assets 
+                        <Assets                                 
                             title="Assets"
                         />
                     </DraggableComponent>

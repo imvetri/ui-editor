@@ -4,7 +4,7 @@ import {selectionChanged, handleDrag} from "./Events";
 
 import  "./Style.css";
 
-class Element extends Component {
+class Componentt extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -49,4 +49,4 @@ class Element extends Component {
     }
 }
 
-export default Element;
+export default Componentt;
