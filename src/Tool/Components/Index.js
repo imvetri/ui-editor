@@ -6,7 +6,7 @@ import "./Style.css";
 
 // Components.
 
-import Folders from "../Folders";
+import Folders from "./Folders";
 
 // Events.
 

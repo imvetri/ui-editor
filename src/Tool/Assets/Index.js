@@ -7,7 +7,7 @@ import "./Style.css";
 // Components.
 
 import Asset from "./Asset";
-import {indexedDB} from "../utilities/indexedDB/indexeDB"
+import {indexedDB} from "../../utilities/indexedDB/indexeDB"
 
 
 class Assets extends Component {
