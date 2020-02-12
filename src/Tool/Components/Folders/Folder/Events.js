@@ -32,8 +32,8 @@
     }
 
 
-    import { getNestedComponents } from "../utilities/nestedComponentSetup";
-    import { getComponentString } from "../utilities/convert-to-react-component";
+    import { getNestedComponents } from "../../../../utilities/nestedComponentSetup";
+    import { getComponentString } from "../../../../utilities/convert-to-react-component";
     
     
     export function onExport() {
@@ -49,7 +49,7 @@
         }).map(removeParanthesis).join(""));
     }
 
-    import {writeData} from "../utilities/localStorage";
+    import {writeData} from "../../../../utilities/localStorage";
 
 
 

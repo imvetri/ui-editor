@@ -4,7 +4,7 @@ import React, { Component } from "react";
 
 import "./style.css";
 
-import { deleteComponent, moveComponentUp, moveComponentDown } from "../utilities/Component";
+import { deleteComponent, moveComponentUp, moveComponentDown } from "../../../utilities/Component";
 
 class FocusBarComponent extends Component {
     constructor(props) {

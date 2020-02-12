@@ -7,14 +7,14 @@ import "../Index/index.css";
 
 // Components.
 
-import Assets from "../Assets";
-import Components from "../Components";
-import DraggableComponent from "../DraggableComponent";
-import Editor from "../Editor";
-import Events from "../Events";
-import History from "../History";
-import Preview from "../Preview";
-import StyleExplorer from "../StyleExplorer";
+import Assets from "./Assets";
+import Components from "./Components";
+import DraggableComponent from "./DraggableComponent";
+import Editor from "./Editor";
+import Events from "./Events";
+import History from "./History";
+import Preview from "./Preview";
+import StyleExplorer from "./StyleExplorer";
 
 // Reducers.
 import { updateEvent, updateConfig, saveElement, updateSelectedComponent } from "./Reducer";

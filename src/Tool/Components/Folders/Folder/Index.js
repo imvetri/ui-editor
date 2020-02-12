@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 // Styles.
 
 import "./Style.css";
-import Componentt from "../Componentt";
+import Componentt from "./Componentt/Index";
 import {onExport, onDelete} from "./Events"
 
 import {deleteFolder, toggleFolder, selectFolder, deselectFolder} from "./Reducer";

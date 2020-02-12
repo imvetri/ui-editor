@@ -7,9 +7,9 @@ import React, { Component } from "react";
 
 // Components. 
 
-import Configurator from "../Configurator";
-import Nodes from "../Nodes";
-import Event from "../Event";
+import Configurator from "./Configurator";
+import Nodes from "../../Nodes";
+import Event from "./Event";
 import getMessages from "./Messages";
 
 // Styles.
@@ -23,8 +23,8 @@ import { updateEvent, selectedTagChanged, deleteEvent, updateConfiguration } fro
 
 // Utils.
 
-import { getNodeTree } from "../utilities/get-node-tree.js";
-import { readData } from "../utilities/localStorage";
+import { getNodeTree } from "../../utilities/get-node-tree.js";
+import { readData } from "../../utilities/localStorage";
 
 class Events extends Component {
     constructor(props) {
