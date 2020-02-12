@@ -14,13 +14,19 @@ class Folders extends Component {
         };
     }
 
+    checkFolder(data){
+        debugger
+        this.props.onFoldersUpdate(data);
+    }
+
     render() {
-        return this.props.folders.map(folder=> <Folder
+        return this.props.folders.map((folder, index)=> <Folder
+            key={Math.ceil(Math.random() * 1000)} 
             folder={folder} 
             components={components} 
             selectedComponent = {this.props.selectedComponent}
             onSelection = {this.props.onSelection}
-            onFolderUpdate={this.props.onFoldersUpdate} />)
+            onFolderUpdate={this.checkFolder.bind(this)} />);
     }
 }
 
