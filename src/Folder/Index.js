@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 // Styles.
 
 import "./Style.css";
+import Componentt from "../Componentt";
+import {onExport, onDelete} from "./Events"
 
 import {deleteFolder, toggleFolder, selectFolder, deselectFolder} from "./Reducer";
 import {dropHandler, dragOverHandler, dragLeaveHandler} from "./Events";
@@ -22,14 +24,26 @@ class Folder extends Component {
 
     render() {
 
-        if(this.state.type=="NewFolder"){
+        const components = this.props.components.map((element, index) => 
+        <Componentt 
+            key = {index} 
+            element = {element}
+            selectedComponent = {this.props.selectedComponent}
+                onSelectionChange = {this.props.onSelection}
+                onExport = {onExport.bind(this)}
+                onDelete = {onDelete.bind(this)}
+            />
+        );
+        if(this.props.folder.type=="NewFolder"){
 
         }
-        if(this.state.type=="Folder"){
+        if(this.props.folder.type=="Folder"){
 
         }
-        if(this.state.type=="NoFolder"){
-
+        if(this.props.folder.type=="noFolder"){
+            return (<ul>
+                {components}
+            </ul>)
         }
         return (
             <div className={this.state.folderClass} onMouseOver={selectFolder.bind(this)} onMouseLeave={deselectFolder.bind(this)} onDrop={dropHandler.bind(this)} onDragOver={dragOverHandler.bind(this)} onDragLeave={dragLeaveHandler.bind(this)} >

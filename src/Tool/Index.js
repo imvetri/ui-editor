@@ -37,7 +37,7 @@ class Tool extends Component {
                 state: "{ }",
                 events: []
             },
-            selectedComponent: "",
+            selectedComponent: {},
             folders: readData("folders") || [{
                 type: "noFolder",
                 contents: elementNames,
@@ -70,6 +70,7 @@ class Tool extends Component {
     }
 
     render() {
+        
         const selectedElement = this.state.selectedComponent || this.state.element;
         try {
             return (
