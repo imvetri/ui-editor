@@ -25,22 +25,22 @@ import {readData, writeData} from "../utilities/localStorage";
 class Tool extends Component {
     constructor(props) {
         super(props);
-        let elements = readData("ui-editor") || [];
-        let elementNames = elements.map(element=>element.name);
+        let components = readData("ui-editor") || [];
+        let componentNames = components.map(component=>component.name);
         this.state = {
-            elements: elements,
+            components: components,
             selectedTag : "",
-            element: {
+            component: {
                 name: "",
                 markup: "",
                 style: "",
                 state: "{ }",
                 events: []
             },
-            selectedComponent: {},
+            selectedComponent: "",
             folders: readData("folders") || [{
                 type: "noFolder",
-                contents: elementNames,
+                contents: componentNames,
                 name: ""
             }]
         }
@@ -71,13 +71,13 @@ class Tool extends Component {
 
     render() {
         
-        const selectedElement = this.state.selectedComponent || this.state.element;
+        const selectedComponent = this.state.selectedComponent || this.state.component;
         try {
             return (
                 <div>
                     <DraggableComponent>
                         <Components
-                            elements={this.state.elements}
+                            components={this.state.components}
                             folders={this.state.folders}
                             selectedComponent={this.state.selectedComponent}
                             title="Components"
@@ -97,9 +97,9 @@ class Tool extends Component {
     
                         <Events
                             key={Math.ceil(Math.random() * 1000)}
-                            element={selectedElement}
+                            component={selectedComponent}
                             selectedTag={this.state.selectedTag}
-                            elements={this.state.elements}
+                            components={this.state.components}
                             onEventsUpdate={this.updateEvent}
                             onConfigUpdate={this.updateConfig}
                             title="Events"
@@ -110,11 +110,11 @@ class Tool extends Component {
                     <DraggableComponent>
                         <Editor
                             key={Math.ceil(Math.random() * 1000)}
-                            element={selectedElement}
-                            name={selectedElement.name}
-                            markup={selectedElement.markup}
-                            style={selectedElement.style}
-                            state={selectedElement.state}
+                            element={selectedComponent}
+                            name={selectedComponent.name}
+                            markup={selectedComponent.markup}
+                            style={selectedComponent.style}
+                            state={selectedComponent.state}
                             onSave={this.saveElement}
                             title="Editor"
                         />
@@ -123,7 +123,7 @@ class Tool extends Component {
                     <DraggableComponent>
                         <Preview 
                             key={Math.ceil(Math.random() * 1000)}
-                            component={selectedElement}
+                            component={selectedComponent}
                             title="Preview"
                         />
                     </DraggableComponent>
@@ -131,7 +131,7 @@ class Tool extends Component {
                     <DraggableComponent>
                         <StyleExplorer 
                             key={Math.ceil(Math.random() * 1000)} 
-                            component={selectedElement}
+                            component={selectedComponent}
                             onEdit={this.updateStyles.bind(this)}
                             title="StyleExplorer"
                         />

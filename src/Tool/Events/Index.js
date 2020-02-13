@@ -34,10 +34,10 @@ class Events extends Component {
     }
 
     render() {
-        const element = this.props.element;
+        const component = this.props.component;
 
         // Report if no component is created.
-        if (this.state.elements.length == 0) {
+        if (this.state.components.length == 0) {
             return (
                 <div className="container events-tab">
                     <div className="title">Settings</div>
@@ -47,7 +47,7 @@ class Events extends Component {
         }
 
         // Report if no component is selected.
-        if (element.name === undefined && this.state.elements.length != 0) {
+        if (component.name === undefined && this.state.components.length != 0) {
             return (
                 <div className="container events-tab">
                     <div className="title">Settings</div>
@@ -56,7 +56,7 @@ class Events extends Component {
             )
         }
 
-        let nodeTree = getNodeTree(element, element.markup, element.style, JSON.parse(element.state), element.events);
+        let nodeTree = getNodeTree(component, component.markup, component.style, JSON.parse(component.state), component.events);
 
         // Report error.
         if (nodeTree.error !== undefined) {
@@ -64,7 +64,7 @@ class Events extends Component {
         }
 
         // Report error if component is not 
-        if (nodeTree.result === undefined && this.state.elements.length != 0) {
+        if (nodeTree.result === undefined && this.state.components.length != 0) {
             return (
                 <div className="container events-tab">
                     <div className="title">Settings</div>
@@ -89,7 +89,7 @@ class Events extends Component {
             eventNames = childComponent.events.filter(event => event.publishable === true).map(publishableEvent => publishableEvent.publishName);
             
             // Create event view for list of all events
-            let events = element.events.filter(event=>eventNames.find(eventName =>eventName  === event.name && event.id===childComponent.name))
+            let events = component.events.filter(event=>eventNames.find(eventName =>eventName  === event.name && event.id===childComponent.name))
             events = events.map((event, index) => <Event 
                                                         key={Math.ceil(Math.random() * 1000)} 
                                                         index={index} event={event} 
@@ -105,10 +105,10 @@ class Events extends Component {
                                 key={Math.ceil(Math.random() * 1000)} 
                                 onChange={updateConfiguration.bind(this)} 
                                 childName={childComponentName} 
-                                parent={element} />;
+                                parent={component} />;
         }
         else {
-            const events = element.events
+            const events = component.events
                 .map((event, index) => <Event 
                                             key={Math.ceil(Math.random() * 1000)} 
                                             index={index} 
@@ -148,7 +148,7 @@ class Events extends Component {
                                     New
                                     <div>
                                         <Event 
-                                            key={element.events.length} 
+                                            key={component.events.length} 
                                             eventNames={eventNames} 
                                             selectedTagID={selectedTag} 
                                             onSave={updateEvent.bind(this)} />

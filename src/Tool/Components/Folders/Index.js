@@ -36,8 +36,9 @@ class Folders extends Component {
             folder={folder} 
             components={components} 
             selectedComponent = {this.props.selectedComponent}
-            onSelection = {this.props.onSelection}
-            onFolderUpdate={this.checkFolder.bind(this)} />);
+                onSelection = {this.props.onSelection}
+                onFolderUpdate={this.checkFolder.bind(this)}
+                onDelete={this.props.onDelete} />);
     }
 }
 
