@@ -22,7 +22,7 @@ class Folders extends Component {
             console.log(`Folder not found, adding ${JSON.stringify(data)}to list of folders ${JSON.stringify(folders)}`);
             folders.push(data);
         } else {
-            console.log(`Folder found, updating the folder content from ${folder.contents} to ${data.content}`)
+            console.log(`Folder found, updating the folder content from ${folder.contents} to ${data.contents}`)
             folder.contents = data.contents;
         }
         
