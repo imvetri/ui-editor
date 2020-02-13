@@ -30,12 +30,15 @@
 
     import { getNestedComponents } from "../../../../utilities/nestedComponentSetup";
     import { getComponentString } from "../../../../utilities/convert-to-react-component";
+    import { readData } from "../../../../utilities/localStorage";
+
     
-    
-    export function onExport() {
-        let nestedComponents = getNestedComponents(this.state.selectedComponent);
+    export function onExport(selectedComponent) {
+        let nestedComponents = getNestedComponents(selectedComponent || this.state.selectedComponent);
+        let components = readData("ui-editor");
+
         let uniqueComponents = [...new Set(nestedComponents.map(com=>com.name))].map(name=>{
-            return this.state.elements.find(element=>element.name===name)
+            return components.find(element=>element.name===name)
         })
         const removeParanthesis = (component)=>{
            return component.replace("(","").replace("})","}")
