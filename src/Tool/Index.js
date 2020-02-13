@@ -115,8 +115,8 @@ class Tool extends Component {
                             markup={selectedComponent.markup}
                             style={selectedComponent.style}
                             state={selectedComponent.state}
-                            onSave={this.saveElement}
                             title="Editor"
+                                onSave={this.saveElement}
                         />
                     </DraggableComponent>
     

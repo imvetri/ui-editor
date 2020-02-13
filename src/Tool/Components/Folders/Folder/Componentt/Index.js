@@ -12,10 +12,6 @@ class Componentt extends Component {
         };
     }
 
-    generateVariant(){
-        this.props.onGenerateVariant(this.props.selectedComponent)
-    }
-
     restoreClass(event){
         event.target.classList.remove("hideAdditionals");
     }
@@ -33,9 +29,6 @@ class Componentt extends Component {
                         {this.props.element.name}
                     </span>
                     <span>
-                        <button 
-                            index = {this.props.index}
-                            onClick={this.generateVariant.bind(this)}><i className="fas fa-copy"></i>Clone</button>
                         <button 
                             index = {this.props.index}
                             onClick={this.props.onExport}><i className="fas fa-file-export"></i>Export</button>

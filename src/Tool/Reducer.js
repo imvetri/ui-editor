@@ -55,7 +55,6 @@ export function updateConfig(config){
 
 
 export function saveElement (element) {
-    
     let components = Array.from(this.state.components);
     
     // Check if element exist.
@@ -85,8 +84,8 @@ export function saveElement (element) {
             config:"{}"
         };
 
-        selectedIndex = components.length-1;
         components.push(newElement);
+        selectedIndex = components.length-1;
     }
 
     this.setState({
