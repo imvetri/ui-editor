@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 
 import "./Style.css";
 import Componentt from "../../Componentt";
-import {onExport, onDelete} from "./Events"
+import {onExport} from "./Events"
 
 import {deleteFolder, toggleFolder, selectFolder, deselectFolder} from "./Reducer";
 import {dropHandler, dragOverHandler, dragLeaveHandler} from "./Events";
@@ -35,7 +35,7 @@ class Folder extends Component {
                 element = {component}
                 selectedComponent = {this.props.selectedComponent}
                     onSelectionChange = {this.props.onSelection}
-                    onExport = {onExport.bind(this)}
+                    onExport = {onExport.bind(this, this.props.selectedComponent)}
                     onDelete = {this.props.onDelete}
             />
         });
