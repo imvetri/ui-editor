@@ -56,7 +56,7 @@ export function updateConfig(config){
 
 export function saveElement (element) {
     
-    let components = Array.from(this.state.elements);
+    let components = Array.from(this.state.components);
     
     // Check if element exist.
     let elementExist = components.find(component=>component.name===element.name);
@@ -107,7 +107,7 @@ export function saveElement (element) {
 export function updateSelectedComponent (e) {
     let componentName = e.currentTarget.innerText.split("\n")[0];
     // Find the element from state that matches the currently selected element.
-    let selectedComponent = this.state.elements.find(component=>component.name===componentName);
+    let selectedComponent = this.state.components.find(component=>component.name===componentName);
 
     window.selectedcomponentname = selectedComponent.name;
     // Update the state with selectedElement.

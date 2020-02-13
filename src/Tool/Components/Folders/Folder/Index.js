@@ -32,7 +32,7 @@ class Folder extends Component {
             selectedComponent = {this.props.selectedComponent}
                 onSelectionChange = {this.props.onSelection}
                 onExport = {onExport.bind(this)}
-                onDelete = {onDelete.bind(this)}
+                onDelete = {this.props.onDelete}
             />
         );
         if(this.props.folder.type=="folder"){
