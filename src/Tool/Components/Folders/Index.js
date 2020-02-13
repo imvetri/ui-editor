@@ -17,7 +17,8 @@ class Folders extends Component {
     checkFolder(data){
         let folders = Array.from(this.state.folders);
         let folder = folders.find(folder=>folder.name===data.name);
-
+        debugger;
+        console.log(folders)
         if(!folder){
             console.log(`Folder not found, adding ${JSON.stringify(data)}to list of folders ${JSON.stringify(folders)}`);
             folders.push(data);
@@ -31,17 +32,19 @@ class Folders extends Component {
                 if(currentFolder.name !== data.name){
                     data.contents.forEach(content=>{
                         let index = currentFolder.contents.findIndex(item=>item===content)
-                        currentFolder.contents = currentFolder.contents.splice(index,1);
+                        index!==-1? currentFolder.contents.splice(index,1): null;
                     })
                 }
             })
         }
 
+        console.log(folders)
+
         this.props.onFoldersUpdate(folders);
     }
 
     render() {
-        return this.props.folders.map((folder)=> <Folder
+        return this.state.folders.map((folder)=> <Folder
             key={Math.ceil(Math.random() * 1000)} 
             folder={folder} 
             components={this.props.components} 
