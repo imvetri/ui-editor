@@ -9,7 +9,7 @@
             contents : contents,
             type:"folder"
         })
-        console.log("Drop");
+        console.log("Drop from folder");
     }
 
     export function dragOverHandler(ev) {

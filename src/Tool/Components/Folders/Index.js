@@ -24,8 +24,18 @@ class Folders extends Component {
         } else {
             console.log(`Folder found, updating the folder content from ${folder.contents} to ${data.contents}`)
             folder.contents = data.contents;
+
+            // Makes sure that contents are not duplicated in other folders.
+            folders.forEach(currentFolder=>{
+
+                if(currentFolder.name !== data.name){
+                    data.contents.forEach(content=>{
+                        let index = currentFolder.contents.findIndex(item=>item===content)
+                        currentFolder.contents = currentFolder.contents.splice(index,1);
+                    })
+                }
+            })
         }
-        
 
         this.props.onFoldersUpdate(folders);
     }
@@ -34,7 +44,7 @@ class Folders extends Component {
         return this.props.folders.map((folder)=> <Folder
             key={Math.ceil(Math.random() * 1000)} 
             folder={folder} 
-            components={components} 
+            components={this.props.components} 
             selectedComponent = {this.props.selectedComponent}
                 onSelection = {this.props.onSelection}
                 onFolderUpdate={this.checkFolder.bind(this)}
