@@ -42,7 +42,8 @@ class Tool extends Component {
                 type: "noFolder",
                 contents: componentNames,
                 name: ""
-            }]
+            }],
+            showEditor: false
         }
         this.updateConfig = updateConfig.bind(this);
         this.updateEvent = updateEvent.bind(this);
@@ -69,6 +70,11 @@ class Tool extends Component {
         writeData("folders", folders)
     }
 
+    openEditor(){
+        this.setState({
+            showEditor: true
+        })
+    }
     render() {
         const selectedComponent = this.state.selectedComponent || this.state.component;
         try {
@@ -82,6 +88,7 @@ class Tool extends Component {
                             selectedComponent={this.state.selectedComponent}
                             title="Components"
 
+                                onOpenEditor={this.openEditor.bind(this)}
                                 onSelection={this.updateSelectedComponent}
                                 onFoldersUpdate={this.updateFolders.bind(this)}
                         />
@@ -107,18 +114,21 @@ class Tool extends Component {
     
                     </DraggableComponent>
     
-                    <DraggableComponent>
-                        <Editor
-                            key={Math.ceil(Math.random() * 1000)}
-                            element={selectedComponent}
-                            name={selectedComponent.name}
-                            markup={selectedComponent.markup}
-                            style={selectedComponent.style}
-                            state={selectedComponent.state}
-                            title="Editor"
-                                onSave={this.saveElement}
-                        />
-                    </DraggableComponent>
+                    {this.state.showEditor? 
+                        <DraggableComponent>
+                            <Editor
+                                key={Math.ceil(Math.random() * 1000)}
+                                element={selectedComponent}
+                                name={selectedComponent.name}
+                                markup={selectedComponent.markup}
+                                style={selectedComponent.style}
+                                state={selectedComponent.state}
+                                title="Editor"
+                                    onSave={this.saveElement}
+                            />
+                        </DraggableComponent>
+                    : 
+                    null}
     
                     <DraggableComponent>
                         <Preview 
