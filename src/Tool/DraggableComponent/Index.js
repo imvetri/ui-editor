@@ -4,17 +4,13 @@ import React, { Component } from "react";
 
 import "./style.css";
 
+import config from "./config";
+
 class DraggableComponent extends Component {
     constructor(props) {
         super(props);
-        this.state = JSON.parse(localStorage.getItem(`ui-editor-settings-draggable-component-${this.props.children.props.title}`)) || {
-            style:  {
-                position: "fixed",
-                top: "30px",
-                left: "200px"
-            },
-            minimised: false
-        }
+        let panelName = `ui-editor-settings-draggable-component-${this.props.children.props.title}`;
+        this.state = JSON.parse(localStorage.getItem(panelName)) || config[panelName];
         this.state.draggable= "false"
     }
 
