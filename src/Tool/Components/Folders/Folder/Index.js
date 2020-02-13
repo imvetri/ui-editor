@@ -25,34 +25,40 @@ class Folder extends Component {
 
     render() {
 
-        const components = this.props.components.map((element, index) => 
-        <Componentt 
-            key = {index} 
-            element = {element}
-            selectedComponent = {this.props.selectedComponent}
-                onSelectionChange = {this.props.onSelection}
-                onExport = {onExport.bind(this)}
-                onDelete = {this.props.onDelete}
+        let folder = this.props.folder;
+        let contents = folder.contents;
+        let components = this.props.components;
+
+        const renderedComponents = contents.map((componentName)=>{
+            let component = components.find(component=>component.name.includes(componentName))
+            return <Componentt 
+                key = {Math.ceil(Math.random() * 1000)}
+                element = {component}
+                selectedComponent = {this.props.selectedComponent}
+                    onSelectionChange = {this.props.onSelection}
+                    onExport = {onExport.bind(this)}
+                    onDelete = {this.props.onDelete}
             />
-        );
-        if(this.props.folder.type=="folder"){
+        });
+        if(folder.type=="folder"){
             return (
                 <div className={this.state.folderClass} 
-                    onMouseOver={selectFolder.bind(this)} 
-                    onMouseLeave={deselectFolder.bind(this)} 
-                    onDrop={dropHandler.bind(this)} 
-                    onDragOver={dragOverHandler.bind(this)} 
-                    onDragLeave={dragLeaveHandler.bind(this)} >
+                            onMouseOver={selectFolder.bind(this)} 
+                            onMouseLeave={deselectFolder.bind(this)} 
+                            onDrop={dropHandler.bind(this)} 
+                            onDragOver={dragOverHandler.bind(this)} 
+                            onDragLeave={dragLeaveHandler.bind(this)} >
                     <i className={this.state.status} onClick={toggleFolder.bind(this)}></i>
-                    <input type="text" className="folder" placeholder="Enter folder name" value={this.state.name}/>
+                    <input type="text" className="folder" placeholder="Enter folder name" readOnly value={this.state.name}/>
                     <ul>
+                        {renderedComponents}
                     </ul>
                 </div>
             );
         }
-        if(this.props.folder.type=="noFolder"){
+        if(folder.type=="noFolder"){
             return (<ul>
-                {components}
+                {renderedComponents}
             </ul>)
         }
     }
