@@ -9,10 +9,6 @@
             contents : contents,
             type:"folder"
         })
-        this.setState({
-            folderClass: "newFolder",
-            contents: contents
-        })
         console.log("Drop");
     }
 
