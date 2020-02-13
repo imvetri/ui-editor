@@ -31,10 +31,6 @@ class Components extends Component {
     newFolder(folder){
         let folders = Array.from(this.state.folders)
         folders.unshift(folder);
-        this.setState({
-            folders,
-            showNewFolder: false
-        })
         this.props.onFoldersUpdate(folders)
     }
 
@@ -52,7 +48,8 @@ class Components extends Component {
                     </div>
                     <ul>
                         {this.state.showNewFolder? <NewFolder onNewFolder={this.newFolder.bind(this)}/>:null}
-                        <Folders 
+                        <Folders
+                            key = {Math.ceil(Math.random() * 1000)}
                             components={this.state.components} 
                             folders={this.state.folders} 
                             selectedComponent={this.props.selectedComponent}

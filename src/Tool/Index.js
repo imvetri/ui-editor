@@ -70,13 +70,13 @@ class Tool extends Component {
     }
 
     render() {
-        
         const selectedComponent = this.state.selectedComponent || this.state.component;
         try {
             return (
                 <div>
                     <DraggableComponent>
                         <Components
+                            key={Math.ceil(Math.random() * 1000)}
                             components={this.state.components}
                             folders={this.state.folders}
                             selectedComponent={this.state.selectedComponent}

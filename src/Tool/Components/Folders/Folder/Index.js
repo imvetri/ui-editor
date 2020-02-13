@@ -28,7 +28,6 @@ class Folder extends Component {
         let folder = this.props.folder;
         let contents = folder.contents;
         let components = this.props.components;
-
         const renderedComponents = contents.map((componentName)=>{
             let component = components.find(component=>component.name.includes(componentName))
             return <Componentt 
