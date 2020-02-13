@@ -96,7 +96,8 @@ export function saveElement (element) {
             style: element.style,
             state: element.state,
             events: element.events || []
-        }
+        },
+        showEditor: false
     });
 
     writeData("ui-editor", components)
