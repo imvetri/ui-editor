@@ -8,6 +8,7 @@ import Rule from "./Rule";
 
 import {getObjectFormat, convertToStyleString} from "../../../utilities/Style";
 import {readComponent, writeData, readData} from "../../../utilities/localStorage";
+
 // Styles.
 
 import "./Style.css";
@@ -70,3 +71,16 @@ class StyleExplorer extends Component {
 }
 
 export default StyleExplorer;
+
+/**
+ * Usage 
+ *     
+                    <DraggableComponent>
+                        <StyleExplorer 
+                            key={Math.ceil(Math.random() * 1000)} 
+                            component={selectedComponent}
+                            onEdit={this.updateStyles.bind(this)}
+                            title="StyleExplorer"
+                        />
+                    </DraggableComponent>
+ */
