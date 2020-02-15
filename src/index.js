@@ -16,7 +16,6 @@ import Editor from "./Tool/Editor";
 import Events from "./Tool/Events";
 import History from "./Tool/History";
 import Preview from "./Tool/Preview";
-import StyleExplorer from "./utilities/Components/StyleExplorer";
 
 // Reducers.
 import { updateEvent, updateConfig, saveElement, updateSelectedComponent } from "./Index/Reducer";
@@ -137,15 +136,6 @@ class Index extends Component {
                             key={Math.ceil(Math.random() * 1000)}
                             component={selectedComponent}
                             title="Preview"
-                        />
-                    </DraggableComponent>
-    
-                    <DraggableComponent>
-                        <StyleExplorer 
-                            key={Math.ceil(Math.random() * 1000)} 
-                            component={selectedComponent}
-                            onEdit={this.updateStyles.bind(this)}
-                            title="StyleExplorer"
                         />
                     </DraggableComponent>
     
