@@ -1,16 +1,19 @@
 ## UI editor
 
-Kick start your web development project by using a Component Library builder. 
+UI editor is a component and component builder. It helps to build components if you know to write jsx, css, events and reducers. It helps to generate the code in framework of your choice. The generated code is readable, debuggable, editable. The tool is scalable to any UI framework of your choice by writing a component template that can generate component code.  
 
 ## Demo - https://imvetri.github.io/ui-editor/
 
-## Why code generators are good
-1. Gets rid of code refactoring.
-2. Speeds up ui building process.
-3. Actual problem becomes simpler.
+## Why code generator is useful.
+
+1. The cost of writing and maintaining the code generator is less than the cost of writing and maintaining the repetition that it is replacing.
+2. The consistency gained by using a code generator will reduce errors to a degree that makes it worthwhile.
+3. The extra problem of debugging generated code will not make debugging inefficient enough to outweigh the benefits from 1 and 2.
+
+Reference https://stackoverflow.com/a/2535537/3526739
 
 ## Problems of web development
-1. Learning framework is not my cup of tea.
+1. Learning framework is mentally intensive.
 2. Learning framework is a waste of time.
 3. Frameworks change.
 4. There is too much competition. 
