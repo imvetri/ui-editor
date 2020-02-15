@@ -11,7 +11,7 @@ import "./Index/index.css";
 
 import Assets from "./Tool/Assets";
 import Components from "./Tool/Components";
-import DraggableComponent from "./Tool/DraggableComponent";
+import DraggableComponent from "./Utilities/Components/DraggableComponent";
 import Editor from "./Tool/Editor";
 import Events from "./Tool/Events";
 import History from "./Tool/History";
