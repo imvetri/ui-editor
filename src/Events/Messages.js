@@ -1,4 +1,4 @@
-import MessagesComponent from "../../utilities/Components/MessagesComponent";
+import MessagesComponent from "../utilities/Components/MessagesComponent";
 
 function getMessages (error) {
 

@@ -9,13 +9,13 @@ import "./Index/index.css";
 // Components.
 
 
-import Assets from "./Tool/Assets";
-import Components from "./Tool/Components";
+import Assets from "./Assets";
+import Components from "./Components";
 import DraggableComponent from "./Utilities/Components/DraggableComponent";
-import Editor from "./Tool/Editor";
-import Events from "./Tool/Events";
-import History from "./Tool/History";
-import Preview from "./Tool/Preview";
+import Editor from "./Editor";
+import Events from "./Events";
+import History from "./History";
+import Preview from "./Preview";
 
 // Reducers.
 import { updateEvent, updateConfig, saveElement, updateSelectedComponent } from "./Index/Reducer";

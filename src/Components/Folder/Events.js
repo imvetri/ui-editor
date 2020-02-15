@@ -28,9 +28,9 @@
     }
 
 
-    import { getNestedComponents } from "../../../utilities/nestedComponentSetup";
-    import { getComponentString } from "../../../utilities/convert-to-react-component";
-    import { readData } from "../../../utilities/localStorage";
+    import { getNestedComponents } from "../../utilities/nestedComponentSetup";
+    import { getComponentString } from "../../utilities/convert-to-react-component";
+    import { readData } from "../../utilities/localStorage";
 
     
     export function onExport(selectedComponent) {
