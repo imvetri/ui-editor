@@ -8,7 +8,7 @@ import React, { Component } from "react";
 // Components. 
 
 import Configurator from "./Configurator";
-import Nodes from "../../Nodes";
+import Nodes from "../../utilities/Components/Nodes";
 import Event from "./Event";
 import getMessages from "./Messages";
 

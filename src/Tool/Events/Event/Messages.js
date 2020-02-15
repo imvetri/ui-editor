@@ -1,4 +1,4 @@
-import MessagesComponent from "../../MessagesComponent";
+import MessagesComponent from "../../../utilities/Components/MessagesComponent";
 
 function getMessages () {
     let messages = [{
