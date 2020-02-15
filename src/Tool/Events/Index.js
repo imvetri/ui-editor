@@ -40,7 +40,7 @@ class Events extends Component {
         if (this.state.components.length == 0) {
             return (
                 <div className="container events-tab">
-                    <div className="title">Settings</div>
+                    <div className="title">Events</div>
                     <p>Looks like you do not have any Web component created. Type some "html" on the right "Editor" tab</p>
                 </div>
             );
@@ -50,7 +50,7 @@ class Events extends Component {
         if (component.name === undefined && this.state.components.length != 0) {
             return (
                 <div className="container events-tab">
-                    <div className="title">Settings</div>
+                    <div className="title">Events</div>
                     <p>Looks like you have not selected any component. Click on any of the component in the left pane.</p>
                 </div>
             )
@@ -67,7 +67,7 @@ class Events extends Component {
         if (nodeTree.result === undefined && this.state.components.length != 0) {
             return (
                 <div className="container events-tab">
-                    <div className="title">Settings</div>
+                    <div className="title">Events</div>
                 </div>
             );
         }
@@ -123,7 +123,7 @@ class Events extends Component {
         return (
             <div>
                 <div className="container events-tab">
-                    <div className="title">Settings</div>
+                    <div className="title">Events</div>
 
                     <div className="tags">
                         <Nodes node={nodeTree.result} onSelectedTagChanged={selectedTagChanged.bind(this)} />
@@ -137,7 +137,7 @@ class Events extends Component {
                         <ul>
                             <li>
                                 <div className="title">
-                                    Existing
+                                    Existing Events
                                     <div>
                                         {eventsOfSelectedTag}
                                     </div>
@@ -145,7 +145,7 @@ class Events extends Component {
                             </li>
                             <li>
                                 <div className="title">
-                                    New
+                                    New Event
                                     <div>
                                         <Event 
                                             key={component.events.length} 
