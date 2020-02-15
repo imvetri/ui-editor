@@ -6,8 +6,8 @@ import React, { Component } from "react";
 
 import Rule from "./Rule";
 
-import {getObjectFormat, convertToStyleString} from "../../utilities/Style";
-import {readComponent, writeData, readData} from "../../utilities/localStorage";
+import {getObjectFormat, convertToStyleString} from "../../../utilities/Style";
+import {readComponent, writeData, readData} from "../../../utilities/localStorage";
 // Styles.
 
 import "./Style.css";
