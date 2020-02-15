@@ -23,10 +23,14 @@ import { updateEvent, updateConfig, saveElement, updateSelectedComponent } from 
 // Utils
 import {readData, writeData} from "./utilities/localStorage";
 
+// Sample
+import sample from "./Components/Sample";
+
 class Index extends Component {
     constructor(props) {
         super(props);
-        let components = readData("ui-editor") || [];
+        let components = readData("ui-editor").length?  readData("ui-editor") : sample;
+        console.log(sample)
         let componentNames = components.map(component=>component.name);
         this.state = {
             components: components,

@@ -47,7 +47,7 @@ class Components extends Component {
                         Components
                     </div>
                     <div className="Controls">
-                        <button onClick={this.addComponent.bind(this)}><i className="fa fa-plus"></i>Add Component</button>
+                        <button onClick={this.addComponent.bind(this)}><i className="fa fa-edit"></i>Edit Component</button>
                         <button onClick={this.addFolder.bind(this)}><i className="fa fa-folder"></i>Add Folder</button>
                     </div>
                     <ul>
