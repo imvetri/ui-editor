@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import "./Style.css";
 import Componentt from "../../../../Components/Componentt"
 import NoFolder from "../NoFolder";
+import NewFolder from "../NewFolder";
 
 import {onExport} from "./Events"
 
@@ -25,6 +26,11 @@ class Folder extends Component {
         window.addEventListener("keydown", deleteFolder.bind(this))
     }
 
+
+    newFolder(folder){
+        this.props.onFolderUpdate(folder)
+    }
+
     render() {
 
         let folder = this.props.folder;
@@ -41,6 +47,9 @@ class Folder extends Component {
                     onDelete = {this.props.onDelete}
             />
         });
+        if(folder.type=="newFolder"){
+            return (<NewFolder onNewFolder={this.newFolder.bind(this)}/>)
+        }
         if(folder.type=="folder"){
             return (
                 <div className={this.state.folderClass} 
@@ -58,8 +67,7 @@ class Folder extends Component {
             );
         }
         if(folder.type=="noFolder"){
-            return (<NoFolder renderedComponents={renderedComponents}>
-            </NoFolder>)
+            return (<NoFolder renderedComponents={renderedComponents}></NoFolder>)
         }
     }
 }
