@@ -17,11 +17,17 @@ class Folders extends Component {
     checkFolder(data){
         let folders = Array.from(this.state.folders);
         let folder = folders.find(folder=>folder.name===data.name);
+        let emptyFolderIndex = folders.findIndex(folder=>folder.type==="newFolder");
+        // Delete the newFolder
+        folders.splice(emptyFolderIndex,1);
         console.log(folders)
+        // Check if it is newly created folder 
         if(!folder){
             console.log(`Folder not found, adding ${JSON.stringify(data)}to list of folders ${JSON.stringify(folders)}`);
             folders.push(data);
-        } else {
+        } 
+        // Update existing one
+        else {
             console.log(`Folder found, updating the folder content from ${folder.contents} to ${data.contents}`)
             folder.contents = data.contents;
 
