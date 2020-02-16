@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 // Styles.
 
 import "./Style.css";
-import Componentt from "../Componentt";
+import Componentt from "../../../../Components/Componentt"
 import NoFolder from "../NoFolder";
 
 import {onExport} from "./Events"
@@ -58,7 +58,6 @@ class Folder extends Component {
             );
         }
         if(folder.type=="noFolder"){
-            debugger;
             return (<NoFolder renderedComponents={renderedComponents}>
             </NoFolder>)
         }

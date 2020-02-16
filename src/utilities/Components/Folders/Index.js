@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 // Styles.
 
 import "./Style.css";
-import Folder from "../Folder";
+import Folder from "./Folder";
 
 class Folders extends Component {
     constructor(props) {
@@ -17,7 +17,6 @@ class Folders extends Component {
     checkFolder(data){
         let folders = Array.from(this.state.folders);
         let folder = folders.find(folder=>folder.name===data.name);
-        debugger;
         console.log(folders)
         if(!folder){
             console.log(`Folder not found, adding ${JSON.stringify(data)}to list of folders ${JSON.stringify(folders)}`);

@@ -8,7 +8,6 @@
         // Delete the item from thecontents.
         contents.slice(index, 1);
 
-        debugger;
         this.props.onFolderUpdate({
             name: this.state.name,
             contents : contents,
