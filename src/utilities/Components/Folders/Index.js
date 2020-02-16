@@ -43,7 +43,7 @@ class Folders extends Component {
     }
 
     render() {
-        return this.state.folders.map((folder)=> <Folder
+        return this.props.folders.map((folder)=> <Folder
             key={Math.ceil(Math.random() * 1000)} 
             folder={folder} 
             components={this.props.components} 
