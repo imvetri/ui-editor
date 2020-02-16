@@ -4,6 +4,8 @@ import React, { Component } from 'react';
 
 import "./Style.css";
 import Componentt from "../Componentt";
+import NoFolder from "../NoFolder";
+
 import {onExport} from "./Events"
 
 import {deleteFolder, toggleFolder, selectFolder, deselectFolder} from "./Reducer";
@@ -56,9 +58,9 @@ class Folder extends Component {
             );
         }
         if(folder.type=="noFolder"){
-            return (<ul>
-                {renderedComponents}
-            </ul>)
+            debugger;
+            return (<NoFolder renderedComponents={renderedComponents}>
+            </NoFolder>)
         }
     }
 }
