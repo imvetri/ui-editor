@@ -3,13 +3,11 @@ import React, { Component } from 'react';
 // Styles.
 
 import "./Style.css";
-import Componentt from "../Componentt";
 import NoFolder from "../NoFolder";
-
-import {onExport} from "./Events"
+import NewFolder from "../NewFolder";
 
 import {deleteFolder, toggleFolder, selectFolder, deselectFolder} from "./Reducer";
-import {dropHandler, dragOverHandler, dragLeaveHandler} from "./Events";
+import {dropHandler, dragOverHandler, dragLeaveHandler, onDragStart} from "./Events";
 
 class Folder extends Component {
     constructor(props) {
@@ -25,42 +23,40 @@ class Folder extends Component {
         window.addEventListener("keydown", deleteFolder.bind(this))
     }
 
+
+    newFolder(folder){
+        this.props.onFolderUpdate(folder)
+    }
+
     render() {
 
         let folder = this.props.folder;
-        let contents = folder.contents;
-        let components = this.props.components;
-        const renderedComponents = contents.map((componentName)=>{
-            let component = components.find(component=>component.name.includes(componentName))
-            return <Componentt 
-                key = {Math.ceil(Math.random() * 1000)}
-                element = {component}
-                selectedComponent = {this.props.selectedComponent}
-                    onSelectionChange = {this.props.onSelection}
-                    onExport = {onExport.bind(this, this.props.selectedComponent)}
-                    onDelete = {this.props.onDelete}
-            />
-        });
+        let contents = this.props.contents;
+        if(folder.type=="newFolder"){
+            return (<NewFolder onNewFolder={this.newFolder.bind(this)}/>)
+        }
         if(folder.type=="folder"){
             return (
-                <div className={this.state.folderClass} 
+                <div 
+                    className={this.state.folderClass}
+                    data-folder-name={folder.name}
+                    draggable="true"
                             onMouseOver={selectFolder.bind(this)} 
                             onMouseLeave={deselectFolder.bind(this)} 
                             onDrop={dropHandler.bind(this)} 
                             onDragOver={dragOverHandler.bind(this)} 
-                            onDragLeave={dragLeaveHandler.bind(this)} >
+                            onDragLeave={dragLeaveHandler.bind(this)} 
+                            onDragStart={onDragStart.bind(this)} >
                     <i className={this.state.status} onClick={toggleFolder.bind(this)}></i>
                     <input type="text" className="folder" placeholder="Enter folder name" readOnly value={this.state.name}/>
                     <ul>
-                        {renderedComponents}
+                        {contents}
                     </ul>
                 </div>
             );
         }
         if(folder.type=="noFolder"){
-            debugger;
-            return (<NoFolder renderedComponents={renderedComponents}>
-            </NoFolder>)
+            return (<NoFolder contents={contents}></NoFolder>)
         }
     }
 }
