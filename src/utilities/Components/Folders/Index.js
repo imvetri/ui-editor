@@ -5,6 +5,8 @@ import React, { Component } from 'react';
 import "./Style.css";
 import Folder from "./Folder";
 
+import {folderStructure} from "./processFolder";
+
 class Folders extends Component {
     constructor(props) {
         super(props);
@@ -49,10 +51,15 @@ class Folders extends Component {
     }
 
     render() {
+
+        let featureEnabled = true;
+        if(featureEnabled){
+            return folderStructure(this.props, this.checkFolder.bind(this) )
+        }
+
         return this.props.folders.map((folder)=> <Folder
             key={Math.ceil(Math.random() * 1000)} 
             folder={folder} 
-            components={this.props.components} 
             selectedComponent = {this.props.selectedComponent}
                 onSelection = {this.props.onSelection}
                 onFolderUpdate={this.checkFolder.bind(this)}
