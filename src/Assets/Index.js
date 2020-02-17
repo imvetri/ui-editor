@@ -10,7 +10,7 @@ import Asset from "./Asset";
 
 // Events.
 
-import {dropHandler, dragOverHandler, dragLeaveHandler} from "./Events";
+import {dropHandler, dragOverHandler, dragLeaveHandler} from "./Reducer";
 
 // Db utils.
 
