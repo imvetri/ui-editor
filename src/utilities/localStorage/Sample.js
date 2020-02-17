@@ -1,4 +1,4 @@
-module.exports = [
+let sample = [
     {
         "name": "ForgotPassword",
         "markup": "<div className=\"vsButton\"><button id=\"f123\">Forgot Password</button></div>",
@@ -293,3 +293,7 @@ module.exports = [
         "idMarkup": "<div className=\"facebook\" data-uuid=\"0\"><HelloComponent data-uuid=\"1\"><Modal data-uuid=\"2\"><ForgotPassword data-uuid=\"3\"></ForgotPassword></Modal></HelloComponent></div>"
     }
 ]
+
+module.exports = {
+    sample: sample
+}
