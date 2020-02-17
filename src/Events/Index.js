@@ -56,6 +56,7 @@ class Events extends Component {
             )
         }
 
+
         let nodeTree = getNodeTree(component, component.markup, component.style, JSON.parse(component.state), component.events);
 
         // Report error.

@@ -7,7 +7,6 @@ import "./Style.css";
 // Components.
 
 import Folders from "../Utilities/Components/Folders";
-import NewFolder from "../Utilities/Components/Folders/NewFolder";
 import {onDelete} from "./Events";
 
 // Events.
