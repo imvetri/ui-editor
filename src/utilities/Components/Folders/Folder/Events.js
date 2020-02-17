@@ -2,13 +2,28 @@
     export function dropHandler(ev) {
         ev.preventDefault();
         let componentName = ev.dataTransfer.getData("component-name");
+        let folderName = ev.dataTransfer.getData("folder-name");
         let contents = Array.from(this.state.contents);
-        contents.push(componentName)
+
+        // Check if the dropped item is a component
+        if(componentName){
+            contents.push(componentName)
+        }
+        // Check if it is a folder. Also check if we are not dropping on the original folder. may be remove it from the dom. NOPE. 
+        else if(folderName && folderName!==this.state.folderName){
+            debugger;
+            contents.push({
+                name: folderName,
+                contents:[],
+                type:"folder"
+            })
+        }
         this.props.onFolderUpdate({
             name: this.state.name,
             contents : contents,
             type:"folder"
         })
+
         console.log("Drop from folder");
     }
 
@@ -28,14 +43,23 @@
     }
 
 
-    import { getNestedComponents } from "../../utilities/nestedComponentSetup";
-    import { getComponentString } from "../../utilities/convert-to-react-component";
-    import { readData } from "../../utilities/localStorage";
+export function onDragStart(e){
+
+    let name = event.target.getAttribute("data-folder-name")
+    e.dataTransfer.setData("folder-name", name);
+}
+
+
+
+    import { getNestedComponents } from "../../../../utilities/nestedComponentSetup";
+    import { getComponentString } from "../../../../utilities/convert-to-react-component";
+    import { readData } from "../../../../utilities/localStorage";
 
     
-    export function onExport(selectedComponent) {
-        let nestedComponents = getNestedComponents(selectedComponent || this.state.selectedComponent);
+    export function onExport(componentName) {
         let components = readData("ui-editor");
+        let selectedComponent = components.find(component=>component.name.includes(componentName));
+        let nestedComponents = getNestedComponents(selectedComponent);
 
         let uniqueComponents = [...new Set(nestedComponents.map(com=>com.name))].map(name=>{
             return components.find(element=>element.name===name)

@@ -30,7 +30,6 @@ class Index extends Component {
     constructor(props) {
         super(props);
         let components = readData("ui-editor").length?  readData("ui-editor") : sample;
-        console.log(sample)
         let componentNames = components.map(component=>component.name);
         this.state = {
             components: components,

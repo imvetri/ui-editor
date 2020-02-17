@@ -17,10 +17,11 @@ class NoFolder extends Component {
 
     render() {
         return (<ul 
-            className="noFolder"
-            onDrop={nodropHandler.bind(this)} 
-            onDragOver={nodragOverHandler.bind(this)} >
-            {this.props.renderedComponents}
+                    className="noFolder"
+                    onDrop={nodropHandler.bind(this)} 
+                    onDragOver={nodragOverHandler.bind(this)} >
+
+            {this.props.contents}
         </ul>)
     }
 }

@@ -6,8 +6,8 @@ import "./Style.css";
 
 // Components.
 
-import Folders from "./Folders";
-import NewFolder from "./NewFolder";
+import Folders from "../Utilities/Components/Folders";
+import NewFolder from "../Utilities/Components/Folders/NewFolder";
 import {onDelete} from "./Events";
 
 // Events.
@@ -17,21 +17,18 @@ class Components extends Component {
         super(props);
         this.state = {
             components: this.props.components,
-            showNewFolder: false,
             folders: this.props.folders
         };
     }
 
     addFolder(){
-        this.setState({
-            showNewFolder: true
+        let folders = Array.from(this.state.folders);
+        folders.unshift({
+            type:"newFolder",
+            name:"",
+            contents:[]
         })
-    }
-
-    newFolder(folder){
-        let folders = Array.from(this.state.folders)
-        folders.unshift(folder);
-        this.props.onFoldersUpdate(folders)
+        this.setState({folders})
     }
 
     addComponent(){
@@ -51,13 +48,11 @@ class Components extends Component {
                         <button onClick={this.addFolder.bind(this)}><i className="fa fa-folder"></i>Add Folder</button>
                     </div>
                     <ul>
-                        {this.state.showNewFolder? <NewFolder onNewFolder={this.newFolder.bind(this)}/>:null}
                         <Folders
                             key = {Math.ceil(Math.random() * 1000)}
                             components={this.state.components} 
                             folders={this.state.folders} 
                             selectedComponent={this.props.selectedComponent}
-                            showNewFolder={this.state.showNewFolder}
                                 onFoldersUpdate={this.props.onFoldersUpdate}
                                 onSelection = {this.props.onSelection}
                                 onDelete={onDelete.bind(this)}
