@@ -5,7 +5,10 @@ const htmlWebpackPlugin = new HtmlWebPackPlugin({
 });
 
 module.exports = {
-    devtool: 'inline-source-map',
+    devtool: 'inline-source-map',  
+    optimization: {
+        minimize: false
+    },
     module: {
         rules: [
             {

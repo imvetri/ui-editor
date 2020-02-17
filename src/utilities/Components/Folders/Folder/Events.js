@@ -11,7 +11,6 @@
         }
         // Check if it is a folder. Also check if we are not dropping on the original folder. may be remove it from the dom. NOPE. 
         else if(folderName && folderName!==this.state.folderName){
-            debugger;
             contents.push({
                 name: folderName,
                 contents:[],

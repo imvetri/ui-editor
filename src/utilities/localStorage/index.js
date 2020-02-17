@@ -1,5 +1,5 @@
 import {getStartTags} from "../get-start-tags";
-
+import {sample} from "./Sample";
 function pushHistory(components){
     window.editorHistory = readData("ui-editor-history");
     editorHistory.push(components);
@@ -71,7 +71,7 @@ export function readData(key){
     // TODO: DO NOT CALL readDATA more than necessary. Save everything to window!
     if(key ==="ui-editor"){
         if(!window.components ){
-            window.components = JSON.parse(localStorage.getItem(key)) || [];
+            window.components = JSON.parse(localStorage.getItem(key)) || sample;
         }
             
         

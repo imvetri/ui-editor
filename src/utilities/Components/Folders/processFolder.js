@@ -1,12 +1,12 @@
 import Folder from "./Folder";
 import Componentt from "../../../Components/Componentt";
 
-let selectedComponent, onSelection, onFolderUpdate, onDelete;
+let selectedComponent, onSelection, onFolderUpdate, onDelete, components;
 
 function initialiseProps(props, checkFolder){
     selectedComponent = props.selectedComponent;
     onSelection = props.onSelection;
-
+    components = props.components;
     onFolderUpdate = checkFolder;
     onDelete = props.onDelete;
 }
@@ -29,9 +29,6 @@ function processContent (content, i){
     // Check if content is a component name.
     if(typeof content === "string" ){
 
-        if(components.find(component=>component.name===content)===undefined){
-            debugger;
-        }
         return <Componentt 
                     component={components.find(component=>component.name===content)}
                     selectedComponent={selectedComponent}
