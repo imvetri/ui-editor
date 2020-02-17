@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import {selectionChanged, handleDrag} from "./Events";
 
+import {onExport} from "../../Utilities/Components/Folders/Folder/Events";
+
 import  "./Style.css";
 
 class Componentt extends Component {
@@ -18,23 +20,24 @@ class Componentt extends Component {
 
     render() {
 
+        let props = this.props;
         // Remove this.props.index, instead use this element instance index. Removes duplicate code
         return (
-            <div className="background" draggable="true" id={this.props.element.name} data-name={this.props.element.name} onDragStart={handleDrag.bind(this)} onDragEnd={this.restoreClass}>
+            <div className="background" draggable="true" id={props.component.name} data-name={props.component.name} onDragStart={handleDrag.bind(this)} onDragEnd={this.restoreClass}>
                 <li 
-                    className = {this.props.element.name===this.props.selectedComponent.name ? "selected component": "component"}
+                    className = {props.component.name===props.selectedComponent.name ? "selected component": "component"}
                     onClick = {selectionChanged.bind(this)}
-                    index = {this.props.index}>
+                    index = {props.index}>
                     <span className="componentName">
-                        {this.props.element.name}
+                        {props.component.name}
                     </span>
                     <span>
                         <button 
-                            index = {this.props.index}
-                            onClick={this.props.onExport}><i className="fas fa-file-export"></i>Export</button>
+                            index = {props.index}
+                            onClick={onExport.bind(null,props.component.name)}><i className="fas fa-file-export"></i>Export</button>
                         <button 
-                            index = {this.props.index}
-                            onClick={this.props.onDelete}><i className="fa fa-trash"></i>Delete</button>
+                            index = {props.index}
+                            onClick={props.onDelete}><i className="fa fa-trash"></i>Delete</button>
                     </span>
                 </li>
             </ div>
