@@ -50,23 +50,23 @@ export function onDragStart(e){
 
 
 
-    import { getNestedComponents } from "../../../../utilities/nestedComponentSetup";
-    import { getComponentString } from "../../../../utilities/convert-to-react-component";
-    import { readData } from "../../../../utilities/localStorage";
+import { getNestedComponents } from "../../../../utilities/nestedComponentSetup";
+import { convertToReactcomponent } from "../../../../utilities/convert-to-react-component";
+import { readData } from "../../../../utilities/Storage";
 
-    
-    export function onExport(componentName) {
-        let components = readData("ui-editor");
-        let selectedComponent = components.find(component=>component.name.includes(componentName));
-        let nestedComponents = getNestedComponents(selectedComponent);
 
-        let uniqueComponents = [...new Set(nestedComponents.map(com=>com.name))].map(name=>{
-            return components.find(element=>element.name===name)
-        })
-        const removeParanthesis = (component)=>{
-           return component.replace("(","").replace("})","}")
-        }
-        console.log(uniqueComponents.map(function(component){
-            return getComponentString(component)
-        }).map(removeParanthesis).join(""));
+export function onExport(componentName) {
+    let components = readData("ui-editor");
+    let selectedComponent = components.find(component=>component.name.includes(componentName));
+    let nestedComponents = getNestedComponents(selectedComponent);
+
+    let uniqueComponents = [...new Set(nestedComponents.map(com=>com.name))].map(name=>{
+        return components.find(element=>element.name===name)
+    })
+    const removeParanthesis = (component)=>{
+        return component.replace("(","").replace("})","}")
     }
+    console.log(uniqueComponents.map(function(component){
+        return convertToReactcomponent(component)
+    }).map(removeParanthesis).join(""));
+}

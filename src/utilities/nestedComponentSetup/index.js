@@ -1,27 +1,52 @@
 // Dependencies.
 
 import {createComponent} from "../convert-to-react-component";
-import {createStylesheet} from "../jsxTranspiler/create-stylesheet";
-import {readData} from "../localStorage";
+import {readData} from "../Storage";
 
-export function checkNestedComponents( markup) {
+/**
+ * 
+ * Asset in style sheet syntax - $asset
+ */
+
+function createStylesheet(style, name) {
+
+    // Check if style has $assets
+    while(style.includes("$assets")){
+        // Replace it with asset blob url
+        let asset = style.split("['")[1].split(`]`)[0].split("");
+        asset.pop();
+        asset =  asset.join("");
+        style = style.replace(`$assets['${asset}']`, `url(${window.assets[asset]})`)
+    }
+    let toDelete = [...document.querySelectorAll("[data-component-name='ParentComponent']")];
+    toDelete.forEach(item=>{
+        item.remove()
+    })
+    var dynamicStyle = document.createElement('style');
+    dynamicStyle.setAttribute("data-component-name", name);
+    dynamicStyle.type = 'text/css';
+    dynamicStyle.innerHTML = style;
+    document.body.appendChild(dynamicStyle)
+}
+
+/** Takes a component and converts it as a react component */
+function saveToWindow( component ) {
+    createStylesheet(component.style, component.name)
+    window[component.name] = createComponent(component);
+}
+
+function checkNestedComponents( markup) {
 
     var components = readData("ui-editor");
 
     return components.filter(component=> markup.includes(component.name)).length >0;
 }
 
-/** Takes a component and converts it as a react component */
-function saveToWindow( component , mode) {
-    createStylesheet(component.style, component.name)
-    window[component.name] = createComponent(component, mode);
-}
-
 /** Takes components and saves them to window as react Object */
-export function saveComponentsToWindow( nestedComponents, mode){
+export function saveComponentsToWindow( nestedComponents){
     // Transpile them and make them global.
     nestedComponents.forEach(function(component){
-        saveToWindow(component, mode)
+        saveToWindow(component)
     });
 }
 
@@ -39,9 +64,4 @@ export function getNestedComponents (parent) {
         nestedComponents.push(...grandKids)
     }
     return nestedComponents.filter(component=>component && component.markup);
-}
-
-export function getChildComponents (markup){
-    let components= readData("ui-editor");
-    return components.filter(component=> markup.includes(`<${component.name}`));
 }

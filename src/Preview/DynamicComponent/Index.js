@@ -2,10 +2,7 @@
 
 import React, { Component } from "react";
 
-import {createStylesheet} from "../../utilities/jsxTranspiler/create-stylesheet";
-
 import { getNestedComponents, saveComponentsToWindow } from "../../utilities/nestedComponentSetup";
-
 
 import "./style.css";
 
@@ -25,7 +22,7 @@ class DynamicComponent extends Component {
         }
         let nestedComponents = getNestedComponents(this.state.component);
         if (nestedComponents.length > 0) {
-            saveComponentsToWindow(nestedComponents, this.props.mode);
+            saveComponentsToWindow(nestedComponents);
         }
 
         if(!window[this.state.component.name]){
@@ -33,7 +30,7 @@ class DynamicComponent extends Component {
         }
 
         return (
-            <div {...this.props.events}>
+            <div>
                 {React.createElement(window[this.state.component.name])}
             </div>
         );
