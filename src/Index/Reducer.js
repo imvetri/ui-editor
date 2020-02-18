@@ -3,7 +3,7 @@ import {writeData} from "../utilities/Storage";
 
 export function updateEvent (events) {
     // Create new state.
-    let newElements = Object.assign({}, this.state).elements;
+    let newElements = Object.assign({}, this.state).components;
     let selectedComponent = newElements.find(element=>element.name===this.state.selectedComponent.name)
 
     selectedComponent.events = events;
@@ -20,7 +20,7 @@ export function updateEvent (events) {
 
 export function updateConfig(config){
     
-    let newElements = Object.assign({}, this.state).elements;
+    let newElements = Object.assign({}, this.state).components;
     
     let parent = newElements.find(element=>element.name===config.parentName);
     let child = newElements.find(element=>element.name===config.childName);
@@ -34,9 +34,9 @@ export function updateConfig(config){
         parent.config = JSON.parse(parent.config);
     }
     parent.config[child.name] = config.config;
-    
+    debugger;
     if(parent.config[child.name].override) {    
-        parent.state[child.name] = JSON.parse(child.state);
+        parent.state[child.name] = [JSON.parse(child.state)];
     } 
     else {
         delete parent.state[child.name];

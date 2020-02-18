@@ -36,42 +36,12 @@ export function convertToReact (component){
         let childrenConfig = Object.keys(config);
         childrenConfig.forEach(childName=>{
 
-            // PRECAUTION : Edit markup only for showHideProp
-            if(config[childName].showHideProp && !config[childName].override){
-                let childMarkup = `<${childName}></${childName}>`;
-                let showHideChild = `{this.state.${config[childName].showHideProp} ? ${childMarkup}: null}`
-                if(markup.includes(childMarkup)){
-                    markup = markup.replace(childMarkup, showHideChild)
-                }
-            }
-
-            // PRECAUTION: Edit markup only for override
-            if(config[childName].override && !config[childName].showHideProp){
-                markup = markup.replace(childName, childName+` state={this.state.${childName}}`)
-            }
-
-            // PRECAUTION: Edit markup for both changes.
-            if(config[childName].showHideProp && config[childName].override){
-
-                //1. show or hide
-                let childMarkup = `<${childName}></${childName}>`;
-                let showHideChild = `this.state.${showHideChild} ? ${childMarkup}: null`
-                if(markup.includes(childMarkup)){
-                    markup = markup.replace(childMarkup, showHideChild)
-                }
-
-                //2. override state.
-                markup = markup.replace(childName, childName+` state={this.state.${childName}}`)
-
-            }
-
             // PRECAUTION: Edit markup for rendering list. Should not use other configuration while using this.
-            if(config[childName].renderListProp && !config[childName].override && !config[childName].showHideChild){
+            if(config[childName].override ){
                 let childMarkup = `<${childName}></${childName}>`;
 
                 let childMarkupWithProps = `<${childName} state={item} key={i}></${childName}>`;
-                let renderListMarkup = `{this.state.${config[childName].renderListProp}.map((item,i)=>${childMarkupWithProps})}`;
-
+                let renderListMarkup = `{this.state.${childName}.map((item,i)=>${childMarkupWithProps})}`;
                 markup =  markup.replace(childMarkup, renderListMarkup);   
             }
         })
