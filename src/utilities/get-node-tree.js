@@ -1,7 +1,7 @@
 import React from "react";
 
 import { saveComponentsToWindow, getNestedComponents } from "./nestedComponentSetup";
-import { readData, writeData } from "./Storage/localStorage";
+import { readData, writeData } from "./Storage";
 
 
 // Why? Because importing React as variable at line#2 will be alterted by babel. Keep it as a property, babel will ignore it.

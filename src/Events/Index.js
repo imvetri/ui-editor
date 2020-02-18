@@ -24,7 +24,7 @@ import { updateEvent, selectedTagChanged, deleteEvent, updateConfiguration } fro
 // Utils.
 
 import { getNodeTree } from "../utilities/get-node-tree.js";
-import { readData } from "../utilities/Storage/localStorage";
+import { readData } from "../utilities/Storage";
 
 class Events extends Component {
     constructor(props) {

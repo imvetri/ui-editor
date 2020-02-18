@@ -1,4 +1,4 @@
-import { writeComponent } from "../Storage/localStorage";
+import { writeComponent } from "../Storage";
 import { deleteSubComponent , moveSubComponentUp, moveSubComponentDown} from "./getComponentMarkup";
 
 export function createComponent(parent, tag, uuid){

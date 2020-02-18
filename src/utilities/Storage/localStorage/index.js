@@ -6,24 +6,6 @@ function pushHistory(components){
     localStorage.setItem("ui-editor-history",JSON.stringify(editorHistory) );
 }
 
-export function popHistory(){
-    
-    let editorHistory = readData("ui-editor-history");
-    if(!editorHistory){
-        return;
-    }
-
-    let lastItem = editorHistory.pop();
-    
-    if(!editorHistory){
-        return;
-    }
-
-    writeData("ui-editor-history", editorHistory, true);
-
-    writeData("ui-editor", lastItem, true);
-}
-
 // puts uuid to start tags of the component.
 function IdMarkup (component) {
     // 1.Get all start tags.
@@ -134,4 +116,22 @@ export function writeComponent(parent, idMarkupModified) {
         components[index] = parent;
         writeData("ui-editor", components);
     }
+}
+
+export function popHistory(){
+    
+    let editorHistory = readData("ui-editor-history");
+    if(!editorHistory){
+        return;
+    }
+
+    let lastItem = editorHistory.pop();
+    
+    if(!editorHistory){
+        return;
+    }
+
+    writeData("ui-editor-history", editorHistory, true);
+
+    writeData("ui-editor", lastItem, true);
 }
