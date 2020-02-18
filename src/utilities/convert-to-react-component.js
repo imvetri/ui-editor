@@ -1,16 +1,6 @@
-import { codeModifier } from "./codeModifier";
-
-function getComponentString(component){
-
-    if(!component.idMarkup[3]){
-        return;
-    }
-    return convertToReactcomponent(component);
-}
-
 function createComponent(component){
 
-    let componentString = getComponentString(component);
+    let componentString = convertToReactcomponent(component);
 
     // eval does not evaluate class if not exclosed in paranthesis.
     return eval(Babel.transform(componentString, { presets: ['react'], plugins: ["transform-es2015-classes"]  }).code)
@@ -27,7 +17,7 @@ function convertToReactcomponent (component){
     })
 
     let getComponentNameInMarkup= (component)=>{
-        return component[markup].replace(">",` data-name='${component.name}' {...this.props} draggable="true" onDragStart={window.eventCallbacks.handleDrag}>{this.props.children}`)
+        return component[markup].replace(">",` {...this.props}>{this.props.children}`)
     }
 
     let getComponentEventedMarkup = (markup, events)=>{
@@ -98,9 +88,13 @@ function convertToReactcomponent (component){
     }
 
     let getComponentReducers = (events) => {
+
         return events.map(event=>{
             let functionName = event.id+event.name;
-            let functionDef = codeModifier(event.reducer, component);
+            let functionDef =  `
+                var state = JSON.parse(JSON.stringify(this.state))
+                ${event.reducer}
+                this.setState(state);`;
 
             if(event.publishable===true){
                 return `
@@ -147,5 +141,5 @@ function convertToReactcomponent (component){
 
 module.exports = {
     createComponent,
-    getComponentString
+    convertToReactcomponent
 }
