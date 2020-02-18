@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import "./Style.css";
 import {updateName, updateMarkup, updateStyle, updateState} from "./Reducer";
 
-import {readComponent} from "../utilities/localStorage";
+import {readComponent} from "../utilities/Storage/localStorage";
 
 /**
  * Shows Configurator on select of valid child component name in the markup and mouseOut from markup
