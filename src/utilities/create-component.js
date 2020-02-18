@@ -1,4 +1,4 @@
-import {convertToReact} from "./convert-to-react";
+import {convertToReact} from "./CodeGenerator/React";
 
 function createComponent(component){
 

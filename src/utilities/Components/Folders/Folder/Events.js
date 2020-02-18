@@ -51,7 +51,7 @@ export function onDragStart(e){
 
 
 import { getNestedComponents } from "../../../../utilities/Runtime";
-import { convertToReact } from "../../../../utilities/convert-to-react";
+import { convertToReact } from "../../../../utilities/CodeGenerator/React";
 import { readData } from "../../../../utilities/Storage";
 
 
