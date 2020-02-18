@@ -105,14 +105,11 @@ export function readComponent(componentName){
     return components.find(component=>component.name===componentName);
 }
 
-export function writeComponent(parent, idMarkupModified) {
+export function writeComponent(parent) {
     // If only one component is passed
     if(!Array.isArray(parent) && parent.name){
         let components = readData( "ui-editor");
         let index = components.findIndex(comp=>comp.name === parent.name);
-        if(idMarkupModified){
-            parent.markup = noIdMarkup(parent.idMarkup);
-        }
         components[index] = parent;
         writeData("ui-editor", components);
     }

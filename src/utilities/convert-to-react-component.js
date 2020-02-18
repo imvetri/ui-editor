@@ -1,48 +1,32 @@
 import { codeModifier } from "./codeModifier";
 
-function getComponentString(component, options){
+function getComponentString(component){
 
     if(!component.idMarkup[3]){
         return;
     }
-    return convertToReactcomponent(component, options);
+    return convertToReactcomponent(component);
 }
 
-function createComponent(component, mode){
+function createComponent(component){
 
-    let componentString;
+    let componentString = getComponentString(component);
 
-    if(mode==="INTERACTIVE"){
-        componentString = getComponentString(component);
-
-    }
-    else {
-        componentString = getComponentString(component, {"drag-drop-feature":true});
-    }
     // eval does not evaluate class if not exclosed in paranthesis.
     return eval(Babel.transform(componentString, { presets: ['react'], plugins: ["transform-es2015-classes"]  }).code)
 }
 
 
 // Elements to  react component.
-function convertToReactcomponent (component, options){
-
-    /**
-     * 1. if options.drag-drop-feature = true, use idMarkup as property
-     */
+function convertToReactcomponent (component){
 
     let markup = "markup";
-    if(options && options["drag-drop-feature"]){
-        markup = "idMarkup"
-    }
+
     component.events.forEach(event=>{
         event.id = event.id.replace("-","");
     })
 
     let getComponentNameInMarkup= (component)=>{
-        if(!options){
-            return component[markup];
-        }
         return component[markup].replace(">",` data-name='${component.name}' {...this.props} draggable="true" onDragStart={window.eventCallbacks.handleDrag}>{this.props.children}`)
     }
 
@@ -147,13 +131,6 @@ function convertToReactcomponent (component, options){
     
         constructor(props) {
             super(props);
-            (function createStylesheet() {
-
-                var dynamicStyle = document.createElement('style');
-                dynamicStyle.type = 'text/css';
-                dynamicStyle.innerHTML = \`${component.style}\`;
-                document.body.appendChild(dynamicStyle)
-            } )()
             this.state = this.props.state || ${componentState};
         }
     
