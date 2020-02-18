@@ -1,14 +1,5 @@
-function createComponent(component){
-
-    let componentString = convertToReactcomponent(component);
-
-    // eval does not evaluate class if not exclosed in paranthesis.
-    return eval(Babel.transform(componentString, { presets: ['react'], plugins: ["transform-es2015-classes"]  }).code)
-}
-
-
 // Elements to  react component.
-function convertToReactcomponent (component){
+export function convertToReact (component){
 
     let markup = "markup";
 
@@ -107,6 +98,7 @@ function convertToReactcomponent (component){
                     ${event.id+event.name} (e) {
                         var state = JSON.parse(JSON.stringify(this.state))
                         ${event.reducer}
+                        debugger;
                         this.setState(state);
                         e.state = state;
                         this.props.${event.publishName}? this.props.${event.publishName}(e):null;
@@ -119,6 +111,7 @@ function convertToReactcomponent (component){
                     ${event.id+event.name} (e) {
                         var state = JSON.parse(JSON.stringify(this.state))
                         ${event.reducer}
+                        debugger;
                         this.setState(state);
                     }
                 `
@@ -130,9 +123,4 @@ function convertToReactcomponent (component){
         })
         `
     return ReactComponent;
-}
-
-module.exports = {
-    createComponent,
-    convertToReactcomponent
 }

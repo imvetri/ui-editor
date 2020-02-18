@@ -1,6 +1,6 @@
 // Dependencies.
 
-import {createComponent} from "../convert-to-react-component";
+import {createComponent} from "../create-component";
 import {readData} from "../Storage";
 
 /**

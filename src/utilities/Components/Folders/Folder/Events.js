@@ -51,7 +51,7 @@ export function onDragStart(e){
 
 
 import { getNestedComponents } from "../../../../utilities/nestedComponentSetup";
-import { convertToReactcomponent } from "../../../../utilities/convert-to-react-component";
+import { convertToReact } from "../../../../utilities/convert-to-react";
 import { readData } from "../../../../utilities/Storage";
 
 
@@ -67,6 +67,6 @@ export function onExport(componentName) {
         return component.replace("(","").replace("})","}")
     }
     console.log(uniqueComponents.map(function(component){
-        return convertToReactcomponent(component)
+        return convertToReact(component)
     }).map(removeParanthesis).join(""));
 }
