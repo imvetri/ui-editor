@@ -1,4 +1,4 @@
-import {getStartTags} from "../get-start-tags";
+import {getStartTags} from "../../get-start-tags";
 import {sample} from "./Sample";
 function pushHistory(components){
     window.editorHistory = readData("ui-editor-history");

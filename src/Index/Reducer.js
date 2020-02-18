@@ -1,4 +1,4 @@
-import {writeData} from "../utilities/localStorage";
+import {writeData} from "../utilities/Storage/localStorage";
 
 
 export function updateEvent (events) {

@@ -52,7 +52,7 @@ export function onDragStart(e){
 
     import { getNestedComponents } from "../../../../utilities/nestedComponentSetup";
     import { getComponentString } from "../../../../utilities/convert-to-react-component";
-    import { readData } from "../../../../utilities/localStorage";
+    import { readData } from "../../../../utilities/Storage/localStorage";
 
     
     export function onExport(componentName) {
