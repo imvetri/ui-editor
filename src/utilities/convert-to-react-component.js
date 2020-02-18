@@ -16,7 +16,7 @@ function convertToReactcomponent (component){
         event.id = event.id.replace("-","");
     })
 
-    let getComponentNameInMarkup= (component)=>{
+    let addProps= (component)=>{
         return component[markup].replace(">",` {...this.props}>{this.props.children}`)
     }
 
@@ -86,56 +86,49 @@ function convertToReactcomponent (component){
         })
         return markup;
     }
-
-    let getComponentReducers = (events) => {
-
-        return events.map(event=>{
-            let functionName = event.id+event.name;
-            let functionDef =  `
-                var state = JSON.parse(JSON.stringify(this.state))
-                ${event.reducer}
-                this.setState(state);`;
-
-            if(event.publishable===true){
-                return `
-                    ${functionName} (e) {
-                        ${functionDef}
-                        e.state = state;
-                        debugger;(1)
-                        this.props.${event.publishName}? this.props.${event.publishName}(e):null;
-                    }
-                    `
-            }
-            return `
-                    ${functionName} (e) {
-                        ${functionDef}
-                    }`
-        }).join("\n")
-    }
     
-    let componentNamedMakrup = getComponentNameInMarkup(component);
-    let stateOverideMarkup = getStatedMarkup(componentNamedMakrup)
-    let componentEventedMarkup = getComponentEventedMarkup(stateOverideMarkup, component.events)
-    let componentReducers = getComponentReducers(component.events)
-    let componentName = component.name.split(" ").join("")
-    let componentState = component.state;
+    let propsInMarkup = addProps(component);
+    let stateOverideMarkup = getStatedMarkup(propsInMarkup);
+    let componentEventedMarkup = getComponentEventedMarkup(stateOverideMarkup, component.events);
+
     let ReactComponent = 
     `(
-    class ${componentName} extends Component {
-    
-        constructor(props) {
-            super(props);
-            this.state = this.props.state || ${componentState};
-        }
-    
-        ${componentReducers}
-    
-        render() {
-    
-            return (${componentEventedMarkup})
-        }
-    })
-    `
+        class ${component.name} extends Component {
+        
+            constructor(props) {
+                super(props);
+                this.state = this.props.state || ${component.state};
+            }
+        
+            ${component.events.map(event=>{
+                if(event.publishable){
+                    return `
+                    
+                    ${event.id+event.name} (e) {
+                        var state = JSON.parse(JSON.stringify(this.state))
+                        ${event.reducer}
+                        this.setState(state);
+                        e.state = state;
+                        this.props.${event.publishName}? this.props.${event.publishName}(e):null;
+                    }
+                    
+                    `
+                }
+        
+                return `
+                    ${event.id+event.name} (e) {
+                        var state = JSON.parse(JSON.stringify(this.state))
+                        ${event.reducer}
+                        this.setState(state);
+                    }
+                `
+            }).join("\n")}
+        
+            render() {
+                return (${componentEventedMarkup})
+            }
+        })
+        `
     return ReactComponent;
 }
 
