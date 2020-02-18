@@ -1,1 +1,0 @@
-localStorage.setItem("ui-editor", JSON.stringify(components.backup.test.json));
