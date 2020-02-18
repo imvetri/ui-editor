@@ -1,4 +1,4 @@
-import indexedDB from "../Utilities/Storage/indexedDB/indexeDB"
+import indexedDB from "../Utilities/Libraries/indexedDB/indexeDB"
 export function dropHandler(ev) {
     ev.preventDefault();
 
