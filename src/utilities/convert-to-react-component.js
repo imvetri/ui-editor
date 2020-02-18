@@ -1,49 +1,23 @@
-import { codeModifier } from "./codeModifier";
+function createComponent(component){
 
-function getComponentString(component, options){
+    let componentString = convertToReactcomponent(component);
 
-    if(!component.idMarkup[3]){
-        return;
-    }
-    return convertToReactcomponent(component, options);
-}
-
-function createComponent(component, mode){
-
-    let componentString;
-
-    if(mode==="INTERACTIVE"){
-        componentString = getComponentString(component);
-
-    }
-    else {
-        componentString = getComponentString(component, {"drag-drop-feature":true});
-    }
     // eval does not evaluate class if not exclosed in paranthesis.
     return eval(Babel.transform(componentString, { presets: ['react'], plugins: ["transform-es2015-classes"]  }).code)
 }
 
 
 // Elements to  react component.
-function convertToReactcomponent (component, options){
-
-    /**
-     * 1. if options.drag-drop-feature = true, use idMarkup as property
-     */
+function convertToReactcomponent (component){
 
     let markup = "markup";
-    if(options && options["drag-drop-feature"]){
-        markup = "idMarkup"
-    }
+
     component.events.forEach(event=>{
         event.id = event.id.replace("-","");
     })
 
     let getComponentNameInMarkup= (component)=>{
-        if(!options){
-            return component[markup];
-        }
-        return component[markup].replace(">",` data-name='${component.name}' {...this.props} draggable="true" onDragStart={window.eventCallbacks.handleDrag}>{this.props.children}`)
+        return component[markup].replace(">",` {...this.props}>{this.props.children}`)
     }
 
     let getComponentEventedMarkup = (markup, events)=>{
@@ -114,9 +88,13 @@ function convertToReactcomponent (component, options){
     }
 
     let getComponentReducers = (events) => {
+
         return events.map(event=>{
             let functionName = event.id+event.name;
-            let functionDef = codeModifier(event.reducer, component);
+            let functionDef =  `
+                var state = JSON.parse(JSON.stringify(this.state))
+                ${event.reducer}
+                this.setState(state);`;
 
             if(event.publishable===true){
                 return `
@@ -147,13 +125,6 @@ function convertToReactcomponent (component, options){
     
         constructor(props) {
             super(props);
-            (function createStylesheet() {
-
-                var dynamicStyle = document.createElement('style');
-                dynamicStyle.type = 'text/css';
-                dynamicStyle.innerHTML = \`${component.style}\`;
-                document.body.appendChild(dynamicStyle)
-            } )()
             this.state = this.props.state || ${componentState};
         }
     
@@ -170,5 +141,5 @@ function convertToReactcomponent (component, options){
 
 module.exports = {
     createComponent,
-    getComponentString
+    convertToReactcomponent
 }

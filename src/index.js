@@ -21,7 +21,7 @@ import Preview from "./Preview";
 import { updateEvent, updateConfig, saveElement, updateSelectedComponent } from "./Index/Reducer";
 
 // Utils
-import {readData, writeData} from "./utilities/localStorage";
+import {readData, writeData} from "./utilities/Storage";
 
 class Index extends Component {
     constructor(props) {
