@@ -2,7 +2,7 @@
 
 import React, { Component } from "react";
 
-import { getNestedComponents, saveComponentsToWindow } from "../../utilities/nestedComponentSetup";
+import { getNestedComponents, saveComponentsToWindow } from "../../utilities/Runtime";
 
 import "./style.css";
 
