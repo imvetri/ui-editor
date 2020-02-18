@@ -2,7 +2,7 @@
 
 import React, { Component } from "react";
 
-import { popHistory } from "../utilities/Storage/localStorage";
+import { popHistory } from "../utilities/Storage";
 
 import "./style.css";
 

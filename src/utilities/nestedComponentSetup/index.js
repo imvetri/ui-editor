@@ -2,7 +2,7 @@
 
 import {createComponent} from "../convert-to-react-component";
 import {createStylesheet} from "../jsxTranspiler/create-stylesheet";
-import {readData} from "../Storage/localStorage";
+import {readData} from "../Storage";
 
 export function checkNestedComponents( markup) {
 

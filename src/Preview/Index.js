@@ -10,7 +10,7 @@ import FocusBarComponent from "./FocusBarComponent";
 // Utilities.
 
 import { createComponent } from "../utilities/Component";
-import { readComponent } from "../utilities/Storage/localStorage";
+import { readComponent } from "../utilities/Storage";
 
 class Preview extends Component {
     constructor(props) {

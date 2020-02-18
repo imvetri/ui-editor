@@ -1,4 +1,4 @@
-import {writeData} from "../utilities/Storage/localStorage";
+import {writeData} from "../utilities/Storage";
 
 
 
