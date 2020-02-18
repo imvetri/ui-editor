@@ -50,7 +50,7 @@ export function onDragStart(e){
 
 
 
-import { getNestedComponents } from "../../../../utilities/nestedComponentSetup";
+import { getNestedComponents } from "../../../../utilities/Runtime";
 import { convertToReact } from "../../../../utilities/convert-to-react";
 import { readData } from "../../../../utilities/Storage";
 
