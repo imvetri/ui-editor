@@ -1,6 +1,6 @@
 
     export function updateEvent(event) {
-        let element = JSON.parse(JSON.stringify(this.state.element))
+        let element = JSON.parse(JSON.stringify(this.state.component))
 
         // Keep the child component name as the ID. Will cause problem in future for list rendering boy.
         if(this.state.selectedTag.includes("child-component-")){
