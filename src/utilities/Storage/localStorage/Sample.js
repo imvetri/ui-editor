@@ -128,38 +128,31 @@ let sample = [
         "events": [
             {
                 "name": "onCloseModal",
-                "reducer": "state.showModal = false;",
+                "reducer": "state.ResetPasswordModal = [];",
                 "publishable": "",
                 "publishName": "",
                 "id": "VariantModal"
             },
             {
                 "name": "onClose",
-                "reducer": "state.showModal = false;",
+                "reducer": "state.ResetPasswordModal = [];",
                 "publishable": "",
                 "publishName": "",
                 "id": "ResetPasswordModal"
             },
             {
                 "name": "onPasswordForgotten",
-                "reducer": "state.showModal = true;",
+                "reducer": "state.ResetPasswordModal =[{title: \"Forgot Password\",\"footer\": \"Copyrigts\",\"show\": \"sd\"}]",
                 "publishable": "",
                 "publishName": "",
                 "id": "ForgotPassword"
-            },
-            {
-                "name": "onPasswordForgotten",
-                "reducer": "state.showModal = true;",
-                "publishable": "",
-                "publishName": "",
-                "id": "VariantForgotPassword"
             }
         ],
-        "state": "{\"showModal\":false,\"list\":[1,2,3,4,5]}",
+        "state": "{\"showModal\":false,\"list\":[1,2,3,4,5],\"ResetPasswordModal\":[]}",
         "style": ".page{\nheight: 700px;\nwidth: 500px;\n\n}",
         "children": [],
         "id": 815,
-        "config": "{\"VariantModal\":{\"showHideProp\":\"showModal\",\"override\":false},\"ForgotPasswordButton\":{\"showHideProp\":\"\",\"override\":false},\"ForgotPassword\":{\"showHideProp\":\"\",\"override\":false,\"renderListProp\":\"\"},\"ResetPasswordModal\":{\"showHideProp\":\"showModal\",\"override\":false,\"renderListProp\":\"\"}}",
+        "config": "{\"VariantModal\":{\"showHideProp\":\"showModal\",\"override\":false},\"ForgotPasswordButton\":{\"showHideProp\":\"\",\"override\":false},\"ForgotPassword\":{\"showHideProp\":\"\",\"override\":false,\"renderListProp\":\"\"},\"ResetPasswordModal\":{\"showHideProp\":\"showModal\",\"override\":true,\"renderListProp\":\"\"}}",
         "idMarkup": "<div className=\"page\" data-uuid=\"0\"><ForgotPassword data-uuid=\"1\"></ForgotPassword><ResetPasswordModal data-uuid=\"2\"></ResetPasswordModal></div>",
         "variants": [
             {
