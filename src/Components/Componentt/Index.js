@@ -23,7 +23,7 @@ class Componentt extends Component {
         let props = this.props;
         // Remove this.props.index, instead use this element instance index. Removes duplicate code
         return (
-            <div className="background" draggable="true" id={props.component.name} data-name={props.component.name} onDragStart={handleDrag.bind(this)} onDragEnd={this.restoreClass}>
+            <div className="background" draggable="true" data-name={props.component.name} onDragStart={handleDrag.bind(this)} onDragEnd={this.restoreClass}>
                 <li 
                     className = {props.component.name===props.selectedComponent.name ? "selected component": "component"}
                     onClick = {selectionChanged.bind(this)}
