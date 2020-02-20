@@ -3,6 +3,10 @@ import {writeData} from "../utilities/Storage";
 
 
 export function onDelete(event) {
+    
+    // stop event propagation. else onSelectionChange gets re triggered.
+    
+    event.stopPropagation();
     let componentName = event.target.parentElement.parentElement.innerText.split("\n")[0];
 
     if(this.state.components.find(component=>component.name===componentName).length<1){

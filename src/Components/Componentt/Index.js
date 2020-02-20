@@ -21,20 +21,22 @@ class Componentt extends Component {
     render() {
 
         let props = this.props;
+        let selectedComponent = props.selectedComponent;
+        let component = props.component;
         // Remove this.props.index, instead use this element instance index. Removes duplicate code
         return (
-            <div className="background" draggable="true" data-name={props.component.name} onDragStart={handleDrag.bind(this)} onDragEnd={this.restoreClass}>
+            <div className="background" draggable="true" data-name={component.name} onDragStart={handleDrag.bind(this)} onDragEnd={this.restoreClass}>
                 <li 
-                    className = {props.component.name===props.selectedComponent.name ? "selected component": "component"}
+                    className = {selectedComponent && props.component.name===selectedComponent.name ? "selected component": "component"}
                     onClick = {selectionChanged.bind(this)}
                     index = {props.index}>
                     <span className="componentName">
-                        {props.component.name}
+                        {component.name}
                     </span>
                     <span>
                         <button 
                             index = {props.index}
-                            onClick={onExport.bind(null,props.component.name)}><i className="fas fa-file-export"></i>Export</button>
+                            onClick={onExport.bind(null,component.name)}><i className="fas fa-file-export"></i>Export</button>
                         <button 
                             index = {props.index}
                             onClick={props.onDelete}><i className="fa fa-trash"></i>Delete</button>

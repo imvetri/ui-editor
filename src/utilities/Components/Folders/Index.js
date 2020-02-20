@@ -51,19 +51,7 @@ class Folders extends Component {
     }
 
     render() {
-
-        let featureEnabled = true;
-        if(featureEnabled){
-            return folderStructure(this.props, this.checkFolder.bind(this) )
-        }
-
-        return this.props.folders.map((folder)=> <Folder
-            key={Math.ceil(Math.random() * 1000)} 
-            folder={folder} 
-            selectedComponent = {this.props.selectedComponent}
-                onSelection = {this.props.onSelection}
-                onFolderUpdate={this.checkFolder.bind(this)}
-                onDelete={this.props.onDelete} />);
+        return folderStructure(this.props, this.checkFolder.bind(this) )
     }
 }
 
