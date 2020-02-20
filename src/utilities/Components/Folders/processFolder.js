@@ -18,8 +18,6 @@ function processFolder (folder, i){
                 key={i}
                 folder={folder}
                 contents={contents.map( processContent )}
-                selectedComponent={selectedComponent}
-                onSelection={onSelection}
                 onFolderUpdate={onFolderUpdate}
                 onDelete={onDelete}/>
 }
@@ -42,8 +40,6 @@ function processContent (content, i){
         return <Folder
                     folder={folder}
                     contents={folder.contents.map( processContent )}
-                    selectedComponent={selectedComponent}
-                    onSelection={onSelection}
                     onFolderUpdate={onFolderUpdate}
                     onDelete={onDelete}/>
     }
