@@ -19,15 +19,3 @@ function closeFolder(){
 export function toggleFolder(){
     this.state.status === "fa fa-folder"?  openFolder.call(this) : closeFolder.call(this);
 }
-
-export function selectFolder(){
-    this.setState({
-        folderClass:"newFolder folderSelected"
-    })
-}
-
-export function deselectFolder(){
-    this.setState({
-        folderClass:"newFolder"
-    })
-}
