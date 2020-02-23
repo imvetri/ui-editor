@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 // Styles.
 
 import "./Style.css";
-import Folder from "./Folder";
 
 import {folderStructure} from "./processFolder";
 
@@ -19,9 +18,11 @@ class Folders extends Component {
     checkFolder(data){
         let folders = Array.from(this.state.folders);
         let folder = folders.find(folder=>folder.name===data.name);
-        let emptyFolderIndex = folders.findIndex(folder=>folder.type==="newFolder");
-        // Delete the newFolder
-        folders.splice(emptyFolderIndex,1);
+        let emptyFolderIndex = folders.findIndex(folder=>folder.type==="NewFolder");
+        if(emptyFolderIndex!==-1){
+            // Delete the newFolder
+            folders.splice(emptyFolderIndex,1);
+        }
         console.log(folders)
         // Check if it is newly created folder 
         if(!folder){
