@@ -23,7 +23,7 @@ class Components extends Component {
     addFolder(){
         let folders = Array.from(this.state.folders);
         folders.unshift({
-            type:"newFolder",
+            type:"NewFolder",
             name:"",
             contents:[]
         })

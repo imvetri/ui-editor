@@ -46,10 +46,10 @@ function processContent (content, i){
 }
 
 
-export function folderStructure(props, checkFolder){
+export function folderStructure(props, onFolderUpdate){
     let folders = props.folders;
 
-    initialiseProps(props, checkFolder);
+    initialiseProps(props, onFolderUpdate);
 
     return(folders.map(processFolder))
 }
