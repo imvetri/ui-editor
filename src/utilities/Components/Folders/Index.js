@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 // Styles.
 
 import "./Style.css";
-import Folder from "./Folder";
 
 import {folderStructure} from "./processFolder";
 
