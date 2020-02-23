@@ -6,7 +6,7 @@ import "./Style.css";
 import NoFolder from "../NoFolder";
 import NewFolder from "../NewFolder";
 
-import {deleteFolder, toggleFolder, selectFolder, deselectFolder} from "./Reducer";
+import {deleteFolder, toggleFolder} from "./Reducer";
 import {dropHandler, dragOverHandler, dragLeaveHandler, onDragStart} from "./Events";
 
 class Folder extends Component {
@@ -41,8 +41,6 @@ class Folder extends Component {
                     className={this.state.folderClass}
                     data-folder-name={folder.name}
                     draggable="true"
-                            onMouseOver={selectFolder.bind(this)} 
-                            onMouseLeave={deselectFolder.bind(this)} 
                             onDrop={dropHandler.bind(this)} 
                             onDragOver={dragOverHandler.bind(this)} 
                             onDragLeave={dragLeaveHandler.bind(this)} 

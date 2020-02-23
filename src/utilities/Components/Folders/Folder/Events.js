@@ -29,7 +29,8 @@
     export function dragOverHandler(ev) {
         ev.preventDefault();
         this.setState({
-            folderClass: "newFolder dragOver"
+            folderClass: "newFolder dragOver",
+            status: "fa fa-folder-open"
         })
         console.log("Drag");
     }
@@ -37,7 +38,8 @@
     export function dragLeaveHandler(e) {
         console.log("drag");
         this.setState({
-            folderClass: "newFolder"
+            folderClass: "newFolder",
+            status: "fa fa-folder"
         })
     }
 
