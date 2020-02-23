@@ -32,7 +32,7 @@ class Folder extends Component {
 
         let folder = this.props.folder;
         let contents = this.props.contents;
-        if(folder.type=="newFolder"){
+        if(folder.type=="NewFolder"){
             return (<NewFolder onNewFolder={this.newFolder.bind(this)}/>)
         }
         if(folder.type=="folder"){

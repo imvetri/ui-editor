@@ -24,8 +24,8 @@ export function readData(key){
             return JSON.parse(history);
     }
     if(key ==="folders"){
-        let folders = localStorage.getItem(key)
-        return JSON.parse(folders);
+        let folders = localStorage.getItem(key);
+        return folders ? JSON.parse(folders) : [];
     }
 
     return [];
