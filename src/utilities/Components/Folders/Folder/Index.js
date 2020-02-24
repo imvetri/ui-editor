@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 // Styles.
 
 import "./Style.css";
-import NoFolder from "../NoFolder";
 import NewFolder from "../NewFolder";
 
 import {deleteFolder, toggleFolder} from "./Reducer";
@@ -54,7 +53,20 @@ class Folder extends Component {
             );
         }
         if(folder.type=="noFolder"){
-            return (<NoFolder contents={contents}></NoFolder>)
+            return (
+                <div 
+                    className={this.state.folderClass}
+                    data-folder-name={folder.name}
+                    draggable="true"
+                            onDrop={dropHandler.bind(this)} 
+                            onDragOver={dragOverHandler.bind(this)} 
+                            onDragLeave={dragLeaveHandler.bind(this)} 
+                            onDragStart={onDragStart.bind(this)} >
+                    <ul>
+                        {contents}
+                    </ul>
+                </div>
+            );
         }
     }
 }
