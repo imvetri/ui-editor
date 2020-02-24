@@ -25,7 +25,12 @@ export function readData(key){
     }
     if(key ==="folders"){
         let folders = localStorage.getItem(key);
-        return folders ? JSON.parse(folders) : [];
+        let componentNames = window.components.map(component=>component.name);
+        return folders ? JSON.parse(folders) : [{
+            type: "noFolder",
+            contents: componentNames,
+            name: ""
+        }];
     }
 
     return [];
