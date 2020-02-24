@@ -39,11 +39,7 @@ class Index extends Component {
                 events: []
             },
             selectedComponent: "",
-            folders: readData("folders") || [{
-                type: "noFolder",
-                contents: componentNames,
-                name: ""
-            }],
+            folders: readData("folders"),
             showEditor: false
         }
         this.updateConfig = updateConfig.bind(this);
