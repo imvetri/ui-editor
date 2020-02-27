@@ -27,7 +27,8 @@ class NewFolder extends Component {
             this.props.onNewFolder({
                 name:this.state.folderName,
                 contents:[],
-                type:"folder"
+                type:"folder",
+                status:"closed"
             })
         }
     }

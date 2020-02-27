@@ -12,11 +12,12 @@ class Folder extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            status: "fa fa-folder",
+            iconStatus: "fa fa-folder",
             folderClass: "newFolder",
             name: this.props.folder.name,
             contents: this.props.folder.contents,
-            type: this.props.folder.type
+            type: this.props.folder.type,
+            status: this.props.folder.status
         };
 
         window.addEventListener("keydown", deleteFolder.bind(this))
@@ -31,6 +32,7 @@ class Folder extends Component {
 
         let folder = this.props.folder;
         let contents = this.props.contents;
+        let iconStatus = this.state.status === "open" ? "fa fa-folder-open" : "fa fa-folder";
         if(folder.type=="NewFolder"){
             return (<NewFolder onNewFolder={this.newFolder.bind(this)}/>)
         }
@@ -44,7 +46,7 @@ class Folder extends Component {
                             onDragOver={dragOverHandler.bind(this)} 
                             onDragLeave={dragLeaveHandler.bind(this)} 
                             onDragStart={onDragStart.bind(this)} >
-                    <i className={this.state.status} onClick={toggleFolder.bind(this)}></i>
+                    <i className={iconStatus} onClick={toggleFolder.bind(this)}></i>
                     <input type="text" className="folder" placeholder="Enter folder name" readOnly value={this.state.name}/>
                     <ul>
                         {contents}
