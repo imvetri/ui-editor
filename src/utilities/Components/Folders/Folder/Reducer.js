@@ -15,18 +15,20 @@ export function deleteFolder(e){
 
 function openFolder(){
     this.setState({
-        status: "fa fa-folder-open"
+        status: "open"
     });
 }
 
 function closeFolder(){
     this.setState({
-        status: "fa fa-folder"
+        status: "closed"
     });
 }
 
 export function toggleFolder(){
-    if(this.state.status === "fa fa-folder") {
+    console.log("CLCIEKD");
+    debugger;
+    if(this.state.status === "closed") {
         openFolder.call(this);
     } else {
         closeFolder.call(this);
