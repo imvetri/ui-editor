@@ -14,13 +14,15 @@
             contents.push({
                 name: folderName,
                 contents:[],
-                type:"folder"
+                type:"folder",
+                status:"closed"
             })
         }
         this.props.onFolderUpdate({
             name: this.state.name,
             contents : contents,
-            type:"folder"
+            type:"folder",
+            status:"open"
         })
 
         console.log("Drop from folder");
@@ -30,7 +32,7 @@
         ev.preventDefault();
         this.setState({
             folderClass: "newFolder dragOver",
-            status: "fa fa-folder-open"
+            status: "open"
         })
         console.log("Drag");
     }
@@ -39,7 +41,7 @@
         console.log("drag");
         this.setState({
             folderClass: "newFolder",
-            status: "fa fa-folder"
+            status: "closed"
         })
     }
 

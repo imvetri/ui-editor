@@ -29,7 +29,8 @@ export function readData(key){
         return folders ? JSON.parse(folders) : [{
             type: "noFolder",
             contents: componentNames,
-            name: ""
+            name: "",
+            status:"open"
         }];
     }
 

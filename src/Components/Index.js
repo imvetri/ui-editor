@@ -25,7 +25,8 @@ class Components extends Component {
         folders.unshift({
             type:"NewFolder",
             name:"",
-            contents:[]
+            contents:[],
+            status:"closed"
         })
         this.setState({folders})
     }
