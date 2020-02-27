@@ -1,14 +1,15 @@
 import Folder from "./Folder";
 import Componentt from "../../../Components/Componentt";
 
-let selectedComponent, onSelection, onFolderUpdate, onDelete, components;
+let selectedComponent, onSelection, onFolderUpdate, onDeleteComponent, components, onDeleteFolder;
 
 function initialiseProps(props, checkFolder){
     selectedComponent = props.selectedComponent;
     onSelection = props.onSelection;
     components = props.components;
     onFolderUpdate = checkFolder;
-    onDelete = props.onDelete;
+    onDeleteComponent = props.onDeleteComponent;
+    onDeleteFolder = props.onDeleteFolder;
 }
 
 function processFolder (folder, i){
@@ -19,7 +20,7 @@ function processFolder (folder, i){
                 folder={folder}
                 contents={contents.map( processContent )}
                 onFolderUpdate={onFolderUpdate}
-                onDelete={onDelete}/>
+                onDeleteFolder={onDeleteFolder}/>
 }
 
 function processContent (content, i){
@@ -28,20 +29,22 @@ function processContent (content, i){
     if(typeof content === "string" ){
 
         return <Componentt 
+                    key={i}
                     component={components.find(component=>component.name===content)}
                     selectedComponent={selectedComponent}
                     onSelectionChange={onSelection}
-                    onDelete = {onDelete}
+                    onDeleteComponent = {onDeleteComponent}
                     />
     }
     // else its a folder type.
     else {
         let folder = content;
         return <Folder
+                    key={i}
                     folder={folder}
                     contents={folder.contents.map( processContent )}
                     onFolderUpdate={onFolderUpdate}
-                    onDelete={onDelete}/>
+                    onDeleteFolder={onDeleteFolder}/>
     }
 }
 

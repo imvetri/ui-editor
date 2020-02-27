@@ -1,6 +1,15 @@
 export function deleteFolder(e){
-    if(e.key==="Backspace" && e.ctrlKey && this.state.folderClass.includes("folderSelected")){
-        this.props.onFolderDelete(this.state.folder);
+    if(e.key==="Backspace" && e.ctrlKey && this.state.status.includes("fa fa-folder-open")){
+        // Delete the folder
+        this.props.onDeleteFolder("FOLDER");
+    }
+    if(e.key==="Backspace" && e.shiftKey && this.state.status.includes("fa fa-folder-open")){
+        // Delete the folder and the contents.
+        this.props.onDeleteFolder("FOLDER_AND_CONTENTS");
+    }
+    if(e.key==="Backspace" && e.altKey && this.state.status.includes("fa fa-folder-open")){
+        // Delete the folder and the contents.
+        this.props.onDeleteFolder("CONTENTS");
     }
 }
 

@@ -39,7 +39,7 @@ class Componentt extends Component {
                             onClick={onExport.bind(null,component.name)}><i className="fas fa-file-export"></i>Export</button>
                         <button 
                             index = {props.index}
-                            onClick={props.onDelete}><i className="fa fa-trash"></i>Delete</button>
+                            onClick={props.onDeleteComponent}><i className="fa fa-trash"></i>Delete</button>
                     </span>
                 </li>
             </ div>
