@@ -32,8 +32,3 @@ input.folder{
 .fa.fa-folder-open ~ ul {
     display:block;
 }
-
-.folderSelected .fa.fa-folder,
-.folderSelected .fa.fa-folder-open{
-    background: rgb(48,115,93)
-}

@@ -7,7 +7,7 @@ import "./Style.css";
 // Components.
 
 import Folders from "../Utilities/Components/Folders";
-import {onDelete} from "./Events";
+import {onDeleteComponent, onDeleteFolder} from "./Events";
 
 // Events.
 
@@ -54,7 +54,8 @@ class Components extends Component {
                             selectedComponent={this.props.selectedComponent}
                                 onFoldersUpdate={this.props.onFoldersUpdate}
                                 onSelection = {this.props.onSelection}
-                                onDelete={onDelete.bind(this)}
+                                onDeleteComponent={onDeleteComponent.bind(this)}
+                                onDeleteFolder={onDeleteFolder.bind(this)}
                             />
                     </ul>
                 </div>

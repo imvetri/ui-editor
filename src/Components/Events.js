@@ -2,7 +2,7 @@ import {writeData} from "../utilities/Storage";
 
 
 
-export function onDelete(event) {
+export function onDeleteComponent(event) {
     
     // stop event propagation. else onSelectionChange gets re triggered.
     
@@ -29,4 +29,19 @@ export function onDelete(event) {
     // Persist the changes.
     writeData("ui-editor", components)
 
+}
+
+export function onDeleteFolder(TYPE){
+    debugger;
+    switch (TYPE) {
+        case "FOLDER":
+            break;
+        
+        case "FOLDER_AND_CONTENTS":
+            break;
+
+        case "CONTENTS":
+            break;
+    }
+    debugger;
 }
