@@ -5,15 +5,15 @@ import  "./Style.css";
 class Asset extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+        };
     }
 
     render() {
-
         // Remove this.props.index, instead use this element instance index. Removes duplicate code
         return (
-            <div className="tinyThumbnail">
-                <img src={this.props.imageURL}></img>
+            <div className={this.props.selected === this.props.asset.name? "tinyThumbnail selectedAsset" : "tinyThumbnail"}>
+                <img src={this.props.asset.result} data-name={this.props.asset.name} onClick={this.props.onSelected}></img>
             </div>
         );
     }
