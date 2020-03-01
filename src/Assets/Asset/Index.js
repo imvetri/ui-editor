@@ -10,8 +10,6 @@ class Asset extends Component {
     }
 
     render() {
-debugger;
-
         // Remove this.props.index, instead use this element instance index. Removes duplicate code
         return (
             <div className={this.props.selected === this.props.asset.name? "tinyThumbnail selectedAsset" : "tinyThumbnail"}>
