@@ -36,7 +36,6 @@ class Components extends Component {
     }
 
     render() {
-
         return (
             <div className="elements">
                 <div className="container elements-tab">

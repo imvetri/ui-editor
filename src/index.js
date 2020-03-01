@@ -27,7 +27,6 @@ class Index extends Component {
     constructor(props) {
         super(props);
         let components = readData("ui-editor");
-        let componentNames = components.map(component=>component.name);
         this.state = {
             components: components,
             selectedTag : "",
