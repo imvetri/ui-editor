@@ -19,8 +19,6 @@ class Folder extends Component {
             type: this.props.folder.type,
             status: this.props.folder.status
         };
-
-        window.addEventListener("keydown", deleteFolder.bind(this))
     }
 
 
@@ -48,6 +46,7 @@ class Folder extends Component {
                             onDragStart={onDragStart.bind(this)} >
                     <i className={iconStatus} onClick={toggleFolder.bind(this)}></i>
                     <input type="text" className="folder" placeholder="Enter folder name" readOnly value={this.state.name}/>
+                    <button onClick={deleteFolder.bind(this)}><i className="fa fa-trash"></i>Delete</button>
                     <ul>
                         {contents}
                     </ul>
@@ -64,6 +63,7 @@ class Folder extends Component {
                             onDragOver={dragOverHandler.bind(this)} 
                             onDragLeave={dragLeaveHandler.bind(this)} 
                             onDragStart={onDragStart.bind(this)} >
+                    <button onClick={deleteFolder.bind(this)}><i className="fa fa-trash"></i>Delete</button>
                     <ul>
                         {contents}
                     </ul>

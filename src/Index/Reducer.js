@@ -34,7 +34,6 @@ export function updateConfig(config){
         parent.config = JSON.parse(parent.config);
     }
     parent.config[child.name] = config.config;
-    debugger;
     if(parent.config[child.name].override) {    
         parent.state[child.name] = [JSON.parse(child.state)];
     } 
