@@ -40,7 +40,6 @@ export function onDeleteFolder(TYPE, folderName){
             break;
 
         case "CONTENTS":
-            debugger;
             let folders = Array.from(this.state.folders)
             let folderToDelete = folders.find(folder=> folder.name===folderName);
             let noFolder = folders.find(folder=> folder.type==="noFolder");
@@ -54,8 +53,7 @@ export function onDeleteFolder(TYPE, folderName){
             folders.splice(index,1);
 
             // update the state.
-            this.setState(folders)
-            writeData("folders", folders)
+            this.props.onFoldersUpdate(folders);
 
             break;
     }
