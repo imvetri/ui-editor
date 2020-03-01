@@ -36,6 +36,8 @@ class Components extends Component {
     }
 
     render() {
+        let props = this.props;
+        let state = this.state;
         return (
             <div className="elements">
                 <div className="container elements-tab">
@@ -43,17 +45,17 @@ class Components extends Component {
                         Components
                     </div>
                     <div className="Controls">
-                        <button onClick={this.addComponent.bind(this)}><i className="fa fa-edit"></i>Add/Edit Component</button>
+                        <button onClick={this.addComponent.bind(this)}><i className="fa fa-edit"></i>{props.selectedComponent? "Edit Component": "Add Component"}</button>
                         <button onClick={this.addFolder.bind(this)}><i className="fa fa-folder"></i>Add Folder</button>
                     </div>
                     <ul>
                         <Folders
                             key = {Math.ceil(Math.random() * 1000)}
-                            components={this.state.components} 
-                            folders={this.state.folders} 
-                            selectedComponent={this.props.selectedComponent}
-                                onFoldersUpdate={this.props.onFoldersUpdate}
-                                onSelection = {this.props.onSelection}
+                            components={state.components} 
+                            folders={state.folders} 
+                            selectedComponent={props.selectedComponent}
+                                onFoldersUpdate={props.onFoldersUpdate}
+                                onSelection = {props.onSelection}
                                 onDeleteComponent={onDeleteComponent.bind(this)}
                                 onDeleteFolder={onDeleteFolder.bind(this)}
                             />
