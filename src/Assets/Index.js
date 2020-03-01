@@ -22,7 +22,8 @@ class Assets extends Component {
         this.state = {
             class: "drop_zone",
             imageURL:"",
-            assets: []
+            assets: [],
+            selectedAsset:""
         };
         this.writeToDB = writeToDB.bind(this);
     }
@@ -40,9 +41,16 @@ class Assets extends Component {
         newFile.appendChild(img);
     }
 
+    updatedSelected(e) {
+        let assetName = e.target.getAttribute("data-name"); 
+        this.setState({
+            selectedAsset: assetName
+        })
+    }
+
     render() {
 
-        let assets = this.state.assets.map(item=> <Asset imageURL={item.result}/>);
+        let assets = this.state.assets.map(asset=> <Asset asset={asset} selected={this.state.selectedAsset} onSelected={this.updatedSelected.bind(this)}/>);
         return (
             <div className="elements">
                 <div className="container elements-tab">
@@ -58,9 +66,7 @@ class Assets extends Component {
                         
                         <p>Drag one or more files to this Drop Zone ...</p>
                     </div>
-                    <ul className="contain">
-                        {assets}
-                    </ul>
+                    {assets}
                 </div>
             </div>
         );
