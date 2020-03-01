@@ -55,6 +55,7 @@ export function onDeleteFolder(TYPE, folderName){
 
             // update the state.
             this.setState(folders)
+            writeData("folders", folders)
 
             break;
     }
