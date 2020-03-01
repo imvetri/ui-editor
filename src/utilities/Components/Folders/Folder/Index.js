@@ -63,7 +63,6 @@ class Folder extends Component {
                             onDragOver={dragOverHandler.bind(this)} 
                             onDragLeave={dragLeaveHandler.bind(this)} 
                             onDragStart={onDragStart.bind(this)} >
-                    <button onClick={deleteFolder.bind(this)}><i className="fa fa-trash"></i>Delete</button>
                     <ul>
                         {contents}
                     </ul>
