@@ -59,6 +59,11 @@ export function convertToReact (component){
             constructor(props) {
                 super(props);
                 this.state = this.props.state || ${component.state};
+
+                var dynamicStyle = document.createElement('style');
+                dynamicStyle.type = 'text/css';
+                dynamicStyle.innerHTML = \`${component.style}\`;
+                document.body.appendChild(dynamicStyle)
             }
         
             ${component.events.map(event=>{
