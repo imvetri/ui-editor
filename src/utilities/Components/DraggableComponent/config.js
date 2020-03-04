@@ -62,7 +62,7 @@ module.exports = {
         "minimised": false,
             "draggable": "true"
     },
-    "ui-editor-settings-draggable-component-History": {
+    "ui-editor-settings-draggable-component-Toolkit": {
         "style": {
             "position": "fixed",
                 "top": "595px",

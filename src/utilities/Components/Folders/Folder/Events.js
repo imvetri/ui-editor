@@ -57,6 +57,7 @@ export function onDragStart(e){
 import { getNestedComponents } from "../../../../utilities/Runtime";
 import { convertToReact } from "../../../../utilities/CodeGenerator/React";
 import { readData } from "../../../../utilities/Storage";
+import { downloadFile } from "../../../Libraries/downloadFile"
 
 
 export function onExport(componentName) {
@@ -70,7 +71,28 @@ export function onExport(componentName) {
     const removeParanthesis = (component)=>{
         return component.replace("(","").replace("})","}")
     }
-    console.log(uniqueComponents.map(function(component){
-        return convertToReact(component)
-    }).map(removeParanthesis).join(""));
+    console.log(uniqueComponents.map(convertToReact).map(removeParanthesis).reverse().join(""));
+}
+
+export function onExportNWB(componentName) {
+    let components = readData("ui-editor");
+    let selectedComponent = components.find(component=>component.name.includes(componentName));
+    let nestedComponents = getNestedComponents(selectedComponent);
+
+    let uniqueComponents = [...new Set(nestedComponents.map(com=>com.name))].map(name=>{
+        return components.find(element=>element.name===name)
+    })
+    const removeParanthesis = (component)=>{
+        return component.replace("(","").replace("})","}")
+    }
+
+    let headerImports = `import React, {Component} from 'react';\n`;
+
+    let componentStrings = uniqueComponents.map(convertToReact).map(removeParanthesis);
+    componentStrings[0] = "export default "+ componentStrings[0];
+
+    let ReactClassComponentString = headerImports + componentStrings.reverse().join("\n");
+    console.log(ReactClassComponentString);
+
+    downloadFile(`${componentName}.js`,ReactClassComponentString );
 }
