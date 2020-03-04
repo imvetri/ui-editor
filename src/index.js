@@ -14,7 +14,7 @@ import Components from "./Components";
 import DraggableComponent from "./Utilities/Components/DraggableComponent";
 import Editor from "./Editor";
 import Events from "./Events";
-import History from "./History";
+import Toolkit from "./Toolkit";
 import Preview from "./Preview";
 
 // Reducers.
@@ -135,8 +135,8 @@ class Index extends Component {
                     </DraggableComponent>
     
                     <DraggableComponent>
-                        <History
-                            title="History"
+                        <Toolkit
+                            title="Toolkit"
                         />
                     </DraggableComponent>
     
@@ -147,8 +147,8 @@ class Index extends Component {
             console.log(e);
             return (
                 <DraggableComponent>
-                    <History
-                        name="History"
+                    <Toolkit
+                        name="Toolkit"
                     />
                 </DraggableComponent>
             )
