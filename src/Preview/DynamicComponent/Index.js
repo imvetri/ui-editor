@@ -26,7 +26,7 @@ class DynamicComponent extends Component {
         }
 
         if(!window[this.state.component.name]){
-            return (<div>Component not rendered</div>)
+            return (<div></div>)
         }
 
         return (

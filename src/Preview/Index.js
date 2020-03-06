@@ -5,6 +5,7 @@ import React, { Component } from "react";
 import "./style.css";
 
 import DynamicComponent from "./DynamicComponent";
+import Variants from "./Variants";
 
 // Utilities.
 
@@ -33,7 +34,15 @@ class Preview extends Component {
                 <div className="title">
                     Preview
                 </div>
-                <DynamicComponent key={randomKey} component={this.state.component}/>
+                <div>
+                    <Variants component={this.state.component}/>
+                    <div className="dynamicComponent">
+                    <div className="title">
+                        Preview
+                    </div>
+                    <DynamicComponent key={randomKey} component={this.state.component}/>
+                    </div>
+                </div>
             </div>
         );
     }

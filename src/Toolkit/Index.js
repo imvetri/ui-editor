@@ -10,8 +10,10 @@ class Toolkit extends Component {
     constructor(props) {
         super(props);
         this.state={
-            exportType: "REACT_CLASS_COMPONENT"
+            exportType: "SIMPLE"
         }
+        // TODO, cleanup all local storage to write to window.
+        window.EXPORT_TYPE = "SIMPLE";
     }
 
     refreshToPrevious(){
@@ -22,6 +24,8 @@ class Toolkit extends Component {
         this.setState({
             exportType: e.target.value
         })
+        // TODO, cleanup all local storage to write to window.
+        window.EXPORT_TYPE = e.target.value;
     }
 
     render() {
@@ -51,8 +55,8 @@ class Toolkit extends Component {
                                     <input 
                                         type="radio" 
                                         name="Export" 
-                                        value="REACT_CLASS_COMPONENT" 
-                                        checked={this.state.exportType === "REACT_CLASS_COMPONENT"}
+                                        value="SIMPLE" 
+                                        checked={this.state.exportType === "SIMPLE"}
                                         onChange={this.onExportTypeChanged.bind(this)}
                                     />
                                     React - Class component
@@ -63,11 +67,21 @@ class Toolkit extends Component {
                                     <input 
                                         type="radio" 
                                         name="Export" 
-                                        value="REACT_FUNCTION_COMPONENT" 
-                                        checked={this.state.exportType === "REACT_FUNCTION_COMPONENT"} 
+                                        value="NWB" 
+                                        checked={this.state.exportType === "NWB"} 
                                         onChange={this.onExportTypeChanged.bind(this)}
-                                        disabled
-                                    />React - Functional component
+                                    />React - Importable component
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input 
+                                        type="radio" 
+                                        name="Export" 
+                                        value="STORYBOOK" 
+                                        checked={this.state.exportType === "STORYBOOK"} 
+                                        onChange={this.onExportTypeChanged.bind(this)}
+                                    />React - Class storybook component
                                 </label>
                             </li>
                         </ul>
