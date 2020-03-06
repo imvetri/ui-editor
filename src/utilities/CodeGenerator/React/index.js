@@ -47,11 +47,19 @@ export function convertToReact (component){
         })
         return markup;
     }
+
+    // keep saving variant in browser, but not for code exports.
+    let getSaveVariant = ()=>{
+        if(!window.ExportNWB){
+            return `window.saveVariant("${component.name}",state)`
+        }
+    }
     
     let propsInMarkup = addProps(component);
     let stateOverideMarkup = getStatedMarkup(propsInMarkup);
     let componentEventedMarkup = getComponentEventedMarkup(stateOverideMarkup, component.events);
-
+    let saveVariant = getSaveVariant();
+    
     let ReactComponent = 
     `(
         class ${component.name} extends Component {
@@ -87,6 +95,7 @@ export function convertToReact (component){
                         var state = JSON.parse(JSON.stringify(this.state))
                         ${event.reducer}
                         debugger;
+                        ${saveVariant}
                         this.setState(state);
                     }
                 `

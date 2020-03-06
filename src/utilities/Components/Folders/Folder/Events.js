@@ -60,7 +60,7 @@ import { readData } from "../../../../utilities/Storage";
 import { downloadFile } from "../../../Libraries/downloadFile"
 
 
-export function onExport(componentName) {
+function exportSimple(componentName) {
     let components = readData("ui-editor");
     let selectedComponent = components.find(component=>component.name.includes(componentName));
     let nestedComponents = getNestedComponents(selectedComponent);
@@ -74,7 +74,7 @@ export function onExport(componentName) {
     console.log(uniqueComponents.map(convertToReact).map(removeParanthesis).reverse().join(""));
 }
 
-export function onExportNWB(componentName) {
+function exportNWB(componentName) {
     let components = readData("ui-editor");
     let selectedComponent = components.find(component=>component.name.includes(componentName));
     let nestedComponents = getNestedComponents(selectedComponent);
@@ -95,4 +95,53 @@ export function onExportNWB(componentName) {
     console.log(ReactClassComponentString);
 
     downloadFile(`${componentName}.js`,ReactClassComponentString );
+}
+
+function exportStorybook(componentName) {
+    let components = readData("ui-editor");
+    let selectedComponent = components.find(component=>component.name.includes(componentName));
+    let nestedComponents = getNestedComponents(selectedComponent);
+
+    let uniqueComponents = [...new Set(nestedComponents.map(com=>com.name))].map(name=>{
+        return components.find(element=>element.name===name)
+    })
+    const removeParanthesis = (component)=>{
+        return component.replace("(","").replace("})","}")
+    }
+
+    let headerImports = ` /* eslint-disable */
+    import React, {Component} from 'react';
+    `;
+
+    /**
+     * IMPORTANT- If we export, do not include saveVariant
+     */
+
+    window.ExportNWB = true;
+
+    let componentStrings = uniqueComponents.map(convertToReact).map(removeParanthesis);
+    componentStrings[0] = "export default "+ componentStrings[0];
+
+    let ReactClassComponentString = headerImports + componentStrings.reverse().join("\n");
+    console.log(ReactClassComponentString);
+
+    window.ExportNWB = false;
+
+    downloadFile(`${componentName}.js`,ReactClassComponentString );
+}
+
+export function onExport(componentName){
+    switch (window.EXPORT_TYPE) {
+        case "SIMPLE": 
+            exportSimple(componentName);
+            break;
+
+        case "NWB":
+            exportNWB(componentName);
+            break;
+
+        case "STORYBOOK":
+            exportStorybook(componentName);
+            break;
+    }
 }
