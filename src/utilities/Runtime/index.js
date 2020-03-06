@@ -13,9 +13,15 @@ window.saveVariant = function saveVariant(componentName, state) {
     // 2. Find the passed component.
     let component = components.find(component=>component.name.includes(componentName));
     // 3. If component.variants does not exist, create an empty array.
-    component.variants = component.variants || [component.state];
+    component.variants = component.variants || [{
+        name: "Default",
+        state: JSON.parse(component.state)
+    }];
     // 4. push state into component.variant.
-    component.variants.push(state);
+    component.variants.push({
+        name: `VARIANT_${components.length}`,
+        state:state
+    });
     // 5. Retain only unique.
     component.variants = [...new Set(component.variants.map(JSON.stringify))].map(JSON.parse)
     // 6. persist.
