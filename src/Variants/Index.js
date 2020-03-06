@@ -55,7 +55,10 @@ class Variants extends Component {
                     Variants
                 </div>
                 <div>Component has no variants</div>
-                <div>To generate, interact in preview.</div>
+                <div>Its easy to generate</div>
+                <div>Interact with the component</div>
+                <div>If it has different state,</div>
+                <div>Tool will auto fetch variants</div>
             </div>)
         }
 
