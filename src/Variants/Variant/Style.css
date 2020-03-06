@@ -1,12 +1,12 @@
 .variant {
     border: 1px dotted black;
-    padding:20px;
-    margin-bottom: 30px;
+    padding:10px;
+    margin-bottom: 10px;
 }
 
 .variant .view > div{
     pointer-events: none;
-    zoom: .5;
+    zoom: .3;
 }
 
 .variant-controls, .view{
