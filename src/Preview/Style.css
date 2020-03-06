@@ -12,13 +12,3 @@
 .targetChild{
     border: 1px solid #3E8CE4;
 }
-
-.preview .variants{
-    display: inline-block;
-    overflow: scroll;
-    max-height: 500px;
-}
-
-.preview .dynamicComponent{
-    display: inline-block;
-}

@@ -53,6 +53,15 @@ module.exports = {
         "minimised": false,
             "draggable": "true"
     },
+    "ui-editor-settings-draggable-component-Variants": {
+        "style": {
+            "position": "fixed",
+                "top": "614px",
+                    "left": "327px"
+        },
+        "minimised": false,
+            "draggable": "true"
+    },
     "ui-editor-settings-draggable-component-Assets": {
         "style": {
             "position": "fixed",

@@ -13,8 +13,7 @@ let sample = [
         ],
         "state": "{\"show\":\"false\"}",
         "style": ".vsButton{\nfont-family: BentonSansBook,Helvetica,Arial,sans-serif;\ncolor: rgb(0, 0, 0);\n}\n\n\n.vsButton button{\nborder-color: #bf215d;\n    color: #fff;\n    background: #ef5f96;\nborder: 1px solid;\n}\n\n.vsButton button:hover{\nborder-color: #bf215d;\n}",
-        "config": "{}",
-        "variants": []
+        "config": "{}"
     },
     {
         "name": "Modal",
@@ -30,8 +29,7 @@ let sample = [
         ],
         "state": "{}",
         "style": ".modal{\n  width:400px;\n  font-size:22px;\n  position:relative;\nbackground-color: white;\ncolor: black;\n  font-family: BentonSansLight,Helvetica,Arial,sans-serif;\n  font-weight:400;\n    line-height: 17px;\n    letter-spacing: .04em;\n    text-transform: inherit;\n    font-weight: 400;\n\n}\n\n.modal h3{\n  padding:1rem;\nfont-size:26px;\nfont-weight: 400;\n}\n\n.modal .content{\npadding:1rem;\nfont-weight: 400;\n}\n\n.modal footer{\npadding:1rem;\n  border:1px solid black;\nfont-weight: 400;\n}\n.modal header{\n  border:1px solid black;\nfont-weight: 400;\n}\n\n.modal .closeButton{\n  position: absolute;\n  right: 10px;\n  top: 20px;\n}\n\n.modal .content{\n    border:1px solid black;\nfont-weight: 400;\n}",
-        "config": "{}",
-        "variants": []
+        "config": "{}"
     },
     {
         "name": "CancelButton",
@@ -39,8 +37,7 @@ let sample = [
         "events": [],
         "state": "{\"cancelButton\":\"Cancel\"}",
         "style": ".vsButton{\nfont-family: BentonSansBook,Helvetica,Arial,sans-serif;\ncolor: rgb(0, 0, 0);\n}\n\n\n.vsButton button{\nborder-color: #bf215d;\n    color: #fff;\n    background: #ef5f96;\nborder: 1px solid;\npadding: .5rem 2rem;\n}\n\n.vsButton button:hover{\nborder-color: #bf215d;\n}",
-        "config": "{}",
-        "variants": []
+        "config": "{}"
     },
     {
         "name": "SubmitButton",
@@ -48,8 +45,7 @@ let sample = [
         "events": [],
         "state": "{\"submitButton\":\"Submit\"}",
         "style": ".vsButton{\nfont-family: BentonSansBook,Helvetica,Arial,sans-serif;\ncolor: rgb(0, 0, 0);\n}\n\n\n.vsButton button{\nborder-color: #bf215d;\n    color: #fff;\n    background: #ef5f96;\nborder: 1px solid;\npadding: .5rem 2rem;\n}\n\n.vsButton button:hover{\nborder-color: #bf215d;\n}",
-        "config": "{}",
-        "variants": []
+        "config": "{}"
     },
     {
         "name": "PrivacyAndPolicy",
@@ -57,8 +53,7 @@ let sample = [
         "events": [],
         "state": "{}",
         "style": ".privacyPolicy{\nfont-family: BentonSansBook,Helvetica,Arial,sans-serif;\nfont-size: 11px;\n    line-height: 17px;\n    letter-spacing: .04em;\n    text-transform: inherit;\n    font-weight: 400;\n}",
-        "config": "{}",
-        "variants": []
+        "config": "{}"
     },
     {
         "name": "TermsAndService",
@@ -66,8 +61,7 @@ let sample = [
         "events": [],
         "state": "{\"variant\":\"This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.\"}",
         "style": ".privacyPolicy{\nfont-family: BentonSansBook,Helvetica,Arial,sans-serif;\nfont-size: 11px;\n    line-height: 17px;\n    letter-spacing: .04em;\n    text-transform: inherit;\n    font-weight: 400;\n}",
-        "config": "{}",
-        "variants": []
+        "config": "{}"
     },
     {
         "name": "Form",
@@ -75,8 +69,7 @@ let sample = [
         "events": [],
         "state": "{}",
         "style": ".vsfrm{\nheight:400px;\nwidth:400px;\n}",
-        "config": "{}",
-        "variants": []
+        "config": "{}"
     },
     {
         "name": "EmailInput",
@@ -92,8 +85,7 @@ let sample = [
         ],
         "state": "{}",
         "style": ".emailInput .email{\npadding: .75rem;\nborder: 1px solid #e1e1e1;\nfont-family: BentonSansBook,Helvetica,Arial,sans-serif;\n    font-size: 16px;\n    -webkit-box-sizing: border-box;\n    box-sizing: border-box;\n    width: 100%;\n    border-radius: 0;\n    -webkit-box-shadow: none;\n    box-shadow: none;\n\n}",
-        "config": "{}",
-        "variants": []
+        "config": "{}"
     },
     {
         "name": "ResetPasswordForm",
@@ -101,8 +93,7 @@ let sample = [
         "events": [],
         "state": "{\"variant\":\"text\"}",
         "style": "form{\nheight:400px;}",
-        "config": "{}",
-        "variants": []
+        "config": "{}"
     },
     {
         "name": "Page",
@@ -132,8 +123,7 @@ let sample = [
         ],
         "state": "{\"showModal\":false,\"list\":[1,2,3,4,5],\"ResetPasswordModal\":[]}",
         "style": ".page{\nheight: 700px;\nwidth: 500px;\n\n}",
-        "config": "{\"VariantModal\":{\"showHideProp\":\"showModal\",\"override\":false},\"ForgotPasswordButton\":{\"showHideProp\":\"\",\"override\":false},\"ForgotPassword\":{\"showHideProp\":\"\",\"override\":false,\"renderListProp\":\"\"},\"ResetPasswordModal\":{\"showHideProp\":\"showModal\",\"override\":true,\"renderListProp\":\"\"}}",
-        "variants": []
+        "config": "{\"VariantModal\":{\"showHideProp\":\"showModal\",\"override\":false},\"ForgotPasswordButton\":{\"showHideProp\":\"\",\"override\":false},\"ForgotPassword\":{\"showHideProp\":\"\",\"override\":false,\"renderListProp\":\"\"},\"ResetPasswordModal\":{\"showHideProp\":\"showModal\",\"override\":true,\"renderListProp\":\"\"}}"
     },
     {
         "name": "ResetPasswordModal",
@@ -149,8 +139,7 @@ let sample = [
         ],
         "state": "{\"title\":\"Forgot Password\",\"footer\":\"Copyrigts\"}",
         "style": ".modal{\n  width:400px;\n  font-size:22px;\n  position:relative;\nbackground-color: white;\ncolor: black;\n  font-family: BentonSansLight,Helvetica,Arial,sans-serif;\n  font-weight:400;\n    line-height: 17px;\n    letter-spacing: .04em;\n    text-transform: inherit;\n    font-weight: 400;\n\n}\n\n.modal h3{\n  padding:1rem;\nfont-size:26px;\nfont-weight: 400;\n}\n\n.modal .content{\npadding:1rem;\nfont-weight: 400;\n}\n\n.modal footer{\npadding:1rem;\n  border:1px solid black;\nfont-weight: 400;\n}\n.modal header{\n  border:1px solid black;\nfont-weight: 400;\n}\n\n.modal .closeButton{\n  position: absolute;\n  right: 10px;\n  top: 20px;\n}\n\n.modal .content{\n    border:1px solid black;\nfont-weight: 400;\n}",
-        "config": "{}",
-        "variants": []
+        "config": "{}"
     },
     {
         "name": "Facebook",
@@ -158,8 +147,7 @@ let sample = [
         "events": [],
         "state": "{}",
         "style": ".facebook{\nbackground-image:$assets['facebook.png'];\n}",
-        "config": "{}",
-        "variants": []
+        "config": "{}"
     }
 ]
 

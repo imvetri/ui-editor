@@ -16,6 +16,7 @@ import Editor from "./Editor";
 import Events from "./Events";
 import Toolkit from "./Toolkit";
 import Preview from "./Preview";
+import Variants from "./Variants";
 
 // Reducers.
 import { updateEvent, updateConfig, saveElement, updateSelectedComponent } from "./Index/Reducer";
@@ -51,12 +52,6 @@ class Index extends Component {
         this.setState({
             previewComponent: element
         });
-    }
-
-    updateStyles(){
-        this.setState({
-            element: this.state.selectedComponent
-        })
     }
 
     updateFolders(folders){
@@ -133,6 +128,16 @@ class Index extends Component {
                             title="Preview"
                         />
                     </DraggableComponent>
+                    
+                    <DraggableComponent>
+                        <Variants 
+                            key={Math.ceil(Math.random() * 1000)}
+                            component={selectedComponent}
+                                onUpdate={this.saveElement}
+                            title="Variants"
+                        />
+                    </DraggableComponent>
+
     
                     <DraggableComponent>
                         <Toolkit
