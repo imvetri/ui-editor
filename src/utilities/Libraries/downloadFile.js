@@ -3,6 +3,10 @@ export function downloadFile(name, contents, mime_type) {
 
     var blob = new Blob([contents], {type: mime_type});
 
+    download(blob, name);
+}
+
+export function download(blob, name){
     var dlink = document.createElement('a');
     dlink.download = name;
     dlink.href = window.URL.createObjectURL(blob);
