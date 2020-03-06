@@ -81,7 +81,7 @@ class Toolkit extends Component {
                                         value="STORYBOOK" 
                                         checked={this.state.exportType === "STORYBOOK"} 
                                         onChange={this.onExportTypeChanged.bind(this)}
-                                    />React - Class storybook component
+                                    />React - Storybook
                                 </label>
                             </li>
                         </ul>

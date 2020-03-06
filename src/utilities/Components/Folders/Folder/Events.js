@@ -56,8 +56,10 @@ export function onDragStart(e){
 
 import { getNestedComponents } from "../../../../utilities/Runtime";
 import { convertToReact } from "../../../../utilities/CodeGenerator/React";
+import { convertToReactStories } from "../../../../Utilities/CodeGenerator/ReactStories";
 import { readData } from "../../../../utilities/Storage";
-import { downloadFile } from "../../../Libraries/downloadFile"
+import { downloadFile } from "../../../Libraries/downloadFile";
+import { zipFiles } from "../../../Libraries/zipFiles";
 
 
 function exportSimple(componentName) {
@@ -88,11 +90,15 @@ function exportNWB(componentName) {
 
     let headerImports = `import React, {Component} from 'react';\n`;
 
+    window.ExportNWB = true;
+
     let componentStrings = uniqueComponents.map(convertToReact).map(removeParanthesis);
     componentStrings[0] = "export default "+ componentStrings[0];
 
     let ReactClassComponentString = headerImports + componentStrings.reverse().join("\n");
     console.log(ReactClassComponentString);
+
+    window.ExportNWB = false;
 
     downloadFile(`${componentName}.js`,ReactClassComponentString );
 }
@@ -113,21 +119,31 @@ function exportStorybook(componentName) {
     import React, {Component} from 'react';
     `;
 
-    /**
-     * IMPORTANT- If we export, do not include saveVariant
-     */
-
     window.ExportNWB = true;
 
     let componentStrings = uniqueComponents.map(convertToReact).map(removeParanthesis);
     componentStrings[0] = "export default "+ componentStrings[0];
 
     let ReactClassComponentString = headerImports + componentStrings.reverse().join("\n");
-    console.log(ReactClassComponentString);
 
     window.ExportNWB = false;
+    /**
+     * function export storybook
+     * 1. Export component.js
+     * 2. Export component.stories.js
+     */
 
-    downloadFile(`${componentName}.js`,ReactClassComponentString );
+    let ReactStoriesString = convertToReactStories(selectedComponent);
+    zipFiles([
+        {
+            name: `${componentName}.js`,
+            content: ReactClassComponentString
+        },
+        {
+            name: `${componentName}.stories.js`,
+            content: ReactStoriesString
+        }
+    ])
 }
 
 export function onExport(componentName){
