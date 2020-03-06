@@ -1,31 +1,5 @@
 module.exports = {
-    "ui-editor-settings-draggable-component-TagExplorer": {
-        "style": {
-            "position": "fixed",
-                "top": "602px",
-                    "left": "954px"
-        },
-        "minimised": false,
-            "draggable": "true"
-    },
-    "ui-editor-settings-draggable-component-StyleExplorer": {
-        "style": {
-            "position": "fixed",
-                "top": "587px",
-                    "left": "577px"
-        },
-        "minimised": false,
-            "draggable": "true"
-    },
-    "ui-editor-settings-draggable-component-Events": {
-        "style": {
-            "position": "fixed",
-                "top": "352px",
-                    "left": "1031px"
-        },
-        "minimised": false,
-            "draggable": "true"
-    },
+    "ui-editor-settings-draggable-component-Events":{"style":{"position":"fixed","top":"11px","left":"854px"},"minimised":false,"draggable":"true"},
     "ui-editor-settings-draggable-component-Editor": {
         "style": {
             "position": "fixed",
@@ -35,49 +9,9 @@ module.exports = {
         "minimised": false,
             "draggable": "true"
     },
-    "ui-editor-settings-draggable-component-Components": {
-        "style": {
-            "position": "fixed",
-                "top": "50px",
-                    "left": "21px"
-        },
-        "minimised": false,
-            "draggable": "true"
-    },
-    "ui-editor-settings-draggable-component-Preview": {
-        "style": {
-            "position": "fixed",
-                "top": "614px",
-                    "left": "327px"
-        },
-        "minimised": false,
-            "draggable": "true"
-    },
-    "ui-editor-settings-draggable-component-Variants": {
-        "style": {
-            "position": "fixed",
-                "top": "614px",
-                    "left": "327px"
-        },
-        "minimised": false,
-            "draggable": "true"
-    },
-    "ui-editor-settings-draggable-component-Assets": {
-        "style": {
-            "position": "fixed",
-                "top": "106px",
-                    "left": "1504px"
-        },
-        "minimised": false,
-            "draggable": "true"
-    },
-    "ui-editor-settings-draggable-component-Toolkit": {
-        "style": {
-            "position": "fixed",
-                "top": "595px",
-                    "left": "867px"
-        },
-        "minimised": false,
-            "draggable": "true"
-    }
+    "ui-editor-settings-draggable-component-Components": {"style":{"position":"fixed","top":"10px","left":"17px"},"minimised":false,"draggable":"true"},
+    "ui-editor-settings-draggable-component-Preview": {"style":{"position":"fixed","top":"5px","left":"328px"},"minimised":false,"draggable":"true"},
+    "ui-editor-settings-draggable-component-Variants": {"style":{"position":"fixed","top":"449px","left":"18px"},"minimised":false,"draggable":"true"},
+    "ui-editor-settings-draggable-component-Assets":{"style":{"position":"fixed","top":"303px","left":"1231px"},"minimised":false,"draggable":"true"},
+    "ui-editor-settings-draggable-component-Toolkit": {"style":{"position":"fixed","top":"17px","left":"1232px"},"minimised":false,"draggable":"true"}
 }

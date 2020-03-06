@@ -24,6 +24,11 @@ textarea {
     left:10px;
 }
 
+.elements-tab > ul {
+    max-height: 300px;
+    overflow: scroll;
+}
+
 .Controls{
     padding-bottom:8px;
 }
