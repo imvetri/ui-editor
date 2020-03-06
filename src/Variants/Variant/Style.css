@@ -1,0 +1,16 @@
+.variant {
+    border: 1px dotted black;
+    padding:20px;
+    margin-bottom: 30px;
+}
+
+.variant .view > div{
+    pointer-events: none;
+    zoom: .5;
+}
+
+.variant-controls, .view{
+    padding:1em;
+    border-top: 1px solid #333333;
+    background: rgb(64, 64, 64);
+}
