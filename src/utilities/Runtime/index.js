@@ -1,7 +1,26 @@
 // Dependencies.
 
 import {createComponent} from "../create-component";
-import {readData} from "../Storage";
+import {readData, writeData} from "../Storage";
+
+/**
+ * Store component state as variants. Because variants are visually different form of a component.
+ * Since visually different forms are driven by the state, its simple to just keep track of the states.
+ */
+window.saveVariant = function saveVariant(componentName, state) {
+    // 1. Read all components.
+    let components = readData("ui-editor");
+    // 2. Find the passed component.
+    let component = components.find(component=>component.name.includes(componentName));
+    // 3. If component.variants does not exist, create an empty array.
+    component.variants = component.variants || [component.state];
+    // 4. push state into component.variant.
+    component.variants.push(state);
+    // 5. Retain only unique.
+    component.variants = [...new Set(component.variants.map(JSON.stringify))].map(JSON.parse)
+    // 6. persist.
+    writeData("ui-editor", components)
+};
 
 /**
  * 
