@@ -7,10 +7,11 @@ import "./Style.css"
 // Components.
 
 import getMessages from "./Messages";
+import {UnControlled as CodeMirror} from 'react-codemirror2';
 
 // Reducers. 
 
-import {updateEventName, updateEventType, updatePublishName, updateReducer} from "./Reducer";
+import {updateEventName, updateEventType, updatePublishName} from "./Reducer";
 
 // Events.
 
@@ -21,7 +22,7 @@ class Event extends Component {
         super(props);
         this.state = {
             name: this.props.event ? this.props.event.name : "",
-            reducer: this.props.event ? this.props.event.reducer : "",
+            reducer: this.props.event ? this.props.event.reducer : "// Enter reducer definition\n",
             publishable: this.props.event ? this.props.event.publishable : "",
             publishName: this.props.event ? this.props.event.publishName : "",
         }
@@ -43,7 +44,21 @@ class Event extends Component {
                     {eventNames}
                 </datalist>
                 <br/>
-                <textarea onChange={updateReducer.bind(this)} value={this.state.reducer} placeholder="Enter state reducer" title="Reducer"/>
+                <CodeMirror
+                        value={this.state.reducer}
+                        options={{
+                            lineNumbers: true,
+                            mode: "text/javascript",
+                            theme: "ambiance",
+                            indentWithTabs: false,
+                            smartIndent: true
+                        }}
+                        onChange={(editor, data, reducer) => {
+                            this.setState({
+                                reducer: reducer
+                            })
+                        }}
+                    />
                 <div>
                     <label>
                     <input type="checkbox" onChange={updateEventType.bind(this)} checked={this.state.publishable? "checked": ""}/>
