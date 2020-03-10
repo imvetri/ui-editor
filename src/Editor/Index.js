@@ -4,9 +4,10 @@
 import React, { Component } from 'react';
 
 import "./Style.css";
-import {updateName, updateMarkup, updateStyle, updateState} from "./Reducer";
 
 import {readComponent} from "../utilities/Storage";
+
+import {UnControlled as CodeMirror} from 'react-codemirror2';
 
 /**
  * Shows Configurator on select of valid child component name in the markup and mouseOut from markup
@@ -35,25 +36,13 @@ class Editor extends Component {
         });
     }
 
-    componentDidMount(){
-
-        let config = {
-            lineNumbers: true,
-            mode: "text/html",
-            theme: "ambiance",
-            indentWithTabs: false,
-            readOnly: true
-        };
-        
-        let editor = CodeMirror.fromTextArea(document.getElementById("elementMarkup"), config);
-    }
-
     render() {
 
         let name= this.state.name;
         let markup= this.state.markup;
         let style= this.state.style;
         let state= this.state.state;
+
         // TODO: Should pass the current data. Instead of accessing it from global
         return (
             <div className="container editor-tab">
@@ -61,24 +50,70 @@ class Editor extends Component {
 
                 <div className="">
                     <div className="title">Component Name</div>
-                    <input type="text" placeholder="Enter element name" value={name} onChange={updateName.bind(this)} id="elementName"/>
+                    <input type="text" placeholder="Enter element name" value={name} onChange={(e)=>{
+                        this.setState({
+                            name: event.currentTarget.value
+                        })
+                    }} id="elementName"/>
                     <button onClick={this.saveElement.bind(this)} id="save"><i className="fas fa-save"></i>Save</button>    
                 </div>
                 
                 <div className="">
                     <div className="title">Component Markup</div>
-                    <textarea value={markup} onChange={updateMarkup.bind(this)} id="elementMarkup" title="ID is mandatory for events"/>
+                    <CodeMirror
+                        value={markup}
+                        options={{
+                            lineNumbers: true,
+                            mode: "text/javascript",
+                            theme: "ambiance",
+                            indentWithTabs: false,
+                            smartIndent: true
+                        }}
+                        onChange={(editor, data, markup) => {
+                            this.setState({
+                                markup: markup
+                            })
+                        }}
+                    />
                 </div>
-
+                
 
                 <div className="">
                     <div className="title">Component CSS</div>
-                    <textarea value={style} onChange={updateStyle.bind(this)} />
+                    <CodeMirror
+                        value={style}
+                        options={{
+                            lineNumbers: true,
+                            mode: { name: "javascript", json: true }    ,
+                            theme: "ambiance",
+                            indentWithTabs: false,
+                            smartIndent: true
+                        }}
+                        onChange={(editor, data, style) => {
+                            this.setState({
+                                style: style
+                            })
+                        }}
+                    />
                 </div>
 
                 <div className="">
                     <div className="title">Component State</div>
-                    <textarea value={state} onChange={updateState.bind(this)} id="elementState"/>
+                    <CodeMirror
+                        value={state}
+                        options={{
+                            lineNumbers: true,
+                            mode: "text/javascript",
+                            theme: "ambiance",
+                            indentWithTabs: false,
+                            smartIndent: true
+                        }}
+                        onChange={(editor, data, state) => {
+                            this.setState({
+                                state: state
+                            })
+                        }}
+                    />
                 </div>
 
             </div>

@@ -68,7 +68,7 @@ class DraggableComponent extends Component {
                 }
                 {
                     this.state.minimised ? 
-                        <div className="container editor-tab">
+                        <div className="container">
                             <div className="title">{this.props.children.type.name}</div>
                         </div>
                         :

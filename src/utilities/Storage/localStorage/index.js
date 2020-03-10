@@ -25,15 +25,16 @@ export function readData(key){
     }
     if(key ==="folders"){
         let folders = JSON.parse(localStorage.getItem(key));
+
+        let componentNames = window.components.map(component=>component.name);
         if(folders === null){
             return  [{
                 type: "noFolder",
-                contents: [],
+                contents: componentNames,
                 name: "",
                 status:"open"
             }]
         }
-        let componentNames = window.components.map(component=>component.name);
         // If newly created component, push it into noFolder.
         let componentsNotInAnyFolder = componentNames.filter(componentName=>{
             return folders.every(folder=>folder.contents.every(content =>  content !== componentName ))
