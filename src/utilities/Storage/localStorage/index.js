@@ -25,20 +25,22 @@ export function readData(key){
     }
     if(key ==="folders"){
         let folders = JSON.parse(localStorage.getItem(key));
+        if(folders === null){
+            return  [{
+                type: "noFolder",
+                contents: [],
+                name: "",
+                status:"open"
+            }]
+        }
         let componentNames = window.components.map(component=>component.name);
         // If newly created component, push it into noFolder.
         let componentsNotInAnyFolder = componentNames.filter(componentName=>{
-            debugger;
             return folders.every(folder=>folder.contents.every(content =>  content !== componentName ))
         });
         let noFolder = folders.find(folder=>folder.type==="noFolder");
         noFolder.contents.push(...componentsNotInAnyFolder);
-        return folders || [{
-            type: "noFolder",
-            contents: componentNames,
-            name: "",
-            status:"open"
-        }];
+        return folders;
     }
 
     return [];
