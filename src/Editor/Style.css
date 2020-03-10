@@ -1,3 +1,16 @@
 .hidden{
     display: none;
 }
+
+.editor-tab textarea {
+    height: 250px;
+}
+
+.editor-tab {
+    height: 500px;
+    overflow: scroll;
+}
+
+input.folder:read-only {
+    pointer-events: none;
+}

@@ -27,7 +27,7 @@ class Folders extends Component {
         // Check if it is newly created folder 
         if(!folder){
             console.log(`Folder not found, adding ${JSON.stringify(data)}to list of folders ${JSON.stringify(folders)}`);
-            folders.push(data);
+            folders.unshift(data);
         } 
         // Update existing one
         else {

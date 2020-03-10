@@ -55,6 +55,7 @@ export function updateConfig(config){
 
 export function saveElement (element) {
     let components = Array.from(this.state.components);
+    let newElement;
     
     // Check if element exist.
     let elementExist = components.find(component=>component.name===element.name);
@@ -72,7 +73,7 @@ export function saveElement (element) {
     }
 
     else {
-        let newElement = {
+        newElement = {
             name: element.name,
             markup: element.markup,
             events: [],
