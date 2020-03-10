@@ -12,7 +12,9 @@
     "build-dev": "webpack"
   },
   "dependencies": {
+    "codemirror": "^5.52.0",
     "react": "^16.7.0",
+    "react-codemirror2": "^6.0.0",
     "react-dom": "^16.7.0",
     "react-inspector": "^2.3.1"
   },

@@ -4,13 +4,7 @@
             name: e.target.value
         })
     }
-
-  function  updateReducer(e) {
-        this.setState({
-            reducer: e.target.value
-        })
-    }
-
+    
  function   updatePublishName(e) {
         this.setState({
             publishName: e.target.value
@@ -27,6 +21,5 @@
         updateEventName,
         updateEventType,
         updatePublishName,
-        updateEventType,
-        updateReducer
+        updateEventType
     }
