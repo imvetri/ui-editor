@@ -35,6 +35,19 @@ class Editor extends Component {
         });
     }
 
+    componentDidMount(){
+
+        let config = {
+            lineNumbers: true,
+            mode: "text/html",
+            theme: "ambiance",
+            indentWithTabs: false,
+            readOnly: true
+        };
+        
+        let editor = CodeMirror.fromTextArea(document.getElementById("elementMarkup"), config);
+    }
+
     render() {
 
         let name= this.state.name;
