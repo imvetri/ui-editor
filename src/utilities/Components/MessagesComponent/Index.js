@@ -15,7 +15,7 @@ class MessagesComponent extends Component {
 
         let messages = this.props.messages;
             return (
-                <div className="console">
+                <div>
                     {messages.map((message,index)=><MessageComponent key={index} message={message}/>)}
                 </div>
             )
