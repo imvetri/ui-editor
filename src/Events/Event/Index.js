@@ -47,7 +47,7 @@ class Event extends Component {
                 <CodeMirror
                         value={this.state.reducer}
                         options={{
-                            lineNumbers: true,
+                            lineNumbers: false,
                             mode: "text/javascript",
                             theme: "ambiance",
                             indentWithTabs: false,
