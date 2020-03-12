@@ -14,6 +14,7 @@ textarea {
     background: rgb(64, 64, 64);
     margin-top: 10px;
     padding: 5px;
+    font-size: 12px;
 }
 
 .elements-tab {
@@ -26,5 +27,6 @@ textarea {
 }
 
 .Controls{
-    padding-bottom:8px;
+    padding: 5px;
+    padding-bottom: 12px;
 }
