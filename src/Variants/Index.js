@@ -47,7 +47,7 @@ class Variants extends Component {
                 <div className="title">
                     Variants
                 </div>
-                No component selected. variants tab</div>)
+                <p>No component selected. variants tab</p></div>)
         }
         if(!component.variants){
             return (<div className="container">

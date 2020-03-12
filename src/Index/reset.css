@@ -25,29 +25,10 @@ ol, ul {
 	list-style: none;
 }
 
-
-h4 {
-    font-size: 20px;
-    padding: 4px 4px 4px 5px;
-
-}
-
-h5 {
-    font-size: 12px;
-    padding: 4px 4px 4px 5px;
-
-}
-
 p {
     padding: 5px;
 }
 
 li {
     padding: 5px;
-}
-
-
-h3 {
-    font-size: 24px;
-    padding: 6px 6px 6px 10px;
 }
