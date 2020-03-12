@@ -63,7 +63,7 @@ class Editor extends Component {
                     <CodeMirror
                         value={markup}
                         options={{
-                            lineNumbers: true,
+                            lineNumbers: false,
                             mode: "text/javascript",
                             theme: "ambiance",
                             indentWithTabs: false,
@@ -83,7 +83,7 @@ class Editor extends Component {
                     <CodeMirror
                         value={style}
                         options={{
-                            lineNumbers: true,
+                            lineNumbers: false,
                             mode: { name: "javascript", json: true }    ,
                             theme: "ambiance",
                             indentWithTabs: false,
@@ -102,13 +102,14 @@ class Editor extends Component {
                     <CodeMirror
                         value={state}
                         options={{
-                            lineNumbers: true,
+                            lineNumbers: false,
                             mode: "text/javascript",
                             theme: "ambiance",
                             indentWithTabs: false,
                             smartIndent: true
                         }}
                         onChange={(editor, data, state) => {
+                            debugger;
                             this.setState({
                                 state: state
                             })
