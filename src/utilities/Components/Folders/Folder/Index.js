@@ -47,9 +47,7 @@ class Folder extends Component {
                     <i className={iconStatus} onClick={toggleFolder.bind(this)}></i>
                     <input type="text" className="folder" placeholder="Enter folder name" readOnly value={this.state.name}/>
                     <button onClick={deleteFolder.bind(this)}><i className="fa fa-trash"></i>Delete</button>
-                    <ul>
-                        {contents}
-                    </ul>
+                    {contents}
                 </div>
             );
         }
@@ -63,9 +61,7 @@ class Folder extends Component {
                             onDragOver={dragOverHandler.bind(this)} 
                             onDragLeave={dragLeaveHandler.bind(this)} 
                             onDragStart={onDragStart.bind(this)} >
-                    <ul>
-                        {contents}
-                    </ul>
+                    {contents}
                 </div>
             );
         }

@@ -3,23 +3,18 @@ body {
     height: 150vh;
     position:relative;
     color: #d9d9d9;
-    font-family: Arial, sans-serif, Georgia, serif;
+    font-family: "Nunito Sans",-apple-system,".SFNSText-Regular","San Francisco",BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 ul {
     border: 1px #404040 solid;
 }
 
-li , label, p {
-    font-size: 11px;
-}
-
-h4, h5, h6 {
-    border-bottom: 1px solid #333333;
+li , label, p, .rules , input, textarea{
+    font-size: 10px;
 }
 
 input, textarea { 
-    font-size: 11px;
     background: #2b2b2b;
     color: #d9d9d9;
     opacity: 0.75;
@@ -48,7 +43,7 @@ button {
     color: rgba(255,255,255,0.5);
     border-color: rgba(0,0,0,0.9);
     border-width: 1px;
-    padding: 7px;
+    padding: 5px;
     background-color: #343a40;
     margin-left: 4px;
 }
