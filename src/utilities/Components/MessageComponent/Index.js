@@ -23,10 +23,8 @@ class MessageComponent extends Component {
         else{
             console.error(message.type + " is unidentified message type for <MessagesComponent/>. Please use either 'error' or 'info' only. If you require a different type, raise an issue, send a PR")
             return  (
-                <div className="console">
-                    <div className="eerror">
-                        <code>{"error : unidentified message type. Please use either error/ info only"}</code>
-                    </div>
+                <div className="eerror">
+                    <code>{"error : unidentified message type. Please use either error/ info only"}</code>
                 </div>
             )
         }
