@@ -4,6 +4,12 @@ UI editor is a component library builder. It helps to build components and gener
 
 ## Demo - https://imvetri.github.io/ui-editor/
 
+## Features
+### Generate code to storybook
+1. Configure Export to generate code for storybook by Click Toolkit -> React Storybook.
+2. Select Components->Any component -> Export
+3. Extract the zip contents into storybook configured codebase
+
 ## Why code generator is useful.
 
 1. The cost of writing and maintaining the code generator is less than the cost of writing and maintaining the repetition that it is replacing.
