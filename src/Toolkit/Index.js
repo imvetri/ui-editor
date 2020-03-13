@@ -31,7 +31,7 @@ class Toolkit extends Component {
     render() {
 
         return (
-            <div className="container preview">
+            <div className="container toolkit">
                 <div className="title">
                     Toolkit
                 </div>
