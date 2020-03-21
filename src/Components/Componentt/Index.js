@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import {selectionChanged, handleDrag} from "./Events";
 
-import {onExport} from "../../Utilities/Components/Folders/Folder/Events";
+import {onExport} from "../../Utilities/Export";
 
 import  "./Style.css";
 
