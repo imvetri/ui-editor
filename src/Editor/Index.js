@@ -55,7 +55,7 @@ class Editor extends Component {
                             name: event.currentTarget.value
                         })
                     }} id="elementName"/>
-                    <button onClick={this.saveElement.bind(this)} id="save"><i className="fas fa-save"></i>Save</button>    
+                    <button onClick={this.saveElement.bind(this)} id="save"><i className="fas fa-save"></i>Save & close</button>    
                 </div>
                 
                 <div className="">
@@ -65,9 +65,10 @@ class Editor extends Component {
                         options={{
                             lineNumbers: false,
                             mode: "text/javascript",
-                            theme: "ambiance",
+                            theme: "darcula",
                             indentWithTabs: false,
-                            smartIndent: true
+                            smartIndent: true,
+                            lineWrapping: true
                         }}
                         onChange={(editor, data, markup) => {
                             this.setState({
@@ -84,10 +85,11 @@ class Editor extends Component {
                         value={style}
                         options={{
                             lineNumbers: false,
-                            mode: { name: "javascript", json: true }    ,
-                            theme: "ambiance",
+                            mode: "text/javascript",
+                            theme: "darcula",
                             indentWithTabs: false,
-                            smartIndent: true
+                            smartIndent: true,
+                            lineWrapping: true
                         }}
                         onChange={(editor, data, style) => {
                             this.setState({
@@ -104,12 +106,12 @@ class Editor extends Component {
                         options={{
                             lineNumbers: false,
                             mode: "text/javascript",
-                            theme: "ambiance",
+                            theme: "darcula",
                             indentWithTabs: false,
-                            smartIndent: true
+                            smartIndent: true,
+                            lineWrapping: true
                         }}
                         onChange={(editor, data, state) => {
-                            debugger;
                             this.setState({
                                 state: state
                             })
