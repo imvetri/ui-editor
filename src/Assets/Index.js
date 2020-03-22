@@ -52,7 +52,7 @@ class Assets extends Component {
 
         let assets = this.state.assets.map(asset=> <Asset asset={asset} selected={this.state.selectedAsset} onSelected={this.updatedSelected.bind(this)}/>);
         return (
-            <div className="elements">
+            <div className="assets">
                 <div className="container elements-tab">
                     <div className="title">
                         Assets
