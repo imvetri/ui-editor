@@ -49,7 +49,7 @@ class Event extends Component {
                         options={{
                             lineNumbers: false,
                             mode: "text/javascript",
-                            theme: "ambiance",
+                            theme: "darcula",
                             indentWithTabs: false,
                             smartIndent: true
                         }}

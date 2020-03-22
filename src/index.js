@@ -105,6 +105,14 @@ class Index extends Component {
     
                     </DraggableComponent>
     
+                    <DraggableComponent>
+                        <Preview 
+                            key={Math.ceil(Math.random() * 1000)}
+                            component={selectedComponent}
+                            title="Preview"
+                        />
+                    </DraggableComponent>
+
                     {this.state.showEditor? 
                         <DraggableComponent>
                             <Editor
@@ -120,14 +128,6 @@ class Index extends Component {
                         </DraggableComponent>
                     : 
                     null}
-    
-                    <DraggableComponent>
-                        <Preview 
-                            key={Math.ceil(Math.random() * 1000)}
-                            component={selectedComponent}
-                            title="Preview"
-                        />
-                    </DraggableComponent>
                     
                     <DraggableComponent>
                         <Variants 

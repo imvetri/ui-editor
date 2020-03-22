@@ -67,18 +67,6 @@ class Toolkit extends Component {
                                     <input 
                                         type="radio" 
                                         name="Export" 
-                                        value="SIMPLE" 
-                                        checked={this.state.exportType === "COMPLEX"}
-                                        onChange={this.onExportTypeChanged.bind(this)}
-                                    />
-                                    React - Functional component
-                                </label>
-                            </li>
-                            <li>
-                                <label>
-                                    <input 
-                                        type="radio" 
-                                        name="Export" 
                                         value="NWB" 
                                         checked={this.state.exportType === "NWB"} 
                                         onChange={this.onExportTypeChanged.bind(this)}
