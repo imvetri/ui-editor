@@ -7,7 +7,20 @@ const htmlWebpackPlugin = new HtmlWebPackPlugin({
 module.exports = {
     devtool: 'inline-source-map',  
     optimization: {
-        minimize: false
+        splitChunks:{
+            cacheGroups: {
+                node_modules: {
+                    name: 'node_modules',
+                    chunks: 'all',
+                    test: /node_modules/
+                },
+                common: {
+					test: /src/,
+					name: `src`,
+					chunks: "all"
+                }
+            }
+        }
     },
     module: {
         rules: [
@@ -17,24 +30,6 @@ module.exports = {
                 use: {
                     loader: "babel-loader"
                 }
-            },
-            {
-                test: /\.lcss$/,
-                use: [
-                    
-                    {
-                        "loader": "style-loader"
-                    },
-                    {
-                        loader: "css-loader",
-                        options: {
-                          modules: true,
-                          importLoaders: 1,
-                          localIdentName: "[name]_[local]_[hash:base64]",
-                          sourceMap: true
-                        }
-                      }
-                ]
             },
             {
                 test: /\.css$/,
