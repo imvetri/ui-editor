@@ -14,6 +14,8 @@
 }
 
 .preview div:nth-child(2) {
-    height:100vh;
-    width:100vw;
+    height:50vh;
+    width:30vw;
+    overflow:scroll;
+    zoom: .80;
 }

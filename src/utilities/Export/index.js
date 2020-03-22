@@ -91,10 +91,6 @@ function exportStorybook(componentName) {
     ])
 }
 
-function exportReactHooks(componentName){
-
-}
-
 export function onExport(componentName){
     switch (window.EXPORT_TYPE) {
         case "SIMPLE": 
@@ -107,10 +103,6 @@ export function onExport(componentName){
 
         case "STORYBOOK":
             exportStorybook(componentName);
-            break;
-
-        case "COMPLEX":
-            exportReactHooks(componentName);
             break;
     }
 }
