@@ -9,8 +9,8 @@ module.exports = {
     optimization: {
         splitChunks:{
             cacheGroups: {
-                node_modules: {
-                    name: 'node_modules',
+                modules: {
+                    name: 'modules',
                     chunks: 'all',
                     test: /node_modules/
                 },
