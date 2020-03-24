@@ -16,6 +16,7 @@ import Editor from "./Editor";
 import Events from "./Events";
 import Toolkit from "./Toolkit";
 import Preview from "./Preview";
+import Center from "./Utilities/Components/Center";
 import Variants from "./Variants";
 
 // Reducers.
@@ -84,6 +85,13 @@ class Index extends Component {
                                 onFoldersUpdate={this.updateFolders.bind(this)}
                         />
                     </DraggableComponent>
+                    <Center>
+                        <Preview 
+                                key={Math.ceil(Math.random() * 1000)}
+                                component={selectedComponent}
+                                title="Preview"
+                            />
+                    </Center>
 
                     <DraggableComponent>
                         <Assets                                 
@@ -102,15 +110,7 @@ class Index extends Component {
                             onConfigUpdate={this.updateConfig}
                             title="Events"
                         />
-    
-                    </DraggableComponent>
-    
-                    <DraggableComponent>
-                        <Preview 
-                            key={Math.ceil(Math.random() * 1000)}
-                            component={selectedComponent}
-                            title="Preview"
-                        />
+                        
                     </DraggableComponent>
 
                     {this.state.showEditor? 
