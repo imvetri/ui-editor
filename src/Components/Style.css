@@ -18,7 +18,8 @@ textarea {
 }
 
 .elements-tab {
-    left:10px;
+    left:0px;
+    height: 95vh;
 }
 
 .elements-tab > ul {

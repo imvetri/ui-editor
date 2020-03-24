@@ -18,6 +18,7 @@ import Toolkit from "./Toolkit";
 import Preview from "./Preview";
 import Center from "./Utilities/Components/Center";
 import Bottom from "./Utilities/Components/Bottom";
+import Left from "./Utilities/Components/Left";
 import Variants from "./Variants";
 
 // Reducers.
@@ -73,7 +74,7 @@ class Index extends Component {
         try {
             return (
                 <div>
-                    <DraggableComponent>
+                    <Left>
                         <Components
                             key={Math.ceil(Math.random() * 1000)}
                             components={this.state.components}
@@ -85,7 +86,7 @@ class Index extends Component {
                                 onSelection={this.updateSelectedComponent}
                                 onFoldersUpdate={this.updateFolders.bind(this)}
                         />
-                    </DraggableComponent>
+                    </Left>
                     <Center>
                         <Preview 
                                 key={Math.ceil(Math.random() * 1000)}
@@ -147,7 +148,7 @@ class Index extends Component {
                         />
                     </DraggableComponent>
 
-    
+
                     <DraggableComponent>
                         <Toolkit
                             title="Toolkit"
