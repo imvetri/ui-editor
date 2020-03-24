@@ -1,16 +1,42 @@
-.hidden{
-    display: none;
-}
-
 .editor-tab textarea {
     height: 250px;
 }
 
 .editor-tab {
-    height: 500px;
+    height: 250px;
+    width: 100vw;
+    animation: slide-up 0.2s ease;
+}
+
+@keyframes slide-up {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.editor-tab .react-codemirror2{
     overflow: scroll;
 }
 
 input.folder:read-only {
     pointer-events: none;
+}
+
+.editor{
+    width:25%;
+    display: inline-block;
+}
+
+.editor-tab button {
+    position: absolute;
+    top: -5%;
+    left: 50%;
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
 }
