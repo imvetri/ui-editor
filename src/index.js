@@ -17,6 +17,7 @@ import Events from "./Events";
 import Toolkit from "./Toolkit";
 import Preview from "./Preview";
 import Center from "./Utilities/Components/Center";
+import Bottom from "./Utilities/Components/Bottom";
 import Variants from "./Variants";
 
 // Reducers.
@@ -114,7 +115,7 @@ class Index extends Component {
                     </DraggableComponent>
 
                     {this.state.showEditor? 
-                        <DraggableComponent>
+                        <Bottom>
                             <Editor
                                 key={Math.ceil(Math.random() * 1000)}
                                 element={selectedComponent}
@@ -125,9 +126,17 @@ class Index extends Component {
                                 title="Editor"
                                     onSave={this.saveElement}
                             />
-                        </DraggableComponent>
+                        </Bottom>
                     : 
-                    null}
+                    this.state.selectedComponent ? 
+                        <Bottom>
+                            <Center>
+                                <button onClick={()=>this.setState({showEditor:true})}>Open Editor</button>
+                            </Center>
+                        </Bottom>
+                    :
+                    null
+                    }
                     
                     <DraggableComponent>
                         <Variants 
