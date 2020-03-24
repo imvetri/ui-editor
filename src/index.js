@@ -16,6 +16,9 @@ import Editor from "./Editor";
 import Events from "./Events";
 import Toolkit from "./Toolkit";
 import Preview from "./Preview";
+import Center from "./Utilities/Components/Center";
+import Bottom from "./Utilities/Components/Bottom";
+import Left from "./Utilities/Components/Left";
 import Variants from "./Variants";
 
 // Reducers.
@@ -71,7 +74,7 @@ class Index extends Component {
         try {
             return (
                 <div>
-                    <DraggableComponent>
+                    <Left>
                         <Components
                             key={Math.ceil(Math.random() * 1000)}
                             components={this.state.components}
@@ -83,7 +86,14 @@ class Index extends Component {
                                 onSelection={this.updateSelectedComponent}
                                 onFoldersUpdate={this.updateFolders.bind(this)}
                         />
-                    </DraggableComponent>
+                    </Left>
+                    <Center>
+                        <Preview 
+                                key={Math.ceil(Math.random() * 1000)}
+                                component={selectedComponent}
+                                title="Preview"
+                            />
+                    </Center>
 
                     <DraggableComponent>
                         <Assets                                 
@@ -102,19 +112,11 @@ class Index extends Component {
                             onConfigUpdate={this.updateConfig}
                             title="Events"
                         />
-    
-                    </DraggableComponent>
-    
-                    <DraggableComponent>
-                        <Preview 
-                            key={Math.ceil(Math.random() * 1000)}
-                            component={selectedComponent}
-                            title="Preview"
-                        />
+                        
                     </DraggableComponent>
 
                     {this.state.showEditor? 
-                        <DraggableComponent>
+                        <Bottom>
                             <Editor
                                 key={Math.ceil(Math.random() * 1000)}
                                 element={selectedComponent}
@@ -125,9 +127,17 @@ class Index extends Component {
                                 title="Editor"
                                     onSave={this.saveElement}
                             />
-                        </DraggableComponent>
+                        </Bottom>
                     : 
-                    null}
+                    this.state.selectedComponent ? 
+                        <Bottom>
+                            <Center>
+                                <button onClick={()=>this.setState({showEditor:true})}>Open Editor</button>
+                            </Center>
+                        </Bottom>
+                    :
+                    null
+                    }
                     
                     <DraggableComponent>
                         <Variants 
@@ -138,7 +148,7 @@ class Index extends Component {
                         />
                     </DraggableComponent>
 
-    
+
                     <DraggableComponent>
                         <Toolkit
                             title="Toolkit"
