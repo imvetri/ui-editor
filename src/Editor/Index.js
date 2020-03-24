@@ -46,79 +46,79 @@ class Editor extends Component {
         // TODO: Should pass the current data. Instead of accessing it from global
         return (
             <div className="container editor-tab">
-                <div className="title">Editor</div>
-
-                <div className="">
-                    <div className="title">Component Name</div>
-                    <input type="text" placeholder="Enter element name" value={name} onChange={(e)=>{
-                        this.setState({
-                            name: event.currentTarget.value
-                        })
-                    }} id="elementName"/>
-                    <button onClick={this.saveElement.bind(this)} id="save"><i className="fas fa-save"></i>Save & close</button>    
-                </div>
-                
-                <div className="">
-                    <div className="title">Component Markup</div>
-                    <CodeMirror
-                        value={markup}
-                        options={{
-                            lineNumbers: false,
-                            mode: "text/javascript",
-                            theme: "darcula",
-                            indentWithTabs: false,
-                            smartIndent: true,
-                            lineWrapping: true
-                        }}
-                        onChange={(editor, data, markup) => {
+                <button onClick={this.saveElement.bind(this)} id="save"><i className="fas fa-save"></i>Save & close</button>    
+                <div>
+                    <div className="editor">
+                        <div className="title">Component Name</div>
+                        <input type="text" placeholder="Enter element name" value={name} onChange={(e)=>{
                             this.setState({
-                                markup: markup
+                                name: event.currentTarget.value
                             })
-                        }}
-                    />
-                </div>
-                
+                        }} id="elementName"/>
+                    </div>
+                    
+                    <div className="editor">
+                        <div className="title">Component Markup</div>
+                        <CodeMirror
+                            value={markup}
+                            options={{
+                                lineNumbers: false,
+                                mode: "text/javascript",
+                                theme: "darcula",
+                                indentWithTabs: false,
+                                smartIndent: true,
+                                lineWrapping: true
+                            }}
+                            onChange={(editor, data, markup) => {
+                                this.setState({
+                                    markup: markup
+                                })
+                            }}
+                        />
+                    </div>
+                    
 
-                <div className="">
-                    <div className="title">Component CSS</div>
-                    <CodeMirror
-                        value={style}
-                        options={{
-                            lineNumbers: false,
-                            mode: "text/javascript",
-                            theme: "darcula",
-                            indentWithTabs: false,
-                            smartIndent: true,
-                            lineWrapping: true
-                        }}
-                        onChange={(editor, data, style) => {
-                            this.setState({
-                                style: style
-                            })
-                        }}
-                    />
-                </div>
+                    <div className="editor">
+                        <div className="title">Component CSS</div>
+                        <CodeMirror
+                            value={style}
+                            options={{
+                                lineNumbers: false,
+                                mode: "text/javascript",
+                                theme: "darcula",
+                                indentWithTabs: false,
+                                smartIndent: true,
+                                lineWrapping: true
+                            }}
+                            onChange={(editor, data, style) => {
+                                this.setState({
+                                    style: style
+                                })
+                            }}
+                        />
+                    </div>
 
-                <div className="">
-                    <div className="title">Component State</div>
-                    <CodeMirror
-                        value={state}
-                        options={{
-                            lineNumbers: false,
-                            mode: "text/javascript",
-                            theme: "darcula",
-                            indentWithTabs: false,
-                            smartIndent: true,
-                            lineWrapping: true
-                        }}
-                        onChange={(editor, data, state) => {
-                            this.setState({
-                                state: state
-                            })
-                        }}
-                    />
-                </div>
+                    <div className="editor">
+                        <div className="title">Component State</div>
+                        <CodeMirror
+                            value={state}
+                            options={{
+                                lineNumbers: false,
+                                mode: "text/javascript",
+                                theme: "darcula",
+                                indentWithTabs: false,
+                                smartIndent: true,
+                                lineWrapping: true
+                            }}
+                            onChange={(editor, data, state) => {
+                                this.setState({
+                                    state: state
+                                })
+                            }}
+                        />
+                    </div>
 
+                </div>
             </div>
         );
     }
