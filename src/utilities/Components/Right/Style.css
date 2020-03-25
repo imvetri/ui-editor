@@ -1,0 +1,16 @@
+.Right{
+    position: absolute;
+    right:0px;
+    animation: slide-right 0.2s ease;
+}
+
+@keyframes slide-right {
+    0% {
+        opacity: 0;
+        right:-100px;
+    }
+    100% {
+        opacity: 1;
+        right: 0px;
+    }
+}
