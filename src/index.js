@@ -8,7 +8,6 @@ import "./Index/index.css";
 
 // Components.
 
-
 import Assets from "./Assets";
 import Components from "./Components";
 import DraggableComponent from "./Utilities/Components/DraggableComponent";
@@ -16,10 +15,14 @@ import Editor from "./Editor";
 import Events from "./Events";
 import Toolkit from "./Toolkit";
 import Preview from "./Preview";
+import Variants from "./Variants";
+
+// Behaviour components
+
 import Center from "./Utilities/Components/Center";
 import Bottom from "./Utilities/Components/Bottom";
 import Left from "./Utilities/Components/Left";
-import Variants from "./Variants";
+import Right from "./Utilities/Components/Right";
 
 // Reducers.
 import { updateEvent, updateConfig, saveElement, updateSelectedComponent } from "./Index/Reducer";
@@ -106,20 +109,20 @@ class Index extends Component {
                             title="Assets"
                         />
                     </DraggableComponent>
-    
-                    <DraggableComponent>
-    
-                        <Events
-                            key={Math.ceil(Math.random() * 1000)}
-                            component={selectedComponent}
-                            selectedTag={this.state.selectedTag}
-                            components={this.state.components}
-                            onEventsUpdate={this.updateEvent}
-                            onConfigUpdate={this.updateConfig}
-                            title="Events"
-                        />
-                        
-                    </DraggableComponent>
+                    {this.state.selectedComponent? 
+                        <Right>
+                            <Events
+                                key={Math.ceil(Math.random() * 1000)}
+                                component={selectedComponent}
+                                selectedTag={this.state.selectedTag}
+                                components={this.state.components}
+                                onEventsUpdate={this.updateEvent}
+                                onConfigUpdate={this.updateConfig}
+                                title="Events"
+                            />
+                        </Right>
+                        :
+                        null}                        
 
                     {this.state.showEditor? 
                         <Bottom>

@@ -122,42 +122,40 @@ class Events extends Component {
         }
 
         return (
-            <div>
-                <div className="container events-tab">
-                    <div className="title">Events</div>
+            <div className="container events-tab">
+                <div className="title">Events</div>
 
-                    <div className="tags">
-                        <Nodes node={nodeTree.result} onSelectedTagChanged={selectedTagChanged.bind(this)} />
-                    </div>
-                    {configurator}
+                <div className="tags">
+                    <Nodes node={nodeTree.result} onSelectedTagChanged={selectedTagChanged.bind(this)} />
+                </div>
+                {configurator}
 
-                    <div className="title">
-                        Events
-                    </div>
-                    <div>
-                        <ul>
-                            <li>
-                                <div className="title">
-                                    Existing Events
-                                    <div>
-                                        {eventsOfSelectedTag}
-                                    </div>
+                <div className="title">
+                    Events
+                </div>
+                <div>
+                    <ul>
+                        <li>
+                            <div className="title">
+                                Existing Events
+                                <div>
+                                    {eventsOfSelectedTag}
                                 </div>
-                            </li>
-                            <li>
-                                <div className="title">
-                                    New Event
-                                    <div>
-                                        <Event 
-                                            key={component.events.length} 
-                                            eventNames={eventNames} 
-                                            selectedTagID={selectedTag} 
-                                            onSave={updateEvent.bind(this)} />
-                                    </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div className="title">
+                                New Event
+                                <div>
+                                    <Event 
+                                        key={component.events.length} 
+                                        eventNames={eventNames} 
+                                        selectedTagID={selectedTag} 
+                                        onSave={updateEvent.bind(this)} />
                                 </div>
-                            </li>
-                        </ul>
-                    </div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         );
