@@ -14,3 +14,7 @@
     border-top: 1px solid #333333;
     background: rgb(64, 64, 64);
 }
+
+.variant-controls input {
+    width: 80px;
+}
