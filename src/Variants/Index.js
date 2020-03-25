@@ -43,22 +43,18 @@ class Variants extends Component {
         let variants = this.state.variants;
 
         if( component.name==""){
-            return (<div className="container">
+            return (<div className="container variants">
                 <div className="title">
                     Variants
                 </div>
-                <p>No component selected. variants tab</p></div>)
+                <p>No component selected</p></div>)
         }
         if(!component.variants){
-            return (<div className="container">
+            return (<div className="container variants">
                 <div className="title">
                     Variants
                 </div>
-                <div>Component has no variants</div>
-                <div>Its easy to generate</div>
-                <div>Interact with the component</div>
-                <div>If it has different state,</div>
-                <div>Tool will auto fetch variants</div>
+                <p>No variants found.</p>
             </div>)
         }
 

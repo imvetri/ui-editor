@@ -92,7 +92,13 @@ class Index extends Component {
                                 key={Math.ceil(Math.random() * 1000)}
                                 component={selectedComponent}
                                 title="Preview"
-                            />
+                        >
+                            <Variants 
+                                key={Math.ceil(Math.random() * 1000)}
+                                component={selectedComponent}
+                                    onUpdate={this.saveElement}
+                                title="Variants"></Variants>
+                        </Preview>
                     </Center>
 
                     <DraggableComponent>
@@ -138,17 +144,6 @@ class Index extends Component {
                     :
                     null
                     }
-                    
-                    <DraggableComponent>
-                        <Variants 
-                            key={Math.ceil(Math.random() * 1000)}
-                            component={selectedComponent}
-                                onUpdate={this.saveElement}
-                            title="Variants"
-                        />
-                    </DraggableComponent>
-
-
                     <DraggableComponent>
                         <Toolkit
                             title="Toolkit"
