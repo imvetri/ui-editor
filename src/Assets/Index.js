@@ -66,6 +66,9 @@ class Assets extends Component {
                         
                         <p>Drag one or more files to this Drop Zone ...</p>
                     </div>
+                    <div>
+                        {this.state.selectedAsset.name}
+                    </div>
                     {assets}
                 </div>
             </div>
