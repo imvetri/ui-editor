@@ -39,15 +39,15 @@ class Components extends Component {
         let props = this.props;
         let state = this.state;
         return (
-            <div className="elements">
-                <div className="container elements-tab">
-                    <div className="title">
-                        Components
-                    </div>
-                    <div className="Controls">
-                        <button onClick={this.addComponent.bind(this)}><i className="fa fa-edit"></i>{props.selectedComponent? "Edit Component": "Add Component"}</button>
-                        <button onClick={this.addFolder.bind(this)}><i className="fa fa-folder"></i>Add Folder</button>
-                    </div>
+            <div className="container elements-tab">
+                <div className="title">
+                    Components
+                </div>
+                <div className="Controls">
+                    <button onClick={this.addComponent.bind(this)}><i className="fa fa-edit"></i>{props.selectedComponent? "Edit Component": "Add Component"}</button>
+                    <button onClick={this.addFolder.bind(this)}><i className="fa fa-folder"></i>Add Folder</button>
+                </div>
+                <div className="folders">
                     <Folders
                         key = {Math.ceil(Math.random() * 1000)}
                         components={state.components} 

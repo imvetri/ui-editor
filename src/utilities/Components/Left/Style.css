@@ -1,16 +1,14 @@
 .Left{
     position: absolute;
     left:0px;
-    animation: slide-right 0.2s ease;
+    animation: slide-to-screen 0.7s ease;
 }
 
-@keyframes slide-right {
+@keyframes slide-to-screen {
     0% {
-        opacity: 0;
-        left:-100px;
+        left:-300px;
     }
     100% {
-        opacity: 1;
         left: 0px;
     }
 }

@@ -17,10 +17,6 @@
     padding:7px;
 }
 
-.thumbnail {
-    width: 50px;
-}
-
 .selectedAsset{
     border: 1px lightgray dashed;
 }
