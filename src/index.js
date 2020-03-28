@@ -15,7 +15,6 @@ import Editor from "./Editor";
 import Events from "./Events";
 import Toolkit from "./Toolkit";
 import Preview from "./Preview";
-import Variants from "./Variants";
 
 // Behaviour components
 
@@ -96,11 +95,6 @@ class Index extends Component {
                                 component={selectedComponent}
                                 title="Preview"
                         >
-                            <Variants 
-                                key={Math.ceil(Math.random() * 1000)}
-                                component={selectedComponent}
-                                    onUpdate={this.saveElement}
-                                title="Variants"></Variants>
                         </Preview>
                     </Center>
 

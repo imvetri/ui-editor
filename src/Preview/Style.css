@@ -19,15 +19,3 @@
     overflow:scroll;
     zoom: .80;
 }
-
-.previewContainer {
-    position: relative;
-    left: -38%;
-}
-
-.variantContainer {
-    position: absolute;
-    top: 0px;
-    left: 25vw;
-    min-width: 230px;;
-}

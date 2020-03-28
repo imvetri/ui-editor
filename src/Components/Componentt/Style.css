@@ -17,10 +17,6 @@
     padding:7px;
 }
 
-.thumbnail {
-    width: 50px;
-}
-
 .hideAdditionals span:not(.componentName){
     display:none;
 }
