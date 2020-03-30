@@ -5,7 +5,6 @@ const htmlWebpackPlugin = new HtmlWebPackPlugin({
 });
 
 module.exports = {
-    devtool: 'inline-source-map',  
     output: {
         path: __dirname + '/docs'
     },
