@@ -1,6 +1,6 @@
 .bottom{
     position: absolute;
-    bottom:5px;
+    bottom:12px;
     width: 100vw;
     animation: slide-up 0.4s ease;
 }
