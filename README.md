@@ -1,6 +1,6 @@
 ## UI editor
 
-UI editor is a component library builder. It helps to build components and generate framework code if you know to write jsx, css, events and reducers. The generated code is readable, debuggable, editable. The tool is scalable to any UI framework of your choice and works flawlessly for React js. 
+UI editor is a component library builder and aims to get rid of code refactoring tasks from one dying framework to the next one. It helps to build components and generate framework code if you know to write jsx, css, events and reducers. The generated code is readable, debuggable, editable. The tool is scalable to any UI framework of your choice and works flawlessly for React js. 
 
 ## Demo - https://imvetri.github.io/ui-editor/
 
