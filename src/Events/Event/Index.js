@@ -46,6 +46,7 @@ class Event extends Component {
                 <br/>
                 <CodeMirror
                         value={this.state.reducer}
+                        autoCursor={false}
                         options={{
                             lineNumbers: false,
                             mode: "text/javascript",

@@ -60,6 +60,7 @@ class Editor extends Component {
                     <div className="editor">
                         <div className="title">Component Markup</div>
                         <CodeMirror
+                            autoCursor={false}
                             value={markup}
                             options={{
                                 lineNumbers: false,
@@ -81,6 +82,7 @@ class Editor extends Component {
                     <div className="editor">
                         <div className="title">Component CSS</div>
                         <CodeMirror
+                            autoCursor={false}
                             value={style}
                             options={{
                                 lineNumbers: false,
@@ -101,6 +103,7 @@ class Editor extends Component {
                     <div className="editor">
                         <div className="title">Component State</div>
                         <CodeMirror
+                            autoCursor={false}
                             value={state}
                             options={{
                                 lineNumbers: false,
