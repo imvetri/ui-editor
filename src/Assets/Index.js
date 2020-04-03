@@ -53,24 +53,22 @@ class Assets extends Component {
         let assets = this.state.assets.map(asset=> <Asset asset={asset} selected={this.state.selectedAsset} onSelected={this.updatedSelected.bind(this)}/>);
         return (
             <div className="assets">
-                <div className="container">
-                    <div className="title">
-                        Assets
-                    </div>
-                    <button onClick={fetchFromDB.bind(this)}>Load Assets</button>
-                    <div 
-                        className={this.state.class}
-                            onDrop={dropHandler.bind(this)} 
-                            onDragOver={dragOverHandler.bind(this)} 
-                            onDragLeave={dragLeaveHandler.bind(this)}>
-                        
-                        <p>Drag one or more files to this Drop Zone ...</p>
-                    </div>
-                    <div>
-                        {this.state.selectedAsset.name}
-                    </div>
-                    {assets}
+                <div className="title">
+                    Assets
                 </div>
+                <button onClick={fetchFromDB.bind(this)}>Load Assets</button>
+                <div 
+                    className={this.state.class}
+                        onDrop={dropHandler.bind(this)} 
+                        onDragOver={dragOverHandler.bind(this)} 
+                        onDragLeave={dragLeaveHandler.bind(this)}>
+                    
+                    <p>Drag one or more files to this Drop Zone ...</p>
+                </div>
+                <div>
+                    {this.state.selectedAsset.name}
+                </div>
+                {assets}
             </div>
         );
     }

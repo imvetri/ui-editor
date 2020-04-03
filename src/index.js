@@ -8,7 +8,6 @@ import "./Index/index.css";
 
 // Components.
 
-import Assets from "./Assets";
 import Components from "./Components";
 import DraggableComponent from "./Utilities/Components/DraggableComponent";
 import Editor from "./Editor";
@@ -98,11 +97,6 @@ class Index extends Component {
                         </Preview>
                     </Center>
 
-                    <DraggableComponent>
-                        <Assets                                 
-                            title="Assets"
-                        />
-                    </DraggableComponent>
                     {this.state.selectedComponent? 
                         <Right>
                             <Events

@@ -2,6 +2,8 @@
 
 import React, { Component } from "react";
 
+import Assets from "../Assets";
+
 import { popHistory } from "../utilities/Storage";
 
 import "./style.css";
@@ -43,6 +45,7 @@ class Toolkit extends Component {
                         <button onClick={this.refreshToPrevious.bind(this)}>Go back</button>
                     </div>
                 </div>
+                <Assets title="Assets"/>
 
                 <div>
                     <div className="title">
