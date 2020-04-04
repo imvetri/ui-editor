@@ -1,9 +1,4 @@
-.editor-tab textarea {
-    height: 250px;
-}
-
 .editor-tab {
-    height: 250px;
     width: 100vw;
     animation: slide-up 0.2s ease;
 }
@@ -17,10 +12,6 @@
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-.editor-tab .react-codemirror2{
-    overflow: scroll;
 }
 
 input.folder:read-only {

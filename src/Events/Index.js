@@ -129,33 +129,25 @@ class Events extends Component {
                     <Nodes node={nodeTree.result} onSelectedTagChanged={selectedTagChanged.bind(this)} />
                 </div>
                 {configurator}
-
+                {
+                    eventsOfSelectedTag && eventsOfSelectedTag.length>0
+                    ?
+                        <div className="title">
+                            Existing Events
+                            {eventsOfSelectedTag}
+                        </div>
+                    :
+                    null
+                }
+                    
                 <div className="title">
-                    Events
-                </div>
-                <div>
-                    <ul>
-                        <li>
-                            <div className="title">
-                                Existing Events
-                                <div>
-                                    {eventsOfSelectedTag}
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div className="title">
-                                New Event
-                                <div>
-                                    <Event 
-                                        key={component.events.length} 
-                                        eventNames={eventNames} 
-                                        selectedTagID={selectedTag} 
-                                        onSave={updateEvent.bind(this)} />
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
+                    Add Event
+                        <Event 
+                            key={component.events.length} 
+                            eventNames={eventNames} 
+                            selectedTagID={selectedTag} 
+                            onSave={updateEvent.bind(this)} />
+
                 </div>
             </div>
         );
