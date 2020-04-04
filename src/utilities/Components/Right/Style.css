@@ -2,6 +2,9 @@
     position: absolute;
     right:0px;
     animation: slide-right 0.2s ease;
+    height: 100%;
+    overflow: scroll;
+    width:400px;
 }
 
 @keyframes slide-right {
@@ -13,4 +16,23 @@
         opacity: 1;
         right: 0px;
     }
+}
+
+.tab-content{
+    height:100%;
+    border: 1px #404040 solid;
+}
+
+.tab-content ul {
+    padding: 12px;
+}
+
+.tabs {
+    font-size: 12px;
+    display: inline-block;
+    cursor: default;
+    margin: 0px;
+    color: rgba(255,255,255,0.5);
+    padding: 10px;
+    margin-bottom: 0px;
 }

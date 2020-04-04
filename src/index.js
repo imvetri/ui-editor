@@ -9,11 +9,12 @@ import "./Index/index.css";
 // Components.
 
 import Components from "./Components";
-import DraggableComponent from "./Utilities/Components/DraggableComponent";
 import Editor from "./Editor";
 import Events from "./Events";
-import Toolkit from "./Toolkit";
 import Preview from "./Preview";
+import Assets from "./Assets";
+import Export from "./Export";
+import History from "./History";
 
 // Behaviour components
 
@@ -26,7 +27,7 @@ import Right from "./Utilities/Components/Right";
 import { updateEvent, updateConfig, saveElement, updateSelectedComponent } from "./Index/Reducer";
 
 // Utils
-import {readData, writeData} from "./utilities/Storage";
+import { readData, writeData } from "./utilities/Storage";
 
 class Index extends Component {
     constructor(props) {
@@ -34,7 +35,7 @@ class Index extends Component {
         let components = readData("ui-editor");
         this.state = {
             components: components,
-            selectedTag : "",
+            selectedTag: "",
             component: {
                 name: "",
                 markup: "",
@@ -58,103 +59,88 @@ class Index extends Component {
         });
     }
 
-    updateFolders(folders){
+    updateFolders(folders) {
         this.setState({
             folders: folders
         })
         writeData("folders", folders)
     }
 
-    openEditor(){
+    openEditor() {
         this.setState({
             showEditor: true
         })
     }
     render() {
         const selectedComponent = this.state.selectedComponent || this.state.component;
-        try {
-            return (
-                <div>
-                    <Left>
-                        <Components
+        return (
+            <div>
+                <Left>
+                    <Components
+                        key={Math.ceil(Math.random() * 1000)}
+                        components={this.state.components}
+                        folders={this.state.folders}
+                        selectedComponent={this.state.selectedComponent}
+                        title="Components"
+
+                        onOpenEditor={this.openEditor.bind(this)}
+                        onSelection={this.updateSelectedComponent}
+                        onFoldersUpdate={this.updateFolders.bind(this)}
+                    />
+                </Left>
+                <Center>
+                    <Preview
+                        key={Math.ceil(Math.random() * 1000)}
+                        component={selectedComponent}
+                        title="Preview"
+                    >
+                    </Preview>
+                </Center>
+
+                {this.state.selectedComponent ?
+                    <Right>
+                         <Events
                             key={Math.ceil(Math.random() * 1000)}
+                            component={selectedComponent}
+                            selectedTag={this.state.selectedTag}
                             components={this.state.components}
-                            folders={this.state.folders}
-                            selectedComponent={this.state.selectedComponent}
-                            title="Components"
-
-                                onOpenEditor={this.openEditor.bind(this)}
-                                onSelection={this.updateSelectedComponent}
-                                onFoldersUpdate={this.updateFolders.bind(this)}
+                            onEventsUpdate={this.updateEvent}
+                            onConfigUpdate={this.updateConfig}
+                            title="Events"
                         />
-                    </Left>
-                    <Center>
-                        <Preview 
-                                key={Math.ceil(Math.random() * 1000)}
-                                component={selectedComponent}
-                                title="Preview"
-                        >
-                        </Preview>
-                    </Center>
+                        <History title="History"/>
+                        <Assets title="Assets"/>
+                        <Export title="Export"/>
+                    </Right>
+                    :
+                    null}
 
-                    {this.state.selectedComponent? 
-                        <Right>
-                            <Events
-                                key={Math.ceil(Math.random() * 1000)}
-                                component={selectedComponent}
-                                selectedTag={this.state.selectedTag}
-                                components={this.state.components}
-                                onEventsUpdate={this.updateEvent}
-                                onConfigUpdate={this.updateConfig}
-                                title="Events"
-                            />
-                        </Right>
-                        :
-                        null}                        
-
-                    {this.state.showEditor? 
-                        <Bottom>
-                            <Editor
-                                key={Math.ceil(Math.random() * 1000)}
-                                element={selectedComponent}
-                                name={selectedComponent.name}
-                                markup={selectedComponent.markup}
-                                style={selectedComponent.style}
-                                state={selectedComponent.state}
-                                title="Editor"
-                                    onSave={this.saveElement}
-                            />
-                        </Bottom>
-                    : 
-                    this.state.selectedComponent ? 
+                {this.state.showEditor ?
+                    <Bottom>
+                        <Editor
+                            key={Math.ceil(Math.random() * 1000)}
+                            element={selectedComponent}
+                            name={selectedComponent.name}
+                            markup={selectedComponent.markup}
+                            style={selectedComponent.style}
+                            state={selectedComponent.state}
+                            title="Editor"
+                            onSave={this.saveElement}
+                        />
+                    </Bottom>
+                    :
+                    this.state.selectedComponent ?
                         <Bottom>
                             <Center>
-                                <button onClick={()=>this.setState({showEditor:true})}>Open Editor</button>
+                                <button onClick={() => this.setState({ showEditor: true })}>Open Editor</button>
                             </Center>
                         </Bottom>
-                    :
-                    null
-                    }
-                    <DraggableComponent>
-                        <Toolkit
-                            title="Toolkit"
-                        />
-                    </DraggableComponent>
-    
-                </div>
-            );
-        }
-        catch(e){
-            console.log(e);
-            return (
-                <DraggableComponent>
-                    <Toolkit
-                        name="Toolkit"
-                    />
-                </DraggableComponent>
-            )
-        }
-        
+                        :
+                        null
+                }
+
+            </div>
+        );
     }
 }
 

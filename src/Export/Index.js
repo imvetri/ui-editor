@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 
-import  "./Style.css";
+import "./Style.css";
 
 class Export extends Component {
     constructor(props) {
         super(props);
-        this.state={
+        this.state = {
             exportType: "SIMPLE"
         }
         // TODO, cleanup all local storage to write to window.
         window.EXPORT_TYPE = "SIMPLE";
     }
 
-    onExportTypeChanged(e){
+    onExportTypeChanged(e) {
         this.setState({
             exportType: e.target.value
         })
@@ -24,18 +24,13 @@ class Export extends Component {
     render() {
         // Remove this.props.index, instead use this element instance index. Removes duplicate code
         return (
-            <div>
-            <div className="title">
-                Export Code Configuration
-            </div>
-            <div>  
                 <ul>
                     <li>
                         <label>
-                            <input 
-                                type="radio" 
-                                name="Export" 
-                                value="SIMPLE" 
+                            <input
+                                type="radio"
+                                name="Export"
+                                value="SIMPLE"
                                 checked={this.state.exportType === "SIMPLE"}
                                 onChange={this.onExportTypeChanged.bind(this)}
                             />
@@ -44,29 +39,27 @@ class Export extends Component {
                     </li>
                     <li>
                         <label>
-                            <input 
-                                type="radio" 
-                                name="Export" 
-                                value="NWB" 
-                                checked={this.state.exportType === "NWB"} 
+                            <input
+                                type="radio"
+                                name="Export"
+                                value="NWB"
+                                checked={this.state.exportType === "NWB"}
                                 onChange={this.onExportTypeChanged.bind(this)}
                             />React - Importable component
                         </label>
                     </li>
                     <li>
                         <label>
-                            <input 
-                                type="radio" 
-                                name="Export" 
-                                value="STORYBOOK" 
-                                checked={this.state.exportType === "STORYBOOK"} 
+                            <input
+                                type="radio"
+                                name="Export"
+                                value="STORYBOOK"
+                                checked={this.state.exportType === "STORYBOOK"}
                                 onChange={this.onExportTypeChanged.bind(this)}
                             />React - Storybook
                         </label>
                     </li>
                 </ul>
-            </div>
-        </div>
         );
     }
 }

@@ -39,20 +39,20 @@ class Events extends Component {
         // Report if no component is created.
         if (this.state.components.length == 0) {
             return (
-                <div className="container events-tab">
+                <ul className="container events-tab">
                     <div className="title">Events</div>
                     <p>Looks like you do not have any Web component created. Type some "html" on the right "Editor" tab</p>
-                </div>
+                </ul>
             );
         }
 
         // Report if no component is selected.
         if (component.name === undefined && this.state.components.length != 0) {
             return (
-                <div className="container events-tab">
+                <ul className="container events-tab">
                     <div className="title">Events</div>
                     <p>Looks like you have not selected any component. Click on any of the component in the left pane.</p>
-                </div>
+                </ul>
             )
         }
 
@@ -67,9 +67,9 @@ class Events extends Component {
         // Report error if component is not 
         if (nodeTree.result === undefined && this.state.components.length != 0) {
             return (
-                <div className="container events-tab">
+                <ul className="container events-tab">
                     <div className="title">Events</div>
-                </div>
+                </ul>
             );
         }
 
@@ -122,9 +122,7 @@ class Events extends Component {
         }
 
         return (
-            <div className="container events-tab">
-                <div className="title">Events</div>
-
+            <ul className="container events-tab">
                 <div className="tags">
                     <Nodes node={nodeTree.result} onSelectedTagChanged={selectedTagChanged.bind(this)} />
                 </div>
@@ -132,27 +130,23 @@ class Events extends Component {
                 {
                     eventsOfSelectedTag && eventsOfSelectedTag.length>0
                     ?
-                        <div className="title">
+                        <div><div className="title">
                             Existing Events
-                            {eventsOfSelectedTag}
-                        </div>
+                        </div>{eventsOfSelectedTag}</div>
                     :
                     null
                 }
                     
                 {selectedTag?
-                    <div className="title">
-                        Add Event
-                            <Event 
+                   <div><div className="title">Add Event
+                    </div><Event 
                                 key={component.events.length} 
                                 eventNames={eventNames} 
                                 selectedTagID={selectedTag} 
-                                onSave={updateEvent.bind(this)} />
-
-                    </div>
+                                onSave={updateEvent.bind(this)} /></div> 
                 :
                 null}
-            </div>
+            </ul>
         );
     }
 }

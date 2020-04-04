@@ -39,33 +39,44 @@ class Event extends Component {
 
         return (
             <div className="event">
-                <input list="browsers" type="text" onChange={updateEventName.bind(this)} value={this.state.name} title="Event Name"/>
-                <datalist id="browsers">
-                    {eventNames}
-                </datalist>
-                <br/>
-                <CodeMirror
-                        value={this.state.reducer}
-                        autoCursor={false}
-                        options={{
-                            lineNumbers: false,
-                            mode: "text/javascript",
-                            theme: "darcula",
-                            indentWithTabs: false,
-                            smartIndent: true
-                        }}
-                        onChange={(editor, data, reducer) => {
-                            this.setState({
-                                reducer: reducer
-                            })
-                        }}
-                    />
-                <div>
+                <div class="spacing">
+                    <label>Event name</label>
+                    <input list="events" type="text" onChange={updateEventName.bind(this)} value={this.state.name} title="Event Name"/>
+                    <datalist id="events">
+                        {eventNames}
+                    </datalist>
+                </div>
+
+                <div class="spacing">
                     <label>
-                    <input type="checkbox" onChange={updateEventType.bind(this)} checked={this.state.publishable? "checked": ""}/>
-                    Publishable
+                        Publishable
                     </label>
+                    <input type="checkbox" onChange={updateEventType.bind(this)} checked={this.state.publishable? "checked": ""}/>
+
                     {publishName}
+                </div>
+
+                <div class="spacing">
+                    <label>Event reducer</label>
+                    <CodeMirror
+                            value={this.state.reducer}
+                            autoCursor={false}
+                            options={{
+                                lineNumbers: false,
+                                mode: "text/javascript",
+                                theme: "darcula",
+                                indentWithTabs: false,
+                                smartIndent: true
+                            }}
+                            onChange={(editor, data, reducer) => {
+                                this.setState({
+                                    reducer: reducer
+                                })
+                            }}
+                        />
+                </div>
+
+                <div>
                     <button onClick={publishEvent.bind(this)} id="saveEvent"><i className="fas fa-save"></i>Save</button>
                     <button onClick={deleteEvent.bind(this)} id="deleteEvent"><i className="fas fa-trash"></i>Delete</button>
                 </div>
