@@ -140,15 +140,18 @@ class Events extends Component {
                     null
                 }
                     
-                <div className="title">
-                    Add Event
-                        <Event 
-                            key={component.events.length} 
-                            eventNames={eventNames} 
-                            selectedTagID={selectedTag} 
-                            onSave={updateEvent.bind(this)} />
+                {selectedTag?
+                    <div className="title">
+                        Add Event
+                            <Event 
+                                key={component.events.length} 
+                                eventNames={eventNames} 
+                                selectedTagID={selectedTag} 
+                                onSave={updateEvent.bind(this)} />
 
-                </div>
+                    </div>
+                :
+                null}
             </div>
         );
     }
