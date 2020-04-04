@@ -29,13 +29,13 @@
     export function deleteEvent(index) {
 
         // Get current component.
-        let element = JSON.parse(JSON.stringify(this.state.element));
+        let component = JSON.parse(JSON.stringify(this.state.component));
 
         // Remove the event to be deleted.
-        element.events.splice(index, 1);
+        component.events = component.events.splice(index, 1);
 
         // Update elements with new events.
-        this.props.onEventsUpdate(element.events);
+        this.props.onEventsUpdate(component.events);
     }
 
     export function updateConfiguration(config){

@@ -22,7 +22,7 @@ class Event extends Component {
         super(props);
         this.state = {
             name: this.props.event ? this.props.event.name : "",
-            reducer: this.props.event ? this.props.event.reducer : "// Enter reducer definition\n",
+            reducer: this.props.event ? this.props.event.reducer : "",
             publishable: this.props.event ? this.props.event.publishable : "",
             publishName: this.props.event ? this.props.event.publishName : "",
         }
@@ -39,7 +39,7 @@ class Event extends Component {
 
         return (
             <div className="event">
-                <input list="browsers" type="text" onChange={updateEventName.bind(this)} value={this.state.name} placeholder="Enter event name" title="Event Name"/>
+                <input list="browsers" type="text" onChange={updateEventName.bind(this)} value={this.state.name} title="Event Name"/>
                 <datalist id="browsers">
                     {eventNames}
                 </datalist>
