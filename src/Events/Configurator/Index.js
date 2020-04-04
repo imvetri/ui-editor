@@ -46,12 +46,10 @@ class Configurator extends Component {
 
             <div>
                 <div className="title">Child Configurations</div>
-                <ul>
-                    <li>
-                        <label>Override state</label>
-                        <input type="checkbox" onChange={this.toggelOverride.bind(this)} checked={this.state.override ? "checked" : ""} />
-                    </li>
-                </ul>
+                <div className="spacing">
+                    <label>Override state</label>
+                    <input type="checkbox" onChange={this.toggelOverride.bind(this)} checked={this.state.override ? "checked" : ""} />
+                </div>
             </div>
 
         );

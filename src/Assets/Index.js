@@ -52,10 +52,7 @@ class Assets extends Component {
 
         let assets = this.state.assets.map(asset=> <Asset asset={asset} selected={this.state.selectedAsset} onSelected={this.updatedSelected.bind(this)}/>);
         return (
-            <div className="assets">
-                <div className="title">
-                    Assets
-                </div>
+            <ul className="assets">
                 <button onClick={fetchFromDB.bind(this)}>Load Assets</button>
                 <div 
                     className={this.state.class}
@@ -69,7 +66,7 @@ class Assets extends Component {
                     {this.state.selectedAsset.name}
                 </div>
                 {assets}
-            </div>
+            </ul>
         );
     }
 }

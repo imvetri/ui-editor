@@ -2,13 +2,6 @@
     color: red;
 }
 
-.event { 
-    padding-left: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-top: 1px solid #333333;
-    background: rgb(64, 64, 64);
-}
 
 .info {
     color: yellowgreen;
@@ -19,10 +12,15 @@ label {
 }
 
 .event input {
-    margin-left:0px;
+    margin-left:5px;
+    width:150px;
 }
 
 .event textarea {
     margin-top: 8px;
     width: 300px;
+}
+
+.input {
+    padding: 5px;
 }
