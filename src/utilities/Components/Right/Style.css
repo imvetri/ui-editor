@@ -28,11 +28,12 @@
 }
 
 .tabs {
-    font-size: 12px;
     display: inline-block;
     cursor: default;
-    margin: 0px;
+    
+    margin-top: 15px;
+    margin-bottom: 11px;
     color: rgba(255,255,255,0.5);
-    padding: 10px;
-    margin-bottom: 0px;
+    padding: 5px;
+    font-size: 12px;
 }
