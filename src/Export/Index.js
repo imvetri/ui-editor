@@ -35,7 +35,7 @@ class Export extends Component {
                                 checked={this.state.exportType === "SIMPLE"}
                                 onChange={this.onExportTypeChanged.bind(this)}
                             />
-                            ReactJS - with classes.
+                            ReactJS - logs output to your console.
                         </label>
                     </li>
                     <li>
@@ -46,7 +46,8 @@ class Export extends Component {
                                 value="NWB"
                                 checked={this.state.exportType === "NWB"}
                                 onChange={this.onExportTypeChanged.bind(this)}
-                            />ReactJS - with import headers and default export
+                            />
+                            ReactJS - Codebase
                         </label>
                     </li>
                     <li>
@@ -57,7 +58,7 @@ class Export extends Component {
                                 value="STORYBOOK"
                                 checked={this.state.exportType === "STORYBOOK"}
                                 onChange={this.onExportTypeChanged.bind(this)}
-                            />React - Storybook
+                            />ReactJS with Storybook - Codebase
                         </label>
                     </li>
                 </ul>

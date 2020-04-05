@@ -5,10 +5,6 @@ body {
     margin: 0px;
 }
 
-ul {
-    border: 1px #404040 solid;
-}
-
 li , label, p, .rules , input, textarea{
     font-size: 9px;
 }
