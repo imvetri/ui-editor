@@ -9,6 +9,7 @@ class Export extends Component {
             exportType: "SIMPLE"
         }
         // TODO, cleanup all local storage to write to window.
+        debugger;
         window.EXPORT_TYPE = "SIMPLE";
     }
 
@@ -34,7 +35,7 @@ class Export extends Component {
                                 checked={this.state.exportType === "SIMPLE"}
                                 onChange={this.onExportTypeChanged.bind(this)}
                             />
-                            React - Class component
+                            ReactJS - with classes.
                         </label>
                     </li>
                     <li>
@@ -45,7 +46,7 @@ class Export extends Component {
                                 value="NWB"
                                 checked={this.state.exportType === "NWB"}
                                 onChange={this.onExportTypeChanged.bind(this)}
-                            />React - Importable component
+                            />ReactJS - with import headers and default export
                         </label>
                     </li>
                     <li>
