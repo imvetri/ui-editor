@@ -48,7 +48,7 @@ class Editor extends Component {
             <div className="container editor-tab">
                 <button onClick={this.saveElement.bind(this)} id="save"><i className="fas fa-save"></i>Save & close</button>    
                 <div>
-                    <div className="editor">
+                    <div className="editor name">
                         <div className="title">Component Name</div>
                         <input type="text" placeholder="Enter element name" value={name} onChange={(e)=>{
                             this.setState({
@@ -57,7 +57,7 @@ class Editor extends Component {
                         }} id="elementName"/>
                     </div>
                     
-                    <div className="editor">
+                    <div className="editor markup">
                         <div className="title">Component Markup</div>
                         <CodeMirror
                             autoCursor={false}
@@ -79,7 +79,7 @@ class Editor extends Component {
                     </div>
                     
 
-                    <div className="editor">
+                    <div className="editor css">
                         <div className="title">Component CSS</div>
                         <CodeMirror
                             autoCursor={false}
@@ -100,7 +100,7 @@ class Editor extends Component {
                         />
                     </div>
 
-                    <div className="editor">
+                    <div className="editor state">
                         <div className="title">Component State</div>
                         <CodeMirror
                             autoCursor={false}

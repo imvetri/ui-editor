@@ -132,7 +132,7 @@ class Index extends Component {
                     this.state.selectedComponent ?
                         <Bottom>
                             <Center>
-                                <button onClick={() => this.setState({ showEditor: true })}>Open Editor</button>
+                                <button class="showEditor"onClick={() => this.setState({ showEditor: true })}>Open Editor</button>
                             </Center>
                         </Bottom>
                         :
