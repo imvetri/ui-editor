@@ -51,6 +51,15 @@ class Index extends Component {
         this.updateEvent = updateEvent.bind(this);
         this.saveElement = saveElement.bind(this);
         this.updateSelectedComponent = updateSelectedComponent.bind(this);
+        document.onkeydown = function keydown(e){
+            console.log("Index binder")
+            if(e.altKey && e.keyCode==69) { // Alt + E
+                // Open/close editor if any component is selected
+                this.setState({
+                    showEditor: !this.state.showEditor
+                })
+            }
+        }.bind(this);
     }
 
     updatePreview(element) {
@@ -132,7 +141,7 @@ class Index extends Component {
                     this.state.selectedComponent ?
                         <Bottom>
                             <Center>
-                                <button onClick={() => this.setState({ showEditor: true })}>Open Editor</button>
+                                <button class="showEditor"onClick={() => this.setState({ showEditor: true })}>Open Editor</button>
                             </Center>
                         </Bottom>
                         :
