@@ -16,7 +16,8 @@ class Components extends Component {
         super(props);
         this.state = {
             components: this.props.components,
-            folders: this.props.folders
+            folders: this.props.folders,
+            showControls: false
         };
     }
 
@@ -35,15 +36,27 @@ class Components extends Component {
         this.props.onOpenEditor();
     }
 
+    showControls(){
+        this.setState({
+            showControls: true
+        })
+    }
+
+    hideControls(){
+        this.setState({
+            showControls: false
+        })
+    }
     render() {
         let props = this.props;
         let state = this.state;
+        let classes = this.state.showControls ? 'Controls': 'Controls hideControls'
         return (
-            <div className="container elements-tab">
+            <div className="container elements-tab" onMouseEnter={this.showControls.bind(this)} onMouseLeave={this.hideControls.bind(this)}>
                 <div className="title">
                     Components
                 </div>
-                <div className="Controls">
+                <div className={classes}>
                     <button onClick={this.addComponent.bind(this)}><i className="fa fa-edit"></i>{props.selectedComponent? "Edit Component": "Add Component"}</button>
                     <button onClick={this.addFolder.bind(this)}><i className="fa fa-folder"></i>Add Folder</button>
                 </div>

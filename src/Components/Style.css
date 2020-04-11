@@ -31,3 +31,7 @@ textarea {
     overflow: scroll;  
     height:85vh;
 }
+
+.hideControls{
+    visibility: hidden;
+}
