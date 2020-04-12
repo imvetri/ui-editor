@@ -23,8 +23,7 @@ textarea {
 }
 
 .Controls{
-    padding: 5px;
-    padding-bottom: 12px;
+    display: inline-block;
 }
 
 .folders{
