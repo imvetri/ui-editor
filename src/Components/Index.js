@@ -7,7 +7,7 @@ import "./Style.css";
 // Components.
 
 import Folders from "../Utilities/Components/Folders";
-import {onDeleteComponent, onDeleteFolder} from "./Events";
+import { onDeleteComponent, onDeleteFolder } from "./Events";
 
 // Events.
 
@@ -21,28 +21,28 @@ class Components extends Component {
         };
     }
 
-    addFolder(){
+    addFolder() {
         let folders = Array.from(this.state.folders);
         folders.unshift({
-            type:"NewFolder",
-            name:"",
-            contents:[],
-            status:"closed"
+            type: "NewFolder",
+            name: "",
+            contents: [],
+            status: "closed"
         })
-        this.setState({folders})
+        this.setState({ folders })
     }
 
-    addComponent(){
+    addComponent() {
         this.props.onOpenEditor();
     }
 
-    showControls(){
+    showControls() {
         this.setState({
             showControls: true
         })
     }
 
-    hideControls(){
+    hideControls() {
         this.setState({
             showControls: false
         })
@@ -50,27 +50,27 @@ class Components extends Component {
     render() {
         let props = this.props;
         let state = this.state;
-        let classes = this.state.showControls ? 'Controls': 'Controls hideControls'
+        let classes = this.state.showControls ? 'Controls' : 'Controls hideControls'
         return (
             <div className="container elements-tab" onMouseEnter={this.showControls.bind(this)} onMouseLeave={this.hideControls.bind(this)}>
                 <div className="title">
                     Components
-                </div>
-                <div className={classes}>
-                    <button onClick={this.addComponent.bind(this)}><i className="fa fa-edit"></i>{props.selectedComponent? "Edit Component": "Add Component"}</button>
-                    <button onClick={this.addFolder.bind(this)}><i className="fa fa-folder"></i>Add Folder</button>
+                    <div className={classes}>
+                        <button onClick={this.addComponent.bind(this)}><i className="fa fa-edit"></i>{props.selectedComponent ? "Edit Component" : "Add Component"}</button>
+                        <button onClick={this.addFolder.bind(this)}><i className="fa fa-folder"></i>Add Folder</button>
+                    </div>
                 </div>
                 <div className="folders">
                     <Folders
-                        key = {Math.ceil(Math.random() * 1000)}
-                        components={state.components} 
-                        folders={state.folders} 
+                        key={Math.ceil(Math.random() * 1000)}
+                        components={state.components}
+                        folders={state.folders}
                         selectedComponent={props.selectedComponent}
-                            onFoldersUpdate={props.onFoldersUpdate}
-                            onSelection = {props.onSelection}
-                            onDeleteComponent={onDeleteComponent.bind(this)}
-                            onDeleteFolder={onDeleteFolder.bind(this)}
-                        />
+                        onFoldersUpdate={props.onFoldersUpdate}
+                        onSelection={props.onSelection}
+                        onDeleteComponent={onDeleteComponent.bind(this)}
+                        onDeleteFolder={onDeleteFolder.bind(this)}
+                    />
                 </div>
             </div>
         );
