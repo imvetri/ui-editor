@@ -47,7 +47,7 @@ class Folder extends Component {
                     <i className={iconStatus} onClick={toggleFolder.bind(this)}></i>
                     <input type="text" className="folder" placeholder="Enter folder name" readOnly value={this.state.name}/>
                     <button onClick={deleteFolder.bind(this)}><i className="fa fa-trash"></i>Delete</button>
-                    {contents}
+                    {this.state.status === "open" ? contents : null}
                 </div>
             );
         }
