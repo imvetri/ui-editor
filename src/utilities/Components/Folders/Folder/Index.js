@@ -6,7 +6,7 @@ import "./Style.css";
 import NewFolder from "../NewFolder";
 
 import {deleteFolder, toggleFolder} from "./Reducer";
-import {dropHandler, dragOverHandler, dragLeaveHandler, onDragStart} from "./Events";
+import {dropHandler, dragOverHandler, dragLeaveHandler, folderStartDrag} from "./Events";
 
 class Folder extends Component {
     constructor(props) {
@@ -43,7 +43,7 @@ class Folder extends Component {
                             onDrop={dropHandler.bind(this)} 
                             onDragOver={dragOverHandler.bind(this)} 
                             onDragLeave={dragLeaveHandler.bind(this)} 
-                            onDragStart={onDragStart.bind(this)} >
+                            onDragStart={folderStartDrag.bind(this)} >
                     <i className={iconStatus} onClick={toggleFolder.bind(this)}></i>
                     <input type="text" className="folder" placeholder="Enter folder name" readOnly value={this.state.name}/>
                     <button onClick={deleteFolder.bind(this)}><i className="fa fa-trash"></i>Delete</button>
@@ -60,7 +60,7 @@ class Folder extends Component {
                             onDrop={dropHandler.bind(this)} 
                             onDragOver={dragOverHandler.bind(this)} 
                             onDragLeave={dragLeaveHandler.bind(this)} 
-                            onDragStart={onDragStart.bind(this)} >
+                            onDragStart={folderStartDrag.bind(this)} >
                     {contents}
                 </div>
             );

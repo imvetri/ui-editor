@@ -15,7 +15,6 @@ function closeFolder(){
 }
 
 export function toggleFolder(){
-    console.log("CLCIEKD");
     if(this.state.status === "closed") {
         openFolder.call(this);
     } else {
