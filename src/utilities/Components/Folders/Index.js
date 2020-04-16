@@ -73,6 +73,40 @@ class Folders extends Component {
 
     }
 
+    removeContent(folder, folders){
+
+        // Nasty logic. 
+        function checkAndRemove(currentFolder){
+            // check if currentFolder has folder in it.
+            let isFound = currentFolder.contents.findIndex(content=>content.name===folder.name)
+
+            if(isFound != -1){
+                currentFolder.contents.splice(isFound, 1)
+            }
+        }
+
+
+        function traverseFolder(currentFolder){
+
+            // Return if it is the same folder.
+            if(folder.name===currentFolder.name){
+                return "";
+            }
+            // check if any of contents are present in folder.
+            currentFolder.contents = checkAndRemove(currentFolder )
+
+            if(typeof currentFolder === "object"){
+                return currentFolder.contents.filter(item=>typeof item === "object").find(function(fooled){
+                    return traverseFolder(fooled)
+                }.bind(this))
+            }
+        }
+
+        traverseFolder(folders[0])
+
+    }
+
+
     checkFolder(data){
         let folders = Array.from(this.state.folders);
         let emptyFolderIndex = folders.findIndex(folder=>folder.type==="NewFolder");
@@ -96,6 +130,9 @@ class Folders extends Component {
 
             // Make sure current data.contents are removed from other folders.
             this.removeContent(folder, folders)
+
+            // Also remove the folder from its parent ? how
+            this.removeFolderFromParent(folder, folders)
         }
 
         console.log(folders)
