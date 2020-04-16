@@ -3,6 +3,11 @@
         ev.preventDefault();
         let componentName = ev.dataTransfer.getData("component-name");
         let folderName = ev.dataTransfer.getData("folder-name");
+        if(folderName=="null" || folderName==""){
+            folderName = ev.currentTarget.getAttribute("data-folder-name");
+            if(folderName =="null")
+                return;
+        }
         let contents = Array.from(this.state.contents);
 
         // Check if the dropped item is a component
@@ -26,6 +31,7 @@
         })
 
         console.log("Drop from folder");
+        ev.stopPropagation()
     }
 
     export function dragOverHandler(ev) {
@@ -34,11 +40,9 @@
             folderClass: "newFolder dragOver",
             status: "open"
         })
-        console.log("Drag");
     }
 
     export function dragLeaveHandler(e) {
-        console.log("drag");
         this.setState({
             folderClass: "newFolder",
             status: "closed"
@@ -46,8 +50,8 @@
     }
 
 
-export function onDragStart(e){
-
+export function folderStartDrag(e){
+    console.log("Folder started draged")
     let name = event.target.getAttribute("data-folder-name")
     e.dataTransfer.setData("folder-name", name);
 }

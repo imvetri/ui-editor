@@ -52,8 +52,8 @@ class Components extends Component {
         let state = this.state;
         let classes = this.state.showControls ? 'Controls' : 'Controls hideControls'
         return (
-            <div className="container elements-tab" onMouseEnter={this.showControls.bind(this)} onMouseLeave={this.hideControls.bind(this)}>
-                <div className="title">
+            <div className="container elements-tab" >
+                <div className="title" onMouseEnter={this.showControls.bind(this)} onMouseLeave={this.hideControls.bind(this)}>
                     Components
                     <div className={classes}>
                         <button onClick={this.addComponent.bind(this)}><i className="fa fa-edit"></i>{props.selectedComponent ? "Edit Component" : "Add Component"}</button>

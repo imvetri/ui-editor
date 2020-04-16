@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import {selectionChanged, handleDrag} from "./Events";
+import {selectionChanged, addComponentDetails} from "./Events";
 
 import {onExport} from "../../Utilities/Export";
 
@@ -25,7 +25,7 @@ class Componentt extends Component {
         let component = props.component;
         // Remove this.props.index, instead use this element instance index. Removes duplicate code
         return (
-            <div className="background" draggable="true" data-name={component.name} onDragStart={handleDrag.bind(this)} onDragEnd={this.restoreClass}>
+            <div className="background" draggable="true" data-name={component.name} onDragStart={addComponentDetails.bind(this)} onDragEnd={this.restoreClass}>
                 <li 
                     className = {selectedComponent && props.component.name===selectedComponent.name ? "selected component": "component"}
                     onClick = {selectionChanged.bind(this)}
