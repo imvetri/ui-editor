@@ -36,11 +36,11 @@ export function readData(key){
             }]
         }
         // If newly created component, push it into noFolder.
-        let componentsNotInAnyFolder = componentNames.filter(componentName=>{
+        let componentWithoutParentFolder = componentNames.filter(componentName=>{
             return folders.every(folder=>folder.contents.every(content =>  content !== componentName ))
         });
         let noFolder = folders.find(folder=>folder.type==="noFolder");
-        noFolder.contents.push(...componentsNotInAnyFolder);
+        noFolder.contents.push(...componentWithoutParentFolder);
         return folders;
     }
 
