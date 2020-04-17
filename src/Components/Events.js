@@ -3,14 +3,17 @@ import {findFolder} from "../utilities/Components/Folders/findFolders";
 
 export function onDeleteComponent(event) {
     
+    debugger;
     // stop event propagation. else onSelectionChange gets re triggered.
     
     event.stopPropagation();
-    let componentName = event.target.parentElement.parentElement.innerText.split("\n")[0];
+    let componentName = event.target.closest("div[draggable='true']").innerText.split("\n")[0];
+    let folderName = event.target.closest("div.newFolder").getAttribute("data-folder-name");
+    let folder = findFolder(folderName, this.state.folders[0])
 
-    if(this.state.components.find(component=>component.name===componentName).length<1){
-        return;
-    }
+    // Remove componentName from folder.
+    let contentIndex = folder.contents.findIndex(content=>content===componentName);
+    folder.contents.splice(contentIndex, 1);
     // Get all the elements
     let components = Array.from(this.state.components);
     
@@ -22,7 +25,8 @@ export function onDeleteComponent(event) {
 
     // Update the state with new elements.
     this.setState({
-        components: components
+        components: components,
+        folders: this.state.folders
     })
 
     // Persist the changes.
