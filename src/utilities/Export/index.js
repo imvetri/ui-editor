@@ -3,7 +3,6 @@ import { exportNWB } from "./ExportNWB";
 import { exportSimple } from "./ExportSimple";
 
 export function onExport(componentName){
-    debugger;
     switch (window.EXPORT_TYPE) {
         case "SIMPLE": 
             exportSimple(componentName);

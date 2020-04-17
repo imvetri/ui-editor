@@ -23,7 +23,7 @@ class Folder extends Component {
 
 
     newFolder(folder){
-        this.props.onFolderUpdate(folder)
+        this.props.onFolderUpdate(folder, "NEWFOLDER")
     }
 
     render() {
@@ -59,8 +59,7 @@ class Folder extends Component {
                     draggable="true"
                             onDrop={dropHandler.bind(this)} 
                             onDragOver={dragOverHandler.bind(this)} 
-                            onDragLeave={dragLeaveHandler.bind(this)} 
-                            onDragStart={folderStartDrag.bind(this)} >
+                            onDragLeave={dragLeaveHandler.bind(this)} >
                     {contents}
                 </div>
             );

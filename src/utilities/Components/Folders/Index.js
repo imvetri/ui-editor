@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 
+// Utilities.
+
+import { findFolder } from "./findFolders";
+
 // Styles.
 
 import "./Style.css";
 
-import {folderStructure} from "./processFolder";
+import { folderStructure } from "./processFolder";
 
 class Folders extends Component {
     constructor(props) {
@@ -15,55 +19,39 @@ class Folders extends Component {
         };
     }
 
-    findFolder(folderName , folder ){
+    removeFolderFromParent(folder, folders) {
 
-        if(typeof folder === "string"){
-            return false
-        }
-
-        if(typeof folder === "object"){
-            if(folder.name===folderName){
-                return folder;
-            }
-            return folder.contents.find(function(content){
-                return this.findFolder(folderName, content)
-            }.bind(this))
-        }
-    }
-
-    removeContent(folder, folders){
-        
         let contents = folder.contents;
 
         // Nasty logic. 
-        function checkAndRemove(folder, contents){
+        function checkAndRemove(folder, contents) {
             let indexes = [];
-            contents.forEach(content=>{
-                indexes.push(folder.contents.findIndex(item=>item===content))
+            contents.forEach(content => {
+                indexes.push(folder.contents.findIndex(item => item === content))
             })
-            indexes = indexes.filter(index=> index>-1);
+            indexes = indexes.filter(index => index > -1);
 
-            indexes.forEach(index=>{
+            indexes.forEach(index => {
                 folder.contents[index] = -1;
             })
 
-            folder.contents = folder.contents.filter(content=>content!==-1)
+            folder.contents = folder.contents.filter(content => content !== -1)
 
             return folder.contents;
         }
 
 
-        function traverseFolder(currentFolder){
+        function traverseFolder(currentFolder) {
 
             // Return if it is the same folder.
-            if(folder.name===currentFolder.name){
+            if (folder.name === currentFolder.name) {
                 return "";
             }
             // check if any of contents are present in folder.
-            currentFolder.contents = checkAndRemove(currentFolder,contents )
+            currentFolder.contents = checkAndRemove(currentFolder, contents)
 
-            if(typeof currentFolder === "object"){
-                return currentFolder.contents.filter(item=>typeof item === "object").find(function(fooled){
+            if (typeof currentFolder === "object") {
+                return currentFolder.contents.filter(item => typeof item === "object").find(function (fooled) {
                     return traverseFolder(fooled)
                 }.bind(this))
             }
@@ -73,75 +61,45 @@ class Folders extends Component {
 
     }
 
-    removeContent(folder, folders){
+    removeContent(folder, folders, parentFolderName, contentName) {
 
-        // Nasty logic. 
-        function checkAndRemove(currentFolder){
-            // check if currentFolder has folder in it.
-            let isFound = currentFolder.contents.findIndex(content=>content.name===folder.name)
-
-            if(isFound != -1){
-                currentFolder.contents.splice(isFound, 1)
-            }
-        }
-
-
-        function traverseFolder(currentFolder){
-
-            // Return if it is the same folder.
-            if(folder.name===currentFolder.name){
-                return "";
-            }
-            // check if any of contents are present in folder.
-            currentFolder.contents = checkAndRemove(currentFolder )
-
-            if(typeof currentFolder === "object"){
-                return currentFolder.contents.filter(item=>typeof item === "object").find(function(fooled){
-                    return traverseFolder(fooled)
-                }.bind(this))
-            }
-        }
-
-        traverseFolder(folders[0])
-
+        let parentFolder = findFolder(parentFolderName , folders[0] )
+        let removeIndex = parentFolder.contents.findIndex(content=>content===contentName)
+        if(removeIndex!==-1)
+            parentFolder.contents.splice(removeIndex,1)
     }
 
 
-    checkFolder(data){
+    onFolderUpdate(data, type, parentFolderName, content) {
         let folders = Array.from(this.state.folders);
-        let emptyFolderIndex = folders.findIndex(folder=>folder.type==="NewFolder");
-        if(emptyFolderIndex!==-1){
-            // Delete the newFolder
-            folders.splice(emptyFolderIndex,1);
-        }
-        console.log(folders)
-        // Check if it is newly created folder 
-        let folder = this.findFolder(data.name, folders[0])
-        if(!folder){
-            console.log(`Folder not found, adding ${JSON.stringify(data)}to list of folders ${JSON.stringify(folders)}`);
-            // Push it into noFolder.contents
+
+        let folder = findFolder(data.name, folders[0])
+        if (type == "NEWFOLDER") {
+            let emptyFolderIndex = folders.findIndex(folder => folder.type === "NewFolder");
+            if (emptyFolderIndex !== -1) {
+                // Delete the newFolder
+                folders.splice(emptyFolderIndex, 1);
+            }
+
             let noFolder = folders[0];
             noFolder.contents.unshift(data);
-        } 
-        // Update existing one
-        else {
-            console.log(`Folder found, updating the folder content from ${folder.contents} to ${data.contents}`)
-            folder.contents = data.contents;
-
-            // Make sure current data.contents are removed from other folders.
-            this.removeContent(folder, folders)
-
-            // Also remove the folder from its parent ? how
-            this.removeFolderFromParent(folder, folders)
         }
 
-        console.log(folders)
+        if (type == "COMPONENT") {
+            folder.contents = data.contents;
+            this.removeContent(folder, folders, parentFolderName, content)
 
+        }
+        else if (type == "FOLDER") {
+            // this.removeFolderFromParent(folder, folders)
+
+        }
         this.props.onFoldersUpdate(folders);
+
     }
 
     render() {
-        return folderStructure(this.props, this.checkFolder.bind(this) )
+        return folderStructure(this.props, this.onFolderUpdate.bind(this))
     }
 }
 

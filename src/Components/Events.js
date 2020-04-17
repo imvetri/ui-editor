@@ -1,6 +1,5 @@
 import {writeData} from "../utilities/Storage";
-
-
+import {findFolder} from "../utilities/Components/Folders/findFolders";
 
 export function onDeleteComponent(event) {
     
@@ -41,8 +40,8 @@ export function onDeleteFolder(TYPE, folderName){
 
         case "CONTENTS":
             let folders = Array.from(this.state.folders)
-            let folderToDelete = folders.find(folder=> folder.name===folderName);
-            let noFolder = folders.find(folder=> folder.type==="noFolder");
+            let folderToDelete = findFolder(folderName, folders[0])
+            let noFolder = folders[0];
             // Push contents to "noFolder".
             noFolder.contents.push(...folderToDelete.contents);
             

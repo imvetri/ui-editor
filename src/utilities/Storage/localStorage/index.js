@@ -31,7 +31,7 @@ export function readData(key){
             return  [{
                 type: "noFolder",
                 contents: componentNames,
-                name: "",
+                name: "noFolder",
                 status:"open"
             }]
         }
