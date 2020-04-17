@@ -9,7 +9,6 @@ class Export extends Component {
             exportType: "SIMPLE"
         }
         // TODO, cleanup all local storage to write to window.
-        debugger;
         window.EXPORT_TYPE = "SIMPLE";
     }
 

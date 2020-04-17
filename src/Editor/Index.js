@@ -28,12 +28,19 @@ class Editor extends Component {
     }
 
     saveElement () {
+        debugger;
         this.props.onSave({
             name: this.state.name,
             markup: this.state.markup,
             style: this.state.style,
             state: this.state.state
         });
+    }
+
+    saveName(e){
+        this.setState({
+            name: e.currentTarget.value
+        })
     }
 
     render() {
@@ -50,11 +57,7 @@ class Editor extends Component {
                 <div>
                     <div className="editor name">
                         <div className="title">Component Name</div>
-                        <input type="text" placeholder="Enter element name" value={name} onChange={(e)=>{
-                            this.setState({
-                                name: event.currentTarget.value
-                            })
-                        }} id="elementName"/>
+                        <input type="text" placeholder="Enter element name" value={this.state.name} onChange={this.saveName.bind(this)} id="elementName"/>
                     </div>
                     
                     <div className="editor markup">

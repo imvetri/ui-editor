@@ -86,6 +86,10 @@ export function saveElement (element) {
 
         components.push(newElement);
         selectedIndex = components.length-1;
+
+        // Find noFolder
+        folders[0].contents.push(element.name)
+        // Push new component into contents.
     }
 
     this.setState({

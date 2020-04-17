@@ -31,16 +31,10 @@ export function readData(key){
             return  [{
                 type: "noFolder",
                 contents: componentNames,
-                name: "",
+                name: "noFolder",
                 status:"open"
             }]
         }
-        // If newly created component, push it into noFolder.
-        let componentWithoutParentFolder = componentNames.filter(componentName=>{
-            return folders.every(folder=>folder.contents.every(content =>  content !== componentName ))
-        });
-        let noFolder = folders.find(folder=>folder.type==="noFolder");
-        noFolder.contents.push(...componentWithoutParentFolder);
         return folders;
     }
 
@@ -51,7 +45,6 @@ export function readData(key){
 export function writeData(key, components, noPush){
 
     if(key=="folders"){
-        console.log("writing folders")
         localStorage.setItem(key, JSON.stringify(components));
     }
     if(key=="ui-editor"){
