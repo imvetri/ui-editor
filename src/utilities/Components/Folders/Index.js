@@ -19,50 +19,14 @@ class Folders extends Component {
         };
     }
 
-    removeFolderFromParent(folder, folders) {
-
-        let contents = folder.contents;
-
-        // Nasty logic. 
-        function checkAndRemove(folder, contents) {
-            let indexes = [];
-            contents.forEach(content => {
-                indexes.push(folder.contents.findIndex(item => item === content))
-            })
-            indexes = indexes.filter(index => index > -1);
-
-            indexes.forEach(index => {
-                folder.contents[index] = -1;
-            })
-
-            folder.contents = folder.contents.filter(content => content !== -1)
-
-            return folder.contents;
-        }
-
-
-        function traverseFolder(currentFolder) {
-
-            // Return if it is the same folder.
-            if (folder.name === currentFolder.name) {
-                return "";
-            }
-            // check if any of contents are present in folder.
-            currentFolder.contents = checkAndRemove(currentFolder, contents)
-
-            if (typeof currentFolder === "object") {
-                return currentFolder.contents.filter(item => typeof item === "object").find(function (fooled) {
-                    return traverseFolder(fooled)
-                }.bind(this))
-            }
-        }
-
-        traverseFolder(folders[0])
-
+    removeFolderFromParent(folders, parentFolderName, contentName) {
+        let parentFolder = findFolder(parentFolderName , folders[0] )
+        let deleteIndex = parentFolder.contents.findIndex(content=>typeof content === "object" && content.name===contentName);
+        if(deleteIndex>-1)
+            parentFolder.contents.splice(deleteIndex,1)
     }
 
-    removeContent(folder, folders, parentFolderName, contentName) {
-
+    removeContentFromParent(folders, parentFolderName, contentName) {
         let parentFolder = findFolder(parentFolderName , folders[0] )
         let removeIndex = parentFolder.contents.findIndex(content=>content===contentName)
         if(removeIndex!==-1)
@@ -72,7 +36,6 @@ class Folders extends Component {
 
     onFolderUpdate(data, type, parentFolderName, content) {
         let folders = Array.from(this.state.folders);
-
         let folder = findFolder(data.name, folders[0])
         if (type == "NEWFOLDER") {
             let emptyFolderIndex = folders.findIndex(folder => folder.type === "NewFolder");
@@ -87,11 +50,12 @@ class Folders extends Component {
 
         if (type == "COMPONENT") {
             folder.contents = data.contents;
-            this.removeContent(folder, folders, parentFolderName, content)
+            this.removeContentFromParent(folders, parentFolderName, content)
 
         }
         else if (type == "FOLDER") {
-            // this.removeFolderFromParent(folder, folders)
+            folder.contents = data.contents;
+            this.removeFolderFromParent(folders, parentFolderName, content)
 
         }
         this.props.onFoldersUpdate(folders);
