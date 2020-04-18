@@ -1,5 +1,6 @@
 export function deleteFolder(e){
-    this.props.onDeleteFolder("CONTENTS", this.state.name);
+    let parent = e.currentTarget.closest(".newFolder").parentElement.closest(".newFolder").getAttribute("data-folder-name")
+    this.props.onDeleteFolder("CONTENTS", this.state.name, parent);
 }
 
 function openFolder(){
