@@ -19,24 +19,25 @@ class Folders extends Component {
         };
     }
 
-    removeFolderFromParent(folders, parentFolderName, contentName) {
-        let parentFolder = findFolder(parentFolderName , folders[0] )
-        let deleteIndex = parentFolder.contents.findIndex(content=>typeof content === "object" && content.name===contentName);
+    removeFolderFromParent(folders, oldParent, contentName, newParent) {
+        let oldParentFolder = findFolder(oldParent , folders[0] )
+        let deleteIndex = oldParentFolder.contents.findIndex(content=>typeof content === "object" && content.name===contentName);
         if(deleteIndex>-1)
-            parentFolder.contents.splice(deleteIndex,1)
+            oldParentFolder.contents.splice(deleteIndex,1)
     }
 
-    removeContentFromParent(folders, parentFolderName, contentName) {
-        let parentFolder = findFolder(parentFolderName , folders[0] )
-        let removeIndex = parentFolder.contents.findIndex(content=>content===contentName)
+    removeContentFromParent(folders, oldParent, contentName) {
+        let oldParentFolder = findFolder(oldParent , folders[0] )
+        let removeIndex = oldParentFolder.contents.findIndex(content=>content===contentName)
         if(removeIndex!==-1)
-            parentFolder.contents.splice(removeIndex,1)
+            oldParentFolder.contents.splice(removeIndex,1)
     }
 
 
-    onFolderUpdate(data, type, parentFolderName, content) {
+    onFolderUpdate(data, type, oldParent, content) {
         let folders = Array.from(this.state.folders);
-        let folder = findFolder(data.name, folders[0])
+        let newParent = data.name;
+        let folder = findFolder(newParent, folders[0])
         if (type == "NEWFOLDER") {
             let emptyFolderIndex = folders.findIndex(folder => folder.type === "NewFolder");
             if (emptyFolderIndex !== -1) {
@@ -50,12 +51,12 @@ class Folders extends Component {
 
         if (type == "COMPONENT") {
             folder.contents = data.contents;
-            this.removeContentFromParent(folders, parentFolderName, content)
+            this.removeContentFromParent(folders, oldParent, content)
 
         }
         else if (type == "FOLDER") {
             folder.contents = data.contents;
-            this.removeFolderFromParent(folders, parentFolderName, content)
+            this.removeFolderFromParent(folders, oldParent, content, newParent)
 
         }
         this.props.onFoldersUpdate(folders);

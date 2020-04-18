@@ -28,12 +28,7 @@ export function readData(key){
 
         let componentNames = window.components.map(component=>component.name);
         if(folders === null){
-            return  [{
-                type: "noFolder",
-                contents: componentNames,
-                name: "noFolder",
-                status:"open"
-            }]
+            return  [{"type":"noFolder","contents":[{"name":"First","contents":["ForgotPassword","CancelButton",{"name":"Second","contents":["PrivacyAndPolicy","SubmitButton"],"type":"folder","status":"closed"}],"type":"folder","status":"closed"},"Modal","TermsAndService","Form","EmailInput","ResetPasswordForm","Page","ResetPasswordModal"],"name":"noFolder","status":"open"}]
         }
         return folders;
     }
