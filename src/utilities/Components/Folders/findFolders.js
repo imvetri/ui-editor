@@ -1,3 +1,5 @@
+let folderFound = "";
+
 // Given folders and a foldername, finds a folder and returns it.
 export function findFolder(folderName , folder ){
 
@@ -10,12 +12,16 @@ export function findFolder(folderName , folder ){
 
         // Return folder if name matches.
         if(folder.name===folderName){
-            return folder;
+            folderFound = folder;
         }
 
-        // Recursively find in sub folder.
-        return folder.contents.find(function(content){
-            return findFolder(folderName, content)
-        }.bind(this))
+        let contents = folder.contents;
+
+        for(let i=0;i< contents.length; i++){
+            let content = contents[i];
+            findFolder(folderName, content)
+        }
     }
+
+    return folderFound;
 }

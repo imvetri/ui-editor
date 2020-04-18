@@ -1,6 +1,6 @@
 import { findFolder } from "../findFolders";
 
-function handleComponentDrop(componentName, parentFolderName){
+function handleComponentDrop(componentName, oldParent){
     let contents = Array.from(this.state.contents);
     
     contents.push(componentName)
@@ -12,11 +12,11 @@ function handleComponentDrop(componentName, parentFolderName){
         status: "open"
     },
     "COMPONENT",
-    parentFolderName,
+    oldParent,
     componentName)
 }
 
-function handleFolderDrop(folderName, parentFolderName){
+function handleFolderDrop(folderName, oldParent){
     let contents = Array.from(this.state.contents);
 
     // 1. Find folder object.
@@ -36,7 +36,7 @@ function handleFolderDrop(folderName, parentFolderName){
             status: "open"
         },
         "FOLDER",
-        parentFolderName,
+        oldParent,
         folderName)
     }
 }
@@ -45,7 +45,16 @@ export function dropHandler(ev) {
     ev.preventDefault();
     let componentName = ev.dataTransfer.getData("component-name");
     let folderName = ev.dataTransfer.getData("folder-name");
-    let parentFolderName = ev.dataTransfer.getData("parent-folder-name")
+    let oldParent = ev.dataTransfer.getData("parent-folder-name")
+    let newParent = this.state.name;
+
+    if(oldParent === newParent ){
+        this.setState({
+            folderClass: "newFolder",
+            status: "closed"
+        })
+        return;
+    }
 
     // If component name is null, then it is a folder dropped on folder
     if (componentName === "") {
@@ -55,10 +64,10 @@ export function dropHandler(ev) {
             return;
         }
 
-        handleFolderDrop.call(this, folderName, parentFolderName);
+        handleFolderDrop.call(this, folderName, oldParent);
     }
     else {
-        handleComponentDrop.call(this, componentName, parentFolderName);
+        handleComponentDrop.call(this, componentName, oldParent);
     }
 
     console.log("Drop from folder");

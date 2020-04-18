@@ -3,7 +3,6 @@ import {findFolder} from "../utilities/Components/Folders/findFolders";
 
 export function onDeleteComponent(event) {
     
-    debugger;
     // stop event propagation. else onSelectionChange gets re triggered.
     
     event.stopPropagation();
