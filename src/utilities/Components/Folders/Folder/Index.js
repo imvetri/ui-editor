@@ -59,7 +59,8 @@ class Folder extends Component {
                     draggable="true"
                             onDrop={dropHandler.bind(this)} 
                             onDragOver={dragOverHandler.bind(this)} 
-                            onDragLeave={dragLeaveHandler.bind(this)} >
+                            onDragLeave={dragLeaveHandler.bind(this)}
+                            onDragStart={folderStartDrag.bind(this)}  >
                     {contents}
                 </div>
             );

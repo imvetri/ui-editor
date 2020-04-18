@@ -33,7 +33,7 @@ export function onDeleteComponent(event) {
 
 }
 
-export function onDeleteFolder(TYPE, folderName){
+export function onDeleteFolder(TYPE, folderName, parentName){
     switch (TYPE) {
         case "FOLDER":
             break;
@@ -42,6 +42,7 @@ export function onDeleteFolder(TYPE, folderName){
             break;
 
         case "CONTENTS":
+            debugger;
             let folders = Array.from(this.state.folders)
             let folderToDelete = findFolder(folderName, folders[0])
             let noFolder = folders[0];
@@ -49,10 +50,9 @@ export function onDeleteFolder(TYPE, folderName){
             noFolder.contents.push(...folderToDelete.contents);
             
             // Delete folder.
-                //  find index.
-            let index = folders.findIndex(folder => folder.name===folderName);
-                // Remove the item.
-            folders.splice(index,1);
+            let parentFolder = findFolder(parentName, folders[0])
+            let deleteIndex = parentFolder.contents.findIndex(content=>typeof content === "object" && content.name === folderName)
+            parentFolder.contents.splice(deleteIndex, 1);
 
             // update the state.
             this.props.onFoldersUpdate(folders);
