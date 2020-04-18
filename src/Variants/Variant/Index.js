@@ -25,7 +25,6 @@ class Variant extends Component {
 
     deleteVariant(){
         let variant = this.state;
-        variant.state = JSON.parse(variant.state);
         this.props.deleteVariant(variant);
     }
 
