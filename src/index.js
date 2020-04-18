@@ -15,6 +15,7 @@ import Preview from "./Preview";
 import Assets from "./Assets";
 import Export from "./Export";
 import History from "./History";
+import Variants from "./Variants";
 
 // Behaviour components
 
@@ -119,6 +120,10 @@ class Index extends Component {
                         <History title="History"/>
                         <Assets title="Assets"/>
                         <Export title="Export"/>
+                        <Variants title="Variants"
+                            key={Math.ceil(Math.random() * 1000)}
+                            component={selectedComponent}
+                            onUpdate={(s)=>console.log(s)}/>
                     </Right>
                     :
                     null}

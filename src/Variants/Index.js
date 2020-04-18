@@ -19,6 +19,7 @@ class Variants extends Component {
     }
 
     deleteVariant(data){
+        debugger;
         let variants = Array.from(this.state.variants);
         let variantToDelete = variants.findIndex(variant=> variant.name.includes(data.name))
         if(variantToDelete!==-1){
