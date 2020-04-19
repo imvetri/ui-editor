@@ -49,7 +49,7 @@ function createStylesheet(style, name) {
         asset =  asset.join("");
         style = style.replace(`$assets['${asset}']`, `url(${window.assets[asset]})`)
     }
-    let toDelete = [...document.querySelectorAll("[data-component-name='ParentComponent']")];
+    let toDelete = [...document.querySelectorAll(`[data-component-name='${name}']`)];
     toDelete.forEach(item=>{
         item.remove()
     })
