@@ -2,7 +2,7 @@ import { getNestedComponents } from "../../Runtime";
 import { convertToReact } from "../../CodeGenerator/React";
 import { readData } from "../../Storage";
 
-export function exportSimple(componentName) {
+export function logCode(componentName) {
     let components = readData("ui-editor");
     let selectedComponent = components.find(component=>component.name.includes(componentName));
     let nestedComponents = getNestedComponents(selectedComponent);
