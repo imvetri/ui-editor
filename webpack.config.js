@@ -9,6 +9,10 @@ module.exports = {
     output: {
         path: __dirname + '/docs'
     },
+    stats: 'errors-only',
+    devServer: {
+        clientLogLevel: 'silent'
+      },
     optimization: {
         splitChunks:{
             cacheGroups: {
