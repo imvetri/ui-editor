@@ -1,11 +1,11 @@
 import { exportStorybook } from "./ExportStorybook";
 import { exportNWB } from "./ExportNWB";
-import { exportSimple } from "./ExportSimple";
+import { logCode } from "./logCode";
 
-export function onExport(){
-    switch (window.EXPORT_TYPE) {
+export function onExport(EXPORT_TYPE){
+    switch (EXPORT_TYPE) {
         case "SIMPLE": 
-            exportSimple();
+            logCode();
             break;
 
         case "NWB":
@@ -17,6 +17,6 @@ export function onExport(){
             break;
         
         default:
-            exportSimple();
+            logCode();
     }
 }

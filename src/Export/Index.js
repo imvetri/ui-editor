@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import {onExport} from "../utilities/Export/index";
+import { onExport } from "../utilities/Export/index";
 
 import "./Style.css";
 
@@ -10,16 +10,12 @@ class Export extends Component {
         this.state = {
             exportType: "SIMPLE"
         }
-        // TODO, cleanup all local storage to write to window.
-        window.EXPORT_TYPE = "SIMPLE";
     }
 
     onExportTypeChanged(e) {
         this.setState({
             exportType: e.target.value
         })
-        // TODO, cleanup all local storage to write to window.
-        window.EXPORT_TYPE = e.target.value;
     }
 
 
@@ -27,14 +23,14 @@ class Export extends Component {
         // Remove this.props.index, instead use this element instance index. Removes duplicate code
         return (
             <div>
-<ul>
+                <ul>
                     <li>
                         <label>
                             <input
                                 type="radio"
                                 name="Export"
-                                value="SIMPLE"
-                                checked={this.state.exportType === "SIMPLE"}
+                                value="logCode"
+                                checked={this.state.exportType === "logCode"}
                                 onChange={this.onExportTypeChanged.bind(this)}
                             />
                             ReactJS - logs output to your console.
@@ -64,9 +60,9 @@ class Export extends Component {
                         </label>
                     </li>
                 </ul>
-                <button onClick={onExport}><i className="fas fa-file-export"></i>Export</button>
+                <button onClick={onExport.bind(null, this.state.exportType)}><i className="fas fa-file-export"></i>Export</button>
             </div>
-                
+
         );
     }
 }
