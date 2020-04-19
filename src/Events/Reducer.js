@@ -13,8 +13,12 @@
         if (event.index === undefined) {
             element.events.push(event);
         } else {
-            // Edit
-            element.events[event.index] = event;
+            // 1. Find the event
+            let changedEventIndex = element.events.findIndex(e=>e.name===event.name);
+            if(changedEventIndex==-1){
+                console.error("Changing event name will not help. Create a new event"); // Feature 
+            }
+            element.events[changedEventIndex] = event;
         }
 
         this.props.onEventsUpdate(element.events);

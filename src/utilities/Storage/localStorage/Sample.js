@@ -101,7 +101,49 @@ let sample = [
     ],
     "state": "{\n\t\"email\":\"\",\n    \"variant\":\"default\",\n    \"placeholder\":\"Email Address\"\n}",
     "style": ".emailInput{\n\tfont-family: BentonSansBook,Helvetica,Arial,sans-serif;\n\tposition:relative;\n}\n\n.emailInput .email{\n\tpadding: 17px;\n\tpadding-top: 25px;\n\tborder: 1px solid #e1e1e1;\n    font-size: 16px;\n    width: 100%;\n}\n\n.emailInput label{\n    font-size: 14px;\n    position:absolute;\n    left: 15px;\n    top: -18px;\n}\n\n.prompt_input.emailInput label{\n\tfont-size: 11px;\n   \tleft: 15px;\n    top: -18px;\n    color: #d91560;\n}\n\n.prompt_input .email{\n    color: #d91560;\n    border-color: #ef5f96;\n}\n\n.prompt_correct_input label{\n    color: #d91560;\n\tfont-size: 11px;\n    top: -32px;\n    left: 9px;\n}\n\n.prompt_correct_input .email{\n   color: #d91560;\n    border-color: #ef5f96;\n}\n\n.focussed.emailInput label{\n\tfont-size: 11px;\n    top: -32px;\n    left: 9px;\n}\n\n.valid_input label{\n\tfont-size: 11px;\n    top: -32px;\n    left: 9px;\n}\n\n.emailInput label {\n\ttransition: top .3s;\n}",
-    "config": "{}"
+    "config": "{}",
+    "variants": [
+      {
+        "name": "default",
+        "state": {
+          "email": "",
+          "variant": "default",
+          "placeholder": "Email Address"
+        }
+      },
+      {
+        "name": "focussed",
+        "state": {
+          "email": "",
+          "variant": "focussed",
+          "placeholder": "Email Address"
+        }
+      },
+      {
+        "name": "prompt_input",
+        "state": {
+          "email": "",
+          "variant": "prompt_input",
+          "placeholder": "Please enter an Email Address"
+        }
+      },
+      {
+        "name": "prompt_correct_input",
+        "state": {
+          "email": "s",
+          "variant": "prompt_correct_input",
+          "placeholder": "Please correct the Email Address"
+        }
+      },
+      {
+        "name": "valid_input",
+        "state": {
+          "email": "s@",
+          "variant": "valid_input",
+          "placeholder": "Email Address"
+        }
+      }
+    ]
   },
   {
     "name": "ResetPasswordForm",
@@ -113,33 +155,81 @@ let sample = [
   },
   {
     "name": "Page",
-    "markup": "<div className=\"page\"><ForgotPassword></ForgotPassword><ResetPasswordModal></ResetPasswordModal></div>",
+    "markup": "<div className=\"page\">\n\t<ForgotPassword></ForgotPassword>\n    <ResetPasswordModal></ResetPasswordModal>\n</div>",
     "events": [
       {
-        "name": "onCloseModal",
-        "reducer": "state.ResetPasswordModal = [];",
-        "publishable": "",
-        "publishName": "",
-        "id": "VariantModal"
-      },
-      {
-        "name": "onClose",
-        "reducer": "state.ResetPasswordModal = [];",
-        "publishable": "",
-        "publishName": "",
-        "id": "ResetPasswordModal"
-      },
-      {
         "name": "onPasswordForgotten",
-        "reducer": "state.ResetPasswordModal =[{title: \"Forgot Password\",\"footer\": \"Copyrigts\",\"show\": \"sd\"}]",
+        "reducer": "state.ResetPasswordModal = [\n\t{\n    \ttitle: \"Forgot Password\",\n        footer: \"Copyrigts\",\n        show: \"sd\"\n    }\n];\n\nstate.variant = \"modal_opened\";",
+        "index": 0,
         "publishable": "",
         "publishName": "",
         "id": "ForgotPassword"
+      },
+      {
+        "name": "onClose",
+        "reducer": "state.ResetPasswordModal = [];\nstate.variant = \"modal_closed\";",
+        "index": 0,
+        "publishable": "",
+        "publishName": "",
+        "id": "ResetPasswordModal"
       }
     ],
-    "state": "{\"showModal\":false,\"list\":[1,2,3,4,5],\"ResetPasswordModal\":[]}",
-    "style": ".page{\nheight: 700px;\nwidth: 500px;\n\n}",
-    "config": "{\"VariantModal\":{\"showHideProp\":\"showModal\",\"override\":false},\"ForgotPasswordButton\":{\"showHideProp\":\"\",\"override\":false},\"ForgotPassword\":{\"showHideProp\":\"\",\"override\":false,\"renderListProp\":\"\"},\"ResetPasswordModal\":{\"showHideProp\":\"showModal\",\"override\":true,\"renderListProp\":\"\"}}"
+    "state": "{\n\t\"showModal\": false,\n    \"list\": [1,2,3,4,5],\n    \"ResetPasswordModal\": [],\n    \"variant\": \"default\"\n}",
+    "style": ".page{\n\theight: 700px;\n\twidth: 500px;\n}",
+    "config": "{\"VariantModal\":{\"showHideProp\":\"showModal\",\"override\":false},\"ForgotPasswordButton\":{\"showHideProp\":\"\",\"override\":false},\"ForgotPassword\":{\"showHideProp\":\"\",\"override\":false,\"renderListProp\":\"\"},\"ResetPasswordModal\":{\"showHideProp\":\"showModal\",\"override\":true,\"renderListProp\":\"\"}}",
+    "variants": [
+      {
+        "name": "default",
+        "state": {
+          "showModal": false,
+          "list": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "ResetPasswordModal": [],
+          "variant": "default"
+        }
+      },
+      {
+        "name": "modal_opened",
+        "state": {
+          "showModal": false,
+          "list": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "ResetPasswordModal": [
+            {
+              "title": "Forgot Password",
+              "footer": "Copyrigts",
+              "show": "sd"
+            }
+          ],
+          "variant": "modal_opened"
+        }
+      },
+      {
+        "name": "modal_closed",
+        "state": {
+          "showModal": false,
+          "list": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "ResetPasswordModal": [],
+          "variant": "modal_closed"
+        }
+      }
+    ]
   },
   {
     "name": "ResetPasswordModal",

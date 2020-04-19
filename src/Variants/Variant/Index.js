@@ -32,8 +32,8 @@ class Variant extends Component {
             <div className="variant">
                 <div className="variant-controls">
                     <input type="text" 
-                        placeholder="Enter variant Name" 
-                        value={this.state.name} />
+                        value={this.state.name} 
+                        disabled/>
                     <button onClick={this.deleteVariant.bind(this)}>
                         <i className="fas fa-trash"></i>
                         Delete
