@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 
 import {selectionChanged, addComponentDetails} from "./Events";
 
-import {onExport} from "../../Utilities/Export";
-
 import  "./Style.css";
 
 class Componentt extends Component {
@@ -34,9 +32,6 @@ class Componentt extends Component {
                         {component.name}
                     </span>
                     <span>
-                        <button 
-                            index = {props.index}
-                            onClick={onExport.bind(null,component.name)}><i className="fas fa-file-export"></i>Export</button>
                         <button 
                             index = {props.index}
                             onClick={props.onDeleteComponent}><i className="fa fa-trash"></i>Delete</button>

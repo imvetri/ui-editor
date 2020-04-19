@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import {onExport} from "../utilities/Export/index";
+
 import "./Style.css";
 
 class Export extends Component {
@@ -24,7 +26,8 @@ class Export extends Component {
     render() {
         // Remove this.props.index, instead use this element instance index. Removes duplicate code
         return (
-                <ul>
+            <div>
+<ul>
                     <li>
                         <label>
                             <input
@@ -61,6 +64,9 @@ class Export extends Component {
                         </label>
                     </li>
                 </ul>
+                <button onClick={onExport}><i className="fas fa-file-export"></i>Export</button>
+            </div>
+                
         );
     }
 }
