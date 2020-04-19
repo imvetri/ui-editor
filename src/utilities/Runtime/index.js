@@ -12,19 +12,25 @@ window.saveVariant = function saveVariant(componentName, state) {
     let components = readData("ui-editor");
     // 2. Find the passed component.
     let component = components.find(component=>component.name.includes(componentName));
-    // 3. If component.variants does not exist, create an empty array.
+    // 3. Fetch the statestate.
+    let componentState = JSON.parse(component.state);
+    // 4. Throw error if component doesnt contain a variant property
+    if(componentState.variant=== undefined || state.variant === undefined){
+        console.error("Add a variant property with a text value")
+    }
+    // 5. Create a new variant.
     component.variants = component.variants || [{
-        name: "Default",
-        state: JSON.parse(component.state)
+        name: componentState.variant,
+        state: componentState
     }];
-    // 4. push state into component.variant.
-    component.variants.push({
-        name: `VARIANT_${components.length}`,
-        state:state
-    });
-    // 5. Retain only unique.
-    component.variants = [...new Set(component.variants.map(JSON.stringify))].map(JSON.parse)
-    // 6. persist.
+    // 6. push state into component.variant if it is new
+    if(!component.variants.find(variant=>variant.name===state.variant)){
+        component.variants.push({
+            name: state.variant,
+            state:state
+        });
+    }
+    // 7. persist.
     writeData("ui-editor", components)
 };
 
