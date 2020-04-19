@@ -26,9 +26,8 @@ export function readData(key){
     if(key ==="folders"){
         let folders = JSON.parse(localStorage.getItem(key));
 
-        let componentNames = window.components.map(component=>component.name);
         if(folders === null){
-            return  [{"type":"noFolder","contents":[{"name":"First","contents":["ForgotPassword","CancelButton",{"name":"Second","contents":["PrivacyAndPolicy","SubmitButton"],"type":"folder","status":"closed"}],"type":"folder","status":"closed"},"Modal","TermsAndService","Form","EmailInput","ResetPasswordForm","Page","ResetPasswordModal"],"name":"noFolder","status":"open"}]
+            return  [{"type":"noFolder","contents":[{"name":"Templates","contents":["Page"],"type":"folder","status":"closed"},{"name":"Components","contents":["Modal","Form","ResetPasswordForm","ResetPasswordModal"],"type":"folder","status":"closed"},{"name":"Elements","contents":["EmailInput","TermsAndService","SubmitButton","CancelButton","ForgotPassword","PrivacyAndPolicy"],"type":"folder","status":"closed"}],"name":"noFolder","status":"open"}]
         }
         return folders;
     }
