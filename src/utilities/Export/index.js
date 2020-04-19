@@ -2,21 +2,21 @@ import { exportStorybook } from "./ExportStorybook";
 import { exportNWB } from "./ExportNWB";
 import { exportSimple } from "./ExportSimple";
 
-export function onExport(componentName){
+export function onExport(){
     switch (window.EXPORT_TYPE) {
         case "SIMPLE": 
-            exportSimple(componentName);
+            exportSimple();
             break;
 
         case "NWB":
-            exportNWB(componentName);
+            exportNWB();
             break;
 
         case "STORYBOOK":
-            exportStorybook(componentName);
+            exportStorybook();
             break;
         
         default:
-            exportSimple(componentName);
+            exportSimple();
     }
 }
