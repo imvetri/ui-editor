@@ -92,7 +92,7 @@ let sample = [
       },
       {
         "name": "onBlur",
-        "reducer": "if(state.email.length==0){\n    state.placeholder =\"Please enter an Email Address\"\n    state.variant = \"prompt_input\"\n}\nelse if(!state.email.includes(\"@\")){\n    state.placeholder =\"Please correct the Email Address\"\n\tstate.variant = \"prompt_input\";\n}\nelse{\n\tstate.placeholder = \"Email Address\";\n    state.variant = \"valid_input\"\n}\n",
+        "reducer": "if(state.email.length==0){\n    state.placeholder =\"Please enter an Email Address\"\n    state.variant = \"prompt_input\"\n}\nelse if(!state.email.includes(\"@\")){\n    state.placeholder =\"Please correct the Email Address\"\n\tstate.variant = \"prompt_correct_input\";\n}\nelse{\n\tstate.placeholder = \"Email Address\";\n    state.variant = \"valid_input\"\n}\n",
         "index": 2,
         "publishable": "",
         "publishName": "",
@@ -100,7 +100,7 @@ let sample = [
       }
     ],
     "state": "{\n\t\"email\":\"\",\n    \"variant\":\"default\",\n    \"placeholder\":\"Email Address\"\n}",
-    "style": ".emailInput{\n\tfont-family: BentonSansBook,Helvetica,Arial,sans-serif;\n\tposition:relative;\n}\n\n.emailInput .email{\n\tpadding: 17px;\n\tpadding-top: 25px;\n\tborder: 1px solid #e1e1e1;\n    font-size: 16px;\n    width: 100%;\n}\n\n.emailInput label{\n    font-size: 14px;\n    position:absolute;\n    left: 15px;\n    top: -18px;\n}\n\n.prompt_input.emailInput label{\n\tfont-size: 11px;\n   \tleft: 15px;\n    top: -18px;\n    color: #d91560;\n}\n\n.prompt_input .email{\n    color: #d91560;\n    border-color: #ef5f96;\n}\n\n.focussed.emailInput label{\n\tfont-size: 11px;\n    top: -32px;\n    left: 9px;\n}\n\n.valid_input label{\n\tfont-size: 11px;\n    top: -32px;\n    left: 9px;\n}\n\n.emailInput label {\n\ttransition: top .3s;\n}",
+    "style": ".emailInput{\n\tfont-family: BentonSansBook,Helvetica,Arial,sans-serif;\n\tposition:relative;\n}\n\n.emailInput .email{\n\tpadding: 17px;\n\tpadding-top: 25px;\n\tborder: 1px solid #e1e1e1;\n    font-size: 16px;\n    width: 100%;\n}\n\n.emailInput label{\n    font-size: 14px;\n    position:absolute;\n    left: 15px;\n    top: -18px;\n}\n\n.prompt_input.emailInput label{\n\tfont-size: 11px;\n   \tleft: 15px;\n    top: -18px;\n    color: #d91560;\n}\n\n.prompt_input .email{\n    color: #d91560;\n    border-color: #ef5f96;\n}\n\n.prompt_correct_input label{\n    color: #d91560;\n\tfont-size: 11px;\n    top: -32px;\n    left: 9px;\n}\n\n.prompt_correct_input .email{\n   color: #d91560;\n    border-color: #ef5f96;\n}\n\n.focussed.emailInput label{\n\tfont-size: 11px;\n    top: -32px;\n    left: 9px;\n}\n\n.valid_input label{\n\tfont-size: 11px;\n    top: -32px;\n    left: 9px;\n}\n\n.emailInput label {\n\ttransition: top .3s;\n}",
     "config": "{}"
   },
   {

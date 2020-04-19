@@ -123,7 +123,7 @@ class Index extends Component {
                         <Variants title="Variants"
                             key={Math.ceil(Math.random() * 1000)}
                             component={selectedComponent}
-                            onUpdate={(s)=>console.log(s)}/>
+                            onUpdate= {saveElement.bind(this)}/>
                     </Right>
                     :
                     null}

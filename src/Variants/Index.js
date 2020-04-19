@@ -19,20 +19,11 @@ class Variants extends Component {
     }
 
     deleteVariant(data){
-        debugger;
         let variants = Array.from(this.state.variants);
         let variantToDelete = variants.findIndex(variant=> variant.name.includes(data.name))
         if(variantToDelete!==-1){
             variants.splice(variantToDelete,1);
         }
-        let component = JSON.parse(JSON.stringify(this.state.component))
-        component.variants = variants;
-        this.props.onUpdate(component)
-    }
-
-    updateVariant(incomingVariant , index){
-        let variants = Array.from(this.state.variants);
-        variants[index] = incomingVariant;
         let component = JSON.parse(JSON.stringify(this.state.component))
         component.variants = variants;
         this.props.onUpdate(component)
@@ -64,8 +55,7 @@ class Variants extends Component {
                 state={JSON.stringify(variant.state)}
                 name={variant.name} 
                 component={component} 
-                deleteVariant={this.deleteVariant.bind(this)}
-                updateVariant={this.updateVariant.bind(this)}/>);
+                deleteVariant={this.deleteVariant.bind(this)}/>);
         
         return (
             <div className="container variants">

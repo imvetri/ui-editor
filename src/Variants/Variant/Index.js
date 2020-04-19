@@ -17,22 +17,11 @@ class Variant extends Component {
         }
     }
 
-    updateVariantName(e){
-        this.setState({
-            name: e.target.value
-        })
-    }
-
     deleteVariant(){
         let variant = this.state;
         this.props.deleteVariant(variant);
     }
 
-    updateVariant(){
-        let variant = this.state;
-        variant.state = JSON.parse(variant.state);
-        this.props.updateVariant(variant, this.props.index)
-    }
     render() {
         let component = JSON.parse(JSON.stringify(this.props.component))
         if( component.name==""){
@@ -44,9 +33,7 @@ class Variant extends Component {
                 <div className="variant-controls">
                     <input type="text" 
                         placeholder="Enter variant Name" 
-                        value={this.state.name} 
-                        onChange={this.updateVariantName.bind(this)}
-                        onMouseLeave={this.updateVariant.bind(this)}/>
+                        value={this.state.name} />
                     <button onClick={this.deleteVariant.bind(this)}>
                         <i className="fas fa-trash"></i>
                         Delete
