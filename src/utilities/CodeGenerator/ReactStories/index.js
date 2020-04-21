@@ -13,7 +13,7 @@ export function convertToReactStories (component){
     
     ${component.variants.map(function (variant){
         return `export const ${variant.name} = () => <${component.name} state={${JSON.stringify(variant.state)}}></${component.name}>;`
-    }).join("")}`
+    }).join("\n\n")}`
 
     return ReactStories;
 }

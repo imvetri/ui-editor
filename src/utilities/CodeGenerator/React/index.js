@@ -61,50 +61,48 @@ export function convertToReact (component){
     let saveVariant = getSaveVariant();
     
     let ReactComponent = 
-    `(
-        class ${component.name} extends Component {
-        
-            constructor(props) {
-                super(props);
-                this.state = this.props.state || ${component.state};
+`(
+class ${component.name} extends Component {
 
-                var dynamicStyle = document.createElement('style');
-                dynamicStyle.type = 'text/css';
-                dynamicStyle.innerHTML = \`${component.style}\`;
-                document.body.appendChild(dynamicStyle)
-            }
-        
-            ${component.events.map(event=>{
-                if(event.publishable){
-                    return `
-                    
-                    ${event.id+event.name} (e) {
-                        var state = JSON.parse(JSON.stringify(this.state))
-                        ${event.reducer}
-                        debugger;
-                        this.setState(state);
-                        e.state = state;
-                        this.props.${event.publishName}? this.props.${event.publishName}(e):null;
-                    }
-                    
-                    `
-                }
-        
-                return `
-                    ${event.id+event.name} (e) {
-                        var state = JSON.parse(JSON.stringify(this.state))
-                        ${event.reducer}
-                        debugger;
-                        ${saveVariant}
-                        this.setState(state);
-                    }
-                `
-            }).join("\n")}
-        
-            render() {
-                return (${componentEventedMarkup})
-            }
-        })
-        `
+    constructor(props) {
+        super(props);
+        this.state = this.props.state || ${component.state};
+
+        var dynamicStyle = document.createElement('style');
+        dynamicStyle.type = 'text/css';
+        dynamicStyle.innerHTML = \`${component.style}\`;
+        document.body.appendChild(dynamicStyle)
+    }
+
+    ${component.events.map(event=>{
+        if(event.publishable){
+            return `
+            
+    ${event.id+event.name} (e) {
+        var state = JSON.parse(JSON.stringify(this.state))
+        ${event.reducer}
+        debugger;
+        this.setState(state);
+        e.state = state;
+        this.props.${event.publishName}? this.props.${event.publishName}(e):null;
+    }`
+        }
+
+        return `
+    ${event.id+event.name} (e) {
+        var state = JSON.parse(JSON.stringify(this.state))
+        ${event.reducer}
+        debugger;
+        ${saveVariant}
+        this.setState(state);
+    }
+`
+    }).join("\n")}
+
+    render() {
+        return (${componentEventedMarkup})
+    }
+})
+`
     return ReactComponent;
 }

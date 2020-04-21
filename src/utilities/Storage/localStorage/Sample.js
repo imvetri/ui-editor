@@ -1,4 +1,4 @@
-let sample = [
+let sample =[
   {
     "name": "ForgotPassword",
     "markup": "<div className=\"vsButton\"><button id=\"f123\">Forgot Password</button></div>",
@@ -99,8 +99,8 @@ let sample = [
         "id": "input"
       }
     ],
-    "state": "{\n\t\"email\":\"\",\n    \"variant\":\"default\",\n    \"placeholder\":\"Email Address\"\n}",
-    "style": ".emailInput{\n\tfont-family: BentonSansBook,Helvetica,Arial,sans-serif;\n\tposition:relative;\n}\n\n.emailInput .email{\n\tpadding: 17px;\n\tpadding-top: 25px;\n\tborder: 1px solid #e1e1e1;\n    font-size: 16px;\n    width: 100%;\n}\n\n.emailInput label{\n    font-size: 14px;\n    position:absolute;\n    left: 15px;\n    top: -18px;\n}\n\n.prompt_input.emailInput label{\n\tfont-size: 11px;\n   \tleft: 15px;\n    top: -18px;\n    color: #d91560;\n}\n\n.prompt_input .email{\n    color: #d91560;\n    border-color: #ef5f96;\n}\n\n.prompt_correct_input label{\n    color: #d91560;\n\tfont-size: 11px;\n    top: -32px;\n    left: 9px;\n}\n\n.prompt_correct_input .email{\n   color: #d91560;\n    border-color: #ef5f96;\n}\n\n.focussed.emailInput label{\n\tfont-size: 11px;\n    top: -32px;\n    left: 9px;\n}\n\n.valid_input label{\n\tfont-size: 11px;\n    top: -32px;\n    left: 9px;\n}\n\n.emailInput label {\n\ttransition: top .3s;\n}",
+    "state": "{\n\t\"email\":\"\",\n    \"variant\":\"initial\",\n    \"placeholder\":\"Email Address\"\n}",
+    "style": ".emailInput{\n\tfont-family: BentonSansBook,Helvetica,Arial,sans-serif;\n\tposition:relative;\n}\n\n.emailInput .email{\n\tpadding: 17px;\n\tpadding-top: 25px;\n\tborder: 1px solid #e1e1e1;\n    font-size: 16px;\n    width: 100%;\n}\n\n.emailInput label{\n    font-size: 14px;\n    position:absolute;\n    left: 15px;\n    top: -18px;\n}\n\n.prompt_input.emailInput label{\n\tfont-size: 11px;\n   \tleft: 15px;\n    top: -18px;\n    color: #d91560;\n}\n\n.prompt_input .email{\n    color: #d91560;\n    border-color: #ef5f96;\n}\n\n.prompt_correct_input label{\n    color: #d91560;\n\tfont-size: 11px;\n    top: -28px;\n    left: 9px;\n}\n\n.prompt_correct_input .email{\n   color: #d91560;\n    border-color: #ef5f96;\n}\n\n.focussed.emailInput label{\n\tfont-size: 11px;\n    top: -28px;\n    left: 9px;\n}\n\n.valid_input label{\n\tfont-size: 11px;\n    top: -28px;\n    left: 9px;\n}\n\n.emailInput label {\n\ttransition: top .3s;\n}",
     "config": "{}",
     "variants": [
       {
@@ -174,7 +174,7 @@ let sample = [
         "id": "ResetPasswordModal"
       }
     ],
-    "state": "{\n\t\"showModal\": false,\n    \"list\": [1,2,3,4,5],\n    \"ResetPasswordModal\": [],\n    \"variant\": \"default\"\n}",
+    "state": "{\n\t\"showModal\": false,\n    \"list\": [1,2,3,4,5],\n    \"ResetPasswordModal\": [],\n    \"variant\": \"initial\"\n}",
     "style": ".page{\n\theight: 700px;\n\twidth: 500px;\n}",
     "config": "{\"VariantModal\":{\"showHideProp\":\"showModal\",\"override\":false},\"ForgotPasswordButton\":{\"showHideProp\":\"\",\"override\":false},\"ForgotPassword\":{\"showHideProp\":\"\",\"override\":false,\"renderListProp\":\"\"},\"ResetPasswordModal\":{\"showHideProp\":\"showModal\",\"override\":true,\"renderListProp\":\"\"}}",
     "variants": [

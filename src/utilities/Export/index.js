@@ -1,22 +1,17 @@
 import { exportStorybook } from "./ExportStorybook";
-import { exportNWB } from "./ExportNWB";
 import { logCode } from "./logCode";
 
-export function onExport(EXPORT_TYPE){
+export function onExport(EXPORT_TYPE, componentName){
     switch (EXPORT_TYPE) {
         case "SIMPLE": 
-            logCode();
-            break;
-
-        case "NWB":
-            exportNWB();
+            logCode(componentName);
             break;
 
         case "STORYBOOK":
-            exportStorybook();
+            exportStorybook(componentName);
             break;
         
         default:
-            logCode();
+            logCode(componentName);
     }
 }
