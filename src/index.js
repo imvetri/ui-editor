@@ -156,5 +156,5 @@ class Index extends Component {
         );
     }
 }
-
+console.log("Source code avaialble at https://github.com/imvetri/ui-editor")
 ReactDOM.render(<Index />, document.getElementById("index"));
