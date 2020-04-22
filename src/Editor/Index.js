@@ -28,7 +28,6 @@ class Editor extends Component {
     }
 
     saveElement () {
-        debugger;
         this.props.onSave({
             name: this.state.name,
             markup: this.state.markup,

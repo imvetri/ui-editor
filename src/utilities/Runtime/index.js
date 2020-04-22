@@ -87,6 +87,7 @@ export function getChildren (parent){
         let children = components.filter(component=> parent.markup.includes(component.name)).map(component=>component.name);
         return children;
     }
+    return [];
 }
 
 /** Takes markup and returns children component objects. */

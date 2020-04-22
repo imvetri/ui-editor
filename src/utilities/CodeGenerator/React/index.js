@@ -50,7 +50,7 @@ export function convertToReact (component){
 
     // keep saving variant in browser, but not for code exports.
     let getSaveVariant = ()=>{
-        if(!window.ExportNWB){
+        if(window.saveVariant){
             return `window.saveVariant("${component.name}",state)`
         }
     }

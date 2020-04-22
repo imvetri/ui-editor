@@ -81,7 +81,8 @@ export function saveElement (element) {
             style: element.style,
             children: [],
             id: Math.ceil(Math.random()*1000),
-            config:"{}"
+            config:"{}",
+            variants:[]
         };
 
         components.push(newElement);

@@ -1,4 +1,4 @@
-import { exportStorybook } from "./ExportStorybook";
+import {exportSeparateFile} from "./ExportSeparate";
 import { logCode } from "./logCode";
 
 export function onExport(EXPORT_TYPE, componentName){
@@ -8,9 +8,9 @@ export function onExport(EXPORT_TYPE, componentName){
             break;
 
         case "STORYBOOK":
-            exportStorybook(componentName);
+            exportSeparateFile(componentName);
             break;
-        
+
         default:
             logCode(componentName);
     }
