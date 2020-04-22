@@ -119,7 +119,8 @@ class Index extends Component {
                         />
                         <History title="History"/>
                         <Assets title="Assets"/>
-                        <Export title="Export"/>
+                        <Export title="Export"
+                            component={selectedComponent}/>
                         <Variants title="Variants"
                             key={Math.ceil(Math.random() * 1000)}
                             component={selectedComponent}
@@ -156,5 +157,5 @@ class Index extends Component {
         );
     }
 }
-console.log("Source code avaialble at https://github.com/imvetri/ui-editor")
+console.log("Source code https://github.com/imvetri/ui-editor")
 ReactDOM.render(<Index />, document.getElementById("index"));

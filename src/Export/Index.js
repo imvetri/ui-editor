@@ -35,19 +35,7 @@ class Export extends Component {
                             />
                             ReactJS - logs output to your console.
                         </label>
-                    </li>
-                    <li>
-                        <label>
-                            <input
-                                type="radio"
-                                name="Export"
-                                value="NWB"
-                                checked={this.state.exportType === "NWB"}
-                                onChange={this.onExportTypeChanged.bind(this)}
-                            />
-                            ReactJS - Codebase
-                        </label>
-                    </li>
+                    </li>.
                     <li>
                         <label>
                             <input
@@ -60,7 +48,7 @@ class Export extends Component {
                         </label>
                     </li>
                 </ul>
-                <button onClick={onExport.bind(null, this.state.exportType)}><i className="fas fa-file-export"></i>Export</button>
+                <button onClick={onExport.bind(null, this.state.exportType, this.props.component.name)}><i className="fas fa-file-export"></i>Export</button>
             </div>
 
         );

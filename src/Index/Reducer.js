@@ -81,7 +81,8 @@ export function saveElement (element) {
             style: element.style,
             children: [],
             id: Math.ceil(Math.random()*1000),
-            config:"{}"
+            config:"{}",
+            variants:[]
         };
 
         components.push(newElement);
@@ -109,6 +110,7 @@ export function saveElement (element) {
 
 
 export function updateSelectedComponent (e) {
+
     let componentName = e.currentTarget.innerText.split("\n")[0];
     // Find the element from state that matches the currently selected element.
     let selectedComponent = this.state.components.find(component=>component.name===componentName);

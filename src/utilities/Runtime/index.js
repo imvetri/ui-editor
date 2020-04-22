@@ -81,6 +81,15 @@ export function saveComponentsToWindow( nestedComponents){
     });
 }
 
+export function getChildren (parent){
+    let components= readData("ui-editor");
+    if(checkNestedComponents(parent.markup)){
+        let children = components.filter(component=> parent.markup.includes(component.name)).map(component=>component.name);
+        return children;
+    }
+    return [];
+}
+
 /** Takes markup and returns children component objects. */
 export function getNestedComponents (parent) {
     // Should be able to detect nested component.
