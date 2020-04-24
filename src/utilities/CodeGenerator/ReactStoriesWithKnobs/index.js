@@ -14,8 +14,25 @@ export function convertToReactStories (component){
     }
     
     ${component.variants.map(function (variant){
-        return `export const ${variant.name} = () => <${component.name} state={${JSON.stringify(variant.state)}}></${component.name}>;`
+        
+        /**
+         * For each property in the variant.state
+         * Replace it with typeof state.property (state.property, state.property.value)
+         */
+
+        let state = JSON.parse(JSON.stringify(variant.state));
+
+        let newState = {};
+
+        Object.keys(state).forEach(property => {
+            newState[property] = `${typeof state[property]}(${property},${state[property]})`
+        })
+
+        
+
+        return `export const ${variant.name} = () => <${component.name} state={${JSON.stringify(newState).split('"').join("")}}></${component.name}>;`
     }).join("\n\n")}`
 
+    debugger;
     return ReactStories;
 }
