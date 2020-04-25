@@ -22,15 +22,18 @@ textarea {
     width:21vw;
 }
 
-.Controls{
-    display: inline-block;
-}
-
 .folders{
     overflow: scroll;  
     height:85vh;
 }
 
+.Controls{
+    display: inline-block;
+    opacity: 1;
+    transition: opacity .2s ease-in;
+}
+
 .hideControls{
-    visibility: hidden;
+    opacity: 0;
+    transition: opacity .5s ease-in-out;
 }

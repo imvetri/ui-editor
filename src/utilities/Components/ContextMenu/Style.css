@@ -1,0 +1,14 @@
+.ContextMenu{
+    position: absolute;
+    left:0px;
+    animation: slide-to-screen 0.7s ease;
+}
+
+@keyframes slide-to-screen {
+    0% {
+        left:-300px;
+    }
+    100% {
+        left: 0px;
+    }
+}

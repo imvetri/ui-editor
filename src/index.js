@@ -91,6 +91,7 @@ class Index extends Component {
                         folders={this.state.folders}
                         selectedComponent={this.state.selectedComponent}
                         title="Components"
+                        showControls={true}
 
                         onOpenEditor={this.openEditor.bind(this)}
                         onSelection={this.updateSelectedComponent}
