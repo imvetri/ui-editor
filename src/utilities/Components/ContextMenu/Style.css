@@ -10,3 +10,7 @@
     padding: 15px;
     user-select: none;
 }
+
+.contextMenuOptions{
+    padding-left:0px;
+}

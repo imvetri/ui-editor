@@ -115,7 +115,6 @@ export function updateSelectedComponent (e) {
     // Find the element from state that matches the currently selected element.
     let selectedComponent = this.state.components.find(component=>component.name===componentName);
 
-    window.selectedcomponentname = selectedComponent.name;
     // Update the state with selectedElement.
     this.setState({
         selectedComponent

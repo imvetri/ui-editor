@@ -37,7 +37,6 @@ function processContent (content, i){
                     component={components.find(component=>component.name===content)}
                     selectedComponent={selectedComponent}
                     onSelectionChange={onSelection}
-                    onDeleteComponent = {onDeleteComponent}
                     />
     }
     // else its a folder type.

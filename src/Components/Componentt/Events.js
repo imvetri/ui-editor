@@ -1,11 +1,18 @@
+
+// Public functions
+
 export function selectionChanged(e) {
+
+    /** Pass message to Components about selection change  */
+
     this.props.onSelectionChange(e);
 }
 
 export function addComponentDetails(e){
-    console.log("Component dragged")
+
+    /** Pass details about component or folder in the drag event */
+
     let name = event.target.getAttribute("data-name")
-    event.target.classList.add("hideAdditionals");
     e.dataTransfer.setData("component-name", name);
     e.dataTransfer.setData("parent-folder-name", e.currentTarget.parentElement.getAttribute("data-folder-name"))
     e.stopPropagation();

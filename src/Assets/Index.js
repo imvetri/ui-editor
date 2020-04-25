@@ -12,7 +12,7 @@ import Asset from "./Asset";
 
 import {dropHandler, dragOverHandler, dragLeaveHandler} from "./Reducer";
 
-// Db utils.
+// Utilities.
 
 import {fetchFromDB, writeToDB} from "./db";
 
@@ -25,6 +25,9 @@ class Assets extends Component {
             assets: [],
             selectedAsset:""
         };
+
+        /* Store the assets in local DB */
+
         this.writeToDB = writeToDB.bind(this);
     }
 
@@ -35,6 +38,8 @@ class Assets extends Component {
         document.body.appendChild(newFile);
 
 
+        /* Keep the image in DOM as cache. */
+
         var img = document.createElement("img");
         img.file = file;
         img.src = bin;
@@ -42,6 +47,9 @@ class Assets extends Component {
     }
 
     updatedSelected(e) {
+
+        /* Keep track of selected asset in the state */
+
         let assetName = e.target.getAttribute("data-name"); 
         this.setState({
             selectedAsset: assetName
@@ -50,7 +58,10 @@ class Assets extends Component {
 
     render() {
 
+        /* Create an asset component for each assets. */
+
         let assets = this.state.assets.map(asset=> <Asset asset={asset} selected={this.state.selectedAsset} onSelected={this.updatedSelected.bind(this)}/>);
+        
         return (
             <ul className="assets">
                 <button onClick={fetchFromDB.bind(this)}>Load Assets</button>

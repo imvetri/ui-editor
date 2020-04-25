@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 
+// Events.
+
 import {selectionChanged, addComponentDetails} from "./Events";
+
+
+// Styles.
 
 import  "./Style.css";
 
@@ -12,29 +17,22 @@ class Componentt extends Component {
         };
     }
 
-    restoreClass(event){
-        event.target.classList.remove("hideAdditionals");
-    }
 
     render() {
 
         let props = this.props;
         let selectedComponent = props.selectedComponent;
         let component = props.component;
-        // Remove this.props.index, instead use this element instance index. Removes duplicate code
+
         return (
-            <div className="background" draggable="true" data-name={component.name} onDragStart={addComponentDetails.bind(this)} onDragEnd={this.restoreClass}>
+            <div className="background" draggable="true" data-name={component.name} onDragStart={addComponentDetails.bind(this)}>
                 <li 
                     className = {selectedComponent && props.component.name===selectedComponent.name ? "selected component": "component"}
                     onClick = {selectionChanged.bind(this)}
+                    onContextMenu = {selectionChanged.bind(this)}
                     index = {props.index}>
                     <span className="componentName">
                         {component.name}
-                    </span>
-                    <span>
-                        <button 
-                            index = {props.index}
-                            onClick={props.onDeleteComponent}><i className="fa fa-trash"></i>Delete</button>
                     </span>
                 </li>
             </ div>
