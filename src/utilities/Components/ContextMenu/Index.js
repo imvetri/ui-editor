@@ -10,10 +10,14 @@ class ContextMenu extends Component {
         this.state = {}
     }
 
+    closeContextMenu(){
+        this.props.onMessage("HIDE");
+    }
+
     render() {
 
         return (
-            <div className="ContextMenu">
+            <div className="ContextMenu" style={this.props.position}>
                 {this.props.children}
             </div>
         );

@@ -17,12 +17,16 @@ import Export from "./Export";
 import History from "./History";
 import Variants from "./Variants";
 
-// Behaviour components
+// Behaviour components.
 
 import Center from "./Utilities/Components/Center";
 import Bottom from "./Utilities/Components/Bottom";
 import Left from "./Utilities/Components/Left";
 import Right from "./Utilities/Components/Right";
+
+// Utility components.
+
+import ContextMenu from "./utilities/Components/ContextMenu";
 
 // Reducers.
 import { updateEvent, updateConfig, saveElement, updateSelectedComponent } from "./Index/Reducer";
@@ -80,10 +84,63 @@ class Index extends Component {
             showEditor: true
         })
     }
+
+    delete(){
+        console.log("delete pressed");
+    }
+
+    onShowContextMenu(e){
+        
+        if(e.target.classList.contains("component") || e.target.classList.contains("componentName")) { // check if it is a component.
+            // delete folder, delete options
+            this.state.contextMenuChildren = <ul className="contextMenuOptions">
+                <li onClick={this.delete}>Delete Component</li>
+                <li onClick={this.delete}>>Delete Contents</li>
+            </ul>;
+        }
+        else if(e.target.getAttribute("data-folder-name")) {// check if it is a folder.
+            // delete folder, delete options
+            this.state.contextMenuChildren =  <ul className="contextMenuOptions">
+            <li onClick={this.delete}>>Delete Folder</li>
+            <li onClick={this.delete}>>Delete Contents</li>
+        </ul>;
+
+        }
+         
+        this.setState({
+            showContextMenu:true,
+            contextMenuPosition: {
+                top: `${e.clientY}px`,
+                left: `${e.clientX}px`
+            }
+        })
+
+        e.preventDefault();
+    }
+
+    hideContextMenu(){
+        if(this.state.showContextMenu){
+            this.setState({
+                showContextMenu: false
+            })
+        }
+    }
+
+    onContextMenuMessage(message){
+        switch (message) {
+            case "HIDE":
+                this.setState({
+                    showContextMenu: false
+                })
+                break;
+        }    
+
+    }
     render() {
         const selectedComponent = this.state.selectedComponent || this.state.component;
+        console.log(this.state.showContextMenu)
         return (
-            <div>
+            <div onContextMenu={this.onShowContextMenu.bind(this)} onClick={this.hideContextMenu.bind(this)}>
                 <Left>
                     <Components
                         key={Math.ceil(Math.random() * 1000)}
@@ -153,7 +210,7 @@ class Index extends Component {
                         :
                         null
                 }
-
+                {this.state.showContextMenu?<ContextMenu children={this.state.contextMenuChildren} position={this.state.contextMenuPosition} onMessage={this.onContextMenuMessage.bind(this)}/>:null}
             </div>
         );
     }

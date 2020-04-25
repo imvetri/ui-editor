@@ -22,7 +22,7 @@ time, mark, audio, video {
 }
 
 ol, ul {
-	list-style: none;
+	list-style: none!important;
 }
 
 p {
