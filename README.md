@@ -12,27 +12,27 @@ A single object should determine the structure of the components. In state drive
 1. Always store a child component as a property in the state. Keep the component value as an array and store the props data.
 
 Example
-
+```
 ParentComponent.state = {
   ChildComponent: [{name:"Vetrivel"}]
 }
-
+```
 2. To hide a component, do not use state, instead make the ChildComponent list as empty.
 
 Example
-
+```
 ParentComponent.state = {
   ChildComponent: []
 }
-
+```
 3. Use the same property to render lists. 
 
 Example
-
+```
 ParentComponent.state = {
   ChildComponent: [{name:"Vetri"}, {name: "vel"}] 
 }
-
+```
 4. A parent component has layout, behaviour and contents. A content is a child component or a valid html element. A layout takes care of how the children or the content should be rendered such as grid or list.  The behaviour / functionality is what a component should do such as form submission, work as an accordion etc.
 
 
