@@ -63,8 +63,16 @@ class Folders extends Component {
 
     }
 
+    onFolderStatusChanged(folder){
+        // find folder,
+        let folderToUpdate = findFolder(folder.name, this.state.folders[0])
+        // update it in folders,
+        folderToUpdate.status = folder.status;
+        this.props.onFoldersUpdate(this.state.folders)
+    }
+
     render() {
-        return folderStructure(this.props, this.onFolderUpdate.bind(this))
+        return folderStructure(this.props, this.onFolderUpdate.bind(this), this.onFolderStatusChanged.bind(this))
     }
 }
 

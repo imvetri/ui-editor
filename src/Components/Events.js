@@ -42,7 +42,6 @@ export function onDeleteFolder(TYPE, folderName, parentName){
             break;
 
         case "CONTENTS":
-            debugger;
             let folders = Array.from(this.state.folders)
             let folderToDelete = findFolder(folderName, folders[0])
             let noFolder = folders[0];
