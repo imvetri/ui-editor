@@ -10,7 +10,6 @@ import React, { Component } from "react";
 import Configurator from "./Configurator";
 import Nodes from "../utilities/Components/Nodes";
 import Event from "./Event";
-import getMessages from "./Messages";
 
 // Styles.
 
@@ -61,7 +60,7 @@ class Events extends Component {
 
         // Report error.
         if (nodeTree.error !== undefined) {
-            return getMessages(nodeTree.error);
+            return nodeTree.error;
         }
 
         // Report error if component is not 

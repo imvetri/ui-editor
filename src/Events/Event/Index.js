@@ -6,7 +6,6 @@ import "./Style.css"
 
 // Components.
 
-import getMessages from "./Messages";
 import {UnControlled as CodeMirror} from 'react-codemirror2';
 
 // Reducers. 
@@ -31,7 +30,7 @@ class Event extends Component {
     render() {
 
         if (this.props.selectedTagID === undefined) {
-            return getMessages();
+            return "Select ID";
         }
 
         let publishName = this.state.publishable? <input type="text" onChange={updatePublishName.bind(this)} value={this.state.publishName} placeholder="Enter event publish name for other components to subscribe to"/> : null;
