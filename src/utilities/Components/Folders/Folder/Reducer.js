@@ -4,15 +4,15 @@ export function deleteFolder(e){
 }
 
 function openFolder(){
-    this.setState({
-        status: "open"
-    });
+    let state = JSON.parse(JSON.stringify(this.state));
+    state.status = "open";
+    this.props.onFolderStatusChanged(state)
 }
 
 function closeFolder(){
-    this.setState({
-        status: "closed"
-    });
+    let state = JSON.parse(JSON.stringify(this.state));
+    state.status = "closed";
+    this.props.onFolderStatusChanged(state)
 }
 
 export function toggleFolder(){

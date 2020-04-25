@@ -1,14 +1,15 @@
 import Folder from "./Folder";
 import Componentt from "../../../Components/Componentt";
 
-let selectedComponent, onSelection, onFolderUpdate, onDeleteComponent, components, onDeleteFolder, folders;
+let selectedComponent, onSelection, onFolderUpdate, onDeleteComponent, components, onDeleteFolder, folders, onFolderStatusChanged;
 
-function initialiseProps(props, checkFolder){
+function initialiseProps(props, checkFolder, x){
     folders = props.folders;
     selectedComponent = props.selectedComponent;
     onSelection = props.onSelection;
     components = props.components;
     onFolderUpdate = checkFolder;
+    onFolderStatusChanged=x;
     onDeleteComponent = props.onDeleteComponent;
     onDeleteFolder = props.onDeleteFolder;
 }
@@ -21,6 +22,7 @@ function processFolder (folder, i){
                 folder={folder}
                 folders={folders}
                 contents={contents.map( processContent )}
+                onFolderStatusChanged={onFolderStatusChanged}
                 onFolderUpdate={onFolderUpdate}
                 onDeleteFolder={onDeleteFolder}/>
 }
@@ -46,16 +48,17 @@ function processContent (content, i){
                     folder={folder}
                     folders={folders}
                     contents={folder.contents.map( processContent )}
+                    onFolderStatusChanged={onFolderStatusChanged}
                     onFolderUpdate={onFolderUpdate}
                     onDeleteFolder={onDeleteFolder}/>
     }
 }
 
 
-export function folderStructure(props, onFolderUpdate){
+export function folderStructure(props, onFolderUpdate, onFolderStatusChanged){
     let folders = props.folders;
 
-    initialiseProps(props, onFolderUpdate);
+    initialiseProps(props, onFolderUpdate, onFolderStatusChanged);
 
     return(folders.map(processFolder))
 }

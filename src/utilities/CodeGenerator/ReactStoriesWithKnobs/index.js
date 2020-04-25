@@ -33,6 +33,5 @@ export function convertToReactStories (component){
         return `export const ${variant.name} = () => <${component.name} state={${JSON.stringify(newState).split('"').join("")}}></${component.name}>;`
     }).join("\n\n")}`
 
-    debugger;
     return ReactStories;
 }
