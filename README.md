@@ -17,6 +17,9 @@ ParentComponent.state = {
   ChildComponent: [{name:"Vetrivel"}]
 }
 ```
+
+Here the parent component has a child named as ChildComponent. It has a property that holds props data to be passed to the child.
+
 2. To hide a component, do not use state, instead make the ChildComponent list as empty.
 
 Example
