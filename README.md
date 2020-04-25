@@ -1,36 +1,49 @@
 ## UI editor
 
-UI editor is a component library builder and aims to get rid of code refactoring tasks from one dying framework to the next one. It helps to build components and generate framework code if you know to write jsx, css, events and reducers. The generated code is readable, debuggable, editable. The tool is scalable to any UI framework of your choice and works flawlessly for React js. 
+UI editor is based on state driven components.
 
-<p align="center">
-  <a href="https://imvetri.github.io/ui-editor/">
-    <img src="https://raw.githubusercontent.com/imvetri/ui-editor/master/ui-editor.png" height="300px">
-  </a>
-</p>
+### State driven components.
+
+A single object should determine the structure of the components. In state driven components, data from the state is used in rendering component tree. 
+
+#### Philosophies.
+
+
+1. Always store a child component as a property in the state. Keep the component value as an array and store the props data.
+
+Example
+
+ParentComponent.state = {
+  ChildComponent: [{name:"Vetrivel"}]
+}
+
+2. To hide a component, do not use state, instead make the ChildComponent list as empty.
+
+Example
+
+ParentComponent.state = {
+  ChildComponent: []
+}
+
+3. Use the same property to render lists. 
+
+Example
+
+ParentComponent.state = {
+  ChildComponent: [{name:"Vetri"}, {name: "vel"}] 
+}
+
+4. A parent component has layout, behaviour and contents. A content is a child component or a valid html element. A layout takes care of how the children or the content should be rendered such as grid or list.  The behaviour / functionality is what a component should do such as form submission, work as an accordion etc.
 
 
 ## Demo - https://imvetri.github.io/ui-editor/
 
-## Features
-### Generate code to storybook
-1. Configure Export to generate code for storybook by Click Toolkit -> React Storybook.
-2. Select Components->Any component -> Export
-3. Extract the zip contents into storybook configured codebase
-
-## Why code generator is useful.
-
-1. The cost of writing and maintaining the code generator is less than the cost of writing and maintaining the repetition that it is replacing.
-2. The consistency gained by using a code generator will reduce errors to a degree that makes it worthwhile.
-3. The extra problem of debugging generated code will not make debugging inefficient enough to outweigh the benefits from 1 and 2.
-
-Reference https://stackoverflow.com/a/2535537/3526739
-
-## Problems of web development frameworks
-1. Learning framework is mentally intensive.
-2. Learning framework is a waste of time.
-3. Frameworks change.
-4. There is too much competition. 
-5. Makes your suffocate, Memory loss.
+## Benefits and features
+1. Save effort on code refactor from one framework to another.
+2. Helps to kick start the comonent development process.
+3. Finish component development independently and integrate later.
+4. Generates code in ReactJS. Watch [Demo](https://github.com/imvetri/ui-editor/wiki/Code-generation-to-ReactJS)
+5. Easily maintain development history in your SCM tool.
 
 
 ## Step-by-step Tutorials - 
