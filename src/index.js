@@ -50,7 +50,8 @@ class Index extends Component {
             },
             selectedComponent: "",
             folders: readData("folders"),
-            showEditor: false
+            showEditor: false,
+            selectedTab: "Events"
         }
         this.updateConfig = updateConfig.bind(this);
         this.updateEvent = updateEvent.bind(this);
@@ -85,8 +86,10 @@ class Index extends Component {
         })
     }
 
-    delete(){
-        console.log("delete pressed");
+    openExportTab(e){
+        this.setState({
+            selectedTab: "Export"
+        })
     }
 
     onShowContextMenu(e){
@@ -95,14 +98,14 @@ class Index extends Component {
             // delete folder, delete options
             this.state.contextMenuChildren = <ul className="contextMenuOptions">
                 <li onClick={this.delete}>Delete Component</li>
-                <li onClick={this.delete}>>Delete Contents</li>
+                <li onClick={this.openExportTab.bind(this)}>Export Component</li>
             </ul>;
         }
         else if(e.target.getAttribute("data-folder-name")) {// check if it is a folder.
             // delete folder, delete options
             this.state.contextMenuChildren =  <ul className="contextMenuOptions">
-            <li onClick={this.delete}>>Delete Folder</li>
-            <li onClick={this.delete}>>Delete Contents</li>
+            <li onClick={this.delete}>Delete Folder</li>
+            <li onClick={this.delete}>Delete Contents</li>
         </ul>;
 
         }
@@ -138,7 +141,6 @@ class Index extends Component {
     }
     render() {
         const selectedComponent = this.state.selectedComponent || this.state.component;
-        console.log(this.state.showContextMenu)
         return (
             <div onContextMenu={this.onShowContextMenu.bind(this)} onClick={this.hideContextMenu.bind(this)}>
                 <Left>
@@ -165,7 +167,8 @@ class Index extends Component {
                 </Center>
 
                 {this.state.selectedComponent ?
-                    <Right>
+                    <Right 
+                        selected={this.state.selectedTab}>
                          <Events
                             key={Math.ceil(Math.random() * 1000)}
                             component={selectedComponent}

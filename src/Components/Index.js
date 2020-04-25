@@ -7,9 +7,11 @@ import "./Style.css";
 // Components.
 
 import Folders from "../Utilities/Components/Folders";
-import { onDeleteComponent, onDeleteFolder } from "./Events";
 
 // Events.
+
+import { onDeleteFolder } from "./Events";
+
 
 class Components extends Component {
     constructor(props) {
@@ -17,7 +19,8 @@ class Components extends Component {
         this.state = {
             components: this.props.components,
             folders: this.props.folders,
-            showControls: this.props.showControls
+            showControls: this.props.showControls,
+            viewType : "LIST_VIEW"
         };
     }
 
@@ -42,6 +45,12 @@ class Components extends Component {
         })
     }
 
+    toggleView() {
+        this.setState({
+            viewType: this.state.viewType === "LIST_VIEW" ? "IMAGE_VIEW" : "LIST_VIEW"
+        })
+    }
+
     hideControls() {
         this.setState({
             showControls: false
@@ -58,6 +67,10 @@ class Components extends Component {
                     <div className={classes}>
                         <button onClick={this.addComponent.bind(this)}><i className="fa fa-edit"></i>{props.selectedComponent ? "Edit Component" : "Add Component"}</button>
                         <button onClick={this.addFolder.bind(this)}><i className="fa fa-folder"></i>Add Folder</button>
+                        <button onClick={this.toggleView.bind(this)}>
+                            {this.state.viewType === "LIST_VIEW"?<i class="fas fa-list"></i>:<i class="fas fa-image"></i>}
+                            {this.state.viewType === "LIST_VIEW"?"List View":"Folder View"}
+                        </button>
                     </div>
                 </div>
                 <div className="folders">
@@ -68,7 +81,6 @@ class Components extends Component {
                         selectedComponent={props.selectedComponent}
                         onFoldersUpdate={props.onFoldersUpdate}
                         onSelection={props.onSelection}
-                        onDeleteComponent={onDeleteComponent.bind(this)}
                         onDeleteFolder={onDeleteFolder.bind(this)}
                     />
                 </div>

@@ -1,6 +1,11 @@
 import indexedDB from "../Utilities/Libraries/indexedDB/indexeDB"
+
+// Public functions.
+
 export function dropHandler(ev) {
     ev.preventDefault();
+
+    /* Store the image in DB and in DOM after drop */
 
     [].forEach.call(ev.dataTransfer.files, (file)=>{
         var reader = new FileReader();
@@ -22,15 +27,19 @@ export function dropHandler(ev) {
 export function dragOverHandler(ev) {
     console.log('File(s) in drop zone');
 
+    /* Show drag over visuals */
+
     this.setState({
         class: "drag_over"
     })
 
-    // Prevent default behavior (Prevent file from being opened)
     ev.preventDefault();
 }
 
 export function dragLeaveHandler(e) {
+
+    /* Show drop visuals */
+
     this.setState({
         class: "drop_zone"
     })

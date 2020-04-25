@@ -8,7 +8,7 @@ class Right extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selected:"Events"
+            selected:this.props.selected
         }
     }
 
@@ -20,6 +20,12 @@ class Right extends Component {
 
     render() {
 
+        /** React design can be made slick if it takes care of Math.Rand and this conditional check */
+        /** More opportunity to move towards state driven component development */
+
+        if(this.state.selected!==this.props.selected){
+
+        }
         return (
             <div className="right container">
                 {this.props.children.map(child=>{
