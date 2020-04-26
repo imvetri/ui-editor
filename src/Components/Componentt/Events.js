@@ -12,7 +12,6 @@ export function addComponentDetails(e){
 
     /** Pass details about component or folder in the drag event */
 
-    debugger;
     let name = event.target.getAttribute("data-name")
     e.dataTransfer.setData("component-name", name);
     e.dataTransfer.setData("parent-folder-name", e.currentTarget.parentElement.getAttribute("data-folder-name"))

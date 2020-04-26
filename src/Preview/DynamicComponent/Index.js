@@ -15,6 +15,23 @@ class DynamicComponent extends Component {
         
     }
 
+    dropHandler(){}
+
+    dragOverHandler(e){
+
+        /** Drop hint, Target shift hint */
+
+        /** Show drop hint as above if cursor is half above center of e.target */
+
+        /** Show drop hint as below if cursor is half below center of e.target */
+
+        /** Show drop hint as right if cursor is half right center of e.target */
+
+        /** Show drop hint as left if cursor is half left center of e.target */
+        
+        console.log(e.target, e.currentTarget, e.sourceTarget)
+    }
+
     render() {
 
         if(this.state.component.name===undefined){
@@ -30,7 +47,9 @@ class DynamicComponent extends Component {
         }
 
         return (
-            <div>
+            <div 
+                onDrop={this.dropHandler.bind(this)} 
+                onDragOver={this.dragOverHandler.bind(this)} >
                 {React.createElement(window[this.state.component.name])}
             </div>
         );
