@@ -4,6 +4,9 @@ import React, { Component } from 'react';
 
 import {selectionChanged, addComponentDetails} from "./Events";
 
+// Components.
+
+import ThumbnailView from "./ThumbnailView";
 
 // Styles.
 
@@ -23,7 +26,8 @@ class Componentt extends Component {
         let props = this.props;
         let selectedComponent = props.selectedComponent;
         let component = props.component;
-
+        let viewType = props.viewType;
+        
         return (
             <div className="background" draggable="true" data-name={component.name} onDragStart={addComponentDetails.bind(this)}>
                 <li 
@@ -32,7 +36,7 @@ class Componentt extends Component {
                     onContextMenu = {selectionChanged.bind(this)}
                     index = {props.index}>
                     <span className="componentName">
-                        {component.name}
+                        {viewType==="LIST_VIEW" ? component.name :<ThumbnailView component={component}/> }
                     </span>
                 </li>
             </ div>

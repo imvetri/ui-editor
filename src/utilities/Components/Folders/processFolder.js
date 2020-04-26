@@ -1,7 +1,7 @@
 import Folder from "./Folder";
 import Componentt from "../../../Components/Componentt";
 
-let selectedComponent, onSelection, onFolderUpdate, onDeleteComponent, components, onDeleteFolder, folders, onFolderStatusChanged;
+let selectedComponent, onSelection, onFolderUpdate, onDeleteComponent, components, onDeleteFolder, folders, onFolderStatusChanged, viewType;
 
 function initialiseProps(props, checkFolder, x){
     folders = props.folders;
@@ -12,6 +12,7 @@ function initialiseProps(props, checkFolder, x){
     onFolderStatusChanged=x;
     onDeleteComponent = props.onDeleteComponent;
     onDeleteFolder = props.onDeleteFolder;
+    viewType = props.viewType;
 }
 
 function processFolder (folder, i){
@@ -37,6 +38,7 @@ function processContent (content, i){
                     component={components.find(component=>component.name===content)}
                     selectedComponent={selectedComponent}
                     onSelectionChange={onSelection}
+                    viewType={viewType}
                     />
     }
     // else its a folder type.
