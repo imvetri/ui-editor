@@ -2,7 +2,15 @@
 
 import React, { Component } from "react";
 
+// Utilities.
+
+import { insertDirection } from "./Utility";
+
+// Runtime utilities.
+
 import { getNestedComponents, saveComponentsToWindow } from "../../utilities/Runtime";
+
+// Styles.
 
 import "./style.css";
 
@@ -19,6 +27,10 @@ class DynamicComponent extends Component {
 
     dragOverHandler(e){
 
+        // Find target.parent
+        // if PageX,PageY, target.getBoundingClientRect().left , target.getBoundingClientRect().right,   target.getBoundingClientRect().top, target.getBoundingClientRect().bottom
+
+        console.log(insertDirection(e.pageX, e.pageY))
         /** Drop hint, Target shift hint */
 
         /** Show drop hint as above if cursor is half above center of e.target */
@@ -29,7 +41,6 @@ class DynamicComponent extends Component {
 
         /** Show drop hint as left if cursor is half left center of e.target */
         
-        console.log(e.target, e.currentTarget, e.sourceTarget)
     }
 
     render() {
