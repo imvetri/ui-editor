@@ -3,6 +3,12 @@
     background: #2C3134;
 }
 
+/* Center align the title */
+
+.preview .title{
+    text-align: center;
+}
+
 /* Fix the height and width of the preview - default*/
 
 .preview div:nth-child(2) {
@@ -13,48 +19,47 @@
 
 /* Fix the height and width of preview - mobile display */
 
-.preview .mobile div:nth-child(2) {
-    height:50vh;
-    width:30vw;
-    overflow:scroll;
+.preview.mobile div:nth-child(2) {
+    width:479px;
+    transition: width .2s;
 }
 
 /* Fix the height and width of preview - tablet display */
 
-.preview .tablet div:nth-child(2) {
-    height:50vh;
-    width:30vw;
-    overflow:scroll;
+.preview.tablet div:nth-child(2) {
+    width:767px;
+    transition: width .2s;
 }
 
 /* Fix the height and width of preview - desktop display */
 
-.preview .desktop div:nth-child(2) {
-    height:50vh;
-    width:30vw;
-    overflow:scroll;
-}
-
-/* Center the controls to the title */
-
-.preview .Controls {
-    margin-left: 50px;
+.preview.desktop div:nth-child(2) {
+    width:991px;
+    transition: width .2s;
 }
 
 /** Highlight mobile when display mode is mobile */
 
-.preview .mobile .fa-mobile-alt {
-
+.preview.mobile .fa-mobile-alt {
+    font-size: 18px;
+    padding: 5px;
+    transition: font-size .1s,padding .1s ;
 }
 
 /** Highlight tablet when display mode is tablet */
 
-.preview .tablet .fa-tablet-alt {
+.preview.tablet .fa-tablet-alt {
 
+    font-size: 18px;
+    padding: 5px;
+    transition: font-size .1s,padding .1s ;
 }
 
 /** Highlight desktop when display mode is desktop */
 
-.preview .desktop .fa-desktop {
+.preview.desktop .fa-desktop {
+    font-size: 18px;
+    padding: 5px;
+    transition: font-size .1s,padding .1s ;
 
 }
