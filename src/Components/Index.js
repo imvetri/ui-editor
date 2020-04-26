@@ -47,7 +47,7 @@ class Components extends Component {
 
     toggleView() {
         this.setState({
-            viewType: this.state.viewType === "LIST_VIEW" ? "IMAGE_VIEW" : "LIST_VIEW"
+            viewType: this.state.viewType === "LIST_VIEW" ? "THUMBNAIL_VIEW" : "LIST_VIEW"
         })
     }
 
@@ -69,7 +69,7 @@ class Components extends Component {
                         <button onClick={this.addFolder.bind(this)}><i className="fa fa-folder"></i>Add Folder</button>
                         <button onClick={this.toggleView.bind(this)}>
                             {this.state.viewType === "LIST_VIEW"?<i class="fas fa-list"></i>:<i class="fas fa-image"></i>}
-                            {this.state.viewType === "LIST_VIEW"?"List":"Folder"}
+                            {this.state.viewType === "LIST_VIEW"?"List":"Thumbnail"}
                         </button>
                     </div>
                 </div>
