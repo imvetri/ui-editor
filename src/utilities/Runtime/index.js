@@ -62,8 +62,10 @@ function createStylesheet(style, name) {
 
 /** Takes a component and converts it as a react component */
 function saveToWindow( component ) {
-    createStylesheet(component.style, component.name)
-    window[component.name] = createComponent(component);
+    if(!window[component.name]){
+        createStylesheet(component.style, component.name)
+        window[component.name] = createComponent(component);
+    }
 }
 
 function checkNestedComponents( markup) {

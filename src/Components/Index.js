@@ -69,7 +69,7 @@ class Components extends Component {
                         <button onClick={this.addFolder.bind(this)}><i className="fa fa-folder"></i>Add Folder</button>
                         <button onClick={this.toggleView.bind(this)}>
                             {this.state.viewType === "LIST_VIEW"?<i class="fas fa-list"></i>:<i class="fas fa-image"></i>}
-                            {this.state.viewType === "LIST_VIEW"?"List View":"Folder View"}
+                            {this.state.viewType === "LIST_VIEW"?"List":"Folder"}
                         </button>
                     </div>
                 </div>
@@ -79,6 +79,9 @@ class Components extends Component {
                         components={state.components}
                         folders={state.folders}
                         selectedComponent={props.selectedComponent}
+                        viewType={this.state.viewType}
+
+
                         onFoldersUpdate={props.onFoldersUpdate}
                         onSelection={props.onSelection}
                         onDeleteFolder={onDeleteFolder.bind(this)}
