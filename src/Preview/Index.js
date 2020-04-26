@@ -14,7 +14,8 @@ class Preview extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            component: this.props.component
+            component: this.props.component,
+            display: "mobile"
         }
     }
 
@@ -24,14 +25,37 @@ class Preview extends Component {
         })
     }
 
+    switchTablet() {
+        this.setState({
+            display: "tablet"
+        })
+    }
+
+    switchMobile() {
+        this.setState({
+            display: "mobile"
+        })
+    }
+
+    switchDesktop(){
+        this.setState({
+            display: "desktop"
+        })
+    }
+
     render() {
 
         // Helps to rerender when changes to markup/events are made to the component and preview them.
         let randomKey = this.props.component.id*(~~(Math.random()*10));
         return (
-            <div className="container preview">
+            <div className={`container preview ${this.state.display}`}>
                 <div className="title">
                     Preview
+                    <div className="Controls">
+                        <button onClick={this.switchTablet.bind(this)}><i className="fa fa-tablet-alt"></i></button>
+                        <button onClick={this.switchMobile.bind(this)}><i className="fa fa-mobile-alt"></i></button>
+                        <button onClick={this.switchDesktop.bind(this)}><i className="fa fa-desktop"></i></button>
+                    </div>
                 </div>
                 <div>
                     <div className="dynamicComponent">
