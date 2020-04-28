@@ -1,0 +1,19 @@
+.hint{
+    height:100px;
+    width:100%;
+    border: 2px dashed grey;
+}
+
+.hintDragOver{
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    from {
+        border: 3px dashed grey;
+    }
+  
+    to {
+        border: 2px dashed grey;
+    }
+  }

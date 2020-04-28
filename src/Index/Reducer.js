@@ -89,7 +89,7 @@ export function saveElement (element) {
         selectedIndex = components.length-1;
 
         // Find noFolder
-        folders[0].contents.push(element.name)
+        this.state.folders[0].contents.push(element.name)
         // Push new component into contents.
     }
 
@@ -102,9 +102,11 @@ export function saveElement (element) {
             state: element.state,
             events: element.events || []
         },
-        showEditor: false
+        showEditor: false,
+        folders: this.state.folders
     });
 
+    writeData("folders", this.state.folders)
     writeData("ui-editor", components)
 }
 

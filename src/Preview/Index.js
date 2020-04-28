@@ -57,10 +57,8 @@ class Preview extends Component {
                         <button onClick={this.switchDesktop.bind(this)}><i className="fa fa-desktop"></i></button>
                     </div>
                 </div>
-                <div>
-                    <div className="dynamicComponent">
-                        <DynamicComponent key={randomKey} component={this.state.component}/>
-                    </div>
+                <div className="dynamicComponent">
+                    <DynamicComponent key={randomKey} component={this.state.component}/>
                 </div>
             </div>
         );
