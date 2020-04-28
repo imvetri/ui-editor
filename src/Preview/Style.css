@@ -11,29 +11,29 @@
 
 /* Fix the height and width of the preview - default*/
 
-.preview div:nth-child(2) {
-    height:50vh;
+.preview .dynamicComponent {
     width:30vw;
+    height: 600px;
     overflow:scroll;
 }
 
 /* Fix the height and width of preview - mobile display */
 
-.preview.mobile div:nth-child(2) {
+.preview.mobile .dynamicComponent {
     width:479px;
     transition: width .2s;
 }
 
 /* Fix the height and width of preview - tablet display */
 
-.preview.tablet div:nth-child(2) {
+.preview.tablet .dynamicComponent{
     width:767px;
     transition: width .2s;
 }
 
 /* Fix the height and width of preview - desktop display */
 
-.preview.desktop div:nth-child(2) {
+.preview.desktop .dynamicComponent {
     width:991px;
     transition: width .2s;
 }

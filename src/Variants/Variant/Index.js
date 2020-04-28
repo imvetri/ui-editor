@@ -23,11 +23,14 @@ class Variant extends Component {
     }
 
     render() {
+        let randomKey = this.props.component.id*(~~(Math.random()*10));
+
         let component = JSON.parse(JSON.stringify(this.props.component))
         if( component.name==""){
             return (<div></div>)
         }
         component.state = this.props.state;
+        console.log(component.state)
         return (
             <div className="variant">
                 <div className="variant-controls">
@@ -40,7 +43,7 @@ class Variant extends Component {
                     </button>
                 </div>
                 <div className="view">
-                    <DynamicComponent component={component}/>
+                    <DynamicComponent key={randomKey} component={component}/>
                 </div>
             </div>
         );

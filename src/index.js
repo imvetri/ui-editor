@@ -64,7 +64,21 @@ class Index extends Component {
                     showEditor: !this.state.showEditor
                 })
             }
+            if(e.altKey && e.keyCode==82){ // Alt + R
+                this.setState({
+                    openRight: !this.state.openRight,
+                    selectedTab: "Events"
+                })
+            }
+
+            if(e.altKey && e.keyCode==86){ // Alt + V
+                this.setState({
+                    openRight: !this.state.openRight,
+                    selectedTab: "Variants"
+                })
+            }
         }.bind(this);
+
     }
 
     updatePreview(element) {
@@ -166,7 +180,7 @@ class Index extends Component {
                     </Preview>
                 </Center>
 
-                {this.state.selectedComponent ?
+                {this.state.selectedComponent  && this.state.openRight ?
                     <Right 
                         selected={this.state.selectedTab}>
                          <Events

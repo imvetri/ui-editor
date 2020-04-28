@@ -50,7 +50,7 @@ class Variants extends Component {
             </div>)
         }
 
-        variants = variants.map((variant, index)=> <Variant 
+            variants = variants.map((variant, index)=> <Variant 
                 index={index}
                 state={JSON.stringify(variant.state)}
                 name={variant.name} 
