@@ -33,6 +33,7 @@ import { updateEvent, updateConfig, saveElement, updateSelectedComponent } from 
 
 // Utils
 import { readData, writeData } from "./utilities/Storage";
+import {onDeleteComponent} from "./Components/Events";
 
 class Index extends Component {
     constructor(props) {
@@ -105,13 +106,12 @@ class Index extends Component {
             selectedTab: "Export"
         })
     }
-
     onShowContextMenu(e){
         
         if(e.target.classList.contains("component") || e.target.classList.contains("componentName")) { // check if it is a component.
             // delete folder, delete options
             this.state.contextMenuChildren = <ul className="contextMenuOptions">
-                <li onClick={this.delete}>Delete Component</li>
+                <li onClick={onDeleteComponent.bind(this)}>Delete Component</li>
                 <li onClick={this.openExportTab.bind(this)}>Export Component</li>
             </ul>;
         }

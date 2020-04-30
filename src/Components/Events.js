@@ -1,14 +1,10 @@
 import {writeData} from "../utilities/Storage";
-import {findFolder} from "../utilities/Components/Folders/findFolders";
+import {findFolder, findParent} from "../utilities/Components/Folders/findFolders";
 
-export function onDeleteComponent(event) {
+export function onDeleteComponent() {
 
-    /** Delete the component from the folder, update the state */
-        
-    event.stopPropagation();
-    let componentName = event.target.closest("div[draggable='true']").innerText.split("\n")[0];
-    let folderName = event.target.closest("div.newFolder").getAttribute("data-folder-name");
-    let folder = findFolder(folderName, this.state.folders[0])
+    let componentName = this.state.selectedComponent.name;
+    let folder = findParent(componentName, this.state.folders[0])
 
     let contentIndex = folder.contents.findIndex(content=>content===componentName);
     folder.contents.splice(contentIndex, 1);
@@ -23,7 +19,8 @@ export function onDeleteComponent(event) {
         folders: this.state.folders
     })
 
-    writeData("ui-editor", components)
+    writeData("ui-editor", components);
+    writeData("folders", this.state.folders);
 
 }
 
