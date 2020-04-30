@@ -8,10 +8,6 @@ import "./Style.css";
 
 import Folders from "../Utilities/Components/Folders";
 
-// Events.
-
-import { onDeleteFolder } from "./Events";
-
 
 class Components extends Component {
     constructor(props) {
@@ -84,7 +80,6 @@ class Components extends Component {
 
                         onFoldersUpdate={props.onFoldersUpdate}
                         onSelection={props.onSelection}
-                        onDeleteFolder={onDeleteFolder.bind(this)}
                     />
                 </div>
             </div>

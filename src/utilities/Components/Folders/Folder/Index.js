@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import "./Style.css";
 import NewFolder from "../NewFolder";
 
-import {deleteFolder, toggleFolder} from "./Reducer";
+import { toggleFolder} from "./Reducer";
 import {dropHandler, dragOverHandler, dragLeaveHandler, folderStartDrag} from "./Events";
 
 class Folder extends Component {
@@ -46,7 +46,6 @@ class Folder extends Component {
                             onDragStart={folderStartDrag.bind(this)} >
                     <i className={iconStatus} onClick={toggleFolder.bind(this)}></i>
                     <input type="text" className="folder" placeholder="Enter folder name" readOnly value={this.state.name}/>
-                    <button onClick={deleteFolder.bind(this)}><i className="fa fa-trash"></i>Delete</button>
                     {this.state.status === "open" ? contents : null}
                 </div>
             );

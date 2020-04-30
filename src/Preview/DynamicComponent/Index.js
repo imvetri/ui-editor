@@ -24,7 +24,8 @@ class DynamicComponent extends Component {
     }
 
     dragOverHandler(e){
-        debugger;
+        // show hints before and after element containing class "item".
+        
     }
 
     render() {
