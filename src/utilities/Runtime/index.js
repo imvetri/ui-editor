@@ -2,6 +2,7 @@
 
 import {createComponent} from "../create-component";
 import {readData, writeData} from "../Storage";
+import {getObjectFormat, convertToStyleString} from "../Components/StyleExplorer/Style";
 
 /**
  * Store component state as variants. Because variants are visually different form of a component.
@@ -38,6 +39,14 @@ window.saveVariant = function saveVariant(componentName, state) {
  * 
  * Asset in style sheet syntax - $asset
  */
+
+ function scopeSelectos(style,name){
+    let declarations = getObjectFormat(style);
+    declarations.forEach(declaration=>{
+        declaration.selector = `.${name} ${declaration.selector}`
+    })
+    return convertToStyleString(declarations);
+ }
 
 function createStylesheet(style, name) {
 

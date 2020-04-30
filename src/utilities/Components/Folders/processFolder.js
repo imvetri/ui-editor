@@ -1,7 +1,7 @@
 import Folder from "./Folder";
 import Componentt from "../../../Components/Componentt";
 
-let selectedComponent, onSelection, onFolderUpdate, onDeleteComponent, components, onDeleteFolder, folders, onFolderStatusChanged, viewType;
+let selectedComponent, onSelection, onFolderUpdate, components, onDeleteFolder, folders, onFolderStatusChanged, viewType;
 
 function initialiseProps(props, checkFolder, x){
     folders = props.folders;
@@ -10,7 +10,6 @@ function initialiseProps(props, checkFolder, x){
     components = props.components;
     onFolderUpdate = checkFolder;
     onFolderStatusChanged=x;
-    onDeleteComponent = props.onDeleteComponent;
     onDeleteFolder = props.onDeleteFolder;
     viewType = props.viewType;
 }
