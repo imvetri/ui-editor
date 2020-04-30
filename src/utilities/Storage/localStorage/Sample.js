@@ -1,4 +1,4 @@
-let sample =[
+let sample = [
   {
     "name": "ForgotPassword",
     "markup": "<div className=\"vsButton\"><button id=\"f123\">{state.buttonText}</button></div>",
@@ -235,10 +235,10 @@ let sample =[
   },
   {
     "name": "LayoutComponent",
-    "markup": "<div className={state.variant}>\n\t<button>Left</button>\n    <button>Right</button>\n</div>",
+    "markup": "<div className={state.variant}>\n\t<button className=\"left\">Left</button>\n    <div className=\"content\"></div>\n    <div className=\"window\"></div>\n    <button className=\"right\">Right</button>\n</div>",
     "events": [],
-    "state": "{\n\t\"variant\":\"initial\"\n}",
-    "style": "button{\ncolor:red;\n}",
+    "state": "{\n\t\"variant\":\"initial layoutComponent\"\n}",
+    "style": ".layoutComponent button{\n\tcolor:red;\n    height:100%;\n    width: 40px;\n}\n\n.layoutComponent {\n\twidth:100%;\n    height:220px;\n    position:relative;\n}\n\n.layoutComponent .content{\n\theight:200px;\n}\n\n.layoutComponent .left{\n\tposition:absolute;\n    left:0px;\n    top:0px;\n}\n\n.layoutComponent .right{\n\tposition:absolute;\n    right:0px;\n    top:0px;\n}\n\n.layoutComponent .window{\n\tposition:absolute;\n    left:50%;\n    margin-left:-100px;\n    top:0px;\n    border:1px solid black;\n    width:200px;\n    height:220px;\n}",
     "children": [],
     "id": 314,
     "config": "{}",
@@ -246,14 +246,45 @@ let sample =[
   },
   {
     "name": "ProductComponent",
-    "markup": "<div>\n\t<div className=\"item\">{state.name}</div>\n</div>",
-    "events": [],
-    "state": "{\n\t\"name\" : \"Product one\"\n}",
-    "style": ".item{\n\theight:200px;\n    width:200px;\n    background-color:teal;\n}",
+    "markup": "<div className={state.variant} id=\"product\">{state.name}</div>\n",
+    "events": [
+      {
+        "name": "onMouseEnter",
+        "reducer": "state.variant = \"item on_hover\";\nstate.name = \"Buy now\";",
+        "index": 0,
+        "publishable": "",
+        "publishName": "",
+        "id": "product"
+      },
+      {
+        "name": "onMouseLeave",
+        "reducer": "state.variant = \"item initial\";\nstate.name = \"Product one\";",
+        "publishable": "",
+        "publishName": "",
+        "id": "product"
+      }
+    ],
+    "state": "{\n\t\"name\" : \"Product one\",\n    \"variant\" : \"item initial\"\n}",
+    "style": ".item.initial{\n    background-color:darkslategrey;\n}\n\n.item.on_hover{\n\tbackground-color:teal;\n}\n\n.item{\n\theight:200px;\n    width:200px;\n\ttext-align: center;\n\tvertical-align: middle;\n\tline-height: 200px;\n}",
     "children": [],
     "id": 949,
     "config": "{}",
-    "variants": []
+    "variants": [
+      {
+        "name": "on_hover",
+        "state": {
+          "name": "Buy now",
+          "variant": "on_hover"
+        }
+      },
+      {
+        "name": "items on_hover",
+        "state": {
+          "name": "Buy now",
+          "variant": "items on_hover"
+        }
+      }
+    ]
   }
 ];
 module.exports = {
