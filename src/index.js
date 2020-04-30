@@ -33,7 +33,7 @@ import { updateEvent, updateConfig, saveElement, updateSelectedComponent } from 
 
 // Utils
 import { readData, writeData } from "./utilities/Storage";
-import {onDeleteComponent} from "./Components/Events";
+import {onDeleteComponent, onDeleteFolder} from "./Components/Events";
 
 class Index extends Component {
     constructor(props) {
@@ -109,17 +109,19 @@ class Index extends Component {
     onShowContextMenu(e){
         
         if(e.target.classList.contains("component") || e.target.classList.contains("componentName")) { // check if it is a component.
-            // delete folder, delete options
             this.state.contextMenuChildren = <ul className="contextMenuOptions">
                 <li onClick={onDeleteComponent.bind(this)}>Delete Component</li>
                 <li onClick={this.openExportTab.bind(this)}>Export Component</li>
             </ul>;
         }
-        else if(e.target.getAttribute("data-folder-name")) {// check if it is a folder.
-            // delete folder, delete options
+        else if(e.target.classList.contains("fa-folder-open") || e.target.classList.contains("fa-folder")) {// check if it is a folder.
+            let folderName = e.target.parentElement.getAttribute("data-folder-name");
+
             this.state.contextMenuChildren =  <ul className="contextMenuOptions">
-            <li onClick={this.delete}>Delete Folder</li>
-            <li onClick={this.delete}>Delete Contents</li>
+            <li onClick={onDeleteFolder.bind(this, "FOLDER_RETAIN_CONTENTS", folderName)}>Delete folder and retain contents</li>
+            <li onClick={onDeleteFolder.bind(this, "RETAIN_FOLDER_DELETE_CONTENTS",folderName)}>Keep Folder and delete contents</li>
+            <li onClick={onDeleteFolder.bind(this, "ENTIRE_FOLDER",folderName)}>Delete Folder and contents</li>
+            <li onClick={this.openExportTab.bind(this)}>Export Folder</li>
         </ul>;
 
         }

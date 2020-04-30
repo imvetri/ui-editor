@@ -1,5 +1,6 @@
 let folderFound = "";
 let parentFolder = "";
+let folderParentFolder = "";
 
 export function findParent(componentName, folder){
 
@@ -16,6 +17,24 @@ export function findParent(componentName, folder){
     }
 
     return parentFolder;
+}
+
+export function findParentFolder(folderName, folder){
+    
+    let contents = folder.contents;
+
+    for(let i=0;i< contents.length; i++){
+        let content = contents[i];
+
+        if(typeof content === "object"){
+            if(content.name === folderName){
+                folderParentFolder= folder;
+            }
+            findParentFolder(folderName, content)
+        }
+    }
+
+    return folderParentFolder;
 }
 
 // Given folders and a foldername, finds a folder and returns it.

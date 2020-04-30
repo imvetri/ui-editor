@@ -19,7 +19,7 @@ class Folders extends Component {
         };
     }
 
-    removeFolderFromParent(folders, oldParent, contentName, newParent) {
+    removeFolderFromParent(folders, oldParent, contentName) {
         let oldParentFolder = findFolder(oldParent , folders[0] )
         let deleteIndex = oldParentFolder.contents.findIndex(content=>typeof content === "object" && content.name===contentName);
         if(deleteIndex>-1)

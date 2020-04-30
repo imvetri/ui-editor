@@ -28,19 +28,34 @@ class Componentt extends Component {
         let component = props.component;
         let viewType = props.viewType;
         
-        return (
-            <div className="background" draggable="true" data-name={component.name} onDragStart={addComponentDetails.bind(this)}>
-                <li 
-                    className = {selectedComponent && props.component.name===selectedComponent.name ? "selected component": "component"}
-                    onClick = {selectionChanged.bind(this)}
-                    onContextMenu = {selectionChanged.bind(this)}
-                    index = {props.index}>
-                    <span className="componentName">
-                        {viewType==="LIST_VIEW" ? component.name :<ThumbnailView component={component}/> }
-                    </span>
-                </li>
-            </ div>
-        );
+        if(viewType==="LIST_VIEW") {
+            return (
+                <div className="background" draggable="true" data-name={component.name} onDragStart={addComponentDetails.bind(this)}>
+                    <li 
+                        className = {selectedComponent && props.component.name===selectedComponent.name ? "selected component": "component"}
+                        onClick = {selectionChanged.bind(this)}
+                        onContextMenu = {selectionChanged.bind(this)}
+                        index = {props.index}>
+                        <span className="componentName">
+                            {component.name}
+                        </span>
+                    </li>
+                </ div>
+            );
+        }
+        else {
+            return (
+                <div className="background" draggable="true" data-name={component.name} onDragStart={addComponentDetails.bind(this)}>
+                    <li 
+                        className = {selectedComponent && props.component.name===selectedComponent.name ? "selected component": "component"}
+                        onClick = {selectionChanged.bind(this)}
+                        onContextMenu = {selectionChanged.bind(this)}
+                        index = {props.index}>
+                            <ThumbnailView component={component}/>
+                    </li>
+                </ div>
+            );
+        }
     }
 }
 

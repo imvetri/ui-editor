@@ -1,7 +1,7 @@
 import Folder from "./Folder";
 import Componentt from "../../../Components/Componentt";
 
-let selectedComponent, onSelection, onFolderUpdate, components, onDeleteFolder, folders, onFolderStatusChanged, viewType;
+let selectedComponent, onSelection, onFolderUpdate, components, folders, onFolderStatusChanged, viewType;
 
 function initialiseProps(props, checkFolder, x){
     folders = props.folders;
@@ -10,7 +10,6 @@ function initialiseProps(props, checkFolder, x){
     components = props.components;
     onFolderUpdate = checkFolder;
     onFolderStatusChanged=x;
-    onDeleteFolder = props.onDeleteFolder;
     viewType = props.viewType;
 }
 
@@ -23,8 +22,7 @@ function processFolder (folder, i){
                 folders={folders}
                 contents={contents.map( processContent )}
                 onFolderStatusChanged={onFolderStatusChanged}
-                onFolderUpdate={onFolderUpdate}
-                onDeleteFolder={onDeleteFolder}/>
+                onFolderUpdate={onFolderUpdate}/>
 }
 
 function processContent (content, i){
@@ -49,8 +47,7 @@ function processContent (content, i){
                     folders={folders}
                     contents={folder.contents.map( processContent )}
                     onFolderStatusChanged={onFolderStatusChanged}
-                    onFolderUpdate={onFolderUpdate}
-                    onDeleteFolder={onDeleteFolder}/>
+                    onFolderUpdate={onFolderUpdate}/>
     }
 }
 

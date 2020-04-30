@@ -1,7 +1,7 @@
 import {writeData} from "../utilities/Storage";
-import {findFolder, findParent} from "../utilities/Components/Folders/findFolders";
+import {findFolder, findParent, findParentFolder} from "../utilities/Components/Folders/findFolders";
 
-export function onDeleteComponent() {
+export function onDeleteComponent(event) {
 
     let componentName = this.state.selectedComponent.name;
     let folder = findParent(componentName, this.state.folders[0])
@@ -24,29 +24,30 @@ export function onDeleteComponent() {
 
 }
 
-export function onDeleteFolder(TYPE, folderName, parentName){
+export function onDeleteFolder(TYPE, folderName){
+
+
+    let folders = Array.from(this.state.folders)
+    let noFolder = folders[0];
 
     /** Delete the folder. While deleting only the folder, move its contents to parent folder */
 
+    let parentFolder = findParentFolder(folderName, folders[0])
+
+    let folderToDelete = findFolder(folderName, folders[0])
+
     switch (TYPE) {
-        case "FOLDER":
+        case "FOLDER_RETAIN_CONTENTS":
+            noFolder.contents.push(...folderToDelete.contents);
+            let deleteIndex = parentFolder.contents.findIndex(content=>typeof content === "object" && content.name === folderName)
+            parentFolder.contents.splice(deleteIndex, 1);
+            this.updateFolders(folders);
             break;
         
         case "FOLDER_AND_CONTENTS":
             break;
 
-        case "CONTENTS":
-            let folders = Array.from(this.state.folders)
-            let folderToDelete = findFolder(folderName, folders[0])
-            let noFolder = folders[0];
-
-            noFolder.contents.push(...folderToDelete.contents);
-            
-            let parentFolder = findFolder(parentName, folders[0])
-            let deleteIndex = parentFolder.contents.findIndex(content=>typeof content === "object" && content.name === folderName)
-            parentFolder.contents.splice(deleteIndex, 1);
-
-            this.props.onFoldersUpdate(folders);
+        case "ENTIRE_FOLDER":
 
             break;
     }
