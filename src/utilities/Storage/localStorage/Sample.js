@@ -238,7 +238,7 @@ let sample = [
     "markup": "<div className={state.variant}>\n\t<button className=\"left\">Left</button>\n    <div className=\"content\"></div>\n    <div className=\"window\"></div>\n    <button className=\"right\">Right</button>\n</div>",
     "events": [],
     "state": "{\n\t\"variant\":\"initial layoutComponent\"\n}",
-    "style": ".layoutComponent button{\n\tcolor:red;\n    height:100%;\n    width: 40px;\n}\n\n.layoutComponent {\n\twidth:100%;\n    height:220px;\n    position:relative;\n}\n\n.layoutComponent .content{\n\theight:200px;\n}\n\n.layoutComponent .left{\n\tposition:absolute;\n    left:0px;\n    top:0px;\n}\n\n.layoutComponent .right{\n\tposition:absolute;\n    right:0px;\n    top:0px;\n}\n\n.layoutComponent .window{\n\tposition:absolute;\n    left:50%;\n    margin-left:-100px;\n    top:0px;\n    border:1px solid black;\n    width:200px;\n    height:220px;\n}",
+    "style": ".layoutComponent button{\n\tcolor:red;\n    height:100%;\n    width: 40px;\n}\n\n.layoutComponent {\n\twidth:100%;\n    height:220px;\n    position:relative;\n}\n\n.layoutComponent .content{\n\theight:220px;\n}\n\n.layoutComponent .left{\n\tposition:absolute;\n    left:0px;\n    top:0px;\n}\n\n.layoutComponent .right{\n\tposition:absolute;\n    right:0px;\n    top:0px;\n}\n\n.layoutComponent .window{\n\tposition:absolute;\n    left:50%;\n    margin-left:-100px;\n    top:0px;\n    border:1px solid black;\n    width:200px;\n    height:220px;\n}",
     "children": [],
     "id": 314,
     "config": "{}",
