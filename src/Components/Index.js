@@ -60,14 +60,14 @@ class Components extends Component {
             <div className="container elements-tab" onMouseEnter={this.showControls.bind(this)} onMouseLeave={this.hideControls.bind(this)}>
                 <div className="title">
                     Components
-                    <div className={classes}>
-                        <button onClick={this.addComponent.bind(this)}><i className="fa fa-edit"></i>{props.selectedComponent ? "Edit Component" : "Add Component"}</button>
-                        <button onClick={this.addFolder.bind(this)}><i className="fa fa-folder"></i>Add Folder</button>
-                        <button onClick={this.toggleView.bind(this)}>
-                            {this.state.viewType === "LIST_VIEW"?<i class="fas fa-list"></i>:<i class="fas fa-image"></i>}
-                            {this.state.viewType === "LIST_VIEW"?"List":"Thumbnail"}
-                        </button>
-                    </div>
+                </div>
+                <div className={classes}>
+                    <button onClick={this.addComponent.bind(this)}><i className="fa fa-edit"></i>{props.selectedComponent ? "Edit" : "Add"}</button>
+                    <button onClick={this.addFolder.bind(this)}><i className="fa fa-folder"></i>Folder</button>
+                    <button onClick={this.toggleView.bind(this)}>
+                        {this.state.viewType === "LIST_VIEW"?<i class="fas fa-list"></i>:<i class="fas fa-image"></i>}
+                        {this.state.viewType === "LIST_VIEW"?"List":"Image"}
+                    </button>
                 </div>
                 <div className="folders">
                     <Folders
