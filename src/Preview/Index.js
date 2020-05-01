@@ -58,7 +58,7 @@ class Preview extends Component {
                     </div>
                 </div>
                 <div className="dynamicComponent">
-                    <DynamicComponent key={randomKey} component={this.state.component}/>
+                    <DynamicComponent onSave={this.props.onSave} key={randomKey} component={this.state.component}/>
                 </div>
             </div>
         );

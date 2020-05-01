@@ -27,21 +27,23 @@ class DynamicComponent extends Component {
 
         /** if it contains .content area hint it green else hint red*/
         let dropArea = e.currentTarget.querySelector(".content");
-        if(dropArea){
-            e.target.classList.add("");
-
-        }
-        else{
+        if(!dropArea){
             e.target.classList.add("hintNoDrop");
         }
         if(e.target.classList.contains("content")){
             e.target.classList.add("hintDragOver");
         }
+
+        e.stopPropagation();
+        e.preventDefault();
     }
 
     dropComponent(e){
         let componentName = e.dataTransfer.getData("component-name");
-
+        let parentComponent = this.state.component;
+        let componentTag = `<${componentName}></${componentName}>`
+        parentComponent.markup = parentComponent.markup.replace('content">','content">'+componentTag)
+        this.props.onSave(parentComponent);
     }
 
     render() {
