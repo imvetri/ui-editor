@@ -32,8 +32,8 @@ class Componentt extends Component {
             return (
                     <li 
                         className = {selectedComponent && props.component.name===selectedComponent.name ? "selected component background": "component background"}
-                        onClick = {selectionChanged.bind(this)}
-                        onContextMenu = {selectionChanged.bind(this)}
+                        onClick = {selectionChanged.bind(this,component.name)}
+                        onContextMenu = {selectionChanged.bind(this,component.name)}
                         index = {props.index}
                         draggable="true" 
                         data-name={component.name}
@@ -48,8 +48,8 @@ class Componentt extends Component {
             return (
                     <li 
                         className = {selectedComponent && props.component.name===selectedComponent.name ? "background selected component": "background component"}
-                        onClick = {selectionChanged.bind(this)}
-                        onContextMenu = {selectionChanged.bind(this)}
+                        onClick = {selectionChanged.bind(this,component.name)}
+                        onContextMenu = {selectionChanged.bind(this,component.name)}
                         data-name={component.name} 
                         index = {props.index}
                         draggable="true"

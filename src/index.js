@@ -161,7 +161,6 @@ class Index extends Component {
             <div onContextMenu={this.onShowContextMenu.bind(this)} onClick={this.hideContextMenu.bind(this)}>
                 <Left>
                     <Components
-                        key={Math.ceil(Math.random() * 1000)}
                         components={this.state.components}
                         folders={this.state.folders}
                         selectedComponent={this.state.selectedComponent}

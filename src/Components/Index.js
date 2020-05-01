@@ -35,33 +35,21 @@ class Components extends Component {
         this.props.onOpenEditor();
     }
 
-    showControls() {
-        this.setState({
-            showControls: true
-        })
-    }
-
     toggleView() {
         this.setState({
             viewType: this.state.viewType === "LIST_VIEW" ? "THUMBNAIL_VIEW" : "LIST_VIEW"
         })
     }
 
-    hideControls() {
-        this.setState({
-            showControls: false
-        })
-    }
     render() {
         let props = this.props;
         let state = this.state;
-        let classes = this.state.showControls ? 'Controls' : 'Controls hideControls'
         return (
-            <div className="container elements-tab" onMouseEnter={this.showControls.bind(this)} onMouseLeave={this.hideControls.bind(this)}>
+            <div className="container elements-tab">
                 <div className="title">
                     Components
                 </div>
-                <div className={classes}>
+                <div className="Controls">
                     <button onClick={this.addComponent.bind(this)}><i className="fa fa-edit"></i>{props.selectedComponent ? "Edit" : "Add"}</button>
                     <button onClick={this.addFolder.bind(this)}><i className="fa fa-folder"></i>Folder</button>
                     <button onClick={this.toggleView.bind(this)}>
