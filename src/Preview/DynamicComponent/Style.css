@@ -17,3 +17,17 @@
         border: 2px dashed green;
     }
   }
+
+.hintNoDrop{
+    animation: blinkRed 1s infinite;
+}
+
+@keyframes blinkRed {
+    from {
+        border: 1px dashed red;
+    }
+  
+    to {
+        border: 2px dashed red;
+    }
+  }

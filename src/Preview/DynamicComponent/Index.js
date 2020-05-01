@@ -25,18 +25,23 @@ class DynamicComponent extends Component {
 
     dragOverHandler(e){
 
-        console.log("BEING DRAGGED OVER ")
         /** if it contains .content area hint it green else hint red*/
         let dropArea = e.currentTarget.querySelector(".content");
         if(dropArea){
-            console.log("DROP AREA")
+            e.target.classList.add("");
+
         }
         else{
-            console.log("NO DROP AREA")
+            e.target.classList.add("hintNoDrop");
         }
         if(e.target.classList.contains("content")){
             e.target.classList.add("hintDragOver");
         }
+    }
+
+    dropComponent(e){
+        let componentName = e.dataTransfer.getData("component-name");
+
     }
 
     render() {
@@ -55,7 +60,8 @@ class DynamicComponent extends Component {
 
         return (
             <div  
-                onDragOver={ this.dragOverHandler.bind(this)}>
+                onDragOver={ this.dragOverHandler.bind(this)}
+                onDrop={this.dropComponent.bind(this)}>
                 {React.createElement(window[this.state.component.name])}
             </div>
         );
