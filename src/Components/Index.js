@@ -15,8 +15,7 @@ class Components extends Component {
         this.state = {
             components: this.props.components,
             folders: this.props.folders,
-            showControls: this.props.showControls,
-            viewType : "LIST_VIEW"
+            showControls: this.props.showControls
         };
     }
 
@@ -35,12 +34,6 @@ class Components extends Component {
         this.props.onOpenEditor();
     }
 
-    toggleView() {
-        this.setState({
-            viewType: this.state.viewType === "LIST_VIEW" ? "THUMBNAIL_VIEW" : "LIST_VIEW"
-        })
-    }
-
     render() {
         let props = this.props;
         let state = this.state;
@@ -52,10 +45,6 @@ class Components extends Component {
                 <div className="Controls">
                     <button onClick={this.addComponent.bind(this)}><i className="fa fa-edit"></i>{props.selectedComponent ? "Edit" : "Add"}</button>
                     <button onClick={this.addFolder.bind(this)}><i className="fa fa-folder"></i>Folder</button>
-                    <button onClick={this.toggleView.bind(this)}>
-                        {this.state.viewType === "LIST_VIEW"?<i class="fas fa-list"></i>:<i class="fas fa-image"></i>}
-                        {this.state.viewType === "LIST_VIEW"?"List":"Image"}
-                    </button>
                 </div>
                 <div className="folders">
                     <Folders
@@ -63,8 +52,6 @@ class Components extends Component {
                         components={state.components}
                         folders={state.folders}
                         selectedComponent={props.selectedComponent}
-                        viewType={this.state.viewType}
-
 
                         onFoldersUpdate={props.onFoldersUpdate}
                         onSelection={props.onSelection}

@@ -27,3 +27,7 @@
 .dragStarted span:not(.componentName){
     display:none;
 }
+
+.hidden{
+    display: none;
+}
