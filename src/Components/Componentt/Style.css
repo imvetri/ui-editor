@@ -9,13 +9,17 @@
 
 .background {
     background: rgb(64, 64, 64);
-    border-bottom: 1px solid #333333;
+    border: 1px solid #333333;
 }
 
 /* Show some spacing before the component name */
 
 .component .componentName{
     padding:7px;
+}
+
+.component {
+    display:flex;
 }
 
 /* Show comopnent preview onDrag*/
