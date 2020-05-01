@@ -30,30 +30,32 @@ class Componentt extends Component {
         
         if(viewType==="LIST_VIEW") {
             return (
-                <div className="background" draggable="true" data-name={component.name} onDragStart={addComponentDetails.bind(this)}>
                     <li 
-                        className = {selectedComponent && props.component.name===selectedComponent.name ? "selected component": "component"}
+                        className = {selectedComponent && props.component.name===selectedComponent.name ? "selected component background": "component background"}
                         onClick = {selectionChanged.bind(this)}
                         onContextMenu = {selectionChanged.bind(this)}
-                        index = {props.index}>
+                        index = {props.index}
+                        draggable="true" 
+                        data-name={component.name}
+                        onDragStart={addComponentDetails.bind(this)}>
                         <span className="componentName">
                             {component.name}
                         </span>
                     </li>
-                </ div>
             );
         }
         else {
             return (
-                <div className="background" draggable="true" data-name={component.name} onDragStart={addComponentDetails.bind(this)}>
                     <li 
-                        className = {selectedComponent && props.component.name===selectedComponent.name ? "selected component": "component"}
+                        className = {selectedComponent && props.component.name===selectedComponent.name ? "background selected component": "background component"}
                         onClick = {selectionChanged.bind(this)}
                         onContextMenu = {selectionChanged.bind(this)}
-                        index = {props.index}>
+                        data-name={component.name} 
+                        index = {props.index}
+                        draggable="true"
+                        onDragStart={addComponentDetails.bind(this)} >
                             <ThumbnailView component={component}/>
                     </li>
-                </ div>
             );
         }
     }
