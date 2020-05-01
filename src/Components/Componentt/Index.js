@@ -22,8 +22,6 @@ class Componentt extends Component {
 
     addComponentDetails(e){
 
-        console.log("OVER")
-
         /** Pass details about component or folder in the drag event */
         
         let name = event.target.getAttribute("data-name")
