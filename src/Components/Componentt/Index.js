@@ -28,8 +28,12 @@ class Componentt extends Component {
 
         e.target.querySelector('.thumbnail').classList.remove("hidden");
         e.target.querySelector('.componentName').classList.add("hidden");
+        console.log("SETTING DATA")
+
         e.dataTransfer.setData("component-name", name);
         e.dataTransfer.setData("parent-folder-name", e.currentTarget.parentElement.getAttribute("data-folder-name"))
+
+        console.log(e.dataTransfer.getData("component-name"))
         e.stopPropagation();
     }
 
