@@ -1,8 +1,7 @@
 .thumbnailView {
-    border: 1px dotted black;
-    padding:10px;
-    margin-bottom: 10px;
-    width: 21vw;
-    zoom: 0.4;
+    zoom: 0.7;
+}
+
+.thumbnailView > div {
     pointer-events: none;
 }
