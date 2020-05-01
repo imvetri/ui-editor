@@ -177,6 +177,7 @@ class Index extends Component {
                         key={Math.ceil(Math.random() * 1000)}
                         component={selectedComponent}
                         title="Preview"
+                        onSave={this.saveElement}
                     >
                     </Preview>
                 </Center>
