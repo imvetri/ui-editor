@@ -24,8 +24,15 @@ class DynamicComponent extends Component {
     }
 
     dragOverHandler(e){
-        // show hints before and after element containing class "item".
-        
+
+        /** if it contains .content area hint it green else hint red*/
+        let dropArea = e.target.querySelector(".content");
+        if(dropArea){
+            dropArea.classList.add("hint")
+        }
+        if(e.currentTarget.classList.contains("content")){
+            e.currentTarget.classList.add("hintDragOver");
+        }
     }
 
     render() {

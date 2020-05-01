@@ -1,7 +1,7 @@
 .hint{
     height:100px;
     width:100%;
-    border: 2px dashed grey;
+    border: 1px dashed green;
 }
 
 .hintDragOver{
@@ -10,10 +10,10 @@
 
 @keyframes blink {
     from {
-        border: 3px dashed grey;
+        border: 1px dashed green;
     }
   
     to {
-        border: 2px dashed grey;
+        border: 2px dashed green;
     }
   }
