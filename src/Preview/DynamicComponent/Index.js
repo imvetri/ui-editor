@@ -32,6 +32,9 @@ class DynamicComponent extends Component {
         }
         if(e.target.classList.contains("content")){
             e.target.classList.add("hintDragOver");
+            if(e.target.children.length>1){
+                console.log("YES")
+            }
         }
 
         e.stopPropagation();
