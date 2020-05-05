@@ -277,7 +277,7 @@ let sample = [
   },
   {
     "name": "ProductComponent",
-    "markup": "<div className={state.variant} id=\"product\">{state.name}</div>\n",
+    "markup": "<div className={state.variant} id=\"product\">\n\t{state.name}\n</div>\n",
     "events": [
       {
         "name": "onMouseEnter",
@@ -296,7 +296,7 @@ let sample = [
       }
     ],
     "state": "{\n\t\"name\" : \"Product one\",\n    \"variant\" : \"item initial\"\n}",
-    "style": ".item.initial{\n    background-color:darkslategrey;\n}\n\n.item.on_hover{\n\tbackground-color:teal;\n}\n\n.item{\n\theight:200px;\n    width:200px;\n\ttext-align: center;\n\tvertical-align: middle;\n\tline-height: 200px;\n}",
+    "style": ".item.initial {\n\tbackground-color:darkcyan;\n    background-size:contain;\n}\n\n.item.on_hover {\n\tbackground-color:teal;\n    background-size:auto;\n}\n\n.item{\n   \tbackground-image: $assets['1.jpeg'];\n\theight:200px;\n    width:200px;\n\ttext-align: center;\n\tvertical-align: middle;\n\tline-height: 200px;\n}",
     "children": [],
     "id": 949,
     "config": "{}",
@@ -325,7 +325,7 @@ let sample = [
       {
         "name": "item initial",
         "state": {
-          "name": "Product one",
+          "name": "",
           "variant": "item initial"
         }
       }

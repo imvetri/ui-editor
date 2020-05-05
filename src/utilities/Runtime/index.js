@@ -50,14 +50,19 @@ window.saveVariant = function saveVariant(componentName, state) {
 
 function createStylesheet(style, name) {
 
-    // Check if style has $assets
-    while(style.includes("$assets")){
-        // Replace it with asset blob url
-        let asset = style.split("['")[1].split(`]`)[0].split("");
-        asset.pop();
-        asset =  asset.join("");
-        style = style.replace(`$assets['${asset}']`, `url(${window.assets[asset]})`)
+    // check if window has $assets 
+    if(window.assets){
+
+        // Check if style has $assets
+        while(style.includes("$assets")){
+            // Replace it with asset blob url
+            let asset = style.split("['")[1].split(`]`)[0].split("");
+            asset.pop();
+            asset =  asset.join("");
+            style = style.replace(`$assets['${asset}']`, `url(${window.assets[asset]})`)
+        }
     }
+
     let toDelete = [...document.querySelectorAll(`[data-component-name='${name}']`)];
     toDelete.forEach(item=>{
         item.remove()
@@ -82,10 +87,21 @@ function checkNestedComponents( markup) {
     return components.filter(component=> markup.includes(component.name)).length >0;
 }
 
+function hasAssets(){
+
+}
+
+function resolveAsset(){
+    
+}
+
 /** Takes components and saves them to window as react Object */
 export function saveComponentsToWindow( nestedComponents){
     // Transpile them and make them global.
     nestedComponents.forEach(function(component){
+        if(hasAssets(component.state)){
+            resolveAsset(component)
+        }
         saveToWindow(component)
     });
 }

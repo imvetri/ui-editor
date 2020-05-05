@@ -79,7 +79,7 @@ export default StyleExplorer;
                         <StyleExplorer 
                             key={Math.ceil(Math.random() * 1000)} 
                             component={selectedComponent}
-                            onEdit={this.updateStyles.bind(this)}
+                            onEdit={()=>{}}
                             title="StyleExplorer"
                         />
                     </DraggableComponent>
