@@ -235,14 +235,45 @@ let sample = [
   },
   {
     "name": "LayoutComponent",
-    "markup": "<div className={state.variant}>\n\t<button className=\"left\">Left</button>\n    <div className=\"content\"></div>\n    <div className=\"window\"></div>\n    <button className=\"right\">Right</button>\n</div>",
-    "events": [],
-    "state": "{\n\t\"variant\":\"initial layoutComponent\"\n}",
-    "style": ".layoutComponent button{\n\tcolor:red;\n    height:100%;\n    width: 40px;\n}\n\n.layoutComponent {\n\twidth:100%;\n    height:220px;\n    position:relative;\n}\n\n.layoutComponent .content{\n\theight:220px;\n}\n\n.layoutComponent .content > div{\n\tdisplay:inline-block;\n    margin-left:5px;\n    margin-right:5px;\n}\n\n.layoutComponent .left{\n\tposition:absolute;\n    left:0px;\n    top:0px;\n}\n\n.layoutComponent .right{\n\tposition:absolute;\n    right:0px;\n    top:0px;\n}\n\n.layoutComponent .window{\n\tposition:absolute;\n    left:50%;\n    margin-left:-100px;\n    top:0px;\n    border:1px solid black;\n    width:200px;\n    height:220px;\n}",
+    "markup": "<div className={state.variant}>\n\t<button className=\"left\" id=\"previous\">{\"<\"}</button>\n    <div className=\"window\">\n    \t<div className=\"content\">\n          {<div>{state.current}</div>}\n\t    </div>\n    </div>\n    <button className=\"right\" id=\"next\">{\">\"}</button>\n</div>",
+    "events": [
+      {
+        "name": "onClick",
+        "reducer": "if(state.current===state.items.length){\n\tstate.current = 1;\n}\n\nelse {\n\tstate.current = state.current +1;\n}",
+        "publishable": "",
+        "publishName": "",
+        "id": "next"
+      },
+      {
+        "name": "onClick",
+        "reducer": "if(state.current===1){\n\tstate.current = state.items.length;\n}\n\nelse {\n\tstate.current = state.current -1;\n}",
+        "publishable": "",
+        "publishName": "",
+        "id": "previous"
+      }
+    ],
+    "state": "{\n\t\"variant\":\"initial layoutComponent\",\n    \"items\":[1,2,3,4,5,6],\n    \"current\": 1\n}",
+    "style": ".layoutComponent button{\n\tcolor:red;\n    height:100%;\n    width: 40px;\n}\n\n.layoutComponent {\n\twidth:100%;\n    height:220px;\n    position:relative;\n}\n\n.layoutComponent *{\n  \tbox-sizing: border-box;\n}\n\n.layoutComponent .window {\n\twidth: 50%;\n    height:220px;\n    position: relative;\n    margin:auto;\n\toverflow:hidden;\n}\n\n.layoutComponent .content{\n\theight:220px;\n}\n\n.layoutComponent .content > div{\n\tdisplay:inline-block;\n    height:200px;\n    width:220px;\n    background-color:green;\n    margin:7px;\n}\n\n.layoutComponent .left{\n\tposition:absolute;\n    left:0px;\n    top:0px;\n}\n\n.layoutComponent .right{\n\tposition:absolute;\n    right:0px;\n    top:0px;\n}",
     "children": [],
     "id": 314,
     "config": "{}",
-    "variants": []
+    "variants": [
+      {
+        "name": "initial layoutComponent",
+        "state": {
+          "variant": "initial layoutComponent",
+          "items": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "current": 6
+        }
+      }
+    ]
   },
   {
     "name": "ProductComponent",

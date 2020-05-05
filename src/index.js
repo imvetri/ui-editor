@@ -106,12 +106,22 @@ class Index extends Component {
             selectedTab: "Export"
         })
     }
+
+    extendComponent(){
+
+        /**
+         * 1. Create wireframe component
+         * 2. Extend a wireframe component to create Prototype component
+         */
+        
+    }
     onShowContextMenu(e){
         
         if(e.target.classList.contains("component") || e.target.classList.contains("componentName")) { // check if it is a component.
             this.state.contextMenuChildren = <ul className="contextMenuOptions">
                 <li onClick={onDeleteComponent.bind(this)}>Delete Component</li>
                 <li onClick={this.openExportTab.bind(this)}>Export Component</li>
+                <li onClick={this.extendComponent.bind(this)}>Extend Component</li>
             </ul>;
         }
         else if(e.target.classList.contains("fa-folder-open") || e.target.classList.contains("fa-folder")) {// check if it is a folder.
