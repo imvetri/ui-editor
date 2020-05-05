@@ -1,5 +1,7 @@
+// Usage at End of file. Do not read MindexedDB contents
+
 // taken from https://github.com/TomAnthony/Min.dexedDB/blob/master/mindexeddb.js
-export function MindexedDB(databaseName, objectStores) {
+function MindexedDB(databaseName, objectStores) {
 	this.idb = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
 	this.db = databaseName;
 	this.objStrs = Array.isArray(objectStores) ? objectStores : [objectStores];
@@ -80,3 +82,9 @@ export function MindexedDB(databaseName, objectStores) {
 		this.db.close();
 	}
 }
+
+// Usage
+
+window.iDB = new MindexedDB("uiEditor", {uiEditor: "name"});
+// iDB.put("uiEditor", {data:123})
+window.iDB.connect();

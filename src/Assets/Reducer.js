@@ -1,4 +1,3 @@
-import indexedDB from "../Utilities/Libraries/indexedDB/indexeDB"
 
 // Public functions.
 
