@@ -48,7 +48,7 @@ class Preview extends Component {
         // Helps to rerender when changes to markup/events are made to the component and preview them.
         let randomKey = this.props.component.id*(~~(Math.random()*10));
         return (
-            <div className={`container preview ${this.state.display}`}>
+            <div  className={`container preview ${this.state.display}`}>
                 <div className="title">
                     Preview
                     <div className="Controls">

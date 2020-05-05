@@ -204,11 +204,15 @@ class Index extends Component {
                             onConfigUpdate={this.updateConfig}
                             title="Events"
                         />
-                        <History title="History"/>
-                        <Assets title="Assets"/>
-                        <Export title="Export"
+                        <History 
+                            title="History"/>
+                        <Assets 
+                            title="Assets"/>
+                        <Export 
+                            title="Export"
                             component={selectedComponent}/>
-                        <Variants title="Variants"
+                        <Variants 
+                            title="Variants"
                             key={Math.ceil(Math.random() * 1000)}
                             component={selectedComponent}
                             onUpdate= {saveElement.bind(this)}/>
