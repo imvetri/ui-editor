@@ -83,8 +83,21 @@ function MindexedDB(databaseName, objectStores) {
 	}
 }
 
-// Usage
+/** Usage example of this file */
+
+/**
+ * It opens a DB connection and loads all the assets in window object. 
+ * These assets are in the form of blob.
+ */
 
 window.iDB = new MindexedDB("uiEditor", {uiEditor: "name"});
 // iDB.put("uiEditor", {data:123})
-window.iDB.connect();
+window.iDB.connect().then(data=>{
+	window.iDB.getAll().then(data => {
+		// save it to window
+		window.assets = {};
+		data.forEach(image => {
+			window.assets[image.name] = image.result
+		});
+    });
+});
