@@ -76,6 +76,9 @@ function createStylesheet(style, name) {
 
 /** Takes a component and converts it as a react component */
 function saveToWindow( component ) {
+    if(hasAssets(component.state)){
+        component.state = convertAssetsToBlobs(component.state)
+    }
     createStylesheet(component.style, component.name)
     window[component.name] = createComponent(component);
 }
@@ -87,21 +90,34 @@ function checkNestedComponents( markup) {
     return components.filter(component=> markup.includes(component.name)).length >0;
 }
 
-function hasAssets(){
-
+function hasAssets(state){
+    return state.includes("$assets");
 }
 
-function resolveAsset(){
-    
+function convertAssetsToBlobs(state){
+
+    if(typeof state !== "string"){
+        console.error("state should be a string")
+    }
+    // check if window has $assets 
+    if(window.assets){
+
+        // Check if style has $assets
+        while(state.includes("$assets")){
+            // Replace it with asset blob url
+            let asset = state.split("['")[1].split(`]`)[0].split("");
+            asset.pop();
+            asset =  asset.join("");
+            state = state.replace(`"$assets['${asset}']"`, `"url(${window.assets[asset]})"`)
+        }
+    }
+    return state;
 }
 
 /** Takes components and saves them to window as react Object */
 export function saveComponentsToWindow( nestedComponents){
     // Transpile them and make them global.
     nestedComponents.forEach(function(component){
-        if(hasAssets(component.state)){
-            resolveAsset(component)
-        }
         saveToWindow(component)
     });
 }
