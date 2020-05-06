@@ -25,7 +25,7 @@ export function convertToReact (component){
                 
         });
     
-        return markup.split("{state.").join("{this.state.")
+        return markup.split("state.").join("this.state.")
     }
 
     // checks if state override is on. then adds state prop to child 
@@ -41,7 +41,7 @@ export function convertToReact (component){
                 let childMarkup = `<${childName}></${childName}>`;
 
                 let childMarkupWithProps = `<${childName} state={item} key={i}></${childName}>`;
-                let renderListMarkup = `{this.state.${childName}.map((item,i)=>${childMarkupWithProps})}`;
+                let renderListMarkup = `{state.${childName}.map((item,i)=>${childMarkupWithProps})}`;
                 markup =  markup.replace(childMarkup, renderListMarkup);   
             }
         })

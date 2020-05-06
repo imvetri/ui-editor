@@ -14,7 +14,7 @@
             element.events.push(event);
         } else {
             // 1. Find the event
-            let changedEventIndex = element.events.findIndex(e=>e.name===event.name);
+            let changedEventIndex = element.events.findIndex(e=>e.id===event.id);
             if(changedEventIndex==-1){
                 console.error("Changing event name will not help. Create a new event"); // Feature 
             }
