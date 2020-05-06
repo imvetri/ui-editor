@@ -1,4 +1,4 @@
-let sample = [
+let sample =[
   {
     "name": "ForgotPassword",
     "markup": "<div className=\"vsButton\"><button id=\"f123\">{state.buttonText}</button></div>",
