@@ -118,7 +118,7 @@ function convertAssetsToBlobs(state){
 export function saveComponentsToWindow( nestedComponents){
     // Transpile them and make them global.
     nestedComponents.forEach(function(component){
-        saveToWindow(component)
+        saveToWindow(JSON.parse(JSON.stringify(component)))
     });
 }
 
