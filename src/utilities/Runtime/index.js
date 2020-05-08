@@ -77,7 +77,7 @@ function createStylesheet(style, name) {
 /** Takes a component and converts it as a react component */
 function saveToWindow( component ) {
     if(hasAssets(component.state)){
-        component.state = convertAssetsToBlobs(component.state)
+        component.state = convertAssetsToURLs(component.state)
     }
     createStylesheet(component.style, component.name)
     window[component.name] = createComponent(component);
@@ -94,7 +94,37 @@ function hasAssets(state){
     return state.includes("$assets");
 }
 
-function convertAssetsToBlobs(state){
+/** FROM STACK OVERFLOW */
+function dataURItoBlob(dataURI) {
+    // convert base64 to raw binary data held in a string
+    // doesn't handle URLEncoded DataURIs - see SO answer #6850276 for code that does this
+    var byteString = atob(dataURI.split(',')[1]);
+
+    // separate out the mime component
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+    // write the bytes of the string to an ArrayBuffer
+    var ab = new ArrayBuffer(byteString.length);
+    var ia = new Uint8Array(ab);
+    for (var i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+    }
+
+    //Old Code
+    //write the ArrayBuffer to a blob, and you're done
+    //var bb = new BlobBuilder();
+    //bb.append(ab);
+    //return bb.getBlob(mimeString);
+
+    //New Code
+    return new Blob([ab], {type: mimeString});
+
+
+}
+
+/**State contains references to asset. Assets are stored as blobs in DB. Convert blob to URL for saving space in the state  */
+
+function convertAssetsToURLs(state){
 
     if(typeof state !== "string"){
         console.error("state should be a string")
@@ -108,7 +138,7 @@ function convertAssetsToBlobs(state){
             let asset = state.split("['")[1].split(`]`)[0].split("");
             asset.pop();
             asset =  asset.join("");
-            state = state.replace(`"$assets['${asset}']"`, `"url(${window.assets[asset]})"`)
+            state = state.replace(`"$assets['${asset}']"`, `"url(${window.URL.createObjectURL(dataURItoBlob(window.assets[asset]))})"`)
         }
     }
     return state;
