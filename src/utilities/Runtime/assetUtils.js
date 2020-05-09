@@ -4,7 +4,7 @@ export function nameToURL(style) {
         console.error("state should be a string")
     }
 
-    if(window.assets){
+    if(window.assets.length>0){
         // Check if style has $assets
         while (style.includes("$assets")) {
             // Replace it with asset blob url
