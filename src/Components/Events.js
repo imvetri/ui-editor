@@ -24,6 +24,27 @@ export function onDeleteComponent(event) {
 
 }
 
+export function onExtendComponent(){
+
+    let component = JSON.parse(JSON.stringify(this.state.selectedComponent))
+    let folder = findParent(component.name, this.state.folders[0]);
+
+    component.name= component.name+"_copy";
+
+    folder.contents.push(component.name);
+    
+    components.push(component);
+    
+    this.setState({
+        components: components,
+        folders: this.state.folders,
+        selectedComponent: component
+    })
+
+    writeData("ui-editor", components);
+    writeData("folders", this.state.folders);
+}
+
 export function onDeleteFolder(TYPE, folderName){
 
 
