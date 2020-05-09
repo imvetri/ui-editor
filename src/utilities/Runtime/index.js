@@ -20,15 +20,15 @@ window.saveVariant = function saveVariant(componentName, state) {
         console.error("Add a variant property with a text value")
     }
     // 5. Create a new variant.
-    component.variants = component.variants || [{
+    component.variants = component.variants.length==0? [{
         name: componentState.variant,
-        state: componentState
-    }];
+        state: bloblToName(componentState)
+    }] : component.variants;
     // 6. push state into component.variant if it is new
     if(!component.variants.find(variant=>variant.name===state.variant)){
         component.variants.push({
             name: state.variant,
-            state:state
+            state: bloblToName(state)
         });
     }
     // 7. persist.
@@ -48,19 +48,43 @@ window.saveVariant = function saveVariant(componentName, state) {
     return convertToStyleString(declarations);
  }
 
+ function nameToBlob(style){
+
+    // Check if style has $assets
+    while(style.includes("$assets")){
+        // Replace it with asset blob url
+        let assetName = style.split("['")[1].split(`]`)[0].split("");
+        assetName.pop();
+        assetName =  assetName.join("");
+        style = style.replace(`$assets['${assetName}']`, `url(${getURL(window.assets.find(asset=>asset.name===assetName).blob, assetName)})`)
+    }
+
+    return style;
+ }
+
+ function bloblToName(state) {
+    
+    state = JSON.stringify(state);
+    // Check if style has $assets
+    while(state.includes(window.location.host)){
+        // Replace it with asset blob url
+        let url = state.split("url(")[1].split(`)`)[0]
+        
+        let asset = window.assets.find(asset=>asset.url===url)
+
+        if(asset){
+
+            state = state.replace(`url(${asset.url})`, `$assets['${asset.name}']`)
+
+        }
+    }
+ }
+
 function createStylesheet(style, name) {
 
     // check if window has $assets 
     if(window.assets){
-
-        // Check if style has $assets
-        while(style.includes("$assets")){
-            // Replace it with asset blob url
-            let asset = style.split("['")[1].split(`]`)[0].split("");
-            asset.pop();
-            asset =  asset.join("");
-            style = style.replace(`$assets['${asset}']`, `url(${window.assets[asset]})`)
-        }
+        style= nameToBlob(style)
     }
 
     let toDelete = [...document.querySelectorAll(`[data-component-name='${name}']`)];
@@ -94,33 +118,6 @@ function hasAssets(state){
     return state.includes("$assets");
 }
 
-/** FROM STACK OVERFLOW */
-function dataURItoBlob(dataURI) {
-    // convert base64 to raw binary data held in a string
-    // doesn't handle URLEncoded DataURIs - see SO answer #6850276 for code that does this
-    var byteString = atob(dataURI.split(',')[1]);
-
-    // separate out the mime component
-    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-
-    // write the bytes of the string to an ArrayBuffer
-    var ab = new ArrayBuffer(byteString.length);
-    var ia = new Uint8Array(ab);
-    for (var i = 0; i < byteString.length; i++) {
-        ia[i] = byteString.charCodeAt(i);
-    }
-
-    //Old Code
-    //write the ArrayBuffer to a blob, and you're done
-    //var bb = new BlobBuilder();
-    //bb.append(ab);
-    //return bb.getBlob(mimeString);
-
-    //New Code
-    return new Blob([ab], {type: mimeString});
-
-
-}
 
 /**State contains references to asset. Assets are stored as blobs in DB. Convert blob to URL for saving space in the state  */
 
@@ -135,10 +132,12 @@ function convertAssetsToURLs(state){
         // Check if style has $assets
         while(state.includes("$assets")){
             // Replace it with asset blob url
-            let asset = state.split("['")[1].split(`]`)[0].split("");
-            asset.pop();
-            asset =  asset.join("");
-            state = state.replace(`"$assets['${asset}']"`, `"url(${window.URL.createObjectURL(dataURItoBlob(window.assets[asset]))})"`)
+            let assetName = state.split("['")[1].split(`]`)[0].split("");
+            assetName.pop();
+            assetName =  assetName.join("");
+
+            let asset = window.assets.find(asset=>asset.name===assetName)
+            state = state.replace(`"$assets['${assetName}']"`, `"url(${getURL(asset.blob, assetName)})"`)
         }
     }
     return state;

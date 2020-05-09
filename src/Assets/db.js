@@ -13,13 +13,16 @@ export function writeToDB(result, name) {
 export function fetchFromDB() {
     window.iDB.getAll().then(data => {
         // save it to window
-        window.assets = {};
-        data.forEach(image => {
-            window.assets[image.name] = image.result
+		window.assets = data.map(image => {
+			return {
+				name: image.name,
+				blob: image.result,
+				url: getURL( image.result)
+			}
         });
-
+        
         this.setState({
-            assets: data
+            assets: window.assets
         })
     });
 }
