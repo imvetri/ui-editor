@@ -85,6 +85,44 @@ function MindexedDB(databaseName, objectStores) {
 
 /** Usage example of this file */
 
+// Dependencies.
+
+/** FROM STACK OVERFLOW */
+function dataURItoBlob(dataURI) {
+    // convert base64 to raw binary data held in a string
+    // doesn't handle URLEncoded DataURIs - see SO answer #6850276 for code that does this
+    var byteString = atob(dataURI.split(',')[1]);
+
+    // separate out the mime component
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+    // write the bytes of the string to an ArrayBuffer
+    var ab = new ArrayBuffer(byteString.length);
+    var ia = new Uint8Array(ab);
+    for (var i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+    }
+
+    //Old Code
+    //write the ArrayBuffer to a blob, and you're done
+    //var bb = new BlobBuilder();
+    //bb.append(ab);
+    //return bb.getBlob(mimeString);
+
+    //New Code
+    return new Blob([ab], {type: mimeString});
+
+
+}
+
+
+function getURL( blob, assetName){
+	let asset = window.assets.find(asset=>asset.name===assetName);
+	if(asset.url){
+		return asset.url;
+	}
+    return window.URL.createObjectURL(dataURItoBlob(blob))
+}
 
 /**
  * It opens a DB connection and loads all the assets in window object. 
@@ -96,9 +134,12 @@ window.iDB = new MindexedDB("uiEditor", {uiEditor: "name"});
 window.iDB.connect().then(data=>{
 	window.iDB.getAll().then(data => {
 		// save it to window
-		window.assets = {};
-		data.forEach(image => {
-			window.assets[image.name] = image.result
+		window.assets = data.map(image => {
+			return {
+				name: image.name,
+				blob: image.result,
+				url: getURL( image.result)
+			}
 		});
     });
 });
