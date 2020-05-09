@@ -1,9 +1,11 @@
 // Dependencies.
 
-import {createComponent} from "../create-component";
-import {readData, writeData} from "../Storage";
-import {getObjectFormat, convertToStyleString} from "../Components/StyleExplorer/Style";
+import { createComponent } from "../create-component";
+import { readData, writeData } from "../Storage";
 
+// Utilities.
+
+import {urlToName, nameToURL, hasAssets} from "./assetUtils";
 /**
  * Store component state as variants. Because variants are visually different form of a component.
  * Since visually different forms are driven by the state, its simple to just keep track of the states.
@@ -12,83 +14,40 @@ window.saveVariant = function saveVariant(componentName, state) {
     // 1. Read all components.
     let components = readData("ui-editor");
     // 2. Find the passed component.
-    let component = components.find(component=>component.name.includes(componentName));
+    let component = components.find(component => component.name.includes(componentName));
     // 3. Fetch the statestate.
     let componentState = JSON.parse(component.state);
     // 4. Throw error if component doesnt contain a variant property
-    if(componentState.variant=== undefined || state.variant === undefined){
+    if (componentState.variant === undefined || state.variant === undefined) {
         console.error("Add a variant property with a text value")
     }
     // 5. Create a new variant.
-    component.variants = component.variants.length==0? [{
-        name: componentState.variant,
-        state: bloblToName(componentState)
-    }] : component.variants;
+    if(component.variants.length===0){
+        component.variants = [{
+            name: componentState.variant,
+            state: urlToName(JSON.stringify(componentState))
+        }]
+    }
     // 6. push state into component.variant if it is new
-    if(!component.variants.find(variant=>variant.name===state.variant)){
+    if (!component.variants.find(variant => variant.name === state.variant)) {
         component.variants.push({
             name: state.variant,
-            state: bloblToName(state)
+            state: urlToName(JSON.stringify(state))
         });
     }
     // 7. persist.
     writeData("ui-editor", components)
 };
 
-/**
- * 
- * Asset in style sheet syntax - $asset
- */
-
- function scopeSelectos(style,name){
-    let declarations = getObjectFormat(style);
-    declarations.forEach(declaration=>{
-        declaration.selector = `.${name} ${declaration.selector}`
-    })
-    return convertToStyleString(declarations);
- }
-
- function nameToBlob(style){
-
-    // Check if style has $assets
-    while(style.includes("$assets")){
-        // Replace it with asset blob url
-        let assetName = style.split("['")[1].split(`]`)[0].split("");
-        assetName.pop();
-        assetName =  assetName.join("");
-        style = style.replace(`$assets['${assetName}']`, `url(${getURL(window.assets.find(asset=>asset.name===assetName).blob, assetName)})`)
-    }
-
-    return style;
- }
-
- function bloblToName(state) {
-    
-    state = JSON.stringify(state);
-    // Check if style has $assets
-    while(state.includes(window.location.host)){
-        // Replace it with asset blob url
-        let url = state.split("url(")[1].split(`)`)[0]
-        
-        let asset = window.assets.find(asset=>asset.url===url)
-
-        if(asset){
-
-            state = state.replace(`url(${asset.url})`, `$assets['${asset.name}']`)
-
-        }
-    }
- }
-
 function createStylesheet(style, name) {
 
     // check if window has $assets 
-    if(window.assets){
-        style= nameToBlob(style)
+    if (window.assets) {
+        style = nameToURL(style)
     }
 
     let toDelete = [...document.querySelectorAll(`[data-component-name='${name}']`)];
-    toDelete.forEach(item=>{
+    toDelete.forEach(item => {
         item.remove()
     })
     var dynamicStyle = document.createElement('style');
@@ -99,79 +58,50 @@ function createStylesheet(style, name) {
 }
 
 /** Takes a component and converts it as a react component */
-function saveToWindow( component ) {
-    if(hasAssets(component.state)){
-        component.state = convertAssetsToURLs(component.state)
+function saveToWindow(component) {
+    if (hasAssets(component.state)) {
+        component.state = JSON.parse(nameToURL(JSON.stringify(component.state)))
     }
     createStylesheet(component.style, component.name)
     window[component.name] = createComponent(component);
 }
 
-function checkNestedComponents( markup) {
+function checkNestedComponents(markup) {
 
     var components = readData("ui-editor");
 
-    return components.filter(component=> markup.includes(component.name)).length >0;
-}
-
-function hasAssets(state){
-    return state.includes("$assets");
-}
-
-
-/**State contains references to asset. Assets are stored as blobs in DB. Convert blob to URL for saving space in the state  */
-
-function convertAssetsToURLs(state){
-
-    if(typeof state !== "string"){
-        console.error("state should be a string")
-    }
-    // check if window has $assets 
-    if(window.assets){
-
-        // Check if style has $assets
-        while(state.includes("$assets")){
-            // Replace it with asset blob url
-            let assetName = state.split("['")[1].split(`]`)[0].split("");
-            assetName.pop();
-            assetName =  assetName.join("");
-
-            let asset = window.assets.find(asset=>asset.name===assetName)
-            state = state.replace(`"$assets['${assetName}']"`, `"url(${getURL(asset.blob, assetName)})"`)
-        }
-    }
-    return state;
+    return components.filter(component => markup.includes(component.name)).length > 0;
 }
 
 /** Takes components and saves them to window as react Object */
-export function saveComponentsToWindow( nestedComponents){
+export function saveComponentsToWindow(nestedComponents) {
     // Transpile them and make them global.
-    nestedComponents.forEach(function(component){
+    nestedComponents.forEach(function (component) {
         saveToWindow(JSON.parse(JSON.stringify(component)))
     });
 }
 
-export function getChildren (parent){
-    let components= readData("ui-editor");
-    if(checkNestedComponents(parent.markup)){
-        let children = components.filter(component=> parent.markup.includes(component.name)).map(component=>component.name);
+export function getChildren(parent) {
+    let components = readData("ui-editor");
+    if (checkNestedComponents(parent.markup)) {
+        let children = components.filter(component => parent.markup.includes(component.name)).map(component => component.name);
         return children;
     }
     return [];
 }
 
 /** Takes markup and returns children component objects. */
-export function getNestedComponents (parent) {
+export function getNestedComponents(parent) {
     // Should be able to detect nested component.
 
-    let components= readData("ui-editor");
+    let components = readData("ui-editor");
     let nestedComponents = [parent];
-    if(checkNestedComponents(parent.markup)){
+    if (checkNestedComponents(parent.markup)) {
         // find all the nested components from the markup and push it to nestedComponents.
-        let children = components.filter(component=> parent.markup.includes(component.name));
+        let children = components.filter(component => parent.markup.includes(component.name));
         // Find grand kids.
         let grandKids = children.map(getNestedComponents).flat(3)
         nestedComponents.push(...grandKids)
     }
-    return nestedComponents.filter(component=>component && component.markup);
+    return nestedComponents.filter(component => component && component.markup);
 }

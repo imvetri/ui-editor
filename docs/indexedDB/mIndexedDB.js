@@ -116,7 +116,14 @@ function dataURItoBlob(dataURI) {
 }
 
 
-function getURL( blob){
+function getURL( blob, assetName){
+	if(assetName){
+		let asset = window.assets.find(asset=>asset.name===assetName);
+		if(asset.url){
+			return asset.url;
+		}
+	}
+
     return window.URL.createObjectURL(dataURItoBlob(blob))
 }
 

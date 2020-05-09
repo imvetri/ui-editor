@@ -52,7 +52,7 @@ class Variants extends Component {
 
             variants = variants.map((variant, index)=> <Variant 
                 index={index}
-                state={JSON.stringify(variant.state)}
+                state={variant.state}
                 name={variant.name} 
                 component={component} 
                 deleteVariant={this.deleteVariant.bind(this)}/>);
