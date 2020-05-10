@@ -37,8 +37,7 @@ export function onExtendComponent(){
     
     this.setState({
         components: components,
-        folders: this.state.folders,
-        selectedComponent: component
+        folders: this.state.folders
     })
 
     writeData("ui-editor", components);

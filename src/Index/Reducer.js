@@ -1,5 +1,6 @@
 import {writeData} from "../utilities/Storage";
 
+import {findParent} from "../utilities/Components/Folders/findFolders";
 
 export function updateEvent (events) {
     // Create new state.
@@ -58,7 +59,7 @@ export function saveElement (element) {
     let newElement;
     
     // Check if element exist.
-    let elementExist = components.find(component=>component.name===element.name);
+    let elementExist = components.find(component=>component.name===element.name) || components.find(component=>component.name===element.trueName);
     let selectedComponent = components.find(component=>component.name===this.state.selectedComponent.name);
     let selectedIndex = components.findIndex(component=>component.name===this.state.selectedComponent.name);
     if(elementExist){
@@ -92,6 +93,13 @@ export function saveElement (element) {
         this.state.folders[0].contents.push(element.name)
         // Push new component into contents.
     }
+    
+    if(element.trueName!==element.name){ // rename the folder
+        // Find the content from folder
+        let parent = findParent( element.trueName, this.state.folders[0] )
+        let index = parent.contents.findIndex(content=>content===element.trueName)
+        parent.contents.splice(index,1, element.name);
+    }
 
     this.setState({
         elements: components,
@@ -105,6 +113,7 @@ export function saveElement (element) {
         showEditor: false,
         folders: this.state.folders
     });
+
 
     writeData("folders", this.state.folders)
     writeData("ui-editor", components)

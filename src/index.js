@@ -168,6 +168,7 @@ class Index extends Component {
                         selectedComponent={this.state.selectedComponent}
                         title="Components"
                         showControls={true}
+                        key={Math.ceil(Math.random() * 1000)}
 
                         onOpenEditor={this.openEditor.bind(this)}
                         onSelection={this.updateSelectedComponent}
