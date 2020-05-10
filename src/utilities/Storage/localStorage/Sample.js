@@ -234,7 +234,7 @@ let sample =[
     "variants": []
   },
   {
-    "name": "LayoutComponent",
+    "name": "Carousal",
     "markup": "<div className={state.variant}>\n\t<button className=\"left\" id=\"previous\">{\"<\"}</button>\n    <div className=\"window\">\n    \t<div className=\"content\">\n          {<div>{state.items[state.current]}</div>}\n\t    </div>\n    </div>\n    <button className=\"right\" id=\"next\">{\">\"}</button>\n</div>",
     "events": [
       {
@@ -275,11 +275,12 @@ let sample =[
           "current": 6
         }
       }
-    ]
+    ],
+    "trueName": "Carousal"
   },
   {
-    "name": "ProductComponent",
-    "markup": "<div className={state.variant} id=\"product\">\n\t{state.name}\n</div>\n",
+    "name": "Product",
+    "markup": "<div className={state.variant} style={state.style} id=\"product\">\n\t{state.name}\n</div>\n",
     "events": [
       {
         "name": "onMouseEnter",
@@ -297,8 +298,8 @@ let sample =[
         "id": "product"
       }
     ],
-    "state": "{\n\t\"name\" : \"Product one\",\n    \"variant\" : \"item initial\"\n}",
-    "style": ".item.initial {\n\tbackground-color:darkcyan;\n    background-size:contain;\n}\n\n.item.on_hover {\n\tbackground-color:teal;\n    background-size:auto;\n}\n\n.item{\n   \tbackground-image: $assets['1.jpeg'];\n\theight:200px;\n    width:200px;\n\ttext-align: center;\n\tvertical-align: middle;\n\tline-height: 200px;\n}",
+    "state": "{\n\t\"name\" : \"Product one\",\n    \"variant\" : \"item initial\",\n    \"style\" : {\n       \t\"backgroundImage\": \"$assets['1.jpeg']\"\n    }\n}",
+    "style": ".item.initial {\n\tbackground-color:darkcyan;\n    background-size:contain;\n}\n\n.item.on_hover {\n\tbackground-color:teal;\n    background-size:auto;\n}\n\n.item{\n\theight:200px;\n    width:200px;\n\ttext-align: center;\n\tvertical-align: middle;\n\tline-height: 200px;\n}",
     "children": [],
     "id": 949,
     "config": "{}",
@@ -331,7 +332,98 @@ let sample =[
           "variant": "item initial"
         }
       }
-    ]
+    ],
+    "trueName": "Product"
+  },
+  {
+    "name": "Carousal_Single",
+    "markup": "<div className={state.variant}>\n\t<button className=\"left\" id=\"previous\">{\"<\"}</button>\n    <div className=\"window\">\n    \t<div className=\"content\">\n\t    </div>\n    </div>\n    <button className=\"right\" id=\"next\">{\">\"}</button>\n</div>",
+    "events": [
+      {
+        "name": "onClick",
+        "reducer": "if(state.current===state.items.length-1){\n\tstate.current = 0;\n}\n\nelse {\n\tstate.current = state.current +1;\n}\n\nstate.Product = [state.items[state.current]]\n",
+        "index": 0,
+        "publishable": "",
+        "publishName": "",
+        "id": "next"
+      },
+      {
+        "name": "onClick",
+        "reducer": "if(state.current===0){\n\tstate.current = state.items.length-1;\n}\n\nelse {\n\tstate.current = state.current -1;\n}\n\nstate.Product = [state.items[state.current]]\n",
+        "index": 1,
+        "publishable": "",
+        "publishName": "",
+        "id": "previous"
+      }
+    ],
+    "state": "{\n    \"variant\":\"initial layoutComponent\",\n    \"items\":[\n        {\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['1.jpeg']\"}},\n        {\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['2.jpeg']\"}},\n        {\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['3.jpeg']\"}},\n        {\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['4.jpeg']\"}},\n        {\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['5.jpeg']\"}},\n        {\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['6.jpeg']\"}}\n    ],\n    \"current\":0,\n    \"Product\":[\n        {\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['1.jpeg']\"}}\n    ]\n}",
+    "style": ".layoutComponent button{\n\tcolor:red;\n    height:100%;\n    width: 40px;\n}\n\n.layoutComponent {\n\twidth:100%;\n    height:220px;\n    position:relative;\n}\n\n.layoutComponent *{\n  \tbox-sizing: border-box;\n}\n\n.layoutComponent .window {\n\twidth: 50%;\n    height:220px;\n    position: relative;\n    margin:auto;\n\toverflow:hidden;\n}\n\n.layoutComponent .content{\n\theight:220px;\n}\n\n.layoutComponent .content > div{\n\tdisplay:inline-block;\n    height:200px;\n    width:220px;\n    background-color:green;\n    margin:7px;\n}\n\n.layoutComponent .left{\n\tposition:absolute;\n    left:0px;\n    top:0px;\n}\n\n.layoutComponent .right{\n\tposition:absolute;\n    right:0px;\n    top:0px;\n}",
+    "children": [],
+    "id": 314,
+    "config": "{\"ProductComponent\":{\"override\":false},\"Product\":{\"override\":true}}",
+    "variants": [
+      {
+        "name": "initial layoutComponent",
+        "state": {
+          "variant": "initial layoutComponent",
+          "items": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "current": 6
+        }
+      }
+    ],
+    "trueName": "Carousal_Single"
+  },
+  {
+    "name": "Carousal_Double",
+    "markup": "<div className={state.variant}>\n\t<button className=\"left\" id=\"previous\">{\"<\"}</button>\n    <div className=\"window\">\n    \t<div className=\"content\">\n\t    </div>\n    </div>\n    <button className=\"right\" id=\"next\">{\">\"}</button>\n</div>",
+    "events": [
+      {
+        "name": "onClick",
+        "reducer": "if(state.current===state.items.length-1){\n\tstate.current = 0;\n}\n\nelse {\n\tstate.current = state.current +1;\n}",
+        "index": 0,
+        "publishable": "",
+        "publishName": "",
+        "id": "next"
+      },
+      {
+        "name": "onClick",
+        "reducer": "if(state.current===0){\n\tstate.current = state.items.length-1;\n}\n\nelse {\n\tstate.current = state.current -1;\n}",
+        "index": 1,
+        "publishable": "",
+        "publishName": "",
+        "id": "previous"
+      }
+    ],
+    "state": "{\"variant\":\"initial layoutComponent\",\"items\":[1,2,3,4,5,6],\"current\":0,\"Product\":[{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['1.jpeg']\"}}]}",
+    "style": ".layoutComponent button{\n\tcolor:red;\n    height:100%;\n    width: 40px;\n}\n\n.layoutComponent {\n\twidth:100%;\n    height:220px;\n    position:relative;\n}\n\n.layoutComponent *{\n  \tbox-sizing: border-box;\n}\n\n.layoutComponent .window {\n\twidth: 50%;\n    height:220px;\n    position: relative;\n    margin:auto;\n\toverflow:hidden;\n}\n\n.layoutComponent .content{\n\theight:220px;\n}\n\n.layoutComponent .content > div{\n\tdisplay:inline-block;\n    height:200px;\n    width:220px;\n    background-color:green;\n    margin:7px;\n}\n\n.layoutComponent .left{\n\tposition:absolute;\n    left:0px;\n    top:0px;\n}\n\n.layoutComponent .right{\n\tposition:absolute;\n    right:0px;\n    top:0px;\n}",
+    "children": [],
+    "id": 314,
+    "config": "{\"ProductComponent\":{\"override\":false},\"Product\":{\"override\":true}}",
+    "variants": [
+      {
+        "name": "initial layoutComponent",
+        "state": {
+          "variant": "initial layoutComponent",
+          "items": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "current": 6
+        }
+      }
+    ],
+    "trueName": "Carousal_Double"
   }
 ];
 module.exports = {
