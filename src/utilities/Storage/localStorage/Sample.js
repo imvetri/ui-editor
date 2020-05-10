@@ -234,7 +234,7 @@ let sample =[
     "variants": []
   },
   {
-    "name": "LayoutComponent",
+    "name": "Carousal",
     "markup": "<div className={state.variant}>\n\t<button className=\"left\" id=\"previous\">{\"<\"}</button>\n    <div className=\"window\">\n    \t<div className=\"content\">\n          {<div>{state.items[state.current]}</div>}\n\t    </div>\n    </div>\n    <button className=\"right\" id=\"next\">{\">\"}</button>\n</div>",
     "events": [
       {
@@ -275,10 +275,11 @@ let sample =[
           "current": 6
         }
       }
-    ]
+    ],
+    "trueName": "LayoutComponent"
   },
   {
-    "name": "ProductComponent",
+    "name": "Product",
     "markup": "<div className={state.variant} id=\"product\">\n\t{state.name}\n</div>\n",
     "events": [
       {
@@ -331,7 +332,8 @@ let sample =[
           "variant": "item initial"
         }
       }
-    ]
+    ],
+    "trueName": "ProductComponent"
   }
 ];
 module.exports = {
