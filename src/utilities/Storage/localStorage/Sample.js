@@ -334,6 +334,96 @@ let sample =[
       }
     ],
     "trueName": "ProductComponent"
+  },
+  {
+    "name": "Carousal_Single",
+    "markup": "<div className={state.variant}>\n\t<button className=\"left\" id=\"previous\">{\"<\"}</button>\n    <div className=\"window\">\n    \t<div className=\"content\">\n          {<div>{state.items[state.current]}</div>}\n\t    </div>\n    </div>\n    <button className=\"right\" id=\"next\">{\">\"}</button>\n</div>",
+    "events": [
+      {
+        "name": "onClick",
+        "reducer": "if(state.current===state.items.length-1){\n\tstate.current = 0;\n}\n\nelse {\n\tstate.current = state.current +1;\n}",
+        "index": 0,
+        "publishable": "",
+        "publishName": "",
+        "id": "next"
+      },
+      {
+        "name": "onClick",
+        "reducer": "if(state.current===0){\n\tstate.current = state.items.length-1;\n}\n\nelse {\n\tstate.current = state.current -1;\n}",
+        "index": 1,
+        "publishable": "",
+        "publishName": "",
+        "id": "previous"
+      }
+    ],
+    "state": "{\"variant\":\"initial layoutComponent\",\"items\":[1,2,3,4,5,6],\"current\":0}",
+    "style": ".layoutComponent button{\n\tcolor:red;\n    height:100%;\n    width: 40px;\n}\n\n.layoutComponent {\n\twidth:100%;\n    height:220px;\n    position:relative;\n}\n\n.layoutComponent *{\n  \tbox-sizing: border-box;\n}\n\n.layoutComponent .window {\n\twidth: 50%;\n    height:220px;\n    position: relative;\n    margin:auto;\n\toverflow:hidden;\n}\n\n.layoutComponent .content{\n\theight:220px;\n}\n\n.layoutComponent .content > div{\n\tdisplay:inline-block;\n    height:200px;\n    width:220px;\n    background-color:green;\n    margin:7px;\n}\n\n.layoutComponent .left{\n\tposition:absolute;\n    left:0px;\n    top:0px;\n}\n\n.layoutComponent .right{\n\tposition:absolute;\n    right:0px;\n    top:0px;\n}",
+    "children": [],
+    "id": 314,
+    "config": "{\"ProductComponent\":{\"override\":false}}",
+    "variants": [
+      {
+        "name": "initial layoutComponent",
+        "state": {
+          "variant": "initial layoutComponent",
+          "items": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "current": 6
+        }
+      }
+    ],
+    "trueName": "Carousal_copy"
+  },
+  {
+    "name": "Carousal_Double",
+    "markup": "<div className={state.variant}>\n\t<button className=\"left\" id=\"previous\">{\"<\"}</button>\n    <div className=\"window\">\n    \t<div className=\"content\">\n          {<div>{state.items[state.current]}</div>}\n\t    </div>\n    </div>\n    <button className=\"right\" id=\"next\">{\">\"}</button>\n</div>",
+    "events": [
+      {
+        "name": "onClick",
+        "reducer": "if(state.current===state.items.length-1){\n\tstate.current = 0;\n}\n\nelse {\n\tstate.current = state.current +1;\n}",
+        "index": 0,
+        "publishable": "",
+        "publishName": "",
+        "id": "next"
+      },
+      {
+        "name": "onClick",
+        "reducer": "if(state.current===0){\n\tstate.current = state.items.length-1;\n}\n\nelse {\n\tstate.current = state.current -1;\n}",
+        "index": 1,
+        "publishable": "",
+        "publishName": "",
+        "id": "previous"
+      }
+    ],
+    "state": "{\"variant\":\"initial layoutComponent\",\"items\":[1,2,3,4,5,6],\"current\":0}",
+    "style": ".layoutComponent button{\n\tcolor:red;\n    height:100%;\n    width: 40px;\n}\n\n.layoutComponent {\n\twidth:100%;\n    height:220px;\n    position:relative;\n}\n\n.layoutComponent *{\n  \tbox-sizing: border-box;\n}\n\n.layoutComponent .window {\n\twidth: 50%;\n    height:220px;\n    position: relative;\n    margin:auto;\n\toverflow:hidden;\n}\n\n.layoutComponent .content{\n\theight:220px;\n}\n\n.layoutComponent .content > div{\n\tdisplay:inline-block;\n    height:200px;\n    width:220px;\n    background-color:green;\n    margin:7px;\n}\n\n.layoutComponent .left{\n\tposition:absolute;\n    left:0px;\n    top:0px;\n}\n\n.layoutComponent .right{\n\tposition:absolute;\n    right:0px;\n    top:0px;\n}",
+    "children": [],
+    "id": 314,
+    "config": "{\"ProductComponent\":{\"override\":false}}",
+    "variants": [
+      {
+        "name": "initial layoutComponent",
+        "state": {
+          "variant": "initial layoutComponent",
+          "items": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "current": 6
+        }
+      }
+    ],
+    "trueName": "Carousal_copy"
   }
 ];
 module.exports = {
