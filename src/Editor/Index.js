@@ -19,6 +19,7 @@ class Editor extends Component {
         var component = readComponent(this.props.name);
 
         this.state = {
+            trueName: component? component.name: "",
             name: component? component.name : "",
             markup: component? component.markup : "",
             state: component? component.state : "",
@@ -29,6 +30,7 @@ class Editor extends Component {
 
     saveElement () {
         this.props.onSave({
+            trueName: this.state.trueName,
             name: this.state.name,
             markup: this.state.markup,
             style: this.state.style,
