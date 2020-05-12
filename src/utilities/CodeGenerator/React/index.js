@@ -40,7 +40,7 @@ export function convertToReact (component){
             if(config[childName].override ){
                 let childMarkup = `<${childName}></${childName}>`;
 
-                let childMarkupWithProps = `<${childName} state={item} key={~~(Math.random()*100)}></${childName}>`;
+                let childMarkupWithProps = `<${childName} state={item} key={~~(Math.random()*10000)}></${childName}>`;
                 let renderListMarkup = `{state.${childName}.map((item,i)=>${childMarkupWithProps})}`;
                 markup =  markup.replace(childMarkup, renderListMarkup);   
             }
