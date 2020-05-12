@@ -432,6 +432,55 @@ let sample =[
       }
     ],
     "trueName": "Carousal_Double"
+  },
+  {
+    "name": "Carousal_Multi",
+    "markup": "<div className={state.variant}>\n\t<button className=\"left\" id=\"previous\">{\"<\"}</button>\n    \t<div className=\"content\" style={state.contentStyle}>\n        \t<Product></Product>\n\t    </div>\n    <button className=\"right\" id=\"next\">{\">\"}</button>\n</div>",
+    "events": [
+      {
+        "name": "onClick",
+        "reducer": "if(state.current===state.items.length-1){\n\tstate.current = 0;\n}\n\nelse {\n\tstate.current = state.current +1;\n}\n\nstate.contentStyle.left = -(state.current*200) + \"px\"",
+        "index": 0,
+        "publishable": "",
+        "publishName": "",
+        "id": "next"
+      },
+      {
+        "name": "onClick",
+        "reducer": "if(state.current===0){\n\tstate.current = state.items.length-1;\n}\n\nelse {\n\tstate.current = state.current -1;\n}\n\nstate.contentStyle.left = -(state.current*200) + \"px\"",
+        "index": 1,
+        "publishable": "",
+        "publishName": "",
+        "id": "previous"
+      }
+    ],
+    "state": "{\n    \"variant\":\"initial Carousal_Double\",\n    \"items\":[\n        \n    ],\n    \"current\":0,\n    \"Product\":[\n        {\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['1.jpeg']\"}},\n        {\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['2.jpeg']\"}},\n        {\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['3.jpeg']\"}},\n        {\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['4.jpeg']\"}},\n        {\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['5.jpeg']\"}},\n        {\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['6.jpeg']\"}}],\n        \"contentStyle\" : {\n        \t\"left\": \"0px\"\n        }\n}",
+    "style": ".Carousal_Double button{\n\tcolor:red;\n    height:220px;\n    width: 40px;\n    display:inline-block;\n}\n\n.Carousal_Double {\n    height:220px;\n    position: relative;\n}\n\n.Carousal_Double *{\n  \tbox-sizing: border-box;\n}\n\n.Carousal_Double .content{\n\theight:200px;\n    width: 1200px;\n\ttext-align: center;\n\tvertical-align: middle;\n\tline-height: 200px;\n    position: absolute;\n}\n\n.Carousal_Double .content > div{\n\tdisplay: inline-block;\n}\n\n.Carousal_Double #previous {\n\tposition: absolute;\n    left: 0px;\n    top:0px;\n    z-index: 1;\n}\n\n.Carousal_Double #next {\n\tposition: absolute;\n    right: 0px;\n    top:0px;\n}\n\n",
+    "children": [],
+    "id": 314,
+    "config": "{\"ProductComponent\":{\"override\":false},\"Product\":{\"override\":true}}",
+    "variants": [
+      {
+        "name": "initial layoutComponent",
+        "state": {
+          "variant": "initial layoutComponent",
+          "items": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "current": 6
+        }
+      },
+      {
+        "name": "initial Carousal_Double",
+        "state": "{\"variant\":\"initial Carousal_Double\",\"items\":[{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['1.jpeg']\"}},{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['2.jpeg']\"}},{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['3.jpeg']\"}},{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['4.jpeg']\"}},{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['5.jpeg']\"}},{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['6.jpeg']\"}}],\"current\":5,\"Product\":[{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['5.jpeg']\"}},{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['6.jpeg']\"}}]}"
+      }
+    ],
+    "trueName": "Carousal_Multi"
   }
 ];
 module.exports = {
