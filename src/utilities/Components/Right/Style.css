@@ -1,4 +1,4 @@
-.Right{
+.RightItem{
     position: absolute;
     right:0px;
     animation: slide-right 0.2s ease;

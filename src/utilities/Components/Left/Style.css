@@ -1,4 +1,4 @@
-.Left{
+.leftItem{
     position: absolute;
     left:0px;
     animation: slide-to-screen 0.7s ease;

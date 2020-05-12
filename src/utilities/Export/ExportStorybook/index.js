@@ -26,14 +26,14 @@ export function exportStorybook(componentName) {
 
     let uniqueComponents = getUniqueComponents(nestedComponents);
 
-    window.saveVariant = false;
+    window.__editor = false;
 
     let componentStrings = uniqueComponents.map(convertToReact).map(removeParanthesis);
     componentStrings[0] = "export default "+ componentStrings[0];
 
     let ReactClassComponentString = headerImports + componentStrings.reverse().join("\n");
 
-    window.saveVariant = true;
+    window.__editor = true;
     /**
      * function export storybook
      * 1. Export component.js
