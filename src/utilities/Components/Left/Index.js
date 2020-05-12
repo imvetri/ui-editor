@@ -13,7 +13,7 @@ class Left extends Component {
     render() {
 
         return (
-            <div className="left">
+            <div className="leftItem">
                 {this.props.children}
             </div>
         );

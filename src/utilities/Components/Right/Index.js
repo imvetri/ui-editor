@@ -27,7 +27,7 @@ class Right extends Component {
 
         }
         return (
-            <div className="right container">
+            <div className="RightItem container">
                 {this.props.children.map(child=>{
                     
                     return  (<div className={child.props.title===this.state.selected? "tabs title": "tabs"} onClick={this.updateSelectedTab.bind(this)}>

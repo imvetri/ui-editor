@@ -50,7 +50,7 @@ export function convertToReact (component){
 
     // keep saving variant in browser, but not for code exports.
     let getSaveVariant = ()=>{
-        if(window.saveVariant){
+        if(window.__editor){
             return `window.saveVariant("${component.name}",state)`
         }
     }
@@ -68,10 +68,7 @@ class ${component.name} extends Component {
         super(props);
         this.state = this.props.state || ${component.state};
 
-        var dynamicStyle = document.createElement('style');
-        dynamicStyle.type = 'text/css';
-        dynamicStyle.innerHTML = \`${component.style}\`;
-        document.body.appendChild(dynamicStyle)
+        // Generate css as a separate file on download
     }
 
     ${component.events.map(event=>{
@@ -81,7 +78,6 @@ class ${component.name} extends Component {
     ${event.id+event.name} (e) {
         var state = JSON.parse(JSON.stringify(this.state))
         ${event.reducer}
-        debugger;
         this.setState(state);
         e.state = state;
         this.props.${event.publishName}? this.props.${event.publishName}(e):null;
@@ -92,7 +88,6 @@ class ${component.name} extends Component {
     ${event.id+event.name} (e) {
         var state = JSON.parse(JSON.stringify(this.state))
         ${event.reducer}
-        debugger;
         ${saveVariant}
         this.setState(state);
     }
