@@ -292,14 +292,14 @@ let sample =[
       },
       {
         "name": "onMouseLeave",
-        "reducer": "state.variant = \"item initial\";\nstate.name = \"Product one\";",
+        "reducer": "state.variant = \"item initial\";\nstate.name = \"\";",
         "publishable": "",
         "publishName": "",
         "id": "product"
       }
     ],
-    "state": "{\n\t\"name\" : \"Product one\",\n    \"variant\" : \"item initial\",\n    \"style\" : {\n       \t\"backgroundImage\": \"$assets['1.jpeg']\"\n    }\n}",
-    "style": ".item.initial {\n\tbackground-color:darkcyan;\n    background-size:contain;\n}\n\n.item.on_hover {\n\tbackground-color:teal;\n    background-size:auto;\n}\n\n.item{\n\theight:200px;\n    width:200px;\n\ttext-align: center;\n\tvertical-align: middle;\n\tline-height: 200px;\n}",
+    "state": "{\n\t\"name\" : \"\",\n    \"variant\" : \"item initial\",\n    \"style\" : {\n       \t\"backgroundImage\": \"$assets['1.jpeg']\"\n    }\n}",
+    "style": ".item.initial {\n\tbackground-color:darkcyan;\n    background-size:contain;\n}\n\n.item.on_hover {\n\tbackground-color:teal;\n    background-size:auto;\n}\n\n.item{\n\twidth:400px;\n    height:400px;\n\ttext-align: center;\n\tvertical-align: middle;\n\tline-height: 200px;\n    margin : 12px;\n}",
     "children": [],
     "id": 949,
     "config": "{}",
@@ -356,7 +356,7 @@ let sample =[
         "id": "previous"
       }
     ],
-    "state": "{\n    \"variant\":\"initial Carousal_Single\",\n    \"items\":[\n        {\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['1.jpeg']\"}},\n        {\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['2.jpeg']\"}},\n        {\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['3.jpeg']\"}},\n        {\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['4.jpeg']\"}},\n        {\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['5.jpeg']\"}},\n        {\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['6.jpeg']\"}}\n    ],\n    \"current\":0,\n    \"Product\":[\n        {\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['1.jpeg']\"}}\n    ]\n}",
+    "state": "{\n    \"variant\":\"initial Carousal_Single\",\n    \"items\":[\n        {\"name\":\"\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['1.jpeg']\"}},\n        {\"name\":\"\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['2.jpeg']\"}},\n        {\"name\":\"\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['3.jpeg']\"}},\n        {\"name\":\"\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['4.jpeg']\"}},\n        {\"name\":\"\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['5.jpeg']\"}},\n        {\"name\":\"\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['6.jpeg']\"}}\n    ],\n    \"current\":0,\n    \"Product\":[\n        {\"name\":\"\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['1.jpeg']\"}}\n    ]\n}",
     "style": ".Carousal_Single button{\n\tcolor:red;\n    height:220px;\n    width: 40px;\n    display:inline-block;\n}\n\n.Carousal_Single {\n    height:220px;\n}\n\n.Carousal_Single *{\n  \tbox-sizing: border-box;\n}\n\n.Carousal_Single .content{\n\theight:200px;\n    min-width:200px;\n    display:inline-block;\n\ttext-align: center;\n\tvertical-align: middle;\n\tline-height: 200px;\n}\n",
     "children": [],
     "id": 314,
@@ -383,55 +383,6 @@ let sample =[
       }
     ],
     "trueName": "Carousal_Single"
-  },
-  {
-    "name": "Carousal_Double",
-    "markup": "<div className={state.variant}>\n\t<button className=\"left\" id=\"previous\">{\"<\"}</button>\n    \t<div className=\"content\"><Product></Product>\n\t    </div>\n    <button className=\"right\" id=\"next\">{\">\"}</button>\n</div>",
-    "events": [
-      {
-        "name": "onClick",
-        "reducer": "if(state.current===state.items.length-1){\n\tstate.current = 0;\n}\n\nelse {\n\tstate.current = state.current +1;\n}\n\nif(state.current === state.items.length-1){\n\tstate.Product = [\n    \tstate.items[state.current],\n        state.items[0]\n    ]\n}\nelse{\n\tstate.Product = [\n    \tstate.items[state.current],\n        state.items[state.current+1]\n    ]\n}\n\n",
-        "index": 0,
-        "publishable": "",
-        "publishName": "",
-        "id": "next"
-      },
-      {
-        "name": "onClick",
-        "reducer": "if(state.current===0){\n\tstate.current = state.items.length-1;\n}\n\nelse {\n\tstate.current = state.current -1;\n}\n\nif(state.current === 0){\n\tstate.Product = [\n    \tstate.items[state.items.length-1],\n        state.items[state.current]\n    ]\n}\nelse{\n\tstate.Product = [\n    \tstate.items[state.current-1],\n        state.items[state.current]\n    ]\n}",
-        "index": 1,
-        "publishable": "",
-        "publishName": "",
-        "id": "previous"
-      }
-    ],
-    "state": "{\n    \"variant\":\"initial Carousal_Double\",\n    \"items\":[\n        {\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['1.jpeg']\"}},\n        {\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['2.jpeg']\"}},\n        {\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['3.jpeg']\"}},\n        {\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['4.jpeg']\"}},\n        {\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['5.jpeg']\"}},\n        {\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['6.jpeg']\"}}\n    ],\n    \"current\":0,\n    \"Product\":[\n        {\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['1.jpeg']\"}},\n        {\"name\":\"Product two\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['2.jpeg']\"}}\n    ]\n}",
-    "style": ".Carousal_Double button{\n\tcolor:red;\n    height:220px;\n    width: 40px;\n    display:inline-block;\n}\n\n.Carousal_Double {\n    height:220px;\n}\n\n.Carousal_Double *{\n  \tbox-sizing: border-box;\n}\n\n.Carousal_Double .content{\n\theight:200px;\n    min-width:400px;\n    display:inline-block;\n\ttext-align: center;\n\tvertical-align: middle;\n\tline-height: 200px;\n}\n\n.Carousal_Double .content > div{\n\tdisplay: inline-block;\n}\n\n\n",
-    "children": [],
-    "id": 314,
-    "config": "{\"ProductComponent\":{\"override\":false},\"Product\":{\"override\":true}}",
-    "variants": [
-      {
-        "name": "initial layoutComponent",
-        "state": {
-          "variant": "initial layoutComponent",
-          "items": [
-            1,
-            2,
-            3,
-            4,
-            5,
-            6
-          ],
-          "current": 6
-        }
-      },
-      {
-        "name": "initial Carousal_Double",
-        "state": "{\"variant\":\"initial Carousal_Double\",\"items\":[{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['1.jpeg']\"}},{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['2.jpeg']\"}},{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['3.jpeg']\"}},{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['4.jpeg']\"}},{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['5.jpeg']\"}},{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['6.jpeg']\"}}],\"current\":5,\"Product\":[{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['5.jpeg']\"}},{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['6.jpeg']\"}}]}"
-      }
-    ],
-    "trueName": "Carousal_Double"
   },
   {
     "name": "Carousal_Multi",
@@ -503,8 +454,8 @@ let sample =[
         "id": "previous"
       }
     ],
-    "state": "{\n    \"variant\":\"initial Carousal_Double\",\n    \"items\":[\n        \n    ],\n    \"current\":0,\n    \"Product\":[\n        {\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['1.jpeg']\"}},\n        {\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['2.jpeg']\"}},\n        {\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['3.jpeg']\"}},\n        {\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['4.jpeg']\"}},\n        {\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['5.jpeg']\"}},\n        {\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['6.jpeg']\"}}],\n        \"contentStyle\" : {\n        \t\"left\": \"0px\"\n        }\n}",
-    "style": ".Carousal_Double button{\n\tcolor:red;\n    height:220px;\n    width: 40px;\n    display:inline-block;\n}\n\n.Carousal_Double {\n    height:220px;\n    position: relative;\n}\n\n.Carousal_Double *{\n  \tbox-sizing: border-box;\n}\n\n.Carousal_Double .content{\n\theight:200px;\n    width: 1200px;\n\ttext-align: center;\n\tvertical-align: middle;\n\tline-height: 200px;\n    position: absolute;\n}\n\n.Carousal_Double .content > div{\n\tdisplay: inline-block;\n}\n\n.Carousal_Double #previous {\n\tposition: absolute;\n    left: 0px;\n    top:0px;\n    z-index: 1;\n}\n\n.Carousal_Double #next {\n\tposition: absolute;\n    right: 0px;\n    top:0px;\n}\n\n",
+    "state": "{\n    \"variant\":\"initial Carousal_Double\",\n    \"items\":[\n        \n    ],\n    \"current\":0,\n    \"Product\":[\n        {\"name\":\"\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['1.jpeg']\"}},\n        {\"name\":\"\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['2.jpeg']\"}},\n        {\"name\":\"\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['3.jpeg']\"}},\n        {\"name\":\"\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['4.jpeg']\"}},\n        {\"name\":\"\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['5.jpeg']\"}},\n        {\"name\":\"\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['6.jpeg']\"}}],\n        \"contentStyle\" : {\n        \t\"left\": \"0px\"\n        }\n}",
+    "style": ".Carousal_Double button{\n\tcolor:red;\n    height:40px;\n    width: 40px;\n    display:inline-block;\n\tborder-radius: 50%;\n}\n\n.Carousal_Double button:focus{\n    outline: 0;\n}\n\n.Carousal_Double {\n    height:440px;\n    position: relative;\n}\n\n.Carousal_Double *{\n  \tbox-sizing: border-box;\n}\n\n.Carousal_Double .content{\n\theight: 400px;\n    width: 3000px;\n\tvertical-align: middle;\n\tline-height: 200px;\n    position: absolute;\n}\n\n.Carousal_Double .content > div{\n\tdisplay: inline-block;\n}\n\n.Carousal_Double #previous {\n\tposition: absolute;\n    left: 0px;\n    top:200px;\n    z-index: 1;\n}\n\n.Carousal_Double #next {\n\tposition: absolute;\n    right: 0px;\n    top:200px;\n}\n\n",
     "children": [],
     "id": 314,
     "config": "{\"ProductComponent\":{\"override\":false},\"Product\":{\"override\":true}}",

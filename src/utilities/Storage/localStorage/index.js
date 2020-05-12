@@ -27,7 +27,7 @@ export function readData(key){
         let folders = JSON.parse(localStorage.getItem(key));
 
         if(folders === null){
-            return [{"type":"noFolder","contents":[{"name":"Templates","contents":["Page"],"type":"folder","status":"closed"},{"name":"Components","contents":["Modal","ResetPasswordModal","ForgotPassword","Carousal","Product","Carousal_Single","Carousal_Double"],"type":"folder","status":"open"},{"name":"Elements","contents":["EmailInput","TermsAndService","SubmitButton","CancelButton","PrivacyAndPolicy","ResetPasswordForm","Form"],"type":"folder","status":"closed"}],"name":"noFolder","status":"open"}]
+            return [{"type":"noFolder","contents":[{"name":"Templates","contents":["Page"],"type":"folder","status":"closed"},{"name":"Components","contents":["Modal","ResetPasswordModal","ForgotPassword","Carousal","Product","Carousal_Single", "Carousal_Circleback"],"type":"folder","status":"open"},{"name":"Elements","contents":["EmailInput","TermsAndService","SubmitButton","CancelButton","PrivacyAndPolicy","ResetPasswordForm","Form"],"type":"folder","status":"closed"}],"name":"noFolder","status":"open"}]
         }
         return folders;
     }
