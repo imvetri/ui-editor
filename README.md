@@ -1,6 +1,6 @@
 ## UI editor
 
-UI editor is based on state driven components.
+UI editor is a UI shell around reactJS.
 
 ### State driven components.
 
