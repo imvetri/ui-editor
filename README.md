@@ -1,6 +1,6 @@
 ## UI editor
 
-UI editor is a simple UI shell around reactjs to build on state driven components.
+UI editor is a simple UI shell around reactjs to build on state driven components that works across frameworks.
 
 A single object should determine the structure of the components. In state driven components, data from the state is used in rendering component tree. 
 
