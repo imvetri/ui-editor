@@ -1,12 +1,10 @@
 ## UI editor
 
-UI editor is a UI shell around reactJS.
-
-### State driven components.
+UI editor is a simple UI shell around reactjs to build on state driven components.
 
 A single object should determine the structure of the components. In state driven components, data from the state is used in rendering component tree. 
 
-#### Philosophies.
+## Philosophies.
 
 
 1. Always store a child component as a property in the state. Keep the component value as an array and store the props data.
