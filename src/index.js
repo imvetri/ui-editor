@@ -13,7 +13,6 @@ import Editor from "./Editor";
 import Events from "./Events";
 import Preview from "./Preview";
 import Assets from "./Assets";
-import Export from "./Export";
 import History from "./History";
 
 // Behaviour components.
@@ -193,9 +192,6 @@ class Index extends Component {
                             title="History"/>
                         <Assets 
                             title="Assets"/>
-                        <Export 
-                            title="Export"
-                            component={selectedComponent}/>
                     </Right>
                     :
                     null}
