@@ -19,35 +19,12 @@ let headerImports = ` /* eslint-disable */
 import React, {Component} from 'react';
 `;
 
-function updateVariants(components){
-
-
-     /**
-      * if component.variants is empty
-      * take its state 
-      * push it to variant with name as "initial"
-      */
-
-
-    components.forEach(component=>{
-        if(component.variants.length===0){
-            component.variants.push({
-                name: "initial",
-                state: JSON.parse(component.state)
-            })
-        }
-
-    })
-    return components
-}
-
 export function exportSeparateFile(componentName) {
     let components = readData("ui-editor");
     let selectedComponent = components.find(component=>component.name.includes(componentName));
     
     let nestedComponents = getNestedComponents(selectedComponent);
     let uniqueComponents = getUniqueComponents(nestedComponents)
-    uniqueComponents = updateVariants(uniqueComponents)
     /**
      * For each unique components
      * convert it to import react + import children dependencies + export.
@@ -55,9 +32,6 @@ export function exportSeparateFile(componentName) {
      * For each unique components
      * convert the stories.
      */
-
-
-
 
 
     let individualComponents = uniqueComponents.map(function(component){

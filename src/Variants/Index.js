@@ -8,6 +8,16 @@ import Variant from "./Variant";
 
 import "./style.css";
 
+/**
+ * Usage
+ * 
+                        <Variants 
+                            title="Variants"
+                            key={Math.ceil(Math.random() * 1000)}
+                            component={selectedComponent}
+                            onUpdate= {saveElement.bind(this)}/>
+ */
+
 class Variants extends Component {
     constructor(props) {
         super(props);

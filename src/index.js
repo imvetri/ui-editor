@@ -15,7 +15,6 @@ import Preview from "./Preview";
 import Assets from "./Assets";
 import Export from "./Export";
 import History from "./History";
-import Variants from "./Variants";
 
 // Behaviour components.
 
@@ -69,13 +68,6 @@ class Index extends Component {
                 this.setState({
                     openRight: !this.state.openRight,
                     selectedTab: "Events"
-                })
-            }
-
-            if(e.altKey && e.keyCode==86){ // Alt + V
-                this.setState({
-                    openRight: !this.state.openRight,
-                    selectedTab: "Variants"
                 })
             }
         }.bind(this);
@@ -204,11 +196,6 @@ class Index extends Component {
                         <Export 
                             title="Export"
                             component={selectedComponent}/>
-                        <Variants 
-                            title="Variants"
-                            key={Math.ceil(Math.random() * 1000)}
-                            component={selectedComponent}
-                            onUpdate= {saveElement.bind(this)}/>
                     </Right>
                     :
                     null}
