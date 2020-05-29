@@ -82,10 +82,10 @@ export function saveElement (element) {
             style: element.style,
             children: [],
             id: Math.ceil(Math.random()*1000),
-            config:"{}",
-            variants:[]
+            config:"{}"
         };
 
+        delete newElement.trueName;
         components.push(newElement);
         selectedIndex = components.length-1;
 

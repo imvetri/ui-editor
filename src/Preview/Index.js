@@ -8,6 +8,16 @@ import DynamicComponent from "./DynamicComponent";
 
 // Utilities.
 
+/**
+ *  <Preview
+        key={Math.ceil(Math.random() * 1000)}
+        component={selectedComponent}
+        title="Preview"
+        onSave={this.saveElement}
+    >
+    </Preview>
+ */
+
 import { readComponent } from "../utilities/Storage";
 
 class Preview extends Component {
@@ -25,23 +35,6 @@ class Preview extends Component {
         })
     }
 
-    switchTablet() {
-        this.setState({
-            display: "tablet"
-        })
-    }
-
-    switchMobile() {
-        this.setState({
-            display: "mobile"
-        })
-    }
-
-    switchDesktop(){
-        this.setState({
-            display: "desktop"
-        })
-    }
 
     render() {
 
@@ -51,11 +44,6 @@ class Preview extends Component {
             <div  className={`container preview ${this.state.display}`}>
                 <div className="title">
                     Preview
-                    <div className="Controls">
-                        <button onClick={this.switchTablet.bind(this)}><i className="fa fa-tablet-alt"></i></button>
-                        <button onClick={this.switchMobile.bind(this)}><i className="fa fa-mobile-alt"></i></button>
-                        <button onClick={this.switchDesktop.bind(this)}><i className="fa fa-desktop"></i></button>
-                    </div>
                 </div>
                 <div className="dynamicComponent">
                     <DynamicComponent onSave={this.props.onSave} key={randomKey} component={this.state.component}/>

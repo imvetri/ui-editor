@@ -1,7 +1,0 @@
-.thumbnailView {
-    zoom: 0.7;
-}
-
-.thumbnailView > div {
-    pointer-events: none;
-}
