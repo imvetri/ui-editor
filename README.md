@@ -1,14 +1,7 @@
 ## UI editor
 
-UI editor is a simple UI shell around reactjs to build on state driven components that works across frameworks.
+UI editor is an UI shell around reactjs to build on state driven components that works across frameworks.
 
-A single object should determine the structure of the components. In state driven components, data from the state is used in rendering component tree. 
-
-<p align="center">
-  <a href="https://imvetri.github.io/ui-editor/">
-    <img src="https://raw.githubusercontent.com/imvetri/ui-editor/master/ui-editor.png" height="300px">
-  </a>
-</p>
 
 ## Demo - https://imvetri.github.io/ui-editor/
 
@@ -43,8 +36,6 @@ npm i
 npm start
 
 ```
-
-
 
 
 
