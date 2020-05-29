@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 // Runtime utilities.
 
-import { getNestedComponents, saveComponentsToWindow } from "../../utilities/Runtime";
+import { getNestedComponents, saveComponentsToWindow } from "../utilities/Runtime"
 
 // Styles.
 
@@ -30,11 +30,7 @@ class DynamicComponent extends Component {
         if(!window[this.state.component.name]){
             return (<p>No component selected.</p>)
         }
-        return (
-            <div>
-                {React.createElement(window[this.state.component.name])}
-            </div>
-        );
+        return React.createElement( window[this.state.component.name] );
     }
 
 }

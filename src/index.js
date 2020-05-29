@@ -11,9 +11,9 @@ import "./Index/index.css";
 import Components from "./Components";
 import Editor from "./Editor";
 import Events from "./Events";
-import Preview from "./Preview";
 import Assets from "./Assets";
 import History from "./History";
+import DynamicComponent from "./DynamicComponent";
 
 // Behaviour components.
 
@@ -71,12 +71,6 @@ class Index extends Component {
             }
         }.bind(this);
 
-    }
-
-    updatePreview(element) {
-        this.setState({
-            previewComponent: element
-        });
     }
 
     updateFolders(folders) {
@@ -150,6 +144,7 @@ class Index extends Component {
     }
     render() {
         const selectedComponent = this.state.selectedComponent || this.state.component;
+        const randomKey = Math.ceil(Math.random() * 1000);
         return (
             <div onContextMenu={this.onShowContextMenu.bind(this)} onClick={this.hideContextMenu.bind(this)}>
                 <Left>
@@ -159,7 +154,7 @@ class Index extends Component {
                         selectedComponent={this.state.selectedComponent}
                         title="Components"
                         showControls={true}
-                        key={Math.ceil(Math.random() * 1000)}
+                        key={randomKey}
 
                         onOpenEditor={this.openEditor.bind(this)}
                         onSelection={this.updateSelectedComponent}
@@ -167,20 +162,14 @@ class Index extends Component {
                     />
                 </Left>
                 <Center>
-                    <Preview
-                        key={Math.ceil(Math.random() * 1000)}
-                        component={selectedComponent}
-                        title="Preview"
-                        onSave={this.saveElement}
-                    >
-                    </Preview>
+                    <DynamicComponent onSave={this.props.onSave} key={randomKey} component={selectedComponent}/>
                 </Center>
 
                 {this.state.selectedComponent  && this.state.openRight ?
                     <Right 
                         selected={this.state.selectedTab}>
                          <Events
-                            key={Math.ceil(Math.random() * 1000)}
+                            key={randomKey}
                             component={selectedComponent}
                             selectedTag={this.state.selectedTag}
                             components={this.state.components}
@@ -199,7 +188,7 @@ class Index extends Component {
                 {this.state.showEditor ?
                     <Bottom>
                         <Editor
-                            key={Math.ceil(Math.random() * 1000)}
+                            key={randomKey}
                             element={selectedComponent}
                             name={selectedComponent.name}
                             markup={selectedComponent.markup}
