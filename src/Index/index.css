@@ -69,3 +69,8 @@ ul label:hover, li:hover, .content:hover{
     border: 1px solid black;
     margin-top:5px;
 }
+
+.container{
+    padding: 5px;
+    background: #2C3134;
+}
