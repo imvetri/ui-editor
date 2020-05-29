@@ -4,9 +4,6 @@ import React, { Component } from 'react';
 
 import {selectionChanged} from "./Events";
 
-// Components.
-
-import ThumbnailView from "./ThumbnailView";
 
 // Styles.
 
@@ -26,14 +23,8 @@ class Componentt extends Component {
         
         let name = event.target.getAttribute("data-name")
 
-        e.target.querySelector('.thumbnail').classList.remove("hidden");
-        e.target.querySelector('.componentName').classList.add("hidden");
-        console.log("SETTING DATA")
-
         e.dataTransfer.setData("component-name", name);
         e.dataTransfer.setData("parent-folder-name", e.currentTarget.parentElement.getAttribute("data-folder-name"))
-
-        console.log(e.dataTransfer.getData("component-name"))
         e.stopPropagation();
     }
 
@@ -54,9 +45,6 @@ class Componentt extends Component {
                     onDragStart={this.addComponentDetails.bind(this)}>
                     <span className="componentName ">
                         {component.name}
-                    </span>
-                    <span className="hidden thumbnail">
-                        <ThumbnailView component={component}/>
                     </span>
                 </li>
         );

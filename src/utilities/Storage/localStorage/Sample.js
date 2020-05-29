@@ -13,8 +13,7 @@ let sample =[
     ],
     "state": "{\"buttonText\":\"Forgot Password\"}",
     "style": ".vsButton{\nfont-family: BentonSansBook,Helvetica,Arial,sans-serif;\ncolor: rgb(0, 0, 0);\n}\n\n\n.vsButton button{\nborder-color: #bf215d;\n    color: #fff;\n    background: #ef5f96;\nborder: 1px solid;\n}\n\n.vsButton button:hover{\nborder-color: #bf215d;\n}",
-    "config": "{}",
-    "variants": []
+    "config": "{}"
   },
   {
     "name": "Modal",
@@ -30,8 +29,7 @@ let sample =[
     ],
     "state": "{\"variant\":\"initial\"}",
     "style": ".modal{\n  width:400px;\n  font-size:22px;\n  position:relative;\nbackground-color: white;\ncolor: black;\n  font-family: BentonSansLight,Helvetica,Arial,sans-serif;\n  font-weight:400;\n    line-height: 17px;\n    letter-spacing: .04em;\n    text-transform: inherit;\n    font-weight: 400;\n\n}\n\n.modal h3{\n  padding:1rem;\nfont-size:26px;\nfont-weight: 400;\n}\n\n.modal .content{\npadding:1rem;\nfont-weight: 400;\n}\n\n.modal footer{\npadding:1rem;\n  border:1px solid black;\nfont-weight: 400;\n}\n.modal header{\n  border:1px solid black;\nfont-weight: 400;\n}\n\n.modal .closeButton{\n  position: absolute;\n  right: 10px;\n  top: 20px;\n}\n\n.modal .content{\n    border:1px solid black;\nfont-weight: 400;\n}",
-    "config": "{}",
-    "variants": []
+    "config": "{}"
   },
   {
     "name": "CancelButton",
@@ -39,8 +37,7 @@ let sample =[
     "events": [],
     "state": "{\"cancelButton\":\"Cancel\"}",
     "style": ".vsButton{\nfont-family: BentonSansBook,Helvetica,Arial,sans-serif;\ncolor: rgb(0, 0, 0);\n}\n\n\n.vsButton button{\nborder-color: #bf215d;\n    color: #fff;\n    background: #ef5f96;\nborder: 1px solid;\npadding: .5rem 2rem;\n}\n\n.vsButton button:hover{\nborder-color: #bf215d;\n}",
-    "config": "{}",
-    "variants": []
+    "config": "{}"
   },
   {
     "name": "SubmitButton",
@@ -48,8 +45,7 @@ let sample =[
     "events": [],
     "state": "{\"submitButton\":\"Submit\"}",
     "style": ".vsButton{\nfont-family: BentonSansBook,Helvetica,Arial,sans-serif;\ncolor: rgb(0, 0, 0);\n}\n\n\n.vsButton button{\nborder-color: #bf215d;\n    color: #fff;\n    background: #ef5f96;\nborder: 1px solid;\npadding: .5rem 2rem;\n}\n\n.vsButton button:hover{\nborder-color: #bf215d;\n}",
-    "config": "{}",
-    "variants": []
+    "config": "{}"
   },
   {
     "name": "PrivacyAndPolicy",
@@ -57,8 +53,7 @@ let sample =[
     "events": [],
     "state": "{\n\t\"content\":\"Please enter the email address you used to create your account and we will send you a link to reset your password. See Privacy Policy\"\n}",
     "style": ".privacyPolicy{\nfont-family: BentonSansBook,Helvetica,Arial,sans-serif;\nfont-size: 11px;\n    line-height: 17px;\n    letter-spacing: .04em;\n    text-transform: inherit;\n    font-weight: 400;\n}",
-    "config": "{}",
-    "variants": []
+    "config": "{}"
   },
   {
     "name": "TermsAndService",
@@ -66,8 +61,7 @@ let sample =[
     "events": [],
     "state": "{\"variant\":\"This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.\"}",
     "style": ".privacyPolicy{\nfont-family: BentonSansBook,Helvetica,Arial,sans-serif;\nfont-size: 11px;\n    line-height: 17px;\n    letter-spacing: .04em;\n    text-transform: inherit;\n    font-weight: 400;\n}",
-    "config": "{}",
-    "variants": []
+    "config": "{}"
   },
   {
     "name": "Form",
@@ -75,8 +69,7 @@ let sample =[
     "events": [],
     "state": "{}",
     "style": ".vsfrm{\nheight:400px;\nwidth:400px;\n}",
-    "config": "{}",
-    "variants": []
+    "config": "{}"
   },
   {
     "name": "EmailInput",
@@ -108,41 +101,7 @@ let sample =[
     ],
     "state": "{\n\t\"email\":\"\",\n    \"variant\":\"initial\",\n    \"placeholder\":\"Email Address\"\n}",
     "style": ".emailInput{\n\tfont-family: BentonSansBook,Helvetica,Arial,sans-serif;\n\tposition:relative;\n}\n\n.emailInput .email{\n\tpadding: 17px;\n\tpadding-top: 25px;\n\tborder: 1px solid #e1e1e1;\n    font-size: 16px;\n    width: 100%;\n}\n\n.emailInput label{\n    font-size: 14px;\n    position:absolute;\n    left: 15px;\n    top: -18px;\n}\n\n.prompt_input.emailInput label{\n\tfont-size: 11px;\n   \tleft: 15px;\n    top: -18px;\n    color: #d91560;\n}\n\n.prompt_input .email{\n    color: #d91560;\n    border-color: #ef5f96;\n}\n\n.prompt_correct_input label{\n    color: #d91560;\n\tfont-size: 11px;\n    top: -28px;\n    left: 9px;\n}\n\n.prompt_correct_input .email{\n   color: #d91560;\n    border-color: #ef5f96;\n}\n\n.focussed.emailInput label{\n\tfont-size: 11px;\n    top: -28px;\n    left: 9px;\n}\n\n.valid_input label{\n\tfont-size: 11px;\n    top: -28px;\n    left: 9px;\n}\n\n.emailInput label {\n\ttransition: top .3s;\n}",
-    "config": "{}",
-    "variants": [
-      {
-        "name": "focussed",
-        "state": {
-          "email": "",
-          "variant": "focussed",
-          "placeholder": "Email Address"
-        }
-      },
-      {
-        "name": "prompt_input",
-        "state": {
-          "email": "",
-          "variant": "prompt_input",
-          "placeholder": "Please enter an Email Address"
-        }
-      },
-      {
-        "name": "prompt_correct_input",
-        "state": {
-          "email": "a",
-          "variant": "prompt_correct_input",
-          "placeholder": "Please correct the Email Address"
-        }
-      },
-      {
-        "name": "valid_input",
-        "state": {
-          "email": "a@",
-          "variant": "valid_input",
-          "placeholder": "Email Address"
-        }
-      }
-    ]
+    "config": "{}"
   },
   {
     "name": "ResetPasswordForm",
@@ -150,8 +109,7 @@ let sample =[
     "events": [],
     "state": "{\"variant\":\"text\"}",
     "style": "form{\nheight:400px;}",
-    "config": "{}",
-    "variants": []
+    "config": "{}"
   },
   {
     "name": "Page",
@@ -176,45 +134,7 @@ let sample =[
     ],
     "state": "{\n\t\"showModal\": false,\n    \"list\": [1,2,3,4,5],\n    \"ResetPasswordModal\": [],\n    \"variant\": \"initial\"\n}",
     "style": ".page{\n\theight: 700px;\n\twidth: 500px;\n}",
-    "config": "{\"VariantModal\":{\"showHideProp\":\"showModal\",\"override\":false},\"ForgotPasswordButton\":{\"showHideProp\":\"\",\"override\":false},\"ForgotPassword\":{\"showHideProp\":\"\",\"override\":false,\"renderListProp\":\"\"},\"ResetPasswordModal\":{\"showHideProp\":\"showModal\",\"override\":true,\"renderListProp\":\"\"}}",
-    "variants": [
-      {
-        "name": "modal_opened",
-        "state": {
-          "showModal": false,
-          "list": [
-            1,
-            2,
-            3,
-            4,
-            5
-          ],
-          "ResetPasswordModal": [
-            {
-              "title": "Forgot Password",
-              "footer": "Copyrigts",
-              "show": "sd"
-            }
-          ],
-          "variant": "modal_opened"
-        }
-      },
-      {
-        "name": "modal_closed",
-        "state": {
-          "showModal": false,
-          "list": [
-            1,
-            2,
-            3,
-            4,
-            5
-          ],
-          "ResetPasswordModal": [],
-          "variant": "modal_closed"
-        }
-      }
-    ]
+    "config": "{\"VariantModal\":{\"showHideProp\":\"showModal\",\"override\":false},\"ForgotPasswordButton\":{\"showHideProp\":\"\",\"override\":false},\"ForgotPassword\":{\"showHideProp\":\"\",\"override\":false,\"renderListProp\":\"\"},\"ResetPasswordModal\":{\"showHideProp\":\"showModal\",\"override\":true,\"renderListProp\":\"\"}}"
   },
   {
     "name": "ResetPasswordModal",
@@ -230,8 +150,7 @@ let sample =[
     ],
     "state": "{\"title\":\"Forgot Password\",\"footer\":\"Copyrigts\"}",
     "style": ".modal{\n  width:400px;\n  font-size:22px;\n  position:relative;\nbackground-color: white;\ncolor: black;\n  font-family: BentonSansLight,Helvetica,Arial,sans-serif;\n  font-weight:400;\n    line-height: 17px;\n    letter-spacing: .04em;\n    text-transform: inherit;\n    font-weight: 400;\n\n}\n\n.modal h3{\n  padding:1rem;\nfont-size:26px;\nfont-weight: 400;\n}\n\n.modal .content{\npadding:1rem;\nfont-weight: 400;\n}\n\n.modal footer{\npadding:1rem;\n  border:1px solid black;\nfont-weight: 400;\n}\n.modal header{\n  border:1px solid black;\nfont-weight: 400;\n}\n\n.modal .closeButton{\n  position: absolute;\n  right: 10px;\n  top: 20px;\n}\n\n.modal .content{\n    border:1px solid black;\nfont-weight: 400;\n}",
-    "config": "{}",
-    "variants": []
+    "config": "{}"
   },
   {
     "name": "Carousal",
@@ -258,25 +177,7 @@ let sample =[
     "style": ".layoutComponent button{\n\tcolor:red;\n    height:100%;\n    width: 40px;\n}\n\n.layoutComponent {\n\twidth:100%;\n    height:220px;\n    position:relative;\n}\n\n.layoutComponent *{\n  \tbox-sizing: border-box;\n}\n\n.layoutComponent .window {\n\twidth: 50%;\n    height:220px;\n    position: relative;\n    margin:auto;\n\toverflow:hidden;\n}\n\n.layoutComponent .content{\n\theight:220px;\n}\n\n.layoutComponent .content > div{\n\tdisplay:inline-block;\n    height:200px;\n    width:220px;\n    background-color:green;\n    margin:7px;\n}\n\n.layoutComponent .left{\n\tposition:absolute;\n    left:0px;\n    top:0px;\n}\n\n.layoutComponent .right{\n\tposition:absolute;\n    right:0px;\n    top:0px;\n}",
     "children": [],
     "id": 314,
-    "config": "{\"ProductComponent\":{\"override\":false}}",
-    "variants": [
-      {
-        "name": "initial layoutComponent",
-        "state": {
-          "variant": "initial layoutComponent",
-          "items": [
-            1,
-            2,
-            3,
-            4,
-            5,
-            6
-          ],
-          "current": 6
-        }
-      }
-    ],
-    "trueName": "Carousal"
+    "config": "{\"ProductComponent\":{\"override\":false}}"
   },
   {
     "name": "Product",
@@ -302,38 +203,7 @@ let sample =[
     "style": ".item.initial {\n\tbackground-color:darkcyan;\n    background-size:contain;\n}\n\n.item.on_hover {\n\tbackground-color:teal;\n    background-size:auto;\n}\n\n.item{\n\twidth:400px;\n    height:400px;\n\ttext-align: center;\n\tvertical-align: middle;\n\tline-height: 200px;\n    margin : 12px;\n}",
     "children": [],
     "id": 949,
-    "config": "{}",
-    "variants": [
-      {
-        "name": "on_hover",
-        "state": {
-          "name": "Buy now",
-          "variant": "on_hover"
-        }
-      },
-      {
-        "name": "items on_hover",
-        "state": {
-          "name": "Buy now",
-          "variant": "items on_hover"
-        }
-      },
-      {
-        "name": "item on_hover",
-        "state": {
-          "name": "Buy now",
-          "variant": "item on_hover"
-        }
-      },
-      {
-        "name": "item initial",
-        "state": {
-          "name": "",
-          "variant": "item initial"
-        }
-      }
-    ],
-    "trueName": "Product"
+    "config": "{}"
   },
   {
     "name": "Carousal_Single",
@@ -360,29 +230,7 @@ let sample =[
     "style": ".Carousal_Single button{\n\tcolor:red;\n    height:220px;\n    width: 40px;\n    display:inline-block;\n}\n\n.Carousal_Single {\n    height:220px;\n}\n\n.Carousal_Single *{\n  \tbox-sizing: border-box;\n}\n\n.Carousal_Single .content{\n\theight:200px;\n    min-width:200px;\n    display:inline-block;\n\ttext-align: center;\n\tvertical-align: middle;\n\tline-height: 200px;\n}\n",
     "children": [],
     "id": 314,
-    "config": "{\"ProductComponent\":{\"override\":false},\"Product\":{\"override\":true}}",
-    "variants": [
-      {
-        "name": "initial layoutComponent",
-        "state": {
-          "variant": "initial layoutComponent",
-          "items": [
-            1,
-            2,
-            3,
-            4,
-            5,
-            6
-          ],
-          "current": 6
-        }
-      },
-      {
-        "name": "initial Carousal_Single",
-        "state": "{\"variant\":\"initial Carousal_Single\",\"items\":[{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['1.jpeg']\"}},{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['2.jpeg']\"}},{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['3.jpeg']\"}},{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['4.jpeg']\"}},{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['5.jpeg']\"}},{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['6.jpeg']\"}}],\"current\":1,\"Product\":[{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['2.jpeg']\"}}]}"
-      }
-    ],
-    "trueName": "Carousal_Single"
+    "config": "{\"ProductComponent\":{\"override\":false},\"Product\":{\"override\":true}}"
   },
   {
     "name": "Carousal_Multi",
@@ -409,29 +257,7 @@ let sample =[
     "style": ".Carousal_Double button{\n\tcolor:red;\n    height:220px;\n    width: 40px;\n    display:inline-block;\n}\n\n.Carousal_Double {\n    height:220px;\n    position: relative;\n}\n\n.Carousal_Double *{\n  \tbox-sizing: border-box;\n}\n\n.Carousal_Double .content{\n\theight:200px;\n    width: 1200px;\n\ttext-align: center;\n\tvertical-align: middle;\n\tline-height: 200px;\n    position: absolute;\n}\n\n.Carousal_Double .content > div{\n\tdisplay: inline-block;\n}\n\n.Carousal_Double #previous {\n\tposition: absolute;\n    left: 0px;\n    top:0px;\n    z-index: 1;\n}\n\n.Carousal_Double #next {\n\tposition: absolute;\n    right: 0px;\n    top:0px;\n}\n\n",
     "children": [],
     "id": 314,
-    "config": "{\"ProductComponent\":{\"override\":false},\"Product\":{\"override\":true}}",
-    "variants": [
-      {
-        "name": "initial layoutComponent",
-        "state": {
-          "variant": "initial layoutComponent",
-          "items": [
-            1,
-            2,
-            3,
-            4,
-            5,
-            6
-          ],
-          "current": 6
-        }
-      },
-      {
-        "name": "initial Carousal_Double",
-        "state": "{\"variant\":\"initial Carousal_Double\",\"items\":[{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['1.jpeg']\"}},{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['2.jpeg']\"}},{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['3.jpeg']\"}},{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['4.jpeg']\"}},{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['5.jpeg']\"}},{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['6.jpeg']\"}}],\"current\":5,\"Product\":[{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['5.jpeg']\"}},{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['6.jpeg']\"}}]}"
-      }
-    ],
-    "trueName": "Carousal_Multi"
+    "config": "{\"ProductComponent\":{\"override\":false},\"Product\":{\"override\":true}}"
   },
   {
     "name": "Carousal_Circleback",
@@ -458,29 +284,7 @@ let sample =[
     "style": ".Carousal_Double button{\n\tcolor:red;\n    height:40px;\n    width: 40px;\n    display:inline-block;\n\tborder-radius: 50%;\n}\n\n.Carousal_Double button:focus{\n    outline: 0;\n}\n\n.Carousal_Double {\n    height:440px;\n    position: relative;\n}\n\n.Carousal_Double *{\n  \tbox-sizing: border-box;\n}\n\n.Carousal_Double .content{\n\theight: 400px;\n    width: 3000px;\n\tvertical-align: middle;\n\tline-height: 200px;\n    position: absolute;\n}\n\n.Carousal_Double .content > div{\n\tdisplay: inline-block;\n}\n\n.Carousal_Double #previous {\n\tposition: absolute;\n    left: 0px;\n    top:200px;\n    z-index: 1;\n}\n\n.Carousal_Double #next {\n\tposition: absolute;\n    right: 0px;\n    top:200px;\n}\n\n",
     "children": [],
     "id": 314,
-    "config": "{\"ProductComponent\":{\"override\":false},\"Product\":{\"override\":true}}",
-    "variants": [
-      {
-        "name": "initial layoutComponent",
-        "state": {
-          "variant": "initial layoutComponent",
-          "items": [
-            1,
-            2,
-            3,
-            4,
-            5,
-            6
-          ],
-          "current": 6
-        }
-      },
-      {
-        "name": "initial Carousal_Double",
-        "state": "{\"variant\":\"initial Carousal_Double\",\"items\":[{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['1.jpeg']\"}},{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['2.jpeg']\"}},{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['3.jpeg']\"}},{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['4.jpeg']\"}},{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['5.jpeg']\"}},{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['6.jpeg']\"}}],\"current\":5,\"Product\":[{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['5.jpeg']\"}},{\"name\":\"Product one\",\"variant\":\"item initial\",\"style\":{\"backgroundImage\":\"$assets['6.jpeg']\"}}]}"
-      }
-    ],
-    "trueName": "Carousal_Circleback"
+    "config": "{\"ProductComponent\":{\"override\":false},\"Product\":{\"override\":true}}"
   }
 ];
 module.exports = {
