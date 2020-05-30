@@ -11,7 +11,38 @@ export function readData(key){
 
     if(key ==="ui-editor"){
         if(!window.components ){
-            window.components = JSON.parse(localStorage.getItem(key)) || [];
+            window.components = JSON.parse(localStorage.getItem(key)) || [
+                {
+                  "name": "Canvas",
+                  "markup": "<div className=\"canvasComponent\" id=\"canvas\">\n</div>",
+                  "events": [],
+                  "state": "{}",
+                  "style": ".canvasComponent{\n\theight:100vh;\n    width:100vw;\n    position: fixed;\n    background-color: lightgrey;\n\ttop: 0px;\n    left: 0px;\n}",
+                  "children": [],
+                  "id": 198,
+                  "config": "{}",
+                  "trueName": "Canvas"
+                },
+                {
+                  "name": "Resizable",
+                  "markup": "<div id=\"resizable\"></div>",
+                  "events": [
+                    {
+                      "name": "onMouseDown",
+                      "reducer": "e.style.cursor = \"grabbing\"",
+                      "publishable": "",
+                      "publishName": "",
+                      "id": "resizable"
+                    }
+                  ],
+                  "state": "{}",
+                  "style": "#resizable {\n\tposition: fixed;\n    top: 200px;\n    left: 200px;\n    border: 1px solid green;\n    height: 100px;\n    width: 100px;\n    cursor: grab;\n}",
+                  "children": [],
+                  "id": 557,
+                  "config": "{}",
+                  "trueName": "Resizable"
+                }
+              ];
         }
             return JSON.parse(JSON.stringify(window.components));
     }
@@ -25,7 +56,7 @@ export function readData(key){
         let folders = JSON.parse(localStorage.getItem(key));
 
         if(folders === null){
-            return [{"type":"noFolder","contents":[]}]
+            return [{"type":"noFolder","contents":["Canvas", "Resizable"]}]
         }
         return folders;
     }

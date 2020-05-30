@@ -161,10 +161,7 @@ class Index extends Component {
                         onFoldersUpdate={this.updateFolders.bind(this)}
                     />
                 </Left>
-                <Center>
-                    <DynamicComponent onSave={this.props.onSave} key={randomKey} component={selectedComponent}/>
-                </Center>
-
+                <DynamicComponent onSave={this.props.onSave} key={randomKey} component={selectedComponent}/>
                 {this.state.selectedComponent  && this.state.openRight ?
                     <Right 
                         selected={this.state.selectedTab}>
