@@ -94,7 +94,7 @@ export function saveElement (element) {
         // Push new component into contents.
     }
     
-    if(element.trueName!==element.name){ // rename the folder
+    if(element.trueName!==element.name && element.trueName!==""){ // rename the folder
         // Find the content from folder
         let parent = findParent( element.trueName, this.state.folders[0] )
         let index = parent.contents.findIndex(content=>content===element.trueName)

@@ -1,3 +1,5 @@
+var sample = require("./Sample");
+
 function pushHistory(components){
 
     window.editorHistory = readData("ui-editor-history");
@@ -11,9 +13,9 @@ export function readData(key){
 
     if(key ==="ui-editor"){
         if(!window.components ){
-            window.components = JSON.parse(localStorage.getItem(key)) || [];
+            window.components = JSON.parse(localStorage.getItem(key)) || sample;
         }
-            return JSON.parse(JSON.stringify(window.components));
+        return JSON.parse(JSON.stringify(window.components));
     }
     if(key==="ui-editor-history"){
         let history = localStorage.getItem(key);
@@ -25,7 +27,7 @@ export function readData(key){
         let folders = JSON.parse(localStorage.getItem(key));
 
         if(folders === null){
-            return [{"type":"noFolder","contents":[]}]
+            return [{"type":"noFolder","contents":["Canvas", "Resizable", "Movable"]}]
         }
         return folders;
     }

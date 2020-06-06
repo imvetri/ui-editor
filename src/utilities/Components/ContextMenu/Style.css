@@ -4,6 +4,7 @@
     box-shadow: 0px 0px 30px black;
     border-radius: 5px;
     padding:0px;
+    z-index: 10000000;
 }
 .contextMenuOptions li {
     padding: 15px;
@@ -13,3 +14,5 @@
 .contextMenuOptions{
     padding-left:0px;
 }
+
+/** Demo for resize https://codepen.io/ZeroX-DG/pen/vjdoYe **/

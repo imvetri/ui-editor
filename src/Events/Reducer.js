@@ -14,7 +14,7 @@
             element.events.push(event);
         } else {
             // 1. Find the event
-            let changedEventIndex = element.events.findIndex(e=>e.id===event.id);
+            let changedEventIndex = element.events.findIndex(e=>e.id===event.id && e.name ===event.name);
             if(changedEventIndex==-1){
                 console.error("Changing event name will not help. Create a new event"); // Feature 
             }
@@ -36,7 +36,7 @@
         let component = JSON.parse(JSON.stringify(this.state.component));
 
         // Remove the event to be deleted.
-        component.events = component.events.splice(index, 1);
+        component.events.splice(index, 1);
 
         // Update elements with new events.
         this.props.onEventsUpdate(component.events);

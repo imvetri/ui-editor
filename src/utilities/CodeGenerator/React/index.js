@@ -79,6 +79,7 @@ class ${component.name} extends Component {
         return `
     ${event.id+event.name} (e) {
         var state = JSON.parse(JSON.stringify(this.state))
+        if(window.__debug){debugger;}
         ${event.reducer}
         this.setState(state);
     }
