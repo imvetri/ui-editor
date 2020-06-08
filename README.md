@@ -38,7 +38,7 @@ npm start
 ```
 
 ## Roadmap
-<p align="center" style="max-width='60%'">
+<p align="center" style="max-width=60%">
   <img src="https://raw.githubusercontent.com/imvetri/ui-editor/master/docs/gifs/long.term.jpg"/>
 </p>
 
