@@ -13,7 +13,7 @@ let sample =[
       },
       {
         "name": "onMouseDown",
-        "reducer": "var div = document.createElement(\"div\");\ndiv.style.position = \"fixed\";\ndiv.style.left = e.clientX + \"px\";\ndiv.style.top = e.clientY + \"px\";\ndiv.style.border = \"1px solid green\";\ndiv.id = Math.random();\n\n\nvar canvas = document.getElementById(\"canvas\");\ncanvas.appendChild(div);\n\nstate.divId = div.id;\nstate.divs.push(state.divId);\nstate.origin = true;",
+        "reducer": "var div = document.createElement(\"div\");\ndiv.style.position = \"fixed\";\ndiv.style.left = e.clientX + \"px\";\ndiv.style.top = e.clientY + \"px\";\ndiv.style.border = \"1px solid green\";\ndiv.id = Math.random();\n\nvar parent = e.target;\nparent.appendChild(div);\n\nstate.divId = div.id;\nstate.divs.push(state.divId);\nstate.origin = true;",
         "index": 1,
         "publishable": "",
         "publishName": "",
