@@ -27,7 +27,7 @@ export function readData(key){
         let folders = JSON.parse(localStorage.getItem(key));
 
         if(folders === null){
-            return [{"type":"noFolder","contents":["Canvas", "Resizable", "Movable"]}]
+            return [{"type":"noFolder","contents":["Canvas", "Resizable", "Movable", "SaveButton", "Editor", "ContextMenuOptions"]}]
         }
         return folders;
     }
