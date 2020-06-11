@@ -1,4 +1,4 @@
-let sample =[
+let sample = [
   {
     "name": "Canvas",
     "markup": "<div className=\"canvasComponent\" style={state.style} id=\"canvas\">\n</div>",
@@ -36,7 +36,7 @@ let sample =[
       }
     ],
     "state": "{\n\t\"style\":{\n    \t\"cursor\" : \"pointer\"\n     },\n     \"divs\" : []\n}",
-    "style": ".canvasComponent{\n\theight:100vh;\n    width:100vw;\n    position: fixed;\n    background-color: black;\n\ttop: 0px;\n    left: 0px;\n}",
+    "style": ".canvasComponent{\n\theight:100vh;\n    width:100vw;\n    position: fixed;\n    background-color: black;\n\ttop: 0px;\n    left: 0px;\n}\n",
     "children": [],
     "id": 198,
     "config": "{}",
@@ -235,6 +235,57 @@ let sample =[
     "id": 557,
     "config": "{}",
     "trueName": "Movable"
+  },
+  {
+    "name": "SaveButton",
+    "markup": "<button id=\"saveItems\">Save</button>",
+    "events": [],
+    "state": "{}",
+    "style": "#saveItems{\n\tposition: absolute;\n    top: 300px;\n    left:300px;\n}",
+    "children": [],
+    "id": 620,
+    "config": "{}",
+    "trueName": "SaveButton"
+  },
+  {
+    "name": "Editor",
+    "markup": "<div id=\"editor\">\n\t<Canvas></Canvas>\n    <SaveButton></SaveButton>\n    <ContextMenuOptions></ContextMenuOptions>\n</div>",
+    "events": [
+      {
+        "name": "onContextMenu",
+        "reducer": "state.ContextMenuOptions[0].style.top = e.clientY +\"px\";\nstate.ContextMenuOptions[0].style.left = e.clientX +\"px\";\ndebugger;",
+        "index": 0,
+        "publishable": "",
+        "publishName": "",
+        "id": "editor"
+      }
+    ],
+    "state": "{\"ContextMenuOptions\":[\n{\n    \t\"style\": {\n        \t\"top\": \"200px\",\n            \"left\": \"200px\"\n         },\n         \"children\": [\n         \t\"First\",\n            \"Second\"\n         ]\n    }\n\n]}",
+    "style": "",
+    "children": [],
+    "id": 707,
+    "config": "{\"ContextMenuOptions\":{\"override\":true}}",
+    "trueName": "Editor"
+  },
+  {
+    "name": "ContextMenuOptions",
+    "markup": "<div id=\"contextmenu\" style={state.style}>\n    <ul>\n    {state.children.map(child=><li>{child}</li>)}\n    </ul>\n</div>",
+    "events": [
+      {
+        "name": "onClick",
+        "reducer": "let selectedOption = e.target.innerText;\n",
+        "index": 0,
+        "publishable": true,
+        "publishName": "onSelection",
+        "id": "contextmenu"
+      }
+    ],
+    "state": "{\n\t\"style\":{\n    \t\"top\": \"200px\",\n        \"left\": \"400px\"\n    },\n    \"children\":[\n    \t\"First\",\n        \"Second\"\n    ]\n}",
+    "style": "#contextmenu{\n    position: fixed;\n    background-color: rgb(64, 64, 64);\n    box-shadow: 0px 0px 30px black;\n    border-radius: 5px;\n    padding:0px;\n    z-index: 10000000;\n}\n#contextmenu li {\n    padding: 15px;\n    user-select: none;\n}\n\n#contextmenu ul{\n    padding-left:0px;\n}",
+    "children": [],
+    "id": 374,
+    "config": "{}",
+    "trueName": "ContextMenuOptions"
   }
 ];
 module.exports = sample
