@@ -49,7 +49,7 @@ class Nodes extends Component {
                             name="selectedElement" 
                             onChange={this.props.onSelectedTagChanged} 
                             value={(node.type.name || node.type)+id}/>
-                        {(node.type.name || node.type)}
+                        {(node.type.name || node.type)+id}
                     </label>
                     <Nodes key={index} node={child} onSelectedTagChanged={this.props.onSelectedTagChanged}/>
                 </ul>
