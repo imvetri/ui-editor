@@ -249,22 +249,30 @@ let sample = [
   },
   {
     "name": "Editor",
-    "markup": "<div id=\"editor\">\n\t<Canvas></Canvas>\n    <div className=\"middle\">\n    \t{state.items.map(item=><li>{item}</li>)}\n    </div>\n</div>",
+    "markup": "<div id=\"editor\">\n\t<Canvas></Canvas>\n    <div className=\"middle\">\n    \t<Item></Item>\n    </div>\n    <ContextMenuOptions></ContextMenuOptions>\n</div>",
     "events": [
       {
         "name": "onContextMenu",
-        "reducer": "state.items.push(\"fourth\");\ndebugger;",
+        "reducer": "state.ContextMenuOptions.push({\"style\":{\"top\":e.clientY+\"px\",\"left\":e.clientX+\"px\"},\"children\":[\"First\",\"Second\"]})\ne.stopPropagation();\ne.preventDefault();",
         "index": 0,
         "publishable": "",
         "publishName": "",
         "id": "editor"
+      },
+      {
+        "name": "onSelection",
+        "reducer": "state.Item.push({name:e.state.selectedOption})\nstate.ContextMenuOptions = [];\n",
+        "index": 0,
+        "publishable": "",
+        "publishName": "",
+        "id": "ContextMenuOptions"
       }
     ],
-    "state": "{\"ContextMenuOptions\":[\n{\n    \t\"style\": {\n        \t\"top\": \"200px\",\n            \"left\": \"200px\"\n         },\n         \"children\": [\n         \t\"First\",\n            \"Second\"\n         ]\n    }\n\n],\n\"items\": [\"first\",\"second\",\"third\"]}",
+    "state": "{\"ContextMenuOptions\":[],\"Item\":[{\"name\":\"first\"},{\"name\":\"second\"},{\"name\":\"third\"}]}",
     "style": ".middle{\n\tposition:fixed;\n    left: 50vw;\n    top: 50vh;\n}",
     "children": [],
     "id": 707,
-    "config": "{\"ContextMenuOptions\":{\"override\":true}}",
+    "config": "{\"ContextMenuOptions\":{\"override\":true},\"Item\":{\"override\":true}}",
     "trueName": "Editor"
   },
   {
@@ -273,19 +281,29 @@ let sample = [
     "events": [
       {
         "name": "onClick",
-        "reducer": "let selectedOption = e.target.innerText;\n",
+        "reducer": "state.selectedOption =  e.target.innerText;\n",
         "index": 0,
         "publishable": true,
         "publishName": "onSelection",
         "id": "contextmenu"
       }
     ],
-    "state": "{\n\t\"style\":{\n    \t\"top\": \"200px\",\n        \"left\": \"400px\"\n    },\n    \"children\":[\n    \t\"First\",\n        \"Second\"\n    ]\n}",
+    "state": "{\n\t\"style\": {\n        \"top\" : \"200px\",\n        \"left\" : \"400px\"\n    },\n    \"children\":[\n    \t\"First\",\n        \"Second\"\n    ]\n}",
     "style": "#contextmenu{\n    position: fixed;\n    background-color: rgb(64, 64, 64);\n    box-shadow: 0px 0px 30px black;\n    border-radius: 5px;\n    padding:0px;\n    z-index: 10000000;\n}\n#contextmenu li {\n    padding: 15px;\n    user-select: none;\n}\n\n#contextmenu ul{\n    padding-left:0px;\n}",
     "children": [],
     "id": 374,
     "config": "{}",
     "trueName": "ContextMenuOptions"
+  },
+  {
+    "name": "Item",
+    "markup": "<li>{state.name}</li>",
+    "events": [],
+    "state": "{\n\t\"name\":\"first\"\n}",
+    "style": "",
+    "children": [],
+    "id": 196,
+    "config": "{}"
   }
 ];
 module.exports = sample
