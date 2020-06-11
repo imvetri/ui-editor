@@ -249,19 +249,19 @@ let sample = [
   },
   {
     "name": "Editor",
-    "markup": "<div id=\"editor\">\n\t<Canvas></Canvas>\n    <SaveButton></SaveButton>\n    <ContextMenuOptions></ContextMenuOptions>\n</div>",
+    "markup": "<div id=\"editor\">\n\t<Canvas></Canvas>\n    <div className=\"middle\">\n    \t{state.items.map(item=><li>{item}</li>)}\n    </div>\n</div>",
     "events": [
       {
         "name": "onContextMenu",
-        "reducer": "state.ContextMenuOptions[0].style.top = e.clientY +\"px\";\nstate.ContextMenuOptions[0].style.left = e.clientX +\"px\";\ndebugger;",
+        "reducer": "state.items.push(\"fourth\");\ndebugger;",
         "index": 0,
         "publishable": "",
         "publishName": "",
         "id": "editor"
       }
     ],
-    "state": "{\"ContextMenuOptions\":[\n{\n    \t\"style\": {\n        \t\"top\": \"200px\",\n            \"left\": \"200px\"\n         },\n         \"children\": [\n         \t\"First\",\n            \"Second\"\n         ]\n    }\n\n]}",
-    "style": "",
+    "state": "{\"ContextMenuOptions\":[\n{\n    \t\"style\": {\n        \t\"top\": \"200px\",\n            \"left\": \"200px\"\n         },\n         \"children\": [\n         \t\"First\",\n            \"Second\"\n         ]\n    }\n\n],\n\"items\": [\"first\",\"second\",\"third\"]}",
+    "style": ".middle{\n\tposition:fixed;\n    left: 50vw;\n    top: 50vh;\n}",
     "children": [],
     "id": 707,
     "config": "{\"ContextMenuOptions\":{\"override\":true}}",
