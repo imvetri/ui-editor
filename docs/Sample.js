@@ -1,11 +1,11 @@
 window.sampleComponents = [
   {
     "name": "Canvas",
-    "markup": "<div className=\"canvasComponent\" style={state.style} id=\"canvas\">\n</div>",
+    "markup": "<div className=\"canvasComponent\" style={state.style} id=\"canvas\" dangerouslySetInnerHTML={{ __html: `${state.innerHTML}` }}>\n</div>",
     "events": [
       {
         "name": "onMouseOver",
-        "reducer": "state.style.cursor = \"crosshair\";\n",
+        "reducer": "if(state.mode===\"Draw\"){\n\tstate.style.cursor = \"crosshair\";\n}\n",
         "index": 0,
         "publishable": "",
         "publishName": "",
@@ -13,7 +13,7 @@ window.sampleComponents = [
       },
       {
         "name": "onMouseDown",
-        "reducer": "if(e.button===0){\n\nvar div = document.createElement(\"div\");\ndiv.style.position = \"fixed\";\ndiv.style.left = e.clientX + \"px\";\ndiv.style.top = e.clientY + \"px\";\ndiv.style.border = \"1px solid green\";\ndiv.id = Math.random();\n\nvar parent = e.target;\nparent.appendChild(div);\n\nstate.divId = div.id;\nstate.divs.push(state.divId);\nstate.origin = true;\n}\n",
+        "reducer": "function create(type){\n\t  var item = document.createElement(type);\n      item.style.position = \"fixed\";\n      item.style.left = e.clientX + \"px\";\n      item.style.top = e.clientY + \"px\";\n      item.style.border = \"1px solid green\";\n      item.id = Math.random();\n      return item;\n}\n\nif(e.button===0){\n  if(state.mode===\"Draw\"){\n\t\n      var div = create(\"div\");\n      var parent = e.target;\n      parent.appendChild(div);\n\n      state.divId = div.id;\n      state.divs.push(state.divId);\n      state.origin = true;\n  }\n}",
         "index": 1,
         "publishable": "",
         "publishName": "",
@@ -21,7 +21,7 @@ window.sampleComponents = [
       },
       {
         "name": "onMouseMove",
-        "reducer": "if(state.origin){\n\tvar div= document.getElementById(state.divId);\n    var rect = div.getBoundingClientRect();\n    div.style.width = e.clientX - rect.left;\n    div.style.height = e.clientY - rect.top;\n}\n",
+        "reducer": "if(state.mode===\"Draw\"){\n  if(state.origin){\n      var div= document.getElementById(state.divId);\n      var rect = div.getBoundingClientRect();\n      div.style.width = e.clientX - rect.left;\n      div.style.height = e.clientY - rect.top;\n  }\n}",
         "index": 2,
         "publishable": "",
         "publishName": "",
@@ -29,10 +29,10 @@ window.sampleComponents = [
       },
       {
         "name": "onMouseUp",
-        "reducer": "if(e.button===0){\nstate.origin = false;\n}\n",
+        "reducer": "if(state.mode===\"Draw\"){\n\tif(e.button===0){\n\t\tstate.origin = false;\n\t}\n\n}",
         "index": 3,
-        "publishable": "",
-        "publishName": "",
+        "publishable": true,
+        "publishName": "onEditFinish",
         "id": "canvas"
       },
       {
@@ -44,7 +44,7 @@ window.sampleComponents = [
         "id": "canvas"
       }
     ],
-    "state": "{\n\t\"style\":{\n    \t\"cursor\" : \"pointer\"\n     },\n     \"divs\" : []\n}",
+    "state": "{\n\t\"style\":{\n    \t\"cursor\" : \"pointer\"\n     },\n     \"divs\" : [],\n     \"mode\" : \"Draw\"\n}",
     "style": ".canvasComponent{\n\theight:100vh;\n    width:100vw;\n    position: fixed;\n    background-color: black;\n\ttop: 0px;\n    left: 0px;\n}\n",
     "children": [],
     "id": 198,
@@ -251,7 +251,7 @@ window.sampleComponents = [
     "events": [
       {
         "name": "onShowContextMenu",
-        "reducer": "if (state.CanvasControlsVariant === \"New\") {\n    state.CanvasControls.push({\n        \"undo\": \"undo disabled\",\n        \"redo\": \"redo disabled\",\n        \"draw\": \"draw enabled\",\n        \"text\": \"text disabled\",\n        \"image\": \"image disabled\",\n        \"group\": \"group disabled\",\n        \"ungroup\": \"ungroup disabled\",\n        \"duplicate\": \"duplicate disabled\",\n        \"delete\": \"delete disabled\",\n        \"select\": \"select disabled\",\n        \"deselect\": \"deselect disabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    })\n}\nif (state.CanvasControlsVariant === \"Created\") {\n    state.CanvasControls.push({\n        \"undo\": \"undo enabled\",\n        \"redo\": \"redo disabled\",\n        \"draw\": \"draw enabled\",\n        \"text\": \"text enabled\",\n        \"image\": \"image enabled\",\n        \"group\": \"group disabled\",\n        \"ungroup\": \"ungroup disabled\",\n        \"duplicate\": \"duplicate disabled\",\n        \"delete\": \"delete disabled\",\n        \"select\": \"select enabled\",\n        \"deselect\": \"deselect disabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    })\n}\nif (state.CanvasControlsVariant === \"SingleSelection\") {\n    state.CanvasControls.push({\n        \"undo\": \"undo enabled\",\n        \"redo\": \"redo enabled\",\n        \"draw\": \"draw enabled\",\n        \"text\": \"text disabled\",\n        \"image\": \"image disabled\",\n        \"group\": \"group disabled\",\n        \"ungroup\": \"ungroup disabled\",\n        \"duplicate\": \"duplicate enabled\",\n        \"delete\": \"delete enabled\",\n        \"select\": \"select disabled\",\n        \"deselect\": \"deselect enabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    })\n}\n\nif (state.CanvasControlsVariant === \"MultiGroup\") {\n    state.CanvasControls.push({\n        \"undo\": \"undo enabled\",\n        \"redo\": \"redo enabled\",\n        \"draw\": \"draw enabled\",\n        \"text\": \"text disabled\",\n        \"image\": \"image disabled\",\n        \"group\": \"group enabled\",\n        \"ungroup\": \"ungroup disabled\",\n        \"duplicate\": \"duplicate enabled\",\n        \"delete\": \"delete enabled\",\n        \"select\": \"select disabled\",\n        \"deselect\": \"deselect enabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    })\n}\n\nif (state.CanvasControlsVariant === \"MultiUngroup\") {\n    state.CanvasControls.push({\n        \"undo\": \"undo enabled\",\n        \"redo\": \"redo enabled\",\n        \"draw\": \"draw enabled\",\n        \"text\": \"text disabled\",\n        \"image\": \"image disabled\",\n        \"group\": \"group disabled\",\n        \"ungroup\": \"ungroup enabled\",\n        \"duplicate\": \"duplicate enabled\",\n        \"delete\": \"delete enabled\",\n        \"select\": \"select disabled\",\n        \"deselect\": \"deselect enabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    })\n}",
+        "reducer": "if (state.CanvasControlsVariant === \"New\") {\n    state.CanvasControls.push({\n        \"undo\": \"undo disabled\",\n        \"redo\": \"redo disabled\",\n        \"draw\": \"draw enabled\",\n        \"text\": \"text disabled\",\n        \"image\": \"image disabled\",\n        \"group\": \"group disabled\",\n        \"ungroup\": \"ungroup disabled\",\n        \"duplicate\": \"duplicate disabled\",\n        \"delete\": \"delete disabled\",\n        \"select\": \"select disabled\",\n        \"deselect\": \"deselect disabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    })\n}\nif (state.CanvasControlsVariant === \"Created\") {\n    state.CanvasControls.push({\n        \"undo\": \"undo enabled\",\n        \"redo\": \"redo disabled\",\n        \"draw\": \"draw enabled\",\n        \"text\": \"text enabled\",\n        \"image\": \"image enabled\",\n        \"group\": \"group disabled\",\n        \"ungroup\": \"ungroup disabled\",\n        \"duplicate\": \"duplicate disabled\",\n        \"delete\": \"delete disabled\",\n        \"select\": \"select enabled\",\n        \"deselect\": \"deselect disabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    })\n}\nif (state.CanvasControlsVariant === \"SingleSelection\") {\n    state.CanvasControls.push({\n        \"undo\": \"undo enabled\",\n        \"redo\": \"redo enabled\",\n        \"draw\": \"draw enabled\",\n        \"text\": \"text disabled\",\n        \"image\": \"image disabled\",\n        \"group\": \"group disabled\",\n        \"ungroup\": \"ungroup disabled\",\n        \"duplicate\": \"duplicate enabled\",\n        \"delete\": \"delete enabled\",\n        \"select\": \"select disabled\",\n        \"deselect\": \"deselect enabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    })\n}\n\nif (state.CanvasControlsVariant === \"MultiGroup\") {\n    state.CanvasControls.push({\n        \"undo\": \"undo enabled\",\n        \"redo\": \"redo enabled\",\n        \"draw\": \"draw enabled\",\n        \"text\": \"text disabled\",\n        \"image\": \"image disabled\",\n        \"group\": \"group enabled\",\n        \"ungroup\": \"ungroup disabled\",\n        \"duplicate\": \"duplicate enabled\",\n        \"delete\": \"delete enabled\",\n        \"select\": \"select disabled\",\n        \"deselect\": \"deselect enabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    })\n}\n\nif (state.CanvasControlsVariant === \"MultiUngroup\") {\n    state.CanvasControls.push({\n        \"undo\": \"undo enabled\",\n        \"redo\": \"redo enabled\",\n        \"draw\": \"draw enabled\",\n        \"text\": \"text disabled\",\n        \"image\": \"image disabled\",\n        \"group\": \"group disabled\",\n        \"ungroup\": \"ungroup enabled\",\n        \"duplicate\": \"duplicate enabled\",\n        \"delete\": \"delete enabled\",\n        \"select\": \"select disabled\",\n        \"deselect\": \"deselect enabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    })\n}\n\nstate.Canvas[0].innerHTML = e.currentTarget.innerHTML;\n\ndebugger;",
         "index": 0,
         "publishable": "",
         "publishName": "",
@@ -259,18 +259,18 @@ window.sampleComponents = [
       },
       {
         "name": "onItemSelected",
-        "reducer": "if(\"Draw\" === e.state.item){\n\tstate.CanvasControlsVariant = \"Created\";\n}\n\nif(\"Select\" === e.state.item){\n\tstate.CanvasControlsVariant = \"MultiGroup\";\n}\n\nif(\"Deselect\" === e.state.item){\n\tstate.CanvasControlsVariant = \"Created\";\n}\n\nif(\"Group\" === e.state.item){\n\tstate.CanvasControlsVariant = \"MultiUngroup\";\n}\n\nif(\"Ungroup\" === e.state.item){\n\tstate.CanvasControlsVariant = \"MultiGroup\";\n}\nstate.CanvasControls=[];\n",
+        "reducer": "if(\"Draw\" === e.state.item){\n\tstate.CanvasControlsVariant = \"Created\";\n    state.Canvas[0].mode = \"Draw\";\n}\n\nif(\"Select\" === e.state.item){\n\tstate.CanvasControlsVariant = \"MultiGroup\";\n}\n\nif(\"Deselect\" === e.state.item){\n\tstate.CanvasControlsVariant = \"Created\";\n}\n\nif(\"Group\" === e.state.item){\n\tstate.CanvasControlsVariant = \"MultiUngroup\";\n}\n\nif(\"Ungroup\" === e.state.item){\n\tstate.CanvasControlsVariant = \"MultiGroup\";\n}\nstate.CanvasControls=[];\n",
         "index": 0,
         "publishable": "",
         "publishName": "",
         "id": "CanvasControls"
       }
     ],
-    "state": "{\"CanvasControlsVariant\":\"New\",\"CanvasControls\":[]}",
+    "state": "{\"CanvasControlsVariant\":\"New\",\"CanvasControls\":[],\"Canvas\":[{\"style\":{\"cursor\":\"pointer\"},\"divs\":[],\"mode\":\"\"}]}",
     "style": "",
     "children": [],
     "id": 707,
-    "config": "{\"CanvasControls\":{\"override\":true}}",
+    "config": "{\"CanvasControls\":{\"override\":true},\"Canvas\":{\"override\":true}}",
     "trueName": "Editor"
   },
   {
