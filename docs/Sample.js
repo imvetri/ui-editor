@@ -1,4 +1,4 @@
-let sample = [
+window.sampleComponents = [
   {
     "name": "Canvas",
     "markup": "<div className=\"canvasComponent\" style={state.style} id=\"canvas\">\n</div>",
@@ -259,7 +259,7 @@ let sample = [
       },
       {
         "name": "onItemSelected",
-        "reducer": "debugger;\nif(\"Draw\" === e.state.item){\n\tstate.CanvasControlsVariant = \"Created\";\n}\n\nif(\"Select\" === e.state.item){\n\tstate.CanvasControlsVariant = \"MultiGroup\";\n}\n\nif(\"Deselect\" === e.state.item){\n\tstate.CanvasControlsVariant = \"Created\";\n}\n\nif(\"Group\" === e.state.item){\n\tstate.CanvasControlsVariant = \"MultiUngroup\";\n}\n\nif(\"Ungroup\" === e.state.item){\n\tstate.CanvasControlsVariant = \"MultiGroup\";\n}\nstate.CanvasControls=[];\n",
+        "reducer": "if(\"Draw\" === e.state.item){\n\tstate.CanvasControlsVariant = \"Created\";\n}\n\nif(\"Select\" === e.state.item){\n\tstate.CanvasControlsVariant = \"MultiGroup\";\n}\n\nif(\"Deselect\" === e.state.item){\n\tstate.CanvasControlsVariant = \"Created\";\n}\n\nif(\"Group\" === e.state.item){\n\tstate.CanvasControlsVariant = \"MultiUngroup\";\n}\n\nif(\"Ungroup\" === e.state.item){\n\tstate.CanvasControlsVariant = \"MultiGroup\";\n}\nstate.CanvasControls=[];\n",
         "index": 0,
         "publishable": "",
         "publishName": "",
@@ -294,4 +294,11 @@ let sample = [
     "trueName": "CanvasControls"
   }
 ];
-module.exports = sample
+
+window.sampleFolders = [
+  {
+      "type":"noFolder",
+      "name":"noFolder",
+      "contents":["Canvas", "Resizable", "Movable", "Editor", "CanvasControls"]
+  }
+]
