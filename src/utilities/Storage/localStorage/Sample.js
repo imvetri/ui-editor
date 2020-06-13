@@ -5,7 +5,7 @@ let sample = [
     "events": [
       {
         "name": "onMouseOver",
-        "reducer": "state.style.cursor = \"crosshair\";",
+        "reducer": "state.style.cursor = \"crosshair\";\n",
         "index": 0,
         "publishable": "",
         "publishName": "",
@@ -13,7 +13,7 @@ let sample = [
       },
       {
         "name": "onMouseDown",
-        "reducer": "var div = document.createElement(\"div\");\ndiv.style.position = \"fixed\";\ndiv.style.left = e.clientX + \"px\";\ndiv.style.top = e.clientY + \"px\";\ndiv.style.border = \"1px solid green\";\ndiv.id = Math.random();\n\nvar parent = e.target;\nparent.appendChild(div);\n\nstate.divId = div.id;\nstate.divs.push(state.divId);\nstate.origin = true;",
+        "reducer": "if(e.button===0){\n\nvar div = document.createElement(\"div\");\ndiv.style.position = \"fixed\";\ndiv.style.left = e.clientX + \"px\";\ndiv.style.top = e.clientY + \"px\";\ndiv.style.border = \"1px solid green\";\ndiv.id = Math.random();\n\nvar parent = e.target;\nparent.appendChild(div);\n\nstate.divId = div.id;\nstate.divs.push(state.divId);\nstate.origin = true;\n}\n",
         "index": 1,
         "publishable": "",
         "publishName": "",
@@ -21,7 +21,7 @@ let sample = [
       },
       {
         "name": "onMouseMove",
-        "reducer": "if(state.origin){\n\tvar div= document.getElementById(state.divId);\n    var rect = div.getBoundingClientRect();\n    div.style.width = e.clientX - rect.left;\n    div.style.height = e.clientY - rect.top;\n}",
+        "reducer": "if(state.origin){\n\tvar div= document.getElementById(state.divId);\n    var rect = div.getBoundingClientRect();\n    div.style.width = e.clientX - rect.left;\n    div.style.height = e.clientY - rect.top;\n}\n",
         "index": 2,
         "publishable": "",
         "publishName": "",
@@ -29,9 +29,18 @@ let sample = [
       },
       {
         "name": "onMouseUp",
-        "reducer": "state.origin = false;",
+        "reducer": "if(e.button===0){\nstate.origin = false;\n}\n",
+        "index": 3,
         "publishable": "",
         "publishName": "",
+        "id": "canvas"
+      },
+      {
+        "name": "onContextMenu",
+        "reducer": "e.stopPropagation();\ne.preventDefault();\n",
+        "index": 4,
+        "publishable": true,
+        "publishName": "onContextMenu",
         "id": "canvas"
       }
     ],
@@ -237,23 +246,12 @@ let sample = [
     "trueName": "Movable"
   },
   {
-    "name": "SaveButton",
-    "markup": "<button id=\"saveItems\">Save</button>",
-    "events": [],
-    "state": "{}",
-    "style": "#saveItems{\n\tposition: absolute;\n    top: 300px;\n    left:300px;\n}",
-    "children": [],
-    "id": 620,
-    "config": "{}",
-    "trueName": "SaveButton"
-  },
-  {
     "name": "Editor",
-    "markup": "<div id=\"editor\">\n\t<Canvas></Canvas>\n    <div className=\"middle\">\n    \t<Item></Item>\n    </div>\n    <ContextMenuOptions></ContextMenuOptions>\n</div>",
+    "markup": "<div id=\"editor\">\n\t<Canvas></Canvas>\n    <ContextMenuOptions></ContextMenuOptions>\n</div>",
     "events": [
       {
         "name": "onContextMenu",
-        "reducer": "state.ContextMenuOptions.push({\"style\":{\"top\":e.clientY+\"px\",\"left\":e.clientX+\"px\"},\"children\":[\"First\",\"Second\"]})\ne.stopPropagation();\ne.preventDefault();",
+        "reducer": "state.ContextMenuOptions.push({\n\t\"style\":{\n    \t\"top\":e.clientY+\"px\",\n        \"left\":e.clientX+\"px\"\n     },\n     \"children\":[\n     \t\"Select\",\n        \"Draw\"\n     ]\n})\ne.stopPropagation();\ne.preventDefault();",
         "index": 0,
         "publishable": "",
         "publishName": "",
@@ -261,18 +259,25 @@ let sample = [
       },
       {
         "name": "onSelection",
-        "reducer": "state.Item.push({name:e.state.selectedOption})\nstate.ContextMenuOptions = [];\n",
+        "reducer": "state.ContextMenuOptions = [];\n",
         "index": 0,
         "publishable": "",
         "publishName": "",
         "id": "ContextMenuOptions"
+      },
+      {
+        "name": "onContextMenu",
+        "reducer": "state.ContextMenuOptions.push({\n\t\"style\": {\n        \"top\" : e.clientY+ \"px\",\n        \"left\" : e.clientX+ \"px\"\n    },\n    \"children\":[\n    \t\"First\",\n        \"Second\"\n    ]\n})",
+        "publishable": "",
+        "publishName": "",
+        "id": "Canvas"
       }
     ],
-    "state": "{\"ContextMenuOptions\":[],\"Item\":[{\"name\":\"first\"},{\"name\":\"second\"},{\"name\":\"third\"}]}",
-    "style": ".middle{\n\tposition:fixed;\n    left: 50vw;\n    top: 50vh;\n}",
+    "state": "{\"ContextMenuOptions\":[]}",
+    "style": "",
     "children": [],
     "id": 707,
-    "config": "{\"ContextMenuOptions\":{\"override\":true},\"Item\":{\"override\":true}}",
+    "config": "{\"ContextMenuOptions\":{\"override\":true},\"Item\":{\"override\":false}}",
     "trueName": "Editor"
   },
   {
@@ -296,14 +301,15 @@ let sample = [
     "trueName": "ContextMenuOptions"
   },
   {
-    "name": "Item",
-    "markup": "<li>{state.name}</li>",
+    "name": "CanvasControls",
+    "markup": "<div id=\"menu\">\n    <div id=\"history-control\">\n        <div className=\"undo\">\n            <i className=\"fa fa-undo\"></i>\n            <span>Undo</span>\n\t\t</div>\n        <div className=\"redo\">\n\t\t\t<i className=\"fa fa-redo\"></i>\n        \t<span>Redo</span>\n\t\t</div>\n    </div>\n    <div id=\"content-control\">\n        <div className=\"draw\">\n            <i className=\"fa fa-edit\"></i>\n        \t<span>Draw</span>\n        </div>\n        <div className=\"text\">\n            <i className=\"fa fa-font\"></i>\n        \t<span>Text</span>\n        </div>\n        <div className=\"image\">\n            <i className=\"fas fa-image\"></i>\n        \t<span>Image</span>\n        </div>\n    </div>\n    <div id=\"edit-control\">\n        <div className=\"group\">\n            <i className=\"fa fa-object-group\"></i>\n        \t<span>Group</span>\n        </div>\n        <div className=\"ungroup\">\n            <i className=\"fa fa-object-ungroup\"></i>\n        \t<span>Ungroup</span>\n        </div>\n        <div className=\"duplicate\">\n            <i className=\"fa fa-clone\"></i>\n        \t<span>Duplicate</span>\n        </div>\n        <div className=\"delete\">\n            <i className=\"fa fa-trash\"></i>\n        \t<span>Delete</span>\n        </div>\n    </div>\n    <div id=\"selection-control\">\n        <div className=\"select\">\n        \t<i className=\"fa fa-mouse-pointer\"></i>\n        \t<span>Select</span>\n        </div>\n        <div className=\"deselect\">\n            <i className=\"fa fa-mouse-pointer\"></i>\n        \t<span>Deselect</span>\n        </div>\n    </div>\n</div>",
     "events": [],
-    "state": "{\n\t\"name\":\"first\"\n}",
-    "style": "",
+    "state": "{}",
+    "style": "#menu{\n    position: fixed;\n    top:100px;\n    left:200px;\n    font-size:10px;\n    user-select: none;\n}\n#menu i {\n    padding: 10px;\n}\n\n#menu i:hover{\n\tpadding: 12px;\n}\n\n#history-control {\n    position: absolute;\n    top: 100px;\n    border: 1px solid green;\n    width: 111px;\n    height: 62px;\n}\n\n#history-control .undo {\n    width: 103px;\n    height: 29px;\n}\n\n#history-control .redo {\n    width: 103px;\n    height: 29px;\n}\n\n#content-control {\n    position: absolute;\n    top: 169px;\n    border: 1px solid green;\n    width: 111px;\n    height: 90px;\n}\n\n#content-control .draw {\n    width: 103px;\n    height: 29px;   \n}\n\n#content-control .text {\n    width: 103px;\n    height: 29px; \n}\n\n#content-control .image {\n    width: 103px;\n    height: 29px; \n}\n\n#edit-control {\n    position: absolute;\n    top: 266px;\n    border: 1px solid green;\n    width: 111px;\n    height: 118px;\n}\n\n#edit-control .group {\n    width: 103px;\n    height: 29px;\n}\n\n#edit-control .ungroup {\n    width: 103px;\n    height: 29px;\n}\n\n#edit-control .duplicate {\n    width: 103px;\n    height: 29px;\n}\n\n#edit-control .delete {\n    width: 103px;\n    height: 29px;\n}\n\n#selection-control {\n    position: absolute;\n    top: 390px;\n    border: 1px solid green;\n    width: 111px;\n    height: 60px;\n}\n\n#selection-control .select{\n    width: 103px;\n    height: 29px;\n}\n\n#selection-control .deselect{\n    width: 103px;\n    height: 29px;\n}",
     "children": [],
-    "id": 196,
-    "config": "{}"
+    "id": 550,
+    "config": "{}",
+    "trueName": "CanvasControls"
   }
 ];
 module.exports = sample
