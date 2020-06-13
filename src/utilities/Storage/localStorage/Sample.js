@@ -40,7 +40,7 @@ let sample = [
         "reducer": "e.stopPropagation();\ne.preventDefault();\n",
         "index": 4,
         "publishable": true,
-        "publishName": "onContextMenu",
+        "publishName": "onShowContextMenu",
         "id": "canvas"
       }
     ],
@@ -247,65 +247,47 @@ let sample = [
   },
   {
     "name": "Editor",
-    "markup": "<div id=\"editor\">\n\t<Canvas></Canvas>\n    <ContextMenuOptions></ContextMenuOptions>\n</div>",
+    "markup": "<div id=\"editor\">\n\t<Canvas></Canvas>\n    <CanvasControls></CanvasControls>\n</div>",
     "events": [
       {
-        "name": "onContextMenu",
-        "reducer": "state.ContextMenuOptions.push({\n\t\"style\":{\n    \t\"top\":e.clientY+\"px\",\n        \"left\":e.clientX+\"px\"\n     },\n     \"children\":[\n     \t\"Select\",\n        \"Draw\"\n     ]\n})\ne.stopPropagation();\ne.preventDefault();",
+        "name": "onShowContextMenu",
+        "reducer": "if (state.CanvasControlsVariant === \"New\") {\n    state.CanvasControls.push({\n        \"undo\": \"undo disabled\",\n        \"redo\": \"redo disabled\",\n        \"draw\": \"draw enabled\",\n        \"text\": \"text disabled\",\n        \"image\": \"image disabled\",\n        \"group\": \"group disabled\",\n        \"ungroup\": \"ungroup disabled\",\n        \"duplicate\": \"duplicate disabled\",\n        \"delete\": \"delete disabled\",\n        \"select\": \"select disabled\",\n        \"deselect\": \"deselect disabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    })\n}\nif (state.CanvasControlsVariant === \"Created\") {\n    state.CanvasControls.push({\n        \"undo\": \"undo enabled\",\n        \"redo\": \"redo disabled\",\n        \"draw\": \"draw enabled\",\n        \"text\": \"text enabled\",\n        \"image\": \"image enabled\",\n        \"group\": \"group disabled\",\n        \"ungroup\": \"ungroup disabled\",\n        \"duplicate\": \"duplicate disabled\",\n        \"delete\": \"delete disabled\",\n        \"select\": \"select enabled\",\n        \"deselect\": \"deselect disabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    })\n}\nif (state.CanvasControlsVariant === \"SingleSelection\") {\n    state.CanvasControls.push({\n        \"undo\": \"undo enabled\",\n        \"redo\": \"redo enabled\",\n        \"draw\": \"draw enabled\",\n        \"text\": \"text disabled\",\n        \"image\": \"image disabled\",\n        \"group\": \"group disabled\",\n        \"ungroup\": \"ungroup disabled\",\n        \"duplicate\": \"duplicate enabled\",\n        \"delete\": \"delete enabled\",\n        \"select\": \"select disabled\",\n        \"deselect\": \"deselect enabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    })\n}\n\nif (state.CanvasControlsVariant === \"MultiGroup\") {\n    state.CanvasControls.push({\n        \"undo\": \"undo enabled\",\n        \"redo\": \"redo enabled\",\n        \"draw\": \"draw enabled\",\n        \"text\": \"text disabled\",\n        \"image\": \"image disabled\",\n        \"group\": \"group enabled\",\n        \"ungroup\": \"ungroup disabled\",\n        \"duplicate\": \"duplicate enabled\",\n        \"delete\": \"delete enabled\",\n        \"select\": \"select disabled\",\n        \"deselect\": \"deselect enabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    })\n}\n\nif (state.CanvasControlsVariant === \"MultiUngroup\") {\n    state.CanvasControls.push({\n        \"undo\": \"undo enabled\",\n        \"redo\": \"redo enabled\",\n        \"draw\": \"draw enabled\",\n        \"text\": \"text disabled\",\n        \"image\": \"image disabled\",\n        \"group\": \"group disabled\",\n        \"ungroup\": \"ungroup enabled\",\n        \"duplicate\": \"duplicate enabled\",\n        \"delete\": \"delete enabled\",\n        \"select\": \"select disabled\",\n        \"deselect\": \"deselect enabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    })\n}",
         "index": 0,
-        "publishable": "",
-        "publishName": "",
-        "id": "editor"
-      },
-      {
-        "name": "onSelection",
-        "reducer": "state.ContextMenuOptions = [];\n",
-        "index": 0,
-        "publishable": "",
-        "publishName": "",
-        "id": "ContextMenuOptions"
-      },
-      {
-        "name": "onContextMenu",
-        "reducer": "state.ContextMenuOptions.push({\n\t\"style\": {\n        \"top\" : e.clientY+ \"px\",\n        \"left\" : e.clientX+ \"px\"\n    },\n    \"children\":[\n    \t\"First\",\n        \"Second\"\n    ]\n})",
         "publishable": "",
         "publishName": "",
         "id": "Canvas"
+      },
+      {
+        "name": "onItemSelected",
+        "reducer": "debugger;\nif(\"Draw\" === e.state.item){\n\tstate.CanvasControlsVariant = \"Created\";\n}\n\nif(\"Select\" === e.state.item){\n\tstate.CanvasControlsVariant = \"MultiGroup\";\n}\n\nif(\"Deselect\" === e.state.item){\n\tstate.CanvasControlsVariant = \"Created\";\n}\n\nif(\"Group\" === e.state.item){\n\tstate.CanvasControlsVariant = \"MultiUngroup\";\n}\n\nif(\"Ungroup\" === e.state.item){\n\tstate.CanvasControlsVariant = \"MultiGroup\";\n}\nstate.CanvasControls=[];\n",
+        "index": 0,
+        "publishable": "",
+        "publishName": "",
+        "id": "CanvasControls"
       }
     ],
-    "state": "{\"ContextMenuOptions\":[]}",
+    "state": "{\"CanvasControlsVariant\":\"New\",\"CanvasControls\":[]}",
     "style": "",
     "children": [],
     "id": 707,
-    "config": "{\"ContextMenuOptions\":{\"override\":true},\"Item\":{\"override\":false}}",
+    "config": "{\"CanvasControls\":{\"override\":true}}",
     "trueName": "Editor"
   },
   {
-    "name": "ContextMenuOptions",
-    "markup": "<div id=\"contextmenu\" style={state.style}>\n    <ul>\n    {state.children.map(child=><li>{child}</li>)}\n    </ul>\n</div>",
+    "name": "CanvasControls",
+    "markup": "<div id=\"menu\" style={state.style}>\n    <div id=\"history-control\">\n        <div className={state.undo}>\n            <i className=\"fa fa-undo\"></i>\n            <span>Undo</span>\n\t\t</div>\n        <div className={state.redo}>\n\t\t\t<i className=\"fa fa-redo\"></i>\n        \t<span>Redo</span>\n\t\t</div>\n    </div>\n    <div id=\"content-control\">\n        <div className={state.draw}>\n            <i className=\"fa fa-edit\"></i>\n        \t<span>Draw</span>\n        </div>\n        <div className={state.text}>\n            <i className=\"fa fa-font\"></i>\n        \t<span>Text</span>\n        </div>\n        <div className={state.image}>\n            <i className=\"fas fa-image\"></i>\n        \t<span>Image</span>\n        </div>\n    </div>\n    <div id=\"edit-control\">\n        <div className={state.group}>\n            <i className=\"fa fa-object-group\"></i>\n        \t<span>Group</span>\n        </div>\n        <div className={state.ungroup}>\n            <i className=\"fa fa-object-ungroup\"></i>\n        \t<span>Ungroup</span>\n        </div>\n        <div className={state.duplicate}>\n            <i className=\"fa fa-clone\"></i>\n        \t<span>Duplicate</span>\n        </div>\n        <div className={state.delete}>\n            <i className=\"fa fa-trash\"></i>\n        \t<span>Delete</span>\n        </div>\n    </div>\n    <div id=\"selection-control\">\n        <div className={state.select}>\n        \t<i className=\"fa fa-mouse-pointer\"></i>\n        \t<span>Select</span>\n        </div>\n        <div className={state.deselect}>\n            <i className=\"fa fa-mouse-pointer\"></i>\n        \t<span>Deselect</span>\n        </div>\n    </div>\n</div>",
     "events": [
       {
         "name": "onClick",
-        "reducer": "state.selectedOption =  e.target.innerText;\n",
+        "reducer": "state.item = e.target.innerText;",
         "index": 0,
         "publishable": true,
-        "publishName": "onSelection",
-        "id": "contextmenu"
+        "publishName": "onItemSelected",
+        "id": "menu"
       }
     ],
-    "state": "{\n\t\"style\": {\n        \"top\" : \"200px\",\n        \"left\" : \"400px\"\n    },\n    \"children\":[\n    \t\"First\",\n        \"Second\"\n    ]\n}",
-    "style": "#contextmenu{\n    position: fixed;\n    background-color: rgb(64, 64, 64);\n    box-shadow: 0px 0px 30px black;\n    border-radius: 5px;\n    padding:0px;\n    z-index: 10000000;\n}\n#contextmenu li {\n    padding: 15px;\n    user-select: none;\n}\n\n#contextmenu ul{\n    padding-left:0px;\n}",
-    "children": [],
-    "id": 374,
-    "config": "{}",
-    "trueName": "ContextMenuOptions"
-  },
-  {
-    "name": "CanvasControls",
-    "markup": "<div id=\"menu\">\n    <div id=\"history-control\">\n        <div className={state.undo}>\n            <i className=\"fa fa-undo\"></i>\n            <span>Undo</span>\n\t\t</div>\n        <div className={state.redo}>\n\t\t\t<i className=\"fa fa-redo\"></i>\n        \t<span>Redo</span>\n\t\t</div>\n    </div>\n    <div id=\"content-control\">\n        <div className={state.draw}>\n            <i className=\"fa fa-edit\"></i>\n        \t<span>Draw</span>\n        </div>\n        <div className={state.text}>\n            <i className=\"fa fa-font\"></i>\n        \t<span>Text</span>\n        </div>\n        <div className={state.image}>\n            <i className=\"fas fa-image\"></i>\n        \t<span>Image</span>\n        </div>\n    </div>\n    <div id=\"edit-control\">\n        <div className={state.group}>\n            <i className=\"fa fa-object-group\"></i>\n        \t<span>Group</span>\n        </div>\n        <div className={state.ungroup}>\n            <i className=\"fa fa-object-ungroup\"></i>\n        \t<span>Ungroup</span>\n        </div>\n        <div className={state.duplicate}>\n            <i className=\"fa fa-clone\"></i>\n        \t<span>Duplicate</span>\n        </div>\n        <div className={state.delete}>\n            <i className=\"fa fa-trash\"></i>\n        \t<span>Delete</span>\n        </div>\n    </div>\n    <div id=\"selection-control\">\n        <div className={state.select}>\n        \t<i className=\"fa fa-mouse-pointer\"></i>\n        \t<span>Select</span>\n        </div>\n        <div className={state.deselect}>\n            <i className=\"fa fa-mouse-pointer\"></i>\n        \t<span>Deselect</span>\n        </div>\n    </div>\n</div>",
-    "events": [],
-    "state": "{\n\t\"undo\": \"undo disabled\",\n    \"redo\": \"redo enabled\",\n    \n\t\"draw\": \"draw enabled\",\n    \"text\": \"text enabled\",\n    \"image\": \"image enabled\",\n    \n\t\"group\": \"group enabled\",\n    \"ungroup\": \"ungroup enabled\",\n\t\"duplicate\": \"duplicate enabled\",\n    \"delete\": \"delete enabled\",\n    \n\t\"select\": \"select enabled\",\n    \"deselect\": \"deselect enabled\"\n}",
-    "style": "#menu {\n    position: fixed;\n    top:100px;\n    left:200px;\n    font-size:10px;\n    user-select: none;\n    color: rgba(255,255,255,0.5);\n}\n\n#menu > div > div:hover:not(.disabled){\n    background: rgb(43, 43, 43);\n    color: white;\n}\n\n.disabled{\n    cursor: not-allowed;\n    background: #333333;\n    color: #4a4a4a;\n}\n\n\n\n#menu > div > div span {\n    padding-left: 9px;\n}\n\n#menu > div > div {\n    box-sizing: border-box;\n    padding: 10px;\n    height: 29px;\n}\n\n#history-control {\n    border: 1px solid #2C3134;\n    width: 111px;\n    height: 62px;\n    background: rgb(64, 64, 64);\n}\n\n#content-control {\n    border: 1px solid #2C3134;\n    width: 111px;\n    height: 90px;\n    background: rgb(64, 64, 64);\n}\n\n#edit-control {\n    border: 1px solid #2C3134;\n    width: 111px;\n    height: 118px;\n    background: rgb(64, 64, 64);\n}\n\n#selection-control {\n    border: 1px solid #2C3134;\n    width: 111px;\n    height: 60px;\n    background: rgb(64, 64, 64);\n}\n",
+    "state": "{\n\t\"undo\":\"undo disabled\",\n    \"redo\":\"redo disabled\",\n\t\"draw\":\"draw enabled\",\n    \"text\":\"text disabled\",\n    \"image\":\"image disabled\",\n\t\"group\":\"group disabled\",\n    \"ungroup\":\"ungroup disabled\",\n\t\"duplicate\":\"duplicate disabled\",\n    \"delete\":\"delete disabled\",\n\t\"select\":\"select disabled\",\n    \"deselect\":\"deselect disabled\",\n    \"style\" : {\n    \t\"top\": \"100px\",\n        \"left\":\"200px\"\n    }\n}",
+    "style": "#menu {\n    position: fixed;\n    font-size:10px;\n    user-select: none;\n    color: rgba(255,255,255,0.5);\n}\n\n#menu > div > div:hover:not(.disabled){\n    background: rgb(43, 43, 43);\n    color: white;\n}\n\n.disabled{\n    cursor: not-allowed;\n    background: #333333;\n    color: #4a4a4a;\n}\n\n\n\n#menu > div > div span {\n    padding-left: 9px;\n}\n\n#menu > div > div {\n    box-sizing: border-box;\n    padding: 10px;\n    height: 29px;\n}\n\n#history-control {\n    border: 1px solid #2C3134;\n    width: 111px;\n    height: 60px;\n    background: rgb(64, 64, 64);\n}\n\n#content-control {\n    border: 1px solid #2C3134;\n    width: 111px;\n    height: 90px;\n    background: rgb(64, 64, 64);\n}\n\n#edit-control {\n    border: 1px solid #2C3134;\n    width: 111px;\n    height: 118px;\n    background: rgb(64, 64, 64);\n}\n\n#selection-control {\n    border: 1px solid #2C3134;\n    width: 111px;\n    height: 60px;\n    background: rgb(64, 64, 64);\n}\n",
     "children": [],
     "id": 550,
     "config": "{}",
