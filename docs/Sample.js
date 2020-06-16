@@ -13,7 +13,7 @@ window.sampleComponents =[
       },
       {
         "name": "onMouseDown",
-        "reducer": "function create(type, x, y){\n\t  var item = document.createElement(type);\n      item.style.position = \"fixed\";\n      item.style.left = x+ \"px\";\n      item.style.top = y + \"px\";\n      item.style.border = \"1px solid green\";\n      item.id = Math.random();\n      return item;\n}\n\nif(e.button===0 && e.target.type!==\"text\"){\n  if(state.mode===\"Draw\"){\n\t\n      var div = create(\"div\", e.clientX, e.clientY);\n      var parent = e.target;\n      parent.appendChild(div);\n\n      state.divId = div.id;\n      state.origin = true;\n  }\n  if(state.mode===\"Text\"){\n  \t\n      var x = e.clientX, y = e.clientY;\n      var input = create(\"input\", e.clientX, e.clientY);\n      input.type=\"text\";\n\t  var parent = e.target;\n      parent.appendChild(input);\n      input.addEventListener(\"mouseout\", function(e){\n\t\t   input.remove();\n           var span = create(\"span\", x, y);\n           span.innerText = input.value;\n           parent.appendChild(span)\n\t  });\n  }\n  if(state.mode===\"Select\"){\n  \t\n      var element = e.target;\n      element.style.border=\"1px solid red\";\n      element.addEventListener(\"mouseout\", function(e){\n\t\t\tif(!e.shiftKey){\n\t            element.style.border=\"1px solid green\";\n            }\n      \t\t\n      })\n  }\n}",
+        "reducer": "function create(type, x, y){\n\t  var item = document.createElement(type);\n      item.style.position = \"fixed\";\n      item.style.left = x+ \"px\";\n      item.style.top = y + \"px\";\n      item.style.border = \"1px solid green\";\n      item.id = Math.random();\n      return item;\n}\n\nif(e.button===0 && e.target.type!==\"text\"){\n  if(state.mode===\"Draw\"){\n\t\n      var div = create(\"div\", e.clientX, e.clientY);\n      var parent = e.target;\n      parent.appendChild(div);\n\n      state.divId = div.id;\n      state.origin = true;\n  }\n  if(state.mode===\"Text\"){\n  \t\n      var x = e.clientX, y = e.clientY;\n      var input = create(\"input\", e.clientX, e.clientY);\n      input.type=\"text\";\n\t  var parent = e.target;\n      parent.appendChild(input);\n      input.addEventListener(\"mouseout\", function(e){\n\t\t   input.remove();\n           var span = create(\"span\", x, y);\n           span.innerText = input.value;\n           parent.appendChild(span)\n\t  });\n  }\n  if(state.mode===\"Select\"){\n  \t\n      var element = e.target;\n      element.style.border=\"1px solid red\";\n      state.id = element.id;\n      element.addEventListener(\"mouseout\", function(e){\n\t\t\tif(!e.shiftKey){\n\t            element.style.border=\"1px solid green\";\n            }\n      \t\t\n      })\n  }\n}",
         "index": 1,
         "publishable": "",
         "publishName": "",
@@ -259,11 +259,19 @@ window.sampleComponents =[
       },
       {
         "name": "onItemSelected",
-        "reducer": "if(\"Draw\" === e.state.item){\n\tstate.CanvasControlsVariant = \"Created\";\n    state.Canvas[0].mode = \"Draw\";\n}\nif(\"Text\" === e.state.item){\n\tstate.CanvasControlsVariant = \"Created\";\n    state.Canvas[0].mode = \"Text\";\n}\n\nif(\"Select\" === e.state.item){\n\tstate.CanvasControlsVariant = \"MultiGroup\";\n    state.Canvas[0].mode = \"Select\"\n}\n\nif(\"Deselect\" === e.state.item){\n\tstate.CanvasControlsVariant = \"Created\";\n}\n\nif(\"Group\" === e.state.item){\n\tstate.CanvasControlsVariant = \"MultiUngroup\";\n}\n\nif(\"Ungroup\" === e.state.item){\n\tstate.CanvasControlsVariant = \"MultiGroup\";\n}\nif(\"Edit\" === e.state.item){\n\tstate.CanvasControlsVariant = \"MultiGroup\";\n    state.PropertiesControl = [{\n    \"style\":{\n    \t\"top\":e.clientY+\"px\",\n        \"left\":e.clientX+\"px\"\n    }}]\n}\nstate.CanvasControls=[];\n",
+        "reducer": "if(\"Draw\" === e.state.item){\n\tstate.CanvasControlsVariant = \"Created\";\n    state.Canvas[0].mode = \"Draw\";\n}\nif(\"Text\" === e.state.item){\n\tstate.CanvasControlsVariant = \"Created\";\n    state.Canvas[0].mode = \"Text\";\n}\n\nif(\"Select\" === e.state.item){\n\tstate.CanvasControlsVariant = \"MultiGroup\";\n    state.Canvas[0].mode = \"Select\"\n}\n\nif(\"Deselect\" === e.state.item){\n\tstate.CanvasControlsVariant = \"Created\";\n}\n\nif(\"Group\" === e.state.item){\n\tstate.CanvasControlsVariant = \"MultiUngroup\";\n}\n\nif(\"Ungroup\" === e.state.item){\n\tstate.CanvasControlsVariant = \"MultiGroup\";\n}\nif(\"Edit\" === e.state.item){\n\tlet elementStyle = window[state.editId].style;\n\tstate.CanvasControlsVariant = \"MultiGroup\";\n    state.PropertiesControl = [{\n    \"style\":{\t\n    \t\"top\": e.clientY+ \"px\",\n    \t\"left\": e.clientX + \"px\"\n    },\n    \"top\": elementStyle.top,\n    \"left\": elementStyle.left,\n    \"height\": elementStyle.height,\n    \"width\": elementStyle.width,\n    \"elem\": state.editId\n  }]\n}\nstate.CanvasControls=[];\n",
         "index": 0,
         "publishable": "",
         "publishName": "",
         "id": "CanvasControls"
+      },
+      {
+        "name": "onEditFinish",
+        "reducer": "state.editId = e.state.id;\nstate.Canvas[0].innerHTML = e.currentTarget.innerHTML;\n",
+        "index": 1,
+        "publishable": "",
+        "publishName": "",
+        "id": "Canvas"
       }
     ],
     "state": "{\"CanvasControlsVariant\":\"New\",\"CanvasControls\":[],\"Canvas\":[{\"style\":{\"cursor\":\"pointer\"},\"innerHTML\":\"\",\"divs\":[],\"mode\":\"\"}],\"PropertiesControl\":[]}",
@@ -299,7 +307,7 @@ window.sampleComponents =[
     "events": [
       {
         "name": "onClick",
-        "reducer": "let height = Number(state.height.split(\"px\")[0])-1;\nstate.height = height+\"px\";",
+        "reducer": "let height = Number(state.height.split(\"px\")[0])-1;\nstate.height = height+\"px\";\n\nlet elementStyle = window[state.elem].style;\n\nelementStyle.height = state.height;",
         "index": 0,
         "publishable": "",
         "publishName": "",
@@ -307,49 +315,56 @@ window.sampleComponents =[
       },
       {
         "name": "onClick",
-        "reducer": "let height = Number(state.height.split(\"px\")[0])+1;\nstate.height = height+\"px\";",
+        "reducer": "let height = Number(state.height.split(\"px\")[0])+1;\nstate.height = height+\"px\";\n\nlet elementStyle = window[state.elem].style;\n\nelementStyle.height = state.height;",
+        "index": 1,
         "publishable": "",
         "publishName": "",
         "id": "moreheight"
       },
       {
         "name": "onClick",
-        "reducer": "let width = Number(state.width.split(\"px\")[0])-1;\nstate.width = width+\"px\";",
+        "reducer": "let width = Number(state.width.split(\"px\")[0])-1;\nstate.width = width+\"px\";\n\nlet elementStyle = window[state.elem].style;\n\nelementStyle.width = state.width;",
+        "index": 2,
         "publishable": "",
         "publishName": "",
         "id": "lesswidth"
       },
       {
         "name": "onClick",
-        "reducer": "let width = Number(state.width.split(\"px\")[0])+1;\nstate.width = width+\"px\";",
+        "reducer": "let width = Number(state.width.split(\"px\")[0])+1;\nstate.width = width+\"px\";\n\nlet elementStyle = window[state.elem].style;\n\nelementStyle.width = state.width;",
+        "index": 3,
         "publishable": "",
         "publishName": "",
         "id": "morewidth"
       },
       {
         "name": "onClick",
-        "reducer": "let top = Number(state.top.split(\"px\")[0])-1;\nstate.top = top+\"px\";",
+        "reducer": "let top = Number(state.top.split(\"px\")[0])-1;\nstate.top = top+\"px\";\n\nlet elementStyle = window[state.elem].style;\n\nelementStyle.top = state.top;",
+        "index": 4,
         "publishable": "",
         "publishName": "",
         "id": "lesstop"
       },
       {
         "name": "onClick",
-        "reducer": "let top = Number(state.top.split(\"px\")[0])+1;\nstate.top = top+\"px\";",
+        "reducer": "let top = Number(state.top.split(\"px\")[0])+1;\nstate.top = top+\"px\";\n\nlet elementStyle = window[state.elem].style;\n\nelementStyle.top = state.top;",
+        "index": 5,
         "publishable": "",
         "publishName": "",
         "id": "moretop"
       },
       {
         "name": "onClick",
-        "reducer": "let left = Number(state.left.split(\"px\")[0])-1;\nstate.left = left+\"px\";",
+        "reducer": "let left = Number(state.left.split(\"px\")[0])-1;\nstate.left = left+\"px\";\n\nlet elementStyle = window[state.elem].style;\n\nelementStyle.left = state.left;",
+        "index": 6,
         "publishable": "",
         "publishName": "",
         "id": "moreleft"
       },
       {
         "name": "onClick",
-        "reducer": "let left = Number(state.left.split(\"px\")[0])+1;\nstate.left = left+\"px\";",
+        "reducer": "let left = Number(state.left.split(\"px\")[0])+1;\nstate.left = left+\"px\";\n\nlet elementStyle = window[state.elem].style;\n\nelementStyle.left = state.left;",
+        "index": 7,
         "publishable": "",
         "publishName": "",
         "id": "lessleft"
