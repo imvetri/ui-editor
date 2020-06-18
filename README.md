@@ -7,7 +7,7 @@ Effortless technique to build components that works across frameworks. ![](https
 
 ## Workflow and internals
 
-![](https://raw.githubusercontent.com/imvetri/ui-editor/master/docs/gifs/ui-editor-workflow-and-internals.png)
+![](https://github.com/imvetri/ui-editor/blob/master/docs/gifs/ui-editor-workflow-and-internals.1.png)
 
 
 ## Step-by-step Tutorials - 
