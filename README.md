@@ -1,6 +1,6 @@
 ## UI editor
 
-Effortless technique to build components that works across frameworks. ![](https://raw.githubusercontent.com/frameworkless-movement/frameworkless-movement.github.io/master/img/frameworkless__badge-github.svg)
+Effortless technique to build components that works across frameworks.
 
 
 ## Demo - https://imvetri.github.io/ui-editor/
