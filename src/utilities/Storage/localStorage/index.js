@@ -1,7 +1,11 @@
 function pushHistory(components){
 
-    window.editorHistory = readData("ui-editor-history");
-    editorHistory.push(components);
+    let editorHistory = readData("ui-editor-history");
+    editorHistory.push({
+        time: (new Date()).toString(),
+        data: components,
+        name: ""
+    });
     localStorage.setItem("ui-editor-history",JSON.stringify(editorHistory) );
 }
 
@@ -66,22 +70,4 @@ export function writeComponent(parent) {
         components[index] = parent;
         writeData("ui-editor", components);
     }
-}
-
-export function popHistory(){
-    
-    let editorHistory = readData("ui-editor-history");
-    if(!editorHistory){
-        return;
-    }
-
-    let lastItem = editorHistory.pop();
-    
-    if(!editorHistory){
-        return;
-    }
-
-    writeData("ui-editor-history", editorHistory, true);
-
-    writeData("ui-editor", lastItem, true);
 }
