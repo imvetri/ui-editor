@@ -13,7 +13,7 @@ window.sampleComponents =[
       },
       {
         "name": "onMouseDown",
-        "reducer": "function create(type, x, y, text){\n\t  var item = document.createElement(type);\n      item.style.position = \"fixed\";\n      item.style.left = x+ \"px\";\n      item.style.top = y + \"px\";\n      item.style.border = \"1px solid green\";\n      item.id = Math.random();\n      if(text){\n      \titem.innerText = text;\n      }\n      return item;\n}\n\n\n\nfunction convertToSpan(e){\n\tlet value = e.target.value;\n    let x = e.target.style.left.split(\"px\")[0];\n    let y = e.target.style.top.split(\"px\")[0];\n    let span = create(\"span\", x,y ,value);\n    e.target.parentElement.appendChild(span);\n     span.style.width = e.target.style.width;\n      span.style.height = e.target.style.height;\n    span.style.border = e.target.style.border;\n    span.style.font =  getComputedStyle(e.target).font;\n    span.style.background = getComputedStyle(e.target).background;\n    span.style.padding = getComputedStyle(e.target).padding;\n    span.style.color = getComputedStyle(e.target).color;\n    e.target.remove();\n}\nif(e.button===0 && e.target.type!==\"text\"){\n  if(state.mode===\"Draw\"){\n\t\n      var div = create(\"div\", e.clientX, e.clientY);\n      var parent = e.target;\n      parent.appendChild(div);\n\n      state.divId = div.id;\n      state.origin = true;\n  }\n  if(state.mode===\"Text\"){\n  \t\n      var x = e.clientX, y = e.clientY;\n      var input = create(\"input\", e.clientX, e.clientY);\n      input.type=\"text\";\n\t  var parent = e.target;\n      parent.appendChild(input);\n      input.addEventListener(\"onKeyPress\", function(e){e.stopPropagation()})\n      input.addEventListener(\"mouseleave\", convertToSpan)\n  }\n  if(state.mode===\"Select\"){\n  \t\n      e.target.classList.add(\"selectedForEdit\")\n\n  }\n  if(state.mode===\"Deselect\"){\n      e.target.classList.remove(\"selectedForEdit\")\n  }\n}",
+        "reducer": "function create(type, x, y, text){\n\t  var item = document.createElement(type);\n      item.style.position = \"fixed\";\n      item.style.left = x+ \"px\";\n      item.style.top = y + \"px\";\n      item.style.border = \"1px solid green\";\n      item.id = Math.random();\n      if(text){\n      \titem.innerText = text;\n      }\n      return item;\n}\n\n\n\nfunction convertToSpan(e){\n\tlet value = e.target.value;\n    let x = e.target.style.left.split(\"px\")[0];\n    let y = e.target.style.top.split(\"px\")[0];\n    let span = create(\"span\", x,y ,value);\n    e.target.parentElement.appendChild(span);\n     span.style.width = e.target.style.width;\n      span.style.height = e.target.style.height;\n    span.style.border = e.target.style.border;\n    span.style.font =  getComputedStyle(e.target).font;\n    span.style.background = getComputedStyle(e.target).background;\n    span.style.padding = getComputedStyle(e.target).padding;\n    span.style.color = getComputedStyle(e.target).color;\n    e.target.remove();\n}\nif(e.button===0 && e.target.type!==\"text\"){\n  if(state.mode===\"Draw\"){\n\t\n      var div = create(\"div\", e.clientX, e.clientY);\n      var parent = e.target;\n      parent.appendChild(div);\n\n      state.divId = div.id;\n      state.origin = true;\n  }\n  if(state.mode===\"Text\"){\n  \t\n      var x = e.clientX, y = e.clientY;\n      var input = create(\"input\", e.clientX, e.clientY);\n      input.type=\"text\";\n\t  var parent = e.target;\n      parent.appendChild(input);\n      input.addEventListener(\"onKeyPress\", function(e){e.stopPropagation()})\n      input.addEventListener(\"mouseleave\", convertToSpan)\n  }\n  if(state.mode===\"Select\"){\n  \t\n      e.target.classList.add(\"selectedForEdit\")\n      e.target.style.cursor = \"grab\";\n      state.selected=true;\n\n  }\n  if(state.mode===\"Deselect\"){\n      e.target.classList.remove(\"selectedForEdit\")\n      state.selected=false;\n      e.target.style.cursor = \"\";\n  }\n}",
         "index": 1,
         "publishable": "",
         "publishName": "",
@@ -21,7 +21,7 @@ window.sampleComponents =[
       },
       {
         "name": "onMouseMove",
-        "reducer": "if(state.mode===\"Draw\"){\n  if(state.origin){\n      var div= document.getElementById(state.divId);\n      var rect = div.getBoundingClientRect();\n      div.style.width = e.clientX - rect.left;\n      div.style.height = e.clientY - rect.top;\n  }\n}",
+        "reducer": "if(state.mode===\"Draw\"){\n  if(state.origin){\n      var div= document.getElementById(state.divId);\n      var rect = div.getBoundingClientRect();\n      div.style.width = e.clientX - rect.left;\n      div.style.height = e.clientY - rect.top;\n  }\n}\n\nif(state.mode===\"Select\" && state.selected){\n\n  e.target.style.cursor = \"grabing\";\n  \n\tvar rect = e.target.getBoundingClientRect();\n\n    e.target.style.top = e.clientY - rect.height/2  + \"px\";\n    e.target.style.left = e.clientX - rect.width/2 + \"px\";\n\n}",
         "index": 2,
         "publishable": "",
         "publishName": "",
@@ -29,7 +29,7 @@ window.sampleComponents =[
       },
       {
         "name": "onMouseUp",
-        "reducer": "if(state.mode===\"Draw\"){\n\tif(e.button===0){\n\t\tstate.origin = false;\n\t}\n\n}",
+        "reducer": "if(state.mode===\"Draw\"){\n\tif(e.button===0){\n\t\tstate.origin = false;\n\t}\n\n}\n\nif(state.mode===\"Select\" && state.selected){\n\n    state.selected=false;\n    e.target.style.cursor = \"\";\n    \n}",
         "index": 3,
         "publishable": true,
         "publishName": "onEditFinish",
@@ -433,12 +433,26 @@ window.sampleComponents =[
     "config": "{}",
     "trueName": "PropertiesControl"
   }
-];
+]
 
 window.sampleFolders = [
   {
-      "type":"noFolder",
-      "name":"noFolder",
-      "contents":["Canvas", "Resizable", "Movable", "Editor", "CanvasControls", "PropertiesControl"]
+    "type": "noFolder",
+    "name": "noFolder",
+    "contents": [
+      {
+        "name": "References",
+        "contents": [
+          "Movable",
+          "Resizable"
+        ],
+        "type": "folder",
+        "status": "closed"
+      },
+      "Canvas",
+      "Editor",
+      "CanvasControls",
+      "PropertiesControl"
+    ]
   }
 ]
