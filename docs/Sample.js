@@ -1,4 +1,4 @@
-window.sampleComponents =[
+window.sampleComponents = [
   {
     "name": "Canvas",
     "markup": "<div className=\"canvasComponent\" style={state.style} id=\"canvas\"><div dangerouslySetInnerHTML={{ __html:`${state.innerHTML}` }}></div>\n</div>",
@@ -215,6 +215,14 @@ window.sampleComponents =[
         "publishable": true,
         "publishName": "onMoveFinished",
         "id": "resizable"
+      },
+      {
+        "name": "onContextMenu",
+        "reducer": "e.stopPropagation();",
+        "index": 20,
+        "publishable": true,
+        "publishName": "onRightClicked",
+        "id": "cover"
       }
     ],
     "state": "{\n\t\"style\":{\n        \"top\": \"200px\",\n        \"left\": \"200px\",\n        \"height\": \"100px\",\n        \"width\": \"100px\"\n\t}\n}",
@@ -324,6 +332,14 @@ window.sampleComponents =[
         "publishable": "",
         "publishName": "",
         "id": "Canvas"
+      },
+      {
+        "name": "onRightClicked",
+        "reducer": "state.Canvas[0].innerHTML =  document.getElementById(\"canvas\").innerHTML\nstate.Resizable = [];\nstate.CanvasControls=[{\n        \"undo\": \"undo enabled\",\n        \"redo\": \"redo enabled\",\n        \"draw\": \"draw enabled\",\n        \"text\": \"text disabled\",\n        \"image\": \"image disabled\",\n        \"group\": \"group enabled\",\n        \"ungroup\": \"ungroup disabled\",\n        \"duplicate\": \"duplicate enabled\",\n        \"delete\": \"delete enabled\",\n        \"select\": \"select disabled\",\n        \"deselect\": \"deselect enabled\",\n         \"edit\":\"edit enabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    }]",
+        "index": 1,
+        "publishable": "",
+        "publishName": "",
+        "id": "Resizable"
       }
     ],
     "state": "{\"CanvasControlsVariant\":\"New\",\"CanvasControls\":[],\"Canvas\":[{\"style\":{\"cursor\":\"pointer\"},\"innerHTML\":\"\",\"divs\":[],\"mode\":\"\",\"Resizable\":[]}],\"PropertiesControl\":[],\"Resizable\":[]}",
@@ -486,7 +502,6 @@ window.sampleComponents =[
     "trueName": "PropertiesControl"
   }
 ]
-
 window.sampleFolders = [
   {
     "type": "noFolder",
