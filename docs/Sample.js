@@ -1,7 +1,7 @@
-window.sampleComponents = [
+window.sampleComponents =[
   {
     "name": "Canvas",
-    "markup": "<div className=\"canvasComponent\" style={state.style} id=\"canvas\"><div dangerouslySetInnerHTML={{ __html:`${state.innerHTML}` }}></div>\n<Resizable></Resizable>\n</div>",
+    "markup": "<div className=\"canvasComponent\" style={state.style} id=\"canvas\"><div dangerouslySetInnerHTML={{ __html:`${state.innerHTML}` }}></div>\n</div>",
     "events": [
       {
         "name": "onMouseOver",
@@ -13,7 +13,7 @@ window.sampleComponents = [
       },
       {
         "name": "onMouseDown",
-        "reducer": "function create(type, x, y, text){\n\t  var item = document.createElement(type);\n      item.style.position = \"fixed\";\n      item.style.left = x+ \"px\";\n      item.style.top = y + \"px\";\n      item.style.border = \"1px solid green\";\n      item.id = Math.random();\n      if(text){\n      \titem.innerText = text;\n      }\n      return item;\n}\n\n\n\nfunction convertToSpan(e){\n\tlet value = e.target.value;\n    let x = e.target.style.left.split(\"px\")[0];\n    let y = e.target.style.top.split(\"px\")[0];\n    let span = create(\"span\", x,y ,value);\n    e.target.parentElement.appendChild(span);\n     span.style.width = e.target.style.width;\n      span.style.height = e.target.style.height;\n    span.style.border = e.target.style.border;\n    span.style.font =  getComputedStyle(e.target).font;\n    span.style.background = getComputedStyle(e.target).background;\n    span.style.padding = getComputedStyle(e.target).padding;\n    span.style.color = getComputedStyle(e.target).color;\n    e.target.remove();\n}\nif(e.button===0 && e.target.type!==\"text\"){\n  if(state.mode===\"Draw\"){\n\t\n      var div = create(\"div\", e.clientX, e.clientY);\n      var parent = e.target;\n      parent.appendChild(div);\n\n      state.divId = div.id;\n      state.origin = true;\n  }\n  if(state.mode===\"Text\"){\n  \t\n      var x = e.clientX, y = e.clientY;\n      var input = create(\"input\", e.clientX, e.clientY);\n      input.type=\"text\";\n\t  var parent = e.target;\n      parent.appendChild(input);\n      input.addEventListener(\"onKeyPress\", function(e){e.stopPropagation()})\n      input.addEventListener(\"mouseleave\", convertToSpan)\n  }\n  if(state.mode===\"Select\"){\n  \t\n      e.target.classList.add(\"selectedForEdit\")\n      e.target.style.cursor = \"move\";\n      state.selected=true;\n      state.Resizable= [{\n      \t\"style\":{\n        \t\"top\":e.target.style.top,\n            \"left\":e.target.style.left,\n            \"height\":e.target.style.height,\n            \"width\":e.target.style.width\n            }\n       \t }]\n\n  }\n  if(state.mode===\"Deselect\"){\n      e.target.classList.remove(\"selectedForEdit\")\n      state.selected=false;\n      e.target.style.cursor = \"\";\n      state.Resizable = [];\n  }\n}",
+        "reducer": "function create(type, x, y, text){\n\t  var item = document.createElement(type);\n      item.style.position = \"fixed\";\n      item.style.left = x+ \"px\";\n      item.style.top = y + \"px\";\n      item.style.border = \"1px solid green\";\n      item.id = Math.random();\n      if(text){\n      \titem.innerText = text;\n      }\n      return item;\n}\n\n\n\nfunction convertToSpan(e){\n\tlet value = e.target.value;\n    let x = e.target.style.left.split(\"px\")[0];\n    let y = e.target.style.top.split(\"px\")[0];\n    let span = create(\"span\", x,y ,value);\n    e.target.parentElement.appendChild(span);\n     span.style.width = e.target.style.width;\n      span.style.height = e.target.style.height;\n    span.style.border = e.target.style.border;\n    span.style.font =  getComputedStyle(e.target).font;\n    span.style.background = getComputedStyle(e.target).background;\n    span.style.padding = getComputedStyle(e.target).padding;\n    span.style.color = getComputedStyle(e.target).color;\n    e.target.remove();\n}\nif(e.button===0 && e.target.type!==\"text\"){\n  if(state.mode===\"Draw\"){\n\t\n      var div = create(\"div\", e.clientX, e.clientY);\n      var parent = e.target;\n      parent.appendChild(div);\n\n      state.divId = div.id;\n      state.origin = true;\n  }\n  if(state.mode===\"Text\"){\n  \t\n      var x = e.clientX, y = e.clientY;\n      var input = create(\"input\", e.clientX, e.clientY);\n      input.type=\"text\";\n\t  var parent = e.target;\n      parent.appendChild(input);\n      input.addEventListener(\"onKeyPress\", function(e){e.stopPropagation()})\n      input.addEventListener(\"mouseleave\", convertToSpan)\n  }\n  if(state.mode===\"Select\"){\n  \t\n      e.target.classList.add(\"selectedForEdit\")\n      e.target.style.cursor = \"move\";\n      state.selected=true;\n\n\n  }\n  if(state.mode===\"Deselect\"){\n      e.target.classList.remove(\"selectedForEdit\")\n      state.selected=false;\n      e.target.style.cursor = \"\";\n  }\n}",
         "index": 1,
         "publishable": "",
         "publishName": "",
@@ -51,16 +51,16 @@ window.sampleComponents = [
         "id": "Resizable"
       }
     ],
-    "state": "{\"style\":{\"cursor\":\"pointer\"},\"divs\":[],\"mode\":\"Draw\",\"Resizable\":[]}",
+    "state": "{\"style\":{\"cursor\":\"pointer\"},\"divs\":[],\"mode\":\"Draw\"}",
     "style": ".canvasComponent{\n\theight:100vh;\n    width:100vw;\n    position: fixed;\n    background-color: black;\n\ttop: 0px;\n    left: 0px;\n}\n",
     "children": [],
     "id": 198,
-    "config": "{\"Resizable\":{\"override\":true}}",
+    "config": "{\"Resizable\":{\"override\":false}}",
     "trueName": "Canvas"
   },
   {
     "name": "Resizable",
-    "markup": "<div id=\"resizable\" style={state.style}>\n    <div class='resizer' id=\"topLeft\"></div>\n    <div class='resizer' id=\"topRight\"></div>\n    <div class='resizer' id=\"bottomLeft\"></div>\n    <div class='resizer' id=\"bottomRight\"></div>\n</div>",
+    "markup": "<div id=\"cover\">\n<div id=\"resizable\" style={state.style}>\n    <div class='resizer' id=\"topLeft\"></div>\n    <div class='resizer' id=\"topRight\"></div>\n    <div class='resizer' id=\"bottomLeft\"></div>\n    <div class='resizer' id=\"bottomRight\"></div>\n</div>\n</div>",
     "events": [
       {
         "name": "onMouseDown",
@@ -203,15 +203,22 @@ window.sampleComponents = [
       },
       {
         "name": "onMouseMove",
-        "reducer": "if(state.grabbing) {\n\tvar rect = e.target.getBoundingClientRect();\n\n    e.target.style.top = e.clientY - rect.height/2  + \"px\";\n    e.target.style.left = e.clientX - rect.width/2 + \"px\";\n}",
+        "reducer": "if(state.grabbing) {\n\tvar rect = e.target.getBoundingClientRect();\n\n    e.target.style.top = e.clientY - rect.height/2  + \"px\";\n    e.target.style.left = e.clientX - rect.width/2 + \"px\";\n}\n",
         "index": 18,
+        "publishable": false,
+        "publishName": "onMoveFinished",
+        "id": "resizable"
+      },
+      {
+        "name": "onMouseOut",
+        "reducer": "",
         "publishable": true,
         "publishName": "onMoveFinished",
         "id": "resizable"
       }
     ],
     "state": "{\n\t\"style\":{\n        \"top\": \"200px\",\n        \"left\": \"200px\",\n        \"height\": \"100px\",\n        \"width\": \"100px\"\n\t}\n}",
-    "style": "#resizable {\n\tposition: fixed;\n    cursor: grab;\n}\n\n\n#resizable {\n  position: absolute;\n  background: black;\n  outline: 1px solid #4286f4;\n  box-sizing: border-box;\n}\n\n\n#resizable .resizer{\n  width: 10px;\n  height: 10px;\n  border-radius: 50%; \n  background: white;\n  border: 1px solid #4286f4;\n  position: absolute;\n}\n\n#resizable .resizer#topLeft {\n  left: -5px;\n  top: -5px;\n  cursor: nwse-resize;\n}\n#resizable .resizer#topRight {\n  right: -5px;\n  top: -5px;\n  cursor: nesw-resize;\n}\n#resizable .resizer#bottomLeft {\n  left: -5px;\n  bottom: -5px;\n  cursor: nesw-resize;\n}\n#resizable .resizer#bottomRight {\n  right: -5px;\n  bottom: -5px;\n  cursor: nwse-resize;\n}",
+    "style": "#cover{\n\tposition:fixed;\n    height: 100vh;\n    width: 100vw;\n}\n#resizable {\n\tposition: fixed;\n    cursor: grab;\n}\n\n\n#resizable {\n  position: absolute;\n  background: black;\n  outline: 1px solid #4286f4;\n  box-sizing: border-box;\n}\n\n\n#resizable .resizer{\n  width: 10px;\n  height: 10px;\n  border-radius: 50%; \n  background: white;\n  border: 1px solid #4286f4;\n  position: absolute;\n}\n\n#resizable .resizer#topLeft {\n  left: -5px;\n  top: -5px;\n  cursor: nwse-resize;\n}\n#resizable .resizer#topRight {\n  right: -5px;\n  top: -5px;\n  cursor: nesw-resize;\n}\n#resizable .resizer#bottomLeft {\n  left: -5px;\n  bottom: -5px;\n  cursor: nesw-resize;\n}\n#resizable .resizer#bottomRight {\n  right: -5px;\n  bottom: -5px;\n  cursor: nwse-resize;\n}",
     "children": [],
     "id": 557,
     "config": "{}",
@@ -276,7 +283,7 @@ window.sampleComponents = [
   },
   {
     "name": "Editor",
-    "markup": "<div id=\"editor\" tabIndex=\"0\">\n\t<Canvas></Canvas>\n    <CanvasControls></CanvasControls>\n    <PropertiesControl></PropertiesControl>\n</div>",
+    "markup": "<div id=\"editor\" tabIndex=\"0\">\n\t<Canvas></Canvas>\n    <CanvasControls></CanvasControls>\n    <PropertiesControl></PropertiesControl>\n    <Resizable></Resizable>\n</div>",
     "events": [
       {
         "name": "onShowContextMenu",
@@ -301,13 +308,29 @@ window.sampleComponents = [
         "publishable": "",
         "publishName": "",
         "id": "PropertiesControl"
+      },
+      {
+        "name": "onMoveFinished",
+        "reducer": "var top = e.target.style.top;\nvar left = e.target.style.left;\nvar height = e.target.style.height;\nvar width = e.target.style.width;\n\nstate.Resizable = [{\n\t\"style\":{\n    \t\"top\":top,\n        \"left\":left,\n        \"height\":height,\n        \"width\":width\n        }\n    }]\n    \nvar selected = document.querySelector(\".selectedForEdit\");\n\nselected.style.top = top;\nselected.style.left = left;\nselected.style.height = height;\nselected.style.width = width;\n\nstate.Canvas[0].innerHTML =  document.getElementById(\"canvas\").innerHTML\n\n",
+        "index": 0,
+        "publishable": "",
+        "publishName": "",
+        "id": "Resizable"
+      },
+      {
+        "name": "onEditFinish",
+        "reducer": "if(e.state.mode===\"Select\"){\n\tstate.Resizable = [{\n      \"style\":{\n          \"top\": e.target.style.top,\n          \"left\": e.target.style.left,\n          \"height\": e.target.style.height,\n          \"width\": e.target.style.width\n      }\n\t}]\n\n}\n\nstate.Canvas[0].innerHTML =e.currentTarget.innerHTML",
+        "index": 1,
+        "publishable": "",
+        "publishName": "",
+        "id": "Canvas"
       }
     ],
-    "state": "{ \"CanvasControlsVariant\": \"New\", \"CanvasControls\": [], \"Canvas\": [{ \"style\": { \"cursor\": \"pointer\" }, \"innerHTML\": \"\", \"divs\": [], \"mode\": \"\" , \"Resizable\": []}], \"PropertiesControl\": [] }",
+    "state": "{\"CanvasControlsVariant\":\"New\",\"CanvasControls\":[],\"Canvas\":[{\"style\":{\"cursor\":\"pointer\"},\"innerHTML\":\"\",\"divs\":[],\"mode\":\"\",\"Resizable\":[]}],\"PropertiesControl\":[],\"Resizable\":[]}",
     "style": ".selectedForEdit{\n\toutline: 1px solid red;\n    cursor: move;\n}",
     "children": [],
     "id": 707,
-    "config": "{\"CanvasControls\":{\"override\":true},\"Canvas\":{\"override\":true},\"PropertiesControl\":{\"override\":true}}",
+    "config": "{\"CanvasControls\":{\"override\":true},\"Canvas\":{\"override\":true},\"PropertiesControl\":{\"override\":true},\"Resizable\":{\"override\":true}}",
     "trueName": "Editor"
   },
   {
