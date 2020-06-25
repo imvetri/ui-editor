@@ -47,6 +47,26 @@ export function convertToReact (component){
         })
         return markup;
     }
+
+    function getReducer(reducers){
+        return reducers.map(reducer=>{
+            if(reducer.publishable){
+                 return `
+                 if(${reducer.condition}){
+                     ${reducer.reducer}
+                     this.setState(state);
+                     e.state = state;
+                     this.props.${reducer.publishName}? this.props.${reducer.publishName}(e):null;
+                 }`
+            }
+            else{
+                 return `
+                 ${reducer.reducer}
+                 this.setState(state);
+                 e.state = state;`
+            }
+        }).join("\n");
+    }
     
     let propsInMarkup = addProps(component);
     let stateOverideMarkup = getStatedMarkup(propsInMarkup);
@@ -64,25 +84,12 @@ class ${component.name} extends Component {
     }
 
     ${component.events.map(event=>{
-        if(event.publishable){
-            return `
-            
+    return `
     ${event.id+event.name} (e) {
         var state = JSON.parse(JSON.stringify(this.state))
-        ${event.reducer}
-        this.setState(state);
-        e.state = state;
-        this.props.${event.publishName}? this.props.${event.publishName}(e):null;
+        ${getReducer(event.reducers)}
     }`
-        }
 
-        return `
-    ${event.id+event.name} (e) {
-        var state = JSON.parse(JSON.stringify(this.state))
-        ${event.reducer}
-        this.setState(state);
-    }
-`
     }).join("\n")}
 
     render() {
