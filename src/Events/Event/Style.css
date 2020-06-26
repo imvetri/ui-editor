@@ -24,3 +24,8 @@ label {
 .input {
     padding: 5px;
 }
+
+.event {
+    border: 1px solid grey;
+    margin-bottom: 15px;
+}

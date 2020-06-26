@@ -6,11 +6,11 @@ import "./Style.css"
 
 // Components.
 
-import {UnControlled as CodeMirror} from 'react-codemirror2';
+import Reducers from "./Reducers/Index";
 
 // Reducers. 
 
-import {updateEventName, updateEventType, updatePublishName} from "./Reducer";
+import {updateEventName} from "./Reducer";
 
 // Events.
 
@@ -33,7 +33,6 @@ class Event extends Component {
             return "Select ID";
         }
 
-        let publishName = this.state.publishable? <input type="text" onChange={updatePublishName.bind(this)} value={this.state.publishName} placeholder="Enter event publish name for other components to subscribe to"/> : null;
         let eventNames = this.props.eventNames.map(eventName=><option value={eventName}></option>)
 
         return (
@@ -46,34 +45,7 @@ class Event extends Component {
                     </datalist>
                 </div>
 
-                <div class="spacing">
-                    <label>
-                        Publishable
-                    </label>
-                    <input type="checkbox" onChange={updateEventType.bind(this)} checked={this.state.publishable? "checked": ""}/>
-
-                    {publishName}
-                </div>
-
-                <div class="spacing">
-                    <label>Event reducer</label>
-                    <CodeMirror
-                            value={this.state.reducer}
-                            autoCursor={false}
-                            options={{
-                                lineNumbers: false,
-                                mode: "text/javascript",
-                                theme: "darcula",
-                                indentWithTabs: false,
-                                smartIndent: true
-                            }}
-                            onChange={(editor, data, reducer) => {
-                                this.setState({
-                                    reducer: reducer
-                                })
-                            }}
-                        />
-                </div>
+                {this.props.event ? <Reducers event={this.props.event}/> : null}
 
                 <div>
                     <button onClick={publishEvent.bind(this)} id="saveEvent"><i className="fas fa-save"></i>Save</button>
