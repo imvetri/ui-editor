@@ -45,3 +45,9 @@
     export function updateConfiguration(config){
         this.props.onConfigUpdate(config);
     }
+
+    export function updateSelectedEvent(e){
+        this.setState({
+            selectedEventName: e.currentTarget.value
+        })
+    }
