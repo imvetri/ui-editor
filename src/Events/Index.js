@@ -30,7 +30,7 @@ class Events extends Component {
         super(props);
         this.state = Object.assign({}, this.props);
         this.state.selectedTag = this.props.selectedTag;
-        this.state.selectedEvent = "";
+        this.state.selectedEventName = "";
     }
 
     render() {
@@ -75,6 +75,8 @@ class Events extends Component {
 
         const selectedTag = this.state.selectedTag || "";
         let eventsOfSelectedTag, configurator, eventNames = [];
+        const selectedEvent = component.events.find(event => event.name === this.state.selectedEventName);
+
         // Check if it is a child component
         if (selectedTag.includes("child-component-")) {
 
@@ -87,22 +89,10 @@ class Events extends Component {
             // Find the child component from the list of components.
             let childComponent = components.find(component => component.name === childComponentName);
 
-            // Find events that are publishable from the child component.
+            // Find events that are publishable from the child component to show in drop down.
             eventNames = childComponent.events.filter(event => event.reducers[0].publishable === true).map(publishableEvent => publishableEvent.reducers[0].publishName);
 
-            // Create event view for list of all events
-            let events = component.events.filter(event => eventNames.find(eventName => eventName === event.name && event.id === childComponent.name))
-            events = events.map((event, index) => <Event
-                key={Math.ceil(Math.random() * 1000)}
-                index={index} event={event}
-                selectedTagID={selectedTag}
-                eventNames={eventNames}
-                onSave={updateEvent.bind(this)}
-                deleteEvent={deleteEvent.bind(this)} />);
-
-            // Filter out events that are not part of selectedTag
-            eventsOfSelectedTag = selectedTag ? events : null;
-
+            // Create view for config.
             configurator = <Configurator
                 key={Math.ceil(Math.random() * 1000)}
                 onChange={updateConfiguration.bind(this)}
@@ -111,19 +101,18 @@ class Events extends Component {
         }
         else {
 
-            eventNames = component.events.filter(e => e.id === selectedTag.split("-")[1]).map(e => e.name)
-
-            const events = component.events
-                .map((event, index) => <Event
-                    key={Math.ceil(Math.random() * 1000)}
-                    index={index}
-                    event={event}
-                    selectedTagID={selectedTag}
-                    eventNames={eventNames}
-                    onSave={updateEvent.bind(this)}
-                    deleteEvent={deleteEvent.bind(this)} />);
-            eventsOfSelectedTag = selectedTag ? events.filter(event => selectedTag.includes(event.props.event.id)) : null;
+            // Find events that exists.
+            eventNames = component.events.filter(e => e.id === selectedTag.split("-")[1]).map(e => e.name);
         }
+
+        eventsOfSelectedTag = selectedTag && selectedEvent ? <Event
+                                                                key={Math.ceil(Math.random() * 1000)}
+                                                                index={index}
+                                                                event={selectedEvent}
+                                                                selectedTagID={selectedTag}
+                                                                eventNames={eventNames}
+                                                                onSave={updateEvent.bind(this)}
+                                                                deleteEvent={deleteEvent.bind(this)} /> : null;
 
         return (
             <ul className="container events-tab">
@@ -131,23 +120,6 @@ class Events extends Component {
                     <Nodes node={nodeTree.result} onSelectedTagChanged={selectedTagChanged.bind(this)} />
                 </div>
                 {configurator}
-                {
-                    eventsOfSelectedTag && eventsOfSelectedTag.length > 0
-                        ?
-                        <div>
-                            <div className="title">
-                                Existing Events
-                            </div>
-                            <input list="eventNames" type="text" onChange={updateSelectedEvent.bind(this)} value={this.state.selectedEvent} title="Event Name" />
-                            <datalist id="eventNames">
-                                {eventNames.map(eventName => <option value={eventName}></option>)}
-                            </datalist>
-                            {eventsOfSelectedTag}
-                        </div>
-                        :
-                        null
-                }
-
                 {selectedTag ?
                     <div><div className="title">Add Event
                     </div><Event
@@ -157,6 +129,22 @@ class Events extends Component {
                             onSave={updateEvent.bind(this)} /></div>
                     :
                     null}
+                {
+                    eventNames && eventNames.length > 0
+                        ?
+                        <div>
+                            <div className="title">
+                                Existing Events
+                            </div>
+                            <input list="eventNames" type="text" onChange={updateSelectedEvent.bind(this)} value={this.state.selectedEventName} title="Event Name" />
+                            <datalist id="eventNames">
+                                {eventNames.map(eventName => <option value={eventName}></option>)}
+                            </datalist>
+                            {eventNames && eventNames.length > 0 ? eventsOfSelectedTag : null}
+                        </div>
+                        :
+                        null
+                }
             </ul>
         );
     }

@@ -48,6 +48,6 @@
 
     export function updateSelectedEvent(e){
         this.setState({
-            selectedEvent: e.currentTarget.value
+            selectedEventName: e.currentTarget.value
         })
     }
