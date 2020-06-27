@@ -16,7 +16,6 @@ class Reducer extends Component {
 
     render() {
 
-        debugger;
         let item = this.props.item;
 
         return (
