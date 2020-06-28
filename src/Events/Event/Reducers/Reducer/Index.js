@@ -24,7 +24,7 @@ class Reducer extends Component {
                 <div class="spacing">
                     <label>Reducer Definition</label>
                     <CodeMirror
-                        value={event.reducer}
+                        value={reducer.reducer}
                         autoCursor={false}
                         options={{
                             lineNumbers: false,

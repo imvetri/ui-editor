@@ -51,8 +51,13 @@ class Events extends Component {
             name: this.state.selectedEventName,
             reducers: [{
                 reducer: "",
-                publishable: "",
-                publishName: "",
+                publishes:[
+                    {
+                        publishable: "",
+                        publishName: "",
+                        publishCondition: ""
+                    }
+                ],
                 index: component.events.length
             }]
         };
@@ -70,7 +75,7 @@ class Events extends Component {
             let childComponent = components.find(component => component.name === childComponentName);
 
             // Find events that are publishable from the child component to show in drop down.
-            eventNames = childComponent.events.filter(event => event.reducers[0].publishable === true).map(publishableEvent => publishableEvent.reducers[0].publishName);
+            eventNames = childComponent.events.filter(event => event.reducers[0].publishes[0].publishable ).map(publishableEvent => publishableEvent.reducers[0].publishes[0].publishName);
 
             // Create view for config.
             configurator = <Configurator
