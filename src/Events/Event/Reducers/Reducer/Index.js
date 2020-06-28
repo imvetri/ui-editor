@@ -22,7 +22,7 @@ class Reducer extends Component {
             <div>
                 <div class="spacing">
                     <label>
-                        Apply Condition
+                        Condition
                     </label>
                     <input type="text"  value={item.condition} />
                 </div>
