@@ -33,17 +33,8 @@ class Event extends Component {
             return "Select ID";
         }
 
-        let eventNames = this.props.eventNames.map(eventName=><option value={eventName}></option>)
-
         return (
             <div className="event">
-                <div class="spacing">
-                    <label>Event name</label>
-                    <input list="events" type="text" onChange={updateEventName.bind(this)} value={this.state.name} title="Event Name"/>
-                    <datalist id="events">
-                        {eventNames}
-                    </datalist>
-                </div>
 
                 {this.props.event ? <Reducers event={this.props.event}/> : null}
 

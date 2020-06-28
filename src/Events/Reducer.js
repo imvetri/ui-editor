@@ -26,7 +26,8 @@
 
     export function selectedTagChanged(e) {
         this.setState({
-            selectedTag: e.currentTarget.value
+            selectedTag: e.currentTarget.value,
+            selectedEventName: ""
         })
     }
 

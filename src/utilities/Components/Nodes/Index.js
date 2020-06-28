@@ -10,7 +10,6 @@ class Nodes extends Component {
 
         var node = this.props.node;
 
-
         if(!node){
             return (<span>null</span>)
         }

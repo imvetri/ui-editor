@@ -8,8 +8,8 @@ import React, { Component } from "react";
 // Components. 
 
 import Configurator from "./Configurator";
-import Nodes from "../utilities/Components/Nodes";
 import Event from "./Event";
+import Tags from "./Tags"
 
 // Styles.
 
@@ -22,7 +22,6 @@ import { updateEvent, selectedTagChanged, deleteEvent, updateConfiguration, upda
 
 // Utils.
 
-import { getNodeTree } from "../utilities/get-node-tree.js";
 import { readData } from "../utilities/Storage";
 
 class Events extends Component {
@@ -54,23 +53,6 @@ class Events extends Component {
                     <p>Looks like you have not selected any component. Click on any of the component in the left pane.</p>
                 </ul>
             )
-        }
-
-
-        let nodeTree = getNodeTree(component, component.markup, component.style, JSON.parse(component.state), component.events);
-
-        // Report error.
-        if (nodeTree.error !== undefined) {
-            return nodeTree.error;
-        }
-
-        // Report error if component is not 
-        if (nodeTree.result === undefined && this.state.components.length != 0) {
-            return (
-                <ul className="container events-tab">
-                    <div className="title">Events</div>
-                </ul>
-            );
         }
 
         const selectedTag = this.state.selectedTag || "";
@@ -106,27 +88,39 @@ class Events extends Component {
         }
 
         eventsOfSelectedTag = selectedTag && selectedEvent ? <Event
-                                                                key={Math.ceil(Math.random() * 1000)}
-                                                                index={index}
-                                                                event={selectedEvent}
-                                                                selectedTagID={selectedTag}
-                                                                eventNames={eventNames}
-                                                                onSave={updateEvent.bind(this)}
-                                                                deleteEvent={deleteEvent.bind(this)} /> : null;
-
+            key={Math.ceil(Math.random() * 1000)}
+            index={index}
+            event={selectedEvent}
+            selectedTagID={selectedTag}
+            eventNames={eventNames}
+            onSave={updateEvent.bind(this)}
+            deleteEvent={deleteEvent.bind(this)} /> : null;
+        
         return (
             <ul className="container events-tab">
-                <div className="tags">
-                    <Nodes node={nodeTree.result} onSelectedTagChanged={selectedTagChanged.bind(this)} />
-                </div>
+                
+                <Tags component={component} onSelectedTagChanged={selectedTagChanged.bind(this)}/>
                 {configurator}
                 {selectedTag ?
-                    <div><div className="title">Add Event
-                    </div><Event
-                            key={component.events.length}
-                            eventNames={eventNames}
-                            selectedTagID={selectedTag}
-                            onSave={updateEvent.bind(this)} /></div>
+                    <div>
+                        <div class="spacing">
+                            <label>Event name</label>
+                            <input list="eventNames" type="text" onChange={updateSelectedEvent.bind(this)} value={this.state.selectedEventName} title="Event Name" />
+                            <datalist id="eventNames">
+                                {eventNames.map(eventName => <option value={eventName}></option>)}
+                            </datalist>
+                        </div>
+                        <div>
+                            <div className="title">
+                                Add Event
+                            </div>
+                            <Event
+                                key={component.events.length}
+                                eventNames={eventNames}
+                                selectedTagID={selectedTag}
+                                onSave={updateEvent.bind(this)} />
+                        </div>
+                    </div>
                     :
                     null}
                 {
@@ -136,10 +130,6 @@ class Events extends Component {
                             <div className="title">
                                 Existing Events
                             </div>
-                            <input list="eventNames" type="text" onChange={updateSelectedEvent.bind(this)} value={this.state.selectedEventName} title="Event Name" />
-                            <datalist id="eventNames">
-                                {eventNames.map(eventName => <option value={eventName}></option>)}
-                            </datalist>
                             {eventNames && eventNames.length > 0 ? eventsOfSelectedTag : null}
                         </div>
                         :
