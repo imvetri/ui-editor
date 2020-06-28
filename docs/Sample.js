@@ -9,10 +9,14 @@ window.sampleComponents = [
         "id": "canvas",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "if(state.mode===\"Draw\"){\n\tstate.style.cursor = \"crosshair\";\n}\nif(state.mode===\"Text\"){\n\tstate.style.cursor = \"text\";\n}\nif(state.mode===\"Select\"){\n\tstate.style.cursor = \"cursor\";\n}\n",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -22,10 +26,14 @@ window.sampleComponents = [
         "id": "canvas",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "function create(type, x, y, text){\n\t  var item = document.createElement(type);\n      item.style.position = \"fixed\";\n      item.style.left = x+ \"px\";\n      item.style.top = y + \"px\";\n      item.style.border = \"1px solid green\";\n      item.id = Math.random();\n      if(text){\n      \titem.innerText = text;\n      }\n      return item;\n}\n\n\n\nfunction convertToSpan(e){\n\n\tlet value = e.target.value;\n    let x = e.target.style.left.split(\"px\")[0];\n    let y = e.target.style.top.split(\"px\")[0];\n    let span = create(\"span\", x,y ,value);\n    e.target.parentElement.appendChild(span);\n     span.style.width = e.target.style.width;\n      span.style.height = e.target.style.height;\n    span.style.border = e.target.style.border;\n    span.style.font =  getComputedStyle(e.target).font;\n    span.style.background = getComputedStyle(e.target).background;\n    span.style.padding = getComputedStyle(e.target).padding;\n    span.style.color = getComputedStyle(e.target).color;\n    e.target.remove();\n}\nif(e.button===0 && e.target.type!==\"text\"){\n  if(state.mode===\"Draw\"){\n\t\n      var div = create(\"div\", e.clientX, e.clientY);\n      var parent = e.target;\n      parent.appendChild(div);\n\n      state.divId = div.id;\n      state.origin = true;\n  }\n  if(state.mode===\"Text\"){\n\n      var x = e.clientX, y = e.clientY;\n      var input = create(\"input\", e.clientX, e.clientY);\n      input.type=\"text\";\n\t  var parent = e.target;\n      parent.appendChild(input);\n      input.addEventListener(\"keypress\", function(e){e.stopPropagation()})\n      input.addEventListener(\"mouseup\", function(e){e.stopImmediatePropagation()})\n      input.addEventListener(\"mouseleave\", convertToSpan)\n  }\n  if(state.mode===\"Select\"){\n  \t\n      e.target.classList.add(\"selectedForEdit\")\n      e.target.style.cursor = \"move\";\n      state.selected=true;\n\n\n  }\n  if(state.mode===\"Deselect\"){\n      e.target.classList.remove(\"selectedForEdit\")\n      state.selected=false;\n      e.target.style.cursor = \"\";\n  }\n}",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -35,10 +43,14 @@ window.sampleComponents = [
         "id": "canvas",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "if(state.mode===\"Draw\"){\n  if(state.origin){\n      var div= document.getElementById(state.divId);\n      var rect = div.getBoundingClientRect();\n      div.style.width = e.clientX - rect.left;\n      div.style.height = e.clientY - rect.top;\n  }\n}\n\nif(state.mode===\"Select\" && state.selected){\n\n  e.target.style.cursor = \"move\";\n  \n\tvar rect = e.target.getBoundingClientRect();\n\n    e.target.style.top = e.clientY - rect.height/2  + \"px\";\n    e.target.style.left = e.clientX - rect.width/2 + \"px\";\n\n}",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -48,10 +60,14 @@ window.sampleComponents = [
         "id": "canvas",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "if(state.mode===\"Draw\"){\n\tif(e.button===0){\n\t\tstate.origin = false;\n\t}\n\n}\n\nif(state.mode===\"Select\" && state.selected){\n\n    state.selected=false;\n    e.target.style.cursor = \"\";\n    \n}",
-            "publishable": true,
-            "publishName": "onEditFinish"
+            "publishes": [
+              {
+                "publishName": "onEditFinish",
+                "publishCondition": "true",
+                "publishable": true
+              }
+            ]
           }
         ]
       },
@@ -61,10 +77,14 @@ window.sampleComponents = [
         "id": "canvas",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "e.stopPropagation();\ne.preventDefault();\n",
-            "publishable": true,
-            "publishName": "onShowContextMenu"
+            "publishes": [
+              {
+                "publishName": "onShowContextMenu",
+                "publishCondition": "true",
+                "publishable": true
+              }
+            ]
           }
         ]
       },
@@ -73,10 +93,14 @@ window.sampleComponents = [
         "id": "Resizable",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "debugger;",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       }
@@ -98,10 +122,14 @@ window.sampleComponents = [
         "id": "topLeft",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "state.resizeTopLeft=true;\ne.stopPropagation();",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -111,10 +139,14 @@ window.sampleComponents = [
         "id": "topLeft",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "if(state.resizeTopLeft){\n\tlet width = Number(state.style.width.split(\"px\")[0]);\n    let left = Number(state.style.left.split(\"px\")[0]);\n\tstate.style.width = (width + left - e.clientX) + \"px\";\n    state.style.left = e.clientX + \"px\";\n    \n    let height = Number(state.style.height.split(\"px\")[0]);\n    let top = Number(state.style.top.split(\"px\")[0]);\n\tstate.style.height = (height + top - e.clientY) + \"px\";\n    state.style.top = e.clientY + \"px\";\n}\ne.stopPropagation();",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -124,10 +156,14 @@ window.sampleComponents = [
         "id": "topLeft",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "state.resizeTopLeft=false;\ne.stopPropagation();",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -137,10 +173,14 @@ window.sampleComponents = [
         "id": "bottomLeft",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "state.resizeBottomLeft=true;\ne.stopPropagation();",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -150,10 +190,14 @@ window.sampleComponents = [
         "id": "bottomLeft",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "if(state.resizeBottomLeft){\n\n\tlet width = Number(state.style.width.split(\"px\")[0]);\n    let left = Number(state.style.left.split(\"px\")[0]);\n\tstate.style.width = (width + left - e.clientX) + \"px\";\n    state.style.left = e.clientX + \"px\";\n\n    let height = Number(state.style.height.split(\"px\")[0]);\n    let top = Number(state.style.top.split(\"px\")[0]);\n\tstate.style.height = e.clientY -top+10  + \"px\";\n}\ne.stopPropagation();",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -163,10 +207,14 @@ window.sampleComponents = [
         "id": "bottomLeft",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "state.resizeBottomLeft=false;\ne.stopPropagation();",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -176,10 +224,14 @@ window.sampleComponents = [
         "id": "bottomRight",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "state.resizeBottomRight=true;\ne.stopPropagation();",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -189,10 +241,14 @@ window.sampleComponents = [
         "id": "bottomRight",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "state.resizeBottomRight=false;\ne.stopPropagation();",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -202,10 +258,14 @@ window.sampleComponents = [
         "id": "bottomRight",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "if(state.resizeBottomRight){\n\n    let height = Number(state.style.height.split(\"px\")[0]);\n    let top = Number(state.style.top.split(\"px\")[0]);\n\tstate.style.height = (e.clientY - top +5 ) + \"px\";\n    \n   \tlet width = Number(state.style.width.split(\"px\")[0]);\n    let left = Number(state.style.left.split(\"px\")[0]);\n\tstate.style.width =  e.clientX - left + 5 + \"px\";\n\n    \n}\ne.stopPropagation();",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -214,10 +274,14 @@ window.sampleComponents = [
         "id": "topLeft",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "state.resizeTopLeft=false;\ne.stopPropagation();",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -226,10 +290,14 @@ window.sampleComponents = [
         "id": "bottomLeft",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "state.resizeBottomLeft=false;\ne.stopPropagation();",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -238,10 +306,14 @@ window.sampleComponents = [
         "id": "bottomRight",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "state.resizeBottomRight=false;\ne.stopPropagation();",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -251,10 +323,14 @@ window.sampleComponents = [
         "id": "topRight",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "state.resizeTopRight=true;\ne.stopPropagation();",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -264,10 +340,14 @@ window.sampleComponents = [
         "id": "topRight",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "state.resizeTopRight=false;\ne.stopPropagation();",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -277,10 +357,14 @@ window.sampleComponents = [
         "id": "topRight",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "state.resizeTopRight=false;\ne.stopPropagation();",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -290,10 +374,14 @@ window.sampleComponents = [
         "id": "topRight",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "if(state.resizeTopRight){\n\tlet width = Number(state.style.width.split(\"px\")[0]);\n    let left = Number(state.style.left.split(\"px\")[0]);\n\tstate.style.width = (e.clientX - left + 5) + \"px\";\n    \n    let height = Number(state.style.height.split(\"px\")[0]);\n    let top = Number(state.style.top.split(\"px\")[0]);\n\tstate.style.height = -e.clientY + height + top + \"px\";\n    state.style.top = e.clientY + \"px\";\n}\ne.stopPropagation();",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -302,10 +390,14 @@ window.sampleComponents = [
         "id": "resizable",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "e.target.style.cursor = \"grabbing\";\nstate.grabbing = true;\n",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -314,10 +406,14 @@ window.sampleComponents = [
         "id": "resizable",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "e.target.style.cursor = \"grab\";\nstate.grabbing = false;\n",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -327,10 +423,14 @@ window.sampleComponents = [
         "id": "resizable",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "if(state.grabbing) {\n\tvar rect = e.target.getBoundingClientRect();\n\n    e.target.style.top = e.clientY - rect.height/2  + \"px\";\n    e.target.style.left = e.clientX - rect.width/2 + \"px\";\n}\n",
-            "publishable": false,
-            "publishName": "onMoveFinished"
+            "publishes": [
+              {
+                "publishName": "onMoveFinished",
+                "publishCondition": "true",
+                "publishable": false
+              }
+            ]
           }
         ]
       },
@@ -339,10 +439,14 @@ window.sampleComponents = [
         "id": "resizable",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "",
-            "publishable": true,
-            "publishName": "onMoveFinished"
+            "publishes": [
+              {
+                "publishName": "onMoveFinished",
+                "publishCondition": "true",
+                "publishable": true
+              }
+            ]
           }
         ]
       },
@@ -352,10 +456,14 @@ window.sampleComponents = [
         "id": "cover",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "e.stopPropagation();",
-            "publishable": true,
-            "publishName": "onRightClicked"
+            "publishes": [
+              {
+                "publishName": "onRightClicked",
+                "publishCondition": "true",
+                "publishable": true
+              }
+            ]
           }
         ]
       }
@@ -377,10 +485,14 @@ window.sampleComponents = [
         "id": "resizable",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "e.target.style.cursor = \"grabbing\";\nstate.grabbing = true;\nconsole.log(\"Mousedown\")",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -390,10 +502,14 @@ window.sampleComponents = [
         "id": "resizable",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "e.target.style.cursor = \"grab\";\nstate.grabbing = false;\nconsole.log(\"mouseup\")",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -403,10 +519,14 @@ window.sampleComponents = [
         "id": "resizable",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "if(state.grabbing) {\n\tvar rect = e.target.getBoundingClientRect();\n\n    e.target.style.top = e.clientY - rect.height/2  + \"px\";\n    e.target.style.left = e.clientX - rect.width/2 + \"px\";\n}\nconsole.log(\"mousemove\")",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -415,10 +535,14 @@ window.sampleComponents = [
         "id": "movable",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "e.target.style.cursor = \"grabbing\";\nstate.grabbing = true;\n",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -427,10 +551,14 @@ window.sampleComponents = [
         "id": "movable",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "e.target.style.cursor = \"grab\";\nstate.grabbing = false;\n",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -439,10 +567,14 @@ window.sampleComponents = [
         "id": "movable",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "if(state.grabbing) {\n\tvar rect = e.target.getBoundingClientRect();\n\n    e.target.style.top = e.clientY - rect.height/2  + \"px\";\n    e.target.style.left = e.clientX - rect.width/2 + \"px\";\n}",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       }
@@ -464,10 +596,14 @@ window.sampleComponents = [
         "id": "Canvas",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "if (state.CanvasControlsVariant === \"New\") {\n    state.CanvasControls=[{\n        \"undo\": \"undo disabled\",\n        \"redo\": \"redo disabled\",\n        \"draw\": \"draw enabled\",\n        \"text\": \"text disabled\",\n        \"image\": \"image disabled\",\n        \"group\": \"group disabled\",\n        \"ungroup\": \"ungroup disabled\",\n        \"duplicate\": \"duplicate disabled\",\n        \"delete\": \"delete disabled\",\n        \"select\": \"select disabled\",\n        \"deselect\": \"deselect disabled\",\n        \"edit\":\"edit disabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    }]\n}\nif (state.CanvasControlsVariant === \"Created\") {\n    state.CanvasControls=[{\n        \"undo\": \"undo enabled\",\n        \"redo\": \"redo disabled\",\n        \"draw\": \"draw enabled\",\n        \"text\": \"text enabled\",\n        \"image\": \"image enabled\",\n        \"group\": \"group disabled\",\n        \"ungroup\": \"ungroup disabled\",\n        \"duplicate\": \"duplicate disabled\",\n        \"delete\": \"delete disabled\",\n        \"select\": \"select enabled\",\n        \"deselect\": \"deselect disabled\",\n        \"edit\":\"edit disabled\",\n        \n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    }]\n}\nif (state.CanvasControlsVariant === \"SingleSelection\") {\n    state.CanvasControls=[{\n        \"undo\": \"undo enabled\",\n        \"redo\": \"redo enabled\",\n        \"draw\": \"draw enabled\",\n        \"text\": \"text disabled\",\n        \"image\": \"image disabled\",\n        \"group\": \"group disabled\",\n        \"ungroup\": \"ungroup disabled\",\n        \"duplicate\": \"duplicate enabled\",\n        \"delete\": \"delete enabled\",\n        \"select\": \"select disabled\",\n        \"deselect\": \"deselect enabled\",\n         \"edit\":\"edit enabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    }]\n}\n\nif (state.CanvasControlsVariant === \"MultiGroup\") {\n    state.CanvasControls=[{\n        \"undo\": \"undo enabled\",\n        \"redo\": \"redo enabled\",\n        \"draw\": \"draw enabled\",\n        \"text\": \"text disabled\",\n        \"image\": \"image disabled\",\n        \"group\": \"group enabled\",\n        \"ungroup\": \"ungroup disabled\",\n        \"duplicate\": \"duplicate enabled\",\n        \"delete\": \"delete enabled\",\n        \"select\": \"select disabled\",\n        \"deselect\": \"deselect enabled\",\n         \"edit\":\"edit enabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    }]\n}\n\nif (state.CanvasControlsVariant === \"MultiUngroup\") {\n    state.CanvasControls=[{\n        \"undo\": \"undo enabled\",\n        \"redo\": \"redo enabled\",\n        \"draw\": \"draw enabled\",\n        \"text\": \"text disabled\",\n        \"image\": \"image disabled\",\n        \"group\": \"group disabled\",\n        \"ungroup\": \"ungroup enabled\",\n        \"duplicate\": \"duplicate enabled\",\n        \"delete\": \"delete enabled\",\n        \"select\": \"select disabled\",\n        \"deselect\": \"deselect enabled\",\n         \"edit\":\"edit enabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    }]\n}\n\nstate.Canvas[0].innerHTML = e.currentTarget.innerHTML;\n\n\n",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -477,10 +613,14 @@ window.sampleComponents = [
         "id": "CanvasControls",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "if(\"Draw\" === e.state.item){\n\tstate.CanvasControlsVariant = \"Created\";\n    state.Canvas[0].mode = \"Draw\";\n}\nif(\"Text\" === e.state.item){\n\tstate.CanvasControlsVariant = \"Created\";\n    state.Canvas[0].mode = \"Text\";\n}\n\nif(\"Select\" === e.state.item){\n\tstate.CanvasControlsVariant = \"MultiGroup\";\n    state.Canvas[0].mode = \"Select\"\n}\n\nif(\"Deselect\" === e.state.item){\n\tstate.CanvasControlsVariant = \"Created\";\n    state.Canvas[0].mode = \"Deselect\"\n}\n\nif(\"Group\" === e.state.item){\n\tstate.CanvasControlsVariant = \"MultiUngroup\";\n}\n\nif(\"Ungroup\" === e.state.item){\n\tstate.CanvasControlsVariant = \"MultiGroup\";\n}\nif(\"Edit\" === e.state.item){\n    let element = document.querySelectorAll(\".selectedForEdit\")[0];\n\tlet elementStyle = getComputedStyle(element);\n\tstate.CanvasControlsVariant = \"MultiGroup\";\n    state.PropertiesControl = [{\n    \"style\":{\t\n    \t\"top\": e.clientY-150+ \"px\",\n    \t\"left\": e.clientX + \"px\"\n    },\n    \"top\": elementStyle.top,\n    \"left\": elementStyle.left,\n    \"height\": elementStyle.height,\n    \"width\": elementStyle.width,\n    \"borderWidth\": elementStyle.borderWidth,\n    \"borderStyle\": elementStyle.borderStyle,\n    \"borderColor\": elementStyle.borderColor,\n    \"fontSize\" : elementStyle.fontSize,\n    \"color\": elementStyle.color,\n    \"fontFamily\" : elementStyle.fontFamily\n  }]\n}\nstate.CanvasControls=[];\n",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -490,10 +630,14 @@ window.sampleComponents = [
         "id": "PropertiesControl",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "state.PropertiesControl = [];\n\nlet element = document.querySelector(\"#canvas\");\n\n\nstate.Canvas[0].innerHTML = element.innerHTML;\n",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -503,10 +647,14 @@ window.sampleComponents = [
         "id": "Resizable",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "var top = e.target.style.top;\nvar left = e.target.style.left;\nvar height = e.target.style.height;\nvar width = e.target.style.width;\n\nstate.Resizable = [{\n\t\"style\":{\n    \t\"top\":top,\n        \"left\":left,\n        \"height\":height,\n        \"width\":width\n        }\n    }]\n    \nvar selected = document.querySelector(\".selectedForEdit\");\n\nselected.style.top = top;\nselected.style.left = left;\nselected.style.height = height;\nselected.style.width = width;\n\nstate.Canvas[0].innerHTML =  document.getElementById(\"canvas\").innerHTML\n\n",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -516,10 +664,14 @@ window.sampleComponents = [
         "id": "Canvas",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "if(e.state.mode===\"Select\"){\n\tlet style = getComputedStyle(e.target);\n    let type= e.state.type;\n\tstate.Resizable = [{\n      \"style\":{\n          \"top\": style.top,\n          \"left\": style.left,\n          \"height\": style.height,\n          \"width\": style.width\n      }\n\t}]\n\n}\n\nstate.Canvas[0].innerHTML =e.currentTarget.innerHTML",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -529,10 +681,14 @@ window.sampleComponents = [
         "id": "Resizable",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "state.Canvas[0].innerHTML =  document.getElementById(\"canvas\").innerHTML\nstate.Resizable = [];\nstate.CanvasControls=[{\n        \"undo\": \"undo enabled\",\n        \"redo\": \"redo enabled\",\n        \"draw\": \"draw enabled\",\n        \"text\": \"text disabled\",\n        \"image\": \"image disabled\",\n        \"group\": \"group enabled\",\n        \"ungroup\": \"ungroup disabled\",\n        \"duplicate\": \"duplicate enabled\",\n        \"delete\": \"delete enabled\",\n        \"select\": \"select disabled\",\n        \"deselect\": \"deselect enabled\",\n         \"edit\":\"edit enabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    }]",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       }
@@ -554,10 +710,14 @@ window.sampleComponents = [
         "id": "menu",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "state.item = e.target.innerText;",
-            "publishable": true,
-            "publishName": "onItemSelected"
+            "publishes": [
+              {
+                "publishName": "onItemSelected",
+                "publishCondition": "true",
+                "publishable": true
+              }
+            ]
           }
         ]
       }
@@ -579,10 +739,14 @@ window.sampleComponents = [
         "id": "lessheight",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "let height = Number(state.height.split(\"px\")[0])-1;\nstate.height = height+\"px\";\n\n\nlet element = document.querySelectorAll(\".selectedForEdit\")[0];\nlet elementStyle = element.style;\n\nelementStyle.height = state.height;",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -592,10 +756,14 @@ window.sampleComponents = [
         "id": "moreheight",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "let height = Number(state.height.split(\"px\")[0])+1;\nstate.height = height+\"px\";\n\nlet element = document.querySelectorAll(\".selectedForEdit\")[0];\nlet elementStyle = element.style;\n\nelementStyle.height = state.height;",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -605,10 +773,14 @@ window.sampleComponents = [
         "id": "lesswidth",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "let width = Number(state.width.split(\"px\")[0])-1;\nstate.width = width+\"px\";\n\nlet element = document.querySelectorAll(\".selectedForEdit\")[0];\nlet elementStyle = element.style;\n\nelementStyle.width = state.width;",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -618,10 +790,14 @@ window.sampleComponents = [
         "id": "morewidth",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "let width = Number(state.width.split(\"px\")[0])+1;\nstate.width = width+\"px\";\n\nlet element = document.querySelectorAll(\".selectedForEdit\")[0];\nlet elementStyle = element.style;\n\nelementStyle.width = state.width;",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -631,10 +807,14 @@ window.sampleComponents = [
         "id": "lesstop",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "let top = Number(state.top.split(\"px\")[0])-1;\nstate.top = top+\"px\";\n\nlet element = document.querySelectorAll(\".selectedForEdit\")[0];\nlet elementStyle = element.style;\n\nelementStyle.top = state.top;",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -644,10 +824,14 @@ window.sampleComponents = [
         "id": "moretop",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "let top = Number(state.top.split(\"px\")[0])+1;\nstate.top = top+\"px\";\n\nlet element = document.querySelectorAll(\".selectedForEdit\")[0];\nlet elementStyle = element.style;\n\nelementStyle.top = state.top;",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -657,10 +841,14 @@ window.sampleComponents = [
         "id": "moreleft",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "let left = Number(state.left.split(\"px\")[0])-1;\nstate.left = left+\"px\";\n\nlet element = document.querySelectorAll(\".selectedForEdit\")[0];\nlet elementStyle = element.style;\n\nelementStyle.left = state.left;",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -670,10 +858,14 @@ window.sampleComponents = [
         "id": "lessleft",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "let left = Number(state.left.split(\"px\")[0])+1;\nstate.left = left+\"px\";\n\nlet element = document.querySelectorAll(\".selectedForEdit\")[0];\nlet elementStyle = element.style;\n\nelementStyle.left = state.left;",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -683,10 +875,14 @@ window.sampleComponents = [
         "id": "lessborder",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "let borderWidth = Number(state.borderWidth.split(\"px\")[0])-1;\nstate.borderWidth = borderWidth+\"px\";\n\nlet element = document.querySelectorAll(\".selectedForEdit\")[0];\nlet elementStyle = element.style;\n\nelementStyle.borderWidth = state.borderWidth;",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -696,10 +892,14 @@ window.sampleComponents = [
         "id": "moreborder",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "let borderWidth = Number(state.borderWidth.split(\"px\")[0])+1;\nstate.borderWidth = borderWidth+\"px\";\n\nlet element = document.querySelectorAll(\".selectedForEdit\")[0];\nlet elementStyle = element.style;\n\nelementStyle.borderWidth = state.borderWidth;",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -709,10 +909,14 @@ window.sampleComponents = [
         "id": "morespace",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "let space = Number(state.space.split(\"px\")[0])+1;\nstate.space = space+\"px\";",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -722,10 +926,14 @@ window.sampleComponents = [
         "id": "lessspace",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "let space = Number(state.space.split(\"px\")[0])-1;\nstate.space = space+\"px\";",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -735,10 +943,14 @@ window.sampleComponents = [
         "id": "properties",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "let element = document.querySelectorAll(\".selectedForEdit\")[0];\nstate.elementHTML = element.innerHTML;",
-            "publishable": true,
-            "publishName": "onHide"
+            "publishes": [
+              {
+                "publishName": "onHide",
+                "publishCondition": "true",
+                "publishable": true
+              }
+            ]
           }
         ]
       },
@@ -748,10 +960,14 @@ window.sampleComponents = [
         "id": "lessSize",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "let fontSize = Number(state.fontSize.split(\"px\")[0])-1;\nstate.fontSize = fontSize+\"px\";\n\nlet element = document.querySelectorAll(\".selectedForEdit\")[0];\nlet elementStyle = element.style;\n\nelementStyle.fontSize = state.fontSize;",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       },
@@ -761,10 +977,14 @@ window.sampleComponents = [
         "id": "moreSize",
         "reducers": [
           {
-            "condition": "true",
             "reducer": "let fontSize = Number(state.fontSize.split(\"px\")[0])+1;\nstate.fontSize = fontSize+\"px\";\n\nlet element = document.querySelectorAll(\".selectedForEdit\")[0];\nlet elementStyle = element.style;\n\nelementStyle.fontSize = state.fontSize;",
-            "publishable": "",
-            "publishName": ""
+            "publishes": [
+              {
+                "publishName": "",
+                "publishCondition": "true",
+                "publishable": ""
+              }
+            ]
           }
         ]
       }

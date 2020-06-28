@@ -5,6 +5,7 @@ import React, { Component } from "react";
 // Components.
 
 import { UnControlled as CodeMirror } from 'react-codemirror2';
+import Publish from "../Publish";
 
 // Events.
 
@@ -16,20 +17,14 @@ class Reducer extends Component {
 
     render() {
 
-        let item = this.props.item;
+        let reducer = this.props.reducer;
 
         return (
             <div>
                 <div class="spacing">
-                    <label>
-                        Condition
-                    </label>
-                    <input type="text"  value={item.condition} />
-                </div>
-                <div class="spacing">
-                    <label>Reducer</label>
+                    <label>Reducer Definition</label>
                     <CodeMirror
-                        value={item.reducer}
+                        value={event.reducer}
                         autoCursor={false}
                         options={{
                             lineNumbers: false,
@@ -45,13 +40,7 @@ class Reducer extends Component {
                         }}
                     />
                 </div>
-                <div class="spacing">
-                    <label>
-                        Publishable
-                    </label>
-                    <input type="checkbox" checked={item.publishable ? "checked" : ""} />
-                    <input type="text" value={item.publishName}/>
-                </div>
+                {reducer.publishes.map(publish=><Publish publish={publish}/>)}
             </div>
         );
     }

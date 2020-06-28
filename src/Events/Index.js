@@ -53,7 +53,6 @@ class Events extends Component {
                 reducer: "",
                 publishable: "",
                 publishName: "",
-                condition: true,
                 index: component.events.length
             }]
         };
@@ -91,6 +90,9 @@ class Events extends Component {
                 <ul className="container events-tab">
                     <Tags component={component} onSelectedTagChanged={selectedTagChanged.bind(this)}/>
                     {configurator}
+                    <div className="title">
+                        Event
+                    </div>
                     <div>
                         <div class="spacing">
                             <label>Event name</label>
@@ -100,19 +102,14 @@ class Events extends Component {
                             </datalist>
                         </div>
                     </div>
-                    <div>
-                        <div className="title">
-                            Event
-                        </div>
-                        <Event
-                            key={Math.ceil(Math.random() * 1000)}
-                            index={index}
-                            event={selectedEvent}
-                            selectedTagID={selectedTag}
-                            eventNames={eventNames}
-                            onSave={updateEvent.bind(this)}
-                            deleteEvent={deleteEvent.bind(this)} />
-                    </div>
+                    <Event
+                        key={Math.ceil(Math.random() * 1000)}
+                        index={index}
+                        event={selectedEvent}
+                        selectedTagID={selectedTag}
+                        eventNames={eventNames}
+                        onSave={updateEvent.bind(this)}
+                        deleteEvent={deleteEvent.bind(this)} />
                 </ul>
             );
         }

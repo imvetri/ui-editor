@@ -18,7 +18,7 @@ class Reducers extends Component {
                 <div className="title">
                     Reducers
                 </div>
-                {this.props.event.reducers.map(item=><Reducer item={item}/>)}
+                {this.props.event.reducers.map(reducer=><Reducer reducer={reducer}/>)}
             </div>
         );
     }
