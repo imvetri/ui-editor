@@ -37,26 +37,16 @@ class Events extends Component {
 
         // Report if no component is created.
         if (this.state.components.length == 0) {
-            return (
-                <ul className="container events-tab">
-                    <div className="title">Events</div>
-                    <p>Looks like you do not have any Web component created. Type some "html" on the right "Editor" tab</p>
-                </ul>
-            );
+            return null;
         }
 
         // Report if no component is selected.
         if (component.name === undefined && this.state.components.length != 0) {
-            return (
-                <ul className="container events-tab">
-                    <div className="title">Events</div>
-                    <p>Looks like you have not selected any component. Click on any of the component in the left pane.</p>
-                </ul>
-            )
+            return null;
         }
 
         const selectedTag = this.state.selectedTag || "";
-        let eventsOfSelectedTag, configurator, eventNames = [];
+        let selectedTagEvent, configurator, eventNames = [];
         const selectedEvent = component.events.find(event => event.name === this.state.selectedEventName);
 
         // Check if it is a child component
@@ -87,7 +77,7 @@ class Events extends Component {
             eventNames = component.events.filter(e => e.id === selectedTag.split("-")[1]).map(e => e.name);
         }
 
-        eventsOfSelectedTag = selectedTag && selectedEvent ? <Event
+        selectedTagEvent = selectedTag && selectedEvent ? <Event
             key={Math.ceil(Math.random() * 1000)}
             index={index}
             event={selectedEvent}
@@ -95,13 +85,12 @@ class Events extends Component {
             eventNames={eventNames}
             onSave={updateEvent.bind(this)}
             deleteEvent={deleteEvent.bind(this)} /> : null;
-        
-        return (
-            <ul className="container events-tab">
-                
-                <Tags component={component} onSelectedTagChanged={selectedTagChanged.bind(this)}/>
-                {configurator}
-                {selectedTag ?
+
+        if(selectedTagEvent){
+            return (
+                <ul className="container events-tab">
+                    <Tags component={component} onSelectedTagChanged={selectedTagChanged.bind(this)}/>
+                    {configurator}
                     <div>
                         <div class="spacing">
                             <label>Event name</label>
@@ -110,33 +99,52 @@ class Events extends Component {
                                 {eventNames.map(eventName => <option value={eventName}></option>)}
                             </datalist>
                         </div>
-                        <div>
-                            <div className="title">
-                                Add Event
-                            </div>
-                            <Event
-                                key={component.events.length}
-                                eventNames={eventNames}
-                                selectedTagID={selectedTag}
-                                onSave={updateEvent.bind(this)} />
-                        </div>
                     </div>
-                    :
-                    null}
-                {
-                    eventNames && eventNames.length > 0
-                        ?
-                        <div>
-                            <div className="title">
-                                Existing Events
-                            </div>
-                            {eventNames && eventNames.length > 0 ? eventsOfSelectedTag : null}
+                    <div>
+                        <div className="title">
+                            Existing Event
                         </div>
-                        :
-                        null
-                }
-            </ul>
-        );
+                        {selectedTagEvent}
+                    </div>
+                </ul>
+            );
+        }
+        else{ // When  no event is matched
+
+            if(selectedTag){ // Tag is selected 
+                return (
+                    <ul className="container events-tab">
+                        <Tags component={component} onSelectedTagChanged={selectedTagChanged.bind(this)}/>
+                        {configurator}
+                            <div>
+                                <div class="spacing">
+                                    <label>Event name</label>
+                                    <input list="eventNames" type="text" onChange={updateSelectedEvent.bind(this)} value={this.state.selectedEventName} title="Event Name" />
+                                    <datalist id="eventNames">
+                                        {eventNames.map(eventName => <option value={eventName}></option>)}
+                                    </datalist>
+                                </div>
+                                <div>
+                                    <div className="title">
+                                        Add Event
+                                    </div>
+                                    <Event
+                                        key={component.events.length}
+                                        eventNames={eventNames}
+                                        selectedTagID={selectedTag}
+                                        onSave={updateEvent.bind(this)} />
+                                </div>
+                            </div>
+                    </ul>
+                ); 
+            }
+            else { // Tag is not selected
+                return (                   
+                    <ul className="container events-tab">                        
+                        <Tags component={component} onSelectedTagChanged={selectedTagChanged.bind(this)}/>
+                    </ul>)
+            }
+        }
     }
 }
 
