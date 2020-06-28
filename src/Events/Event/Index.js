@@ -19,12 +19,7 @@ import {publishEvent, deleteEvent} from './Events';
 class Event extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            name: this.props.event ? this.props.event.name : "",
-            reducer: this.props.event ? this.props.event.reducer : "",
-            publishable: this.props.event ? this.props.event.publishable : "",
-            publishName: this.props.event ? this.props.event.publishName : "",
-        }
+        this.state = {}
     }
 
     render() {

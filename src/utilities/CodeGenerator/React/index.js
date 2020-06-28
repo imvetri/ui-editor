@@ -48,24 +48,24 @@ export function convertToReact (component){
         return markup;
     }
 
+    function getPublishes(publishes){
+        return publishes.map(publish=>{
+            if(publish.publishable){
+                return `
+                if(${publish.publishCondition}){
+                    this.props.${publish.publishName}? this.props.${publish.publishName}(e):null;
+                }`
+           }
+        }).join("\n")
+    }
+
     function getReducer(reducers){
-        return reducers.map(reducer=>{
-            if(reducer.publishable){
-                 return `
-                 if(${reducer.condition}){
-                     ${reducer.reducer}
-                     this.setState(state);
-                     e.state = state;
-                     this.props.${reducer.publishName}? this.props.${reducer.publishName}(e):null;
-                 }`
-            }
-            else{
-                 return `
-                 ${reducer.reducer}
-                 this.setState(state);
-                 e.state = state;`
-            }
-        }).join("\n");
+        return reducers.map(reducer=>`
+            ${reducer.reducer}
+            this.setState(state);
+            e.state = state;
+            ${getPublishes(reducer.publishes)}`
+        ).join("\n");
     }
     
     let propsInMarkup = addProps(component);
