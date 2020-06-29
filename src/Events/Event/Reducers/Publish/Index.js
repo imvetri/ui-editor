@@ -14,10 +14,18 @@ class Publish extends Component {
         }
     }
 
+    onButtonClickSave(){
+        // Reminder - Never bind inline calls to button. Ruined my morning.
+        this.props.onSave(this.state, this.props.index)
+    }
+
+    onButtonClickdelete(){
+        this.props.onDelete(this.state, this.props.index)
+    }
+
     render() {
 
         let state = this.state;
-        debugger;
 
         return (
             <div>
@@ -37,8 +45,9 @@ class Publish extends Component {
                             <label>Publish Condition</label>
                             <input type="text" onChange={(e)=>{this.setState({publishCondition: e.currentTarget.value})}} value={state.publishCondition}/>
                         </div>
-                        <button onClick={this.props.onSave(this.state, this.props.index)}>Save</button>
-                        <button onClick={this.props.onDelete(this.props.index)}>Delete</button>
+                        <button onClick={this.onButtonClickSave.bind(this)}>Save</button> 
+                        {/* Reminder - dont write inline code for event callback. Beautifully ruined my morning. */}
+                        <button onClick={this.onButtonClickdelete.bind(this)}>Delete</button>
                     </div>
                 : null}
             </div>

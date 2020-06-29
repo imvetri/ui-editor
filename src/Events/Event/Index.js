@@ -8,10 +8,6 @@ import "./Style.css"
 
 import Reducers from "./Reducers/Index";
 
-// Reducers. 
-
-import {updateEventName} from "./Reducer";
-
 // Events.
 
 
