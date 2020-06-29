@@ -12,19 +12,24 @@ import Publish from "../Publish";
 class Reducer extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            publishes: this.props.reducer.publishes,
+            reducer: this.props.reducer.reducer
+        }
     }
 
     render() {
 
-        let reducer = this.props.reducer;
+        let reducer = this.state.reducer;
+        let publishes = this.state.publishes;
 
         return (
+            // TODO: 1.check save and delete.
             <div>
                 <div class="spacing">
                     <label>Reducer Definition</label>
                     <CodeMirror
-                        value={reducer.reducer}
+                        value={reducer}
                         autoCursor={false}
                         options={{
                             lineNumbers: false,
@@ -40,7 +45,27 @@ class Reducer extends Component {
                         }}
                     />
                 </div>
-                {reducer.publishes.map(publish=><Publish publish={publish}/>)}
+                
+                <div className="title">
+                    Publishes
+                </div>
+                <button onClick={(e)=>{
+                    this.setState({ publishes: (publishes.push({
+                                    publishable: true,
+                                    publishName: "",
+                                    publishCondition: ""
+                    }))})
+                }}>Add publish</button>
+                {publishes.map((publish, i)=><Publish 
+                                                        index={i} 
+                                                        key={Math.ceil(Math.random() * 1000)}
+                                                        publish={publish} 
+                                                        onSave={(data, i)=> this.setState({
+                                                                                publishes: (publishes[i] = data, publishes) // update list of publishes and return it.
+                                                                            })}
+                                                        onDelete={(i)=> this.setState({
+                                                                            publishes: (publishes.splice(i,1), publishes) // delete the publishes and return it.
+                                                                            })}/>)}
             </div>
         );
     }

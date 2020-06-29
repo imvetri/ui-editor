@@ -13,7 +13,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -30,7 +30,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -47,7 +47,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -64,7 +64,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "onEditFinish",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": true
               }
             ]
@@ -81,7 +81,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "onShowContextMenu",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": true
               }
             ]
@@ -97,7 +97,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -126,7 +126,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -143,7 +143,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -160,7 +160,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -177,7 +177,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -194,7 +194,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -211,7 +211,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -228,7 +228,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -245,7 +245,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -262,7 +262,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -278,7 +278,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -294,7 +294,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -310,7 +310,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -327,7 +327,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -344,7 +344,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -361,7 +361,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -378,7 +378,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -394,7 +394,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -410,7 +410,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -427,7 +427,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "onMoveFinished",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": false
               }
             ]
@@ -443,7 +443,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "onMoveFinished",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": true
               }
             ]
@@ -460,7 +460,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "onRightClicked",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": true
               }
             ]
@@ -489,7 +489,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -506,7 +506,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -523,7 +523,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -539,7 +539,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -555,7 +555,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -571,7 +571,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -600,7 +600,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -617,7 +617,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -634,7 +634,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -651,7 +651,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -668,7 +668,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -685,7 +685,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -714,7 +714,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "onItemSelected",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": true
               }
             ]
@@ -743,7 +743,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -760,7 +760,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -777,7 +777,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -794,7 +794,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -811,7 +811,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -828,7 +828,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -845,7 +845,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -862,7 +862,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -879,7 +879,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -896,7 +896,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -913,7 +913,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -930,7 +930,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -947,7 +947,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "onHide",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": true
               }
             ]
@@ -964,7 +964,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]
@@ -981,7 +981,7 @@ window.sampleComponents = [
             "publishes": [
               {
                 "publishName": "",
-                "publishCondition": "true",
+                "publishCondition": true,
                 "publishable": ""
               }
             ]

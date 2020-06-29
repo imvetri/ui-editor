@@ -7,27 +7,40 @@ import React, { Component } from "react";
 class Publish extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            publishable: this.props.publish.publishable,
+            publishName: this.props.publish.publishName,
+            publishCondition: this.props.publish.publishCondition
+        }
     }
 
     render() {
 
-        let publish = this.props.publish;
+        let state = this.state;
+        debugger;
 
         return (
             <div>
                 <div class="spacing">
                     <label>Publishable</label>
-                    <input type="checkbox" checked={publish.publishable ? "checked" : ""} />
+                    <input type="checkbox" onChange={(e)=>{this.setState({publishable: !state.publishable})}} checked={state.publishable ? "checked" : ""} />
                 </div>
-                <div class="spacing">
-                    <label>Publish Name</label>
-                    <input type="text" value={publish.publishName}/>
-                </div>
-                <div class="spacing">
-                    <label>Publish Condition</label>
-                    <input type="text" value={publish.publishCondition}/>
-                </div>
+                {
+                state.publishable ? 
+                    <div>
+                            
+                        <div class="spacing">
+                            <label>Publish Name</label>
+                            <input type="text" onChange={(e)=>{this.setState({publishName: e.currentTarget.value})}} value={state.publishName}/>
+                        </div>
+                        <div class="spacing">
+                            <label>Publish Condition</label>
+                            <input type="text" onChange={(e)=>{this.setState({publishCondition: e.currentTarget.value})}} value={state.publishCondition}/>
+                        </div>
+                        <button onClick={this.props.onSave(this.state, this.props.index)}>Save</button>
+                        <button onClick={this.props.onDelete(this.props.index)}>Delete</button>
+                    </div>
+                : null}
             </div>
         );
     }

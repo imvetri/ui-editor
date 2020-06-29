@@ -7,7 +7,3 @@ export function publishEvent() {
             publishName: this.state.publishName
         })
     }
-
-export function deleteEvent(){
-        this.props.deleteEvent(this.props.index);
-    }

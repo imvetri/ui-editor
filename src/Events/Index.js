@@ -18,6 +18,7 @@ import "./Style.css";
 // Reducers.
 
 import { updateEvent, selectedTagChanged, deleteEvent, updateConfiguration, updateSelectedEvent } from "./Reducer";
+import {publishEvent} from "./Event/Events";
 
 
 // Utils.
@@ -105,6 +106,8 @@ class Events extends Component {
                             <datalist id="eventNames">
                                 {eventNames.map(eventName => <option value={eventName}></option>)}
                             </datalist>
+                            <button onClick={publishEvent.bind(this)} id="saveEvent"><i className="fas fa-save"></i>Save</button>
+                            <button onClick={deleteEvent.bind(this)} id="deleteEvent"><i className="fas fa-trash"></i>Delete</button>
                         </div>
                     </div>
                     <Event
