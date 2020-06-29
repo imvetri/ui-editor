@@ -19,13 +19,19 @@ class Reducer extends Component {
     }
 
     addNewPublish(){
-        debugger;
         this.setState({
             publishes: (this.state.publishes.push({
                 publishable: true,
                 publishName: "",
                 publishCondition: ""
             }), this.state.publishes)
+        })
+    }
+
+    syncChanges(){
+        this.props.onChange({
+            publishes: this.state.publishes,
+            reducer: this.state.reducer
         })
     }
 
@@ -37,7 +43,7 @@ class Reducer extends Component {
         return (
             // TODO: 1.check save and delete.
             <div>
-                <div class="spacing">
+                <div class="spacing" onMouseLeave={this.syncChanges.bind(this)}>
                     <label>Reducer Definition</label>
                     <CodeMirror
                         value={reducer}
