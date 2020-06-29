@@ -52,13 +52,7 @@ class Events extends Component {
             name: this.state.selectedEventName,
             reducers: [{
                 reducer: "",
-                publishes:[
-                    {
-                        publishable: "",
-                        publishName: "",
-                        publishCondition: ""
-                    }
-                ],
+                publishes:[ ],
                 index: component.events.length
             }]
         };
