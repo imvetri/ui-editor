@@ -106,8 +106,8 @@ class Events extends Component {
                             <datalist id="eventNames">
                                 {eventNames.map(eventName => <option value={eventName}></option>)}
                             </datalist>
-                            <button onClick={publishEvent.bind(this)} id="saveEvent"><i className="fas fa-save"></i>Save</button>
-                            <button onClick={deleteEvent.bind(this)} id="deleteEvent"><i className="fas fa-trash"></i>Delete</button>
+                            <button onClick={publishEvent.bind(this)} id="saveEvent"><i className="fas fa-save"></i>Save Event</button>
+                            <button onClick={deleteEvent.bind(this)} id="deleteEvent"><i className="fas fa-trash"></i>Delete Event</button>
                         </div>
                     </div>
                     <Event

@@ -45,9 +45,9 @@ class Publish extends Component {
                             <label>Publish Condition</label>
                             <input type="text" onChange={(e)=>{this.setState({publishCondition: e.currentTarget.value})}} value={state.publishCondition}/>
                         </div>
-                        <button onClick={this.onButtonClickSave.bind(this)}>Save</button> 
+                        <button id="savePublish" onClick={this.onButtonClickSave.bind(this)}>Save Publish</button> 
                         {/* Reminder - dont write inline code for event callback. Beautifully ruined my morning. */}
-                        <button onClick={this.onButtonClickdelete.bind(this)}>Delete</button>
+                        <button id="deletePublish" onClick={this.onButtonClickdelete.bind(this)}>Delete Publish</button>
                     </div>
                 : null}
             </div>

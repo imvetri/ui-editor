@@ -49,7 +49,7 @@ class Reducer extends Component {
                 <div className="title">
                     Publishes
                 </div>
-                <button onClick={(e)=>{
+                <button id ="addPublish" onClick={(e)=>{
                     this.setState({ publishes: (publishes.push({
                                     publishable: true,
                                     publishName: "",
