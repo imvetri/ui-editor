@@ -31,22 +31,35 @@ class Events extends Component {
         this.state = Object.assign({}, this.props);
         this.state.selectedTag = this.props.selectedTag;
         this.state.selectedEventName = "";
+        this.state.selectedEvent = {
+            name: "",
+            reducers: [{
+                reducer: "",
+                publishes: [],
+                index: this.props.component.events.length
+            }]
+        }
     }
 
-    publishEvent() {
-        let component = this.state.component;
-        this.props.onEventsUpdate({
-            name: this.state.selectedEventName,
-            reducer: this.state.reducer,
-            index: this.props.index,
-            publishable: this.state.publishable,
-            publishName: this.state.publishName
+    publishEvent(reducer) {
+        this.setState({
+            selectedEvent: {
+                name: this.state.selectedEventName,
+                reducers: [{
+                    reducer: reducer.reducer,
+                    publishes: reducer.publishes
+                }]
+            }
         })
     }
 
-    onReducerChange(){
-        debugger;
+    saveEvent(){
+        let events = Array.from(this.props.component.events);
+        let changedEvent = events.find(event=>event.name===this.state.selectedEvent.name);
+        changedEvent.reducers = this.state.selectedEvent.reducers;
+        this.props.onEventsUpdate(events);
     }
+
 
     render() {
         const component = this.props.component;
@@ -63,15 +76,6 @@ class Events extends Component {
 
         const selectedTag = this.state.selectedTag || "";
         let configurator, eventNames = [];
-        debugger
-        const selectedEvent = component.events.find(event => event.name === this.state.selectedEventName) || {
-            name: this.state.selectedEventName,
-            reducers: [{
-                reducer: "",
-                publishes: [],
-                index: component.events.length
-            }]
-        };
 
         // Check if it is a child component
         if (selectedTag.includes("child-component-")) {
@@ -116,7 +120,7 @@ class Events extends Component {
                             <datalist id="eventNames">
                                 {eventNames.map(eventName => <option value={eventName}></option>)}
                             </datalist>
-                            <button onClick={this.publishEvent.bind(this)} id="saveEvent"><i className="fas fa-save"></i>Save Event</button>
+                            <button onClick={this.saveEvent.bind(this)} id="saveEvent"><i className="fas fa-save"></i>Save Event</button>
                             <button onClick={deleteEvent.bind(this)} id="deleteEvent"><i className="fas fa-trash"></i>Delete Event</button>
                         </div>
                     </div>
@@ -126,7 +130,7 @@ class Events extends Component {
                                 Reducers
                             </div>
                             <div>
-                                {selectedEvent.reducers.map(reducer => <Reducer key={Math.ceil(Math.random() * 1000)} reducer={reducer} onChange={this.onReducerChange.bind(this)} />)}
+                                {this.state.selectedEvent.reducers.map(reducer => <Reducer key={Math.ceil(Math.random() * 1000)} reducer={reducer} onChange={this.publishEvent.bind(this)} />)}
                             </div>
                         </div>
                     </div>

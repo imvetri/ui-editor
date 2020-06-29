@@ -48,7 +48,27 @@
     }
 
     export function updateSelectedEvent(e){
-        this.setState({
-            selectedEventName: e.currentTarget.value
-        })
+        let selectedEvent = this.props.component.events.find(event => event.name === e.currentTarget.value);
+
+        if(selectedEvent){
+            this.setState({
+                selectedEventName: e.currentTarget.value,
+                selectedEvent : selectedEvent
+            })
+        }
+
+        else if(this.state.selectedEvent.reducers[0].reducer===""){
+            this.setState({
+                selectedEventName: e.currentTarget.value,
+                selectedEvent : {
+                    name: e.currentTarget.value,
+                    reducers: [{
+                        reducer: "",
+                        publishes: [],
+                        index: this.props.component.events.length
+                    }]
+                }
+            })
+        }
+
     }

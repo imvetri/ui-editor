@@ -29,7 +29,10 @@ class Reducer extends Component {
     }
 
     syncChanges(){
-        this.props.onChange(this.state)
+        this.props.onChange({
+            publishes: this.state.publishes,
+            reducer: this.state.reducer
+        })
     }
 
     render() {
