@@ -16,3 +16,7 @@
 .tags ul:first-child {
     margin-left: -2px;
 }
+
+#saveEvent, #deleteEvent, #addPublish, #deletePublish, #savePublish{
+    font-size: xx-small;
+}

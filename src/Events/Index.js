@@ -18,6 +18,7 @@ import "./Style.css";
 // Reducers.
 
 import { updateEvent, selectedTagChanged, deleteEvent, updateConfiguration, updateSelectedEvent } from "./Reducer";
+import {publishEvent} from "./Event/Events";
 
 
 // Utils.
@@ -51,8 +52,7 @@ class Events extends Component {
             name: this.state.selectedEventName,
             reducers: [{
                 reducer: "",
-                publishable: "",
-                publishName: "",
+                publishes:[ ],
                 index: component.events.length
             }]
         };
@@ -70,7 +70,7 @@ class Events extends Component {
             let childComponent = components.find(component => component.name === childComponentName);
 
             // Find events that are publishable from the child component to show in drop down.
-            eventNames = childComponent.events.filter(event => event.reducers[0].publishable === true).map(publishableEvent => publishableEvent.reducers[0].publishName);
+            eventNames = childComponent.events.filter(event => event.reducers[0].publishes[0].publishable ).map(publishableEvent => publishableEvent.reducers[0].publishes[0].publishName);
 
             // Create view for config.
             configurator = <Configurator
@@ -100,6 +100,8 @@ class Events extends Component {
                             <datalist id="eventNames">
                                 {eventNames.map(eventName => <option value={eventName}></option>)}
                             </datalist>
+                            <button onClick={publishEvent.bind(this)} id="saveEvent"><i className="fas fa-save"></i>Save Event</button>
+                            <button onClick={deleteEvent.bind(this)} id="deleteEvent"><i className="fas fa-trash"></i>Delete Event</button>
                         </div>
                     </div>
                     <Event

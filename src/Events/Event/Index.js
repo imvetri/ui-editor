@@ -8,13 +8,8 @@ import "./Style.css"
 
 import Reducers from "./Reducers/Index";
 
-// Reducers. 
-
-import {updateEventName} from "./Reducer";
-
 // Events.
 
-import {publishEvent, deleteEvent} from './Events';
 
 class Event extends Component {
     constructor(props) {
@@ -30,13 +25,7 @@ class Event extends Component {
 
         return (
             <div className="event">
-
                 {this.props.event ? <Reducers event={this.props.event}/> : null}
-
-                <div>
-                    <button onClick={publishEvent.bind(this)} id="saveEvent"><i className="fas fa-save"></i>Save</button>
-                    <button onClick={deleteEvent.bind(this)} id="deleteEvent"><i className="fas fa-trash"></i>Delete</button>
-                </div>
             </div>
         );
     }
