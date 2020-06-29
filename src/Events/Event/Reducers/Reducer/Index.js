@@ -5,7 +5,7 @@ import React, { Component } from "react";
 // Components.
 
 import { UnControlled as CodeMirror } from 'react-codemirror2';
-import Publish from "../Publish";
+import Publishes from "./Publishes";
 
 // Events.
 
@@ -16,6 +16,17 @@ class Reducer extends Component {
             publishes: this.props.reducer.publishes,
             reducer: this.props.reducer.reducer
         }
+    }
+
+    addNewPublish(){
+        debugger;
+        this.setState({
+            publishes: (this.state.publishes.push({
+                publishable: true,
+                publishName: "",
+                publishCondition: ""
+            }), this.state.publishes)
+        })
     }
 
     render() {
@@ -45,27 +56,14 @@ class Reducer extends Component {
                         }}
                     />
                 </div>
-                
                 <div className="title">
                     Publishes
                 </div>
-                <button id ="addPublish" onClick={(e)=>{
-                    this.setState({ publishes: (publishes.push({
-                                    publishable: true,
-                                    publishName: "",
-                                    publishCondition: ""
-                    }))})
-                }}>Add publish</button>
-                {publishes.map((publish, i)=><Publish 
-                                                        index={i} 
-                                                        key={Math.ceil(Math.random() * 1000)}
-                                                        publish={publish} 
-                                                        onSave={(data, i)=> this.setState({
-                                                                                publishes: (publishes[i] = data, publishes) // update list of publishes and return it.
-                                                                            })}
-                                                        onDelete={(i)=> this.setState({
-                                                                            publishes: (publishes.splice(i,1), publishes) // delete the publishes and return it.
-                                                                            })}/>)}
+                <div>
+                    {reducer!=="" ? <button id="addPublish" onClick={this.addNewPublish.bind(this)}>Add publish</button> : null }
+
+                    {publishes.length>0? <Publishes publishes={publishes}/> : null }
+                </div>
             </div>
         );
     }
