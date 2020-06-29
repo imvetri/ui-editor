@@ -26,7 +26,7 @@ class Publishes extends Component {
                         onSave={(data, i) => this.setState({
                             publishes: (publishes[i] = data, publishes) // update list of publishes and return it.
                         })}
-                        onDelete={(i) => this.setState({
+                        onDelete={(a,i) => this.setState({
                             publishes: (publishes.splice(i, 1), publishes) // delete the publishes and return it.
                         })} />)
                 }
