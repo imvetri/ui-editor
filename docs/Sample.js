@@ -42,12 +42,17 @@ window.sampleComponents =[
         "id": "canvas",
         "reducers": [
           {
-            "reducer": "if(state.mode===\"Draw\"){\n\tif(e.button===0){\n\t\tstate.origin = false;\n\t}\n\n}\n\nif(state.mode===\"Select\" && state.selected){\n\n    state.selected=false;\n    e.target.style.cursor = \"\";\n    \n}",
+            "reducer": "if(state.mode===\"Draw\"){\n\tif(e.button===0){\n\t\tstate.origin = false;\n\t}\n\n}\n\nif(state.mode===\"Select\" && state.selected){\n\n    state.selected=false;\n    e.target.style.cursor = \"\";\n    \n}\n",
             "publishes": [
               {
-                "publishName": "onEditFinish",
-                "publishCondition": true,
-                "publishable": true
+                "publishable": true,
+                "publishName": "onDrawFinish",
+                "publishCondition": "state.mode==='Draw' && e.button ===0"
+              },
+              {
+                "publishable": true,
+                "publishName": "onSelection",
+                "publishCondition": "state.mode===\"Select\""
               }
             ]
           }
@@ -337,7 +342,7 @@ window.sampleComponents =[
       }
     ],
     "state": "{\n\t\"style\":{\n        \"top\": \"200px\",\n        \"left\": \"200px\",\n        \"height\": \"100px\",\n        \"width\": \"100px\"\n\t}\n}",
-    "style": "#cover{\n\tposition:fixed;\n    height: 100vh;\n    width: 100vw;\n}\n#resizable {\n\tposition: fixed;\n    cursor: grab;\n}\n\n\n#resizable {\n  position: absolute;\n  background: black;\n  outline: 1px solid #4286f4;\n  box-sizing: border-box;\n}\n\n\n#resizable .resizer{\n  width: 10px;\n  height: 10px;\n  border-radius: 50%; \n  background: white;\n  border: 1px solid #4286f4;\n  position: absolute;\n}\n\n#resizable .resizer#topLeft {\n  left: -5px;\n  top: -5px;\n  cursor: nwse-resize;\n}\n#resizable .resizer#topRight {\n  right: -5px;\n  top: -5px;\n  cursor: nesw-resize;\n}\n#resizable .resizer#bottomLeft {\n  left: -5px;\n  bottom: -5px;\n  cursor: nesw-resize;\n}\n#resizable .resizer#bottomRight {\n  right: -5px;\n  bottom: -5px;\n  cursor: nwse-resize;\n}",
+    "style": "#cover{\n\tposition:fixed;\n    height: 100vh;\n    width: 100vw;\n}\n#resizable {\n\tposition: fixed;\n    cursor: grab;\n}\n\n\n#resizable {\n  position: absolute;\n  outline: 1px solid #4286f4;\n  box-sizing: border-box;\n}\n\n\n#resizable .resizer{\n  width: 10px;\n  height: 10px;\n  border-radius: 50%; \n  background: white;\n  border: 1px solid #4286f4;\n  position: absolute;\n}\n\n#resizable .resizer#topLeft {\n  left: -5px;\n  top: -5px;\n  cursor: nwse-resize;\n}\n#resizable .resizer#topRight {\n  right: -5px;\n  top: -5px;\n  cursor: nesw-resize;\n}\n#resizable .resizer#bottomLeft {\n  left: -5px;\n  bottom: -5px;\n  cursor: nesw-resize;\n}\n#resizable .resizer#bottomRight {\n  right: -5px;\n  bottom: -5px;\n  cursor: nwse-resize;\n}",
     "children": [],
     "id": 557,
     "config": "{}",
@@ -456,17 +461,6 @@ window.sampleComponents =[
         ]
       },
       {
-        "name": "onEditFinish",
-        "index": 1,
-        "id": "Canvas",
-        "reducers": [
-          {
-            "reducer": "if(e.state.mode===\"Select\"){\n\tlet style = getComputedStyle(e.target);\n    let type= e.state.type;\n\tstate.Resizable = [{\n      \"style\":{\n          \"top\": style.top,\n          \"left\": style.left,\n          \"height\": style.height,\n          \"width\": style.width\n      }\n\t}]\n\n}\n\nstate.Canvas[0].innerHTML =e.currentTarget.innerHTML",
-            "publishes": []
-          }
-        ]
-      },
-      {
         "name": "onRightClicked",
         "index": 1,
         "id": "Resizable",
@@ -528,6 +522,28 @@ window.sampleComponents =[
         "reducers": [
           {
             "reducer": "let element = document.querySelectorAll(\".selectedForEdit\")[0];\n\tlet elementStyle = getComputedStyle(element);\n\tstate.CanvasControlsVariant = \"MultiGroup\";\n    state.PropertiesControl = [{\n    \"style\":{\t\n    \t\"top\": e.clientY-150+ \"px\",\n    \t\"left\": e.clientX + \"px\"\n    },\n    \"top\": elementStyle.top,\n    \"left\": elementStyle.left,\n    \"height\": elementStyle.height,\n    \"width\": elementStyle.width,\n    \"borderWidth\": elementStyle.borderWidth,\n    \"borderStyle\": elementStyle.borderStyle,\n    \"borderColor\": elementStyle.borderColor,\n    \"fontSize\" : elementStyle.fontSize,\n    \"color\": elementStyle.color,\n    \"fontFamily\" : elementStyle.fontFamily\n  }]\n  \nstate.CanvasControls=[];\n",
+            "publishes": []
+          }
+        ]
+      },
+      {
+        "id": "Canvas",
+        "index": 10,
+        "name": "onDrawFinish",
+        "reducers": [
+          {
+            "reducer": "\nstate.Canvas[0].innerHTML =e.currentTarget.innerHTML",
+            "publishes": []
+          }
+        ]
+      },
+      {
+        "id": "Canvas",
+        "index": 11,
+        "name": "onSelection",
+        "reducers": [
+          {
+            "reducer": "\tlet style = getComputedStyle(e.target);\n\tstate.Resizable = [{\n      \"style\":{\n          \"top\": style.top,\n          \"left\": style.left,\n          \"height\": style.height,\n          \"width\": style.width\n      }\n\t}]\n\nstate.Canvas[0].innerHTML =e.currentTarget.innerHTML",
             "publishes": []
           }
         ]
