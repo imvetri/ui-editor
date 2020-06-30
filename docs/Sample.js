@@ -543,7 +543,7 @@ window.sampleComponents =[
         "name": "onSelection",
         "reducers": [
           {
-            "reducer": "\tlet style = getComputedStyle(e.target);\n\tstate.Resizable = [{\n      \"style\":{\n          \"top\": style.top,\n          \"left\": style.left,\n          \"height\": style.height,\n          \"width\": style.width\n      }\n\t}]\n\nstate.Canvas[0].innerHTML =e.currentTarget.innerHTML",
+            "reducer": "\nlet style = getComputedStyle(e.target);\nstate.Resizable = [{\n  \"style\":{\n    \"top\": style.top,\n    \"left\": style.left,\n    \"height\": style.height,\n    \"width\": style.width\n  }\n}]\n\nstate.Canvas[0].innerHTML =e.currentTarget.innerHTML",
             "publishes": []
           }
         ]
