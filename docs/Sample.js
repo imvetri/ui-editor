@@ -434,17 +434,6 @@ window.sampleComponents =[
         ]
       },
       {
-        "name": "onItemSelected",
-        "index": 0,
-        "id": "CanvasControls",
-        "reducers": [
-          {
-            "reducer": "if(\"Draw\" === e.state.item){\n\tstate.CanvasControlsVariant = \"Created\";\n    state.Canvas[0].mode = \"Draw\";\n}\nif(\"Text\" === e.state.item){\n\tstate.CanvasControlsVariant = \"Created\";\n    state.Canvas[0].mode = \"Text\";\n}\n\nif(\"Select\" === e.state.item){\n\tstate.CanvasControlsVariant = \"MultiGroup\";\n    state.Canvas[0].mode = \"Select\"\n}\n\nif(\"Deselect\" === e.state.item){\n\tstate.CanvasControlsVariant = \"Created\";\n    state.Canvas[0].mode = \"Deselect\"\n}\n\nif(\"Group\" === e.state.item){\n\tstate.CanvasControlsVariant = \"MultiUngroup\";\n}\n\nif(\"Ungroup\" === e.state.item){\n\tstate.CanvasControlsVariant = \"MultiGroup\";\n}\nif(\"Edit\" === e.state.item){\n    let element = document.querySelectorAll(\".selectedForEdit\")[0];\n\tlet elementStyle = getComputedStyle(element);\n\tstate.CanvasControlsVariant = \"MultiGroup\";\n    state.PropertiesControl = [{\n    \"style\":{\t\n    \t\"top\": e.clientY-150+ \"px\",\n    \t\"left\": e.clientX + \"px\"\n    },\n    \"top\": elementStyle.top,\n    \"left\": elementStyle.left,\n    \"height\": elementStyle.height,\n    \"width\": elementStyle.width,\n    \"borderWidth\": elementStyle.borderWidth,\n    \"borderStyle\": elementStyle.borderStyle,\n    \"borderColor\": elementStyle.borderColor,\n    \"fontSize\" : elementStyle.fontSize,\n    \"color\": elementStyle.color,\n    \"fontFamily\" : elementStyle.fontFamily\n  }]\n}\nstate.CanvasControls=[];\n",
-            "publishes": []
-          }
-        ]
-      },
-      {
         "name": "onHide",
         "index": 0,
         "id": "PropertiesControl",
@@ -487,6 +476,61 @@ window.sampleComponents =[
             "publishes": []
           }
         ]
+      },
+      {
+        "id": "CanvasControls",
+        "index": 6,
+        "name": "onDraw",
+        "reducers": [
+          {
+            "reducer": "state.CanvasControlsVariant = \"Created\";\nstate.Canvas[0].mode = \"Draw\";\n\nstate.CanvasControls=[];\n",
+            "publishes": []
+          }
+        ]
+      },
+      {
+        "id": "CanvasControls",
+        "index": 7,
+        "name": "onText",
+        "reducers": [
+          {
+            "reducer": "state.CanvasControlsVariant = \"Created\";\nstate.Canvas[0].mode = \"Text\";\nstate.CanvasControls=[];\n",
+            "publishes": []
+          }
+        ]
+      },
+      {
+        "id": "CanvasControls",
+        "index": 8,
+        "name": "onSelect",
+        "reducers": [
+          {
+            "reducer": "state.CanvasControlsVariant = \"MultiGroup\";\nstate.Canvas[0].mode = \"Select\";\nstate.CanvasControls=[];\n",
+            "publishes": []
+          }
+        ]
+      },
+      {
+        "id": "CanvasControls",
+        "index": 9,
+        "name": "onDeselect",
+        "reducers": [
+          {
+            "reducer": "\nstate.CanvasControlsVariant = \"Created\";\nstate.Canvas[0].mode = \"Deselect\";\nstate.CanvasControls=[];\n",
+            "publishes": []
+          }
+        ]
+      },
+      {
+        "id": "CanvasControls",
+        "index": 10,
+        "name": "onEdit",
+        "reducers": [
+          {
+            "reducer": "let element = document.querySelectorAll(\".selectedForEdit\")[0];\n\tlet elementStyle = getComputedStyle(element);\n\tstate.CanvasControlsVariant = \"MultiGroup\";\n    state.PropertiesControl = [{\n    \"style\":{\t\n    \t\"top\": e.clientY-150+ \"px\",\n    \t\"left\": e.clientX + \"px\"\n    },\n    \"top\": elementStyle.top,\n    \"left\": elementStyle.left,\n    \"height\": elementStyle.height,\n    \"width\": elementStyle.width,\n    \"borderWidth\": elementStyle.borderWidth,\n    \"borderStyle\": elementStyle.borderStyle,\n    \"borderColor\": elementStyle.borderColor,\n    \"fontSize\" : elementStyle.fontSize,\n    \"color\": elementStyle.color,\n    \"fontFamily\" : elementStyle.fontFamily\n  }]\n  \nstate.CanvasControls=[];\n",
+            "publishes": []
+          }
+        ]
       }
     ],
     "state": "{\"CanvasControlsVariant\":\"New\",\"CanvasControls\":[],\"Canvas\":[{\"style\":{\"cursor\":\"pointer\"},\"innerHTML\":\"\",\"divs\":[],\"mode\":\"\",\"Resizable\":[]}],\"PropertiesControl\":[],\"Resizable\":[]}",
@@ -509,9 +553,29 @@ window.sampleComponents =[
             "reducer": "state.item = e.target.innerText;",
             "publishes": [
               {
-                "publishName": "onItemSelected",
-                "publishCondition": true,
-                "publishable": true
+                "publishable": true,
+                "publishName": "onDraw",
+                "publishCondition": "state.item === 'Draw'"
+              },
+              {
+                "publishable": true,
+                "publishName": "onText",
+                "publishCondition": "state.item === 'Text'"
+              },
+              {
+                "publishable": true,
+                "publishName": "onSelect",
+                "publishCondition": "state.item === 'Select'"
+              },
+              {
+                "publishable": true,
+                "publishName": "onDeselect",
+                "publishCondition": "state.item === 'Deselect'"
+              },
+              {
+                "publishable": true,
+                "publishName": "onEdit",
+                "publishCondition": "state.item === 'Edit'"
               }
             ]
           }
