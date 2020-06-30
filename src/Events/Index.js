@@ -39,6 +39,7 @@ class Events extends Component {
                 index: this.props.component.events.length
             }]
         }
+        this.state.eventID = "";
     }
 
     publishEvent(reducer) {
@@ -56,10 +57,21 @@ class Events extends Component {
     saveEvent(){
         let events = Array.from(this.props.component.events);
         let changedEvent = events.find(event=>event.name===this.state.selectedEvent.name);
-        changedEvent.reducers = this.state.selectedEvent.reducers;
+        if(changedEvent){
+            // its a existing event
+            changedEvent.reducers = this.state.selectedEvent.reducers;
+        }
+        else{
+            // its a new event
+            events.push({
+                id: this.state.eventID,
+                index: events.length,
+                name: this.state.selectedEvent.name,
+                reducers: this.state.selectedEvent.reducers
+            })
+        }
         this.props.onEventsUpdate(events);
     }
-
 
     render() {
         const component = this.props.component;
@@ -90,8 +102,15 @@ class Events extends Component {
             let childComponent = components.find(component => component.name === childComponentName);
 
             // Find events that are publishable from the child component to show in drop down.
-            eventNames = childComponent.events.filter(event => event.reducers[0].publishes[0].publishable).map(publishableEvent => publishableEvent.reducers[0].publishes[0].publishName);
+            eventNames = []
 
+            childComponent.events.forEach(event=>{
+                event.reducers[0].publishes.forEach(publish=>{
+                        if(publish.publishable){
+                            eventNames.push(publish.publishName)
+                        }
+                })
+            })
             // Create view for config.
             configurator = <Configurator
                 key={Math.ceil(Math.random() * 1000)}

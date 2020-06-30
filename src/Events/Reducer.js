@@ -25,19 +25,32 @@
     }
 
     export function selectedTagChanged(e) {
+        let selectedTag = e.currentTarget.value;
+        let eventID = "";
+        if(selectedTag.includes("child-component-")){
+            eventID = selectedTag.split("child-component-")[1];
+        }
+        else{
+            eventID = selectedTag.split("-")[1];
+        }
+
         this.setState({
             selectedTag: e.currentTarget.value,
-            selectedEventName: ""
+            selectedEventName: "",
+            eventID: eventID
         })
     }
 
-    export function deleteEvent(index) {
+    export function deleteEvent() {
 
         // Get current component.
         let component = JSON.parse(JSON.stringify(this.state.component));
 
+        // Get selected event index.
+        let deleteIndex = component.events.findIndex(event=>event.name === this.state.selectedEventName)
+
         // Remove the event to be deleted.
-        component.events.splice(index, 1);
+        component.events.splice(deleteIndex, 1);
 
         // Update elements with new events.
         this.props.onEventsUpdate(component.events);
@@ -57,7 +70,7 @@
             })
         }
 
-        else if(this.state.selectedEvent.reducers[0].reducer===""){
+        else{
             this.setState({
                 selectedEventName: e.currentTarget.value,
                 selectedEvent : {
