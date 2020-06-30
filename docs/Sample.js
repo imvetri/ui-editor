@@ -433,7 +433,7 @@ window.sampleComponents =[
         "id": "Canvas",
         "reducers": [
           {
-            "reducer": "if (state.CanvasControlsVariant === \"New\") {\n    state.CanvasControls=[{\n        \"undo\": \"undo disabled\",\n        \"redo\": \"redo disabled\",\n        \"draw\": \"draw enabled\",\n        \"text\": \"text disabled\",\n        \"image\": \"image disabled\",\n        \"group\": \"group disabled\",\n        \"ungroup\": \"ungroup disabled\",\n        \"duplicate\": \"duplicate disabled\",\n        \"delete\": \"delete disabled\",\n        \"select\": \"select disabled\",\n        \"deselect\": \"deselect disabled\",\n        \"edit\":\"edit disabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    }]\n}\nif (state.CanvasControlsVariant === \"Created\") {\n    state.CanvasControls=[{\n        \"undo\": \"undo enabled\",\n        \"redo\": \"redo disabled\",\n        \"draw\": \"draw enabled\",\n        \"text\": \"text enabled\",\n        \"image\": \"image enabled\",\n        \"group\": \"group disabled\",\n        \"ungroup\": \"ungroup disabled\",\n        \"duplicate\": \"duplicate disabled\",\n        \"delete\": \"delete disabled\",\n        \"select\": \"select enabled\",\n        \"deselect\": \"deselect disabled\",\n        \"edit\":\"edit disabled\",\n        \n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    }]\n}\nif (state.CanvasControlsVariant === \"SingleSelection\") {\n    state.CanvasControls=[{\n        \"undo\": \"undo enabled\",\n        \"redo\": \"redo enabled\",\n        \"draw\": \"draw enabled\",\n        \"text\": \"text disabled\",\n        \"image\": \"image disabled\",\n        \"group\": \"group disabled\",\n        \"ungroup\": \"ungroup disabled\",\n        \"duplicate\": \"duplicate enabled\",\n        \"delete\": \"delete enabled\",\n        \"select\": \"select disabled\",\n        \"deselect\": \"deselect enabled\",\n         \"edit\":\"edit enabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    }]\n}\n\nif (state.CanvasControlsVariant === \"MultiGroup\") {\n    state.CanvasControls=[{\n        \"undo\": \"undo enabled\",\n        \"redo\": \"redo enabled\",\n        \"draw\": \"draw enabled\",\n        \"text\": \"text disabled\",\n        \"image\": \"image disabled\",\n        \"group\": \"group enabled\",\n        \"ungroup\": \"ungroup disabled\",\n        \"duplicate\": \"duplicate enabled\",\n        \"delete\": \"delete enabled\",\n        \"select\": \"select disabled\",\n        \"deselect\": \"deselect enabled\",\n         \"edit\":\"edit enabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    }]\n}\n\nif (state.CanvasControlsVariant === \"MultiUngroup\") {\n    state.CanvasControls=[{\n        \"undo\": \"undo enabled\",\n        \"redo\": \"redo enabled\",\n        \"draw\": \"draw enabled\",\n        \"text\": \"text disabled\",\n        \"image\": \"image disabled\",\n        \"group\": \"group disabled\",\n        \"ungroup\": \"ungroup enabled\",\n        \"duplicate\": \"duplicate enabled\",\n        \"delete\": \"delete enabled\",\n        \"select\": \"select disabled\",\n        \"deselect\": \"deselect enabled\",\n         \"edit\":\"edit enabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    }]\n}\n\nstate.Canvas[0].innerHTML = e.currentTarget.innerHTML;\n\n\n",
+            "reducer": "if (state.CanvasMode === \"New\") {\n    state.CanvasControls=[{\n        \"undo\": \"disabled\",\n        \"redo\": \"disabled\",\n        \"draw\": \"enabled\",\n        \"text\": \"disabled\",\n        \"image\": \"disabled\",\n        \"group\": \"disabled\",\n        \"ungroup\": \"disabled\",\n        \"duplicate\": \"disabled\",\n        \"delete\": \"disabled\",\n        \"select\": \"disabled\",\n        \"deselect\": \"disabled\",\n        \"edit\":\"disabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    }]\n}\nif (state.CanvasMode === \"Created\") {\n    state.CanvasControls=[{\n        \"undo\": \"enabled\",\n        \"redo\": \"disabled\",\n        \"draw\": \"enabled\",\n        \"text\": \"enabled\",\n        \"image\": \"enabled\",\n        \"group\": \"disabled\",\n        \"ungroup\": \"disabled\",\n        \"duplicate\": \"disabled\",\n        \"delete\": \"disabled\",\n        \"select\": \"enabled\",\n        \"deselect\": \"disabled\",\n        \"edit\":\"disabled\",\n        \n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    }]\n}\nif (state.CanvasMode === \"SingleSelection\") {\n    state.CanvasControls=[{\n        \"undo\": \"enabled\",\n        \"redo\": \"enabled\",\n        \"draw\": \"enabled\",\n        \"text\": \"disabled\",\n        \"image\": \"disabled\",\n        \"group\": \"disabled\",\n        \"ungroup\": \"disabled\",\n        \"duplicate\": \"enabled\",\n        \"delete\": \"enabled\",\n        \"select\": \"disabled\",\n        \"deselect\": \"enabled\",\n         \"edit\":\"enabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    }]\n}\n\nif (state.CanvasMode === \"MultiGroup\") {\n    state.CanvasControls=[{\n        \"undo\": \"enabled\",\n        \"redo\": \"enabled\",\n        \"draw\": \"enabled\",\n        \"text\": \"disabled\",\n        \"image\": \"disabled\",\n        \"group\": \"enabled\",\n        \"ungroup\": \"disabled\",\n        \"duplicate\": \"enabled\",\n        \"delete\": \"enabled\",\n        \"select\": \"disabled\",\n        \"deselect\": \"enabled\",\n         \"edit\":\"enabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    }]\n}\n\nif (state.CanvasMode === \"MultiUngroup\") {\n    state.CanvasControls=[{\n        \"undo\": \"enabled\",\n        \"redo\": \"enabled\",\n        \"draw\": \"enabled\",\n        \"text\": \"disabled\",\n        \"image\": \"disabled\",\n        \"group\": \"disabled\",\n        \"ungroup\": \"enabled\",\n        \"duplicate\": \"enabled\",\n        \"delete\": \"enabled\",\n        \"select\": \"disabled\",\n        \"deselect\": \"enabled\",\n         \"edit\":\"enabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    }]\n}\n\nstate.Canvas[0].innerHTML = e.currentTarget.innerHTML;\n\n\n",
             "publishes": []
           }
         ]
@@ -466,7 +466,7 @@ window.sampleComponents =[
         "id": "Resizable",
         "reducers": [
           {
-            "reducer": "state.Canvas[0].innerHTML =  document.getElementById(\"canvas\").innerHTML\nstate.Resizable = [];\nstate.CanvasControls=[{\n        \"undo\": \"undo enabled\",\n        \"redo\": \"redo enabled\",\n        \"draw\": \"draw enabled\",\n        \"text\": \"text disabled\",\n        \"image\": \"image disabled\",\n        \"group\": \"group enabled\",\n        \"ungroup\": \"ungroup disabled\",\n        \"duplicate\": \"duplicate enabled\",\n        \"delete\": \"delete enabled\",\n        \"select\": \"select disabled\",\n        \"deselect\": \"deselect enabled\",\n         \"edit\":\"edit enabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    }]",
+            "reducer": "state.Canvas[0].innerHTML =  document.getElementById(\"canvas\").innerHTML\nstate.Resizable = [];\nstate.CanvasControls=[{\n        \"undo\": \"enabled\",\n        \"redo\": \"enabled\",\n        \"draw\": \"enabled\",\n        \"text\": \"disabled\",\n        \"image\": \"disabled\",\n        \"group\": \"enabled\",\n        \"ungroup\": \"disabled\",\n        \"duplicate\": \"enabled\",\n        \"delete\": \"enabled\",\n        \"select\": \"disabled\",\n        \"deselect\": \"enabled\",\n         \"edit\":\"enabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    }]",
             "publishes": []
           }
         ]
@@ -477,7 +477,7 @@ window.sampleComponents =[
         "name": "onDraw",
         "reducers": [
           {
-            "reducer": "state.CanvasControlsVariant = \"Created\";\nstate.Canvas[0].mode = \"Draw\";\n\nstate.CanvasControls=[];\n",
+            "reducer": "state.CanvasMode = \"Created\";\nstate.Canvas[0].mode = \"Draw\";\n\nstate.CanvasControls=[];\n",
             "publishes": []
           }
         ]
@@ -488,7 +488,7 @@ window.sampleComponents =[
         "name": "onText",
         "reducers": [
           {
-            "reducer": "state.CanvasControlsVariant = \"Created\";\nstate.Canvas[0].mode = \"Text\";\nstate.CanvasControls=[];\n",
+            "reducer": "state.CanvasMode = \"Created\";\nstate.Canvas[0].mode = \"Text\";\nstate.CanvasControls=[];\n",
             "publishes": []
           }
         ]
@@ -499,7 +499,7 @@ window.sampleComponents =[
         "name": "onSelect",
         "reducers": [
           {
-            "reducer": "state.CanvasControlsVariant = \"MultiGroup\";\nstate.Canvas[0].mode = \"Select\";\nstate.CanvasControls=[];\n",
+            "reducer": "state.CanvasMode = \"MultiGroup\";\nstate.Canvas[0].mode = \"Select\";\nstate.CanvasControls=[];\n",
             "publishes": []
           }
         ]
@@ -510,7 +510,7 @@ window.sampleComponents =[
         "name": "onDeselect",
         "reducers": [
           {
-            "reducer": "\nstate.CanvasControlsVariant = \"Created\";\nstate.Canvas[0].mode = \"Deselect\";\nstate.CanvasControls=[];\n",
+            "reducer": "\nstate.CanvasMode = \"Created\";\nstate.Canvas[0].mode = \"Deselect\";\nstate.CanvasControls=[];\n",
             "publishes": []
           }
         ]
@@ -521,7 +521,7 @@ window.sampleComponents =[
         "name": "onEdit",
         "reducers": [
           {
-            "reducer": "let element = document.querySelectorAll(\".selectedForEdit\")[0];\n\tlet elementStyle = getComputedStyle(element);\n\tstate.CanvasControlsVariant = \"MultiGroup\";\n    state.PropertiesControl = [{\n    \"style\":{\t\n    \t\"top\": e.clientY-150+ \"px\",\n    \t\"left\": e.clientX + \"px\"\n    },\n    \"top\": elementStyle.top,\n    \"left\": elementStyle.left,\n    \"height\": elementStyle.height,\n    \"width\": elementStyle.width,\n    \"borderWidth\": elementStyle.borderWidth,\n    \"borderStyle\": elementStyle.borderStyle,\n    \"borderColor\": elementStyle.borderColor,\n    \"fontSize\" : elementStyle.fontSize,\n    \"color\": elementStyle.color,\n    \"fontFamily\" : elementStyle.fontFamily\n  }]\n  \nstate.CanvasControls=[];\n",
+            "reducer": "let element = document.querySelectorAll(\".selectedForEdit\")[0];\n\tlet elementStyle = getComputedStyle(element);\n\tstate.CanvasMode = \"MultiGroup\";\n    state.PropertiesControl = [{\n    \"style\":{\t\n    \t\"top\": e.clientY-150+ \"px\",\n    \t\"left\": e.clientX + \"px\"\n    },\n    \"top\": elementStyle.top,\n    \"left\": elementStyle.left,\n    \"height\": elementStyle.height,\n    \"width\": elementStyle.width,\n    \"borderWidth\": elementStyle.borderWidth,\n    \"borderStyle\": elementStyle.borderStyle,\n    \"borderColor\": elementStyle.borderColor,\n    \"fontSize\" : elementStyle.fontSize,\n    \"color\": elementStyle.color,\n    \"fontFamily\" : elementStyle.fontFamily\n  }]\n  \nstate.CanvasControls=[];\n",
             "publishes": []
           }
         ]
@@ -549,7 +549,7 @@ window.sampleComponents =[
         ]
       }
     ],
-    "state": "{\"CanvasControlsVariant\":\"New\",\"CanvasControls\":[],\"Canvas\":[{\"style\":{\"cursor\":\"pointer\"},\"innerHTML\":\"\",\"divs\":[],\"mode\":\"\",\"Resizable\":[]}],\"PropertiesControl\":[],\"Resizable\":[]}",
+    "state": "{\"CanvasMode\":\"New\",\"CanvasControls\":[],\"Canvas\":[{\"style\":{\"cursor\":\"pointer\"},\"innerHTML\":\"\",\"divs\":[],\"mode\":\"\",\"Resizable\":[]}],\"PropertiesControl\":[],\"Resizable\":[]}",
     "style": ".selectedForEdit{\n\toutline: 1px solid red;\n    cursor: move;\n}",
     "children": [],
     "id": 707,
@@ -598,7 +598,7 @@ window.sampleComponents =[
         ]
       }
     ],
-    "state": "{\n\t\"undo\":\"undo disabled\",\n    \"redo\":\"redo disabled\",\n\t\"draw\":\"draw enabled\",\n    \"text\":\"text disabled\",\n    \"image\":\"image disabled\",\n\t\"group\":\"group disabled\",\n    \"ungroup\":\"ungroup disabled\",\n\t\"duplicate\":\"duplicate disabled\",\n    \"delete\":\"delete disabled\",\n\t\"select\":\"select disabled\",\n    \"deselect\":\"deselect disabled\",\n    \"edit\":\"edit disabled\",\n    \"style\" : {\n    \t\"top\": \"100px\",\n        \"left\":\"200px\"\n    }\n}",
+    "state": "{\n\t\"undo\":\"disabled\",\n    \"redo\":\"disabled\",\n\t\"draw\":\"enabled\",\n    \"text\":\"disabled\",\n    \"image\":\"disabled\",\n\t\"group\":\"disabled\",\n    \"ungroup\":\"disabled\",\n\t\"duplicate\":\"disabled\",\n    \"delete\":\"disabled\",\n\t\"select\":\"disabled\",\n    \"deselect\":\"disabled\",\n    \"edit\":\"disabled\",\n    \"style\" : {\n    \t\"top\": \"100px\",\n        \"left\":\"200px\"\n    }\n}",
     "style": "#menu {\n    position: fixed;\n    font-size:10px;\n    user-select: none;\n    color: rgba(255,255,255,0.5);\n    background: rgb(64, 64, 64);\n}\n\n#menu > div > div:hover:not(.disabled){\n    background: rgb(43, 43, 43);\n    color: white;\n}\n\n.disabled{\n    cursor: not-allowed;\n    background: #333333;\n    color: #4a4a4a;\n}\n\n\n\n#menu > div > div span {\n    padding-left: 9px;\n}\n\n#menu > div > div {\n    box-sizing: border-box;\n    padding: 10px;\n    height: 29px;\n}\n\n#history-control {\n    border: 1px solid #2C3134;\n    height: 60px;\n}\n\n#content-control {\n    border: 1px solid #2C3134;\n    height: 90px;\n}\n\n#edit-control {\n    border: 1px solid #2C3134;\n    height: 148px;\n}\n\n#selection-control {\n    border: 1px solid #2C3134;\n    height: 60px;\n}\n",
     "children": [],
     "id": 550,

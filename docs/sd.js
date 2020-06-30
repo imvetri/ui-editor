@@ -1,0 +1,1 @@
+{"CanvasControlsVariant":"New","CanvasControls":[],"Canvas":[{"style":{"cursor":"pointer"},"innerHTML":"","divs":[],"mode":"","Resizable":[]}],"PropertiesControl":[],"Resizable":[]}
