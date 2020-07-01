@@ -27,6 +27,10 @@ We interacted with a demo with in a demo. ui-editor is a tool to build component
 
 ## Workflow and internals
 
+Look at [Components internal parts and pieces](https://vimeo.com/386239513)
+
+Or
+
 ![](https://github.com/imvetri/ui-editor/blob/master/docs/gifs/ui-editor-workflow-and-internals.3.png)
 
 
