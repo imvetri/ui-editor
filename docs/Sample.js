@@ -425,7 +425,7 @@ window.sampleComponents =[
   },
   {
     "name": "Editor",
-    "markup": "<div id=\"editor\" tabIndex=\"0\">\n\t<Canvas></Canvas>\n    <CanvasControls></CanvasControls>\n    <PropertiesControl></PropertiesControl>\n    <Resizable></Resizable>\n</div>",
+    "markup": "<div id=\"editor\" tabIndex=\"0\">\n\t<Canvas></Canvas>\n    <CanvasControls></CanvasControls>\n    <PropertiesControl></PropertiesControl>\n</div>",
     "events": [
       {
         "name": "onShowContextMenu",
@@ -543,13 +543,13 @@ window.sampleComponents =[
         "name": "onSelection",
         "reducers": [
           {
-            "reducer": "\nlet style = getComputedStyle(e.target);\nstate.Resizable = [{\n  \"style\":{\n    \"top\": style.top,\n    \"left\": style.left,\n    \"height\": style.height,\n    \"width\": style.width\n  }\n}]\n\nstate.Canvas[0].innerHTML =e.currentTarget.innerHTML",
+            "reducer": "state.Canvas[0].innerHTML =e.currentTarget.innerHTML",
             "publishes": []
           }
         ]
       }
     ],
-    "state": "{\"CanvasMode\":\"New\",\"CanvasControls\":[],\"Canvas\":[{\"style\":{\"cursor\":\"pointer\"},\"innerHTML\":\"\",\"divs\":[],\"mode\":\"\",\"Resizable\":[]}],\"PropertiesControl\":[],\"Resizable\":[]}",
+    "state": "{\"CanvasMode\":\"New\",\"CanvasControls\":[],\"Canvas\":[{\"style\":{\"cursor\":\"pointer\"},\"innerHTML\":\"\",\"divs\":[],\"mode\":\"\"}],\"PropertiesControl\":[]}",
     "style": ".selectedForEdit{\n\toutline: 1px solid red;\n    cursor: move;\n}",
     "children": [],
     "id": 707,
