@@ -3,7 +3,27 @@
 Effortless technique to build components that works across frameworks.
 
 
-## Demo - https://imvetri.github.io/ui-editor/
+## Demo - 
+https://imvetri.github.io/ui-editor/
+
+### Steps to play with demo
+1. Open https://imvetri.github.io/ui-editor/
+2. Click Components->Editor. 
+3. Right click on blank area -> context menu -> "Draw". Draw a rectangle by click and dragging towards bottom-right
+4. Right click on Rectangle -> click "Text". Click on rectangle to add a text and move around.
+5. Right click anywhere and click "Select". Click on rectangle / text you just created. It should have orange outline and blue cover line.
+6. Use to blue cover line to resize and move. 
+7. Right click anywhere and click "Edit".
+8. Change some properties to see real time changes.
+
+### What did we do?
+We interacted with a demo with in a demo. ui-editor is a tool to build components. Editor component is built using ui-editor. 
+
+### How to see the source code of Editor component?
+1. Select Components->Editor.
+2. Press 'Alt+E' or click at bottom button called 'Editor' to see source of the component that contains JSX, Style, and state of the component.
+3. Press 'Alt+R'. A sidebar from right will contain the events and reducers of the component. Events are bound to tags that run a reducers. This section is used to publish custom events and subscribe to child events. Events help to provide two way communication between components that share same ancestors.
+
 
 ## Workflow and internals
 
