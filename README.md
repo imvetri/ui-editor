@@ -11,10 +11,9 @@ https://imvetri.github.io/ui-editor/
 2. Click Components->Editor. 
 3. Right click on blank area -> context menu -> "Draw". Draw a rectangle by click and dragging towards bottom-right
 4. Right click on Rectangle -> click "Text". Click on rectangle to add a text and move around.
-5. Right click anywhere and click "Select". Click on rectangle / text you just created. It should have orange outline and blue cover line.
-6. Use to blue cover line to resize and move. 
-7. Right click anywhere and click "Edit".
-8. Change some properties to see real time changes.
+5. Right click anywhere and click "Select". Click on rectangle / text you just created. It should have orange outline.
+6. Right click anywhere and click "Edit".
+7. Change some properties to see real time changes.
 
 ### What did we do?
 We interacted with a demo with in a demo. ui-editor is a tool to build components. Editor component is built using ui-editor. 
