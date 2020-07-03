@@ -1,7 +1,7 @@
 window.sampleComponents =[
   {
     "name": "Canvas",
-    "markup": "<div className=\"canvasComponent\" style={state.style} id=\"canvas\"><div dangerouslySetInnerHTML={{ __html:`${state.innerHTML}` }}></div>\n</div>",
+    "markup": "<div className=\"canvasComponent\" style={state.style} id=\"canvas\" dangerouslySetInnerHTML={{ __html:`${state.innerHTML}` }}>\n</div>",
     "events": [
       {
         "name": "onMouseOver",
@@ -425,7 +425,7 @@ window.sampleComponents =[
   },
   {
     "name": "Editor",
-    "markup": "<div id=\"editor\" tabIndex=\"0\">\n\t<Canvas></Canvas>\n    <CanvasControls></CanvasControls>\n    <PropertiesControl></PropertiesControl>\n    <Resizable></Resizable>\n</div>",
+    "markup": "<div id=\"editor\" tabIndex=\"0\">\n\t<Canvas></Canvas>\n    <CanvasControls></CanvasControls>\n    <PropertiesControl></PropertiesControl>\n</div>",
     "events": [
       {
         "name": "onShowContextMenu",
@@ -433,7 +433,7 @@ window.sampleComponents =[
         "id": "Canvas",
         "reducers": [
           {
-            "reducer": "if (state.CanvasMode === \"New\") {\n    state.CanvasControls=[{\n        \"undo\": \"disabled\",\n        \"redo\": \"disabled\",\n        \"draw\": \"enabled\",\n        \"text\": \"disabled\",\n        \"image\": \"disabled\",\n        \"group\": \"disabled\",\n        \"ungroup\": \"disabled\",\n        \"duplicate\": \"disabled\",\n        \"delete\": \"disabled\",\n        \"select\": \"disabled\",\n        \"deselect\": \"disabled\",\n        \"edit\":\"disabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    }]\n}\nif (state.CanvasMode === \"Created\") {\n    state.CanvasControls=[{\n        \"undo\": \"enabled\",\n        \"redo\": \"disabled\",\n        \"draw\": \"enabled\",\n        \"text\": \"enabled\",\n        \"image\": \"enabled\",\n        \"group\": \"disabled\",\n        \"ungroup\": \"disabled\",\n        \"duplicate\": \"disabled\",\n        \"delete\": \"disabled\",\n        \"select\": \"enabled\",\n        \"deselect\": \"disabled\",\n        \"edit\":\"disabled\",\n        \n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    }]\n}\nif (state.CanvasMode === \"SingleSelection\") {\n    state.CanvasControls=[{\n        \"undo\": \"enabled\",\n        \"redo\": \"enabled\",\n        \"draw\": \"enabled\",\n        \"text\": \"disabled\",\n        \"image\": \"disabled\",\n        \"group\": \"disabled\",\n        \"ungroup\": \"disabled\",\n        \"duplicate\": \"enabled\",\n        \"delete\": \"enabled\",\n        \"select\": \"disabled\",\n        \"deselect\": \"enabled\",\n         \"edit\":\"enabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    }]\n}\n\nif (state.CanvasMode === \"MultiGroup\") {\n    state.CanvasControls=[{\n        \"undo\": \"enabled\",\n        \"redo\": \"enabled\",\n        \"draw\": \"enabled\",\n        \"text\": \"disabled\",\n        \"image\": \"disabled\",\n        \"group\": \"enabled\",\n        \"ungroup\": \"disabled\",\n        \"duplicate\": \"enabled\",\n        \"delete\": \"enabled\",\n        \"select\": \"disabled\",\n        \"deselect\": \"enabled\",\n         \"edit\":\"enabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    }]\n}\n\nif (state.CanvasMode === \"MultiUngroup\") {\n    state.CanvasControls=[{\n        \"undo\": \"enabled\",\n        \"redo\": \"enabled\",\n        \"draw\": \"enabled\",\n        \"text\": \"disabled\",\n        \"image\": \"disabled\",\n        \"group\": \"disabled\",\n        \"ungroup\": \"enabled\",\n        \"duplicate\": \"enabled\",\n        \"delete\": \"enabled\",\n        \"select\": \"disabled\",\n        \"deselect\": \"enabled\",\n         \"edit\":\"enabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    }]\n}\n\nstate.Canvas[0].innerHTML = e.currentTarget.innerHTML;\n\n\n",
+            "reducer": "\nif (state.CanvasMode === \"New\") {\n    state.CanvasControls=[{\n        \"undo\": \"disabled\",\n        \"redo\": \"disabled\",\n        \"draw\": \"enabled\",\n        \"text\": \"disabled\",\n        \"image\": \"disabled\",\n        \"group\": \"disabled\",\n        \"ungroup\": \"disabled\",\n        \"duplicate\": \"disabled\",\n        \"delete\": \"disabled\",\n        \"select\": \"disabled\",\n        \"deselect\": \"disabled\",\n        \"edit\":\"disabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    }]\n}\nif (state.CanvasMode === \"Created\") {\n    state.CanvasControls=[{\n        \"undo\": \"enabled\",\n        \"redo\": \"enabled\",\n        \"draw\": \"enabled\",\n        \"text\": \"enabled\",\n        \"image\": \"enabled\",\n        \"group\": \"disabled\",\n        \"ungroup\": \"disabled\",\n        \"duplicate\": \"disabled\",\n        \"delete\": \"disabled\",\n        \"select\": \"enabled\",\n        \"deselect\": \"disabled\",\n        \"edit\":\"disabled\",\n        \n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    }]\n}\nif (state.CanvasMode === \"SingleSelection\") {\n    state.CanvasControls=[{\n        \"undo\": \"enabled\",\n        \"redo\": \"enabled\",\n        \"draw\": \"enabled\",\n        \"text\": \"disabled\",\n        \"image\": \"disabled\",\n        \"group\": \"disabled\",\n        \"ungroup\": \"disabled\",\n        \"duplicate\": \"enabled\",\n        \"delete\": \"enabled\",\n        \"select\": \"disabled\",\n        \"deselect\": \"enabled\",\n         \"edit\":\"enabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    }]\n}\n\nif (state.CanvasMode === \"MultiGroup\") {\n    state.CanvasControls=[{\n        \"undo\": \"enabled\",\n        \"redo\": \"enabled\",\n        \"draw\": \"enabled\",\n        \"text\": \"disabled\",\n        \"image\": \"disabled\",\n        \"group\": \"enabled\",\n        \"ungroup\": \"disabled\",\n        \"duplicate\": \"enabled\",\n        \"delete\": \"enabled\",\n        \"select\": \"disabled\",\n        \"deselect\": \"enabled\",\n         \"edit\":\"enabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    }]\n}\n\nif (state.CanvasMode === \"MultiUngroup\") {\n    state.CanvasControls=[{\n        \"undo\": \"enabled\",\n        \"redo\": \"enabled\",\n        \"draw\": \"enabled\",\n        \"text\": \"disabled\",\n        \"image\": \"disabled\",\n        \"group\": \"disabled\",\n        \"ungroup\": \"enabled\",\n        \"duplicate\": \"enabled\",\n        \"delete\": \"enabled\",\n        \"select\": \"disabled\",\n        \"deselect\": \"enabled\",\n         \"edit\":\"enabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    }]\n}\n\nstate.Canvas[0].innerHTML = e.currentTarget.innerHTML;\n\n",
             "publishes": []
           }
         ]
@@ -444,7 +444,7 @@ window.sampleComponents =[
         "id": "PropertiesControl",
         "reducers": [
           {
-            "reducer": "state.PropertiesControl = [];\n\nlet element = document.querySelector(\"#canvas\");\n\n\nstate.Canvas[0].innerHTML = element.innerHTML;\n",
+            "reducer": "state.PropertiesControl = [];\n\nlet element = document.querySelector(\"#canvas\");\n\n\nstate.current = state.current+1;\nstate.innerHTMLs[state.current] = element.innerHTML;\n\n\nstate.Canvas[0].innerHTML = state.innerHTMLs[state.current];\n",
             "publishes": []
           }
         ]
@@ -506,22 +506,11 @@ window.sampleComponents =[
       },
       {
         "id": "CanvasControls",
-        "index": 9,
-        "name": "onDeselect",
-        "reducers": [
-          {
-            "reducer": "\nstate.CanvasMode = \"Created\";\nstate.Canvas[0].mode = \"Deselect\";\nstate.CanvasControls=[];\n",
-            "publishes": []
-          }
-        ]
-      },
-      {
-        "id": "CanvasControls",
         "index": 10,
         "name": "onEdit",
         "reducers": [
           {
-            "reducer": "let element = document.querySelectorAll(\".selectedForEdit\")[0];\n\tlet elementStyle = getComputedStyle(element);\n\tstate.CanvasMode = \"MultiGroup\";\n    state.PropertiesControl = [{\n    \"style\":{\t\n    \t\"top\": e.clientY-150+ \"px\",\n    \t\"left\": e.clientX + \"px\"\n    },\n    \"top\": elementStyle.top,\n    \"left\": elementStyle.left,\n    \"height\": elementStyle.height,\n    \"width\": elementStyle.width,\n    \"borderWidth\": elementStyle.borderWidth,\n    \"borderStyle\": elementStyle.borderStyle,\n    \"borderColor\": elementStyle.borderColor,\n    \"fontSize\" : elementStyle.fontSize,\n    \"color\": elementStyle.color,\n    \"fontFamily\" : elementStyle.fontFamily\n  }]\n  \nstate.CanvasControls=[];\n",
+            "reducer": "let element = document.querySelectorAll(\".selectedForEdit\")[0];\n\tlet elementStyle = getComputedStyle(element);\n\tstate.CanvasMode = \"MultiGroup\";\n    state.PropertiesControl = [\n      {\n          \"style\":{\t\n              \"top\": e.clientY-150+ \"px\",\n              \"left\": e.clientX + \"px\"\n          },\n          \"top\": elementStyle.top,\n          \"left\": elementStyle.left,\n          \"height\": elementStyle.height,\n          \"width\": elementStyle.width,\n          \"borderWidth\": elementStyle.borderWidth,\n          \"borderStyle\": elementStyle.borderStyle,\n          \"borderColor\": elementStyle.borderColor,\n          \"fontSize\" : elementStyle.fontSize,\n          \"color\": elementStyle.color,\n          \"fontFamily\" : elementStyle.fontFamily\n      }\n  ]\n  \nstate.CanvasControls=[];\n",
             "publishes": []
           }
         ]
@@ -532,7 +521,7 @@ window.sampleComponents =[
         "name": "onDrawFinish",
         "reducers": [
           {
-            "reducer": "\nstate.Canvas[0].innerHTML =e.currentTarget.innerHTML",
+            "reducer": "\nstate.current = state.current+1;\nstate.innerHTMLs[state.current] = e.currentTarget.innerHTML;\n\n\nstate.Canvas[0].innerHTML = state.innerHTMLs[state.current];\n",
             "publishes": []
           }
         ]
@@ -543,13 +532,35 @@ window.sampleComponents =[
         "name": "onSelection",
         "reducers": [
           {
-            "reducer": "\nlet style = getComputedStyle(e.target);\nstate.Resizable = [{\n  \"style\":{\n    \"top\": style.top,\n    \"left\": style.left,\n    \"height\": style.height,\n    \"width\": style.width\n  }\n}]\n\nstate.Canvas[0].innerHTML =e.currentTarget.innerHTML",
+            "reducer": "\nstate.current = state.current+1;\nstate.innerHTMLs[state.current] = e.currentTarget.innerHTML;\n\n\nstate.Canvas[0].innerHTML = state.innerHTMLs[state.current];\n",
+            "publishes": []
+          }
+        ]
+      },
+      {
+        "id": "CanvasControls",
+        "index": 11,
+        "name": "onUndo",
+        "reducers": [
+          {
+            "reducer": "state.current = state.current >=0 ? state.current-1 : 0;\nstate.CanvasControls=[];\n\nstate.Canvas[0].innerHTML = state.innerHTMLs[state.current];\n",
+            "publishes": []
+          }
+        ]
+      },
+      {
+        "id": "CanvasControls",
+        "index": 12,
+        "name": "onRedo",
+        "reducers": [
+          {
+            "reducer": "state.current = state.current < state.innerHTMLs.length-1 ? state.current+1 : state.innerHTMLs.length-1;\nstate.CanvasControls=[];\n\nstate.Canvas[0].innerHTML = state.innerHTMLs[state.current];\n",
             "publishes": []
           }
         ]
       }
     ],
-    "state": "{\"CanvasMode\":\"New\",\"CanvasControls\":[],\"Canvas\":[{\"style\":{\"cursor\":\"pointer\"},\"innerHTML\":\"\",\"divs\":[],\"mode\":\"\",\"Resizable\":[]}],\"PropertiesControl\":[],\"Resizable\":[]}",
+    "state": "{\t\n\t\"CanvasMode\":\"New\",\n    \"CanvasControls\":[],\n    \"Canvas\":[\n    \t{\n        \"style\":{\n        \t\"cursor\":\"pointer\"\n        },\n        \"innerHTML\":\"\",\n        \"divs\":[],\n        \"mode\":\"\"\n        }\n    ],\n    \"PropertiesControl\":[],\n    \"innerHTMLs\" : [],\n    \"current\": 0\n}",
     "style": ".selectedForEdit{\n\toutline: 1px solid red;\n    cursor: move;\n}",
     "children": [],
     "id": 707,
@@ -558,7 +569,7 @@ window.sampleComponents =[
   },
   {
     "name": "CanvasControls",
-    "markup": "<div id=\"menu\" style={state.style}>\n    <div id=\"history-control\">\n        <div className={state.undo}>\n            <i className=\"fa fa-undo\"></i>\n            <span>Undo</span>\n\t\t</div>\n        <div className={state.redo}>\n\t\t\t<i className=\"fa fa-redo\"></i>\n        \t<span>Redo</span>\n\t\t</div>\n    </div>\n    <div id=\"content-control\">\n        <div className={state.draw}>\n            <i className=\"fa fa-edit\"></i>\n        \t<span>Draw</span>\n        </div>\n        <div className={state.text}>\n            <i className=\"fa fa-font\"></i>\n        \t<span>Text</span>\n        </div>\n        <div className={state.image}>\n            <i className=\"fas fa-image\"></i>\n        \t<span>Image</span>\n        </div>\n    </div>\n    <div id=\"edit-control\">\n        <div className={state.group}>\n            <i className=\"fa fa-object-group\"></i>\n        \t<span>Group</span>\n        </div>\n        <div className={state.ungroup}>\n            <i className=\"fa fa-object-ungroup\"></i>\n        \t<span>Ungroup</span>\n        </div>\n        <div className={state.edit}>\n            <i className=\"fa fa-edit\"></i>\n        \t<span>Edit</span>\n        </div>\n        <div className={state.duplicate}>\n            <i className=\"fa fa-clone\"></i>\n        \t<span>Duplicate</span>\n        </div>\n        <div className={state.delete}>\n            <i className=\"fa fa-trash\"></i>\n        \t<span>Delete</span>\n        </div>\n    </div>\n    <div id=\"selection-control\">\n        <div className={state.select}>\n        \t<i className=\"fa fa-mouse-pointer\"></i>\n        \t<span>Select</span>\n        </div>\n        <div className={state.deselect}>\n            <i className=\"fa fa-mouse-pointer\"></i>\n        \t<span>Deselect</span>\n        </div>\n    </div>\n</div>",
+    "markup": "<div id=\"menu\" style={state.style}>\n    <div id=\"history-control\">\n        <div className={state.undo}>\n            <i className=\"fa fa-undo\"></i>\n            <span>Undo</span>\n\t\t</div>\n        <div className={state.redo}>\n\t\t\t<i className=\"fa fa-redo\"></i>\n        \t<span>Redo</span>\n\t\t</div>\n    </div>\n    <div id=\"content-control\">\n        <div className={state.draw}>\n            <i className=\"fa fa-edit\"></i>\n        \t<span>Draw</span>\n        </div>\n        <div className={state.text}>\n            <i className=\"fa fa-font\"></i>\n        \t<span>Text</span>\n        </div>\n        <div className={state.image}>\n            <i className=\"fas fa-image\"></i>\n        \t<span>Image</span>\n        </div>\n    </div>\n    <div id=\"edit-control\">\n        <div className={state.group}>\n            <i className=\"fa fa-object-group\"></i>\n        \t<span>Group</span>\n        </div>\n        <div className={state.ungroup}>\n            <i className=\"fa fa-object-ungroup\"></i>\n        \t<span>Ungroup</span>\n        </div>\n        <div className={state.edit}>\n            <i className=\"fa fa-edit\"></i>\n        \t<span>Edit</span>\n        </div>\n        <div className={state.duplicate}>\n            <i className=\"fa fa-clone\"></i>\n        \t<span>Duplicate</span>\n        </div>\n        <div className={state.delete}>\n            <i className=\"fa fa-trash\"></i>\n        \t<span>Delete</span>\n        </div>\n    </div>\n    <div>\n        <div className={state.select}>\n        \t<i className=\"fa fa-mouse-pointer\"></i>\n        \t<span>Select</span>\n        </div>\n    </div>\n    <div>\n        <div className={state.select}>\n        \t<i className=\"fa fa-save\"></i>\n        \t<span>Save</span>\n        </div>\n    </div>\n</div>",
     "events": [
       {
         "name": "onClick",
@@ -585,20 +596,25 @@ window.sampleComponents =[
               },
               {
                 "publishable": true,
-                "publishName": "onDeselect",
-                "publishCondition": "state.item === 'Deselect'"
+                "publishName": "onEdit",
+                "publishCondition": "state.item === 'Edit'"
               },
               {
                 "publishable": true,
-                "publishName": "onEdit",
-                "publishCondition": "state.item === 'Edit'"
+                "publishName": "onUndo",
+                "publishCondition": "state.item === 'Undo'"
+              },
+              {
+                "publishable": true,
+                "publishName": "onRedo",
+                "publishCondition": "state.item === 'Redo'"
               }
             ]
           }
         ]
       }
     ],
-    "state": "{\n\t\"undo\":\"disabled\",\n    \"redo\":\"disabled\",\n\t\"draw\":\"enabled\",\n    \"text\":\"disabled\",\n    \"image\":\"disabled\",\n\t\"group\":\"disabled\",\n    \"ungroup\":\"disabled\",\n\t\"duplicate\":\"disabled\",\n    \"delete\":\"disabled\",\n\t\"select\":\"disabled\",\n    \"deselect\":\"disabled\",\n    \"edit\":\"disabled\",\n    \"style\" : {\n    \t\"top\": \"100px\",\n        \"left\":\"200px\"\n    }\n}",
+    "state": "{\n\t\"undo\":\"disabled\",\n    \"redo\":\"disabled\",\n\t\"draw\":\"enabled\",\n    \"text\":\"disabled\",\n    \"image\":\"disabled\",\n\t\"group\":\"disabled\",\n    \"ungroup\":\"disabled\",\n\t\"duplicate\":\"disabled\",\n    \"delete\":\"disabled\",\n\t\"select\":\"disabled\",\n    \"edit\":\"disabled\",\n    \"style\" : {\n    \t\"top\": \"100px\",\n        \"left\":\"200px\"\n    }\n}",
     "style": "#menu {\n    position: fixed;\n    font-size:10px;\n    user-select: none;\n    color: rgba(255,255,255,0.5);\n    background: rgb(64, 64, 64);\n}\n\n#menu > div > div:hover:not(.disabled){\n    background: rgb(43, 43, 43);\n    color: white;\n}\n\n.disabled{\n    cursor: not-allowed;\n    background: #333333;\n    color: #4a4a4a;\n}\n\n\n\n#menu > div > div span {\n    padding-left: 9px;\n}\n\n#menu > div > div {\n    box-sizing: border-box;\n    padding: 10px;\n    height: 29px;\n}\n\n#history-control {\n    border: 1px solid #2C3134;\n    height: 60px;\n}\n\n#content-control {\n    border: 1px solid #2C3134;\n    height: 90px;\n}\n\n#edit-control {\n    border: 1px solid #2C3134;\n    height: 148px;\n}\n\n#selection-control {\n    border: 1px solid #2C3134;\n    height: 60px;\n}\n",
     "children": [],
     "id": 550,
@@ -607,7 +623,7 @@ window.sampleComponents =[
   },
   {
     "name": "PropertiesControl",
-    "markup": "<div class=\"properties\" id=\"properties\" style={state.style}>\n    <div class=\"size\">\n        <div class=\"height\">\n            <span class=\"name\">Height</span>\n            <button class=\"less\" id=\"lessheight\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.height}/>\n            <button class=\"more\" id=\"moreheight\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n        <div class=\"width\">\n            <span class=\"name\">Width</span>\n            <button class=\"less\" id=\"lesswidth\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.width}/>\n            <button class=\"more\" id=\"morewidth\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n    </div>\n\n    <div class=\"position\">\n        <div class=\"top\">\n            <span class=\"name\">Top</span>\n            <button class=\"less\" id=\"lesstop\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.top}/>\n            <button class=\"more\" id=\"moretop\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n        <div class=\"left\">\n            <span class=\"name\">Left</span>\n            <button class=\"less\" id=\"moreleft\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.left}/>\n            <button class=\"more\" id=\"lessleft\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n    </div>\n\n    <div clas=\"border\">\n        <div class=\"borderSize\">\n            <span class=\"name\">Border</span>\n            <button class=\"less\" id=\"lessborder\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.borderWidth}/>\n            <button class=\"more\" id=\"moreborder\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n    \n        <div class=\"borderColor\">\n            <span class=\"name\">Color</span>\n            <input type=\"color\" id=\"morecolor\" value={state.color}/>\n        </div>\n        <div class=\"borderType\">\n            <span class=\"name\">Type</span>\n            <button class=\"downArrow\"></button>\n        </div>\n    </div>\n\n    <div class=\"space\">\n        <span class=\"name\">Space</span>\n        <button class=\"less\" id=\"lessspace\"><i class=\"fa fa-minus\"></i></button>\n        <input type=\"text\" value={state.space}/>\n        <button class=\"more\" id=\"morespace\"><i class=\"fa fa-plus\"></i></button>\n    </div>\n\n\n\n    <div clas=\"font\">\n\n        <div class=\"fontFamily\">\n            <span class=\"name\">Font</span>\n            <input type=\"text\" value={state.fontFamily}/>\n        </div>\n        <div class=\"fontSize\">\n            <span class=\"name\">Size</span>\n            <button class=\"less\" id=\"lessSize\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.fontSize}/>\n            <button class=\"more\" id=\"moreSize\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n\n        <div class=\"color\">\n            <span class=\"name\">Color</span>\n            <input type=\"color\" id=\"fontcolor\" value={state.color}/>\n        </div>\n    </div>\n</div>",
+    "markup": "<div class=\"properties\" id=\"properties\" style={state.style}>\n\n    <div class=\"attributes\">\n        <div class=\"id\">\n            <span class=\"name\">Id</span>\n            <input type=\"text\" class=\"long\" id=\"id\" value={state.id}/>\n        </div>\n        <div class=\"class\">\n            <span class=\"name\">Classes</span>\n            <input type=\"text\"  id=\"class\" class=\"long\" value={state.classes}/>\n        </div>\n    </div>\n\n    <div class=\"size\">\n        <div class=\"height\">\n            <span class=\"name\">Height</span>\n            <button class=\"less\" id=\"lessheight\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.height}/>\n            <button class=\"more\" id=\"moreheight\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n        <div class=\"width\">\n            <span class=\"name\">Width</span>\n            <button class=\"less\" id=\"lesswidth\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.width}/>\n            <button class=\"more\" id=\"morewidth\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n    </div>\n\n    <div class=\"position\">\n        <div class=\"top\">\n            <span class=\"name\">Top</span>\n            <button class=\"less\" id=\"lesstop\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.top}/>\n            <button class=\"more\" id=\"moretop\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n        <div class=\"left\">\n            <span class=\"name\">Left</span>\n            <button class=\"less\" id=\"moreleft\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.left}/>\n            <button class=\"more\" id=\"lessleft\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n    </div>\n\n    <div clas=\"border\">\n        <div class=\"borderSize\">\n            <span class=\"name\">Border</span>\n            <button class=\"less\" id=\"lessborder\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.borderWidth}/>\n            <button class=\"more\" id=\"moreborder\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n    \n        <div class=\"borderColor\">\n            <span class=\"name\">Color</span>\n            <input type=\"color\" id=\"morecolor\" value={state.color}/>\n        </div>\n        <div class=\"borderType\">\n            <span class=\"name\">Type</span>\n            <button class=\"downArrow\"></button>\n        </div>\n    </div>\n\n    <div class=\"space\">\n        <span class=\"name\">Space</span>\n        <button class=\"less\" id=\"lessspace\"><i class=\"fa fa-minus\"></i></button>\n        <input type=\"text\" value={state.space}/>\n        <button class=\"more\" id=\"morespace\"><i class=\"fa fa-plus\"></i></button>\n    </div>\n\n\n\n    <div clas=\"font\">\n\n        <div class=\"fontFamily\">\n            <span class=\"name\">Font</span>\n            <input type=\"text\" class=\"long\" value={state.fontFamily}/>\n        </div>\n        <div class=\"fontSize\">\n            <span class=\"name\">Size</span>\n            <button class=\"less\" id=\"lessSize\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\"  value={state.fontSize}/>\n            <button class=\"more\" id=\"moreSize\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n\n        <div class=\"color\">\n            <span class=\"name\">Color</span>\n            <input type=\"color\" id=\"fontcolor\" value={state.color}/>\n        </div>\n    </div>\n</div>",
     "events": [
       {
         "name": "onClick",
@@ -779,10 +795,21 @@ window.sampleComponents =[
             "publishes": []
           }
         ]
+      },
+      {
+        "id": "id",
+        "index": 15,
+        "name": "onChange",
+        "reducers": [
+          {
+            "reducer": "state.classes = e.currentTarget.value",
+            "publishes": []
+          }
+        ]
       }
     ],
-    "state": "{\n  \"style\":{\n      \"top\": \"400px\",\n      \"left\": \"208px\"\n  },\n  \"height\": \"100px\",\n  \"width\":\"100px\",\n  \"top\":\"100px\",\n  \"left\":\"100px\",\n  \"borderWidth\":\"100px\",\n  \"color\": \"#874a4a\",\n  \"space\" :\"100px\",\n  \"fontSize\": \"10px\"\n}",
-    "style": ".properties {\n    position: absolute;\nborder: 1px solid #2C3134;\n width: 165px;\n font-size: 10px;\n background: rgb(64, 64, 64);\n color: rgba(255,255,255,0.5);\n}\n\n.properties input{\n    width: 50px;\n    padding: 5px;\n    margin-left: 4px;\n}\n\n.properties > div {\n    border: 1px solid #2C3134;\n    padding: 8px;\n}\n\n.properties > div > div:not(:first-child){\n    margin-top:7px;\n}\n\nspan.name {\n    display: inline-block;\n    width: 40px;\n}\n\n.properties .space{\n border: 1px solid #2C3134;\n}\n\n.less{\n    height: 21px;\n    width: 21px;\n    border: 1px solid #2C3134;\n}\n\n.more{\n    height: 21px;\n    width: 21px;\n    border: 1px solid #2C3134;\n}",
+    "state": "{\n  \"style\":{\n      \"top\": \"200px\",\n      \"left\": \"208px\"\n  },\n  \"id\" : \"containement\",\n  \"class\" : \"black setup\",\n  \"height\": \"100px\",\n  \"width\":\"100px\",\n  \"top\":\"100px\",\n  \"left\":\"100px\",\n  \"borderWidth\":\"100px\",\n  \"color\": \"#874a4a\",\n  \"space\" :\"100px\",\n  \"fontSize\": \"10px\"\n}",
+    "style": ".properties {\n    position: absolute;\nborder: 1px solid #2C3134;\n width: 165px;\n font-size: 10px;\n background: rgb(64, 64, 64);\n color: rgba(255,255,255,0.5);\n}\n\n.properties input{\n    width: 50px;\n    padding: 5px;\n    margin-left: 4px;\n}\n\n.properties input.long{\n\twidth: 100px;\n}\n\n.properties > div {\n    border: 1px solid #2C3134;\n    padding: 8px;\n}\n\n.properties > div > div:not(:first-child){\n    margin-top:7px;\n}\n\nspan.name {\n    display: inline-block;\n    width: 40px;\n}\n\n.properties .space{\n border: 1px solid #2C3134;\n}\n\n.less{\n    height: 21px;\n    width: 21px;\n    border: 1px solid #2C3134;\n}\n\n.more{\n    height: 21px;\n    width: 21px;\n    border: 1px solid #2C3134;\n}",
     "children": [],
     "id": 285,
     "config": "{}",
