@@ -1,5 +1,6 @@
 ## Getting Started
-Install nodeJS and npm then run below code. or visit https://imvetri.github.io/ui-editor/
+Install nodeJS and npm then run below code. or visit https://imvetri.github.io/ui-editor/ and some formal [REDME.md](REDME.md) file for details.
+
 
 ```
 git clone https://github.com/imvetri/ui-editor.git
@@ -9,7 +10,6 @@ npm start
 
 ```
 
-Some formal [REDME.md](REDME.md) file for details.
 
 ## Disclaimer
 
