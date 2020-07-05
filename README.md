@@ -1,4 +1,3 @@
-
 ## Getting Started
 Install nodeJS and npm then run below code.
 
