@@ -1,5 +1,5 @@
 ## Getting Started
-Install nodeJS and npm then run below code.
+Install nodeJS and npm then run below code. or visit https://imvetri.github.io/ui-editor/
 
 ```
 git clone https://github.com/imvetri/ui-editor.git
