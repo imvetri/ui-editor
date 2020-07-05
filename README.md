@@ -88,3 +88,5 @@ What are all the potentials of these experiements?
 - [ ] SNAP on - AI system design - hmm, started a repo with one design. Good.
 - [ ] Hope this is the last commit. Stop joking around. 
 
+You can contact me https://twitter.com/VetrivelShanmu3 for any questions, I'll be glad to help.
+
