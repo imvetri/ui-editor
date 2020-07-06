@@ -4,10 +4,17 @@ Effortless technique to build components that works across frameworks.
 
 ## Demo - https://imvetri.github.io/ui-editor/
 
+## Manual
+1. Click Components ->Editor - It is a simple ux editor I planned of building but not for sometime.
+2. Right click black area -> Draw - The context menu has some operations working fine.
+3. Press Alt+R to read events and reducers of child components, elements
+4. Press Alt+E to see source code
+
 ## Workflow and internals
 
 ![](https://github.com/imvetri/ui-editor/blob/master/docs/gifs/ui-editor-workflow-and-internals.3.png)
 
+OUTDATED but do watch :)
 
 ## Step-by-step Tutorials - 
 1. [Getting started](https://github.com/imvetri/ui-editor/wiki/Getting-Started)
