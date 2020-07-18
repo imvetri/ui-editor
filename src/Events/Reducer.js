@@ -37,7 +37,15 @@
         this.setState({
             selectedTag: e.currentTarget.value,
             selectedEventName: "",
-            eventID: eventID
+            eventID: eventID,
+            selectedEvent: {
+                name: "",
+                reducers: [{
+                    reducer: "",
+                    publishes: [],
+                    index: this.props.component.events.length
+                }]
+            }
         })
     }
 
