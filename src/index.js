@@ -65,7 +65,6 @@ class Index extends Component {
             }
             if(e.altKey && e.keyCode==82){ // Alt + R
                 this.setState({
-                    openRight: !this.state.openRight,
                     selectedTab: "Events"
                 })
             }
@@ -162,7 +161,7 @@ class Index extends Component {
                     />
                 </Left>
                 <DynamicComponent onSave={this.props.onSave} key={randomKey} component={selectedComponent}/>
-                {this.state.selectedComponent  && this.state.openRight ?
+                {this.state.selectedComponent ?
                     <Right 
                         selected={this.state.selectedTab}>
                          <Events
