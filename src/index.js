@@ -25,6 +25,8 @@ import Right from "./Utilities/Components/Right";
 // Utility components.
 
 import ContextMenu from "./utilities/Components/ContextMenu";
+import {convertToReact} from "./utilities/CodeGenerator/React";
+import { getNestedComponents} from "./utilities/Runtime"
 
 // Reducers.
 import { updateEvent, updateConfig, saveElement, updateSelectedComponent } from "./Index/Reducer";
@@ -86,9 +88,8 @@ class Index extends Component {
     }
 
     openExportTab(e){
-        this.setState({
-            selectedTab: "Export"
-        })
+        let nestedComponents = getNestedComponents(this.state.selectedComponent)
+        console.log(nestedComponents.map(convertToReact).join("\n\n"))
     }
 
     onShowContextMenu(e){
