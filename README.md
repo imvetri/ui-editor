@@ -10,10 +10,10 @@
   </p>
 </div>
 
-## Demo - https://imvetri.github.io/ui-editor/
+### Demo - https://imvetri.github.io/ui-editor/
 
 
-## Getting Started
+### Getting Started
 
 
 ```
