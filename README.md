@@ -50,12 +50,10 @@ npm start
 
 ## Disclaimer
 
-This is not 
+This will be
 
-- [x] usable
-- [x] testable using typical unit tests / visual test. Run the project. Select Components -> Editor. Right click black area 'Draw'. Draw some rectangles. Right click black area 'Text' Type something. If it works, it goes through all the coverage. One happy path for one working version and thats enough.  
+- [x] usable 
 - [x] futuristic solution to solve community problems
-- [x] rant on others work
 
 This is
 
@@ -73,3 +71,5 @@ What are all the potentials of these experiements?
 - [x] Game builder
 - [x] Tool builder
 - [x] Application builder
+
+One at a time.
