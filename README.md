@@ -1,3 +1,6 @@
+#![](https://github.com/imvetri/ui-editor/blob/master/docs/logo_size_invert.png)
+
+
 ## Getting Started
 Install nodeJS and npm then run below code. or visit https://imvetri.github.io/ui-editor/ and some formal [REDME.md](REDME.md) file for details.
 
