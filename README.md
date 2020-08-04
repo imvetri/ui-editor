@@ -1,4 +1,4 @@
-#![](https://github.com/imvetri/ui-editor/blob/master/docs/logo_size_invert.png)
+#![](https://github.com/imvetri/ui-editor/blob/master/docs/logo_size.png)
 
 
 ## Getting Started
