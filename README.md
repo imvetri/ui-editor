@@ -5,7 +5,6 @@
   <br>
   <br>
   <br>
-  <h1>ui-editor</h1>
   <p>
     ui-editor is a web based component builder based on reactJS. Its main purpose is to build JavaScript files for usage in a framework, yet it is also capable of transforming, bundling, or packaging just about any resource or asset.
   </p>
