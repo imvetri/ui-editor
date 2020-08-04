@@ -1,20 +1,9 @@
 <div align="center">
   <a href="https://github.com/imvetri/ui-editor">
-    <img width="200" height="200" src="https://github.com/imvetri/ui-editor/blob/master/docs/logo_size.png">
+    <img width="200" height="200" src="https://github.com/imvetri/ui-editor/blob/master/docs/logo_size.jpg">
   </a>
   <br>
   <br>
-
-[![npm][npm]][npm-url]
-[![node][node]][node-url]
-[![deps][deps]][deps-url]
-[![tests][tests]][tests-url]
-[![builds][builds]][builds-url]
-[![builds2][builds2]][builds2-url]
-[![coverage][cover]][cover-url]
-[![licenses][licenses]][licenses-url]
-[![PR's welcome][prs]][prs-url]
-
   <br>
   <h1>ui-editor</h1>
   <p>
