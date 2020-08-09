@@ -1,6 +1,7 @@
 <div id="app"></div>
 <div id="app2"></div>
 <div id="app3"></div>
+<div id="app4"></div>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script>
 
@@ -33,8 +34,7 @@
             incrementCount(){
                 this.count++;
                 if(this.count==10){
-                    debugger
-                    this.onMessage();
+                    this.onMessage(this.count);
                 }
             }
         },
@@ -69,18 +69,46 @@
             }
         },
         methods: {
-            receiveMessage(){
+            receiveMessage(value){
                 this.content = {
                     text: "hello",
+                    count : 50
+                };
+                this.count = value;
+            }
+        },
+        template: '<div>{{ content.count }}{{ count }}<button-counter :message=content :onMessage="receiveMessage"></button-counter></div>'
+    })
+
+    // 5. vue component rendering list of buttons
+    
+    var app = new Vue({
+        el: '#app4',
+        data: function(){
+            return {contents:[{content: {
+                    text: "hello",
                     count : 5
+                }},{content: {
+                    text: "fallo",
+                    count : 6
+                }},{content: {
+                    text: "mello",
+                    count : 7
+                }}],
+            message:0}
+            
+        },
+        methods: {
+            receiveMessage(value){
+                this.message = this.message + value;
+                if(this.message===30){
+                    this.contents.pop();
                 }
             }
         },
-        template: '<div>{{ content.count }}<button-counter :message=content :onMessage="receiveMessage"></button-counter></div>'
+        template: '<div>{{message}}<button-counter v-for="content in contents" :message=content :onMessage="receiveMessage"></button-counter></div>'
     })
 
-
-    
 
 
 </script>
