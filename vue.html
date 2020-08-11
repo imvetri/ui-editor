@@ -23,7 +23,6 @@
     Vue.component('button-counter', {
         data: function () {
             let props = JSON.parse(JSON.stringify(this.message) );
-            debugger;
             return {
                 count: (props && props.count )|| 0,
                 message: (props && props.text) || "gel"
