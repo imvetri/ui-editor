@@ -40,16 +40,41 @@ function getComponentEventedMarkup(markup, events) {
     return markup.split("state.").join("this.state.")
 }
 
+function getPublishes(publishes){
+    return publishes.map(publish=>{
+        return `
+        if(${publish.publishCondition}){
+            this.${publish.publishName} ? this.${publish.publishName}(e):null;
+        }
+        `
+    }).join("\n")
+}
+
+function getMethodsObject(events){
+    return events.map(event => {
+        let reducer = event.reducers[0];
+        return `${event.id+event.name}(e) {
+            ${replaceAll(reducer.reducer,"state.", "this.")}
+            ${getPublishes(reducer.publishes)}
+        }`
+    }).join("\n,")
+}
+
 function generate(component) {
     
     component.markup = JsxToVueMarkup(component)
     component.markup = getComponentEventedMarkup(component.markup, component.events)
+    
+    medthodsObject = getMethodsObject(component.events)
     return `
 Vue.component(${component.name}, {
     data: function(){
         return ${component.state}
     },
-    template: '${component.markup}'
+    methods: {
+        ${medthodsObject}
+    },
+    template: \`${component.markup}\`
 })
 `
 }

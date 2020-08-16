@@ -1,0 +1,275 @@
+<div id="app"></div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+
+    // 1. vue component with data, template.
+
+
+
+    Vue.component("PropertiesControl", {
+        data: function () {
+            return {
+                "style": {
+                    "top": "200px",
+                    "left": "208px"
+                },
+                "id": "containement",
+                "class": "black setup",
+                "height": "100px",
+                "width": "100px",
+                "top": "100px",
+                "left": "100px",
+                "borderWidth": "100px",
+                "color": "#874a4a",
+                "space": "100px",
+                "fontSize": "10px"
+            }
+        },
+        methods: {
+            lessheightclick(e) {
+                let height = Number(this.height.split("px")[0]) - 1;
+                this.height = height + "px";
+
+
+                let element = document.querySelectorAll(".selectedForEdit")[0];
+                let elementStyle = element.style;
+
+                elementStyle.height = this.height;
+
+            }
+            , moreheightclick(e) {
+                let height = Number(this.height.split("px")[0]) + 1;
+                this.height = height + "px";
+
+                let element = document.querySelectorAll(".selectedForEdit")[0];
+                let elementStyle = element.style;
+
+                elementStyle.height = this.height;
+
+            }
+            , lesswidthclick(e) {
+                let width = Number(this.width.split("px")[0]) - 1;
+                this.width = width + "px";
+
+                let element = document.querySelectorAll(".selectedForEdit")[0];
+                let elementStyle = element.style;
+
+                elementStyle.width = this.width;
+
+            }
+            , morewidthclick(e) {
+                let width = Number(this.width.split("px")[0]) + 1;
+                this.width = width + "px";
+
+                let element = document.querySelectorAll(".selectedForEdit")[0];
+                let elementStyle = element.style;
+
+                elementStyle.width = this.width;
+
+            }
+            , lesstopclick(e) {
+                let top = Number(this.top.split("px")[0]) - 1;
+                this.top = top + "px";
+
+                let element = document.querySelectorAll(".selectedForEdit")[0];
+                let elementStyle = element.style;
+
+                elementStyle.top = this.top;
+
+            }
+            , moretopclick(e) {
+                let top = Number(this.top.split("px")[0]) + 1;
+                this.top = top + "px";
+
+                let element = document.querySelectorAll(".selectedForEdit")[0];
+                let elementStyle = element.style;
+
+                elementStyle.top = this.top;
+
+            }
+            , moreleftclick(e) {
+                let left = Number(this.left.split("px")[0]) - 1;
+                this.left = left + "px";
+
+                let element = document.querySelectorAll(".selectedForEdit")[0];
+                let elementStyle = element.style;
+
+                elementStyle.left = this.left;
+
+            }
+            , lessleftclick(e) {
+                let left = Number(this.left.split("px")[0]) + 1;
+                this.left = left + "px";
+
+                let element = document.querySelectorAll(".selectedForEdit")[0];
+                let elementStyle = element.style;
+
+                elementStyle.left = this.left;
+
+            }
+            , lessborderclick(e) {
+                let borderWidth = Number(this.borderWidth.split("px")[0]) - 1;
+                this.borderWidth = borderWidth + "px";
+
+                let element = document.querySelectorAll(".selectedForEdit")[0];
+                let elementStyle = element.style;
+
+                elementStyle.borderWidth = this.borderWidth;
+
+            }
+            , moreborderclick(e) {
+                let borderWidth = Number(this.borderWidth.split("px")[0]) + 1;
+                this.borderWidth = borderWidth + "px";
+
+                let element = document.querySelectorAll(".selectedForEdit")[0];
+                let elementStyle = element.style;
+
+                elementStyle.borderWidth = this.borderWidth;
+
+            }
+            , morespaceclick(e) {
+                let space = Number(this.space.split("px")[0]) + 1;
+                this.space = space + "px";
+
+            }
+            , lessspaceclick(e) {
+                let space = Number(this.space.split("px")[0]) - 1;
+                this.space = space + "px";
+
+            }
+            , propertiesmouseleave(e) {
+                let element = document.querySelectorAll(".selectedForEdit")[0];
+                this.elementHTML = element.innerHTML;
+
+                if (true) {
+                    this.onHide ? this.onHide(e) : null;
+                }
+
+            }
+            , lessSizeclick(e) {
+                let fontSize = Number(this.fontSize.split("px")[0]) - 1;
+                this.fontSize = fontSize + "px";
+
+                let element = document.querySelectorAll(".selectedForEdit")[0];
+                let elementStyle = element.style;
+
+                elementStyle.fontSize = this.fontSize;
+
+            }
+            , moreSizeclick(e) {
+                let fontSize = Number(this.fontSize.split("px")[0]) + 1;
+                this.fontSize = fontSize + "px";
+
+                let element = document.querySelectorAll(".selectedForEdit")[0];
+                let elementStyle = element.style;
+
+                elementStyle.fontSize = this.fontSize;
+
+            }
+            , idchange(e) {
+                this.classes = e.currentTarget.value
+
+            }
+        },
+        template: `<div class="properties" id="properties" v-on:mouseleave="propertiesmouseleave" style={{style}}>
+
+    <div class="attributes">
+        <div class="id">
+            <span class="name">Id</span>
+            <input type="text" class="long" id="id" v-on:change="idchange" value={{id}}>
+        </div>
+        <div class="class">
+            <span class="name">Classes</span>
+            <input type="text"  id="class" class="long" value={{classes}}/>
+        </div>
+    </div>
+
+    <div class="size">
+        <div class="height">
+            <span class="name">Height</span>
+            <button class="less" id="lessheight" v-on:click="lessheightclick"><i class="fa fa-minus"></i></button>
+            <input type="text" value={{height}}/>
+            <button class="more" id="moreheight" v-on:click="moreheightclick"><i class="fa fa-plus"></i></button>
+        </div>
+        <div class="width">
+            <span class="name">Width</span>
+            <button class="less" id="lesswidth" v-on:click="lesswidthclick"><i class="fa fa-minus"></i></button>
+            <input type="text" value={{width}}/>
+            <button class="more" id="morewidth" v-on:click="morewidthclick"><i class="fa fa-plus"></i></button>
+        </div>
+    </div>
+
+    <div class="position">
+        <div class="top">
+            <span class="name">Top</span>
+            <button class="less" id="lesstop" v-on:click="lesstopclick"><i class="fa fa-minus"></i></button>
+            <input type="text" value={{top}}/>
+            <button class="more" id="moretop" v-on:click="moretopclick"><i class="fa fa-plus"></i></button>
+        </div>
+        <div class="left">
+            <span class="name">Left</span>
+            <button class="less" id="moreleft" v-on:click="moreleftclick"><i class="fa fa-minus"></i></button>
+            <input type="text" value={{left}}/>
+            <button class="more" id="lessleft" v-on:click="lessleftclick"><i class="fa fa-plus"></i></button>
+        </div>
+    </div>
+
+    <div clas="border">
+        <div class="borderSize">
+            <span class="name">Border</span>
+            <button class="less" id="lessborder" v-on:click="lessborderclick"><i class="fa fa-minus"></i></button>
+            <input type="text" value={{borderWidth}}/>
+            <button class="more" id="moreborder" v-on:click="moreborderclick"><i class="fa fa-plus"></i></button>
+        </div>
+    
+        <div class="borderColor">
+            <span class="name">Color</span>
+            <input type="color" id="morecolor" value={{color}}/>
+        </div>
+        <div class="borderType">
+            <span class="name">Type</span>
+            <button class="downArrow"></button>
+        </div>
+    </div>
+
+    <div class="space">
+        <span class="name">Space</span>
+        <button class="less" id="lessspace" v-on:click="lessspaceclick"><i class="fa fa-minus"></i></button>
+        <input type="text" value={{space}}/>
+        <button class="more" id="morespace" v-on:click="morespaceclick"><i class="fa fa-plus"></i></button>
+    </div>
+
+
+
+    <div clas="font">
+
+        <div class="fontFamily">
+            <span class="name">Font</span>
+            <input type="text" class="long" value={{fontFamily}}/>
+        </div>
+        <div class="fontSize">
+            <span class="name">Size</span>
+            <button class="less" id="lessSize" v-on:click="lessSizeclick"><i class="fa fa-minus"></i></button>
+            <input type="text"  value={{fontSize}}/>
+            <button class="more" id="moreSize" v-on:click="moreSizeclick"><i class="fa fa-plus"></i></button>
+        </div>
+
+        <div class="color">
+            <span class="name">Color</span>
+            <input type="color" id="fontcolor" value={{color}}/>
+        </div>
+    </div>
+</div>`
+    })
+
+    var app = new Vue({
+        el: '#app',
+        data: function () {
+            return {
+                message: 'Hello Vue!'
+            }
+        },
+        template: '<div>{{ message }}<PropertiesControl></PropertiesControl></div>'
+    })
+
+</script>
