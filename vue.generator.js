@@ -1,8 +1,5 @@
 function replaceAll(str, replace, it){
-    while(str.indexOf(replace)!==-1){
-        str = str.replace(replace, it)
-    }
-    return str
+    return str.replace(new RegExp(replace,"g"), it)
 }
 
 function JsxToVueMarkup(component) {
@@ -31,11 +28,11 @@ function getComponentEventedMarkup(markup, events) {
         event.name= reactToVueEventName(event.name);
         // check if markup contains the id.
         if(markup.includes(id)){
-            markup = markup.replace(id, `${id} v-on:${event.name}="${event.id+event.name}`);
+            markup = markup.replace(id, `${id} v-on:${event.name}="${event.id+event.name}"`);
         }
         // its a child component.
         else{
-            markup = markup.replace(`<${event.id}`,`<${event.id} v-on:${event.name}=${event.id+event.name}`)
+            markup = markup.replace(`<${event.id}`,`<${event.id} v-on:${event.name}="${event.id+event.name}"`)
         }
             
     });
@@ -44,10 +41,10 @@ function getComponentEventedMarkup(markup, events) {
 }
 
 function generate(component) {
+    
     component.markup = JsxToVueMarkup(component)
     component.markup = getComponentEventedMarkup(component.markup, component.events)
-    return 
-`
+    return `
 Vue.component(${component.name}, {
     data: function(){
         return ${component.state}
