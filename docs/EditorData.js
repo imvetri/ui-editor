@@ -59,23 +59,6 @@ window.sampleComponents =[
         ]
       },
       {
-        "name": "onContextMenu",
-        "index": 4,
-        "id": "canvas",
-        "reducers": [
-          {
-            "reducer": "e.stopPropagation();\ne.preventDefault();\n",
-            "publishes": [
-              {
-                "publishName": "onShowContextMenu",
-                "publishCondition": true,
-                "publishable": true
-              }
-            ]
-          }
-        ]
-      },
-      {
         "name": "onMoveFinished",
         "id": "Resizable",
         "reducers": [
@@ -433,7 +416,7 @@ window.sampleComponents =[
         "id": "Canvas",
         "reducers": [
           {
-            "reducer": "\nif (state.CanvasMode === \"New\") {\n    state.CanvasControls=[{\n        \"undo\": \"disabled\",\n        \"redo\": \"disabled\",\n        \"draw\": \"enabled\",\n        \"text\": \"disabled\",\n        \"image\": \"disabled\",\n        \"group\": \"disabled\",\n        \"ungroup\": \"disabled\",\n        \"duplicate\": \"disabled\",\n        \"delete\": \"disabled\",\n        \"select\": \"disabled\",\n        \"deselect\": \"disabled\",\n        \"edit\":\"disabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    }]\n}\nif (state.CanvasMode === \"Created\") {\n    state.CanvasControls=[{\n        \"undo\": \"enabled\",\n        \"redo\": \"enabled\",\n        \"draw\": \"enabled\",\n        \"text\": \"enabled\",\n        \"image\": \"enabled\",\n        \"group\": \"disabled\",\n        \"ungroup\": \"disabled\",\n        \"duplicate\": \"disabled\",\n        \"delete\": \"disabled\",\n        \"select\": \"enabled\",\n        \"deselect\": \"disabled\",\n        \"edit\":\"disabled\",\n        \n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    }]\n}\nif (state.CanvasMode === \"SingleSelection\") {\n    state.CanvasControls=[{\n        \"undo\": \"enabled\",\n        \"redo\": \"enabled\",\n        \"draw\": \"enabled\",\n        \"text\": \"disabled\",\n        \"image\": \"disabled\",\n        \"group\": \"disabled\",\n        \"ungroup\": \"disabled\",\n        \"duplicate\": \"enabled\",\n        \"delete\": \"enabled\",\n        \"select\": \"disabled\",\n        \"deselect\": \"enabled\",\n         \"edit\":\"enabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    }]\n}\n\nif (state.CanvasMode === \"MultiGroup\") {\n    state.CanvasControls=[{\n        \"undo\": \"enabled\",\n        \"redo\": \"enabled\",\n        \"draw\": \"enabled\",\n        \"text\": \"disabled\",\n        \"image\": \"disabled\",\n        \"group\": \"enabled\",\n        \"ungroup\": \"disabled\",\n        \"duplicate\": \"enabled\",\n        \"delete\": \"enabled\",\n        \"select\": \"disabled\",\n        \"deselect\": \"enabled\",\n         \"edit\":\"enabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    }]\n}\n\nif (state.CanvasMode === \"MultiUngroup\") {\n    state.CanvasControls=[{\n        \"undo\": \"enabled\",\n        \"redo\": \"enabled\",\n        \"draw\": \"enabled\",\n        \"text\": \"disabled\",\n        \"image\": \"disabled\",\n        \"group\": \"disabled\",\n        \"ungroup\": \"enabled\",\n        \"duplicate\": \"enabled\",\n        \"delete\": \"enabled\",\n        \"select\": \"disabled\",\n        \"deselect\": \"enabled\",\n         \"edit\":\"enabled\",\n        \"style\": {\n            \"top\": e.clientY + \"px\",\n            \"left\": e.clientX + \"px\"\n        }\n    }]\n}\n\nstate.Canvas[0].innerHTML = e.currentTarget.innerHTML;\n\n",
+            "reducer": "state.Canvas[0].innerHTML = e.currentTarget.innerHTML;\n\n",
             "publishes": []
           }
         ]
@@ -477,7 +460,7 @@ window.sampleComponents =[
         "name": "onDraw",
         "reducers": [
           {
-            "reducer": "state.CanvasMode = \"Created\";\nstate.Canvas[0].mode = \"Draw\";\n\nstate.CanvasControls=[];\n",
+            "reducer": "\nstate.Canvas[0].mode = \"Draw\";\n",
             "publishes": []
           }
         ]
@@ -488,18 +471,7 @@ window.sampleComponents =[
         "name": "onText",
         "reducers": [
           {
-            "reducer": "state.CanvasMode = \"Created\";\nstate.Canvas[0].mode = \"Text\";\nstate.CanvasControls=[];\n",
-            "publishes": []
-          }
-        ]
-      },
-      {
-        "id": "CanvasControls",
-        "index": 8,
-        "name": "onSelect",
-        "reducers": [
-          {
-            "reducer": "state.CanvasMode = \"MultiGroup\";\nstate.Canvas[0].mode = \"Select\";\nstate.CanvasControls=[];\n",
+            "reducer": "\nstate.Canvas[0].mode = \"Text\";\n",
             "publishes": []
           }
         ]
@@ -558,18 +530,29 @@ window.sampleComponents =[
             "publishes": []
           }
         ]
+      },
+      {
+        "id": "CanvasControls",
+        "index": 11,
+        "name": "onSelect",
+        "reducers": [
+          {
+            "reducer": "state.Canvas[0].mode = \"Select\"",
+            "publishes": []
+          }
+        ]
       }
     ],
-    "state": "{\t\n\t\"CanvasMode\":\"New\",\n    \"CanvasControls\":[],\n    \"Canvas\":[\n    \t{\n        \"style\":{\n        \t\"cursor\":\"pointer\"\n        },\n        \"innerHTML\":\"\",\n        \"divs\":[],\n        \"mode\":\"\"\n        }\n    ],\n    \"PropertiesControl\":[],\n    \"innerHTMLs\" : [],\n    \"current\": 0\n}",
+    "state": "{\"CanvasMode\":\"New\",\"Canvas\":[{\"style\":{\"cursor\":\"pointer\"},\"innerHTML\":\"\",\"divs\":[],\"mode\":\"\"}],\"PropertiesControl\":[],\"innerHTMLs\":[],\"current\":0}",
     "style": ".selectedForEdit{\n\toutline: 1px solid red;\n    cursor: move;\n}",
     "children": [],
     "id": 707,
-    "config": "{\"CanvasControls\":{\"override\":true},\"Canvas\":{\"override\":true},\"PropertiesControl\":{\"override\":true},\"Resizable\":{\"override\":true}}",
+    "config": "{\"CanvasControls\":{\"override\":false},\"Canvas\":{\"override\":true},\"PropertiesControl\":{\"override\":true},\"Resizable\":{\"override\":true}}",
     "trueName": "Editor"
   },
   {
     "name": "CanvasControls",
-    "markup": "<div id=\"menu\" style={state.style}>\n    <div id=\"history-control\">\n        <div className={state.undo}>\n            <i className=\"fa fa-undo\"></i>\n            <span>Undo</span>\n\t\t</div>\n        <div className={state.redo}>\n\t\t\t<i className=\"fa fa-redo\"></i>\n        \t<span>Redo</span>\n\t\t</div>\n    </div>\n    <div id=\"content-control\">\n        <div className={state.draw}>\n            <i className=\"fa fa-edit\"></i>\n        \t<span>Draw</span>\n        </div>\n        <div className={state.text}>\n            <i className=\"fa fa-font\"></i>\n        \t<span>Text</span>\n        </div>\n        <div className={state.image}>\n            <i className=\"fas fa-image\"></i>\n        \t<span>Image</span>\n        </div>\n    </div>\n    <div id=\"edit-control\">\n        <div className={state.group}>\n            <i className=\"fa fa-object-group\"></i>\n        \t<span>Group</span>\n        </div>\n        <div className={state.ungroup}>\n            <i className=\"fa fa-object-ungroup\"></i>\n        \t<span>Ungroup</span>\n        </div>\n        <div className={state.edit}>\n            <i className=\"fa fa-edit\"></i>\n        \t<span>Edit</span>\n        </div>\n        <div className={state.duplicate}>\n            <i className=\"fa fa-clone\"></i>\n        \t<span>Duplicate</span>\n        </div>\n        <div className={state.delete}>\n            <i className=\"fa fa-trash\"></i>\n        \t<span>Delete</span>\n        </div>\n    </div>\n    <div>\n        <div className={state.select}>\n        \t<i className=\"fa fa-mouse-pointer\"></i>\n        \t<span>Select</span>\n        </div>\n    </div>\n    <div>\n        <div className={state.save}>\n        \t<i className=\"fa fa-save\"></i>\n        \t<span>Save</span>\n        </div>\n    </div>\n    \n    <div>\n        <div className={state.load}>\n        \t<i className=\"fa fa-upload\"></i>\n        \t<span>Load</span>\n        </div>\n    </div>\n</div>",
+    "markup": "<div id=\"menu\" style={state.style}>\n    <div id=\"history-control\">\n        <div className={state.undo}>\n            <i className=\"fa fa-undo\"></i>\n            <span>Undo</span>\n\t\t</div>\n        <div className={state.redo}>\n\t\t\t<i className=\"fa fa-redo\"></i>\n        \t<span>Redo</span>\n\t\t</div>\n    </div>\n    <div id=\"content-control\">\n        <div className={state.draw}>\n            <i className=\"fa fa-edit\"></i>\n        \t<span>Draw</span>\n        </div>\n        <div className={state.text}>\n            <i className=\"fa fa-font\"></i>\n        \t<span>Text</span>\n        </div>\n        <div className={state.image}>\n            <i className=\"fas fa-image\"></i>\n        \t<span>Image</span>\n        </div>\n    </div>\n    <div id=\"edit-control\">\n        <div className={state.edit}>\n            <i className=\"fa fa-edit\"></i>\n        \t<span>Edit</span>\n        </div>\n        <div className={state.delete}>\n            <i className=\"fa fa-trash\"></i>\n        \t<span>Delete</span>\n        </div>\n    </div>\n    <div>\n        <div className={state.select}>\n        \t<i className=\"fa fa-mouse-pointer\"></i>\n        \t<span>Select</span>\n        </div>\n    </div>\n</div>",
     "events": [
       {
         "name": "onClick",
@@ -577,7 +560,7 @@ window.sampleComponents =[
         "id": "menu",
         "reducers": [
           {
-            "reducer": "state.item = e.target.innerText;",
+            "reducer": "state.item = e.target.innerText;\n\nswitch (state.item){\n\tcase \"Draw\":\n\t\tstate.text = \"enabled\";\n        state.select = \"enabled\"\n        break;\n\tcase \"Select\":\n\t\tstate.edit = \"enabled\";\n        break;\n}",
             "publishes": [
               {
                 "publishable": true,
@@ -614,8 +597,8 @@ window.sampleComponents =[
         ]
       }
     ],
-    "state": "{\n\t\"undo\":\"disabled\",\n    \"redo\":\"disabled\",\n\t\"draw\":\"enabled\",\n    \"text\":\"disabled\",\n    \"image\":\"disabled\",\n\t\"group\":\"disabled\",\n    \"ungroup\":\"disabled\",\n\t\"duplicate\":\"disabled\",\n    \"delete\":\"disabled\",\n\t\"select\":\"disabled\",\n    \"edit\":\"disabled\",\n    \"save\":\"disabled\",\n    \"load\":\"disabled\",\n    \"style\" : {\n    \t\"top\": \"100px\",\n        \"left\":\"200px\"\n    }\n}",
-    "style": "#menu {\n    position: fixed;\n    font-size:10px;\n    user-select: none;\n    color: rgba(255,255,255,0.5);\n    background: rgb(64, 64, 64);\n}\n\n#menu > div > div:hover:not(.disabled){\n    background: rgb(43, 43, 43);\n    color: white;\n}\n\n.disabled{\n    cursor: not-allowed;\n    background: #333333;\n    color: #4a4a4a;\n}\n\n\n\n#menu > div > div span {\n    padding-left: 9px;\n}\n\n#menu > div > div {\n    box-sizing: border-box;\n    padding: 10px;\n    height: 29px;\n}\n\n#history-control {\n    border: 1px solid #2C3134;\n    height: 60px;\n}\n\n#content-control {\n    border: 1px solid #2C3134;\n    height: 90px;\n}\n\n#edit-control {\n    border: 1px solid #2C3134;\n    height: 148px;\n}\n\n#selection-control {\n    border: 1px solid #2C3134;\n    height: 60px;\n}\n",
+    "state": "{\n\t\"undo\":\"enabled\",\n    \"redo\":\"enabled\",\n\t\"draw\":\"enabled\",\n    \"text\":\"disabled\",\n    \"image\":\"disabled\",\n\t\"group\":\"disabled\",\n    \"ungroup\":\"disabled\",\n\t\"duplicate\":\"disabled\",\n    \"delete\":\"disabled\",\n\t\"select\":\"disabled\",\n    \"edit\":\"disabled\",\n    \"save\":\"disabled\",\n    \"load\":\"disabled\",\n    \"style\" : {\n    \t\"top\": \"100px\",\n        \"left\":\"200px\"\n    }\n}",
+    "style": "#menu {\n    position: fixed;\n    font-size:10px;\n    user-select: none;\n    color: rgba(255,255,255,0.5);\n    background: rgb(64, 64, 64);\n}\n\n#menu > div > div:hover:not(.disabled){\n    background: rgb(43, 43, 43);\n    color: white;\n}\n\n.disabled{\n    cursor: not-allowed;\n    background: #333333;\n    color: #4a4a4a;\n}\n\n\n\n#menu > div > div span {\n    padding-left: 9px;\n}\n\n#menu > div > div {\n    box-sizing: border-box;\n    padding: 10px;\n    height: 29px;\n}\n\n#history-control {\n    border: 1px solid #2C3134;\n    height: 60px;\n}\n\n#content-control {\n    border: 1px solid #2C3134;\n    height: 90px;\n}\n\n#edit-control {\n    border: 1px solid #2C3134;\n}\n\n#selection-control {\n    border: 1px solid #2C3134;\n    height: 60px;\n}\n",
     "children": [],
     "id": 550,
     "config": "{}",
