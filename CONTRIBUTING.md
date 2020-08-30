@@ -1,4 +1,4 @@
-How to contribute
+### How to contribute
 •	Clone the repository ( git clone https://github.com/imvetri/ui-editor.git)
 •	Install dependencies ( cd ui-editor && npm i)
 •	Create a new branch from master (git checkout -b “feature_name”)
@@ -8,7 +8,7 @@ How to contribute
 •	Push the changes and open a pull request. Do not worry if you made any mistake or stuck. Write about what you wanted to do, I'll help you out.
 
 
-What to contribute 
+### What to contribute 
 There are two parts to ui-editor
 1.	Ui-editor project – this is what gets built when you do npm start. This is made of component explorer, code editor, events editor and renderer. 
 a.	The ui needs more polishing, you can work on that if you know css
@@ -22,7 +22,7 @@ c.	the user experience is very harsh right now, you can improve it, like adding 
 2.	Ui-editor demo components – this is what gets created using the tool and gets saved in the localstorage. These are the components that are built using the tool and helps to demo how great it is to compose and build the components. Remember to run copy(components) and paste the content in editorData.js file before publishing the changes. 
 3.	Ui-editor demo components – build a ui – prototyping tool within the components!. If you face hurdle – reach out to me or open an issue. If you want to improve the way you build the components – open a PR. Lets discuss.
 
-Why to contribute –
+### Why to contribute –
 •	I have been working on this project because some problems in the front end community needs to be addressed. Just ranting about a problem isn’t enough so I took a step to see what I can, and it turned out just fine. I have spent enough time to architect a solution on top of which we can build plethora of tools to save time of a front end developer. If have things to complain about web development – lets talk about a software solution.
 •	Root problem of front end is UX designers. This project aims to automate the workflow of web development behind an interface. This is not a threat to skills of people. This is a community effort to save time for developers. UX is just rectangle box on top of another box that gets animated visibility. I think we can build tool around it.
 •	The tool can generate code and most importantly a readable code. 
