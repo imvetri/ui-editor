@@ -1,4 +1,5 @@
 ### How to contribute
+
 •	Clone the repository ( git clone https://github.com/imvetri/ui-editor.git)
 
 •	Install dependencies ( cd ui-editor && npm i)
@@ -39,6 +40,7 @@ There are two parts to ui-editor
 3.	Ui-editor demo components – build a ui – prototyping tool within the components!. If you face hurdle – reach out to me or open an issue. If you want to improve the way you build the components – open a PR. Lets discuss.
 
 ### Why to contribute –
+
 
 •	I have been working on this project because some problems in the front end community needs to be addressed. Just ranting about a problem isn’t enough so I took a step to see what I can, and it turned out just fine. I have spent enough time to architect a solution on top of which we can build plethora of tools to save time of a front end developer. If have things to complain about web development – lets talk about a software solution.
 
