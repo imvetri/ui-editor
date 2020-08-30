@@ -1,6 +1,5 @@
 ### How to contribute
 •	Clone the repository ( git clone https://github.com/imvetri/ui-editor.git)
-
 •	Install dependencies ( cd ui-editor && npm i)
 
 •	Create a new branch from master (git checkout -b “feature_name”)
