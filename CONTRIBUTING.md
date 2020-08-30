@@ -5,7 +5,7 @@ How to contribute
 •	Run the project ( npm start )
 •	Save changes ( npm run build ) and remove dist/index.html from the change list. 
 •	Commit the changes (git commit -m “change details” )
-•	Push the changes and open a pull request.
+•	Push the changes and open a pull request. Do not worry if you made any mistake or stuck. Write about what you wanted to do, I'll help you out.
 
 
 What to contribute 
