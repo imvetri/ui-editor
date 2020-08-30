@@ -19,18 +19,18 @@ There are two parts to ui-editor
 
 1.	Ui-editor project – this is what gets built when you do npm start. This is made of component explorer, code editor, events editor and renderer. 
 
- a.	The ui needs more polishing, you can work on that if you know css
- b.	There is no good documentation written about the tool, you can write about 
+   a.	The ui needs more polishing, you can work on that if you know css
+   b.	There is no good documentation written about the tool, you can write about 
 
-  i.	how to use the tool, 
+           i.	how to use the tool, 
 
-  ii.	why the tool is good,
+          ii.	why the tool is good,
 
-  iii.	what makes this tool great, 
+          iii.	what makes this tool great, 
 
-  iv.	whats the internals of the tool
+          iv.	whats the internals of the tool
 
-  v.	how does the tool work
+          v.	how does the tool work
 
  c.	the user experience is very harsh right now, you can improve it, like adding auto fill to code editor, correcting font size.
 
