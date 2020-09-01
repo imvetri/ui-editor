@@ -28,7 +28,7 @@ class DynamicComponent extends Component {
         }
 
         if(!window[this.state.component.name]){
-            return (<p>No component selected.</p>)
+            return null
         }
         return React.createElement( window[this.state.component.name] );
     }

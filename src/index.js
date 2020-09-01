@@ -19,7 +19,6 @@ import DynamicComponent from "./DynamicComponent";
 
 import Center from "./Utilities/Components/Center";
 import Bottom from "./Utilities/Components/Bottom";
-import Left from "./Utilities/Components/Left";
 import Right from "./Utilities/Components/Right";
 
 // Utility components.
@@ -52,6 +51,7 @@ class Index extends Component {
             selectedComponent: "",
             folders: readData("folders"),
             showEditor: false,
+            showTools: true,
             selectedTab: "Events"
         }
         this.updateConfig = updateConfig.bind(this);
@@ -67,7 +67,7 @@ class Index extends Component {
             }
             if(e.altKey && e.keyCode==82){ // Alt + R
                 this.setState({
-                    selectedTab: "Events"
+                    showTools: !this.state.showTools
                 })
             }
         }.bind(this);
@@ -145,9 +145,14 @@ class Index extends Component {
     render() {
         const selectedComponent = this.state.selectedComponent || this.state.component;
         const randomKey = Math.ceil(Math.random() * 1000);
+
+        if(!this.state.showTools){
+            return <DynamicComponent onSave={this.props.onSave} key={randomKey} component={selectedComponent}/>
+        }
         return (
             <div onContextMenu={this.onShowContextMenu.bind(this)} onClick={this.hideContextMenu.bind(this)}>
-                <Left>
+                <DynamicComponent onSave={this.props.onSave} key={randomKey} component={selectedComponent}/>
+                <div className="leftItem">
                     <Components
                         components={this.state.components}
                         folders={this.state.folders}
@@ -160,8 +165,7 @@ class Index extends Component {
                         onSelection={this.updateSelectedComponent}
                         onFoldersUpdate={this.updateFolders.bind(this)}
                     />
-                </Left>
-                <DynamicComponent onSave={this.props.onSave} key={randomKey} component={selectedComponent}/>
+                </div>
                 {this.state.selectedComponent ?
                     <Right 
                         selected={this.state.selectedTab}>
