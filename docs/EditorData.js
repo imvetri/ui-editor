@@ -67,6 +67,23 @@ window.sampleComponents =[
             "publishes": []
           }
         ]
+      },
+      {
+        "id": "canvas",
+        "index": 5,
+        "name": "onMouseLeave",
+        "reducers": [
+          {
+            "reducer": "if(state.mode===\"Text\"){\n\n}",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onTextCreation",
+                "publishCondition": "state.mode===\"Text\""
+              }
+            ]
+          }
+        ]
       }
     ],
     "state": "{\"style\":{\"cursor\":\"pointer\"},\"divs\":[],\"mode\":\"Draw\"}",
@@ -471,7 +488,7 @@ window.sampleComponents =[
         "name": "onText",
         "reducers": [
           {
-            "reducer": "\nstate.Canvas[0].mode = \"Text\";\n",
+            "reducer": "state.Canvas[0].mode = \"Text\"",
             "publishes": []
           }
         ]
@@ -538,6 +555,17 @@ window.sampleComponents =[
         "reducers": [
           {
             "reducer": "state.Canvas[0].mode = \"Select\"",
+            "publishes": []
+          }
+        ]
+      },
+      {
+        "id": "Canvas",
+        "index": 12,
+        "name": "onTextCreation",
+        "reducers": [
+          {
+            "reducer": "\nstate.current = state.current+1;\nstate.innerHTMLs[state.current] = e.currentTarget.innerHTML;\n\n\nstate.Canvas[0].innerHTML = state.innerHTMLs[state.current];\n",
             "publishes": []
           }
         ]
