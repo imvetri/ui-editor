@@ -825,6 +825,16 @@ window.sampleComponents =[
     "id": 285,
     "config": "{}",
     "trueName": "PropertiesControl"
+  },
+  {
+    "name": "Div",
+    "markup": "<div></div>",
+    "events": [],
+    "state": "{}",
+    "style": "",
+    "children": [],
+    "id": 679,
+    "config": "{}"
   }
 ]
 window.sampleFolders = [
