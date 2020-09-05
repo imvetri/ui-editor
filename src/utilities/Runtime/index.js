@@ -41,6 +41,23 @@ function checkNestedComponents(markup) {
     return components.filter(component => markup.includes(component.name)).length > 0;
 }
 
+let visited = {};
+
+/**Used to detect calls that can happen because of recursive components */
+function componentVisited(componentName) {
+    if(visited[componentName]){
+        return true
+    }
+    else {
+        visited[componentName] = true;
+        return false;
+    }
+}
+
+export function componentRecursive(component){
+    return component.markup.includes(component.name);
+}
+
 /** Takes components and saves them to window as react Object */
 export function saveComponentsToWindow(nestedComponents) {
     // Transpile them and make them global.
@@ -49,27 +66,18 @@ export function saveComponentsToWindow(nestedComponents) {
     });
 }
 
-export function getChildren(parent) {
-    let components = readData("ui-editor");
-    if (checkNestedComponents(parent.markup)) {
-        let children = components.filter(component => parent.markup.includes(component.name)).map(component => component.name);
-        return children;
-    }
-    return [];
-}
-
 /** Takes markup and returns children component objects. */
 export function getNestedComponents(parent) {
     // Should be able to detect nested component.
 
     let components = readData("ui-editor");
-    let nestedComponents = [parent];
-    if (checkNestedComponents(parent.markup)) {
+    let nestedComponents = [parent]; // Problem 1. When creating recursive components, automatically set component.config[componentName].override = true when you save.
+    if (checkNestedComponents(parent.markup) && !componentVisited(parent.name)) {
         // find all the nested components from the markup and push it to nestedComponents.
         let children = components.filter(component => parent.markup.includes(component.name));
         // Find grand kids.
         let grandKids = children.map(getNestedComponents).flat(3)
         nestedComponents.push(...grandKids)
     }
-    return nestedComponents.filter(component => component && component.markup);
+    return [...new Set(nestedComponents.filter(component => component && component.markup))];
 }
