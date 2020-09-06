@@ -67,7 +67,6 @@ export function saveElement (element) {
     if(elementExist){
 
         if(componentRecursive(element)){
-            debugger;
             // Edit the config
             let config = JSON.parse(selectedComponent.config);
             config[element.name] = config[element.name] || {};
