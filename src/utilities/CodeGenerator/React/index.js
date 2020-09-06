@@ -40,7 +40,7 @@ export function convertToReact (component){
             if(config[childName].override ){
                 let childMarkup = `<${childName}></${childName}>`;
 
-                let childMarkupWithProps = `<${childName} state={item} key={~~(Math.random()*10000)}></${childName}>`;
+                let childMarkupWithProps = `<${childName} state={item} key={~~(Math.random()*10000)} index={i}></${childName}>`;
                 let renderListMarkup = `{state.${childName}.map((item,i)=>${childMarkupWithProps})}`;
                 markup =  markup.replace(childMarkup, renderListMarkup);   
             }
@@ -64,6 +64,7 @@ export function convertToReact (component){
             ${reducer.reducer}
             this.setState(state);
             e.state = state;
+            e.index = this.props.index;
             ${getPublishes(reducer.publishes)}`
         ).join("\n");
     }
