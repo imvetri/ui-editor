@@ -1,4 +1,4 @@
-window.sampleComponents = [
+window.sampleComponents =[
   {
     "name": "Canvas",
     "markup": "<div className=\"canvasComponent\" style={state.style} id=\"canvas\" dangerouslySetInnerHTML={{ __html:`${state.innerHTML}` }}>\n</div>",
@@ -836,7 +836,7 @@ window.sampleComponents = [
         "id": "DivElement",
         "reducers": [
           {
-            "reducer": "if(state.mode===\"Draw\"){\n\tstate.style.cursor = \"crosshair\";\n}\nif(state.mode===\"Select\"){\n\tstate.style.cursor = \"cursor\";\n}\ne.stopPropagation();",
+            "reducer": "if(state.mode===\"Draw\"){\n\tstate.style.cursor = \"crosshair\";\n}\ne.stopPropagation();",
             "publishes": []
           }
         ]
@@ -847,7 +847,7 @@ window.sampleComponents = [
         "id": "DivElement",
         "reducers": [
           {
-            "reducer": "function create(type, x, y, text){\n\t  var item = document.createElement(type);\n      item.style.position = \"fixed\";\n      item.style.left = x+ \"px\";\n      item.style.top = y + \"px\";\n      item.style.border = \"1px solid green\";\n      item.id = Math.random();\n      if(text){\n      \titem.innerText = text;\n      }\n      return item;\n}\n\nlet target = e.target;\n\nif(e.button===0 && target.type!==\"text\"){\n  if(state.mode===\"Draw\"){\n\t\n      var div = create(\"div\", e.clientX, e.clientY);\n      var parent = e.target;\n      parent.appendChild(div);\n\n      state.divId = div.id;\n      state.origin = true;\n  }\n  \n  if(state.mode===\"Select\"){\n\n      state.selected=!state.selected;\n      \n      target.classList.toggle(\"selectedForEdit\")\n\n  }\n}\n\ndelete window.eClientY;\ndelete window.eClientX;\ne.stopPropagation()",
+            "reducer": "function create(type, x, y, text){\n\t  var item = document.createElement(type);\n      item.style.position = \"fixed\";\n      item.style.left = x+ \"px\";\n      item.style.top = y + \"px\";\n      item.style.border = \"1px solid green\";\n      item.id = Math.random();\n      if(text){\n      \titem.innerText = text;\n      }\n      return item;\n}\n\nlet target = e.target;\n\nif(e.button===0 && target.type!==\"text\"){\n  if(state.mode===\"Draw\"){\n\t\n      var div = create(\"div\", e.clientX, e.clientY);\n      var parent = e.target;\n      parent.appendChild(div);\n\n      state.divId = div.id;\n      state.origin = true;\n  }\n}\n\ndelete window.eClientY;\ndelete window.eClientX;\ne.stopPropagation()",
             "publishes": []
           }
         ]
@@ -858,7 +858,7 @@ window.sampleComponents = [
         "id": "DivElement",
         "reducers": [
           {
-            "reducer": "if(state.mode===\"Draw\"){\n  if(state.origin){\n      var div= document.getElementById(state.divId);\n      var rect = div.getBoundingClientRect();\n      div.style.width = e.clientX - rect.left;\n      div.style.height = e.clientY - rect.top;\n  }\n}\n\nif(state.mode===\"Select\" && state.selected){\n\n  \te.target.style.cursor = \"move\";\n  \n\tvar rect = e.target.getBoundingClientRect();\n\n\twindow.eClientY = window.eClientY || e.clientY;\n\twindow.eClientX = window.eClientX || e.clientX;\n    \n    e.target.style.top = (-window.eClientY + e.clientY) + rect.top  + \"px\";\n    e.target.style.left = (-window.eClientX + e.clientX) + rect.left + \"px\";\n\n\t\n\twindow.eClientY = e.clientY;\n\twindow.eClientX = e.clientX;\n}\ne.stopPropagation()",
+            "reducer": "if(state.mode===\"Draw\"){\n  if(state.origin){\n      var div= document.getElementById(state.divId);\n      var rect = div.getBoundingClientRect();\n      div.style.width = e.clientX - rect.left;\n      div.style.height = e.clientY - rect.top;\n  }\n}\n\ne.stopPropagation()",
             "publishes": []
           }
         ]
@@ -869,7 +869,7 @@ window.sampleComponents = [
         "id": "DivElement",
         "reducers": [
           {
-            "reducer": "if(state.mode===\"Draw\"){\n\tif(e.button===0){\n\t\tstate.origin = false;\n\t}\n\n\tlet createdDiv = document.getElementById(state.divId);\n    state.Div.push({\n    \tstyle: {\n          position: createdDiv.style.position,\n          top: createdDiv.style.top,\n          left: createdDiv.style.left,\n          height: createdDiv.style.height,\n          width: createdDiv.style.width,\n          border: createdDiv.style.border\n        },\n        Div: [],\n        mode:\"Draw\"\n    })\n    console.log(state);\n    createdDiv.remove();\n}\n\nif(state.mode===\"Select\" && state.selected){\n\n    state.selected=false;\n    e.target.style.cursor = \"\";\n}\ne.stopPropagation()\n",
+            "reducer": "if(state.mode===\"Draw\"){\n\tif(e.button===0){\n\t\tstate.origin = false;\n\t}\n\n\tlet createdDiv = document.getElementById(state.divId);\n    state.Div.push({\n    \tstyle: {\n          position: createdDiv.style.position,\n          top: createdDiv.style.top,\n          left: createdDiv.style.left,\n          height: createdDiv.style.height,\n          width: createdDiv.style.width,\n          border: createdDiv.style.border\n        },\n        Div: [],\n        mode:\"Draw\"\n    })\n    createdDiv.remove();\n}\ne.stopPropagation()\n",
             "publishes": [
               {
                 "publishable": true,
