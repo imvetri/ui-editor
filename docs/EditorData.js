@@ -896,6 +896,39 @@ window.sampleComponents =[
             ]
           }
         ]
+      },
+      {
+        "id": "mode",
+        "index": 5,
+        "name": "onMouseDown",
+        "reducers": [
+          {
+            "reducer": "e.stopPropagation();",
+            "publishes": []
+          }
+        ]
+      },
+      {
+        "id": "mode",
+        "index": 6,
+        "name": "onChange",
+        "reducers": [
+          {
+            "reducer": "state.mode = e.target.value;\n",
+            "publishes": []
+          }
+        ]
+      },
+      {
+        "id": "mode",
+        "index": 7,
+        "name": "onMouseUp",
+        "reducers": [
+          {
+            "reducer": "e.stopPropagation();",
+            "publishes": []
+          }
+        ]
       }
     ],
     "state": "{\"style\":{\"cursor\":\"pointer\",\"height\":\"50vh\",\"width\":\"50vw\"},\"mode\":\"Draw\",\"Div\":[]}",
