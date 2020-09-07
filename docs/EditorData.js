@@ -998,46 +998,6 @@ window.sampleComponents =[
     "id": 198,
     "config": "{\"Resizable\":{\"override\":false},\"Div\":{\"override\":true},\"Resizer\":{\"override\":true}}",
     "trueName": "Div"
-  },
-  {
-    "name": "Resizer",
-    "markup": "<div id=\"resizer\" style={state.style}></div>",
-    "events": [
-      {
-        "id": "resizer",
-        "index": 0,
-        "name": "onMouseUp",
-        "reducers": [
-          {
-            "reducer": "if(e.target.style.height !== state.style.height ||e.target.style.width !== state.style.width ){\n\t\tstate.sizeChanged = true;\n        state.style.height = e.target.style.height;\n        state.style.width = e.target.style.width;\n}\n\n",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onSizeChanged",
-                "publishCondition": "state.sizeChanged"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "id": "resizer",
-        "index": 1,
-        "name": "onMouseDown",
-        "reducers": [
-          {
-            "reducer": "state.sizeChanged = false;",
-            "publishes": []
-          }
-        ]
-      }
-    ],
-    "state": "{\n\t\"style\":{\n    \t\"position\": \"fixed\",\n        \"top\": \"200px\",\n        \"left\": \"200px\",\t\n        \"height\":\"200px\",\n        \"width\": \"200px\",\n        \"border\": \"1px solid green\",\n        \"resize\": \"both\",\n        \"overflow\": \"auto\"\n    }\n}",
-    "style": "",
-    "children": [],
-    "id": 627,
-    "config": "{}",
-    "trueName": "Resizer"
   }
 ]
 window.sampleFolders = [
