@@ -147,7 +147,7 @@ window.sampleComponents =[
         "id": "bottomLeft",
         "reducers": [
           {
-            "reducer": "if(state.resizeBottomLeft){\n\n\tlet width = Number(state.style.width.split(\"px\")[0]);\n    let left = Number(state.style.left.split(\"px\")[0]);\n\tstate.style.width = (width + left - e.clientX) + \"px\";\n    state.style.left = e.clientX + \"px\";\n\n    let height = Number(state.style.height.split(\"px\")[0]);\n    let top = Number(state.style.top.split(\"px\")[0]);\n\tstate.style.height = e.clientY -top+10  + \"px\";\n}\ne.stopPropagation();",
+            "reducer": "if(state.resizeBottomLeftt){\n\n    let height = Number(state.style.height.split(\"px\")[0]);\n    let top = Number(state.style.top.split(\"px\")[0]);\n    \n    e.target.parentElement.style.height = (e.clientY - top +5 ) + \"px\"\n    \n   \tlet width = Number(state.style.width.split(\"px\")[0]);\n    let left = Number(state.style.left.split(\"px\")[0]);\n    e.target.parentElement.style.width = e.clientX - left + 5 + \"px\";\n\n    \n}\ne.stopPropagation();",
             "publishes": []
           }
         ]
@@ -346,7 +346,7 @@ window.sampleComponents =[
     "children": [],
     "id": 557,
     "config": "{}",
-    "trueName": "Resizable"
+    "trueName": "Resizer"
   },
   {
     "name": "Movable",
@@ -828,7 +828,7 @@ window.sampleComponents =[
   },
   {
     "name": "Div",
-    "markup": "<div className=\"Div\" style={state.style} id=\"DivElement\">\n<select name=\"mode\" value={state.mode} id=\"mode\">\n  <option value=\"Draw\">Draw</option>\n  <option value=\"Move\">Move</option>\n</select>\n<Div></Div>\n</div>",
+    "markup": "<div className=\"Div\" style={state.style} id=\"DivElement\">\n<select name=\"mode\" value={state.mode} id=\"mode\">\n  <option value=\"Draw\">Draw</option>\n  <option value=\"Move\">Move</option>\n  <option value=\"Resize\">Resize</option>\n  <option value=\"Delete\">Delete</option>\n</select>\n<Div></Div>\n</div>",
     "events": [
       {
         "name": "onMouseOver",
@@ -869,7 +869,7 @@ window.sampleComponents =[
         "id": "DivElement",
         "reducers": [
           {
-            "reducer": "if(state.mode===\"Draw\"){\n\tif(e.button===0){\n\t\tstate.origin = false;\n\t}\n\n\tlet createdDiv = document.getElementById(state.divId);\n    state.Div.push({\n    \tstyle: {\n          position: createdDiv.style.position,\n          top: createdDiv.style.top,\n          left: createdDiv.style.left,\n          height: createdDiv.style.height,\n          width: createdDiv.style.width,\n          border: createdDiv.style.border\n        },\n        Div: [],\n        mode:\"Draw\"\n    })\n    createdDiv.remove();\n}\nif(state.mode===\"Move\"){\n\te.target.style.cursor = \"pointer\";\n    state.grabbing = false;\n\tstate.style.top = e.target.style.top;\n    state.style.left = e.target.style.left;\n}\n\ne.stopPropagation()\n",
+            "reducer": "if(state.mode===\"Draw\"){\n\tif(e.button===0){\n\t\tstate.origin = false;\n\t}\n\n\tlet createdDiv = document.getElementById(state.divId);\n    state.Div.push({\n    \tstyle: {\n          position: createdDiv.style.position,\n          top: createdDiv.style.top,\n          left: createdDiv.style.left,\n          height: createdDiv.style.height,\n          width: createdDiv.style.width,\n          border: createdDiv.style.border\n        },\n        Div: [],\n        mode:\"Draw\"\n    })\n    createdDiv.remove();\n}\nif(state.mode===\"Move\"){\n\te.target.style.cursor = \"pointer\";\n    state.grabbing = false;\n\tstate.style.top = e.target.style.top;\n    state.style.left = e.target.style.left;\n}\n\nif(state.mode===\"Resize\"){\n\tstate.style.height = e.target.style.height;\n    state.style.width = e.target.style.width;\n}\n\ne.stopPropagation()\n",
             "publishes": [
               {
                 "publishable": true,
@@ -880,6 +880,11 @@ window.sampleComponents =[
                 "publishable": true,
                 "publishName": "onMoveFinish",
                 "publishCondition": "state.mode===\"Move\""
+              },
+              {
+                "publishable": true,
+                "publishName": "onResizeFinish",
+                "publishCondition": "state.mode===\"Resize\""
               }
             ]
           }
@@ -919,8 +924,14 @@ window.sampleComponents =[
         "name": "onChange",
         "reducers": [
           {
-            "reducer": "state.mode = e.target.value;\n",
-            "publishes": []
+            "reducer": "state.mode = e.target.value;\nif(state.mode === \"Resize\"){\n\tstate.style.resize = \"both\";\n    state.style.overflow = \"auto\";\n} else{\n\tdelete state.style.resize;\n    delete state.style.overflow;\n}",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onDelete",
+                "publishCondition": "state.mode === \"Delete\""
+              }
+            ]
           }
         ]
       },
@@ -951,14 +962,82 @@ window.sampleComponents =[
             ]
           }
         ]
+      },
+      {
+        "id": "Div",
+        "index": 9,
+        "name": "onResizeFinish",
+        "reducers": [
+          {
+            "reducer": "state.Div[e.index] = e.state;\n",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onResizeFinish",
+                "publishCondition": "true"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Div",
+        "index": 10,
+        "name": "onDelete",
+        "reducers": [
+          {
+            "reducer": "state.Div.splice(e.index,1);\n",
+            "publishes": []
+          }
+        ]
       }
     ],
     "state": "{\"style\":{\"cursor\":\"pointer\",\"height\":\"50vh\",\"width\":\"50vw\"},\"mode\":\"Move\",\"Div\":[]}",
     "style": ".Div{\n    position: fixed;\n    background-color: black;\n    border: 1px solid red;\n\ttop: 25%;\n    left: 20%;\n    cursor: \"move\";\n}\n",
     "children": [],
     "id": 198,
-    "config": "{\"Resizable\":{\"override\":false},\"Div\":{\"override\":true}}",
+    "config": "{\"Resizable\":{\"override\":false},\"Div\":{\"override\":true},\"Resizer\":{\"override\":true}}",
     "trueName": "Div"
+  },
+  {
+    "name": "Resizer",
+    "markup": "<div id=\"resizer\" style={state.style}></div>",
+    "events": [
+      {
+        "id": "resizer",
+        "index": 0,
+        "name": "onMouseUp",
+        "reducers": [
+          {
+            "reducer": "if(e.target.style.height !== state.style.height ||e.target.style.width !== state.style.width ){\n\t\tstate.sizeChanged = true;\n        state.style.height = e.target.style.height;\n        state.style.width = e.target.style.width;\n}\n\n",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onSizeChanged",
+                "publishCondition": "state.sizeChanged"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "resizer",
+        "index": 1,
+        "name": "onMouseDown",
+        "reducers": [
+          {
+            "reducer": "state.sizeChanged = false;",
+            "publishes": []
+          }
+        ]
+      }
+    ],
+    "state": "{\n\t\"style\":{\n    \t\"position\": \"fixed\",\n        \"top\": \"200px\",\n        \"left\": \"200px\",\t\n        \"height\":\"200px\",\n        \"width\": \"200px\",\n        \"border\": \"1px solid green\",\n        \"resize\": \"both\",\n        \"overflow\": \"auto\"\n    }\n}",
+    "style": "",
+    "children": [],
+    "id": 627,
+    "config": "{}",
+    "trueName": "Resizer"
   }
 ]
 window.sampleFolders = [
