@@ -56,7 +56,7 @@ class Events extends Component {
 
     saveEvent(){
         let events = Array.from(this.props.component.events);
-        let changedEvent = events.find(event=>event.name===this.state.selectedEvent.name);
+        let changedEvent = events.find(event=>event.name===this.state.selectedEvent.name && this.state.eventID=== event.id);
         if(changedEvent){
             // its a existing event
             changedEvent.reducers = this.state.selectedEvent.reducers;
