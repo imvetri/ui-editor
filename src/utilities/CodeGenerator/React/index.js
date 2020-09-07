@@ -36,7 +36,7 @@ export function convertToReact (component){
         let childrenConfig = Object.keys(config);
         childrenConfig.forEach(childName=>{
 
-            // PRECAUTION: Edit markup for rendering list. Should not use other configuration while using this.
+            // PRECAUTION: Edit markup for rendering list. Should not use other configuration while using this. // Problem - subscibing to child list component does not work Solution - add publishable enevts here
             if(config[childName].override ){
                 let childMarkup = `<${childName}></${childName}>`;
 
