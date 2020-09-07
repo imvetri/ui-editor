@@ -828,7 +828,7 @@ window.sampleComponents =[
   },
   {
     "name": "Div",
-    "markup": "<div className=\"Div\" style={state.style} id=\"DivElement\">\n<select name=\"mode\" id=\"mode\">\n  <option value=\"Draw\">Draw</option>\n  <option value=\"Move\">Move</option>\n</select>\n<Div></Div>\n</div>",
+    "markup": "<div className=\"Div\" style={state.style} id=\"DivElement\">\n<select name=\"mode\" value={state.mode} id=\"mode\">\n  <option value=\"Draw\">Draw</option>\n  <option value=\"Move\">Move</option>\n</select>\n<Div></Div>\n</div>",
     "events": [
       {
         "name": "onMouseOver",
@@ -875,6 +875,11 @@ window.sampleComponents =[
                 "publishable": true,
                 "publishName": "onDrawFinish",
                 "publishCondition": "state.mode==='Draw' && e.button ===0"
+              },
+              {
+                "publishable": true,
+                "publishName": "onMoveFinish",
+                "publishCondition": "state.mode===\"Move\""
               }
             ]
           }
@@ -929,9 +934,26 @@ window.sampleComponents =[
             "publishes": []
           }
         ]
+      },
+      {
+        "id": "Div",
+        "index": 8,
+        "name": "onMoveFinish",
+        "reducers": [
+          {
+            "reducer": "state.Div[e.index] = e.state;\n",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onMoveFinish",
+                "publishCondition": "true"
+              }
+            ]
+          }
+        ]
       }
     ],
-    "state": "{\"style\":{\"cursor\":\"pointer\",\"height\":\"50vh\",\"width\":\"50vw\"},\"mode\":\"Draw\",\"Div\":[]}",
+    "state": "{\"style\":{\"cursor\":\"pointer\",\"height\":\"50vh\",\"width\":\"50vw\"},\"mode\":\"Move\",\"Div\":[]}",
     "style": ".Div{\n    position: fixed;\n    background-color: black;\n    border: 1px solid red;\n\ttop: 25%;\n    left: 20%;\n    cursor: \"move\";\n}\n",
     "children": [],
     "id": 198,
