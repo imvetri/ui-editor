@@ -1,4 +1,4 @@
-window.sampleComponents = [
+window.sampleComponents =[
   {
     "name": "Canvas",
     "markup": "<div className=\"canvasComponent\" style={state.style} id=\"canvas\" dangerouslySetInnerHTML={{ __html:`${state.innerHTML}` }}>\n</div>",
@@ -828,15 +828,15 @@ window.sampleComponents = [
   },
   {
     "name": "Div",
-    "markup": "<div className=\"Div\" style={state.style} id=\"Div\">\n<Div></Div>\n</div>",
+    "markup": "<div className=\"Div\" style={state.style} id=\"DivElement\">\n<select name=\"mode\" id=\"mode\">\n  <option value=\"Draw\">Draw</option>\n  <option value=\"Move\">Move</option>\n</select>\n<Div></Div>\n</div>",
     "events": [
       {
         "name": "onMouseOver",
         "index": 0,
-        "id": "Div",
+        "id": "DivElement",
         "reducers": [
           {
-            "reducer": "if(state.mode===\"Draw\"){\n\tstate.style.cursor = \"crosshair\";\n}\nif(state.mode===\"Select\"){\n\tstate.style.cursor = \"cursor\";\n}\n",
+            "reducer": "if(state.mode===\"Draw\"){\n\tstate.style.cursor = \"crosshair\";\n}\ne.stopPropagation();",
             "publishes": []
           }
         ]
@@ -844,10 +844,10 @@ window.sampleComponents = [
       {
         "name": "onMouseDown",
         "index": 1,
-        "id": "Div",
+        "id": "DivElement",
         "reducers": [
           {
-            "reducer": "function create(type, x, y, text){\n\t  var item = document.createElement(type);\n      item.style.position = \"fixed\";\n      item.style.left = x+ \"px\";\n      item.style.top = y + \"px\";\n      item.style.border = \"1px solid green\";\n      item.id = Math.random();\n      if(text){\n      \titem.innerText = text;\n      }\n      return item;\n}\n\nlet target = e.target;\n\nif(e.button===0 && target.type!==\"text\"){\n  if(state.mode===\"Draw\"){\n\t\n      var div = create(\"div\", e.clientX, e.clientY);\n      var parent = e.target;\n      parent.appendChild(div);\n\n      state.divId = div.id;\n      state.origin = true;\n  }\n  \n  if(state.mode===\"Select\"){\n\n      state.selected=!state.selected;\n      \n      target.classList.toggle(\"selectedForEdit\")\n\n  }\n}\n\ndelete window.eClientY;\ndelete window.eClientX;",
+            "reducer": "function create(type, x, y, text){\n\t  var item = document.createElement(type);\n      item.style.position = \"fixed\";\n      item.style.left = x+ \"px\";\n      item.style.top = y + \"px\";\n      item.style.border = \"1px solid green\";\n      item.id = Math.random();\n      if(text){\n      \titem.innerText = text;\n      }\n      return item;\n}\n\nlet target = e.target;\n\nif(e.button===0 && target.type!==\"text\"){\n  if(state.mode===\"Draw\"){\n\t\n      var div = create(\"div\", e.clientX, e.clientY);\n      var parent = e.target;\n      parent.appendChild(div);\n\n      state.divId = div.id;\n      state.origin = true;\n  }\n}\n\nif(state.mode===\"Move\"){\n\tstate.style.cursor = \"grabbing\";\n    state.grabbing = true;\n}\n\ndelete window.eClientY;\ndelete window.eClientX;\ne.stopPropagation()",
             "publishes": []
           }
         ]
@@ -855,10 +855,10 @@ window.sampleComponents = [
       {
         "name": "onMouseMove",
         "index": 2,
-        "id": "Div",
+        "id": "DivElement",
         "reducers": [
           {
-            "reducer": "if(state.mode===\"Draw\"){\n  if(state.origin){\n      var div= document.getElementById(state.divId);\n      var rect = div.getBoundingClientRect();\n      div.style.width = e.clientX - rect.left;\n      div.style.height = e.clientY - rect.top;\n  }\n}\n\nif(state.mode===\"Select\" && state.selected){\n\n  \te.target.style.cursor = \"move\";\n  \n\tvar rect = e.target.getBoundingClientRect();\n\n\twindow.eClientY = window.eClientY || e.clientY;\n\twindow.eClientX = window.eClientX || e.clientX;\n    \n    e.target.style.top = (-window.eClientY + e.clientY) + rect.top  + \"px\";\n    e.target.style.left = (-window.eClientX + e.clientX) + rect.left + \"px\";\n\n\t\n\twindow.eClientY = e.clientY;\n\twindow.eClientX = e.clientX;\n}",
+            "reducer": "if(state.mode===\"Draw\"){\n  if(state.origin){\n      var div= document.getElementById(state.divId);\n      var rect = div.getBoundingClientRect();\n      div.style.width = e.clientX - rect.left;\n      div.style.height = e.clientY - rect.top;\n  }\n}\n\nif(\tstate.style.cursor == \"grabbing\" && state.grabbing) {\n\tvar rect = e.target.getBoundingClientRect();\n\t\n    window.eClientY = window.eClientY || e.clientY;\n\twindow.eClientX = window.eClientX || e.clientX;\n    \n    e.target.style.top = (-window.eClientY + e.clientY) + rect.top  + \"px\";\n    e.target.style.left = (-window.eClientX + e.clientX) + rect.left + \"px\";\n\n\twindow.eClientY = e.clientY;\n\twindow.eClientX = e.clientX;\n}\n\ne.stopPropagation()",
             "publishes": []
           }
         ]
@@ -866,28 +866,40 @@ window.sampleComponents = [
       {
         "name": "onMouseUp",
         "index": 3,
-        "id": "Div",
+        "id": "DivElement",
         "reducers": [
           {
-            "reducer": "if(state.mode===\"Draw\"){\n\tif(e.button===0){\n\t\tstate.origin = false;\n\t}\n\n}\n\nif(state.mode===\"Select\" && state.selected){\n\n    state.selected=false;\n    e.target.style.cursor = \"\";\n    \n}\n",
+            "reducer": "if(state.mode===\"Draw\"){\n\tif(e.button===0){\n\t\tstate.origin = false;\n\t}\n\n\tlet createdDiv = document.getElementById(state.divId);\n    state.Div.push({\n    \tstyle: {\n          position: createdDiv.style.position,\n          top: createdDiv.style.top,\n          left: createdDiv.style.left,\n          height: createdDiv.style.height,\n          width: createdDiv.style.width,\n          border: createdDiv.style.border\n        },\n        Div: [],\n        mode:\"Draw\"\n    })\n    createdDiv.remove();\n}\nif(state.mode===\"Move\"){\n\te.target.style.cursor = \"pointer\";\n    state.grabbing = false;\n\tstate.style.top = e.target.style.top;\n    state.style.left = e.target.style.left;\n}\n\ne.stopPropagation()\n",
             "publishes": [
               {
                 "publishable": true,
                 "publishName": "onDrawFinish",
                 "publishCondition": "state.mode==='Draw' && e.button ===0"
-              },
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Div",
+        "index": 4,
+        "name": "onDrawFinish",
+        "reducers": [
+          {
+            "reducer": "state.Div[e.index] = e.state;\n",
+            "publishes": [
               {
                 "publishable": true,
-                "publishName": "onSelection",
-                "publishCondition": "state.mode===\"Select\""
+                "publishName": "onDrawFinish",
+                "publishCondition": "true"
               }
             ]
           }
         ]
       }
     ],
-    "state": "{\"style\":{\"cursor\":\"pointer\"},\"divs\":[],\"mode\":\"Draw\",\"Div\":[]}",
-    "style": ".Div{\n\theight:100vh;\n    width:100vw;\n    position: fixed;\n    background-color: black;\n\ttop: 0px;\n    left: 0px;\n    cursor: \"move\";\n}\n",
+    "state": "{\"style\":{\"cursor\":\"pointer\",\"height\":\"50vh\",\"width\":\"50vw\"},\"mode\":\"Draw\",\"Div\":[]}",
+    "style": ".Div{\n    position: fixed;\n    background-color: black;\n    border: 1px solid red;\n\ttop: 25%;\n    left: 20%;\n    cursor: \"move\";\n}\n",
     "children": [],
     "id": 198,
     "config": "{\"Resizable\":{\"override\":false},\"Div\":{\"override\":true}}",
@@ -911,7 +923,8 @@ window.sampleFolders = [
       "Canvas",
       "Editor",
       "CanvasControls",
-      "PropertiesControl"
+      "PropertiesControl",
+      "Div"
     ]
   }
 ]

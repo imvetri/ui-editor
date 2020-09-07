@@ -69,7 +69,7 @@
     }
 
     export function updateSelectedEvent(e){
-        let selectedEvent = this.props.component.events.find(event => event.name === e.currentTarget.value);
+        let selectedEvent = this.props.component.events.find(event => event.name === e.currentTarget.value && this.state.eventID=== event.id);
 
         if(selectedEvent){
             this.setState({
