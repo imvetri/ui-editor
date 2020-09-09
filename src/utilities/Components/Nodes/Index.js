@@ -11,7 +11,7 @@ class Nodes extends Component {
         var node = this.props.node;
 
         if(!node){
-            return (<span>null</span>)
+            return null;
         }
         if(typeof node==="string"){
             return (
