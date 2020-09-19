@@ -8,7 +8,8 @@ import React, { Component } from "react";
 // Components. 
 
 import Configurator from "./Configurator";
-import Tags from "./Tags"
+import Tags from "./Tags";
+import Mode from "./Mode";
 import Reducer from  "./Event/Reducers/Reducer";
 
 
@@ -73,6 +74,10 @@ class Events extends Component {
         this.props.onEventsUpdate(events);
     }
 
+    updateModes(){
+        
+    }
+
     render() {
         const component = this.props.component;
 
@@ -127,6 +132,7 @@ class Events extends Component {
 
             return (
                 <ul className="container events-tab">
+                    <Mode modes={component.modes} onUpdate={this.updateModes.bind(this)}/>
                     <Tags component={component} onSelectedTagChanged={selectedTagChanged.bind(this)} />
                     {configurator}
                     <div className="title">
@@ -160,6 +166,7 @@ class Events extends Component {
         else { // Tag is not selected
             return (
                 <ul className="container events-tab">
+                    <Mode modes={component.modes} onUpdate={this.updateModes.bind(this)}/>
                     <Tags component={component} onSelectedTagChanged={selectedTagChanged.bind(this)} />
                 </ul>)
         }
