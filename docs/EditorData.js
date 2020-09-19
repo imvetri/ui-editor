@@ -91,10 +91,7 @@ window.sampleComponents =[
     "children": [],
     "id": 198,
     "config": "{\"Resizable\":{\"override\":false}}",
-    "trueName": "Canvas",
-    "modes": [
-      "default"
-    ]
+    "trueName": "Canvas"
   },
   {
     "name": "Resizable",
@@ -349,10 +346,7 @@ window.sampleComponents =[
     "children": [],
     "id": 557,
     "config": "{}",
-    "trueName": "Resizer",
-    "modes": [
-      "default"
-    ]
+    "trueName": "Resizer"
   },
   {
     "name": "Movable",
@@ -427,10 +421,7 @@ window.sampleComponents =[
     "children": [],
     "id": 557,
     "config": "{}",
-    "trueName": "Movable",
-    "modes": [
-      "default"
-    ]
+    "trueName": "Movable"
   },
   {
     "name": "Editor",
@@ -585,10 +576,7 @@ window.sampleComponents =[
     "children": [],
     "id": 707,
     "config": "{\"CanvasControls\":{\"override\":false},\"Canvas\":{\"override\":true},\"PropertiesControl\":{\"override\":false},\"Resizable\":{\"override\":true}}",
-    "trueName": "Editor",
-    "modes": [
-      "default"
-    ]
+    "trueName": "Editor"
   },
   {
     "name": "CanvasControls",
@@ -642,10 +630,7 @@ window.sampleComponents =[
     "children": [],
     "id": 550,
     "config": "{}",
-    "trueName": "CanvasControls",
-    "modes": [
-      "default"
-    ]
+    "trueName": "CanvasControls"
   },
   {
     "name": "PropertiesControl",
@@ -839,10 +824,7 @@ window.sampleComponents =[
     "children": [],
     "id": 285,
     "config": "{}",
-    "trueName": "PropertiesControl",
-    "modes": [
-      "default"
-    ]
+    "trueName": "PropertiesControl"
   },
   {
     "name": "Div",
@@ -1026,10 +1008,7 @@ window.sampleComponents =[
     "children": [],
     "id": 198,
     "config": "{\"Resizable\":{\"override\":false},\"Div\":{\"override\":true},\"Resizer\":{\"override\":true},\"Span\":{\"override\":true}}",
-    "trueName": "Div",
-    "modes": [
-      "default"
-    ]
+    "trueName": "Div"
   }
 ]
 window.sampleFolders = [
