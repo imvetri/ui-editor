@@ -828,7 +828,7 @@ window.sampleComponents =[
   },
   {
     "name": "Div",
-    "markup": "<div className=\"Div\" style={state.style} id=\"DivElement\">\n<select name=\"mode\" value={state.mode} id=\"mode\">\n  <option value=\"Draw\">Draw</option>\n  <option value=\"Move\">Move</option>\n  <option value=\"Resize\">Resize</option>\n  <option value=\"Delete\">Delete</option>\n</select>\n<Div></Div>\n</div>",
+    "markup": "<div className=\"Div\" style={state.style} id=\"DivElement\">\n<select name=\"mode\" value={state.mode} id=\"mode\">\n  <option value=\"Draw\">Draw</option>\n  <option value=\"Move\">Move</option>\n  <option value=\"Resize\">Resize</option>\n  <option value=\"Delete\">Delete</option>\n  <option value=\"Save\">Save</option>\n</select>\n<Div></Div>\n</div>",
     "events": [
       {
         "name": "onMouseOver",
@@ -869,7 +869,7 @@ window.sampleComponents =[
         "id": "DivElement",
         "reducers": [
           {
-            "reducer": "if(state.mode===\"Draw\"){\n\tif(e.button===0){\n\t\tstate.origin = false;\n\t}\n\n\tlet createdDiv = document.getElementById(state.divId);\n    state.Div.push({\n    \tstyle: {\n          position: createdDiv.style.position,\n          top: createdDiv.style.top,\n          left: createdDiv.style.left,\n          height: createdDiv.style.height,\n          width: createdDiv.style.width,\n          border: createdDiv.style.border\n        },\n        Div: [],\n        mode:\"Draw\"\n    })\n    createdDiv.remove();\n}\nif(state.mode===\"Move\"){\n\te.target.style.cursor = \"pointer\";\n    state.grabbing = false;\n\tstate.style.top = e.target.style.top;\n    state.style.left = e.target.style.left;\n}\n\nif(state.mode===\"Resize\"){\n\tstate.style.height = e.target.style.height;\n    state.style.width = e.target.style.width;\n}\n\ne.stopPropagation()\n",
+            "reducer": "if(state.mode===\"Draw\"){\n\tif(e.button===0){\n\t\tstate.origin = false;\n\t}\n\n\tlet createdDiv = document.getElementById(state.divId);\n    state.Div.push({\n    \tstyle: {\n          position: createdDiv.style.position,\n          top: createdDiv.style.top,\n          left: createdDiv.style.left,\n          height: createdDiv.style.height,\n          width: createdDiv.style.width,\n          border: createdDiv.style.border\n        },\n        Div: [],\n        mode:\"Draw\"\n    })\n    createdDiv.remove();\n}\nif(state.mode===\"Move\"){\n\te.target.style.cursor = \"pointer\";\n    state.grabbing = false;\n\tstate.style.top = e.target.style.top;\n    state.style.left = e.target.style.left;\n}\n\nif(state.mode===\"Resize\"){\n\tstate.style.height = e.target.style.height;\n    state.style.width = e.target.style.width;\n}\n\ne.stopPropagation();",
             "publishes": [
               {
                 "publishable": true,
@@ -924,7 +924,7 @@ window.sampleComponents =[
         "name": "onChange",
         "reducers": [
           {
-            "reducer": "state.mode = e.target.value;\nif(state.mode === \"Resize\"){\n\tstate.style.resize = \"both\";\n    state.style.overflow = \"auto\";\n} else{\n\tdelete state.style.resize;\n    delete state.style.overflow;\n}",
+            "reducer": "\nstate.mode = e.target.value;\nif(state.mode === \"Resize\"){\n\tstate.style.resize = \"both\";\n    state.style.overflow = \"auto\";\n} else{\n\tdelete state.style.resize;\n    delete state.style.overflow;\n}\n\nif(state.mode===\"Save\"){\n\tlet index = components.findIndex(component=>component.name===\"Div\")\n    components[index].state = JSON.stringify(state);\n    localStorage.setItem(\"ui-editor\", JSON.stringify(components));\n}\n",
             "publishes": [
               {
                 "publishable": true,
@@ -992,7 +992,7 @@ window.sampleComponents =[
         ]
       }
     ],
-    "state": "{\"style\":{\"cursor\":\"pointer\",\"height\":\"50vh\",\"width\":\"50vw\"},\"mode\":\"Move\",\"Div\":[]}",
+    "state": "{\"style\":{\"cursor\":\"crosshair\",\"height\":\"50vh\",\"width\":\"50vw\",\"top\":\"122px\",\"left\":\"225.188px\"},\"mode\":\"Save\",\"Div\":[],\"grabbing\":false,\"divId\":\"0.3141872134487482\",\"origin\":false}",
     "style": ".Div{\n    position: fixed;\n    background-color: black;\n    border: 1px solid red;\n\ttop: 25%;\n    left: 20%;\n    cursor: \"move\";\n}\n",
     "children": [],
     "id": 198,
