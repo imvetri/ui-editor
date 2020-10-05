@@ -12,7 +12,7 @@
 
 ### Demo - https://imvetri.github.io/ui-editor/
 ### Documentation - https://imvetri.github.io/ui-editor-tutorial/ 
-The project documentation is at early stage and contributions are and  for more documentations and requests  at https://github.com/imvetri/ui-editor-tutorial
+The project and its documentation is at a very early stage. Contributions are welcome for documentation as well at https://github.com/imvetri/ui-editor-tutorial
 
 ### Getting Started
 
