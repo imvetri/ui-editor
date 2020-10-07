@@ -819,8 +819,8 @@ window.sampleComponents =[
         ]
       }
     ],
-    "state": "{\n  \"style\":{\n      \"top\": \"200px\",\n      \"left\": \"408px\"\n  },\n  \"id\" : \"containement\",\n  \"class\" : \"black setup\",\n  \"height\": \"100px\",\n  \"width\":\"100px\",\n  \"top\":\"100px\",\n  \"left\":\"100px\",\n  \"borderWidth\":\"100px\",\n  \"color\": \"#874a4a\",\n  \"space\" :\"100px\",\n  \"fontSize\": \"10px\"\n}",
-    "style": ".properties {\n    position: absolute;\nborder: 1px solid #2C3134;\n width: 165px;\n font-size: 10px;\n background: rgb(64, 64, 64);\n color: rgba(255,255,255,0.5);\n}\n\n.properties input{\n    width: 50px;\n    padding: 5px;\n    margin-left: 4px;\n}\n\n.properties input.long{\n\twidth: 100px;\n}\n\n.properties > div {\n    border: 1px solid #2C3134;\n    padding: 8px;\n}\n\n.properties > div > div:not(:first-child){\n    margin-top:7px;\n}\n\nspan.name {\n    display: inline-block;\n    width: 40px;\n}\n\n.properties .space{\n border: 1px solid #2C3134;\n}\n\n.less{\n    height: 21px;\n    width: 21px;\n    border: 1px solid #2C3134;\n}\n\n.more{\n    height: 21px;\n    width: 21px;\n    border: 1px solid #2C3134;\n}",
+    "state": "{\n  \"style\":{\n      \"top\": \"200px\",\n      \"left\": \"408px\",\n      \"position\": \"absolute\"\n  },\n  \"id\" : \"containement\",\n  \"class\" : \"black setup\",\n  \"height\": \"100px\",\n  \"width\":\"100px\",\n  \"top\":\"100px\",\n  \"left\":\"100px\",\n  \"borderWidth\":\"100px\",\n  \"color\": \"#874a4a\",\n  \"space\" :\"100px\",\n  \"fontSize\": \"10px\"\n}",
+    "style": ".properties {\nborder: 1px solid #2C3134;\n width: 165px;\n font-size: 10px;\n background: rgb(64, 64, 64);\n color: rgba(255,255,255,0.5);\n}\n\n.properties input{\n    width: 50px;\n    padding: 5px;\n    margin-left: 4px;\n}\n\n.properties input.long{\n\twidth: 100px;\n}\n\n.properties > div {\n    border: 1px solid #2C3134;\n    padding: 8px;\n}\n\n.properties > div > div:not(:first-child){\n    margin-top:7px;\n}\n\nspan.name {\n    display: inline-block;\n    width: 40px;\n}\n\n.properties .space{\n border: 1px solid #2C3134;\n}\n\n.less{\n    height: 21px;\n    width: 21px;\n    border: 1px solid #2C3134;\n}\n\n.more{\n    height: 21px;\n    width: 21px;\n    border: 1px solid #2C3134;\n}",
     "children": [],
     "id": 285,
     "config": "{}",
@@ -828,7 +828,7 @@ window.sampleComponents =[
   },
   {
     "name": "Div",
-    "markup": "<div className=\"Div\" style={state.style} id=\"DivElement\">\n<select name=\"mode\" value={state.mode} id=\"mode\">\n  <option value=\"Draw\">Draw</option>\n  <option value=\"Move\">Move</option>\n  <option value=\"Resize\">Resize</option>\n  <option value=\"Delete\">Delete</option>\n  <option value=\"Save\">Save</option>\n</select>\n<Div></Div>\n</div>",
+    "markup": "<div className=\"Div\" style={state.style} id=\"DivElement\">\n<select name=\"mode\" value={state.mode} id=\"mode\">\n  <option value=\"Draw\">Draw</option>\n  <option value=\"Move\">Move</option>\n  <option value=\"Resize\">Resize</option>\n  <option value=\"Delete\">Delete</option>\n  <option value=\"Save\">Save</option>\n  <option value=\"Edit\">Edit</option>\n</select>\n<PropertiesControl></PropertiesControl>\n<Div></Div>\n</div>",
     "events": [
       {
         "name": "onMouseOver",
@@ -869,7 +869,7 @@ window.sampleComponents =[
         "id": "DivElement",
         "reducers": [
           {
-            "reducer": "if(state.mode===\"Draw\"){\n\tif(e.button===0){\n\t\tstate.origin = false;\n\t}\n\n\tlet createdDiv = document.getElementById(state.divId);\n    state.Div.push({\n    \tstyle: {\n          position: createdDiv.style.position,\n          top: createdDiv.style.top,\n          left: createdDiv.style.left,\n          height: createdDiv.style.height,\n          width: createdDiv.style.width,\n          border: createdDiv.style.border\n        },\n        Div: [],\n        mode:\"Draw\"\n    })\n    createdDiv.remove();\n}\nif(state.mode===\"Move\"){\n\te.target.style.cursor = \"pointer\";\n    state.grabbing = false;\n\tstate.style.top = e.target.style.top;\n    state.style.left = e.target.style.left;\n}\n\nif(state.mode===\"Resize\"){\n\tstate.style.height = e.target.style.height;\n    state.style.width = e.target.style.width;\n}\n\ne.stopPropagation();",
+            "reducer": "if(state.mode===\"Draw\"){\n\tif(e.button===0){\n\t\tstate.origin = false;\n\t}\n\tlet createdDiv = document.getElementById(state.divId);\n    delete state.divId;\n    state.Div.push({\n    \tstyle: {\n          position: createdDiv.style.position,\n          top: createdDiv.style.top,\n          left: createdDiv.style.left,\n          height: createdDiv.style.height,\n          width: createdDiv.style.width,\n          border: createdDiv.style.border\n        },\n        Div: [],\n        mode:\"Draw\",\n        PropertiesControl:[state.PropertiesControl[0]]\n    })\n    createdDiv.remove();\n}\nif(state.mode===\"Move\"){\n\te.target.style.cursor = \"pointer\";\n    state.grabbing = false;\n\tstate.style.top = e.target.style.top;\n    state.style.left = e.target.style.left;\n}\n\nif(state.mode===\"Resize\"){\n\tstate.style.height = e.target.style.height;\n    state.style.width = e.target.style.width;\n}\n\ne.stopPropagation();",
             "publishes": [
               {
                 "publishable": true,
@@ -924,7 +924,7 @@ window.sampleComponents =[
         "name": "onChange",
         "reducers": [
           {
-            "reducer": "\nstate.mode = e.target.value;\nif(state.mode === \"Resize\"){\n\tstate.style.resize = \"both\";\n    state.style.overflow = \"auto\";\n} else{\n\tdelete state.style.resize;\n    delete state.style.overflow;\n}\n\nif(state.mode===\"Save\"){\n\tlet index = components.findIndex(component=>component.name===\"Div\")\n    components[index].state = JSON.stringify(state);\n    localStorage.setItem(\"ui-editor\", JSON.stringify(components));\n}\n",
+            "reducer": "state.mode = e.target.value;\nif(state.mode === \"Resize\"){\n\tstate.style.resize = \"both\";\n    state.style.overflow = \"auto\";\n} else{\n\tdelete state.style.resize;\n    delete state.style.overflow;\n}\nif(state.mode===\"Edit\"){\n\tstate.PropertiesControl[0].style.display = \"block\";\n    state.PropertiesControl[0].style.top = \"0px\";\n    state.PropertiesControl[0].style.left = \"-170px\";\n} else {\n\n\tstate.PropertiesControl[0].style.display = \"none\";\n\n}\n\nif(state.mode===\"Save\"){\n\tlet index = components.findIndex(component=>component.name===\"Div\")\n    components[index].state = JSON.stringify(state);\n    localStorage.setItem(\"ui-editor\", JSON.stringify(components));\n}\n",
             "publishes": [
               {
                 "publishable": true,
@@ -992,11 +992,11 @@ window.sampleComponents =[
         ]
       }
     ],
-    "state": "{\"style\":{\"cursor\":\"crosshair\",\"height\":\"50vh\",\"width\":\"50vw\",\"top\":\"122px\",\"left\":\"225.188px\"},\"mode\":\"Save\",\"Div\":[],\"grabbing\":false,\"divId\":\"0.3141872134487482\",\"origin\":false}",
+    "state": "{\"style\":{\"position\":\"fixed\",\"top\":\"93px\",\"left\":\"192px\",\"height\":\"382px\",\"width\":\"582px\",\"border\":\"1px solid green\",\"cursor\":\"crosshair\"},\"Div\":[{\"style\":{\"position\":\"fixed\",\"top\":\"176px\",\"left\":\"315px\",\"height\":\"162px\",\"width\":\"222px\",\"border\":\"1px solid green\"},\"Div\":[],\"mode\":\"Draw\",\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"100px\",\"width\":\"100px\",\"top\":\"100px\",\"left\":\"100px\",\"borderWidth\":\"100px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\"}]},{\"style\":{\"position\":\"fixed\",\"top\":\"179px\",\"left\":\"613px\",\"height\":\"186px\",\"width\":\"111px\",\"border\":\"1px solid green\"},\"Div\":[],\"mode\":\"Draw\",\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"100px\",\"width\":\"100px\",\"top\":\"100px\",\"left\":\"100px\",\"borderWidth\":\"100px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\"}]}],\"mode\":\"Save\",\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"100px\",\"width\":\"100px\",\"top\":\"100px\",\"left\":\"100px\",\"borderWidth\":\"100px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\"}],\"grabbing\":false,\"divId\":\"0.4523595737254391\",\"origin\":false}",
     "style": ".Div{\n    position: fixed;\n    background-color: black;\n    border: 1px solid red;\n\ttop: 25%;\n    left: 20%;\n    cursor: \"move\";\n}\n",
     "children": [],
     "id": 198,
-    "config": "{\"Resizable\":{\"override\":false},\"Div\":{\"override\":true},\"Resizer\":{\"override\":true}}",
+    "config": "{\"Resizable\":{\"override\":false},\"Div\":{\"override\":true},\"Resizer\":{\"override\":true},\"PropertiesControl\":{\"override\":true}}",
     "trueName": "Div"
   }
 ]
