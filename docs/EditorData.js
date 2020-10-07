@@ -634,7 +634,7 @@ window.sampleComponents =[
   },
   {
     "name": "PropertiesControl",
-    "markup": "<div class=\"properties\" id=\"properties\" style={state.style}>\n\n    <div class=\"attributes\">\n        <div class=\"id\">\n            <span class=\"name\">Id</span>\n            <input type=\"text\" class=\"long\" id=\"id\" value={state.id}/>\n        </div>\n        <div class=\"class\">\n            <span class=\"name\">Classes</span>\n            <input type=\"text\"  id=\"class\" class=\"long\" value={state.classes}/>\n        </div>\n    </div>\n\n    <div class=\"size\">\n        <div class=\"height\">\n            <span class=\"name\">Height</span>\n            <button class=\"less\" id=\"lessheight\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.height}/>\n            <button class=\"more\" id=\"moreheight\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n        <div class=\"width\">\n            <span class=\"name\">Width</span>\n            <button class=\"less\" id=\"lesswidth\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.width}/>\n            <button class=\"more\" id=\"morewidth\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n    </div>\n\n    <div class=\"position\">\n        <div class=\"top\">\n            <span class=\"name\">Top</span>\n            <button class=\"less\" id=\"lesstop\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.top}/>\n            <button class=\"more\" id=\"moretop\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n        <div class=\"left\">\n            <span class=\"name\">Left</span>\n            <button class=\"less\" id=\"moreleft\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.left}/>\n            <button class=\"more\" id=\"lessleft\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n    </div>\n\n    <div clas=\"border\">\n        <div class=\"borderSize\">\n            <span class=\"name\">Border</span>\n            <button class=\"less\" id=\"lessborder\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.borderWidth}/>\n            <button class=\"more\" id=\"moreborder\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n    \n        <div class=\"borderColor\">\n            <span class=\"name\">Color</span>\n            <input type=\"color\" id=\"morecolor\" value={state.color}/>\n        </div>\n        <div class=\"borderType\">\n            <span class=\"name\">Type</span>\n            <button class=\"downArrow\"></button>\n        </div>\n    </div>\n\n    <div class=\"space\">\n        <span class=\"name\">Space</span>\n        <button class=\"less\" id=\"lessspace\"><i class=\"fa fa-minus\"></i></button>\n        <input type=\"text\" value={state.space}/>\n        <button class=\"more\" id=\"morespace\"><i class=\"fa fa-plus\"></i></button>\n    </div>\n\n\n\n    <div clas=\"font\">\n\n        <div class=\"fontFamily\">\n            <span class=\"name\">Font</span>\n            <input type=\"text\" class=\"long\" value={state.fontFamily}/>\n        </div>\n        <div class=\"fontSize\">\n            <span class=\"name\">Size</span>\n            <button class=\"less\" id=\"lessSize\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\"  value={state.fontSize}/>\n            <button class=\"more\" id=\"moreSize\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n\n        <div class=\"color\">\n            <span class=\"name\">Color</span>\n            <input type=\"color\" id=\"fontcolor\" value={state.color}/>\n        </div>\n    </div>\n</div>",
+    "markup": "<div class=\"properties\" id=\"properties\" style={state.style}>\n\n    <div class=\"size\">\n        <div class=\"height\">\n            <span class=\"name\">Height</span>\n            <button class=\"less\" id=\"lessheight\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.height}/>\n            <button class=\"more\" id=\"moreheight\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n        <div class=\"width\">\n            <span class=\"name\">Width</span>\n            <button class=\"less\" id=\"lesswidth\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.width}/>\n            <button class=\"more\" id=\"morewidth\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n    </div>\n\n    <div class=\"position\">\n        <div class=\"top\">\n            <span class=\"name\">Top</span>\n            <button class=\"less\" id=\"lesstop\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.top}/>\n            <button class=\"more\" id=\"moretop\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n        <div class=\"left\">\n            <span class=\"name\">Left</span>\n            <button class=\"less\" id=\"moreleft\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.left}/>\n            <button class=\"more\" id=\"lessleft\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n    </div>\n\n    <div clas=\"border\">\n        <div class=\"borderSize\">\n            <span class=\"name\">Border</span>\n            <button class=\"less\" id=\"lessborder\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.borderWidth}/>\n            <button class=\"more\" id=\"moreborder\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n    \n        <div class=\"borderColor\">\n            <span class=\"name\">Color</span>\n            <input type=\"color\" id=\"morecolor\" value={state.borderColor}/>\n        </div>\n        <div class=\"borderType\">\n            <span class=\"name\">Type</span>\n            <button class=\"downArrow\"></button>\n        </div>\n    </div>\n\n    <div class=\"space\">\n        <span class=\"name\">Space</span>\n        <button class=\"less\" id=\"lessspace\"><i class=\"fa fa-minus\"></i></button>\n        <input type=\"text\" value={state.space}/>\n        <button class=\"more\" id=\"morespace\"><i class=\"fa fa-plus\"></i></button>\n    </div>\n\n\n\n    <div clas=\"font\">\n\n        <div class=\"fontFamily\">\n            <span class=\"name\">Font</span>\n            <input type=\"text\" class=\"long\" value={state.fontFamily}/>\n        </div>\n        <div class=\"fontSize\">\n            <span class=\"name\">Size</span>\n            <button class=\"less\" id=\"lessSize\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\"  value={state.fontSize}/>\n            <button class=\"more\" id=\"moreSize\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n\n        <div class=\"color\">\n            <span class=\"name\">Color</span>\n            <input type=\"color\" id=\"fontcolor\" value={state.color}/>\n        </div>\n    </div>\n</div>",
     "events": [
       {
         "name": "onClick",
@@ -642,8 +642,14 @@ window.sampleComponents =[
         "id": "lessheight",
         "reducers": [
           {
-            "reducer": "let height = Number(state.height.split(\"px\")[0])-1;\nstate.height = height+\"px\";\n\n\nlet element = document.querySelectorAll(\".selectedForEdit\")[0];\nlet elementStyle = element.style;\n\nelementStyle.height = state.height;",
-            "publishes": []
+            "reducer": "let height = Number(state.height.split(\"px\")[0])-1;\nstate.height = height+\"px\";\n",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onHeightChange",
+                "publishCondition": "true"
+              }
+            ]
           }
         ]
       },
@@ -653,8 +659,14 @@ window.sampleComponents =[
         "id": "moreheight",
         "reducers": [
           {
-            "reducer": "let height = Number(state.height.split(\"px\")[0])+1;\nstate.height = height+\"px\";\n\nlet element = document.querySelectorAll(\".selectedForEdit\")[0];\nlet elementStyle = element.style;\n\nelementStyle.height = state.height;",
-            "publishes": []
+            "reducer": "let height = Number(state.height.split(\"px\")[0])+1;\nstate.height = height+\"px\";\n",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onHeightChange",
+                "publishCondition": "true"
+              }
+            ]
           }
         ]
       },
@@ -664,8 +676,14 @@ window.sampleComponents =[
         "id": "lesswidth",
         "reducers": [
           {
-            "reducer": "let width = Number(state.width.split(\"px\")[0])-1;\nstate.width = width+\"px\";\n\nlet element = document.querySelectorAll(\".selectedForEdit\")[0];\nlet elementStyle = element.style;\n\nelementStyle.width = state.width;",
-            "publishes": []
+            "reducer": "let width = Number(state.width.split(\"px\")[0])-1;\nstate.width = width+\"px\";",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onWidthChange",
+                "publishCondition": "true"
+              }
+            ]
           }
         ]
       },
@@ -675,8 +693,14 @@ window.sampleComponents =[
         "id": "morewidth",
         "reducers": [
           {
-            "reducer": "let width = Number(state.width.split(\"px\")[0])+1;\nstate.width = width+\"px\";\n\nlet element = document.querySelectorAll(\".selectedForEdit\")[0];\nlet elementStyle = element.style;\n\nelementStyle.width = state.width;",
-            "publishes": []
+            "reducer": "let width = Number(state.width.split(\"px\")[0])+1;\nstate.width = width+\"px\";",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onWidthChange",
+                "publishCondition": "true"
+              }
+            ]
           }
         ]
       },
@@ -686,8 +710,14 @@ window.sampleComponents =[
         "id": "lesstop",
         "reducers": [
           {
-            "reducer": "let top = Number(state.top.split(\"px\")[0])-1;\nstate.top = top+\"px\";\n\nlet element = document.querySelectorAll(\".selectedForEdit\")[0];\nlet elementStyle = element.style;\n\nelementStyle.top = state.top;",
-            "publishes": []
+            "reducer": "let top = Number(state.top.split(\"px\")[0])-1;\nstate.top = top+\"px\";\n",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onTopChange",
+                "publishCondition": "true"
+              }
+            ]
           }
         ]
       },
@@ -697,8 +727,14 @@ window.sampleComponents =[
         "id": "moretop",
         "reducers": [
           {
-            "reducer": "let top = Number(state.top.split(\"px\")[0])+1;\nstate.top = top+\"px\";\n\nlet element = document.querySelectorAll(\".selectedForEdit\")[0];\nlet elementStyle = element.style;\n\nelementStyle.top = state.top;",
-            "publishes": []
+            "reducer": "let top = Number(state.top.split(\"px\")[0])+1;\nstate.top = top+\"px\";\n",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onTopChange",
+                "publishCondition": "true"
+              }
+            ]
           }
         ]
       },
@@ -708,8 +744,14 @@ window.sampleComponents =[
         "id": "moreleft",
         "reducers": [
           {
-            "reducer": "let left = Number(state.left.split(\"px\")[0])-1;\nstate.left = left+\"px\";\n\nlet element = document.querySelectorAll(\".selectedForEdit\")[0];\nlet elementStyle = element.style;\n\nelementStyle.left = state.left;",
-            "publishes": []
+            "reducer": "let left = Number(state.left.split(\"px\")[0])-1;\nstate.left = left+\"px\";\n",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onLeftChange",
+                "publishCondition": "true"
+              }
+            ]
           }
         ]
       },
@@ -719,8 +761,14 @@ window.sampleComponents =[
         "id": "lessleft",
         "reducers": [
           {
-            "reducer": "let left = Number(state.left.split(\"px\")[0])+1;\nstate.left = left+\"px\";\n\nlet element = document.querySelectorAll(\".selectedForEdit\")[0];\nlet elementStyle = element.style;\n\nelementStyle.left = state.left;",
-            "publishes": []
+            "reducer": "let left = Number(state.left.split(\"px\")[0])+1;\nstate.left = left+\"px\";",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onLeftChange",
+                "publishCondition": "true"
+              }
+            ]
           }
         ]
       },
@@ -730,8 +778,14 @@ window.sampleComponents =[
         "id": "lessborder",
         "reducers": [
           {
-            "reducer": "let borderWidth = Number(state.borderWidth.split(\"px\")[0])-1;\nstate.borderWidth = borderWidth+\"px\";\n\nlet element = document.querySelectorAll(\".selectedForEdit\")[0];\nlet elementStyle = element.style;\n\nelementStyle.borderWidth = state.borderWidth;",
-            "publishes": []
+            "reducer": "let borderWidth = Number(state.borderWidth.split(\"px\")[0])-1;\nstate.borderWidth = borderWidth+\"px\";",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onBorderWidthChange",
+                "publishCondition": "true"
+              }
+            ]
           }
         ]
       },
@@ -741,8 +795,14 @@ window.sampleComponents =[
         "id": "moreborder",
         "reducers": [
           {
-            "reducer": "let borderWidth = Number(state.borderWidth.split(\"px\")[0])+1;\nstate.borderWidth = borderWidth+\"px\";\n\nlet element = document.querySelectorAll(\".selectedForEdit\")[0];\nlet elementStyle = element.style;\n\nelementStyle.borderWidth = state.borderWidth;",
-            "publishes": []
+            "reducer": "let borderWidth = Number(state.borderWidth.split(\"px\")[0])+1;\nstate.borderWidth = borderWidth+\"px\";",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onBorderWidthChange",
+                "publishCondition": "true"
+              }
+            ]
           }
         ]
       },
@@ -753,7 +813,13 @@ window.sampleComponents =[
         "reducers": [
           {
             "reducer": "let space = Number(state.space.split(\"px\")[0])+1;\nstate.space = space+\"px\";",
-            "publishes": []
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onPaddingChange",
+                "publishCondition": "true"
+              }
+            ]
           }
         ]
       },
@@ -764,22 +830,11 @@ window.sampleComponents =[
         "reducers": [
           {
             "reducer": "let space = Number(state.space.split(\"px\")[0])-1;\nstate.space = space+\"px\";",
-            "publishes": []
-          }
-        ]
-      },
-      {
-        "name": "onMouseLeave",
-        "index": 12,
-        "id": "properties",
-        "reducers": [
-          {
-            "reducer": "let element = document.querySelectorAll(\".selectedForEdit\")[0];\nstate.elementHTML = element.innerHTML;",
             "publishes": [
               {
-                "publishName": "onHide",
-                "publishCondition": true,
-                "publishable": true
+                "publishable": true,
+                "publishName": "onPaddingChange",
+                "publishCondition": "true"
               }
             ]
           }
@@ -791,8 +846,14 @@ window.sampleComponents =[
         "id": "lessSize",
         "reducers": [
           {
-            "reducer": "let fontSize = Number(state.fontSize.split(\"px\")[0])-1;\nstate.fontSize = fontSize+\"px\";\n\nlet element = document.querySelectorAll(\".selectedForEdit\")[0];\nlet elementStyle = element.style;\n\nelementStyle.fontSize = state.fontSize;",
-            "publishes": []
+            "reducer": "let fontSize = Number(state.fontSize.split(\"px\")[0])-1;\nstate.fontSize = fontSize+\"px\";",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onFontSizeChange",
+                "publishCondition": "true"
+              }
+            ]
           }
         ]
       },
@@ -802,8 +863,14 @@ window.sampleComponents =[
         "id": "moreSize",
         "reducers": [
           {
-            "reducer": "let fontSize = Number(state.fontSize.split(\"px\")[0])+1;\nstate.fontSize = fontSize+\"px\";\n\nlet element = document.querySelectorAll(\".selectedForEdit\")[0];\nlet elementStyle = element.style;\n\nelementStyle.fontSize = state.fontSize;",
-            "publishes": []
+            "reducer": "let fontSize = Number(state.fontSize.split(\"px\")[0])+1;\nstate.fontSize = fontSize+\"px\";\n",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onFontSizeChange",
+                "publishCondition": "true"
+              }
+            ]
           }
         ]
       },
@@ -817,9 +884,87 @@ window.sampleComponents =[
             "publishes": []
           }
         ]
+      },
+      {
+        "id": "fontcolor",
+        "index": 16,
+        "name": "onChange",
+        "reducers": [
+          {
+            "reducer": "state.fontColor = e.target.value;",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onFontColorChange",
+                "publishCondition": "true"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "morecolor",
+        "index": 17,
+        "name": "onChange",
+        "reducers": [
+          {
+            "reducer": "state.borderColor = e.target.value;",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onBorderColorChange",
+                "publishCondition": "true"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "properties",
+        "index": 17,
+        "name": "onMouseMove",
+        "reducers": [
+          {
+            "reducer": "e.stopPropagation()",
+            "publishes": []
+          }
+        ]
+      },
+      {
+        "id": "properties",
+        "index": 18,
+        "name": "onMouseDown",
+        "reducers": [
+          {
+            "reducer": "e.stopPropagation()",
+            "publishes": []
+          }
+        ]
+      },
+      {
+        "id": "properties",
+        "index": 19,
+        "name": "onMouseOver",
+        "reducers": [
+          {
+            "reducer": "\te.stopPropagation()\n",
+            "publishes": []
+          }
+        ]
+      },
+      {
+        "id": "properties",
+        "index": 20,
+        "name": "onMouseUp",
+        "reducers": [
+          {
+            "reducer": "\te.stopPropagation()\n",
+            "publishes": []
+          }
+        ]
       }
     ],
-    "state": "{\n  \"style\":{\n      \"top\": \"200px\",\n      \"left\": \"408px\",\n      \"position\": \"absolute\"\n  },\n  \"id\" : \"containement\",\n  \"class\" : \"black setup\",\n  \"height\": \"100px\",\n  \"width\":\"100px\",\n  \"top\":\"100px\",\n  \"left\":\"100px\",\n  \"borderWidth\":\"100px\",\n  \"color\": \"#874a4a\",\n  \"space\" :\"100px\",\n  \"fontSize\": \"10px\"\n}",
+    "state": "{\n  \"style\":{\n      \"top\": \"200px\",\n      \"left\": \"408px\",\n      \"position\": \"absolute\"\n  },\n  \"height\": \"100px\",\n  \"width\":\"100px\",\n  \"top\":\"100px\",\n  \"left\":\"100px\",\n  \"borderWidth\":\"100px\",\n  \"borderColor\": \"#874a4a\",\n  \"space\" :\"100px\",\n  \"fontSize\": \"10px\",\n  \"color\": \"#ffffff\"\n}",
     "style": ".properties {\nborder: 1px solid #2C3134;\n width: 165px;\n font-size: 10px;\n background: rgb(64, 64, 64);\n color: rgba(255,255,255,0.5);\n}\n\n.properties input{\n    width: 50px;\n    padding: 5px;\n    margin-left: 4px;\n}\n\n.properties input.long{\n\twidth: 100px;\n}\n\n.properties > div {\n    border: 1px solid #2C3134;\n    padding: 8px;\n}\n\n.properties > div > div:not(:first-child){\n    margin-top:7px;\n}\n\nspan.name {\n    display: inline-block;\n    width: 40px;\n}\n\n.properties .space{\n border: 1px solid #2C3134;\n}\n\n.less{\n    height: 21px;\n    width: 21px;\n    border: 1px solid #2C3134;\n}\n\n.more{\n    height: 21px;\n    width: 21px;\n    border: 1px solid #2C3134;\n}",
     "children": [],
     "id": 285,
@@ -836,7 +981,7 @@ window.sampleComponents =[
         "id": "DivElement",
         "reducers": [
           {
-            "reducer": "if(state.mode===\"Draw\"){\n\tstate.style.cursor = \"crosshair\";\n}\ne.stopPropagation();",
+            "reducer": "if(state.mode===\"Draw\"){\n\tstate.style.cursor = \"crosshair\";\n}\n\te.stopPropagation();\n\n",
             "publishes": []
           }
         ]
@@ -847,7 +992,7 @@ window.sampleComponents =[
         "id": "DivElement",
         "reducers": [
           {
-            "reducer": "function create(type, x, y, text){\n\t  var item = document.createElement(type);\n      item.style.position = \"fixed\";\n      item.style.left = x+ \"px\";\n      item.style.top = y + \"px\";\n      item.style.border = \"1px solid green\";\n      item.id = Math.random();\n      if(text){\n      \titem.innerText = text;\n      }\n      return item;\n}\n\nlet target = e.target;\n\nif(e.button===0 && target.type!==\"text\"){\n  if(state.mode===\"Draw\"){\n\t\n      var div = create(\"div\", e.clientX, e.clientY);\n      var parent = e.target;\n      parent.appendChild(div);\n\n      state.divId = div.id;\n      state.origin = true;\n  }\n}\n\nif(state.mode===\"Move\"){\n\tstate.style.cursor = \"grabbing\";\n    state.grabbing = true;\n}\n\ndelete window.eClientY;\ndelete window.eClientX;\ne.stopPropagation()",
+            "reducer": "function create(type, x, y, text){\n\t  var item = document.createElement(type);\n      item.style.position = \"fixed\";\n      item.style.left = x+ \"px\";\n      item.style.top = y + \"px\";\n      item.style.border = \"1px solid green\";\n      item.id = Math.random();\n      if(text){\n      \titem.innerText = text;\n      }\n      return item;\n}\n\nlet target = e.target;\n\nif(e.button===0 && target.type!==\"text\"){\n  if(state.mode===\"Draw\"){\n\t\n      var div = create(\"div\", e.clientX, e.clientY);\n      var parent = e.target;\n      parent.appendChild(div);\n\n      state.divId = div.id;\n      state.origin = true;\n  }\n}\n\nif(state.mode===\"Move\"){\n\tstate.style.cursor = \"grabbing\";\n    state.grabbing = true;\n}\ndelete window.eClientY;\ndelete window.eClientX;\n\te.stopPropagation()\n\n",
             "publishes": []
           }
         ]
@@ -858,7 +1003,7 @@ window.sampleComponents =[
         "id": "DivElement",
         "reducers": [
           {
-            "reducer": "if(state.mode===\"Draw\"){\n  if(state.origin){\n      var div= document.getElementById(state.divId);\n      var rect = div.getBoundingClientRect();\n      div.style.width = e.clientX - rect.left;\n      div.style.height = e.clientY - rect.top;\n  }\n}\n\nif(\tstate.style.cursor == \"grabbing\" && state.grabbing) {\n\tvar rect = e.target.getBoundingClientRect();\n\t\n    window.eClientY = window.eClientY || e.clientY;\n\twindow.eClientX = window.eClientX || e.clientX;\n    \n    e.target.style.top = (-window.eClientY + e.clientY) + rect.top  + \"px\";\n    e.target.style.left = (-window.eClientX + e.clientX) + rect.left + \"px\";\n\n\twindow.eClientY = e.clientY;\n\twindow.eClientX = e.clientX;\n}\n\ne.stopPropagation()",
+            "reducer": "if(state.mode===\"Draw\"){\n  if(state.origin){\n      var div= document.getElementById(state.divId);\n      var rect = div.getBoundingClientRect();\n      div.style.width = e.clientX - rect.left;\n      div.style.height = e.clientY - rect.top;\n  }\n}\n\nif(\tstate.style.cursor == \"grabbing\" && state.grabbing) {\n\tvar rect = e.target.getBoundingClientRect();\n\t\n    window.eClientY = window.eClientY || e.clientY;\n\twindow.eClientX = window.eClientX || e.clientX;\n    \n    e.target.style.top = (-window.eClientY + e.clientY) + rect.top  + \"px\";\n    e.target.style.left = (-window.eClientX + e.clientX) + rect.left + \"px\";\n\n\twindow.eClientY = e.clientY;\n\twindow.eClientX = e.clientX;\n}\n\te.stopPropagation()\n\n\n\n",
             "publishes": []
           }
         ]
@@ -869,7 +1014,7 @@ window.sampleComponents =[
         "id": "DivElement",
         "reducers": [
           {
-            "reducer": "if(state.mode===\"Draw\"){\n\tif(e.button===0){\n\t\tstate.origin = false;\n\t}\n\tlet createdDiv = document.getElementById(state.divId);\n    delete state.divId;\n    state.Div.push({\n    \tstyle: {\n          position: createdDiv.style.position,\n          top: createdDiv.style.top,\n          left: createdDiv.style.left,\n          height: createdDiv.style.height,\n          width: createdDiv.style.width,\n          border: createdDiv.style.border\n        },\n        Div: [],\n        mode:\"Draw\",\n        PropertiesControl:[state.PropertiesControl[0]]\n    })\n    createdDiv.remove();\n}\nif(state.mode===\"Move\"){\n\te.target.style.cursor = \"pointer\";\n    state.grabbing = false;\n\tstate.style.top = e.target.style.top;\n    state.style.left = e.target.style.left;\n}\n\nif(state.mode===\"Resize\"){\n\tstate.style.height = e.target.style.height;\n    state.style.width = e.target.style.width;\n}\n\ne.stopPropagation();",
+            "reducer": "if(state.mode===\"Draw\"){\n\tif(e.button===0){\n\t\tstate.origin = false;\n\t}\n\tlet createdDiv = document.getElementById(state.divId);\n    delete state.divId;\n    state.Div.push({\n    \tstyle: {\n          position: createdDiv.style.position,\n          top: createdDiv.style.top,\n          left: createdDiv.style.left,\n          height: createdDiv.style.height,\n          width: createdDiv.style.width,\n          border: createdDiv.style.border\n        },\n        Div: [],\n        mode:\"Draw\",\n        PropertiesControl:[state.PropertiesControl[0]]\n    })\n    createdDiv.remove();\n}\nif(state.mode===\"Move\"){\n\te.target.style.cursor = \"pointer\";\n    state.grabbing = false;\n\tstate.style.top = e.target.style.top;\n    state.style.left = e.target.style.left;\n}\n\nif(state.mode===\"Resize\"){\n\tstate.style.height = e.target.style.height;\n    state.style.width = e.target.style.width;\n}\n\n\te.stopPropagation()\n\n",
             "publishes": [
               {
                 "publishable": true,
@@ -915,23 +1060,6 @@ window.sampleComponents =[
           {
             "reducer": "e.stopPropagation();",
             "publishes": []
-          }
-        ]
-      },
-      {
-        "id": "mode",
-        "index": 6,
-        "name": "onChange",
-        "reducers": [
-          {
-            "reducer": "state.mode = e.target.value;\nif(state.mode === \"Resize\"){\n\tstate.style.resize = \"both\";\n    state.style.overflow = \"auto\";\n} else{\n\tdelete state.style.resize;\n    delete state.style.overflow;\n}\nif(state.mode===\"Edit\"){\n\tstate.PropertiesControl[0].style.display = \"block\";\n    state.PropertiesControl[0].style.top = \"0px\";\n    state.PropertiesControl[0].style.left = \"-170px\";\n} else {\n\n\tstate.PropertiesControl[0].style.display = \"none\";\n\n}\n\nif(state.mode===\"Save\"){\n\tlet index = components.findIndex(component=>component.name===\"Div\")\n    components[index].state = JSON.stringify(state);\n    localStorage.setItem(\"ui-editor\", JSON.stringify(components));\n}\n",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onDelete",
-                "publishCondition": "state.mode === \"Delete\""
-              }
-            ]
           }
         ]
       },
@@ -990,9 +1118,139 @@ window.sampleComponents =[
             "publishes": []
           }
         ]
+      },
+      {
+        "id": "PropertiesControl",
+        "index": 11,
+        "name": "onHeightChange",
+        "reducers": [
+          {
+            "reducer": "state.style.height = e.state.height;\nstate.PropertiesControl[0].height = state.style.height;\n",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onStyleChange",
+                "publishCondition": "true"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Div",
+        "index": 12,
+        "name": "onChange",
+        "reducers": [
+          {
+            "reducer": "state.Div[e.index] = e.state;\n",
+            "publishes": []
+          }
+        ]
+      },
+      {
+        "id": "mode",
+        "index": 12,
+        "name": "onChange",
+        "reducers": [
+          {
+            "reducer": "state.mode = e.target.value;\nif(state.mode === \"Resize\"){\n\tstate.style.resize = \"both\";\n    state.style.overflow = \"auto\";\n} else {\n  delete state.style.resize;\n  delete state.style.overflow;\n} if( state.mode===\"Edit\"){ \n  state.PropertiesControl[0].style.display = \"block\";\n  state.PropertiesControl[0].style.top = \"0px\";\n  state.PropertiesControl[0].style.left = \"-170px\";\n  state.PropertiesControl[0].height = state.style.height;\n  state.PropertiesControl[0].width = state.style.width;\n  state.PropertiesControl[0].top = state.style.top;\n  state.PropertiesControl[0].left = state.style.left;\n} else {\n  state.PropertiesControl[0].style.display = \"none\";\n} if (state.mode===\"Save\"){ \n  let index = components.findIndex(component=>component.name===\"Div\")\n  components[index].state = JSON.stringify(state);\n  localStorage.setItem(\"ui-editor\", JSON.stringify(components));\n}\n\ndebugger;",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onDelete",
+                "publishCondition": "state.mode === \"Delete\""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Div",
+        "index": 13,
+        "name": "onStyleChange",
+        "reducers": [
+          {
+            "reducer": "state.Div[e.index] = e.state;\n",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onStyleChange",
+                "publishCondition": "true"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "PropertiesControl",
+        "index": 14,
+        "name": "onWidthChange",
+        "reducers": [
+          {
+            "reducer": "state.style.width = e.state.width;\nstate.PropertiesControl[0].width = state.style.width;\n",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onStyleChange",
+                "publishCondition": "true"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "PropertiesControl",
+        "index": 15,
+        "name": "onTopChange",
+        "reducers": [
+          {
+            "reducer": "state.style.top = e.state.top;\nstate.PropertiesControl[0].top = state.style.top;\n",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onStyleChange",
+                "publishCondition": "true"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "PropertiesControl",
+        "index": 16,
+        "name": "onLeftChange",
+        "reducers": [
+          {
+            "reducer": "state.style.left = e.state.left;\nstate.PropertiesControl[0].left = state.style.left;\n",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onStyleChange",
+                "publishCondition": "true"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "PropertiesControl",
+        "index": 17,
+        "name": "onBorderWidthChange",
+        "reducers": [
+          {
+            "reducer": "state.style['border-width'] = e.state.borderWidth;\nstate.PropertiesControl[0].borderWidth = state.style['border-width'];\n",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onStyleChange",
+                "publishCondition": "true"
+              }
+            ]
+          }
+        ]
       }
     ],
-    "state": "{\"style\":{\"position\":\"fixed\",\"top\":\"93px\",\"left\":\"192px\",\"height\":\"382px\",\"width\":\"582px\",\"border\":\"1px solid green\",\"cursor\":\"crosshair\"},\"Div\":[{\"style\":{\"position\":\"fixed\",\"top\":\"176px\",\"left\":\"315px\",\"height\":\"162px\",\"width\":\"222px\",\"border\":\"1px solid green\"},\"Div\":[],\"mode\":\"Draw\",\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"100px\",\"width\":\"100px\",\"top\":\"100px\",\"left\":\"100px\",\"borderWidth\":\"100px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\"}]},{\"style\":{\"position\":\"fixed\",\"top\":\"179px\",\"left\":\"613px\",\"height\":\"186px\",\"width\":\"111px\",\"border\":\"1px solid green\"},\"Div\":[],\"mode\":\"Draw\",\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"100px\",\"width\":\"100px\",\"top\":\"100px\",\"left\":\"100px\",\"borderWidth\":\"100px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\"}]}],\"mode\":\"Save\",\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"100px\",\"width\":\"100px\",\"top\":\"100px\",\"left\":\"100px\",\"borderWidth\":\"100px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\"}],\"grabbing\":false,\"divId\":\"0.4523595737254391\",\"origin\":false}",
+    "state": "{\"style\":{\"position\":\"fixed\",\"top\":\"23px\",\"left\":\"185px\",\"height\":\"679px\",\"width\":\"591px\",\"border\":\"1px solid green\",\"cursor\":\"grabbing\"},\"Div\":[{\"style\":{\"position\":\"fixed\",\"top\":\"70px\",\"left\":\"223px\",\"height\":\"132px\",\"width\":\"136px\",\"border\":\"1px solid green\"},\"Div\":[],\"mode\":\"Draw\",\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"115px\",\"width\":\"119px\",\"top\":\"195px\",\"left\":\"624px\",\"borderWidth\":\"100px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\"}]},{\"style\":{\"position\":\"fixed\",\"top\":\"436px\",\"left\":\"406px\",\"height\":\"65px\",\"width\":\"250px\",\"border\":\"1px solid green\",\"cursor\":\"grabbing\"},\"Div\":[],\"mode\":\"Move\",\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"115px\",\"width\":\"119px\",\"top\":\"195px\",\"left\":\"624px\",\"borderWidth\":\"100px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\"}],\"grabbing\":false},{\"style\":{\"position\":\"fixed\",\"top\":\"120px\",\"left\":\"443px\",\"height\":\"180px\",\"width\":\"238px\",\"border\":\"1px solid green\",\"cursor\":\"grabbing\"},\"Div\":[{\"style\":{\"position\":\"fixed\",\"top\":\"152px\",\"left\":\"480px\",\"height\":\"160px\",\"width\":\"214px\",\"border\":\"1px solid green\",\"cursor\":\"crosshair\",\"resize\":\"both\",\"overflow\":\"auto\"},\"Div\":[],\"mode\":\"Resize\",\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"160px\",\"width\":\"214px\",\"top\":\"152px\",\"left\":\"480px\",\"borderWidth\":\"100px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\"}]}],\"mode\":\"Move\",\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"180px\",\"width\":\"238px\",\"top\":\"120px\",\"left\":\"443px\",\"borderWidth\":\"100px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\"}],\"origin\":false,\"grabbing\":false}],\"mode\":\"Save\",\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"679px\",\"width\":\"591px\",\"top\":\"23px\",\"left\":\"185px\",\"borderWidth\":\"100px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\"}],\"grabbing\":false,\"divId\":\"0.8216323319792065\",\"origin\":false}",
     "style": ".Div{\n    position: fixed;\n    background-color: black;\n    border: 1px solid red;\n\ttop: 25%;\n    left: 20%;\n    cursor: \"move\";\n}\n",
     "children": [],
     "id": 198,
