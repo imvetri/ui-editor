@@ -634,7 +634,7 @@ window.sampleComponents =[
   },
   {
     "name": "PropertiesControl",
-    "markup": "<div class=\"properties\" id=\"properties\" style={state.style}>\n\n    <div class=\"size\">\n        <div class=\"height\">\n            <span class=\"name\">Height</span>\n            <button class=\"less\" id=\"lessheight\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.height}/>\n            <button class=\"more\" id=\"moreheight\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n        <div class=\"width\">\n            <span class=\"name\">Width</span>\n            <button class=\"less\" id=\"lesswidth\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.width}/>\n            <button class=\"more\" id=\"morewidth\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n    </div>\n\n    <div class=\"position\">\n        <div class=\"top\">\n            <span class=\"name\">Top</span>\n            <button class=\"less\" id=\"lesstop\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.top}/>\n            <button class=\"more\" id=\"moretop\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n        <div class=\"left\">\n            <span class=\"name\">Left</span>\n            <button class=\"less\" id=\"moreleft\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.left}/>\n            <button class=\"more\" id=\"lessleft\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n    </div>\n\n    <div clas=\"border\">\n        <div class=\"borderSize\">\n            <span class=\"name\">Border</span>\n            <button class=\"less\" id=\"lessborder\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.borderWidth}/>\n            <button class=\"more\" id=\"moreborder\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n    \n        <div class=\"borderColor\">\n            <span class=\"name\">Color</span>\n            <input type=\"color\" id=\"morecolor\" value={state.borderColor}/>\n        </div>\n        <div class=\"borderType\">\n            <span class=\"name\">Type</span>\n            <button class=\"downArrow\"></button>\n        </div>\n    </div>\n\n    <div class=\"space\">\n        <span class=\"name\">Space</span>\n        <button class=\"less\" id=\"lessspace\"><i class=\"fa fa-minus\"></i></button>\n        <input type=\"text\" value={state.space}/>\n        <button class=\"more\" id=\"morespace\"><i class=\"fa fa-plus\"></i></button>\n    </div>\n\n\n\n    <div clas=\"font\">\n\n        <div class=\"fontFamily\">\n            <span class=\"name\">Font</span>\n            <input type=\"text\" class=\"long\" value={state.fontFamily}/>\n        </div>\n        <div class=\"fontSize\">\n            <span class=\"name\">Size</span>\n            <button class=\"less\" id=\"lessSize\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\"  value={state.fontSize}/>\n            <button class=\"more\" id=\"moreSize\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n\n        <div class=\"color\">\n            <span class=\"name\">Color</span>\n            <input type=\"color\" id=\"fontcolor\" value={state.color}/>\n        </div>\n    </div>\n</div>",
+    "markup": "<div class=\"properties\" id=\"properties\" style={state.style}>\n\n    <div class=\"size\">\n        <div class=\"height\">\n            <span class=\"name\">Height</span>\n            <button class=\"less\" id=\"lessheight\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.height}/>\n            <button class=\"more\" id=\"moreheight\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n        <div class=\"width\">\n            <span class=\"name\">Width</span>\n            <button class=\"less\" id=\"lesswidth\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.width}/>\n            <button class=\"more\" id=\"morewidth\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n    </div>\n\n    <div class=\"position\">\n        <div class=\"top\">\n            <span class=\"name\">Top</span>\n            <button class=\"less\" id=\"lesstop\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.top}/>\n            <button class=\"more\" id=\"moretop\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n        <div class=\"left\">\n            <span class=\"name\">Left</span>\n            <button class=\"less\" id=\"moreleft\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.left}/>\n            <button class=\"more\" id=\"lessleft\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n    </div>\n\n    <div clas=\"border\">\n        <div class=\"borderSize\">\n            <span class=\"name\">Border</span>\n            <button class=\"less\" id=\"lessborder\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.borderWidth}/>\n            <button class=\"more\" id=\"moreborder\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n    \n        <div class=\"borderColor\">\n            <span class=\"name\">Color</span>\n            <input type=\"color\" id=\"morecolor\" value={state.borderColor}/>\n        </div>\n        <div class=\"borderType\">\n            <span class=\"name\">Style</span>\n            <select name=\"borderStyle\" value={state.borderStyle} id=\"borderStyle\">\n                <option>dotted</option>\n                <option>dashed</option>\n                <option>solid</option>\n                <option>double</option>\n                <option>groove</option>\n                <option>ridge</option>\n                <option>inset</option>\n                <option>outset</option>\n                <option>none</option>\n                <option>hidden</option>\n            </select>\n        </div>\n    </div>\n\n    <div class=\"space\">\n        <span class=\"name\">Space</span>\n        <button class=\"less\" id=\"lessspace\"><i class=\"fa fa-minus\"></i></button>\n        <input type=\"text\" value={state.space}/>\n        <button class=\"more\" id=\"morespace\"><i class=\"fa fa-plus\"></i></button>\n    </div>\n\n\n\n    <div clas=\"font\">\n\n        <div class=\"fontFamily\">\n            <span class=\"name\">Font</span>\n            <input type=\"text\" class=\"long\" value={state.fontFamily}/>\n        </div>\n        <div class=\"fontSize\">\n            <span class=\"name\">Size</span>\n            <button class=\"less\" id=\"lessSize\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\"  value={state.fontSize}/>\n            <button class=\"more\" id=\"moreSize\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n\n        <div class=\"color\">\n            <span class=\"name\">Color</span>\n            <input type=\"color\" id=\"fontcolor\" value={state.color}/>\n        </div>\n    </div>\n</div>",
     "events": [
       {
         "name": "onClick",
@@ -962,10 +962,27 @@ window.sampleComponents =[
             "publishes": []
           }
         ]
+      },
+      {
+        "id": "borderStyle",
+        "index": 21,
+        "name": "onChange",
+        "reducers": [
+          {
+            "reducer": "state.borderStyle = e.target.value;\n",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onBorderStyleChange",
+                "publishCondition": "true"
+              }
+            ]
+          }
+        ]
       }
     ],
     "state": "{\n  \"style\":{\n      \"top\": \"200px\",\n      \"left\": \"408px\",\n      \"position\": \"absolute\"\n  },\n  \"height\": \"100px\",\n  \"width\":\"100px\",\n  \"top\":\"100px\",\n  \"left\":\"100px\",\n  \"borderWidth\":\"100px\",\n  \"borderColor\": \"#874a4a\",\n  \"space\" :\"100px\",\n  \"fontSize\": \"10px\",\n  \"color\": \"#ffffff\"\n}",
-    "style": ".properties {\nborder: 1px solid #2C3134;\n width: 165px;\n font-size: 10px;\n background: rgb(64, 64, 64);\n color: rgba(255,255,255,0.5);\n}\n\n.properties input{\n    width: 50px;\n    padding: 5px;\n    margin-left: 4px;\n}\n\n.properties input.long{\n\twidth: 100px;\n}\n\n.properties > div {\n    border: 1px solid #2C3134;\n    padding: 8px;\n}\n\n.properties > div > div:not(:first-child){\n    margin-top:7px;\n}\n\nspan.name {\n    display: inline-block;\n    width: 40px;\n}\n\n.properties .space{\n border: 1px solid #2C3134;\n}\n\n.less{\n    height: 21px;\n    width: 21px;\n    border: 1px solid #2C3134;\n}\n\n.more{\n    height: 21px;\n    width: 21px;\n    border: 1px solid #2C3134;\n}",
+    "style": ".properties {\nborder: 1px solid #2C3134;\n width: 165px;\n font-size: 10px;\n background: rgb(64, 64, 64);\n color: rgba(255,255,255,0.5);\n}\n\n.properties input{\n    width: 50px;\n    padding: 5px;\n    margin-left: 4px;\n}\n\n.properties input.long{\n\twidth: 100px;\n}\n\n.properties > div {\n    border: 1px solid #2C3134;\n    padding: 8px;\n}\n\n.properties > div > div:not(:first-child){\n    margin-top:7px;\n}\n\nspan.name {\n    display: inline-block;\n    width: 40px;\n}\n\n.properties .space{\n border: 1px solid #2C3134;\n}\n\n.less{\n    height: 21px;\n    width: 21px;\n    border: 1px solid #2C3134;\n}\n\n.more{\n    height: 21px;\n    width: 21px;\n    border: 1px solid #2C3134;\n}\n\n.properties #borderStyle {\n\tborder: 1px solid black;\n    font-size: 10px;\n    background: #2b2b2b;\n    color: rgba(255,255,255,0.5);\n    width: 100px;\n    padding: 5px;\n    margin-left: 4px;\n}",
     "children": [],
     "id": 285,
     "config": "{}",
@@ -992,7 +1009,7 @@ window.sampleComponents =[
         "id": "DivElement",
         "reducers": [
           {
-            "reducer": "function create(type, x, y, text){\n\t  var item = document.createElement(type);\n      item.style.position = \"fixed\";\n      item.style.left = x+ \"px\";\n      item.style.top = y + \"px\";\n      item.style.border = \"1px solid green\";\n      item.id = Math.random();\n      if(text){\n      \titem.innerText = text;\n      }\n      return item;\n}\n\nlet target = e.target;\n\nif(e.button===0 && target.type!==\"text\"){\n  if(state.mode===\"Draw\"){\n\t\n      var div = create(\"div\", e.clientX, e.clientY);\n      var parent = e.target;\n      parent.appendChild(div);\n\n      state.divId = div.id;\n      state.origin = true;\n  }\n}\n\nif(state.mode===\"Move\"){\n\tstate.style.cursor = \"grabbing\";\n    state.grabbing = true;\n}\ndelete window.eClientY;\ndelete window.eClientX;\n\te.stopPropagation()\n\n",
+            "reducer": "function create(type, x, y, text){\n\t  var item = document.createElement(type);\n      item.style.position = \"fixed\";\n      item.style.left = x+ \"px\";\n      item.style.top = y + \"px\";\n      item.style['border-width'] = \"1px\";\n      item.style['border-color'] = \"green\";\n      item.style['border-style'] = \"solid\";\n      item.id = Math.random();\n      if(text){\n      \titem.innerText = text;\n      }\n      return item;\n}\n\nlet target = e.target;\n\nif(e.button===0 && target.type!==\"text\"){\n  if(state.mode===\"Draw\"){\n\t\n      var div = create(\"div\", e.clientX, e.clientY);\n      var parent = e.target;\n      parent.appendChild(div);\n\n      state.divId = div.id;\n      state.origin = true;\n  }\n}\n\nif(state.mode===\"Move\"){\n\tstate.style.cursor = \"grabbing\";\n    state.grabbing = true;\n}\ndelete window.eClientY;\ndelete window.eClientX;\n\te.stopPropagation()\n\n",
             "publishes": []
           }
         ]
@@ -1014,7 +1031,7 @@ window.sampleComponents =[
         "id": "DivElement",
         "reducers": [
           {
-            "reducer": "if(state.mode===\"Draw\"){\n\tif(e.button===0){\n\t\tstate.origin = false;\n\t}\n\tlet createdDiv = document.getElementById(state.divId);\n    delete state.divId;\n    state.Div.push({\n    \tstyle: {\n          position: createdDiv.style.position,\n          top: createdDiv.style.top,\n          left: createdDiv.style.left,\n          height: createdDiv.style.height,\n          width: createdDiv.style.width,\n          border: createdDiv.style.border\n        },\n        Div: [],\n        mode:\"Draw\",\n        PropertiesControl:[state.PropertiesControl[0]]\n    })\n    createdDiv.remove();\n}\nif(state.mode===\"Move\"){\n\te.target.style.cursor = \"pointer\";\n    state.grabbing = false;\n\tstate.style.top = e.target.style.top;\n    state.style.left = e.target.style.left;\n}\n\nif(state.mode===\"Resize\"){\n\tstate.style.height = e.target.style.height;\n    state.style.width = e.target.style.width;\n}\n\n\te.stopPropagation()\n\n",
+            "reducer": "if(state.mode===\"Draw\"){\n\tif(e.button===0){\n\t\tstate.origin = false;\n\t}\n\tlet createdDiv = document.getElementById(state.divId);\n    delete state.divId;\n    state.Div.push({\n    \tstyle: {\n          position: createdDiv.style.position,\n          top: createdDiv.style.top,\n          left: createdDiv.style.left,\n          height: createdDiv.style.height,\n          width: createdDiv.style.width,\n          borderWidth: createdDiv.style[\"border-width\"],\n          borderStyle: createdDiv.style[\"border-style\"],\n          borderColor: createdDiv.style[\"border-color\"]\n        },\n        Div: [],\n        mode:\"Draw\",\n        PropertiesControl:[state.PropertiesControl[0]]\n    })\n    createdDiv.remove();\n}\nif(state.mode===\"Move\"){\n\te.target.style.cursor = \"pointer\";\n    state.grabbing = false;\n\tstate.style.top = e.target.style.top;\n    state.style.left = e.target.style.left;\n}\n\nif(state.mode===\"Resize\"){\n\tstate.style.height = e.target.style.height;\n    state.style.width = e.target.style.width;\n}\n\n\te.stopPropagation()\n\n",
             "publishes": [
               {
                 "publishable": true,
@@ -1115,7 +1132,13 @@ window.sampleComponents =[
         "reducers": [
           {
             "reducer": "state.Div.splice(e.index,1);\n",
-            "publishes": []
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onModeChange",
+                "publishCondition": "true"
+              }
+            ]
           }
         ]
       },
@@ -1137,28 +1160,22 @@ window.sampleComponents =[
         ]
       },
       {
-        "id": "Div",
-        "index": 12,
-        "name": "onChange",
-        "reducers": [
-          {
-            "reducer": "state.Div[e.index] = e.state;\n",
-            "publishes": []
-          }
-        ]
-      },
-      {
         "id": "mode",
         "index": 12,
         "name": "onChange",
         "reducers": [
           {
-            "reducer": "state.mode = e.target.value;\nif(state.mode === \"Resize\"){\n\tstate.style.resize = \"both\";\n    state.style.overflow = \"auto\";\n} else {\n  delete state.style.resize;\n  delete state.style.overflow;\n} if( state.mode===\"Edit\"){ \n  state.PropertiesControl[0].style.display = \"block\";\n  state.PropertiesControl[0].style.top = \"0px\";\n  state.PropertiesControl[0].style.left = \"-170px\";\n  state.PropertiesControl[0].height = state.style.height;\n  state.PropertiesControl[0].width = state.style.width;\n  state.PropertiesControl[0].top = state.style.top;\n  state.PropertiesControl[0].left = state.style.left;\n} else {\n  state.PropertiesControl[0].style.display = \"none\";\n} if (state.mode===\"Save\"){ \n  let index = components.findIndex(component=>component.name===\"Div\")\n  components[index].state = JSON.stringify(state);\n  localStorage.setItem(\"ui-editor\", JSON.stringify(components));\n}\n\ndebugger;",
+            "reducer": "state.mode = e.target.value;\nif(state.mode === \"Resize\"){\n\tstate.style.resize = \"both\";\n    state.style.overflow = \"auto\";\n} else {\n  delete state.style.resize;\n  delete state.style.overflow;\n} if( state.mode===\"Edit\"){ \n  state.PropertiesControl[0].style.display = \"block\";\n  state.PropertiesControl[0].style.top = \"0px\";\n  state.PropertiesControl[0].style.left = \"-170px\";\n  state.PropertiesControl[0].height = state.style.height;\n  state.PropertiesControl[0].width = state.style.width;\n  state.PropertiesControl[0].top = state.style.top;\n  state.PropertiesControl[0].left = state.style.left;\n  state.PropertiesControl[0].borderWidth = state.style.borderWidth;\n} else {\n  state.PropertiesControl[0].style.display = \"none\";\n} if (state.mode===\"Save\"){ \n  let index = components.findIndex(component=>component.name===\"Div\")\n  components[index].state = JSON.stringify(state);\n  localStorage.setItem(\"ui-editor\", JSON.stringify(components));\n}",
             "publishes": [
               {
                 "publishable": true,
                 "publishName": "onDelete",
                 "publishCondition": "state.mode === \"Delete\""
+              },
+              {
+                "publishable": true,
+                "publishName": "onModeChange",
+                "publishCondition": "state.mode !== \"Delete\""
               }
             ]
           }
@@ -1248,9 +1265,60 @@ window.sampleComponents =[
             ]
           }
         ]
+      },
+      {
+        "id": "Div",
+        "index": 18,
+        "name": "onModeChange",
+        "reducers": [
+          {
+            "reducer": "state.Div[e.index] = e.state;\n",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onModeChange",
+                "publishCondition": "true"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "PropertiesControl",
+        "index": 18,
+        "name": "onBorderColorChange",
+        "reducers": [
+          {
+            "reducer": "state.style['border-color'] = e.state.borderColor;\nstate.PropertiesControl[0].borderColor = state.style['border-color'];\n",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onStyleChange",
+                "publishCondition": "true"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "PropertiesControl",
+        "index": 19,
+        "name": "onBorderStyleChange",
+        "reducers": [
+          {
+            "reducer": "state.style['border-style'] = e.state.borderStyle;\nstate.PropertiesControl[0].borderStyle = state.style['border-style'];\n",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onStyleChange",
+                "publishCondition": "true"
+              }
+            ]
+          }
+        ]
       }
     ],
-    "state": "{\"style\":{\"position\":\"fixed\",\"top\":\"23px\",\"left\":\"185px\",\"height\":\"679px\",\"width\":\"591px\",\"border\":\"1px solid green\",\"cursor\":\"grabbing\"},\"Div\":[{\"style\":{\"position\":\"fixed\",\"top\":\"70px\",\"left\":\"223px\",\"height\":\"132px\",\"width\":\"136px\",\"border\":\"1px solid green\"},\"Div\":[],\"mode\":\"Draw\",\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"115px\",\"width\":\"119px\",\"top\":\"195px\",\"left\":\"624px\",\"borderWidth\":\"100px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\"}]},{\"style\":{\"position\":\"fixed\",\"top\":\"436px\",\"left\":\"406px\",\"height\":\"65px\",\"width\":\"250px\",\"border\":\"1px solid green\",\"cursor\":\"grabbing\"},\"Div\":[],\"mode\":\"Move\",\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"115px\",\"width\":\"119px\",\"top\":\"195px\",\"left\":\"624px\",\"borderWidth\":\"100px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\"}],\"grabbing\":false},{\"style\":{\"position\":\"fixed\",\"top\":\"120px\",\"left\":\"443px\",\"height\":\"180px\",\"width\":\"238px\",\"border\":\"1px solid green\",\"cursor\":\"grabbing\"},\"Div\":[{\"style\":{\"position\":\"fixed\",\"top\":\"152px\",\"left\":\"480px\",\"height\":\"160px\",\"width\":\"214px\",\"border\":\"1px solid green\",\"cursor\":\"crosshair\",\"resize\":\"both\",\"overflow\":\"auto\"},\"Div\":[],\"mode\":\"Resize\",\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"160px\",\"width\":\"214px\",\"top\":\"152px\",\"left\":\"480px\",\"borderWidth\":\"100px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\"}]}],\"mode\":\"Move\",\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"180px\",\"width\":\"238px\",\"top\":\"120px\",\"left\":\"443px\",\"borderWidth\":\"100px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\"}],\"origin\":false,\"grabbing\":false}],\"mode\":\"Save\",\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"679px\",\"width\":\"591px\",\"top\":\"23px\",\"left\":\"185px\",\"borderWidth\":\"100px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\"}],\"grabbing\":false,\"divId\":\"0.8216323319792065\",\"origin\":false}",
+    "state": "{\"style\":{\"position\":\"fixed\",\"top\":\"23px\",\"left\":\"185px\",\"height\":\"679px\",\"width\":\"591px\",\"border\":\"1px solid green\",\"cursor\":\"crosshair\"},\"Div\":[],\"mode\":\"Save\",\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"679px\",\"width\":\"591px\",\"top\":\"23px\",\"left\":\"185px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\"}],\"grabbing\":false,\"divId\":\"0.5586245701523267\",\"origin\":false}",
     "style": ".Div{\n    position: fixed;\n    background-color: black;\n    border: 1px solid red;\n\ttop: 25%;\n    left: 20%;\n    cursor: \"move\";\n}\n",
     "children": [],
     "id": 198,
