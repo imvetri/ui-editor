@@ -6,8 +6,15 @@
   <br>
   <br>
   <p>
-    ui-editor is a web based component builder based on reactJS. Its main purpose is to build JavaScript files for usage in a framework, yet it is also capable of transforming, bundling, or packaging just about any resource or asset.
+    ui-editor is a web based interface builder built using reactjs. Its main purpose is to build interfaces for rapid application development.
   </p>
+ <p>
+    It started as an experimental tool to test readable code generation and it was a success. Since then, I have been experimenting with it to test instant renderer and it was a success too.
+  </p>
+<p>
+Most recently I tried to build a self editable compoment that can create children of itself and it worked. It also comes with an option to edit the styles and it's interesting.
+</p>
+
 </div>
 
 ### Demo - https://imvetri.github.io/ui-editor/
