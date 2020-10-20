@@ -1348,7 +1348,6 @@ window.sampleFolders = [
         "type": "folder",
         "status": "closed"
       },
-      "Canvas",
       "Editor",
       "CanvasControls",
       "PropertiesControl",

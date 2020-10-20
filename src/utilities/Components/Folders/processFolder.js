@@ -28,10 +28,15 @@ function processContent (content, i){
 
     // Check if content is a component name.
     if(typeof content === "string" ){
+        let component = components.find(component=>component.name===content);
+
+        if(!component){
+            throw content+" is not found. remove it from folder's data"
+        }
 
         return <Componentt 
                     key={i}
-                    component={components.find(component=>component.name===content)}
+                    component={component}
                     selectedComponent={selectedComponent}
                     onSelectionChange={onSelection}
                     />
