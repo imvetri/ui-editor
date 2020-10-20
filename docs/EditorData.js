@@ -1,99 +1,5 @@
 window.sampleComponents =[
   {
-    "name": "Canvas",
-    "markup": "<div className=\"canvasComponent\" style={state.style} id=\"canvas\" dangerouslySetInnerHTML={{ __html:`${state.innerHTML}` }}>\n</div>",
-    "events": [
-      {
-        "name": "onMouseOver",
-        "index": 0,
-        "id": "canvas",
-        "reducers": [
-          {
-            "reducer": "if(state.mode===\"Draw\"){\n\tstate.style.cursor = \"crosshair\";\n}\nif(state.mode===\"Text\"){\n\tstate.style.cursor = \"text\";\n}\nif(state.mode===\"Select\"){\n\tstate.style.cursor = \"cursor\";\n}\n",
-            "publishes": []
-          }
-        ]
-      },
-      {
-        "name": "onMouseDown",
-        "index": 1,
-        "id": "canvas",
-        "reducers": [
-          {
-            "reducer": "function create(type, x, y, text){\n\t  var item = document.createElement(type);\n      item.style.position = \"fixed\";\n      item.style.left = x+ \"px\";\n      item.style.top = y + \"px\";\n      item.style.border = \"1px solid green\";\n      item.id = Math.random();\n      if(text){\n      \titem.innerText = text;\n      }\n      return item;\n}\n\n\n\nfunction convertToSpan(e){\n\n\tlet value = e.target.value;\n    let x = e.target.style.left.split(\"px\")[0];\n    let y = e.target.style.top.split(\"px\")[0];\n    let span = create(\"span\", x,y ,value);\n    e.target.parentElement.appendChild(span);\n     span.style.width = e.target.style.width;\n      span.style.height = e.target.style.height;\n    span.style.border = e.target.style.border;\n    span.style.font =  getComputedStyle(e.target).font;\n    span.style.background = getComputedStyle(e.target).background;\n    span.style.padding = getComputedStyle(e.target).padding;\n    span.style.color = getComputedStyle(e.target).color;\n    e.target.remove();\n}\n\nlet target = e.target;\n\nif(e.button===0 && target.type!==\"text\"){\n  if(state.mode===\"Draw\"){\n\t\n      var div = create(\"div\", e.clientX, e.clientY);\n      var parent = e.target;\n      parent.appendChild(div);\n\n      state.divId = div.id;\n      state.origin = true;\n  }\n  if(state.mode===\"Text\"){\n\n      var x = e.clientX, y = e.clientY;\n      var input = create(\"input\", e.clientX, e.clientY);\n      input.type=\"text\";\n\t  var parent = e.target;\n      parent.appendChild(input);\n      input.addEventListener(\"keypress\", function(e){e.stopPropagation()})\n      input.addEventListener(\"mouseup\", function(e){e.stopImmediatePropagation()})\n      input.addEventListener(\"mouseleave\", convertToSpan)\n  }\n  if(state.mode===\"Select\"){\n\n      state.selected=!state.selected;\n      \n      target.classList.toggle(\"selectedForEdit\")\n\n  }\n}\n\ndelete window.eClientY;\ndelete window.eClientX;",
-            "publishes": []
-          }
-        ]
-      },
-      {
-        "name": "onMouseMove",
-        "index": 2,
-        "id": "canvas",
-        "reducers": [
-          {
-            "reducer": "if(state.mode===\"Draw\"){\n  if(state.origin){\n      var div= document.getElementById(state.divId);\n      var rect = div.getBoundingClientRect();\n      div.style.width = e.clientX - rect.left;\n      div.style.height = e.clientY - rect.top;\n  }\n}\n\nif(state.mode===\"Select\" && state.selected){\n\n  \te.target.style.cursor = \"move\";\n  \n\tvar rect = e.target.getBoundingClientRect();\n\n\twindow.eClientY = window.eClientY || e.clientY;\n\twindow.eClientX = window.eClientX || e.clientX;\n    \n    e.target.style.top = (-window.eClientY + e.clientY) + rect.top  + \"px\";\n    e.target.style.left = (-window.eClientX + e.clientX) + rect.left + \"px\";\n\n\t\n\twindow.eClientY = e.clientY;\n\twindow.eClientX = e.clientX;\n}",
-            "publishes": []
-          }
-        ]
-      },
-      {
-        "name": "onMouseUp",
-        "index": 3,
-        "id": "canvas",
-        "reducers": [
-          {
-            "reducer": "if(state.mode===\"Draw\"){\n\tif(e.button===0){\n\t\tstate.origin = false;\n\t}\n\n}\n\nif(state.mode===\"Select\" && state.selected){\n\n    state.selected=false;\n    e.target.style.cursor = \"\";\n    \n}\n",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onDrawFinish",
-                "publishCondition": "state.mode==='Draw' && e.button ===0"
-              },
-              {
-                "publishable": true,
-                "publishName": "onSelection",
-                "publishCondition": "state.mode===\"Select\""
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "name": "onMoveFinished",
-        "id": "Resizable",
-        "reducers": [
-          {
-            "reducer": "debugger;",
-            "publishes": []
-          }
-        ]
-      },
-      {
-        "id": "canvas",
-        "index": 5,
-        "name": "onMouseLeave",
-        "reducers": [
-          {
-            "reducer": "if(state.mode===\"Text\"){\n\n}",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onTextCreation",
-                "publishCondition": "state.mode===\"Text\""
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "state": "{\"style\":{\"cursor\":\"pointer\"},\"divs\":[],\"mode\":\"Draw\"}",
-    "style": ".canvasComponent{\n\theight:100vh;\n    width:100vw;\n    position: fixed;\n    background-color: black;\n\ttop: 0px;\n    left: 0px;\n    cursor: \"move\";\n}\n",
-    "children": [],
-    "id": 198,
-    "config": "{\"Resizable\":{\"override\":false}}",
-    "trueName": "Canvas"
-  },
-  {
     "name": "Resizable",
     "markup": "<div id=\"cover\">\n<div id=\"resizable\" style={state.style}>\n    <div class='resizer' id=\"topLeft\"></div>\n    <div class='resizer' id=\"topRight\"></div>\n    <div class='resizer' id=\"bottomLeft\"></div>\n    <div class='resizer' id=\"bottomRight\"></div>\n</div>\n</div>",
     "events": [
@@ -1318,12 +1224,102 @@ window.sampleComponents =[
         ]
       }
     ],
-    "state": "{\"style\":{\"position\":\"fixed\",\"top\":\"23px\",\"left\":\"185px\",\"height\":\"679px\",\"width\":\"591px\",\"border\":\"1px solid green\",\"cursor\":\"crosshair\"},\"Div\":[],\"mode\":\"Save\",\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"679px\",\"width\":\"591px\",\"top\":\"23px\",\"left\":\"185px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\"}],\"grabbing\":false,\"divId\":\"0.5586245701523267\",\"origin\":false}",
+    "state": "{\"style\":{\"position\":\"fixed\",\"top\":\"23px\",\"left\":\"185px\",\"height\":\"679px\",\"width\":\"591px\",\"border\":\"1px solid green\",\"cursor\":\"crosshair\"},\"Div\":[{\"style\":{\"position\":\"fixed\",\"top\":\"104px\",\"left\":\"394px\",\"height\":\"254px\",\"width\":\"268px\",\"borderWidth\":\"1px\",\"borderStyle\":\"solid\",\"borderColor\":\"green\",\"cursor\":\"grabbing\",\"border-width\":\"9px\",\"border-color\":\"#545496\",\"border-style\":\"dashed\"},\"Div\":[],\"mode\":\"Move\",\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"254px\",\"width\":\"268px\",\"top\":\"69px\",\"left\":\"369px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\",\"borderWidth\":\"9px\",\"borderColor\":\"#545496\",\"borderStyle\":\"dashed\"}],\"grabbing\":false}],\"mode\":\"Save\",\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"679px\",\"width\":\"591px\",\"top\":\"23px\",\"left\":\"185px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\"}],\"grabbing\":false,\"divId\":\"0.9794908078276479\",\"origin\":false}",
     "style": ".Div{\n    position: fixed;\n    background-color: black;\n    border: 1px solid red;\n\ttop: 25%;\n    left: 20%;\n    cursor: \"move\";\n}\n",
     "children": [],
     "id": 198,
     "config": "{\"Resizable\":{\"override\":false},\"Div\":{\"override\":true},\"Resizer\":{\"override\":true},\"PropertiesControl\":{\"override\":true}}",
     "trueName": "Div"
+  },
+  {
+    "name": "Input",
+    "markup": "<input type=\"text\" value=\"hello\"></input>",
+    "events": [],
+    "state": "{}",
+    "style": "",
+    "children": [],
+    "id": 604,
+    "config": "{}"
+  },
+  {
+    "name": "Button",
+    "markup": "<button></button>",
+    "events": [],
+    "state": "{}",
+    "style": "",
+    "children": [],
+    "id": 523,
+    "config": "{}"
+  },
+  {
+    "name": "Span",
+    "markup": "<span></span>",
+    "events": [],
+    "state": "{}",
+    "style": "",
+    "children": [],
+    "id": 245,
+    "config": "{}"
+  },
+  {
+    "name": "P",
+    "markup": "<p>sdf</p>",
+    "events": [],
+    "state": "{}",
+    "style": "",
+    "children": [],
+    "id": 787,
+    "config": "{}"
+  },
+  {
+    "name": "H1",
+    "markup": "<h1>hello</h1>",
+    "events": [],
+    "state": "{}",
+    "style": "",
+    "children": [],
+    "id": 293,
+    "config": "{}"
+  },
+  {
+    "name": "H2",
+    "markup": "<h2>Hello</h2>",
+    "events": [],
+    "state": "{}",
+    "style": "",
+    "children": [],
+    "id": 73,
+    "config": "{}"
+  },
+  {
+    "name": "H3",
+    "markup": "<h3>Hello</h3>",
+    "events": [],
+    "state": "{}",
+    "style": "",
+    "children": [],
+    "id": 260,
+    "config": "{}"
+  },
+  {
+    "name": "H4",
+    "markup": "<h4>Hello</h4>",
+    "events": [],
+    "state": "{}",
+    "style": "",
+    "children": [],
+    "id": 487,
+    "config": "{}"
+  },
+  {
+    "name": "H5",
+    "markup": "<h5>Hello</h5>",
+    "events": [],
+    "state": "{}",
+    "style": "",
+    "children": [],
+    "id": 875,
+    "config": "{}"
   }
 ]
 window.sampleFolders = [
@@ -1331,6 +1327,18 @@ window.sampleFolders = [
     "type": "noFolder",
     "name": "noFolder",
     "contents": [
+      {
+        "name": "Headings",
+        "contents": [
+          "H5",
+          "H4",
+          "H3",
+          "H2",
+          "H1"
+        ],
+        "type": "folder",
+        "status": "closed"
+      },
       {
         "name": "References",
         "contents": [
@@ -1344,7 +1352,11 @@ window.sampleFolders = [
       "Editor",
       "CanvasControls",
       "PropertiesControl",
-      "Div"
+      "Div",
+      "Input",
+      "Button",
+      "Span",
+      "P"
     ]
   }
 ]
