@@ -1,4 +1,4 @@
-import {writeData} from "../utilities/Storage";
+import {writeData, readData} from "../utilities/Storage";
 
 import {findParent} from "../utilities/Components/Folders/findFolders";
 
@@ -138,8 +138,10 @@ export function saveElement (element) {
 
 export function updateSelectedComponent ( componentName, e) {
 
+    let components = readData("ui-editor");
+
     // Find the element from state that matches the currently selected element.
-    let selectedComponent = this.state.components.find(component=>component.name===componentName);
+    let selectedComponent = components.find(component=>component.name===componentName);
 
     // Update the state with selectedElement.
     this.setState({
