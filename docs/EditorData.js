@@ -1069,7 +1069,7 @@ window.sampleComponents =[
         ]
       }
     ],
-    "state": "{\"style\":{\"position\":\"fixed\",\"top\":\"23px\",\"left\":\"185px\",\"height\":\"679px\",\"width\":\"591px\",\"border\":\"1px solid green\",\"cursor\":\"crosshair\"},\"Div\":[{\"style\":{\"position\":\"fixed\",\"top\":\"104px\",\"left\":\"394px\",\"height\":\"254px\",\"width\":\"268px\",\"borderWidth\":\"1px\",\"borderStyle\":\"solid\",\"borderColor\":\"green\",\"cursor\":\"grabbing\",\"border-width\":\"9px\",\"border-color\":\"#545496\",\"border-style\":\"dashed\"},\"Div\":[],\"mode\":\"Move\",\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"254px\",\"width\":\"268px\",\"top\":\"69px\",\"left\":\"369px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\",\"borderWidth\":\"9px\",\"borderColor\":\"#545496\",\"borderStyle\":\"dashed\"}],\"grabbing\":false}],\"mode\":\"Save\",\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"679px\",\"width\":\"591px\",\"top\":\"23px\",\"left\":\"185px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\"}],\"grabbing\":false,\"divId\":\"0.9794908078276479\",\"origin\":false}",
+    "state": "{\"style\":{\"position\":\"fixed\",\"top\":\"104px\",\"left\":\"394px\",\"height\":\"254px\",\"width\":\"268px\",\"borderWidth\":\"1px\",\"borderStyle\":\"solid\",\"borderColor\":\"green\",\"cursor\":\"crosshair\",\"border-width\":\"9px\",\"border-color\":\"#545496\",\"border-style\":\"dashed\"},\"Div\":[{\"style\":{\"position\":\"fixed\",\"top\":\"178px\",\"left\":\"452px\",\"height\":\"129px\",\"width\":\"135px\",\"borderWidth\":\"1px\",\"borderStyle\":\"solid\",\"borderColor\":\"green\"},\"Div\":[],\"mode\":\"Draw\",\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"254px\",\"width\":\"268px\",\"top\":\"69px\",\"left\":\"369px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\",\"borderWidth\":\"9px\",\"borderColor\":\"#545496\",\"borderStyle\":\"dashed\"}]}],\"mode\":\"Save\",\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"254px\",\"width\":\"268px\",\"top\":\"69px\",\"left\":\"369px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\",\"borderWidth\":\"9px\",\"borderColor\":\"#545496\",\"borderStyle\":\"dashed\"}],\"grabbing\":false,\"origin\":false}",
     "style": ".Div{\n    position: fixed;\n    background-color: black;\n    border: 1px solid red;\n\ttop: 25%;\n    left: 20%;\n    cursor: \"move\";\n}\n",
     "children": [],
     "id": 198,
@@ -1165,6 +1165,354 @@ window.sampleComponents =[
     "children": [],
     "id": 875,
     "config": "{}"
+  },
+  {
+    "name": "Editor",
+    "markup": "<div className=\"Div\" style={state.style} id=\"DivElement\">\n<select name=\"mode\" value={state.mode} id=\"mode\">\n  <option value=\"\"></option>\n  <option value=\"Load\">Load</option>\n  <option value=\"Save\">Save</option>\n  <option value=\"Edit\">Edit</option>\n</select>\n<select id=\"components\" value={state.changedComponent}>\n{state.components.map(name=><option>{name}</option>)}\n</select>\n<PropertiesControl></PropertiesControl><H5></H5>\n</div>",
+    "events": [
+      {
+        "name": "onMouseOver",
+        "index": 0,
+        "id": "DivElement",
+        "reducers": [
+          {
+            "reducer": "if(state.mode===\"Draw\"){\n\tstate.style.cursor = \"crosshair\";\n}\n\te.stopPropagation();\n\n",
+            "publishes": []
+          }
+        ]
+      },
+      {
+        "name": "onMouseDown",
+        "index": 1,
+        "id": "DivElement",
+        "reducers": [
+          {
+            "reducer": "function create(type, x, y, text){\n\t  var item = document.createElement(type);\n      item.style.position = \"fixed\";\n      item.style.left = x+ \"px\";\n      item.style.top = y + \"px\";\n      item.style['border-width'] = \"1px\";\n      item.style['border-color'] = \"green\";\n      item.style['border-style'] = \"solid\";\n      item.id = Math.random();\n      if(text){\n      \titem.innerText = text;\n      }\n      return item;\n}\n\nlet target = e.target;\n\nif(e.button===0 && target.type!==\"text\"){\n  if(state.mode===\"Draw\"){\n\t\n      var div = create(\"div\", e.clientX, e.clientY);\n      var parent = e.target;\n      parent.appendChild(div);\n\n      state.divId = div.id;\n      state.origin = true;\n  }\n}\n\nif(state.mode===\"Move\"){\n\tstate.style.cursor = \"grabbing\";\n    state.grabbing = true;\n}\ndelete window.eClientY;\ndelete window.eClientX;\n\te.stopPropagation()\n\n",
+            "publishes": []
+          }
+        ]
+      },
+      {
+        "name": "onMouseMove",
+        "index": 2,
+        "id": "DivElement",
+        "reducers": [
+          {
+            "reducer": "if(state.mode===\"Draw\"){\n  if(state.origin){\n      var div= document.getElementById(state.divId);\n      var rect = div.getBoundingClientRect();\n      div.style.width = e.clientX - rect.left;\n      div.style.height = e.clientY - rect.top;\n  }\n}\n\nif(\tstate.style.cursor == \"grabbing\" && state.grabbing) {\n\tvar rect = e.target.getBoundingClientRect();\n\t\n    window.eClientY = window.eClientY || e.clientY;\n\twindow.eClientX = window.eClientX || e.clientX;\n    \n    e.target.style.top = (-window.eClientY + e.clientY) + rect.top  + \"px\";\n    e.target.style.left = (-window.eClientX + e.clientX) + rect.left + \"px\";\n\n\twindow.eClientY = e.clientY;\n\twindow.eClientX = e.clientX;\n}\n\te.stopPropagation()\n\n\n\n",
+            "publishes": []
+          }
+        ]
+      },
+      {
+        "name": "onMouseUp",
+        "index": 3,
+        "id": "DivElement",
+        "reducers": [
+          {
+            "reducer": "if(state.mode===\"Draw\"){\n\tif(e.button===0){\n\t\tstate.origin = false;\n\t}\n\tlet createdDiv = document.getElementById(state.divId);\n    delete state.divId;\n    state.Div.push({\n    \tstyle: {\n          position: createdDiv.style.position,\n          top: createdDiv.style.top,\n          left: createdDiv.style.left,\n          height: createdDiv.style.height,\n          width: createdDiv.style.width,\n          borderWidth: createdDiv.style[\"border-width\"],\n          borderStyle: createdDiv.style[\"border-style\"],\n          borderColor: createdDiv.style[\"border-color\"]\n        },\n        Div: [],\n        mode:\"Draw\",\n        PropertiesControl:[state.PropertiesControl[0]]\n    })\n    createdDiv.remove();\n}\nif(state.mode===\"Move\"){\n\te.target.style.cursor = \"pointer\";\n    state.grabbing = false;\n\tstate.style.top = e.target.style.top;\n    state.style.left = e.target.style.left;\n}\n\nif(state.mode===\"Resize\"){\n\tstate.style.height = e.target.style.height;\n    state.style.width = e.target.style.width;\n}\n\n\te.stopPropagation()\n\n",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onDrawFinish",
+                "publishCondition": "state.mode==='Draw' && e.button ===0"
+              },
+              {
+                "publishable": true,
+                "publishName": "onMoveFinish",
+                "publishCondition": "state.mode===\"Move\""
+              },
+              {
+                "publishable": true,
+                "publishName": "onResizeFinish",
+                "publishCondition": "state.mode===\"Resize\""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Div",
+        "index": 4,
+        "name": "onDrawFinish",
+        "reducers": [
+          {
+            "reducer": "state.Div[e.index] = e.state;\n",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onDrawFinish",
+                "publishCondition": "true"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "mode",
+        "index": 5,
+        "name": "onMouseDown",
+        "reducers": [
+          {
+            "reducer": "e.stopPropagation();",
+            "publishes": []
+          }
+        ]
+      },
+      {
+        "id": "mode",
+        "index": 7,
+        "name": "onMouseUp",
+        "reducers": [
+          {
+            "reducer": "e.stopPropagation();",
+            "publishes": []
+          }
+        ]
+      },
+      {
+        "id": "Div",
+        "index": 8,
+        "name": "onMoveFinish",
+        "reducers": [
+          {
+            "reducer": "state.Div[e.index] = e.state;\n",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onMoveFinish",
+                "publishCondition": "true"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Div",
+        "index": 9,
+        "name": "onResizeFinish",
+        "reducers": [
+          {
+            "reducer": "state.Div[e.index] = e.state;\n",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onResizeFinish",
+                "publishCondition": "true"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Div",
+        "index": 10,
+        "name": "onDelete",
+        "reducers": [
+          {
+            "reducer": "state.Div.splice(e.index,1);\n",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onModeChange",
+                "publishCondition": "true"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "PropertiesControl",
+        "index": 11,
+        "name": "onHeightChange",
+        "reducers": [
+          {
+            "reducer": "state.style.height = e.state.height;\nstate.PropertiesControl[0].height = state.style.height;\n",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onStyleChange",
+                "publishCondition": "true"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "mode",
+        "index": 12,
+        "name": "onChange",
+        "reducers": [
+          {
+            "reducer": "state.mode = e.target.value;\n\nswitch(state.mode){\n    case \"Edit\":\n        state.PropertiesControl[0].style.display = \"block\";\n        state.PropertiesControl[0].style.top = \"0px\";\n        state.PropertiesControl[0].style.left = \"-170px\";\n        state.PropertiesControl[0].height = state.style.height;\n        state.PropertiesControl[0].width = state.style.width;\n        state.PropertiesControl[0].top = state.style.top;\n        state.PropertiesControl[0].left = state.style.left;\n        state.PropertiesControl[0].borderWidth = state.style.borderWidth;\n        break;\n    case \"Save\":\n        let index = components.findIndex(component=>component.name===\"Div\")\n        components[index].state = JSON.stringify(state);\n        localStorage.setItem(\"ui-editor\", JSON.stringify(components));\n        break;\n    case \"Load\":\n        state.components = [\"\",...components.map(component=>component.name)]\n        break;\n}",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onDelete",
+                "publishCondition": "state.mode === \"Delete\""
+              },
+              {
+                "publishable": true,
+                "publishName": "onModeChange",
+                "publishCondition": "state.mode !== \"Delete\""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Div",
+        "index": 13,
+        "name": "onStyleChange",
+        "reducers": [
+          {
+            "reducer": "state.Div[e.index] = e.state;\n",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onStyleChange",
+                "publishCondition": "true"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "PropertiesControl",
+        "index": 14,
+        "name": "onWidthChange",
+        "reducers": [
+          {
+            "reducer": "state.style.width = e.state.width;\nstate.PropertiesControl[0].width = state.style.width;\n",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onStyleChange",
+                "publishCondition": "true"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "PropertiesControl",
+        "index": 15,
+        "name": "onTopChange",
+        "reducers": [
+          {
+            "reducer": "state.style.top = e.state.top;\nstate.PropertiesControl[0].top = state.style.top;\n",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onStyleChange",
+                "publishCondition": "true"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "PropertiesControl",
+        "index": 16,
+        "name": "onLeftChange",
+        "reducers": [
+          {
+            "reducer": "state.style.left = e.state.left;\nstate.PropertiesControl[0].left = state.style.left;\n",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onStyleChange",
+                "publishCondition": "true"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "PropertiesControl",
+        "index": 17,
+        "name": "onBorderWidthChange",
+        "reducers": [
+          {
+            "reducer": "state.style['border-width'] = e.state.borderWidth;\nstate.PropertiesControl[0].borderWidth = state.style['border-width'];\n",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onStyleChange",
+                "publishCondition": "true"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Div",
+        "index": 18,
+        "name": "onModeChange",
+        "reducers": [
+          {
+            "reducer": "state.Div[e.index] = e.state;\n",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onModeChange",
+                "publishCondition": "true"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "PropertiesControl",
+        "index": 18,
+        "name": "onBorderColorChange",
+        "reducers": [
+          {
+            "reducer": "state.style['border-color'] = e.state.borderColor;\nstate.PropertiesControl[0].borderColor = state.style['border-color'];\n",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onStyleChange",
+                "publishCondition": "true"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "PropertiesControl",
+        "index": 19,
+        "name": "onBorderStyleChange",
+        "reducers": [
+          {
+            "reducer": "state.style['border-style'] = e.state.borderStyle;\nstate.PropertiesControl[0].borderStyle = state.style['border-style'];\n",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onStyleChange",
+                "publishCondition": "true"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "components",
+        "index": 20,
+        "name": "onChange",
+        "reducers": [
+          {
+            "reducer": "debugger;\nlet changedComponent = e.target.value;\nif(changedComponent && !state.changedComponent){\n    components[14].markup = components[14].markup.replace(`<PropertiesControl></PropertiesControl>`,`<PropertiesControl></PropertiesControl><${changedComponent}></${changedComponent}>`)\n}\nelse if(state.changedComponent){\n\tcomponents[14].markup = components[14].markup.replace(`<PropertiesControl></PropertiesControl><${state.changedComponent}></${state.changedComponent}>`,`<PropertiesControl></PropertiesControl><${changedComponent}></${changedComponent}>`)\n}\nstate.changedComponent = changedComponent;\ncomponents[14].state = JSON.stringify(state);\nlocalStorage.setItem(\"ui-editor\",JSON.stringify(components));",
+            "publishes": []
+          }
+        ]
+      }
+    ],
+    "state": "{\"style\":{\"position\":\"fixed\",\"top\":\"23px\",\"left\":\"185px\",\"height\":\"679px\",\"width\":\"591px\",\"border\":\"1px solid green\",\"cursor\":\"crosshair\"},\"selectedComponent\":\"\",\"mode\":\"Load\",\"components\":[\"\",\"Resizable\",\"Movable\",\"CanvasControls\",\"PropertiesControl\",\"Div\",\"Input\",\"Button\",\"Span\",\"P\",\"H1\",\"H2\",\"H3\",\"H4\",\"H5\",\"Editor\"],\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"679px\",\"width\":\"591px\",\"top\":\"23px\",\"left\":\"185px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\"}],\"grabbing\":false,\"divId\":\"0.9794908078276479\",\"origin\":false,\"changedComponent\":\"H5\"}",
+    "style": ".Div{\n    position: fixed;\n    background-color: black;\n    border: 1px solid red;\n\ttop: 25%;\n    left: 20%;\n    cursor: \"move\";\n}\n",
+    "children": [],
+    "id": 198,
+    "config": "{\"Resizable\":{\"override\":false},\"Div\":{\"override\":false},\"Resizer\":{\"override\":true},\"PropertiesControl\":{\"override\":true}}",
+    "trueName": "Editor"
   }
 ]
 window.sampleFolders = [
@@ -1199,7 +1547,8 @@ window.sampleFolders = [
       "Input",
       "Button",
       "Span",
-      "P"
+      "P",
+      "Editor"
     ]
   }
 ]
