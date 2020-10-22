@@ -138,7 +138,6 @@ export function saveElement (element) {
 
 export function updateSelectedComponent ( componentName, e) {
 
-    let components = readData("ui-editor");
 
     // Find the element from state that matches the currently selected element.
     let selectedComponent = components.find(component=>component.name===componentName);

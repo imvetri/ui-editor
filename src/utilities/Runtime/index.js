@@ -41,15 +41,15 @@ function checkNestedComponents(markup) {
     return components.filter(component => markup.includes(component.name)).length > 0;
 }
 
-let visited = {};
+window.visited = {};
 
 /**Used to detect calls that can happen because of recursive components */
 function componentVisited(componentName) {
-    if(visited[componentName]){
+    if(window.visited[componentName]){
         return true
     }
     else {
-        visited[componentName] = true;
+        window.visited[componentName] = true;
         return false;
     }
 }
