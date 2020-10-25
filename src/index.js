@@ -72,6 +72,13 @@ class Index extends Component {
             }
         }.bind(this);
 
+        window.refreshComponents = this.refreshComponents.bind(this);
+    }
+
+    refreshComponents() {
+        this.setState({
+            components: window.components
+        })
     }
 
     updateFolders(folders) {
@@ -88,6 +95,7 @@ class Index extends Component {
     }
 
     openExportTab(e){
+        window.visited = {};
         let nestedComponents = getNestedComponents(this.state.selectedComponent)
         console.log(nestedComponents.map(convertToReact).join("\n\n"))
     }

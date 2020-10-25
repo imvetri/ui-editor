@@ -10,6 +10,7 @@ export function getNodeTree(element, jsx, style, state, events) {
     
     let result, error;
     try{
+        window.visited = {}
         let nestedComponents = getNestedComponents(element);
         if (nestedComponents.length > 0) {
             saveComponentsToWindow(nestedComponents);

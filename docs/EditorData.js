@@ -1168,7 +1168,7 @@ window.sampleComponents =[
   },
   {
     "name": "Editor",
-    "markup": "<div className=\"Div\" style={state.style} id=\"DivElement\">\n<select name=\"mode\" value={state.mode} id=\"mode\">\n  <option value=\"\"></option>\n  <option value=\"Load\">Load</option>\n  <option value=\"Save\">Save</option>\n  <option value=\"Edit\">Edit</option>\n</select>\n<select id=\"components\" value={state.changedComponent}>\n{state.components.map(name=><option>{name}</option>)}\n</select>\n<PropertiesControl></PropertiesControl><H5></H5>\n</div>",
+    "markup": "<div className=\"Div\" style={state.style} id=\"DivElement\">\n<select name=\"mode\" value={state.mode} id=\"mode\">\n  <option value=\"\"></option>\n  <option value=\"Load\">Load</option>\n  <option value=\"Save\">Save</option>\n  <option value=\"Edit\">Edit</option>\n</select>\n<select id=\"components\" value={state.changedComponent}>\n{state.components.map(name=><option>{name}</option>)}\n</select>\n<PropertiesControl></PropertiesControl>\n</div>",
     "events": [
       {
         "name": "onMouseOver",
@@ -1501,13 +1501,13 @@ window.sampleComponents =[
         "name": "onChange",
         "reducers": [
           {
-            "reducer": "debugger;\nlet changedComponent = e.target.value;\nif(changedComponent && !state.changedComponent){\n    components[14].markup = components[14].markup.replace(`<PropertiesControl></PropertiesControl>`,`<PropertiesControl></PropertiesControl><${changedComponent}></${changedComponent}>`)\n}\nelse if(state.changedComponent){\n\tcomponents[14].markup = components[14].markup.replace(`<PropertiesControl></PropertiesControl><${state.changedComponent}></${state.changedComponent}>`,`<PropertiesControl></PropertiesControl><${changedComponent}></${changedComponent}>`)\n}\nstate.changedComponent = changedComponent;\ncomponents[14].state = JSON.stringify(state);\nlocalStorage.setItem(\"ui-editor\",JSON.stringify(components));",
+            "reducer": "debugger;\nlet changedComponent = e.target.value;\nif(changedComponent && !state.changedComponent){\n    components[14].markup = components[14].markup.replace(`<PropertiesControl></PropertiesControl>`,`<PropertiesControl></PropertiesControl><${changedComponent}></${changedComponent}>`)\n}\nelse if(state.changedComponent){\n\tcomponents[14].markup = components[14].markup.replace(`<PropertiesControl></PropertiesControl><${state.changedComponent}></${state.changedComponent}>`,`<PropertiesControl></PropertiesControl><${changedComponent}></${changedComponent}>`)\n}\nstate.changedComponent = changedComponent;\ncomponents[14].state = JSON.stringify(state);\ncomponents.forEach(component=>delete window[component.name]);\nwindow.refreshComponents();",
             "publishes": []
           }
         ]
       }
     ],
-    "state": "{\"style\":{\"position\":\"fixed\",\"top\":\"23px\",\"left\":\"185px\",\"height\":\"679px\",\"width\":\"591px\",\"border\":\"1px solid green\",\"cursor\":\"crosshair\"},\"selectedComponent\":\"\",\"mode\":\"Load\",\"components\":[\"\",\"Resizable\",\"Movable\",\"CanvasControls\",\"PropertiesControl\",\"Div\",\"Input\",\"Button\",\"Span\",\"P\",\"H1\",\"H2\",\"H3\",\"H4\",\"H5\",\"Editor\"],\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"679px\",\"width\":\"591px\",\"top\":\"23px\",\"left\":\"185px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\"}],\"grabbing\":false,\"divId\":\"0.9794908078276479\",\"origin\":false,\"changedComponent\":\"H5\"}",
+    "state": "{\"style\":{\"position\":\"fixed\",\"top\":\"23px\",\"left\":\"185px\",\"height\":\"679px\",\"width\":\"591px\",\"border\":\"1px solid green\",\"cursor\":\"crosshair\"},\"selectedComponent\":\"\",\"mode\":\"\",\"components\":[\"\",\"Resizable\",\"Movable\",\"CanvasControls\",\"PropertiesControl\",\"Div\",\"Input\",\"Button\",\"Span\",\"P\",\"H1\",\"H2\",\"H3\",\"H4\",\"H5\",\"Editor\"],\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"679px\",\"width\":\"591px\",\"top\":\"23px\",\"left\":\"185px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\"}],\"grabbing\":false,\"divId\":\"0.9794908078276479\",\"origin\":false,\"changedComponent\":\"\"}",
     "style": ".Div{\n    position: fixed;\n    background-color: black;\n    border: 1px solid red;\n\ttop: 25%;\n    left: 20%;\n    cursor: \"move\";\n}\n",
     "children": [],
     "id": 198,

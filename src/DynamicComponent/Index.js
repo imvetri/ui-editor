@@ -20,17 +20,18 @@ class DynamicComponent extends Component {
 
     render() {
 
-        if(!window[this.state.component.name]){
-            let nestedComponents = getNestedComponents(this.state.component);
+        if(!window[this.props.component.name]){
+            window.visited = {};
+            let nestedComponents = getNestedComponents(this.props.component);
             if (nestedComponents.length > 0) {
                 saveComponentsToWindow(nestedComponents);
             }
         }
 
-        if(!window[this.state.component.name]){
+        if(!window[this.props.component.name]){
             return null
         }
-        return React.createElement( window[this.state.component.name] );
+        return React.createElement( window[this.props.component.name] );
     }
 
 }
