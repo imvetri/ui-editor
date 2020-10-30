@@ -33,6 +33,5 @@ npm start
 ```
 
 
-### References
 
-https://docs.unity3d.com/Packages/com.unity.ui.builder@1.0/manual/index.html
+
