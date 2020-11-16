@@ -24,6 +24,14 @@
         this.props.onEventsUpdate(element.events);
     }
 
+    function highlightItem(id){
+        let alreadyExists = document.querySelector(".selectedItem");
+        if(alreadyExists){
+            alreadyExists.classList.remove("selectedItem")
+        }
+        document.getElementById(id).classList.add("selectedItem")
+    }
+
     export function selectedTagChanged(e) {
         let selectedTag = e.currentTarget.value;
         let eventID = "";
@@ -33,6 +41,12 @@
         else{
             eventID = selectedTag.split("-")[1];
         }
+
+        /**
+         * Highlight the selected in the preview
+         */
+
+        highlightItem(eventID);
 
         this.setState({
             selectedTag: e.currentTarget.value,
