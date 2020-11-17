@@ -24,12 +24,18 @@
         this.props.onEventsUpdate(element.events);
     }
 
+    /**
+     * 
+     * @param {string} id 
+     * Checks whether the passed id element exists in the document tree and then it toggles seletedItem class
+     * 
+     */
+
     function highlightItem(id){
         let alreadyExists = document.querySelector(".selectedItem");
         if(alreadyExists){
-            alreadyExists.classList.remove("selectedItem")
+            alreadyExists.classList.toggle("selectedItem")
         }
-        document.getElementById(id).classList.add("selectedItem")
     }
 
     export function selectedTagChanged(e) {

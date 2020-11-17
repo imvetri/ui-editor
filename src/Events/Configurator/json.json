@@ -1,4 +1,4 @@
-window.sampleComponents = [
+[
   {
     "name": "Resizable",
     "markup": "<div id=\"cover\">\n<div id=\"resizable\" style={state.style}>\n    <div class='resizer' id=\"topLeft\"></div>\n    <div class='resizer' id=\"topRight\"></div>\n    <div class='resizer' id=\"bottomLeft\"></div>\n    <div class='resizer' id=\"bottomRight\"></div>\n</div>\n</div>",
@@ -1073,7 +1073,7 @@ window.sampleComponents = [
     "style": ".Div{\n    position: fixed;\n    background-color: black;\n    border: 1px solid red;\n\ttop: 25%;\n    left: 20%;\n    cursor: \"move\";\n}\n",
     "children": [],
     "id": 198,
-    "config": "{\"Resizable\":{\"override\":false,\"overrideEvents\":false},\"Div\":{\"override\":true,\"overrideEvents\":false},\"Resizer\":{\"override\":true,\"overrideEvents\":false},\"PropertiesControl\":{\"override\":true,\"overrideEvents\":false}}",
+    "config": "{\"Resizable\":{\"override\":false},\"Div\":{\"override\":true},\"Resizer\":{\"override\":true},\"PropertiesControl\":{\"override\":true}}",
     "trueName": "Div"
   },
   {
@@ -1522,44 +1522,7 @@ window.sampleComponents = [
     "style": ".Div{\n    position: fixed;\n    background-color: black;\n    border: 1px solid red;\n\ttop: 25%;\n    left: 20%;\n    cursor: \"move\";\n}\n",
     "children": [],
     "id": 198,
-    "config": "{\"Resizable\":{\"override\":false,\"overrideEvents\":false},\"Div\":{\"override\":false,\"overrideEvents\":false},\"Resizer\":{\"override\":true,\"overrideEvents\":false},\"PropertiesControl\":{\"override\":true,\"overrideEvents\":false}}",
+    "config": "{\"Resizable\":{\"override\":false},\"Div\":{\"override\":false},\"Resizer\":{\"override\":true},\"PropertiesControl\":{\"override\":true}}",
     "trueName": "Editor"
-  }
-]
-window.sampleFolders = [
-  {
-    "type": "noFolder",
-    "name": "noFolder",
-    "contents": [
-      {
-        "name": "Headings",
-        "contents": [
-          "H5",
-          "H4",
-          "H3",
-          "H2",
-          "H1"
-        ],
-        "type": "folder",
-        "status": "closed"
-      },
-      {
-        "name": "References",
-        "contents": [
-          "Movable",
-          "Resizable"
-        ],
-        "type": "folder",
-        "status": "closed"
-      },
-      "CanvasControls",
-      "PropertiesControl",
-      "Div",
-      "Input",
-      "Button",
-      "Span",
-      "P",
-      "Editor"
-    ]
   }
 ]

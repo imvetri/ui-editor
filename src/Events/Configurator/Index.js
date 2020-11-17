@@ -9,10 +9,11 @@ class Configurator extends Component {
     constructor(props) {
         super(props);
 
-        let config = JSON.parse(this.props.parent.config)[this.props.childName] || { override: false}
+        let config = JSON.parse(this.props.parent.config)[this.props.childName] || { override: false, overrideEvents: false}
         
         this.state = {
             override: config.override,
+            overrideEvents: config.overrideEvents
         }
     }
 
@@ -23,17 +24,23 @@ class Configurator extends Component {
 
         this.props.onChange({
             config: {
-                override: !this.state.override
+                override: !this.state.override,
+                overrideEvents: this.state.overrideEvents
             },
             childName: this.props.childName,
             parentName: this.props.parent.name
         });
     }
 
-    saveConfig(){
+    toggelOverrideEvents(){
+        this.setState({
+            overrideEvents: !this.state.overrideEvents
+        })
+
         this.props.onChange({
             config: {
                 override: this.state.override,
+                overrideEvents: !this.state.overrideEvents
             },
             childName: this.props.childName,
             parentName: this.props.parent.name
@@ -49,6 +56,10 @@ class Configurator extends Component {
                 <div className="spacing">
                     <label>Override state</label>
                     <input type="checkbox" onChange={this.toggelOverride.bind(this)} checked={this.state.override ? "checked" : ""} />
+                </div>
+                <div className="spacing">
+                    <label>Override events</label>
+                    <input type="checkbox" onChange={this.toggelOverrideEvents.bind(this)} checked={this.state.overrideEvents ? "checked" : ""} />
                 </div>
             </div>
 
