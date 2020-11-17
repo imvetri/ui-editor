@@ -2,3 +2,11 @@
     color: red;
 }
 
+.tags {
+    height: 300px;
+    overflow: scroll;
+}
+
+.selectedItem.selectedItem {
+    outline: 1px solid green;
+}
