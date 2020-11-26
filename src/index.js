@@ -104,9 +104,10 @@ class Index extends Component {
         
         if(e.target.classList.contains("component") || e.target.classList.contains("componentName")) { // check if it is a component.
             this.state.contextMenuChildren = <ul className="contextMenuOptions">
-                <li onClick={onDeleteComponent.bind(this)}>Delete Component</li>
-                <li onClick={this.openExportTab.bind(this)}>Export Component</li>
-                <li onClick={onExtendComponent.bind(this)}>Extend Component</li>
+                <li onClick={onDeleteComponent.bind(this)}><i className="fas fa-trash"></i>Delete</li>
+                <li onClick={this.openExportTab.bind(this)}><i className="fas fa-file-export"></i>Export</li>
+                <li onClick={onExtendComponent.bind(this)}><i className="fas fa-copy"></i>Extend</li>
+                <li><i className="fas fa-edit"></i>Rename</li>
             </ul>;
         }
         else if(e.target.classList.contains("fa-folder-open") || e.target.classList.contains("fa-folder")) {// check if it is a folder.
