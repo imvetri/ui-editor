@@ -52,9 +52,12 @@ class Editor extends Component {
         // TODO: Should pass the current data. Instead of accessing it from global
         return (
             <div className="container editor-tab">
-                <button onClick={this.saveElement.bind(this)} id="save"><i className="fas fa-save"></i>Save & close</button>    
+                <button onClick={this.saveElement.bind(this)} id="save"><i className="fas fa-save"></i>Save & close</button>   
+                <div className="name">
+                        <label className="title">Name</label>
+                        <input type="text" placeholder="Enter element name" value={this.state.name} onChange={this.saveName.bind(this)} id="elementName"/>
+                </div> 
                 <div>
-                    
                     <div className="editor markup">
                         <div className="title">Component Markup</div>
                         <CodeMirror

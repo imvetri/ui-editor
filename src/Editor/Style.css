@@ -47,3 +47,9 @@ input.folder:read-only {
 .editor.state{
     width:39%;
 }
+
+.editor-tab .name input{
+    vertical-align: baseline;
+}.editor-tab .name {
+    padding: 5px;
+}
