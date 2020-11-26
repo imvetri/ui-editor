@@ -45,21 +45,15 @@ class Editor extends Component {
     }
 
     render() {
-
-        let name= this.state.name;
         let markup= this.state.markup;
         let style= this.state.style;
-        let state= this.state.state;
+        let state= JSON.stringify(JSON.parse(this.state.state), null , '    ');
 
         // TODO: Should pass the current data. Instead of accessing it from global
         return (
             <div className="container editor-tab">
                 <button onClick={this.saveElement.bind(this)} id="save"><i className="fas fa-save"></i>Save & close</button>    
                 <div>
-                    <div className="editor name">
-                        <div className="title">Component Name</div>
-                        <input type="text" placeholder="Enter element name" value={this.state.name} onChange={this.saveName.bind(this)} id="elementName"/>
-                    </div>
                     
                     <div className="editor markup">
                         <div className="title">Component Markup</div>

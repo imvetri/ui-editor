@@ -32,13 +32,18 @@ input.folder:read-only {
     margin-bottom:30px;
 }
 
-.editor.name{
-    width:10%;
-}
-
 .editor{
-    width: 29%;
     display: inline-block;
     margin: 5px;
     margin-top: 2px;
+}
+
+.editor.markup{
+    width:39%;
+}
+.editor.css{
+    width:18%;
+}
+.editor.state{
+    width:39%;
 }
