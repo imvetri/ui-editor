@@ -7,8 +7,12 @@
     z-index: 10000000;
 }
 .contextMenuOptions li {
-    padding: 15px;
+    padding: 8px;
     user-select: none;
+}
+
+.contextMenuOptions li i {
+    padding-right: 8px;
 }
 
 .contextMenuOptions{
