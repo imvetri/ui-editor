@@ -47,7 +47,13 @@ class Editor extends Component {
     render() {
         let markup= this.state.markup;
         let style= this.state.style;
-        let state= JSON.stringify(JSON.parse(this.state.state), null , '    ');
+        let state = this.state.state;
+        if(typeof JSON.parse(this.state.state) ==="object"){
+            state= JSON.stringify(JSON.parse(this.state.state), null , '    ');
+        }
+        else {
+            state = this.state.state
+        }
 
         // TODO: Should pass the current data. Instead of accessing it from global
         return (
