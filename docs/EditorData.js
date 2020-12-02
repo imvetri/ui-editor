@@ -741,7 +741,7 @@ window.sampleComponents =[
   },
   {
     "name": "Div",
-    "markup": "<div className=\"Div\" style={state.style} id=\"DivElement\">\n    <select name=\"mode\" value={state.mode} id=\"mode\">\n        <optgroup label=\"Tools\">\n            <option value=\"Draw\">Draw</option>\n            <option value=\"Move\">Move</option>\n            <option value=\"Resize\">Resize</option>\n            <option value=\"Delete\">Delete</option>\n            <option value=\"Save\">Save</option>\n            <option value=\"Edit\">Edit</option>\n            <option value=\"Load\">Load</option>\n        </optgroup>        \n        <optgroup label=\"Elements\">\n            {state.elements.map(element=><option value={element}>{element}</option>)}\n        </optgroup>\n\n    </select>\n    <PropertiesControl></PropertiesControl>\n    <H4></H4>\n</div>",
+    "markup": "<div className=\"Div\" style={state.style} id=\"DivElement\">\n    <select name=\"mode\" value={state.mode} id=\"mode\">\n        <optgroup label=\"Tools\">\n            <option value=\"Draw\">Draw</option>\n            <option value=\"Move\">Move</option>\n            <option value=\"Resize\">Resize</option>\n            <option value=\"Delete\">Delete</option>\n            <option value=\"Save\">Save</option>\n            <option value=\"Edit\">Edit</option>\n            <option value=\"Load\">Load</option>\n        </optgroup>        \n        <optgroup label=\"Elements\">\n            {state.elements.map(element=><option value={element}>{element}</option>)}\n        </optgroup>\n\n    </select>\n    <PropertiesControl></PropertiesControl>\n    <Div></Div>\n</div>",
     "events": [
       {
         "name": "onMouseOver",
@@ -916,7 +916,7 @@ window.sampleComponents =[
         "name": "onChange",
         "reducers": [
           {
-            "reducer": "state.mode = e.target.value;\nif(state.mode === \"Resize\"){\n\tstate.style.resize = \"both\";\n    state.style.overflow = \"auto\";\n} else {\n  delete state.style.resize;\n  delete state.style.overflow;\n} if( state.mode===\"Edit\"){ \n  state.PropertiesControl[0].style.display = \"block\";\n  state.PropertiesControl[0].style.top = \"0px\";\n  state.PropertiesControl[0].style.left = \"-170px\";\n  state.PropertiesControl[0].height = state.style.height;\n  state.PropertiesControl[0].width = state.style.width;\n  state.PropertiesControl[0].top = state.style.top;\n  state.PropertiesControl[0].left = state.style.left;\n  state.PropertiesControl[0].borderWidth = state.style.borderWidth;\n} else {\n  state.PropertiesControl[0].style.display = \"none\";\n} if (state.mode===\"Save\"){ \n  let index = components.findIndex(component=>component.name===\"Div\")\n  components[index].state = JSON.stringify(state);\n  localStorage.setItem(\"ui-editor\", JSON.stringify(components));\n} if (state.mode===\"Load\"){ \n  state.elements = components.map(component=>component.name)\n}\n\ndebugger;\nif(![\"Load\",\"Save\",\"Draw\", \"Move\", \"Resize\", \"Delete\", \"Edit\"].includes(state.mode)){\n  let index = components.findIndex(component=>component.name===\"Div\");\n  components[index].markup = components[index].markup.replace(`<${state.currentElement}></${state.currentElement}>`,`<${state.mode}></${state.mode}>`); \n  state.currentElement = state.mode;\n  components[index].state = JSON.stringify(state)\n  localStorage.setItem(\"ui-editor\", JSON.stringify(components));\n  window.refreshComponents()\n}\n",
+            "reducer": "state.mode = e.target.value;\nif(state.mode === \"Resize\"){\n\tstate.style.resize = \"both\";\n    state.style.overflow = \"auto\";\n} else {\n  delete state.style.resize;\n  delete state.style.overflow;\n} if( state.mode===\"Edit\"){ \n  state.PropertiesControl[0].style.display = \"block\";\n  state.PropertiesControl[0].style.top = \"0px\";\n  state.PropertiesControl[0].style.left = \"-170px\";\n  state.PropertiesControl[0].height = state.style.height;\n  state.PropertiesControl[0].width = state.style.width;\n  state.PropertiesControl[0].top = state.style.top;\n  state.PropertiesControl[0].left = state.style.left;\n  state.PropertiesControl[0].borderWidth = state.style.borderWidth;\n} else {\n  state.PropertiesControl[0].style.display = \"none\";\n} if (state.mode===\"Save\"){ \n  let index = components.findIndex(component=>component.name===\"Div\")\n  components[index].state = JSON.stringify(state);\n  localStorage.setItem(\"ui-editor\", JSON.stringify(components));\n} if (state.mode===\"Load\"){ \n  state.elements = components.map(component=>component.name)\n}",
             "publishes": [
               {
                 "publishable": true,
@@ -1069,7 +1069,7 @@ window.sampleComponents =[
         ]
       }
     ],
-    "state": "{\"style\":{\"position\":\"fixed\",\"top\":\"104px\",\"left\":\"394px\",\"height\":\"254px\",\"width\":\"268px\",\"borderWidth\":\"1px\",\"borderStyle\":\"solid\",\"borderColor\":\"green\",\"cursor\":\"crosshair\",\"border-width\":\"9px\",\"border-color\":\"#545496\",\"border-style\":\"dashed\"},\"Div\":[],\"mode\":\"H4\",\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"254px\",\"width\":\"268px\",\"top\":\"104px\",\"left\":\"394px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\",\"borderWidth\":\"1px\",\"borderColor\":\"#545496\",\"borderStyle\":\"dashed\"}],\"grabbing\":false,\"origin\":false,\"elements\":[\"Resizable\",\"Movable\",\"CanvasControls\",\"PropertiesControl\",\"Div\",\"Input\",\"Button\",\"Span\",\"P\",\"H1\",\"H2\",\"H3\",\"H4\",\"H5\",\"Editor\"],\"currentElement\":\"H4\"}",
+    "state": "{\"style\":{\"position\":\"fixed\",\"top\":\"104px\",\"left\":\"394px\",\"height\":\"254px\",\"width\":\"268px\",\"borderWidth\":\"1px\",\"borderStyle\":\"solid\",\"borderColor\":\"green\",\"cursor\":\"crosshair\",\"border-width\":\"9px\",\"border-color\":\"#545496\",\"border-style\":\"dashed\"},\"Div\":[],\"mode\":\"Save\",\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"254px\",\"width\":\"268px\",\"top\":\"104px\",\"left\":\"394px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\",\"borderWidth\":\"1px\",\"borderColor\":\"#545496\",\"borderStyle\":\"dashed\"}],\"grabbing\":false,\"origin\":false,\"elements\":[]}",
     "style": ".Div{\n    position: fixed;\n    background-color: black;\n    border: 1px solid red;\n\ttop: 25%;\n    left: 20%;\n    cursor: \"move\";\n}\n",
     "children": [],
     "id": 198,
@@ -1130,7 +1130,7 @@ window.sampleComponents =[
     "name": "H2",
     "markup": "<h2>Hello</h2>",
     "events": [],
-    "state": "{\"style\":{\"position\":\"fixed\",\"top\":\"104px\",\"left\":\"394px\",\"height\":\"254px\",\"width\":\"268px\",\"borderWidth\":\"1px\",\"borderStyle\":\"solid\",\"borderColor\":\"green\",\"cursor\":\"crosshair\",\"border-width\":\"9px\",\"border-color\":\"#545496\",\"border-style\":\"dashed\"},\"Div\":[],\"mode\":\"Button\",\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"254px\",\"width\":\"268px\",\"top\":\"104px\",\"left\":\"394px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\",\"borderWidth\":\"1px\",\"borderColor\":\"#545496\",\"borderStyle\":\"dashed\"}],\"grabbing\":false,\"origin\":false,\"elements\":[\"Resizable\",\"Movable\",\"CanvasControls\",\"PropertiesControl\",\"Div\",\"Input\",\"Button\",\"Span\",\"P\",\"H1\",\"H2\",\"H3\",\"H4\",\"H5\",\"Editor\"],\"currentElement\":\"Button\"}",
+    "state": "{}",
     "style": "",
     "children": [],
     "id": 73,
@@ -1507,12 +1507,76 @@ window.sampleComponents =[
         ]
       }
     ],
-    "state": "{\"style\":{\"position\":\"fixed\",\"top\":\"23px\",\"left\":\"185px\",\"height\":\"679px\",\"width\":\"591px\",\"border\":\"1px solid green\",\"cursor\":\"crosshair\"},\"selectedComponent\":\"\",\"mode\":\"\",\"components\":[\"\",\"Resizable\",\"Movable\",\"CanvasControls\",\"PropertiesControl\",\"Div\",\"Input\",\"Button\",\"Span\",\"P\",\"H1\",\"H2\",\"H3\",\"H4\",\"H5\",\"Editor\"],\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"679px\",\"width\":\"591px\",\"top\":\"23px\",\"left\":\"185px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\"}],\"grabbing\":false,\"divId\":\"0.9794908078276479\",\"origin\":false,\"changedComponent\":\"\"}",
+    "state": "{\n    \"style\": {\n        \"position\": \"fixed\",\n        \"top\": \"23px\",\n        \"left\": \"185px\",\n        \"height\": \"679px\",\n        \"width\": \"591px\",\n        \"border\": \"1px solid green\",\n        \"cursor\": \"crosshair\"\n    },\n    \"selectedComponent\": \"\",\n    \"mode\": \"\",\n    \"components\": [\n        \"\",\n        \"Resizable\",\n        \"Movable\",\n        \"CanvasControls\",\n        \"PropertiesControl\",\n        \"Div\",\n        \"Input\",\n        \"Button\",\n        \"Span\",\n        \"P\",\n        \"H1\",\n        \"H2\",\n        \"H3\",\n        \"H4\",\n        \"H5\",\n        \"Editor\"\n    ],\n    \"PropertiesControl\": [\n        {\n            \"style\": {\n                \"top\": \"0px\",\n                \"left\": \"-170px\",\n                \"position\": \"absolute\",\n                \"display\": \"none\"\n            },\n            \"id\": \"containement\",\n            \"class\": \"black setup\",\n            \"height\": \"679px\",\n            \"width\": \"591px\",\n            \"top\": \"23px\",\n            \"left\": \"185px\",\n            \"color\": \"#874a4a\",\n            \"space\": \"100px\",\n            \"fontSize\": \"10px\"\n        }\n    ],\n    \"grabbing\": false,\n    \"divId\": \"0.9794908078276479\",\n    \"origin\": false,\n    \"changedComponent\": \"\"\n}",
     "style": ".Div{\n    position: fixed;\n    background-color: black;\n    border: 1px solid red;\n\ttop: 25%;\n    left: 20%;\n    cursor: \"move\";\n}\n",
     "children": [],
     "id": 198,
     "config": "{\"Resizable\":{\"override\":false},\"Div\":{\"override\":false},\"Resizer\":{\"override\":true},\"PropertiesControl\":{\"override\":true}}",
     "trueName": "Editor"
+  },
+  {
+    "name": "CanvasControl",
+    "markup": "<div id=\"menu\" style={state.style}>\n    <div id=\"history-control\">\n        <div className={state.undo}>\n            <i className=\"fa fa-undo\"></i>\n            <span>Undo</span>\n\t\t</div>\n        <div className={state.redo}>\n\t\t\t<i className=\"fa fa-redo\"></i>\n        \t<span>Redo</span>\n\t\t</div>\n    </div>\n    <div id=\"content-control\">\n        <div className={state.draw}>\n            <i className=\"fa fa-edit\"></i>\n        \t<span>Draw</span>\n        </div>\n        <div className={state.text}>\n            <i className=\"fa fa-font\"></i>\n        \t<span>Text</span>\n        </div>\n        <div className={state.image}>\n            <i className=\"fas fa-image\"></i>\n        \t<span>Image</span>\n        </div>\n    </div>\n    <div id=\"edit-control\">\n        <div className={state.edit}>\n            <i className=\"fa fa-edit\"></i>\n        \t<span>Edit</span>\n        </div>\n        <div className={state.delete}>\n            <i className=\"fa fa-trash\"></i>\n        \t<span>Delete</span>\n        </div>\n    </div>\n    <div>\n        <div className={state.select}>\n        \t<i className=\"fa fa-mouse-pointer\"></i>\n        \t<span>Select</span>\n        </div>\n    </div>\n</div>",
+    "events": [
+      {
+        "name": "onClick",
+        "index": 0,
+        "id": "menu",
+        "reducers": [
+          {
+            "reducer": "state.item = e.target.innerText;\n\nswitch (state.item){\n\tcase \"Draw\":\n\t\tstate.text = \"enabled\";\n        state.select = \"enabled\"\n        break;\n\tcase \"Select\":\n\t\tstate.edit = \"enabled\";\n        break;\n}",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onDraw",
+                "publishCondition": "state.item === 'Draw'"
+              },
+              {
+                "publishable": true,
+                "publishName": "onText",
+                "publishCondition": "state.item === 'Text'"
+              },
+              {
+                "publishable": true,
+                "publishName": "onSelect",
+                "publishCondition": "state.item === 'Select'"
+              },
+              {
+                "publishable": true,
+                "publishName": "onEdit",
+                "publishCondition": "state.item === 'Edit'"
+              },
+              {
+                "publishable": true,
+                "publishName": "onUndo",
+                "publishCondition": "state.item === 'Undo'"
+              },
+              {
+                "publishable": true,
+                "publishName": "onRedo",
+                "publishCondition": "state.item === 'Redo'"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "state": "{\n\t\"undo\":\"enabled\",\n    \"redo\":\"enabled\",\n\t\"draw\":\"enabled\",\n    \"text\":\"disabled\",\n    \"image\":\"disabled\",\n\t\"group\":\"disabled\",\n    \"ungroup\":\"disabled\",\n\t\"duplicate\":\"disabled\",\n    \"delete\":\"disabled\",\n\t\"select\":\"disabled\",\n    \"edit\":\"disabled\",\n    \"save\":\"disabled\",\n    \"load\":\"disabled\",\n    \"style\" : {\n    \t\"top\": \"100px\",\n        \"left\":\"200px\"\n    }\n}",
+    "style": "#menu {\n    position: fixed;\n    font-size:10px;\n    user-select: none;\n    color: rgba(255,255,255,0.5);\n    background: rgb(64, 64, 64);\n}\n\n#menu > div > div:hover:not(.disabled){\n    background: rgb(43, 43, 43);\n    color: white;\n}\n\n.disabled{\n    cursor: not-allowed;\n    background: #333333;\n    color: #4a4a4a;\n}\n\n\n\n#menu > div > div span {\n    padding-left: 9px;\n}\n\n#menu > div > div {\n    box-sizing: border-box;\n    padding: 10px;\n    height: 29px;\n}\n\n#history-control {\n    border: 1px solid #2C3134;\n    height: 60px;\n}\n\n#content-control {\n    border: 1px solid #2C3134;\n    height: 90px;\n}\n\n#edit-control {\n    border: 1px solid #2C3134;\n}\n\n#selection-control {\n    border: 1px solid #2C3134;\n    height: 60px;\n}\n",
+    "children": [],
+    "id": 550,
+    "config": "{}",
+    "trueName": "CanvasControls_copy"
+  },
+  {
+    "name": "H6",
+    "markup": "<h6>Hello</h6>",
+    "events": [],
+    "state": "{}",
+    "style": "",
+    "children": [],
+    "id": 293,
+    "config": "{}"
   }
 ]
 window.sampleFolders = [
@@ -1523,6 +1587,7 @@ window.sampleFolders = [
       {
         "name": "Headings",
         "contents": [
+          "H6",
           "H5",
           "H4",
           "H3",
