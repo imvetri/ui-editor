@@ -159,6 +159,7 @@ class Index extends Component {
         }
         return (
             <div onContextMenu={this.onShowContextMenu.bind(this)} onClick={this.hideContextMenu.bind(this)}>
+                <DynamicComponent onSave={this.props.onSave} key={randomKey} component={selectedComponent}/>
                 <div className="leftItem">
                     <Components
                         components={this.state.components}

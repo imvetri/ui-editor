@@ -29,7 +29,6 @@
         if(alreadyExists){
             alreadyExists.classList.remove("selectedItem")
         }
-        document.getElementById(id).classList.add("selectedItem")
     }
 
     export function selectedTagChanged(e) {
