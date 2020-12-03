@@ -24,7 +24,17 @@ export function convertToReact (component){
             }
                 
         });
-    
+
+        /**
+         * This piece of code is needed only for the exception case.
+         * Exception case that I'm trying to build is draw divs on screen
+         * And add events using eventsBuilder component.
+         * 
+         * All these markup.replace is needed so that THE JSX MARKUP LOOKS CLEAN. it is fine if this file is this bad.
+         */
+        if(markup.includes("...state")){
+            markup = markup.replace("...state", "...this.state")
+        }
         return markup.split("state.").join("this.state.")
     }
 
