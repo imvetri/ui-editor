@@ -1,4 +1,4 @@
-window.sampleComponents = [
+window.sampleComponents =[
   {
     "name": "Resizable",
     "markup": "<div id=\"cover\">\n<div id=\"resizable\" style={state.style}>\n    <div class='resizer' id=\"topLeft\"></div>\n    <div class='resizer' id=\"topRight\"></div>\n    <div class='resizer' id=\"bottomLeft\"></div>\n    <div class='resizer' id=\"bottomRight\"></div>\n</div>\n</div>",
@@ -771,7 +771,7 @@ window.sampleComponents = [
         "id": "DivElement",
         "reducers": [
           {
-            "reducer": "if(state.mode===\"Draw\"){\n  if(state.origin){\n      var div= document.getElementById(state.divId);\n      var rect = div.getBoundingClientRect();\n      div.style.width = e.clientX - rect.left;\n      div.style.height = e.clientY - rect.top;\n  }\n}\n\nif(\tstate.style.cursor == \"grabbing\" && state.grabbing) {\n\tvar rect = e.target.getBoundingClientRect();\n\t\n    window.eClientY = window.eClientY || e.clientY;\n\twindow.eClientX = window.eClientX || e.clientX;\n    \n    e.target.style.top = (-window.eClientY + e.clientY) + rect.top  + \"px\";\n    e.target.style.left = (-window.eClientX + e.clientX) + rect.left + \"px\";\n\n\twindow.eClientY = e.clientY;\n\twindow.eClientX = e.clientX;\n}\n\nif(state.mode!==\"Events\"){\n\te.stopPropagation()\n}",
+            "reducer": "if(state.mode===\"Draw\"){\n  if(state.origin){\n      var div= document.getElementById(state.divId);\n      var rect = div.getBoundingClientRect();\n      div.style.width = e.clientX - rect.left;\n      div.style.height = e.clientY - rect.top;\n  }\n}\n\nif(\tstate.style.cursor == \"grabbing\" && state.grabbing) {\n\tvar rect = e.target.getBoundingClientRect();\n\t\n    window.eClientY = window.eClientY || e.clientY;\n\twindow.eClientX = window.eClientX || e.clientX;\n    \n    e.target.style.top = (-window.eClientY + e.clientY) + rect.top  + \"px\";\n    e.target.style.left = (-window.eClientX + e.clientX) + rect.left + \"px\";\n\n\twindow.eClientY = e.clientY;\n\twindow.eClientX = e.clientX;\n}\n\ne.stopPropagation()\n",
             "publishes": []
           }
         ]
@@ -1601,17 +1601,40 @@ window.sampleComponents = [
       },
       {
         "id": "events",
-        "index": 1,
-        "name": "onClick",
+        "index": 2,
+        "name": "onChange",
         "reducers": [
           {
-            "reducer": "",
-            "publishes": []
+            "reducer": "state.event = e.target.value;",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onChange",
+                "publishCondition": "true"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "textArea",
+        "index": 3,
+        "name": "onChange",
+        "reducers": [
+          {
+            "reducer": "state.eventReducer=e.target.value;",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onChange",
+                "publishCondition": "true"
+              }
+            ]
           }
         ]
       }
     ],
-    "state": "{\n    \"style\": {\n        \"top\": \"100px\",\n        \"left\": \"408px\",\n        \"position\": \"absolute\"\n    }\n}",
+    "state": "{\n    \"style\": {\n        \"top\": \"100px\",\n        \"left\": \"408px\",\n        \"position\": \"absolute\"\n    },\n    \"event\": \"onClick\",\n    \"eventReducer\": \"on\"\n}",
     "style": ".eventsBuilder{\n\tposition:fixed;\n    top:150px;\n    left:150px;\n}\n\n.eventsBuilder textarea{\n\tposition: absolute;\n    top:40px;\n    left:0px;\n    width: 150px;\n}",
     "children": [],
     "id": 168,
