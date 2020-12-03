@@ -33,11 +33,11 @@ class Events extends Component {
         this.state.selectedEventName = "";
         this.state.selectedEvent = {
             name: "",
-            reducers: [{
+            reducer: {
                 reducer: "",
                 publishes: [],
                 index: this.props.component.events.length
-            }]
+            }
         }
         this.state.eventID = "";
     }
@@ -46,10 +46,10 @@ class Events extends Component {
         this.setState({
             selectedEvent: {
                 name: this.state.selectedEventName,
-                reducers: [{
+                reducers: {
                     reducer: reducer.reducer,
                     publishes: reducer.publishes
-                }]
+                }
             }
         })
     }
@@ -105,7 +105,7 @@ class Events extends Component {
             eventNames = []
 
             childComponent.events.forEach(event=>{
-                event.reducers[0].publishes.forEach(publish=>{
+                event.reducers.publishes.forEach(publish=>{
                         if(publish.publishable){
                             eventNames.push(publish.publishName)
                         }
@@ -146,10 +146,10 @@ class Events extends Component {
                     <div className="event">
                         <div className="reducers">
                             <div className="title">
-                                Reducers
+                                Reducer
                             </div>
                             <div>
-                                {this.state.selectedEvent.reducers.map(reducer => <Reducer key={Math.ceil(Math.random() * 1000)} reducer={reducer} onChange={this.publishEvent.bind(this)} />)}
+                                <Reducer key={Math.ceil(Math.random() * 1000)} reducer={this.state.selectedEvent.reducer} onChange={this.publishEvent.bind(this)} />
                             </div>
                         </div>
                     </div>

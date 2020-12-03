@@ -53,11 +53,11 @@
             eventID: eventID,
             selectedEvent: {
                 name: "",
-                reducers: [{
+                reducers: {
                     reducer: "",
                     publishes: [],
                     index: this.props.component.events.length
-                }]
+                }
             }
         })
     }
@@ -96,11 +96,11 @@
                 selectedEventName: e.currentTarget.value,
                 selectedEvent : {
                     name: e.currentTarget.value,
-                    reducers: [{
+                    reducers: {
                         reducer: "",
                         publishes: [],
                         index: this.props.component.events.length
-                    }]
+                    }
                 }
             })
         }
