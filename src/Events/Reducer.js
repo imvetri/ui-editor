@@ -53,7 +53,7 @@
             eventID: eventID,
             selectedEvent: {
                 name: "",
-                reducers: {
+                reducer: {
                     reducer: "",
                     publishes: [],
                     index: this.props.component.events.length
@@ -96,7 +96,7 @@
                 selectedEventName: e.currentTarget.value,
                 selectedEvent : {
                     name: e.currentTarget.value,
-                    reducers: {
+                    reducer: {
                         reducer: "",
                         publishes: [],
                         index: this.props.component.events.length
