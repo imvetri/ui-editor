@@ -48,7 +48,7 @@ class Editor extends Component {
         let markup= this.state.markup;
         let style= this.state.style;
         let state = this.state.state;
-        if(typeof JSON.parse(this.state.state) ==="object"){
+        if(state!=="" && typeof JSON.parse(this.state.state) ==="object"){
             state= JSON.stringify(JSON.parse(this.state.state), null , '    ');
         }
         else {

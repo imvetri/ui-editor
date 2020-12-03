@@ -741,7 +741,7 @@ window.sampleComponents =[
   },
   {
     "name": "Div",
-    "markup": "<div className=\"Div\" style={state.style} id=\"DivElement\">\n    {\n    state.showOptions?\n    <select name=\"mode\" value={state.mode} id=\"mode\">\n        <optgroup label=\"Tools\">\n            <option value=\"Draw\">Draw</option>\n            <option value=\"Move\">Move</option>\n            <option value=\"Resize\">Resize</option>\n            <option value=\"Delete\">Delete</option>\n            <option value=\"Save\">Save</option>\n            <option value=\"Edit\">Edit</option>\n            <option value=\"Events\">Events</option>\n        </optgroup>\n    </select>\n    :null}\n    <PropertiesControl></PropertiesControl>\n    <Div></Div>\n</div>",
+    "markup": "<div className=\"Div\" style={state.style} id=\"DivElement\">\n    {\n    state.showOptions?\n    <select name=\"mode\" value={state.mode} id=\"mode\">\n        <optgroup label=\"Tools\">\n            <option value=\"Draw\">Draw</option>\n            <option value=\"Move\">Move</option>\n            <option value=\"Resize\">Resize</option>\n            <option value=\"Delete\">Delete</option>\n            <option value=\"Save\">Save</option>\n            <option value=\"Edit\">Edit</option>\n            <option value=\"Events\">Events</option>\n        </optgroup>\n    </select>\n    :null}\n    <PropertiesControl></PropertiesControl>\n        <EventsBuilder></EventsBuilder>\n    <Div></Div>\n</div>",
     "events": [
       {
         "name": "onMouseOver",
@@ -760,7 +760,7 @@ window.sampleComponents =[
         "id": "DivElement",
         "reducers": [
           {
-            "reducer": "function create(type, x, y, text){\n\t  var item = document.createElement(type);\n      item.style.position = \"fixed\";\n      item.style.left = x+ \"px\";\n      item.style.top = y + \"px\";\n      item.style['border-width'] = \"1px\";\n      item.style['border-color'] = \"green\";\n      item.style['border-style'] = \"solid\";\n      item.id = Math.random();\n      if(text){\n      \titem.innerText = text;\n      }\n      return item;\n}\n\nlet target = e.target;\n\nif(e.button===0){\n  if(state.mode===\"Draw\"){\n  \t\t  state.clientX = e.clientX;\n          state.clientY = e.clientY;\n          var div = create(\"div\", e.clientX, e.clientY);\n          var parent = e.target;\n          parent.appendChild(div);\n\n          state.divId = div.id;\n          state.origin = true;\n  }\n}\n\nif(state.mode===\"Move\"){\n\tstate.style.cursor = \"grabbing\";\n    state.grabbing = true;\n}\ndelete window.eClientY;\ndelete window.eClientX;\n\te.stopPropagation()\n\n",
+            "reducer": "function create(type, x, y, text){\n\t  var item = document.createElement(type);\n      item.style.position = \"fixed\";\n      item.style.left = x+ \"px\";\n      item.style.top = y + \"px\";\n      item.style['border-width'] = \"1px\";\n      item.style['border-color'] = \"green\";\n      item.style['border-style'] = \"solid\";\n      item.id = Math.random();\n      if(text){\n      \titem.innerText = text;\n      }\n      return item;\n}\n\nlet target = e.target;\n\nif(e.button===0){\n  if(state.mode===\"Draw\"){\n  \t\t  state.clientX = e.clientX;\n          state.clientY = e.clientY;\n          var div = create(\"div\", e.clientX, e.clientY);\n          var parent = e.target;\n          parent.appendChild(div);\n\n          state.divId = div.id;\n          state.origin = true;\n  }\n}\n\nif(state.mode===\"Move\"){\n\tstate.style.cursor = \"grabbing\";\n    state.grabbing = true;\n}\ndelete window.eClientY;\ndelete window.eClientX;\n\n\n\te.stopPropagation()",
             "publishes": []
           }
         ]
@@ -771,7 +771,7 @@ window.sampleComponents =[
         "id": "DivElement",
         "reducers": [
           {
-            "reducer": "if(state.mode===\"Draw\"){\n  if(state.origin){\n      var div= document.getElementById(state.divId);\n      var rect = div.getBoundingClientRect();\n      div.style.width = e.clientX - rect.left;\n      div.style.height = e.clientY - rect.top;\n  }\n}\n\nif(\tstate.style.cursor == \"grabbing\" && state.grabbing) {\n\tvar rect = e.target.getBoundingClientRect();\n\t\n    window.eClientY = window.eClientY || e.clientY;\n\twindow.eClientX = window.eClientX || e.clientX;\n    \n    e.target.style.top = (-window.eClientY + e.clientY) + rect.top  + \"px\";\n    e.target.style.left = (-window.eClientX + e.clientX) + rect.left + \"px\";\n\n\twindow.eClientY = e.clientY;\n\twindow.eClientX = e.clientX;\n}\n\n\te.stopPropagation()\n\n\n\n",
+            "reducer": "if(state.mode===\"Draw\"){\n  if(state.origin){\n      var div= document.getElementById(state.divId);\n      var rect = div.getBoundingClientRect();\n      div.style.width = e.clientX - rect.left;\n      div.style.height = e.clientY - rect.top;\n  }\n}\n\nif(\tstate.style.cursor == \"grabbing\" && state.grabbing) {\n\tvar rect = e.target.getBoundingClientRect();\n\t\n    window.eClientY = window.eClientY || e.clientY;\n\twindow.eClientX = window.eClientX || e.clientX;\n    \n    e.target.style.top = (-window.eClientY + e.clientY) + rect.top  + \"px\";\n    e.target.style.left = (-window.eClientX + e.clientX) + rect.left + \"px\";\n\n\twindow.eClientY = e.clientY;\n\twindow.eClientX = e.clientX;\n}\n\ne.stopPropagation()\n",
             "publishes": []
           }
         ]
@@ -782,7 +782,7 @@ window.sampleComponents =[
         "id": "DivElement",
         "reducers": [
           {
-            "reducer": "\nif(state.mode===\"Draw\"){\n\tif(e.button===0){\n\t\tstate.origin = false;\n\t}\n\tlet createdDiv = document.getElementById(state.divId);\n    delete state.divId;\n   \n   if(state.clientX==e.clientX&&state.clientY==e.clientY){\n\t   state.showOptions = !state.showOptions;\n   }\n   else{\n   \n    state.Div.push({\n    \tstyle: {\n          position: createdDiv.style.position,\n          top: createdDiv.style.top,\n          left: createdDiv.style.left,\n          height: createdDiv.style.height,\n          width: createdDiv.style.width,\n          borderWidth: createdDiv.style[\"border-width\"],\n          borderStyle: createdDiv.style[\"border-style\"],\n          borderColor: createdDiv.style[\"border-color\"]\n        },\n        Div: [],\n        mode:\"Draw\",\n        PropertiesControl:[state.PropertiesControl[0]]\n    })\n    }\n    createdDiv.remove();\n}\nif(state.mode===\"Move\"){\n\te.target.style.cursor = \"pointer\";\n    state.grabbing = false;\n\tstate.style.top = e.target.style.top;\n    state.style.left = e.target.style.left;\n}\n\nif(state.mode===\"Resize\"){\n\tstate.style.height = e.target.style.height;\n    state.style.width = e.target.style.width;\n}\n\n\te.stopPropagation()\n\n",
+            "reducer": "\nif(state.mode===\"Draw\"){\n\tif(e.button===0){\n\t\tstate.origin = false;\n\t}\n\tlet createdDiv = document.getElementById(state.divId);\n    delete state.divId;\n   \n   if(state.clientX==e.clientX&&state.clientY==e.clientY){\n\t   state.showOptions = !state.showOptions;\n   }\n   else{\n   \n    state.Div.push({\n    \tstyle: {\n          position: createdDiv.style.position,\n          top: createdDiv.style.top,\n          left: createdDiv.style.left,\n          height: createdDiv.style.height,\n          width: createdDiv.style.width,\n          borderWidth: createdDiv.style[\"border-width\"],\n          borderStyle: createdDiv.style[\"border-style\"],\n          borderColor: createdDiv.style[\"border-color\"]\n        },\n        Div: [],\n        mode:\"Draw\",\n        EventsBuilder:[],\n        PropertiesControl:[state.PropertiesControl[0]]\n    })\n    }\n    createdDiv.remove();\n}\nif(state.mode===\"Move\"){\n\te.target.style.cursor = \"pointer\";\n    state.grabbing = false;\n\tstate.style.top = e.target.style.top;\n    state.style.left = e.target.style.left;\n}\n\nif(state.mode===\"Resize\"){\n\tstate.style.height = e.target.style.height;\n    state.style.width = e.target.style.width;\n}\n\n\te.stopPropagation()\n\n",
             "publishes": [
               {
                 "publishable": true,
@@ -916,7 +916,7 @@ window.sampleComponents =[
         "name": "onChange",
         "reducers": [
           {
-            "reducer": "state.mode = e.target.value;\nif(state.mode === \"Resize\"){\n\tstate.style.resize = \"both\";\n    state.style.overflow = \"auto\";\n} else {\n  delete state.style.resize;\n  delete state.style.overflow;\n} if( state.mode===\"Edit\"){ \n  state.PropertiesControl[0].style.display = \"block\";\n  state.PropertiesControl[0].style.top = \"0px\";\n  state.PropertiesControl[0].style.left = \"-170px\";\n  state.PropertiesControl[0].height = state.style.height;\n  state.PropertiesControl[0].width = state.style.width;\n  state.PropertiesControl[0].top = state.style.top;\n  state.PropertiesControl[0].left = state.style.left;\n  state.PropertiesControl[0].borderWidth = state.style.borderWidth;\n} else {\n  state.PropertiesControl[0].style.display = \"none\";\n} if (state.mode===\"Save\"){ \n  let index = components.findIndex(component=>component.name===\"Div\")\n  components[index].state = JSON.stringify(state);\n  localStorage.setItem(\"ui-editor\", JSON.stringify(components));\n} ",
+            "reducer": "state.mode = e.target.value;\nif(state.mode === \"Resize\"){\n\tstate.style.resize = \"both\";\n    state.style.overflow = \"auto\";\n} else {\n  \tdelete state.style.resize;\n  \tdelete state.style.overflow;\n} if( state.mode===\"Edit\"){ \n  \tstate.PropertiesControl[0].style.display = \"block\";\n  \tstate.PropertiesControl[0].style.top = \"0px\";\n  \tstate.PropertiesControl[0].style.left = \"-170px\";\n  \tstate.PropertiesControl[0].height = state.style.height;\n  \tstate.PropertiesControl[0].width = state.style.width;\n  \tstate.PropertiesControl[0].top = state.style.top;\n  \tstate.PropertiesControl[0].left = state.style.left;\n  \tstate.PropertiesControl[0].borderWidth = state.style.borderWidth;\n} else {\n  \tstate.PropertiesControl[0].style.display = \"none\";\n} if (state.mode===\"Save\"){ \n  \tlet index = components.findIndex(component=>component.name===\"Div\")\n  \tcomponents[index].state = JSON.stringify(state);\n  \tlocalStorage.setItem(\"ui-editor\", JSON.stringify(components));\n} \n\nif(state.mode===\"Events\"){\n\tstate.EventsBuilder=[{\n    \tstyle: {\n        \t\"position\": \"absolute\",\n            \"top\":\"0px\",\n            \"left\":\"-170px\"\n        }\n    }];\n}else {\n\tstate.EventsBuilder=[];\n}",
             "publishes": [
               {
                 "publishable": true,
@@ -1069,11 +1069,11 @@ window.sampleComponents =[
         ]
       }
     ],
-    "state": "{\"style\":{\"position\":\"fixed\",\"top\":\"104px\",\"left\":\"394px\",\"height\":\"254px\",\"width\":\"268px\",\"borderWidth\":\"1px\",\"borderStyle\":\"solid\",\"borderColor\":\"green\",\"cursor\":\"crosshair\",\"border-width\":\"9px\",\"border-color\":\"#545496\",\"border-style\":\"dashed\"},\"Div\":[],\"mode\":\"Save\",\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"254px\",\"width\":\"268px\",\"top\":\"104px\",\"left\":\"394px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\",\"borderWidth\":\"1px\",\"borderColor\":\"#545496\",\"borderStyle\":\"dashed\"}],\"grabbing\":false,\"origin\":false,\"divId\":\"0.4172143117217506\",\"showOptions\":true,\"clientX\":527,\"clientY\":246}",
+    "state": "{\"style\":{\"position\":\"fixed\",\"top\":\"226px\",\"left\":\"398px\",\"height\":\"242px\",\"width\":\"466px\",\"borderWidth\":\"1px\",\"borderStyle\":\"solid\",\"borderColor\":\"green\",\"cursor\":\"crosshair\",\"border-width\":\"9px\",\"border-color\":\"#545496\",\"border-style\":\"dashed\"},\"Div\":[],\"mode\":\"Save\",\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"242px\",\"width\":\"466px\",\"top\":\"226px\",\"left\":\"398px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\",\"borderWidth\":\"1px\",\"borderColor\":\"#545496\",\"borderStyle\":\"dashed\"}],\"grabbing\":false,\"origin\":false,\"divId\":\"0.30211345362809316\",\"showOptions\":true,\"clientX\":550,\"clientY\":341,\"eventReducer\":\"\",\"EventsBuilder\":[]}",
     "style": ".Div{\n    position: fixed;\n    background-color: black;\n    border: 1px solid red;\n\ttop: 25%;\n    left: 20%;\n    cursor: \"move\";\n}\n",
     "children": [],
     "id": 198,
-    "config": "{\"Resizable\":{\"override\":false},\"Div\":{\"override\":true},\"Resizer\":{\"override\":true},\"PropertiesControl\":{\"override\":true}}",
+    "config": "{\"Resizable\":{\"override\":false},\"Div\":{\"override\":true},\"Resizer\":{\"override\":true},\"PropertiesControl\":{\"override\":true},\"Events\":{\"override\":true},\"EventsBuilder\":{\"override\":true}}",
     "trueName": "Div"
   },
   {
@@ -1577,6 +1577,69 @@ window.sampleComponents =[
     "children": [],
     "id": 293,
     "config": "{}"
+  },
+  {
+    "name": "EventsBuilder",
+    "markup": " <span class=\"eventsBuilder\" style={state.style}>    \n    <select name=\"mode\" value={state.event} id=\"events\">\n        <optgroup label=\"Mouse\">\n            <option value=\"onClick\">onClick</option>\n            <option value=\"onMouseDown\">onMouseDown</option>\n            <option value=\"onMouseUp\">onMouseUp</option>\n            <option value=\"onMouseMove\">onMouseMove</option>\n            <option value=\"onMouseLeave\">onMouseLeave</option>\n            <option value=\"onMouseOut\">onMouseOut</option>\n        </optgroup>\n        <optgroup label=\"Keyboard\">\n            <option value=\"onKeyPress\">onKeyPress</option>\n            <option value=\"onKeyDown\">onKeyDown</option>\n            <option value=\"onKeyUp\">onKeyUp</option>\n            <option value=\"onEnter\">onEnter</option>\n        </optgroup>\n    </select>\n    <textarea id=\"textArea\">{state.eventReducer}</textarea>\n    </span>",
+    "events": [
+      {
+        "id": "mode",
+        "index": 0,
+        "name": "onChange",
+        "reducers": [
+          {
+            "reducer": "alert();",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onEventsChange",
+                "publishCondition": "true"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "events",
+        "index": 2,
+        "name": "onChange",
+        "reducers": [
+          {
+            "reducer": "state.event = e.target.value;",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onChange",
+                "publishCondition": "true"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "textArea",
+        "index": 3,
+        "name": "onChange",
+        "reducers": [
+          {
+            "reducer": "state.eventReducer=e.target.value;",
+            "publishes": [
+              {
+                "publishable": true,
+                "publishName": "onChange",
+                "publishCondition": "true"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "state": "{\n    \"style\": {\n        \"top\": \"100px\",\n        \"left\": \"408px\",\n        \"position\": \"absolute\"\n    },\n    \"event\": \"onClick\",\n    \"eventReducer\": \"on\"\n}",
+    "style": ".eventsBuilder{\n\tposition:fixed;\n    top:150px;\n    left:150px;\n}\n\n.eventsBuilder textarea{\n\tposition: absolute;\n    top:40px;\n    left:0px;\n    width: 150px;\n}",
+    "children": [],
+    "id": 168,
+    "config": "{}",
+    "trueName": "EventsBuilder"
   }
 ]
 window.sampleFolders = [
@@ -1586,34 +1649,21 @@ window.sampleFolders = [
     "contents": [
       {
         "name": "Headings",
-        "contents": [
-          "H6",
-          "H5",
-          "H4",
-          "H3",
-          "H2",
-          "H1"
-        ],
-        "type": "folder",
-        "status": "closed"
+        "contents": ["H6", "H5", "H4", "H3", "H2", "H1"], "type": "folder", "status": "closed"
       },
       {
         "name": "References",
-        "contents": [
-          "Movable",
-          "Resizable"
-        ],
-        "type": "folder",
-        "status": "closed"
+        "contents": ["Movable", "Resizable"],
+        "type": "folder", "status": "closed"
       },
-      "CanvasControls",
-      "PropertiesControl",
+      "CanvasControls", "PropertiesControl",
       "Div",
       "Input",
       "Button",
       "Span",
       "P",
-      "Editor"
+      "Editor",
+      "EventsBuilder"
     ]
   }
 ]
