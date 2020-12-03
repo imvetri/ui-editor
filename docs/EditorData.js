@@ -7,244 +7,202 @@ window.sampleComponents =[
         "name": "onMouseDown",
         "index": 0,
         "id": "topLeft",
-        "reducers": [
-          {
-            "reducer": "state.resizeTopLeft=true;\ne.stopPropagation();",
-            "publishes": []
-          }
-        ]
+        "reducer": {
+          "reducer": "state.resizeTopLeft=true;\ne.stopPropagation();",
+          "publishes": []
+        }
       },
       {
         "name": "onMouseMove",
         "index": 1,
         "id": "topLeft",
-        "reducers": [
-          {
-            "reducer": "if(state.resizeTopLeft){\n\tlet width = Number(state.style.width.split(\"px\")[0]);\n    let left = Number(state.style.left.split(\"px\")[0]);\n\tstate.style.width = (width + left - e.clientX) + \"px\";\n    state.style.left = e.clientX + \"px\";\n    \n    let height = Number(state.style.height.split(\"px\")[0]);\n    let top = Number(state.style.top.split(\"px\")[0]);\n\tstate.style.height = (height + top - e.clientY) + \"px\";\n    state.style.top = e.clientY + \"px\";\n}\ne.stopPropagation();",
-            "publishes": []
-          }
-        ]
+        "reducer": {
+          "reducer": "if(state.resizeTopLeft){\n\tlet width = Number(state.style.width.split(\"px\")[0]);\n    let left = Number(state.style.left.split(\"px\")[0]);\n\tstate.style.width = (width + left - e.clientX) + \"px\";\n    state.style.left = e.clientX + \"px\";\n    \n    let height = Number(state.style.height.split(\"px\")[0]);\n    let top = Number(state.style.top.split(\"px\")[0]);\n\tstate.style.height = (height + top - e.clientY) + \"px\";\n    state.style.top = e.clientY + \"px\";\n}\ne.stopPropagation();",
+          "publishes": []
+        }
       },
       {
         "name": "onMouseUp",
         "index": 2,
         "id": "topLeft",
-        "reducers": [
-          {
-            "reducer": "state.resizeTopLeft=false;\ne.stopPropagation();",
-            "publishes": []
-          }
-        ]
+        "reducer": {
+          "reducer": "state.resizeTopLeft=false;\ne.stopPropagation();",
+          "publishes": []
+        }
       },
       {
         "name": "onMouseDown",
         "index": 3,
         "id": "bottomLeft",
-        "reducers": [
-          {
-            "reducer": "state.resizeBottomLeft=true;\ne.stopPropagation();",
-            "publishes": []
-          }
-        ]
+        "reducer": {
+          "reducer": "state.resizeBottomLeft=true;\ne.stopPropagation();",
+          "publishes": []
+        }
       },
       {
         "name": "onMouseMove",
         "index": 4,
         "id": "bottomLeft",
-        "reducers": [
-          {
-            "reducer": "if(state.resizeBottomLeftt){\n\n    let height = Number(state.style.height.split(\"px\")[0]);\n    let top = Number(state.style.top.split(\"px\")[0]);\n    \n    e.target.parentElement.style.height = (e.clientY - top +5 ) + \"px\"\n    \n   \tlet width = Number(state.style.width.split(\"px\")[0]);\n    let left = Number(state.style.left.split(\"px\")[0]);\n    e.target.parentElement.style.width = e.clientX - left + 5 + \"px\";\n\n    \n}\ne.stopPropagation();",
-            "publishes": []
-          }
-        ]
+        "reducer": {
+          "reducer": "if(state.resizeBottomLeftt){\n\n    let height = Number(state.style.height.split(\"px\")[0]);\n    let top = Number(state.style.top.split(\"px\")[0]);\n    \n    e.target.parentElement.style.height = (e.clientY - top +5 ) + \"px\"\n    \n   \tlet width = Number(state.style.width.split(\"px\")[0]);\n    let left = Number(state.style.left.split(\"px\")[0]);\n    e.target.parentElement.style.width = e.clientX - left + 5 + \"px\";\n\n    \n}\ne.stopPropagation();",
+          "publishes": []
+        }
       },
       {
         "name": "onMouseUp",
         "index": 5,
         "id": "bottomLeft",
-        "reducers": [
-          {
-            "reducer": "state.resizeBottomLeft=false;\ne.stopPropagation();",
-            "publishes": []
-          }
-        ]
+        "reducer": {
+          "reducer": "state.resizeBottomLeft=false;\ne.stopPropagation();",
+          "publishes": []
+        }
       },
       {
         "name": "onMouseDown",
         "index": 6,
         "id": "bottomRight",
-        "reducers": [
-          {
-            "reducer": "state.resizeBottomRight=true;\ne.stopPropagation();",
-            "publishes": []
-          }
-        ]
+        "reducer": {
+          "reducer": "state.resizeBottomRight=true;\ne.stopPropagation();",
+          "publishes": []
+        }
       },
       {
         "name": "onMouseUp",
         "index": 7,
         "id": "bottomRight",
-        "reducers": [
-          {
-            "reducer": "state.resizeBottomRight=false;\ne.stopPropagation();",
-            "publishes": []
-          }
-        ]
+        "reducer": {
+          "reducer": "state.resizeBottomRight=false;\ne.stopPropagation();",
+          "publishes": []
+        }
       },
       {
         "name": "onMouseMove",
         "index": 8,
         "id": "bottomRight",
-        "reducers": [
-          {
-            "reducer": "if(state.resizeBottomRight){\n\n    let height = Number(state.style.height.split(\"px\")[0]);\n    let top = Number(state.style.top.split(\"px\")[0]);\n\tstate.style.height = (e.clientY - top +5 ) + \"px\";\n    \n   \tlet width = Number(state.style.width.split(\"px\")[0]);\n    let left = Number(state.style.left.split(\"px\")[0]);\n\tstate.style.width =  e.clientX - left + 5 + \"px\";\n\n    \n}\ne.stopPropagation();",
-            "publishes": []
-          }
-        ]
+        "reducer": {
+          "reducer": "if(state.resizeBottomRight){\n\n    let height = Number(state.style.height.split(\"px\")[0]);\n    let top = Number(state.style.top.split(\"px\")[0]);\n\tstate.style.height = (e.clientY - top +5 ) + \"px\";\n    \n   \tlet width = Number(state.style.width.split(\"px\")[0]);\n    let left = Number(state.style.left.split(\"px\")[0]);\n\tstate.style.width =  e.clientX - left + 5 + \"px\";\n\n    \n}\ne.stopPropagation();",
+          "publishes": []
+        }
       },
       {
         "name": "onMouseOut",
         "id": "topLeft",
-        "reducers": [
-          {
-            "reducer": "state.resizeTopLeft=false;\ne.stopPropagation();",
-            "publishes": []
-          }
-        ]
+        "reducer": {
+          "reducer": "state.resizeTopLeft=false;\ne.stopPropagation();",
+          "publishes": []
+        }
       },
       {
         "name": "onMouseOut",
         "id": "bottomLeft",
-        "reducers": [
-          {
-            "reducer": "state.resizeBottomLeft=false;\ne.stopPropagation();",
-            "publishes": []
-          }
-        ]
+        "reducer": {
+          "reducer": "state.resizeBottomLeft=false;\ne.stopPropagation();",
+          "publishes": []
+        }
       },
       {
         "name": "onMouseOut",
         "id": "bottomRight",
-        "reducers": [
-          {
-            "reducer": "state.resizeBottomRight=false;\ne.stopPropagation();",
-            "publishes": []
-          }
-        ]
+        "reducer": {
+          "reducer": "state.resizeBottomRight=false;\ne.stopPropagation();",
+          "publishes": []
+        }
       },
       {
         "name": "onMouseDown",
         "index": 12,
         "id": "topRight",
-        "reducers": [
-          {
-            "reducer": "state.resizeTopRight=true;\ne.stopPropagation();",
-            "publishes": []
-          }
-        ]
+        "reducer": {
+          "reducer": "state.resizeTopRight=true;\ne.stopPropagation();",
+          "publishes": []
+        }
       },
       {
         "name": "onMouseUp",
         "index": 13,
         "id": "topRight",
-        "reducers": [
-          {
-            "reducer": "state.resizeTopRight=false;\ne.stopPropagation();",
-            "publishes": []
-          }
-        ]
+        "reducer": {
+          "reducer": "state.resizeTopRight=false;\ne.stopPropagation();",
+          "publishes": []
+        }
       },
       {
         "name": "onMouseOut",
         "index": 14,
         "id": "topRight",
-        "reducers": [
-          {
-            "reducer": "state.resizeTopRight=false;\ne.stopPropagation();",
-            "publishes": []
-          }
-        ]
+        "reducer": {
+          "reducer": "state.resizeTopRight=false;\ne.stopPropagation();",
+          "publishes": []
+        }
       },
       {
         "name": "onMouseMove",
         "index": 15,
         "id": "topRight",
-        "reducers": [
-          {
-            "reducer": "if(state.resizeTopRight){\n\tlet width = Number(state.style.width.split(\"px\")[0]);\n    let left = Number(state.style.left.split(\"px\")[0]);\n\tstate.style.width = (e.clientX - left + 5) + \"px\";\n    \n    let height = Number(state.style.height.split(\"px\")[0]);\n    let top = Number(state.style.top.split(\"px\")[0]);\n\tstate.style.height = -e.clientY + height + top + \"px\";\n    state.style.top = e.clientY + \"px\";\n}\ne.stopPropagation();",
-            "publishes": []
-          }
-        ]
+        "reducer": {
+          "reducer": "if(state.resizeTopRight){\n\tlet width = Number(state.style.width.split(\"px\")[0]);\n    let left = Number(state.style.left.split(\"px\")[0]);\n\tstate.style.width = (e.clientX - left + 5) + \"px\";\n    \n    let height = Number(state.style.height.split(\"px\")[0]);\n    let top = Number(state.style.top.split(\"px\")[0]);\n\tstate.style.height = -e.clientY + height + top + \"px\";\n    state.style.top = e.clientY + \"px\";\n}\ne.stopPropagation();",
+          "publishes": []
+        }
       },
       {
         "name": "onMouseDown",
         "id": "resizable",
-        "reducers": [
-          {
-            "reducer": "e.target.style.cursor = \"grabbing\";\nstate.grabbing = true;\n",
-            "publishes": []
-          }
-        ]
+        "reducer": {
+          "reducer": "e.target.style.cursor = \"grabbing\";\nstate.grabbing = true;\n",
+          "publishes": []
+        }
       },
       {
         "name": "onMouseUp",
         "id": "resizable",
-        "reducers": [
-          {
-            "reducer": "e.target.style.cursor = \"grab\";\nstate.grabbing = false;\n",
-            "publishes": []
-          }
-        ]
+        "reducer": {
+          "reducer": "e.target.style.cursor = \"grab\";\nstate.grabbing = false;\n",
+          "publishes": []
+        }
       },
       {
         "name": "onMouseMove",
         "index": 18,
         "id": "resizable",
-        "reducers": [
-          {
-            "reducer": "if(state.grabbing) {\n\tvar rect = e.target.getBoundingClientRect();\n\n    e.target.style.top = e.clientY - rect.height/2  + \"px\";\n    e.target.style.left = e.clientX - rect.width/2 + \"px\";\n}\n",
-            "publishes": [
-              {
-                "publishName": "onMoveFinished",
-                "publishCondition": true,
-                "publishable": false
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "if(state.grabbing) {\n\tvar rect = e.target.getBoundingClientRect();\n\n    e.target.style.top = e.clientY - rect.height/2  + \"px\";\n    e.target.style.left = e.clientX - rect.width/2 + \"px\";\n}\n",
+          "publishes": [
+            {
+              "publishName": "onMoveFinished",
+              "publishCondition": true,
+              "publishable": false
+            }
+          ]
+        }
       },
       {
         "name": "onMouseOut",
         "id": "resizable",
-        "reducers": [
-          {
-            "reducer": "",
-            "publishes": [
-              {
-                "publishName": "onMoveFinished",
-                "publishCondition": true,
-                "publishable": true
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "",
+          "publishes": [
+            {
+              "publishName": "onMoveFinished",
+              "publishCondition": true,
+              "publishable": true
+            }
+          ]
+        }
       },
       {
         "name": "onContextMenu",
         "index": 20,
         "id": "cover",
-        "reducers": [
-          {
-            "reducer": "e.stopPropagation();",
-            "publishes": [
-              {
-                "publishName": "onRightClicked",
-                "publishCondition": true,
-                "publishable": true
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "e.stopPropagation();",
+          "publishes": [
+            {
+              "publishName": "onRightClicked",
+              "publishCondition": true,
+              "publishable": true
+            }
+          ]
+        }
       }
     ],
     "state": "{\n\t\"style\":{\n        \"top\": \"200px\",\n        \"left\": \"200px\",\n        \"height\": \"100px\",\n        \"width\": \"100px\"\n\t}\n}",
@@ -262,64 +220,52 @@ window.sampleComponents =[
         "name": "onMouseDown",
         "index": 0,
         "id": "resizable",
-        "reducers": [
-          {
-            "reducer": "e.target.style.cursor = \"grabbing\";\nstate.grabbing = true;\nconsole.log(\"Mousedown\")",
-            "publishes": []
-          }
-        ]
+        "reducer": {
+          "reducer": "e.target.style.cursor = \"grabbing\";\nstate.grabbing = true;\nconsole.log(\"Mousedown\")",
+          "publishes": []
+        }
       },
       {
         "name": "onMouseUp",
         "index": 1,
         "id": "resizable",
-        "reducers": [
-          {
-            "reducer": "e.target.style.cursor = \"grab\";\nstate.grabbing = false;\nconsole.log(\"mouseup\")",
-            "publishes": []
-          }
-        ]
+        "reducer": {
+          "reducer": "e.target.style.cursor = \"grab\";\nstate.grabbing = false;\nconsole.log(\"mouseup\")",
+          "publishes": []
+        }
       },
       {
         "name": "onMouseMove",
         "index": 2,
         "id": "resizable",
-        "reducers": [
-          {
-            "reducer": "if(state.grabbing) {\n\tvar rect = e.target.getBoundingClientRect();\n\n    e.target.style.top = e.clientY - rect.height/2  + \"px\";\n    e.target.style.left = e.clientX - rect.width/2 + \"px\";\n}\nconsole.log(\"mousemove\")",
-            "publishes": []
-          }
-        ]
+        "reducer": {
+          "reducer": "if(state.grabbing) {\n\tvar rect = e.target.getBoundingClientRect();\n\n    e.target.style.top = e.clientY - rect.height/2  + \"px\";\n    e.target.style.left = e.clientX - rect.width/2 + \"px\";\n}\nconsole.log(\"mousemove\")",
+          "publishes": []
+        }
       },
       {
         "name": "onMouseDown",
         "id": "movable",
-        "reducers": [
-          {
-            "reducer": "e.target.style.cursor = \"grabbing\";\nstate.grabbing = true;\n",
-            "publishes": []
-          }
-        ]
+        "reducer": {
+          "reducer": "e.target.style.cursor = \"grabbing\";\nstate.grabbing = true;\n",
+          "publishes": []
+        }
       },
       {
         "name": "onMouseUp",
         "id": "movable",
-        "reducers": [
-          {
-            "reducer": "e.target.style.cursor = \"grab\";\nstate.grabbing = false;\n",
-            "publishes": []
-          }
-        ]
+        "reducer": {
+          "reducer": "e.target.style.cursor = \"grab\";\nstate.grabbing = false;\n",
+          "publishes": []
+        }
       },
       {
         "name": "onMouseMove",
         "id": "movable",
-        "reducers": [
-          {
-            "reducer": "if(state.grabbing) {\n\tvar rect = e.target.getBoundingClientRect();\n\n    e.target.style.top = e.clientY - rect.height/2  + \"px\";\n    e.target.style.left = e.clientX - rect.width/2 + \"px\";\n}",
-            "publishes": []
-          }
-        ]
+        "reducer": {
+          "reducer": "if(state.grabbing) {\n\tvar rect = e.target.getBoundingClientRect();\n\n    e.target.style.top = e.clientY - rect.height/2  + \"px\";\n    e.target.style.left = e.clientX - rect.width/2 + \"px\";\n}",
+          "publishes": []
+        }
       }
     ],
     "state": "{\n\t\"style\":{\n        \"top\": \"200px\",\n        \"left\": \"200px\"\n\t}\n}",
@@ -337,43 +283,41 @@ window.sampleComponents =[
         "name": "onClick",
         "index": 0,
         "id": "menu",
-        "reducers": [
-          {
-            "reducer": "state.item = e.target.innerText;\n\nswitch (state.item){\n\tcase \"Draw\":\n\t\tstate.text = \"enabled\";\n        state.select = \"enabled\"\n        break;\n\tcase \"Select\":\n\t\tstate.edit = \"enabled\";\n        break;\n}",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onDraw",
-                "publishCondition": "state.item === 'Draw'"
-              },
-              {
-                "publishable": true,
-                "publishName": "onText",
-                "publishCondition": "state.item === 'Text'"
-              },
-              {
-                "publishable": true,
-                "publishName": "onSelect",
-                "publishCondition": "state.item === 'Select'"
-              },
-              {
-                "publishable": true,
-                "publishName": "onEdit",
-                "publishCondition": "state.item === 'Edit'"
-              },
-              {
-                "publishable": true,
-                "publishName": "onUndo",
-                "publishCondition": "state.item === 'Undo'"
-              },
-              {
-                "publishable": true,
-                "publishName": "onRedo",
-                "publishCondition": "state.item === 'Redo'"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "state.item = e.target.innerText;\n\nswitch (state.item){\n\tcase \"Draw\":\n\t\tstate.text = \"enabled\";\n        state.select = \"enabled\"\n        break;\n\tcase \"Select\":\n\t\tstate.edit = \"enabled\";\n        break;\n}",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onDraw",
+              "publishCondition": "state.item === 'Draw'"
+            },
+            {
+              "publishable": true,
+              "publishName": "onText",
+              "publishCondition": "state.item === 'Text'"
+            },
+            {
+              "publishable": true,
+              "publishName": "onSelect",
+              "publishCondition": "state.item === 'Select'"
+            },
+            {
+              "publishable": true,
+              "publishName": "onEdit",
+              "publishCondition": "state.item === 'Edit'"
+            },
+            {
+              "publishable": true,
+              "publishName": "onUndo",
+              "publishCondition": "state.item === 'Undo'"
+            },
+            {
+              "publishable": true,
+              "publishName": "onRedo",
+              "publishCondition": "state.item === 'Redo'"
+            }
+          ]
+        }
       }
     ],
     "state": "{\n\t\"undo\":\"enabled\",\n    \"redo\":\"enabled\",\n\t\"draw\":\"enabled\",\n    \"text\":\"disabled\",\n    \"image\":\"disabled\",\n\t\"group\":\"disabled\",\n    \"ungroup\":\"disabled\",\n\t\"duplicate\":\"disabled\",\n    \"delete\":\"disabled\",\n\t\"select\":\"disabled\",\n    \"edit\":\"disabled\",\n    \"save\":\"disabled\",\n    \"load\":\"disabled\",\n    \"style\" : {\n    \t\"top\": \"100px\",\n        \"left\":\"200px\"\n    }\n}",
@@ -391,345 +335,301 @@ window.sampleComponents =[
         "name": "onClick",
         "index": 0,
         "id": "lessheight",
-        "reducers": [
-          {
-            "reducer": "let height = Number(state.height.split(\"px\")[0])-1;\nstate.height = height+\"px\";\n",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onHeightChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "let height = Number(state.height.split(\"px\")[0])-1;\nstate.height = height+\"px\";\n",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onHeightChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "name": "onClick",
         "index": 1,
         "id": "moreheight",
-        "reducers": [
-          {
-            "reducer": "let height = Number(state.height.split(\"px\")[0])+1;\nstate.height = height+\"px\";\n",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onHeightChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "let height = Number(state.height.split(\"px\")[0])+1;\nstate.height = height+\"px\";\n",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onHeightChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "name": "onClick",
         "index": 2,
         "id": "lesswidth",
-        "reducers": [
-          {
-            "reducer": "let width = Number(state.width.split(\"px\")[0])-1;\nstate.width = width+\"px\";",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onWidthChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "let width = Number(state.width.split(\"px\")[0])-1;\nstate.width = width+\"px\";",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onWidthChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "name": "onClick",
         "index": 3,
         "id": "morewidth",
-        "reducers": [
-          {
-            "reducer": "let width = Number(state.width.split(\"px\")[0])+1;\nstate.width = width+\"px\";",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onWidthChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "let width = Number(state.width.split(\"px\")[0])+1;\nstate.width = width+\"px\";",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onWidthChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "name": "onClick",
         "index": 4,
         "id": "lesstop",
-        "reducers": [
-          {
-            "reducer": "let top = Number(state.top.split(\"px\")[0])-1;\nstate.top = top+\"px\";\n",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onTopChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "let top = Number(state.top.split(\"px\")[0])-1;\nstate.top = top+\"px\";\n",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onTopChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "name": "onClick",
         "index": 5,
         "id": "moretop",
-        "reducers": [
-          {
-            "reducer": "let top = Number(state.top.split(\"px\")[0])+1;\nstate.top = top+\"px\";\n",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onTopChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "let top = Number(state.top.split(\"px\")[0])+1;\nstate.top = top+\"px\";\n",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onTopChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "name": "onClick",
         "index": 6,
         "id": "moreleft",
-        "reducers": [
-          {
-            "reducer": "let left = Number(state.left.split(\"px\")[0])-1;\nstate.left = left+\"px\";\n",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onLeftChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "let left = Number(state.left.split(\"px\")[0])-1;\nstate.left = left+\"px\";\n",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onLeftChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "name": "onClick",
         "index": 7,
         "id": "lessleft",
-        "reducers": [
-          {
-            "reducer": "let left = Number(state.left.split(\"px\")[0])+1;\nstate.left = left+\"px\";",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onLeftChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "let left = Number(state.left.split(\"px\")[0])+1;\nstate.left = left+\"px\";",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onLeftChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "name": "onClick",
         "index": 8,
         "id": "lessborder",
-        "reducers": [
-          {
-            "reducer": "let borderWidth = Number(state.borderWidth.split(\"px\")[0])-1;\nstate.borderWidth = borderWidth+\"px\";",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onBorderWidthChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "let borderWidth = Number(state.borderWidth.split(\"px\")[0])-1;\nstate.borderWidth = borderWidth+\"px\";",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onBorderWidthChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "name": "onClick",
         "index": 9,
         "id": "moreborder",
-        "reducers": [
-          {
-            "reducer": "let borderWidth = Number(state.borderWidth.split(\"px\")[0])+1;\nstate.borderWidth = borderWidth+\"px\";",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onBorderWidthChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "let borderWidth = Number(state.borderWidth.split(\"px\")[0])+1;\nstate.borderWidth = borderWidth+\"px\";",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onBorderWidthChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "name": "onClick",
         "index": 10,
         "id": "morespace",
-        "reducers": [
-          {
-            "reducer": "let space = Number(state.space.split(\"px\")[0])+1;\nstate.space = space+\"px\";",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onPaddingChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "let space = Number(state.space.split(\"px\")[0])+1;\nstate.space = space+\"px\";",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onPaddingChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "name": "onClick",
         "index": 11,
         "id": "lessspace",
-        "reducers": [
-          {
-            "reducer": "let space = Number(state.space.split(\"px\")[0])-1;\nstate.space = space+\"px\";",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onPaddingChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "let space = Number(state.space.split(\"px\")[0])-1;\nstate.space = space+\"px\";",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onPaddingChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "name": "onClick",
         "index": 13,
         "id": "lessSize",
-        "reducers": [
-          {
-            "reducer": "let fontSize = Number(state.fontSize.split(\"px\")[0])-1;\nstate.fontSize = fontSize+\"px\";",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onFontSizeChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "let fontSize = Number(state.fontSize.split(\"px\")[0])-1;\nstate.fontSize = fontSize+\"px\";",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onFontSizeChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "name": "onClick",
         "index": 14,
         "id": "moreSize",
-        "reducers": [
-          {
-            "reducer": "let fontSize = Number(state.fontSize.split(\"px\")[0])+1;\nstate.fontSize = fontSize+\"px\";\n",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onFontSizeChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "let fontSize = Number(state.fontSize.split(\"px\")[0])+1;\nstate.fontSize = fontSize+\"px\";\n",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onFontSizeChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "id": "id",
         "index": 15,
         "name": "onChange",
-        "reducers": [
-          {
-            "reducer": "state.classes = e.currentTarget.value",
-            "publishes": []
-          }
-        ]
+        "reducer": {
+          "reducer": "state.classes = e.currentTarget.value",
+          "publishes": []
+        }
       },
       {
         "id": "fontcolor",
         "index": 16,
         "name": "onChange",
-        "reducers": [
-          {
-            "reducer": "state.fontColor = e.target.value;",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onFontColorChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "state.fontColor = e.target.value;",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onFontColorChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "id": "morecolor",
         "index": 17,
         "name": "onChange",
-        "reducers": [
-          {
-            "reducer": "state.borderColor = e.target.value;",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onBorderColorChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "state.borderColor = e.target.value;",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onBorderColorChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "id": "properties",
         "index": 17,
         "name": "onMouseMove",
-        "reducers": [
-          {
-            "reducer": "e.stopPropagation()",
-            "publishes": []
-          }
-        ]
+        "reducer": {
+          "reducer": "e.stopPropagation()",
+          "publishes": []
+        }
       },
       {
         "id": "properties",
         "index": 18,
         "name": "onMouseDown",
-        "reducers": [
-          {
-            "reducer": "e.stopPropagation()",
-            "publishes": []
-          }
-        ]
+        "reducer": {
+          "reducer": "e.stopPropagation()",
+          "publishes": []
+        }
       },
       {
         "id": "properties",
         "index": 19,
         "name": "onMouseOver",
-        "reducers": [
-          {
-            "reducer": "\te.stopPropagation()\n",
-            "publishes": []
-          }
-        ]
+        "reducer": {
+          "reducer": "\te.stopPropagation()\n",
+          "publishes": []
+        }
       },
       {
         "id": "properties",
         "index": 20,
         "name": "onMouseUp",
-        "reducers": [
-          {
-            "reducer": "\te.stopPropagation()\n",
-            "publishes": []
-          }
-        ]
+        "reducer": {
+          "reducer": "\te.stopPropagation()\n",
+          "publishes": []
+        }
       },
       {
         "id": "borderStyle",
         "index": 21,
         "name": "onChange",
-        "reducers": [
-          {
-            "reducer": "state.borderStyle = e.target.value;\n",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onBorderStyleChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "state.borderStyle = e.target.value;\n",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onBorderStyleChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       }
     ],
     "state": "{\n  \"style\":{\n      \"top\": \"100px\",\n      \"left\": \"408px\",\n      \"position\": \"absolute\"\n  },\n  \"height\": \"100px\",\n  \"width\":\"100px\",\n  \"top\":\"100px\",\n  \"left\":\"100px\",\n  \"borderWidth\":\"100px\",\n  \"borderColor\": \"#874a4a\",\n  \"space\" :\"100px\",\n  \"fontSize\": \"10px\",\n  \"color\": \"#ffffff\"\n}",
@@ -741,335 +641,295 @@ window.sampleComponents =[
   },
   {
     "name": "Div",
-    "markup": "<div className=\"Div\" style={state.style} id=\"DivElement\">\n    {\n    state.showOptions?\n    <select name=\"mode\" value={state.mode} id=\"mode\">\n        <optgroup label=\"Tools\">\n            <option value=\"Draw\">Draw</option>\n            <option value=\"Move\">Move</option>\n            <option value=\"Resize\">Resize</option>\n            <option value=\"Delete\">Delete</option>\n            <option value=\"Save\">Save</option>\n            <option value=\"Edit\">Edit</option>\n            <option value=\"Events\">Events</option>\n        </optgroup>\n    </select>\n    :null}\n    <PropertiesControl></PropertiesControl>\n        <EventsBuilder></EventsBuilder>\n    <Div></Div>\n</div>",
+    "markup": "<div className=\"Div\" style={state.style} id=\"div123\">\n    {\n    state.showOptions?\n    <select name=\"mode\" value={state.mode} id=\"mode\">\n        <optgroup label=\"Tools\">\n            <option value=\"Draw\">Draw</option>\n            <option value=\"Move\">Move</option>\n            <option value=\"Resize\">Resize</option>\n            <option value=\"Delete\">Delete</option>\n            <option value=\"Save\">Save</option>\n            <option value=\"Edit\">Edit</option>\n            <option value=\"Events\">Events</option>\n        </optgroup>\n    </select>\n    :null}\n    <PropertiesControl></PropertiesControl>\n        <EventsBuilder></EventsBuilder>\n    <Div></Div>\n</div>",
     "events": [
       {
         "name": "onMouseOver",
         "index": 0,
-        "id": "DivElement",
-        "reducers": [
-          {
-            "reducer": "if(state.mode===\"Draw\"){\n\tstate.style.cursor = \"crosshair\";\n}\n\te.stopPropagation();\n\n",
-            "publishes": []
-          }
-        ]
+        "id": "div123",
+        "reducer": {
+          "reducer": "if(state.mode===\"Draw\"){\n\tstate.style.cursor = \"crosshair\";\n}\n\te.stopPropagation();\n\n",
+          "publishes": []
+        }
       },
       {
         "name": "onMouseDown",
         "index": 1,
-        "id": "DivElement",
-        "reducers": [
-          {
-            "reducer": "function create(type, x, y, text){\n\t  var item = document.createElement(type);\n      item.style.position = \"fixed\";\n      item.style.left = x+ \"px\";\n      item.style.top = y + \"px\";\n      item.style['border-width'] = \"1px\";\n      item.style['border-color'] = \"green\";\n      item.style['border-style'] = \"solid\";\n      item.id = Math.random();\n      if(text){\n      \titem.innerText = text;\n      }\n      return item;\n}\n\nlet target = e.target;\n\nif(e.button===0){\n  if(state.mode===\"Draw\"){\n  \t\t  state.clientX = e.clientX;\n          state.clientY = e.clientY;\n          var div = create(\"div\", e.clientX, e.clientY);\n          var parent = e.target;\n          parent.appendChild(div);\n\n          state.divId = div.id;\n          state.origin = true;\n  }\n}\n\nif(state.mode===\"Move\"){\n\tstate.style.cursor = \"grabbing\";\n    state.grabbing = true;\n}\ndelete window.eClientY;\ndelete window.eClientX;\n\n\n\te.stopPropagation()",
-            "publishes": []
-          }
-        ]
+        "id": "div123",
+        "reducer": {
+          "reducer": "function create(type, x, y, text){\n\t  var item = document.createElement(type);\n      item.style.position = \"fixed\";\n      item.style.left = x+ \"px\";\n      item.style.top = y + \"px\";\n      item.style['border-width'] = \"1px\";\n      item.style['border-color'] = \"green\";\n      item.style['border-style'] = \"solid\";\n      item.id = \"div\"+~~(Math.random()*100000);\n      if(text){\n      \titem.innerText = text;\n      }\n      return item;\n}\n\nlet target = e.target;\n\nif(e.button===0){\n  if(state.mode===\"Draw\"){\n  \t\t  state.clientX = e.clientX;\n          state.clientY = e.clientY;\n          var div = create(\"div\", e.clientX, e.clientY);\n          var parent = e.target;\n          parent.appendChild(div);\n\n          state.divId = div.id;\n          state.origin = true;\n  }\n}\n\nif(state.mode===\"Move\"){\n\tstate.style.cursor = \"grabbing\";\n    state.grabbing = true;\n}\ndelete window.eClientY;\ndelete window.eClientX;\n\n\n\te.stopPropagation()\n    console.log(\"mouseDown\")",
+          "publishes": []
+        }
       },
       {
         "name": "onMouseMove",
         "index": 2,
-        "id": "DivElement",
-        "reducers": [
-          {
-            "reducer": "if(state.mode===\"Draw\"){\n  if(state.origin){\n      var div= document.getElementById(state.divId);\n      var rect = div.getBoundingClientRect();\n      div.style.width = e.clientX - rect.left;\n      div.style.height = e.clientY - rect.top;\n  }\n}\n\nif(\tstate.style.cursor == \"grabbing\" && state.grabbing) {\n\tvar rect = e.target.getBoundingClientRect();\n\t\n    window.eClientY = window.eClientY || e.clientY;\n\twindow.eClientX = window.eClientX || e.clientX;\n    \n    e.target.style.top = (-window.eClientY + e.clientY) + rect.top  + \"px\";\n    e.target.style.left = (-window.eClientX + e.clientX) + rect.left + \"px\";\n\n\twindow.eClientY = e.clientY;\n\twindow.eClientX = e.clientX;\n}\n\ne.stopPropagation()\n",
-            "publishes": []
-          }
-        ]
+        "id": "div123",
+        "reducer": {
+          "reducer": "if(state.mode===\"Draw\"){\n  if(state.origin){\n      var div= document.getElementById(state.divId);\n      var rect = div.getBoundingClientRect();\n      div.style.width = e.clientX - rect.left;\n      div.style.height = e.clientY - rect.top;\n  }\n}\n\nif(\tstate.style.cursor == \"grabbing\" && state.grabbing) {\n\tvar rect = e.target.getBoundingClientRect();\n\t\n    window.eClientY = window.eClientY || e.clientY;\n\twindow.eClientX = window.eClientX || e.clientX;\n    \n    e.target.style.top = (-window.eClientY + e.clientY) + rect.top  + \"px\";\n    e.target.style.left = (-window.eClientX + e.clientX) + rect.left + \"px\";\n\n\twindow.eClientY = e.clientY;\n\twindow.eClientX = e.clientX;\n}\n\ne.stopPropagation()\nconsole.log(\"mouseMove\")\n",
+          "publishes": []
+        }
       },
       {
         "name": "onMouseUp",
         "index": 3,
-        "id": "DivElement",
-        "reducers": [
-          {
-            "reducer": "\nif(state.mode===\"Draw\"){\n\tif(e.button===0){\n\t\tstate.origin = false;\n\t}\n\tlet createdDiv = document.getElementById(state.divId);\n    delete state.divId;\n   \n   if(state.clientX==e.clientX&&state.clientY==e.clientY){\n\t   state.showOptions = !state.showOptions;\n   }\n   else{\n   \n    state.Div.push({\n    \tstyle: {\n          position: createdDiv.style.position,\n          top: createdDiv.style.top,\n          left: createdDiv.style.left,\n          height: createdDiv.style.height,\n          width: createdDiv.style.width,\n          borderWidth: createdDiv.style[\"border-width\"],\n          borderStyle: createdDiv.style[\"border-style\"],\n          borderColor: createdDiv.style[\"border-color\"]\n        },\n        Div: [],\n        mode:\"Draw\",\n        EventsBuilder:[],\n        PropertiesControl:[state.PropertiesControl[0]]\n    })\n    }\n    createdDiv.remove();\n}\nif(state.mode===\"Move\"){\n\te.target.style.cursor = \"pointer\";\n    state.grabbing = false;\n\tstate.style.top = e.target.style.top;\n    state.style.left = e.target.style.left;\n}\n\nif(state.mode===\"Resize\"){\n\tstate.style.height = e.target.style.height;\n    state.style.width = e.target.style.width;\n}\n\n\te.stopPropagation()\n\n",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onDrawFinish",
-                "publishCondition": "state.mode==='Draw' && e.button ===0"
-              },
-              {
-                "publishable": true,
-                "publishName": "onMoveFinish",
-                "publishCondition": "state.mode===\"Move\""
-              },
-              {
-                "publishable": true,
-                "publishName": "onResizeFinish",
-                "publishCondition": "state.mode===\"Resize\""
-              }
-            ]
-          }
-        ]
+        "id": "div123",
+        "reducer": {
+          "reducer": "\nif(state.mode===\"Draw\"){\n\tif(e.button===0){\n\t\tstate.origin = false;\n\t}\n\tlet createdDiv = document.getElementById(state.divId);\n    delete state.divId;\n   \n   if(state.clientX==e.clientX&&state.clientY==e.clientY){\n\t   state.showOptions = !state.showOptions;\n   }\n   else{\n   \n    state.Div.push({\n    \tstyle: {\n          position: createdDiv.style.position,\n          top: createdDiv.style.top,\n          left: createdDiv.style.left,\n          height: createdDiv.style.height,\n          width: createdDiv.style.width,\n          borderWidth: createdDiv.style[\"border-width\"],\n          borderStyle: createdDiv.style[\"border-style\"],\n          borderColor: createdDiv.style[\"border-color\"]\n        },\n        Div: [],\n        mode:\"Draw\",\n        EventsBuilder:[],\n        PropertiesControl:[state.PropertiesControl[0]]\n    })\n    }\n    createdDiv.remove();\n}\nif(state.mode===\"Move\"){\n\te.target.style.cursor = \"pointer\";\n    state.grabbing = false;\n\tstate.style.top = e.target.style.top;\n    state.style.left = e.target.style.left;\n}\n\nif(state.mode===\"Resize\"){\n\tstate.style.height = e.target.style.height;\n    state.style.width = e.target.style.width;\n}\n\n\te.stopPropagation()\nconsole.log(\"mouseUp\")\n",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onDrawFinish",
+              "publishCondition": "state.mode==='Draw' && e.button ===0"
+            },
+            {
+              "publishable": true,
+              "publishName": "onMoveFinish",
+              "publishCondition": "state.mode===\"Move\""
+            },
+            {
+              "publishable": true,
+              "publishName": "onResizeFinish",
+              "publishCondition": "state.mode===\"Resize\""
+            }
+          ]
+        }
       },
       {
         "id": "Div",
         "index": 4,
         "name": "onDrawFinish",
-        "reducers": [
-          {
-            "reducer": "state.Div[e.index] = e.state;\n",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onDrawFinish",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "state.Div[e.index] = e.state;\n",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onDrawFinish",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "id": "mode",
         "index": 5,
         "name": "onMouseDown",
-        "reducers": [
-          {
-            "reducer": "e.stopPropagation();",
-            "publishes": []
-          }
-        ]
+        "reducer": {
+          "reducer": "e.stopPropagation();",
+          "publishes": []
+        }
       },
       {
         "id": "mode",
         "index": 7,
         "name": "onMouseUp",
-        "reducers": [
-          {
-            "reducer": "e.stopPropagation();",
-            "publishes": []
-          }
-        ]
+        "reducer": {
+          "reducer": "e.stopPropagation();",
+          "publishes": []
+        }
       },
       {
         "id": "Div",
         "index": 8,
         "name": "onMoveFinish",
-        "reducers": [
-          {
-            "reducer": "state.Div[e.index] = e.state;\n",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onMoveFinish",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "state.Div[e.index] = e.state;\n",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onMoveFinish",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "id": "Div",
         "index": 9,
         "name": "onResizeFinish",
-        "reducers": [
-          {
-            "reducer": "state.Div[e.index] = e.state;\n",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onResizeFinish",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "state.Div[e.index] = e.state;\n",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onResizeFinish",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "id": "Div",
         "index": 10,
         "name": "onDelete",
-        "reducers": [
-          {
-            "reducer": "state.Div.splice(e.index,1);\n",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onModeChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "state.Div.splice(e.index,1);\n",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onModeChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "id": "PropertiesControl",
         "index": 11,
         "name": "onHeightChange",
-        "reducers": [
-          {
-            "reducer": "state.style.height = e.state.height;\nstate.PropertiesControl[0].height = state.style.height;\n",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onStyleChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "state.style.height = e.state.height;\nstate.PropertiesControl[0].height = state.style.height;\n",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onStyleChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "id": "mode",
         "index": 12,
         "name": "onChange",
-        "reducers": [
-          {
-            "reducer": "state.mode = e.target.value;\nif(state.mode === \"Resize\"){\n\tstate.style.resize = \"both\";\n    state.style.overflow = \"auto\";\n} else {\n  \tdelete state.style.resize;\n  \tdelete state.style.overflow;\n} if( state.mode===\"Edit\"){ \n  \tstate.PropertiesControl[0].style.display = \"block\";\n  \tstate.PropertiesControl[0].style.top = \"0px\";\n  \tstate.PropertiesControl[0].style.left = \"-170px\";\n  \tstate.PropertiesControl[0].height = state.style.height;\n  \tstate.PropertiesControl[0].width = state.style.width;\n  \tstate.PropertiesControl[0].top = state.style.top;\n  \tstate.PropertiesControl[0].left = state.style.left;\n  \tstate.PropertiesControl[0].borderWidth = state.style.borderWidth;\n} else {\n  \tstate.PropertiesControl[0].style.display = \"none\";\n} if (state.mode===\"Save\"){ \n  \tlet index = components.findIndex(component=>component.name===\"Div\")\n  \tcomponents[index].state = JSON.stringify(state);\n  \tlocalStorage.setItem(\"ui-editor\", JSON.stringify(components));\n} \n\nif(state.mode===\"Events\"){\n\tstate.EventsBuilder=[{\n    \tstyle: {\n        \t\"position\": \"absolute\",\n            \"top\":\"0px\",\n            \"left\":\"-170px\"\n        }\n    }];\n}else {\n\tstate.EventsBuilder=[];\n}",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onDelete",
-                "publishCondition": "state.mode === \"Delete\""
-              },
-              {
-                "publishable": true,
-                "publishName": "onModeChange",
-                "publishCondition": "state.mode !== \"Delete\""
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "state.mode = e.target.value;\nif(state.mode === \"Resize\"){\n\tstate.style.resize = \"both\";\n    state.style.overflow = \"auto\";\n} else {\n  \tdelete state.style.resize;\n  \tdelete state.style.overflow;\n} if( state.mode===\"Edit\"){ \n  \tstate.PropertiesControl[0].style.display = \"block\";\n  \tstate.PropertiesControl[0].style.top = \"0px\";\n  \tstate.PropertiesControl[0].style.left = \"-170px\";\n  \tstate.PropertiesControl[0].height = state.style.height;\n  \tstate.PropertiesControl[0].width = state.style.width;\n  \tstate.PropertiesControl[0].top = state.style.top;\n  \tstate.PropertiesControl[0].left = state.style.left;\n  \tstate.PropertiesControl[0].borderWidth = state.style.borderWidth;\n} else {\n  \tstate.PropertiesControl[0].style.display = \"none\";\n} if (state.mode===\"Save\"){ \n  \tlet index = components.findIndex(component=>component.name===\"Div\")\n  \tcomponents[index].state = JSON.stringify(state);\n  \tlocalStorage.setItem(\"ui-editor\", JSON.stringify(components));\n} \n\nif(state.mode===\"Events\"){\n\tstate.EventsBuilder=[{\n    \"style\": {\n        \"top\": \"0px\",\n        \"left\": \"-150px\",\n        \"position\": \"absolute\"\n    },\n    \"textAreaStyle\": {\n        \"position\": \"absolute\",\n        \"top\": \"40px\",\n        \"left\": \"0px\",\n        \"width\": \"150px\"\n    },\n    \"eventName\": \"\",\n    \"eventReducer\": \"\",\"events\": [         \"onClick\"     ]\n}];\n}else {\n\tstate.EventsBuilder=[];\n}",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onDelete",
+              "publishCondition": "state.mode === \"Delete\""
+            },
+            {
+              "publishable": true,
+              "publishName": "onModeChange",
+              "publishCondition": "state.mode !== \"Delete\""
+            }
+          ]
+        }
       },
       {
         "id": "Div",
         "index": 13,
         "name": "onStyleChange",
-        "reducers": [
-          {
-            "reducer": "state.Div[e.index] = e.state;\n",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onStyleChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "state.Div[e.index] = e.state;\n",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onStyleChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "id": "PropertiesControl",
         "index": 14,
         "name": "onWidthChange",
-        "reducers": [
-          {
-            "reducer": "state.style.width = e.state.width;\nstate.PropertiesControl[0].width = state.style.width;\n",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onStyleChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "state.style.width = e.state.width;\nstate.PropertiesControl[0].width = state.style.width;\n",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onStyleChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "id": "PropertiesControl",
         "index": 15,
         "name": "onTopChange",
-        "reducers": [
-          {
-            "reducer": "state.style.top = e.state.top;\nstate.PropertiesControl[0].top = state.style.top;\n",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onStyleChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "state.style.top = e.state.top;\nstate.PropertiesControl[0].top = state.style.top;\n",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onStyleChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "id": "PropertiesControl",
         "index": 16,
         "name": "onLeftChange",
-        "reducers": [
-          {
-            "reducer": "state.style.left = e.state.left;\nstate.PropertiesControl[0].left = state.style.left;\n",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onStyleChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "state.style.left = e.state.left;\nstate.PropertiesControl[0].left = state.style.left;\n",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onStyleChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "id": "PropertiesControl",
         "index": 17,
         "name": "onBorderWidthChange",
-        "reducers": [
-          {
-            "reducer": "state.style['border-width'] = e.state.borderWidth;\nstate.PropertiesControl[0].borderWidth = state.style['border-width'];\n",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onStyleChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "state.style['border-width'] = e.state.borderWidth;\nstate.PropertiesControl[0].borderWidth = state.style['border-width'];\n",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onStyleChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "id": "Div",
         "index": 18,
         "name": "onModeChange",
-        "reducers": [
-          {
-            "reducer": "state.Div[e.index] = e.state;\n",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onModeChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "state.Div[e.index] = e.state;\n",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onModeChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "id": "PropertiesControl",
         "index": 18,
         "name": "onBorderColorChange",
-        "reducers": [
-          {
-            "reducer": "state.style['border-color'] = e.state.borderColor;\nstate.PropertiesControl[0].borderColor = state.style['border-color'];\n",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onStyleChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "state.style['border-color'] = e.state.borderColor;\nstate.PropertiesControl[0].borderColor = state.style['border-color'];\n",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onStyleChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "id": "PropertiesControl",
         "index": 19,
         "name": "onBorderStyleChange",
-        "reducers": [
-          {
-            "reducer": "state.style['border-style'] = e.state.borderStyle;\nstate.PropertiesControl[0].borderStyle = state.style['border-style'];\n",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onStyleChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "state.style['border-style'] = e.state.borderStyle;\nstate.PropertiesControl[0].borderStyle = state.style['border-style'];\n",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onStyleChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       }
     ],
-    "state": "{\"style\":{\"position\":\"fixed\",\"top\":\"226px\",\"left\":\"398px\",\"height\":\"242px\",\"width\":\"466px\",\"borderWidth\":\"1px\",\"borderStyle\":\"solid\",\"borderColor\":\"green\",\"cursor\":\"crosshair\",\"border-width\":\"9px\",\"border-color\":\"#545496\",\"border-style\":\"dashed\"},\"Div\":[],\"mode\":\"Save\",\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"242px\",\"width\":\"466px\",\"top\":\"226px\",\"left\":\"398px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\",\"borderWidth\":\"1px\",\"borderColor\":\"#545496\",\"borderStyle\":\"dashed\"}],\"grabbing\":false,\"origin\":false,\"divId\":\"0.30211345362809316\",\"showOptions\":true,\"clientX\":550,\"clientY\":341,\"eventReducer\":\"\",\"EventsBuilder\":[]}",
+    "state": "{\"style\":{\"position\":\"fixed\",\"top\":\"226px\",\"left\":\"398px\",\"height\":\"242px\",\"width\":\"466px\",\"borderWidth\":\"1px\",\"borderStyle\":\"solid\",\"borderColor\":\"green\",\"cursor\":\"crosshair\",\"border-width\":\"9px\",\"border-color\":\"#545496\",\"border-style\":\"dashed\"},\"Div\":[],\"mode\":\"Save\",\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"242px\",\"width\":\"466px\",\"top\":\"226px\",\"left\":\"398px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\",\"borderWidth\":\"1px\",\"borderColor\":\"#545496\",\"borderStyle\":\"dashed\"}],\"grabbing\":false,\"origin\":false,\"divId\":\"div123\",\"showOptions\":true,\"clientX\":550,\"clientY\":341,\"eventReducer\":\"\",\"EventsBuilder\":[]}",
     "style": ".Div{\n    position: fixed;\n    background-color: black;\n    border: 1px solid red;\n\ttop: 25%;\n    left: 20%;\n    cursor: \"move\";\n}\n",
     "children": [],
     "id": 198,
@@ -1174,337 +1034,295 @@ window.sampleComponents =[
         "name": "onMouseOver",
         "index": 0,
         "id": "DivElement",
-        "reducers": [
-          {
-            "reducer": "if(state.mode===\"Draw\"){\n\tstate.style.cursor = \"crosshair\";\n}\n\te.stopPropagation();\n\n",
-            "publishes": []
-          }
-        ]
+        "reducer": {
+          "reducer": "if(state.mode===\"Draw\"){\n\tstate.style.cursor = \"crosshair\";\n}\n\te.stopPropagation();\n\n",
+          "publishes": []
+        }
       },
       {
         "name": "onMouseDown",
         "index": 1,
         "id": "DivElement",
-        "reducers": [
-          {
-            "reducer": "function create(type, x, y, text){\n\t  var item = document.createElement(type);\n      item.style.position = \"fixed\";\n      item.style.left = x+ \"px\";\n      item.style.top = y + \"px\";\n      item.style['border-width'] = \"1px\";\n      item.style['border-color'] = \"green\";\n      item.style['border-style'] = \"solid\";\n      item.id = Math.random();\n      if(text){\n      \titem.innerText = text;\n      }\n      return item;\n}\n\nlet target = e.target;\n\nif(e.button===0 && target.type!==\"text\"){\n  if(state.mode===\"Draw\"){\n\t\n      var div = create(\"div\", e.clientX, e.clientY);\n      var parent = e.target;\n      parent.appendChild(div);\n\n      state.divId = div.id;\n      state.origin = true;\n  }\n}\n\nif(state.mode===\"Move\"){\n\tstate.style.cursor = \"grabbing\";\n    state.grabbing = true;\n}\ndelete window.eClientY;\ndelete window.eClientX;\n\te.stopPropagation()\n\n",
-            "publishes": []
-          }
-        ]
+        "reducer": {
+          "reducer": "function create(type, x, y, text){\n\t  var item = document.createElement(type);\n      item.style.position = \"fixed\";\n      item.style.left = x+ \"px\";\n      item.style.top = y + \"px\";\n      item.style['border-width'] = \"1px\";\n      item.style['border-color'] = \"green\";\n      item.style['border-style'] = \"solid\";\n      item.id = Math.random();\n      if(text){\n      \titem.innerText = text;\n      }\n      return item;\n}\n\nlet target = e.target;\n\nif(e.button===0 && target.type!==\"text\"){\n  if(state.mode===\"Draw\"){\n\t\n      var div = create(\"div\", e.clientX, e.clientY);\n      var parent = e.target;\n      parent.appendChild(div);\n\n      state.divId = div.id;\n      state.origin = true;\n  }\n}\n\nif(state.mode===\"Move\"){\n\tstate.style.cursor = \"grabbing\";\n    state.grabbing = true;\n}\ndelete window.eClientY;\ndelete window.eClientX;\n\te.stopPropagation()\n\n",
+          "publishes": []
+        }
       },
       {
         "name": "onMouseMove",
         "index": 2,
         "id": "DivElement",
-        "reducers": [
-          {
-            "reducer": "if(state.mode===\"Draw\"){\n  if(state.origin){\n      var div= document.getElementById(state.divId);\n      var rect = div.getBoundingClientRect();\n      div.style.width = e.clientX - rect.left;\n      div.style.height = e.clientY - rect.top;\n  }\n}\n\nif(\tstate.style.cursor == \"grabbing\" && state.grabbing) {\n\tvar rect = e.target.getBoundingClientRect();\n\t\n    window.eClientY = window.eClientY || e.clientY;\n\twindow.eClientX = window.eClientX || e.clientX;\n    \n    e.target.style.top = (-window.eClientY + e.clientY) + rect.top  + \"px\";\n    e.target.style.left = (-window.eClientX + e.clientX) + rect.left + \"px\";\n\n\twindow.eClientY = e.clientY;\n\twindow.eClientX = e.clientX;\n}\n\te.stopPropagation()\n\n\n\n",
-            "publishes": []
-          }
-        ]
+        "reducer": {
+          "reducer": "if(state.mode===\"Draw\"){\n  if(state.origin){\n      var div= document.getElementById(state.divId);\n      var rect = div.getBoundingClientRect();\n      div.style.width = e.clientX - rect.left;\n      div.style.height = e.clientY - rect.top;\n  }\n}\n\nif(\tstate.style.cursor == \"grabbing\" && state.grabbing) {\n\tvar rect = e.target.getBoundingClientRect();\n\t\n    window.eClientY = window.eClientY || e.clientY;\n\twindow.eClientX = window.eClientX || e.clientX;\n    \n    e.target.style.top = (-window.eClientY + e.clientY) + rect.top  + \"px\";\n    e.target.style.left = (-window.eClientX + e.clientX) + rect.left + \"px\";\n\n\twindow.eClientY = e.clientY;\n\twindow.eClientX = e.clientX;\n}\n\te.stopPropagation()\n\n\n\n",
+          "publishes": []
+        }
       },
       {
         "name": "onMouseUp",
         "index": 3,
         "id": "DivElement",
-        "reducers": [
-          {
-            "reducer": "if(state.mode===\"Draw\"){\n\tif(e.button===0){\n\t\tstate.origin = false;\n\t}\n\tlet createdDiv = document.getElementById(state.divId);\n    delete state.divId;\n    state.Div.push({\n    \tstyle: {\n          position: createdDiv.style.position,\n          top: createdDiv.style.top,\n          left: createdDiv.style.left,\n          height: createdDiv.style.height,\n          width: createdDiv.style.width,\n          borderWidth: createdDiv.style[\"border-width\"],\n          borderStyle: createdDiv.style[\"border-style\"],\n          borderColor: createdDiv.style[\"border-color\"]\n        },\n        Div: [],\n        mode:\"Draw\",\n        PropertiesControl:[state.PropertiesControl[0]]\n    })\n    createdDiv.remove();\n}\nif(state.mode===\"Move\"){\n\te.target.style.cursor = \"pointer\";\n    state.grabbing = false;\n\tstate.style.top = e.target.style.top;\n    state.style.left = e.target.style.left;\n}\n\nif(state.mode===\"Resize\"){\n\tstate.style.height = e.target.style.height;\n    state.style.width = e.target.style.width;\n}\n\n\te.stopPropagation()\n\n",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onDrawFinish",
-                "publishCondition": "state.mode==='Draw' && e.button ===0"
-              },
-              {
-                "publishable": true,
-                "publishName": "onMoveFinish",
-                "publishCondition": "state.mode===\"Move\""
-              },
-              {
-                "publishable": true,
-                "publishName": "onResizeFinish",
-                "publishCondition": "state.mode===\"Resize\""
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "if(state.mode===\"Draw\"){\n\tif(e.button===0){\n\t\tstate.origin = false;\n\t}\n\tlet createdDiv = document.getElementById(state.divId);\n    delete state.divId;\n    state.Div.push({\n    \tstyle: {\n          position: createdDiv.style.position,\n          top: createdDiv.style.top,\n          left: createdDiv.style.left,\n          height: createdDiv.style.height,\n          width: createdDiv.style.width,\n          borderWidth: createdDiv.style[\"border-width\"],\n          borderStyle: createdDiv.style[\"border-style\"],\n          borderColor: createdDiv.style[\"border-color\"]\n        },\n        Div: [],\n        mode:\"Draw\",\n        PropertiesControl:[state.PropertiesControl[0]]\n    })\n    createdDiv.remove();\n}\nif(state.mode===\"Move\"){\n\te.target.style.cursor = \"pointer\";\n    state.grabbing = false;\n\tstate.style.top = e.target.style.top;\n    state.style.left = e.target.style.left;\n}\n\nif(state.mode===\"Resize\"){\n\tstate.style.height = e.target.style.height;\n    state.style.width = e.target.style.width;\n}\n\n\te.stopPropagation()\n\n",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onDrawFinish",
+              "publishCondition": "state.mode==='Draw' && e.button ===0"
+            },
+            {
+              "publishable": true,
+              "publishName": "onMoveFinish",
+              "publishCondition": "state.mode===\"Move\""
+            },
+            {
+              "publishable": true,
+              "publishName": "onResizeFinish",
+              "publishCondition": "state.mode===\"Resize\""
+            }
+          ]
+        }
       },
       {
         "id": "Div",
         "index": 4,
         "name": "onDrawFinish",
-        "reducers": [
-          {
-            "reducer": "state.Div[e.index] = e.state;\n",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onDrawFinish",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "state.Div[e.index] = e.state;\n",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onDrawFinish",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "id": "mode",
         "index": 5,
         "name": "onMouseDown",
-        "reducers": [
-          {
-            "reducer": "e.stopPropagation();",
-            "publishes": []
-          }
-        ]
+        "reducer": {
+          "reducer": "e.stopPropagation();",
+          "publishes": []
+        }
       },
       {
         "id": "mode",
         "index": 7,
         "name": "onMouseUp",
-        "reducers": [
-          {
-            "reducer": "e.stopPropagation();",
-            "publishes": []
-          }
-        ]
+        "reducer": {
+          "reducer": "e.stopPropagation();",
+          "publishes": []
+        }
       },
       {
         "id": "Div",
         "index": 8,
         "name": "onMoveFinish",
-        "reducers": [
-          {
-            "reducer": "state.Div[e.index] = e.state;\n",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onMoveFinish",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "state.Div[e.index] = e.state;\n",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onMoveFinish",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "id": "Div",
         "index": 9,
         "name": "onResizeFinish",
-        "reducers": [
-          {
-            "reducer": "state.Div[e.index] = e.state;\n",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onResizeFinish",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "state.Div[e.index] = e.state;\n",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onResizeFinish",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "id": "Div",
         "index": 10,
         "name": "onDelete",
-        "reducers": [
-          {
-            "reducer": "state.Div.splice(e.index,1);\n",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onModeChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "state.Div.splice(e.index,1);\n",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onModeChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "id": "PropertiesControl",
         "index": 11,
         "name": "onHeightChange",
-        "reducers": [
-          {
-            "reducer": "state.style.height = e.state.height;\nstate.PropertiesControl[0].height = state.style.height;\n",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onStyleChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "state.style.height = e.state.height;\nstate.PropertiesControl[0].height = state.style.height;\n",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onStyleChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "id": "mode",
         "index": 12,
         "name": "onChange",
-        "reducers": [
-          {
-            "reducer": "state.mode = e.target.value;\n\nswitch(state.mode){\n    case \"Edit\":\n        state.PropertiesControl[0].style.display = \"block\";\n        state.PropertiesControl[0].style.top = \"0px\";\n        state.PropertiesControl[0].style.left = \"-170px\";\n        state.PropertiesControl[0].height = state.style.height;\n        state.PropertiesControl[0].width = state.style.width;\n        state.PropertiesControl[0].top = state.style.top;\n        state.PropertiesControl[0].left = state.style.left;\n        state.PropertiesControl[0].borderWidth = state.style.borderWidth;\n        break;\n    case \"Save\":\n        let index = components.findIndex(component=>component.name===\"Div\")\n        components[index].state = JSON.stringify(state);\n        localStorage.setItem(\"ui-editor\", JSON.stringify(components));\n        break;\n    case \"Load\":\n        state.components = [\"\",...components.map(component=>component.name)]\n        break;\n}",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onDelete",
-                "publishCondition": "state.mode === \"Delete\""
-              },
-              {
-                "publishable": true,
-                "publishName": "onModeChange",
-                "publishCondition": "state.mode !== \"Delete\""
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "state.mode = e.target.value;\n\nswitch(state.mode){\n    case \"Edit\":\n        state.PropertiesControl[0].style.display = \"block\";\n        state.PropertiesControl[0].style.top = \"0px\";\n        state.PropertiesControl[0].style.left = \"-170px\";\n        state.PropertiesControl[0].height = state.style.height;\n        state.PropertiesControl[0].width = state.style.width;\n        state.PropertiesControl[0].top = state.style.top;\n        state.PropertiesControl[0].left = state.style.left;\n        state.PropertiesControl[0].borderWidth = state.style.borderWidth;\n        break;\n    case \"Save\":\n        let index = components.findIndex(component=>component.name===\"Div\")\n        components[index].state = JSON.stringify(state);\n        localStorage.setItem(\"ui-editor\", JSON.stringify(components));\n        break;\n    case \"Load\":\n        state.components = [\"\",...components.map(component=>component.name)]\n        break;\n}",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onDelete",
+              "publishCondition": "state.mode === \"Delete\""
+            },
+            {
+              "publishable": true,
+              "publishName": "onModeChange",
+              "publishCondition": "state.mode !== \"Delete\""
+            }
+          ]
+        }
       },
       {
         "id": "Div",
         "index": 13,
         "name": "onStyleChange",
-        "reducers": [
-          {
-            "reducer": "state.Div[e.index] = e.state;\n",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onStyleChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "state.Div[e.index] = e.state;\n",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onStyleChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "id": "PropertiesControl",
         "index": 14,
         "name": "onWidthChange",
-        "reducers": [
-          {
-            "reducer": "state.style.width = e.state.width;\nstate.PropertiesControl[0].width = state.style.width;\n",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onStyleChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "state.style.width = e.state.width;\nstate.PropertiesControl[0].width = state.style.width;\n",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onStyleChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "id": "PropertiesControl",
         "index": 15,
         "name": "onTopChange",
-        "reducers": [
-          {
-            "reducer": "state.style.top = e.state.top;\nstate.PropertiesControl[0].top = state.style.top;\n",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onStyleChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "state.style.top = e.state.top;\nstate.PropertiesControl[0].top = state.style.top;\n",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onStyleChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "id": "PropertiesControl",
         "index": 16,
         "name": "onLeftChange",
-        "reducers": [
-          {
-            "reducer": "state.style.left = e.state.left;\nstate.PropertiesControl[0].left = state.style.left;\n",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onStyleChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "state.style.left = e.state.left;\nstate.PropertiesControl[0].left = state.style.left;\n",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onStyleChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "id": "PropertiesControl",
         "index": 17,
         "name": "onBorderWidthChange",
-        "reducers": [
-          {
-            "reducer": "state.style['border-width'] = e.state.borderWidth;\nstate.PropertiesControl[0].borderWidth = state.style['border-width'];\n",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onStyleChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "state.style['border-width'] = e.state.borderWidth;\nstate.PropertiesControl[0].borderWidth = state.style['border-width'];\n",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onStyleChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "id": "Div",
         "index": 18,
         "name": "onModeChange",
-        "reducers": [
-          {
-            "reducer": "state.Div[e.index] = e.state;\n",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onModeChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "state.Div[e.index] = e.state;\n",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onModeChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "id": "PropertiesControl",
         "index": 18,
         "name": "onBorderColorChange",
-        "reducers": [
-          {
-            "reducer": "state.style['border-color'] = e.state.borderColor;\nstate.PropertiesControl[0].borderColor = state.style['border-color'];\n",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onStyleChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "state.style['border-color'] = e.state.borderColor;\nstate.PropertiesControl[0].borderColor = state.style['border-color'];\n",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onStyleChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "id": "PropertiesControl",
         "index": 19,
         "name": "onBorderStyleChange",
-        "reducers": [
-          {
-            "reducer": "state.style['border-style'] = e.state.borderStyle;\nstate.PropertiesControl[0].borderStyle = state.style['border-style'];\n",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onStyleChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "state.style['border-style'] = e.state.borderStyle;\nstate.PropertiesControl[0].borderStyle = state.style['border-style'];\n",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onStyleChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "id": "components",
         "index": 20,
         "name": "onChange",
-        "reducers": [
-          {
-            "reducer": "debugger;\nlet changedComponent = e.target.value;\nif(changedComponent && !state.changedComponent){\n    components[14].markup = components[14].markup.replace(`<PropertiesControl></PropertiesControl>`,`<PropertiesControl></PropertiesControl><${changedComponent}></${changedComponent}>`)\n}\nelse if(state.changedComponent){\n\tcomponents[14].markup = components[14].markup.replace(`<PropertiesControl></PropertiesControl><${state.changedComponent}></${state.changedComponent}>`,`<PropertiesControl></PropertiesControl><${changedComponent}></${changedComponent}>`)\n}\nstate.changedComponent = changedComponent;\ncomponents[14].state = JSON.stringify(state);\ncomponents.forEach(component=>delete window[component.name]);\nwindow.refreshComponents();",
-            "publishes": []
-          }
-        ]
+        "reducer": {
+          "reducer": "debugger;\nlet changedComponent = e.target.value;\nif(changedComponent && !state.changedComponent){\n    components[14].markup = components[14].markup.replace(`<PropertiesControl></PropertiesControl>`,`<PropertiesControl></PropertiesControl><${changedComponent}></${changedComponent}>`)\n}\nelse if(state.changedComponent){\n\tcomponents[14].markup = components[14].markup.replace(`<PropertiesControl></PropertiesControl><${state.changedComponent}></${state.changedComponent}>`,`<PropertiesControl></PropertiesControl><${changedComponent}></${changedComponent}>`)\n}\nstate.changedComponent = changedComponent;\ncomponents[14].state = JSON.stringify(state);\ncomponents.forEach(component=>delete window[component.name]);\nwindow.refreshComponents();",
+          "publishes": []
+        }
       }
     ],
     "state": "{\n    \"style\": {\n        \"position\": \"fixed\",\n        \"top\": \"23px\",\n        \"left\": \"185px\",\n        \"height\": \"679px\",\n        \"width\": \"591px\",\n        \"border\": \"1px solid green\",\n        \"cursor\": \"crosshair\"\n    },\n    \"selectedComponent\": \"\",\n    \"mode\": \"\",\n    \"components\": [\n        \"\",\n        \"Resizable\",\n        \"Movable\",\n        \"CanvasControls\",\n        \"PropertiesControl\",\n        \"Div\",\n        \"Input\",\n        \"Button\",\n        \"Span\",\n        \"P\",\n        \"H1\",\n        \"H2\",\n        \"H3\",\n        \"H4\",\n        \"H5\",\n        \"Editor\"\n    ],\n    \"PropertiesControl\": [\n        {\n            \"style\": {\n                \"top\": \"0px\",\n                \"left\": \"-170px\",\n                \"position\": \"absolute\",\n                \"display\": \"none\"\n            },\n            \"id\": \"containement\",\n            \"class\": \"black setup\",\n            \"height\": \"679px\",\n            \"width\": \"591px\",\n            \"top\": \"23px\",\n            \"left\": \"185px\",\n            \"color\": \"#874a4a\",\n            \"space\": \"100px\",\n            \"fontSize\": \"10px\"\n        }\n    ],\n    \"grabbing\": false,\n    \"divId\": \"0.9794908078276479\",\n    \"origin\": false,\n    \"changedComponent\": \"\"\n}",
@@ -1522,43 +1340,41 @@ window.sampleComponents =[
         "name": "onClick",
         "index": 0,
         "id": "menu",
-        "reducers": [
-          {
-            "reducer": "state.item = e.target.innerText;\n\nswitch (state.item){\n\tcase \"Draw\":\n\t\tstate.text = \"enabled\";\n        state.select = \"enabled\"\n        break;\n\tcase \"Select\":\n\t\tstate.edit = \"enabled\";\n        break;\n}",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onDraw",
-                "publishCondition": "state.item === 'Draw'"
-              },
-              {
-                "publishable": true,
-                "publishName": "onText",
-                "publishCondition": "state.item === 'Text'"
-              },
-              {
-                "publishable": true,
-                "publishName": "onSelect",
-                "publishCondition": "state.item === 'Select'"
-              },
-              {
-                "publishable": true,
-                "publishName": "onEdit",
-                "publishCondition": "state.item === 'Edit'"
-              },
-              {
-                "publishable": true,
-                "publishName": "onUndo",
-                "publishCondition": "state.item === 'Undo'"
-              },
-              {
-                "publishable": true,
-                "publishName": "onRedo",
-                "publishCondition": "state.item === 'Redo'"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "state.item = e.target.innerText;\n\nswitch (state.item){\n\tcase \"Draw\":\n\t\tstate.text = \"enabled\";\n        state.select = \"enabled\"\n        break;\n\tcase \"Select\":\n\t\tstate.edit = \"enabled\";\n        break;\n}",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onDraw",
+              "publishCondition": "state.item === 'Draw'"
+            },
+            {
+              "publishable": true,
+              "publishName": "onText",
+              "publishCondition": "state.item === 'Text'"
+            },
+            {
+              "publishable": true,
+              "publishName": "onSelect",
+              "publishCondition": "state.item === 'Select'"
+            },
+            {
+              "publishable": true,
+              "publishName": "onEdit",
+              "publishCondition": "state.item === 'Edit'"
+            },
+            {
+              "publishable": true,
+              "publishName": "onUndo",
+              "publishCondition": "state.item === 'Undo'"
+            },
+            {
+              "publishable": true,
+              "publishName": "onRedo",
+              "publishCondition": "state.item === 'Redo'"
+            }
+          ]
+        }
       }
     ],
     "state": "{\n\t\"undo\":\"enabled\",\n    \"redo\":\"enabled\",\n\t\"draw\":\"enabled\",\n    \"text\":\"disabled\",\n    \"image\":\"disabled\",\n\t\"group\":\"disabled\",\n    \"ungroup\":\"disabled\",\n\t\"duplicate\":\"disabled\",\n    \"delete\":\"disabled\",\n\t\"select\":\"disabled\",\n    \"edit\":\"disabled\",\n    \"save\":\"disabled\",\n    \"load\":\"disabled\",\n    \"style\" : {\n    \t\"top\": \"100px\",\n        \"left\":\"200px\"\n    }\n}",
@@ -1580,62 +1396,116 @@ window.sampleComponents =[
   },
   {
     "name": "EventsBuilder",
-    "markup": " <span class=\"eventsBuilder\" style={state.style}>    \n    <select name=\"mode\" value={state.event} id=\"events\">\n        <optgroup label=\"Mouse\">\n            <option value=\"onClick\">onClick</option>\n            <option value=\"onMouseDown\">onMouseDown</option>\n            <option value=\"onMouseUp\">onMouseUp</option>\n            <option value=\"onMouseMove\">onMouseMove</option>\n            <option value=\"onMouseLeave\">onMouseLeave</option>\n            <option value=\"onMouseOut\">onMouseOut</option>\n        </optgroup>\n        <optgroup label=\"Keyboard\">\n            <option value=\"onKeyPress\">onKeyPress</option>\n            <option value=\"onKeyDown\">onKeyDown</option>\n            <option value=\"onKeyUp\">onKeyUp</option>\n            <option value=\"onEnter\">onEnter</option>\n        </optgroup>\n    </select>\n    <textarea id=\"textArea\">{state.eventReducer}</textarea>\n    </span>",
+    "markup": " <div class=\"eventsBuilder\" id=\"events\" style={state.style}>    \n    <select name=\"mode\" value={state.eventName} id=\"eventName\">\n        <optgroup label=\"Events\">\n            {state.events.map(event=><option value={event}>{event}</option>)}\n        </optgroup>\n    </select>\n    <textarea id=\"textArea\" style={state.textAreaStyle}>{state.eventReducer}</textarea>\n    </div>",
     "events": [
       {
         "id": "mode",
         "index": 0,
         "name": "onChange",
-        "reducers": [
-          {
-            "reducer": "alert();",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onEventsChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "alert();",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onEventsChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "id": "events",
         "index": 2,
         "name": "onChange",
-        "reducers": [
-          {
-            "reducer": "state.event = e.target.value;",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "state.event = e.target.value;",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
       },
       {
         "id": "textArea",
         "index": 3,
         "name": "onChange",
-        "reducers": [
-          {
-            "reducer": "state.eventReducer=e.target.value;",
-            "publishes": [
-              {
-                "publishable": true,
-                "publishName": "onChange",
-                "publishCondition": "true"
-              }
-            ]
-          }
-        ]
+        "reducer": {
+          "reducer": "state.eventReducer=e.target.value;",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
+      },
+      {
+        "id": "events",
+        "index": 3,
+        "name": "onMouseMove",
+        "reducer": {
+          "reducer": "e.stopPropagation();",
+          "publishes": []
+        }
+      },
+      {
+        "id": "events",
+        "index": 4,
+        "name": "onMouseDown",
+        "reducer": {
+          "reducer": "e.stopPropagation();",
+          "publishes": []
+        }
+      },
+      {
+        "id": "events",
+        "index": 5,
+        "name": "onMouseOver",
+        "reducer": {
+          "reducer": "e.stopPropagation();",
+          "publishes": []
+        }
+      },
+      {
+        "id": "events",
+        "index": 6,
+        "name": "onMouseUp",
+        "reducer": {
+          "reducer": "e.stopPropagation();",
+          "publishes": []
+        }
+      },
+      {
+        "id": "eventName",
+        "index": 7,
+        "name": "onChange",
+        "reducer": {
+          "reducer": "state.eventName = e.target.value",
+          "publishes": []
+        }
+      },
+      {
+        "id": "events",
+        "index": 8,
+        "name": "onMouseOut",
+        "reducer": {
+          "reducer": "console.log(\"Mouse out\");",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onSubmit",
+              "publishCondition": "true"
+            }
+          ]
+        }
       }
     ],
-    "state": "{\n    \"style\": {\n        \"top\": \"100px\",\n        \"left\": \"408px\",\n        \"position\": \"absolute\"\n    },\n    \"event\": \"onClick\",\n    \"eventReducer\": \"on\"\n}",
-    "style": ".eventsBuilder{\n\tposition:fixed;\n    top:150px;\n    left:150px;\n}\n\n.eventsBuilder textarea{\n\tposition: absolute;\n    top:40px;\n    left:0px;\n    width: 150px;\n}",
+    "state": "{\n    \"style\": {\n        \"top\": \"100px\",\n        \"left\": \"408px\",\n        \"position\": \"absolute\"\n    },\n    \"textAreaStyle\": {\n        \"position\": \"absolute\",\n        \"top\": \"40px\",\n        \"left\": \"0px\",\n        \"width\": \"150px\"\n    },\n    \"eventName\": \"onClick\",\n    \"eventReducer\": \"on\",\n    \"events\": [\n        \"onClick\"\n    ]\n}",
+    "style": "",
     "children": [],
     "id": 168,
     "config": "{}",

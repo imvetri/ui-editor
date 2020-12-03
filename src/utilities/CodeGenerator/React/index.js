@@ -59,14 +59,13 @@ export function convertToReact (component){
         }).join("\n")
     }
 
-    function getReducer(reducers){
-        return reducers.map(reducer=>`
+    function getReducer(reducer){
+        return `
             ${reducer.reducer}
             this.setState(state);
             e.state = state;
             e.index = this.props.index;
             ${getPublishes(reducer.publishes)}`
-        ).join("\n");
     }
     
     let propsInMarkup = addProps(component);
@@ -88,7 +87,7 @@ class ${component.name} extends Component {
     return `
     ${event.id+event.name} (e) {
         var state = JSON.parse(JSON.stringify(this.state))
-        ${getReducer(event.reducers)}
+        ${getReducer(event.reducer)}
     }`
 
     }).join("\n")}

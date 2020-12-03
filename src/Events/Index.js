@@ -33,11 +33,11 @@ class Events extends Component {
         this.state.selectedEventName = "";
         this.state.selectedEvent = {
             name: "",
-            reducers: [{
+            reducer: {
                 reducer: "",
                 publishes: [],
                 index: this.props.component.events.length
-            }]
+            }
         }
         this.state.eventID = "";
     }
@@ -46,10 +46,10 @@ class Events extends Component {
         this.setState({
             selectedEvent: {
                 name: this.state.selectedEventName,
-                reducers: [{
+                reducer: {
                     reducer: reducer.reducer,
                     publishes: reducer.publishes
-                }]
+                }
             }
         })
     }
@@ -59,7 +59,7 @@ class Events extends Component {
         let changedEvent = events.find(event=>event.name===this.state.selectedEvent.name && this.state.eventID=== event.id);
         if(changedEvent){
             // its a existing event
-            changedEvent.reducers = this.state.selectedEvent.reducers;
+            changedEvent.reducer = this.state.selectedEvent.reducer;
         }
         else{
             // its a new event
@@ -67,7 +67,7 @@ class Events extends Component {
                 id: this.state.eventID,
                 index: events.length,
                 name: this.state.selectedEvent.name,
-                reducers: this.state.selectedEvent.reducers
+                reducer: this.state.selectedEvent.reducer
             })
         }
         this.props.onEventsUpdate(events);
@@ -105,7 +105,7 @@ class Events extends Component {
             eventNames = []
 
             childComponent.events.forEach(event=>{
-                event.reducers[0].publishes.forEach(publish=>{
+                event.reducer.publishes.forEach(publish=>{
                         if(publish.publishable){
                             eventNames.push(publish.publishName)
                         }
@@ -146,10 +146,10 @@ class Events extends Component {
                     <div className="event">
                         <div className="reducers">
                             <div className="title">
-                                Reducers
+                                Reducer
                             </div>
                             <div>
-                                {this.state.selectedEvent.reducers.map(reducer => <Reducer key={Math.ceil(Math.random() * 1000)} reducer={reducer} onChange={this.publishEvent.bind(this)} />)}
+                                <Reducer key={Math.ceil(Math.random() * 1000)} reducer={this.state.selectedEvent.reducer} onChange={this.publishEvent.bind(this)} />
                             </div>
                         </div>
                     </div>
