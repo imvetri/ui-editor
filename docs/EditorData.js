@@ -933,12 +933,12 @@ window.sampleComponents =[
         "index": 20,
         "name": "onSubmit",
         "reducer": {
-          "reducer": "state.EventsBuilder = [e.state];\nstate.events[e.state.eventName] = e.state.eventReducer;\ndebugger;",
+          "reducer": "state.EventsBuilder = [e.state]",
           "publishes": []
         }
       }
     ],
-    "state": "{\"style\":{\"position\":\"fixed\",\"top\":\"226px\",\"left\":\"398px\",\"height\":\"242px\",\"width\":\"466px\",\"borderWidth\":\"1px\",\"borderStyle\":\"solid\",\"borderColor\":\"green\",\"cursor\":\"crosshair\",\"border-width\":\"9px\",\"border-color\":\"#545496\",\"border-style\":\"dashed\"},\"Div\":[],\"mode\":\"Save\",\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"242px\",\"width\":\"466px\",\"top\":\"226px\",\"left\":\"398px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\",\"borderWidth\":\"1px\",\"borderColor\":\"#545496\",\"borderStyle\":\"dashed\"}],\"grabbing\":false,\"origin\":false,\"divId\":\"div123\",\"showOptions\":true,\"clientX\":550,\"clientY\":341,\"eventReducer\":\"\",\"events\":{},\"EventsBuilder\":[]}",
+    "state": "{\"style\":{\"position\":\"fixed\",\"top\":\"226px\",\"left\":\"398px\",\"height\":\"242px\",\"width\":\"466px\",\"borderWidth\":\"1px\",\"borderStyle\":\"solid\",\"borderColor\":\"green\",\"cursor\":\"crosshair\",\"border-width\":\"9px\",\"border-color\":\"#545496\",\"border-style\":\"dashed\"},\"Div\":[],\"mode\":\"Save\",\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"242px\",\"width\":\"466px\",\"top\":\"226px\",\"left\":\"398px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\",\"borderWidth\":\"1px\",\"borderColor\":\"#545496\",\"borderStyle\":\"dashed\"}],\"grabbing\":false,\"origin\":false,\"divId\":\"div123\",\"showOptions\":true,\"clientX\":550,\"clientY\":341,\"eventReducer\":\"\",\"EventsBuilder\":[]}",
     "style": ".Div{\n    position: fixed;\n    background-color: black;\n    border: 1px solid red;\n\ttop: 25%;\n    left: 20%;\n    cursor: \"move\";\n}\n",
     "children": [],
     "id": 198,
@@ -1405,17 +1405,8 @@ window.sampleComponents =[
   },
   {
     "name": "EventsBuilder",
-    "markup": " <div class=\"eventsBuilder\" id=\"events\" style={state.style}>    \n    <select name=\"mode\" value={state.eventName} id=\"eventName\">\n        <optgroup label=\"Events\">\n            {state.events.map(event=><option value={event}>{event}</option>)}\n        </optgroup>\n    </select>\n    <textarea id=\"textArea\" style={state.textAreaStyle}>{state.eventReducer}</textarea>\n    </div>",
+    "markup": "<div class=\"eventsBuilder\" id=\"events\" style={state.style}>    \n    <select name=\"mode\" value={state.eventName} id=\"eventName\">\n        <optgroup label=\"Events\">\n            {Object.keys(state.events).map(event=><option value={event}>{event}</option>)}\n        </optgroup>\n    </select>\n    <textarea id=\"textArea\" style={state.textAreaStyle} value={state.events[state.eventName]}></textarea>\n    </div>",
     "events": [
-      {
-        "id": "textArea",
-        "index": 3,
-        "name": "onChange",
-        "reducer": {
-          "reducer": "state.eventReducer=e.target.value;",
-          "publishes": []
-        }
-      },
       {
         "id": "events",
         "index": 3,
@@ -1457,7 +1448,7 @@ window.sampleComponents =[
         "index": 7,
         "name": "onChange",
         "reducer": {
-          "reducer": "state.eventName = e.target.value;\ndebugger;",
+          "reducer": "state.eventName = e.target.value;\ndebugger;\n",
           "publishes": []
         }
       },
@@ -1475,9 +1466,18 @@ window.sampleComponents =[
             }
           ]
         }
+      },
+      {
+        "id": "textArea",
+        "index": 6,
+        "name": "onChange",
+        "reducer": {
+          "reducer": "state.events[state.eventName] = e.currentTarget.value;",
+          "publishes": []
+        }
       }
     ],
-    "state": "{\n    \"style\": {\n        \"top\": \"100px\",\n        \"left\": \"408px\",\n        \"position\": \"absolute\"\n    },\n    \"textAreaStyle\": {\n        \"position\": \"absolute\",\n        \"top\": \"40px\",\n        \"left\": \"0px\",\n        \"width\": \"150px\"\n    },\n    \"eventName\": \"onClick\",\n    \"eventReducer\": \"on\",\n    \"events\": [\n        \"onClick\",\n        \"onMouseOut\"\n    ]\n}",
+    "state": "{\n    \"style\": {\n        \"top\": \"100px\",\n        \"left\": \"408px\",\n        \"position\": \"absolute\"\n    },\n    \"textAreaStyle\": {\n        \"position\": \"absolute\",\n        \"top\": \"40px\",\n        \"left\": \"0px\",\n        \"width\": \"150px\"\n    },\n    \"eventName\": \"onClick\",\n    \"eventReducer\": \"on\",\n    \"events\": {\n        \"onClick\": \"\",\n        \"onMouseOut\": \"Click\"\n    }\n}",
     "style": "",
     "children": [],
     "id": 168,
