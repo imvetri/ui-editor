@@ -33,7 +33,8 @@ export function convertToReact (component){
          * All these markup.replace is needed so that THE JSX MARKUP LOOKS CLEAN. it is fine if this file is this bad.
          */
         if(markup.includes("...state")){
-            markup = markup.replace("...state", "...this.state")
+            markup = markup.split("state.").join("this.state.").replace("...state", "...this.state")
+            return markup;
         }
         return markup.split("state.").join("this.state.")
     }
