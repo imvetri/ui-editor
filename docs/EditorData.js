@@ -793,7 +793,7 @@ window.sampleComponents =[
         "index": 12,
         "name": "onChange",
         "reducer": {
-          "reducer": "state.mode = e.target.value;\nif(state.mode === \"Resize\"){\n\tstate.style.resize = \"both\";\n    state.style.overflow = \"auto\";\n} else {\n  \tdelete state.style.resize;\n  \tdelete state.style.overflow;\n} if( state.mode===\"Edit\"){ \n  \tstate.PropertiesControl[0].style.display = \"block\";\n  \tstate.PropertiesControl[0].style.top = \"0px\";\n  \tstate.PropertiesControl[0].style.left = \"-170px\";\n  \tstate.PropertiesControl[0].height = state.style.height;\n  \tstate.PropertiesControl[0].width = state.style.width;\n  \tstate.PropertiesControl[0].top = state.style.top;\n  \tstate.PropertiesControl[0].left = state.style.left;\n  \tstate.PropertiesControl[0].borderWidth = state.style.borderWidth;\n} else {\n  \tstate.PropertiesControl[0].style.display = \"none\";\n} if (state.mode===\"Save\"){ \n  \tlet index = components.findIndex(component=>component.name===\"Div\")\n  \tcomponents[index].state = JSON.stringify(state);\n  \tlocalStorage.setItem(\"ui-editor\", JSON.stringify(components));\n} \n\nif(state.mode===\"Events\"){\n  \tlet index = components.findIndex(component=>component.name===\"Div\")\n\tlet events = {};\n    components[index].events.filter(event=>event.id===state.id).forEach(event=>{\n    \tevents[event.name] = event.reducer.reducer;\n    })\n\tstate.EventsBuilder=[{\n    \"style\": {\n        \"top\": \"0px\",\n        \"left\": \"-150px\",\n        \"position\": \"absolute\"\n    },\n    \"textAreaStyle\": {\n        \"position\": \"absolute\",\n        \"top\": \"40px\",\n        \"left\": \"0px\",\n        \"width\": \"150px\"\n    },\n    \"eventName\": \"onClick\",\n    \"eventReducer\": \"\",\n    \"events\": events\n}];\n}else {\n\tstate.EventsBuilder=[];\n}",
+          "reducer": "state.mode = e.target.value;\nif(state.mode === \"Resize\"){\n\tstate.style.resize = \"both\";\n    state.style.overflow = \"auto\";\n} else {\n  \tdelete state.style.resize;\n  \tdelete state.style.overflow;\n} if( state.mode===\"Edit\"){ \n  \tstate.PropertiesControl[0].style.display = \"block\";\n  \tstate.PropertiesControl[0].style.top = \"0px\";\n  \tstate.PropertiesControl[0].style.left = \"-170px\";\n  \tstate.PropertiesControl[0].height = state.style.height;\n  \tstate.PropertiesControl[0].width = state.style.width;\n  \tstate.PropertiesControl[0].top = state.style.top;\n  \tstate.PropertiesControl[0].left = state.style.left;\n  \tstate.PropertiesControl[0].borderWidth = state.style.borderWidth;\n} else {\n  \tstate.PropertiesControl[0].style.display = \"none\";\n} if (state.mode===\"Save\"){ \n  \tlet index = components.findIndex(component=>component.name===\"Div\")\n  \tcomponents[index].state = JSON.stringify(state);\n  \tlocalStorage.setItem(\"ui-editor\", JSON.stringify(components));\n} \n\nif(state.mode===\"Events\"){\ndebugger;\n  \tlet index = components.findIndex(component=>component.name===\"Div\")\n\tlet events = state.events || {\n    \t\"onClick\": \"\"\n    };\n    components[index].events.filter(event=>event.id===state.id).forEach(event=>{\n    \tevents[event.name] = event.reducer.reducer;\n    })\n\tstate.EventsBuilder=[{\n    \"style\": {\n        \"top\": \"0px\",\n        \"left\": \"-150px\",\n        \"position\": \"absolute\"\n    },\n    \"textAreaStyle\": {\n        \"position\": \"absolute\",\n        \"top\": \"40px\",\n        \"left\": \"0px\",\n        \"width\": \"150px\"\n    },\n    \"eventName\": \"onClick\",\n    \"eventReducer\": \"\",\n    \"events\": events\n}];\n}else {\n\tstate.EventsBuilder=[];\n}",
           "publishes": [
             {
               "publishable": true,
@@ -934,11 +934,32 @@ window.sampleComponents =[
         "name": "onSubmit",
         "reducer": {
           "reducer": "state.EventsBuilder = [e.state];\nstate.events = e.state.events;",
-          "publishes": []
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onEventsChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Div",
+        "index": 21,
+        "name": "onEventsChange",
+        "reducer": {
+          "reducer": "state.Div[e.index] = e.state;\n",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onEventsChange",
+              "publishCondition": "true"
+            }
+          ]
         }
       }
     ],
-    "state": "{\"style\":{\"position\":\"fixed\",\"top\":\"226px\",\"left\":\"398px\",\"height\":\"242px\",\"width\":\"466px\",\"borderWidth\":\"1px\",\"borderStyle\":\"solid\",\"borderColor\":\"green\",\"cursor\":\"crosshair\",\"border-width\":\"9px\",\"border-color\":\"#545496\",\"border-style\":\"dashed\"},\"Div\":[],\"mode\":\"Save\",\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"242px\",\"width\":\"466px\",\"top\":\"226px\",\"left\":\"398px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\",\"borderWidth\":\"1px\",\"borderColor\":\"#545496\",\"borderStyle\":\"dashed\"}],\"grabbing\":false,\"origin\":false,\"divId\":\"div123\",\"id\":\"div123\",\"showOptions\":true,\"clientX\":550,\"clientY\":341,\"eventReducer\":\"\",\"events\":{\"onClick\":\"alert('onClick success')\",\"onMouseOut\":\"alert('mouse out success')\"},\"EventsBuilder\":[]}",
+    "state": "{\"style\":{\"position\":\"fixed\",\"top\":\"226px\",\"left\":\"398px\",\"height\":\"242px\",\"width\":\"466px\",\"borderWidth\":\"1px\",\"borderStyle\":\"solid\",\"borderColor\":\"green\",\"cursor\":\"crosshair\",\"border-width\":\"9px\",\"border-color\":\"#545496\",\"border-style\":\"dashed\"},\"Div\":[{\"style\":{\"position\":\"fixed\",\"top\":\"345px\",\"left\":\"468px\",\"height\":\"86px\",\"width\":\"262px\",\"borderWidth\":\"1px\",\"borderStyle\":\"solid\",\"borderColor\":\"green\",\"cursor\":\"crosshair\"},\"Div\":[],\"mode\":\"Save\",\"EventsBuilder\":[],\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"242px\",\"width\":\"466px\",\"top\":\"226px\",\"left\":\"398px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\",\"borderWidth\":\"1px\",\"borderColor\":\"#545496\",\"borderStyle\":\"dashed\"}],\"clientX\":597,\"clientY\":375,\"origin\":false,\"showOptions\":true,\"events\":{\"onClick\":\"alert();\"}}],\"mode\":\"Save\",\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"242px\",\"width\":\"466px\",\"top\":\"226px\",\"left\":\"398px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\",\"borderWidth\":\"1px\",\"borderColor\":\"#545496\",\"borderStyle\":\"dashed\"}],\"grabbing\":false,\"origin\":false,\"divId\":\"div46035\",\"id\":\"div123\",\"showOptions\":true,\"clientX\":468,\"clientY\":345,\"eventReducer\":\"\",\"events\":{\"onClick\":\"alert('onClick success')\",\"onMouseOut\":\"alert('mouse out success')\"},\"EventsBuilder\":[]}",
     "style": ".Div{\n    position: fixed;\n    background-color: black;\n    border: 1px solid red;\n\ttop: 25%;\n    left: 20%;\n    cursor: \"move\";\n}\n",
     "children": [],
     "id": 198,
