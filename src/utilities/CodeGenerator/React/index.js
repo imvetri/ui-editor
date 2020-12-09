@@ -1,87 +1,45 @@
+import {addChildren, addChildrenConfig, addEvents} from "./markup";
+import {getReducers} from "./reducers";
+
 // Elements to  react component.
 export function convertToReact (component){
-
-    let markup = "markup";
 
     component.events.forEach(event=>{
         event.id = event.id.replace("-","");
     })
 
-    let addProps= (component)=>{
-        return component[markup].replace(">",` {...this.props}>{this.props.children}`)
-    }
+    /**
+     * Code generation for markup
+     * 
+     * Markup is edited in three phases.
+     * 1. Add props - This function changes markup to include children - helps in composing bigger components. 
+     *  For example, lets say an accordion component is created, its behaviour includes expanding contents and
+     *  collapsing contents where content could be valid html tags, other components. An easy way to create such 
+     *  separated concerns in behaviour is embedding children.
+     * 
+     * 2. Add Children config - This helps to override child config state from parent and render list of children.
+     * 
+     * 3. Add events - This helps to bind event listenes to markup 
+     */
 
-    let getComponentEventedMarkup = (markup, events)=>{
-        events.forEach(event=>{
-            let id = `id="${event.id}"`;
-            // check if markup contains the id.
-            if(markup.includes(id)){
-                markup = markup.replace(id, `${id} ${event.name}={this.${event.id+event.name}.bind(this)}`);
-            }
-            // its a child component.
-            else{
-                markup = markup.replace(`<${event.id}`,`<${event.id} ${event.name}={this.${event.id+event.name}.bind(this)}`)
-            }
-                
-        });
+    let propsInMarkup = addChildren(component);
+    let childrenMarkup = addChildrenConfig(propsInMarkup, component);
+    let componentEventedMarkup = addEvents(childrenMarkup, component.events);
 
-        /**
-         * This piece of code is needed only for the exception case.
-         * Exception case that I'm trying to build is draw divs on screen
-         * And add events using eventsBuilder component.
-         * 
-         * All these markup.replace is needed so that THE JSX MARKUP LOOKS CLEAN. it is fine if this file is this bad.
-         */
-        if(markup.includes("...state")){
-            markup = markup.split("state.").join("this.state.").replace("...state", "...this.state")
-            return markup;
-        }
-        return markup.split("state.").join("this.state.")
-    }
 
-    // checks if state override is on. then adds state prop to child 
-    let getStatedMarkup = (markup)=>{
-        // for all the config.
-        // filter child with overide state is true
-        let config = JSON.parse(component.config);
-        let childrenConfig = Object.keys(config);
-        childrenConfig.forEach(childName=>{
-
-            // PRECAUTION: Edit markup for rendering list. Should not use other configuration while using this. // Problem - subscibing to child list component does not work Solution - add publishable enevts here
-            if(config[childName].override ){
-                let childMarkup = `<${childName}></${childName}>`;
-
-                let childMarkupWithProps = `<${childName} state={item} key={~~(Math.random()*10000)} index={i}></${childName}>`;
-                let renderListMarkup = `{state.${childName}.map((item,i)=>${childMarkupWithProps})}`;
-                markup =  markup.replace(childMarkup, renderListMarkup);   
-            }
-        })
-        return markup;
-    }
-
-    function getPublishes(publishes){
-        return publishes.map(publish=>{
-            if(publish.publishable){
-                return `
-                if(${publish.publishCondition}){
-                    this.props.${publish.publishName}? this.props.${publish.publishName}(e):null;
-                }`
-           }
-        }).join("\n")
-    }
-
-    function getReducer(reducer){
-        return `
-            ${reducer.reducer}
-            this.setState(state);
-            e.state = state;
-            e.index = this.props.index;
-            ${getPublishes(reducer.publishes)}`
-    }
-    
-    let propsInMarkup = addProps(component);
-    let stateOverideMarkup = getStatedMarkup(propsInMarkup);
-    let componentEventedMarkup = getComponentEventedMarkup(stateOverideMarkup, component.events);
+    /**
+     * Code generation for reducers
+     * 
+     * Reducer function are created in a single phase.
+     * 
+     * getReducers takes a component and returns reducer functions based on following rules.
+     * 1. Generation of function name - It appends event id with event name 
+     * 2. Generation of function definition
+     *      1. Generation of a new state - Creates a new state with help of json.strigify and parse
+     *      2. Generation of reducer logic - event reducer is appeneded here. 
+     *      3. Generation of publishable event - It also publishes events based on the event type.
+     */
+    let reducers = getReducers(component)
     
     let ReactComponent = 
 `(
@@ -94,14 +52,7 @@ class ${component.name} extends Component {
         // Generate css as a separate file on download
     }
 
-    ${component.events.map(event=>{
-    return `
-    ${event.id+event.name} (e) {
-        var state = JSON.parse(JSON.stringify(this.state))
-        ${getReducer(event.reducer)}
-    }`
-
-    }).join("\n")}
+    ${reducers}
 
     render() {
         return (${componentEventedMarkup})
