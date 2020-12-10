@@ -1,4 +1,4 @@
-let addEvents = (markup, events) => {
+let addEvents = (markup, events, component) => {
     events.forEach(event => {
         let id = `id="${event.id}"`;
         // check if markup contains the id.
@@ -11,6 +11,26 @@ let addEvents = (markup, events) => {
         }
 
     });
+
+    /**
+     * This piece of code is needed to try a feature.
+     * Feature - Add events and reducers to Div
+     * Expected - Events to work
+     * Actual - Events don't work
+     * 
+     * Implement
+     * 1. check if state.events object preset
+     * 2. Then appened it to the markup
+     */
+
+    function stateToComponent(state){
+        return `${Object.keys(state.events).map(key=>`${key}={()=>{${state.events[key]}}}`).join(" ")}>`
+    }
+
+     let state = JSON.parse(component.state);
+     if(state.events){
+         markup = markup.replace(">",stateToComponent(state))
+     }
 
     /**
      * This piece of code is needed only for the exception case.
