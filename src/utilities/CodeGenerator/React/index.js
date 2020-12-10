@@ -24,7 +24,7 @@ export function convertToReact (component){
 
     let propsInMarkup = addChildren(component);
     let childrenMarkup = addChildrenConfig(propsInMarkup, component);
-    let componentEventedMarkup = addEvents(childrenMarkup, component.events);
+    let componentEventedMarkup = addEvents(childrenMarkup, component.events, component);
 
 
     /**

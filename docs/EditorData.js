@@ -675,7 +675,7 @@ window.sampleComponents =[
         "index": 3,
         "id": "div123",
         "reducer": {
-          "reducer": "\nif(state.mode===\"Draw\"){\n\tif(e.button===0){\n\t\tstate.origin = false;\n\t}\n\tlet createdDiv = document.getElementById(state.divId);\n    delete state.divId;\n   \n   if(state.clientX==e.clientX&&state.clientY==e.clientY){\n\t   state.showOptions = !state.showOptions;\n   }\n   else{\n   \n    state.Div.push({\n    \tstyle: {\n          position: createdDiv.style.position,\n          top: createdDiv.style.top,\n          left: createdDiv.style.left,\n          height: createdDiv.style.height,\n          width: createdDiv.style.width,\n          borderWidth: createdDiv.style[\"border-width\"],\n          borderStyle: createdDiv.style[\"border-style\"],\n          borderColor: createdDiv.style[\"border-color\"]\n        },\n        Div: [],\n        mode:\"Draw\",\n        EventsBuilder:[],\n        PropertiesControl:[state.PropertiesControl[0]]\n    })\n    }\n    createdDiv.remove();\n}\nif(state.mode===\"Move\"){\n\te.target.style.cursor = \"pointer\";\n    state.grabbing = false;\n\tstate.style.top = e.target.style.top;\n    state.style.left = e.target.style.left;\n}\n\nif(state.mode===\"Resize\"){\n\tstate.style.height = e.target.style.height;\n    state.style.width = e.target.style.width;\n}\n\n\te.stopPropagation()\nconsole.log(\"mouseUp\")\n",
+          "reducer": "\nif(state.mode===\"Draw\"){\n\tif(e.button===0){\n\t\tstate.origin = false;\n\t}\n\tlet createdDiv = document.getElementById(state.divId);\n    delete state.divId;\n   \n   if(state.clientX==e.clientX&&state.clientY==e.clientY){\n\t   state.showOptions = !state.showOptions;\n   }\n   else{\n   \n    state.Div.push({\n    \tstyle: {\n          position: createdDiv.style.position,\n          top: createdDiv.style.top,\n          left: createdDiv.style.left,\n          height: createdDiv.style.height,\n          width: createdDiv.style.width,\n          borderWidth: createdDiv.style[\"border-width\"],\n          borderStyle: createdDiv.style[\"border-style\"],\n          borderColor: createdDiv.style[\"border-color\"]\n        },\n        Div: [],\n        id: createdDiv.id,\n        mode:\"Draw\",\n        EventsBuilder:[],\n        PropertiesControl:[state.PropertiesControl[0]]\n    })\n    }\n    createdDiv.remove();\n}\nif(state.mode===\"Move\"){\n\te.target.style.cursor = \"pointer\";\n    state.grabbing = false;\n\tstate.style.top = e.target.style.top;\n    state.style.left = e.target.style.left;\n}\n\nif(state.mode===\"Resize\"){\n\tstate.style.height = e.target.style.height;\n    state.style.width = e.target.style.width;\n}\n\n\te.stopPropagation()\nconsole.log(\"mouseUp\")\n",
           "publishes": [
             {
               "publishable": true,
@@ -959,7 +959,7 @@ window.sampleComponents =[
         }
       }
     ],
-    "state": "{\"style\":{\"position\":\"fixed\",\"top\":\"226px\",\"left\":\"398px\",\"height\":\"242px\",\"width\":\"466px\",\"borderWidth\":\"1px\",\"borderStyle\":\"solid\",\"borderColor\":\"green\",\"cursor\":\"crosshair\",\"border-width\":\"9px\",\"border-color\":\"#545496\",\"border-style\":\"dashed\"},\"Div\":[{\"style\":{\"position\":\"fixed\",\"top\":\"345px\",\"left\":\"468px\",\"height\":\"86px\",\"width\":\"262px\",\"borderWidth\":\"1px\",\"borderStyle\":\"solid\",\"borderColor\":\"green\",\"cursor\":\"crosshair\"},\"Div\":[],\"mode\":\"Save\",\"EventsBuilder\":[],\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"242px\",\"width\":\"466px\",\"top\":\"226px\",\"left\":\"398px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\",\"borderWidth\":\"1px\",\"borderColor\":\"#545496\",\"borderStyle\":\"dashed\"}],\"clientX\":597,\"clientY\":375,\"origin\":false,\"showOptions\":true,\"events\":{\"onClick\":\"alert();\"}}],\"mode\":\"Save\",\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"242px\",\"width\":\"466px\",\"top\":\"226px\",\"left\":\"398px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\",\"borderWidth\":\"1px\",\"borderColor\":\"#545496\",\"borderStyle\":\"dashed\"}],\"grabbing\":false,\"origin\":false,\"divId\":\"div46035\",\"id\":\"div123\",\"showOptions\":true,\"clientX\":468,\"clientY\":345,\"eventReducer\":\"\",\"events\":{\"onClick\":\"alert('onClick success')\",\"onMouseOut\":\"alert('mouse out success')\"},\"EventsBuilder\":[]}",
+    "state": "{\"style\":{\"position\":\"fixed\",\"top\":\"226px\",\"left\":\"398px\",\"height\":\"242px\",\"width\":\"466px\",\"borderWidth\":\"1px\",\"borderStyle\":\"solid\",\"borderColor\":\"green\",\"cursor\":\"crosshair\",\"border-width\":\"9px\",\"border-color\":\"#545496\",\"border-style\":\"dashed\"},\"Div\":[{\"style\":{\"position\":\"fixed\",\"top\":\"280px\",\"left\":\"436px\",\"height\":\"173px\",\"width\":\"353px\",\"borderWidth\":\"1px\",\"borderStyle\":\"solid\",\"borderColor\":\"green\",\"cursor\":\"crosshair\"},\"Div\":[{\"style\":{\"position\":\"fixed\",\"top\":\"341px\",\"left\":\"518px\",\"height\":\"73px\",\"width\":\"97px\",\"borderWidth\":\"1px\",\"borderStyle\":\"solid\",\"borderColor\":\"green\"},\"Div\":[],\"id\":\"div59301\",\"mode\":\"Draw\",\"EventsBuilder\":[],\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"242px\",\"width\":\"466px\",\"top\":\"226px\",\"left\":\"398px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\",\"borderWidth\":\"1px\",\"borderColor\":\"#545496\",\"borderStyle\":\"dashed\"}]}],\"mode\":\"Draw\",\"EventsBuilder\":[],\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"242px\",\"width\":\"466px\",\"top\":\"226px\",\"left\":\"398px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\",\"borderWidth\":\"1px\",\"borderColor\":\"#545496\",\"borderStyle\":\"dashed\"}],\"clientX\":518,\"clientY\":341,\"origin\":false,\"showOptions\":true,\"events\":{\"onClick\":\"alert();\"},\"grabbing\":false}],\"mode\":\"Save\",\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"242px\",\"width\":\"466px\",\"top\":\"226px\",\"left\":\"398px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\",\"borderWidth\":\"1px\",\"borderColor\":\"#545496\",\"borderStyle\":\"dashed\"}],\"grabbing\":false,\"origin\":false,\"divId\":\"div46035\",\"id\":\"div123\",\"showOptions\":true,\"clientX\":468,\"clientY\":345,\"eventReducer\":\"\",\"events\":{\"onClick\":\"alert('onClick success')\",\"onMouseOut\":\"alert('mouse out success')\"},\"EventsBuilder\":[]}",
     "style": ".Div{\n    position: fixed;\n    background-color: black;\n    border: 1px solid red;\n\ttop: 25%;\n    left: 20%;\n    cursor: \"move\";\n}\n",
     "children": [],
     "id": 198,
@@ -1524,14 +1524,28 @@ window.sampleFolders = [
     "contents": [
       {
         "name": "Headings",
-        "contents": ["H6", "H5", "H4", "H3", "H2", "H1"], "type": "folder", "status": "closed"
+        "contents": [
+          "H6",
+          "H5",
+          "H4",
+          "H3",
+          "H2",
+          "H1"
+        ],
+        "type": "folder",
+        "status": "closed"
       },
       {
         "name": "References",
-        "contents": ["Movable", "Resizable"],
-        "type": "folder", "status": "closed"
+        "contents": [
+          "Movable",
+          "Resizable"
+        ],
+        "type": "folder",
+        "status": "closed"
       },
-      "CanvasControls", "PropertiesControl",
+      "CanvasControls",
+      "PropertiesControl",
       "Div",
       "Input",
       "Button",
