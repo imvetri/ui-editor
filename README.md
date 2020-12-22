@@ -18,6 +18,10 @@ Most recently I tried to build a self editable compoment that can create childre
 </div>
 
 ### Demo - https://imvetri.github.io/ui-editor/
+### Recorded demos
+Code generation - https://vimeo.com/386239546 - this feature speeds up component creation and maintenance duration.
+Recursive component - https://vimeo.com/464104903 - an attempted to test whether a component can be modified using itself. Just a component I built to see if it works.
+
 ### Documentation - https://imvetri.github.io/ui-editor-tutorial/ 
 The project and its documentation is at a very early stage. Contributions are welcome for documentation as well at https://github.com/imvetri/ui-editor-tutorial
 
