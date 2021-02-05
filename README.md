@@ -37,20 +37,7 @@ npm start
 
 ```
 ### Feedbacks
-<div>
-  <h4> This happened after I gave some demos</h4>
-<ol>
-  <li>The tool is great, I like the code generation part but the tool needs little love</li>
-  
-  <li>We don't need fancy tools</li>
-  
-  <li>I do not know what is great other than code generation</li>
-  
-  <li>What tool does is not important, what is important is how good you present it, I do not see nothing great about it, have you got any pages built using this?</li>
-</ol>
-</div>
-
-Regardless, If you think you can help this project, jump in, send a PR. If you need help, contact me at my twitter or start a discussion in issues page. This project lacks organised content and undocumented features, but you can correct it. 
+ 
 
 
 ### Roadmap
