@@ -50,7 +50,7 @@ npm start
 </ol>
 </div>
 
-Regardless, If you think you can help this project, jump in, send a PR. If you need help, contact me at my twitter or start a discussion in issues page. This project lacks organised content and undocumented features, but you can correct it. Please contribute.
+Regardless, If you think you can help this project, jump in, send a PR. If you need help, contact me at my twitter or start a discussion in issues page. This project lacks organised content and undocumented features, but you can correct it. 
 
 
 ### Roadmap
