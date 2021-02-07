@@ -1608,7 +1608,8 @@ window.sampleFolders = [
       "EventsBuilder",
       "Hello",
       "TodoInput",
-      "TodoItem"
+      "TodoItem",
+      "TodoFooter"
     ]
   }
 ]
