@@ -1,4 +1,4 @@
-window.sampleComponents =[
+window.sampleComponents = [
   {
     "name": "Resizable",
     "markup": "<div id=\"cover\">\n<div id=\"resizable\" style={state.style}>\n    <div class='resizer' id=\"topLeft\"></div>\n    <div class='resizer' id=\"topRight\"></div>\n    <div class='resizer' id=\"bottomLeft\"></div>\n    <div class='resizer' id=\"bottomRight\"></div>\n</div>\n</div>",
@@ -1058,7 +1058,7 @@ window.sampleComponents =[
   },
   {
     "name": "Editor",
-    "markup": "<div className=\"Div\" style={state.style} id=\"DivElement\">\n<select name=\"mode\" value={state.mode} id=\"mode\">\n  <option value=\"\"></option>\n  <option value=\"Load\">Load</option>\n  <option value=\"Save\">Save</option>\n  <option value=\"Edit\">Edit</option>\n</select>\n<select id=\"components\" value={state.changedComponent}>\n{state.components.map(name=><option>{name}</option>)}\n</select>\n<PropertiesControl></PropertiesControl>\n</div>",
+    "markup": "<div className=\"Div\" style={state.style} id=\"DivElement\">\n<select name=\"mode\" value={state.mode} id=\"mode\">\n  <option value=\"\"></option>\n  <option value=\"Load\">Load</option>\n  <option value=\"Save\">Save</option>\n  <option value=\"Edit\">Edit</option>\n</select>\n<select id=\"components\" value={state.changedComponent}>\n{state.components.map(name=><option>{name}</option>)}\n</select>\n<PropertiesControl></PropertiesControl><H2></H2>\n</div>",
     "events": [
       {
         "name": "onMouseOver",
@@ -1355,7 +1355,7 @@ window.sampleComponents =[
         }
       }
     ],
-    "state": "{\n    \"style\": {\n        \"position\": \"fixed\",\n        \"top\": \"23px\",\n        \"left\": \"185px\",\n        \"height\": \"679px\",\n        \"width\": \"591px\",\n        \"border\": \"1px solid green\",\n        \"cursor\": \"crosshair\"\n    },\n    \"selectedComponent\": \"\",\n    \"mode\": \"\",\n    \"components\": [\n        \"\",\n        \"Resizable\",\n        \"Movable\",\n        \"CanvasControls\",\n        \"PropertiesControl\",\n        \"Div\",\n        \"Input\",\n        \"Button\",\n        \"Span\",\n        \"P\",\n        \"H1\",\n        \"H2\",\n        \"H3\",\n        \"H4\",\n        \"H5\",\n        \"Editor\"\n    ],\n    \"PropertiesControl\": [\n        {\n            \"style\": {\n                \"top\": \"0px\",\n                \"left\": \"-170px\",\n                \"position\": \"absolute\",\n                \"display\": \"none\"\n            },\n            \"id\": \"containement\",\n            \"class\": \"black setup\",\n            \"height\": \"679px\",\n            \"width\": \"591px\",\n            \"top\": \"23px\",\n            \"left\": \"185px\",\n            \"color\": \"#874a4a\",\n            \"space\": \"100px\",\n            \"fontSize\": \"10px\"\n        }\n    ],\n    \"grabbing\": false,\n    \"divId\": \"0.9794908078276479\",\n    \"origin\": false,\n    \"changedComponent\": \"\"\n}",
+    "state": "{\"style\":{\"position\":\"fixed\",\"top\":\"23px\",\"left\":\"185px\",\"height\":\"679px\",\"width\":\"591px\",\"border\":\"1px solid green\",\"cursor\":\"crosshair\"},\"selectedComponent\":\"\",\"mode\":\"Load\",\"components\":[\"\",\"Resizable\",\"Movable\",\"CanvasControls\",\"PropertiesControl\",\"Div\",\"Input\",\"Button\",\"Span\",\"P\",\"H1\",\"H2\",\"H3\",\"H4\",\"H5\",\"Editor\",\"CanvasControl\",\"H6\",\"EventsBuilder\",\"Hello\"],\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"679px\",\"width\":\"591px\",\"top\":\"23px\",\"left\":\"185px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\"}],\"grabbing\":false,\"divId\":\"0.9794908078276479\",\"origin\":false,\"changedComponent\":\"H2\"}",
     "style": ".Div{\n    position: fixed;\n    background-color: black;\n    border: 1px solid red;\n\ttop: 25%;\n    left: 20%;\n    cursor: \"move\";\n}\n",
     "children": [],
     "id": 198,
@@ -1515,6 +1515,42 @@ window.sampleComponents =[
     "id": 698,
     "config": "{}",
     "trueName": "Hello"
+  },
+  {
+    "name": "TodoInput",
+    "markup": "<input id=\"todoInput\" class=\"new-todo\" placeholder=\"What needs to be done?\" value={state.value}></input>",
+    "events": [
+      {
+        "id": "todoInput",
+        "index": 0,
+        "name": "onChange",
+        "reducer": {
+          "reducer": "state.value = e.currentTarget.value;",
+          "publishes": []
+        }
+      },
+      {
+        "id": "todoInput",
+        "index": 1,
+        "name": "onKeyPress",
+        "reducer": {
+          "reducer": "",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onNewTodo",
+              "publishCondition": "event.key === 'Enter' && e.currentTarget.value!==\"\""
+            }
+          ]
+        }
+      }
+    ],
+    "state": "{\n    \"value\": \"\"\n}",
+    "style": "\n.new-todo, .edit {\n    position: relative;\n    margin: 0;\n    width: 100%;\n    font-size: 24px;\n    font-family: inherit;\n    font-weight: inherit;\n    line-height: 1.4em;\n    border: 0;\n    color: inherit;\n    padding: 6px;\n    border: 1px solid #999;\n    box-shadow: inset 0 -1px 5px 0 rgb(0 0 0 / 20%);\n    box-sizing: border-box;\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n}\n\n\n.new-todo {\n    padding: 16px 16px 16px 60px;\n    border: none;\n    background: rgba(0, 0, 0, 0.003);\n    box-shadow: inset 0 -2px 1px rgb(0 0 0 / 3%);\n}\n",
+    "children": [],
+    "id": 806,
+    "config": "{}",
+    "trueName": "TodoInput"
   }
 ]
 window.sampleFolders = [
@@ -1553,7 +1589,8 @@ window.sampleFolders = [
       "P",
       "Editor",
       "EventsBuilder",
-      "Hello"
+      "Hello",
+      "TodoInput"
     ]
   }
 ]
