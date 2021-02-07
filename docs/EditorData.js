@@ -977,36 +977,6 @@ window.sampleComponents = [
     "config": "{}"
   },
   {
-    "name": "Button",
-    "markup": "<button></button>",
-    "events": [],
-    "state": "{}",
-    "style": "",
-    "children": [],
-    "id": 523,
-    "config": "{}"
-  },
-  {
-    "name": "Span",
-    "markup": "<span></span>",
-    "events": [],
-    "state": "{}",
-    "style": "",
-    "children": [],
-    "id": 245,
-    "config": "{}"
-  },
-  {
-    "name": "P",
-    "markup": "<p>sdf</p>",
-    "events": [],
-    "state": "{}",
-    "style": "",
-    "children": [],
-    "id": 787,
-    "config": "{}"
-  },
-  {
     "name": "H1",
     "markup": "<h1>hello</h1>",
     "events": [],
@@ -1584,9 +1554,6 @@ window.sampleFolders = [
       "PropertiesControl",
       "Div",
       "Input",
-      "Button",
-      "Span",
-      "P",
       "Editor",
       "EventsBuilder",
       "Hello",
