@@ -31,3 +31,8 @@
         border: 2px dashed red;
     }
   }
+
+.centerItem {
+    width: 40%;
+    margin-left: 11%;
+}

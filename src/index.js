@@ -159,7 +159,6 @@ class Index extends Component {
         }
         return (
             <div onContextMenu={this.onShowContextMenu.bind(this)} onClick={this.hideContextMenu.bind(this)}>
-                <DynamicComponent onSave={this.props.onSave} key={randomKey} component={selectedComponent}/>
                 <div className="leftItem">
                     <Components
                         components={this.state.components}
@@ -174,6 +173,8 @@ class Index extends Component {
                         onFoldersUpdate={this.updateFolders.bind(this)}
                     />
                 </div>
+                <DynamicComponent onSave={this.props.onSave} key={randomKey} component={selectedComponent}/>
+
                 {this.state.selectedComponent ?
                     <Right 
                         selected={this.state.selectedTab}>

@@ -31,7 +31,7 @@ class DynamicComponent extends Component {
         if(!window[this.props.component.name]){
             return null
         }
-        return React.createElement( window[this.props.component.name] );
+        return <div className="centerItem">{React.createElement( window[this.props.component.name] )}</div>
     }
 
 }
