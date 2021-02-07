@@ -1,4 +1,4 @@
-window.sampleComponents =[
+window.sampleComponents = [
   {
     "name": "Resizable",
     "markup": "<div id=\"cover\">\n<div id=\"resizable\" style={state.style}>\n    <div class='resizer' id=\"topLeft\"></div>\n    <div class='resizer' id=\"topRight\"></div>\n    <div class='resizer' id=\"bottomLeft\"></div>\n    <div class='resizer' id=\"bottomRight\"></div>\n</div>\n</div>",
@@ -1571,6 +1571,16 @@ window.sampleComponents =[
     "id": 255,
     "config": "{}",
     "trueName": "TodoFooter"
+  },
+  {
+    "name": "Todo",
+    "markup": "<div>\n\t<TodoInput></TodoInput>\n    <TodoItem></TodoItem>\n    <TodoFooter></TodoFooter>\n</div>",
+    "events": [],
+    "state": "{}",
+    "style": "",
+    "children": [],
+    "id": 947,
+    "config": "{}"
   }
 ]
 window.sampleFolders = [
@@ -1609,7 +1619,8 @@ window.sampleFolders = [
       "Hello",
       "TodoInput",
       "TodoItem",
-      "TodoFooter"
+      "TodoFooter",
+      "Todo"
     ]
   }
 ]
