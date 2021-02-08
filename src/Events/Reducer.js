@@ -25,9 +25,16 @@
     }
 
     function highlightItem(id){
-        let alreadyExists = document.querySelector(".selectedItem");
-        if(alreadyExists){
-            alreadyExists.classList.remove("selectedItem")
+        let style = document.querySelector("#dynamicHighlight");
+        if(style){
+
+            style.innerHTML = `#${id} { border: 1px solid #F00; }`;
+
+        } else {
+            style = document.createElement('style');
+            style.id="dynamicHighlight"
+            style.type = 'text/css';
+            document.getElementsByTagName('head')[0].appendChild(style);
         }
     }
 
