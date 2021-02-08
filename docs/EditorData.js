@@ -1551,7 +1551,7 @@ window.sampleComponents = [
   },
   {
     "name": "TodoFooter",
-    "markup": "<footer class=\"todofooter\">\n\t<span class=\"todo-count\">\n    \t<strong>2</strong>\n    <span></span>\n    <span>items</span>\n    <span> left</span>\n    </span>\n    <ul class=\"filters\">\n    \t<li>\n    \t\t<a href=\"#/\" id=\"all\" class={state.filterAll}>All</a>\n    \t</li>\n    \t<span> </span>\n    \t<li>\n    \t\t<a href=\"#/active\" id=\"active\" class={state.filterActive}>Active</a>\n    \t</li>\n    \t<span> </span>\n    \t<li>\n    \t<a href=\"#/completed\" id=\"completed\" class={state.filterCompleted}>Completed</a>\n    \t</li>\n    </ul>\n    <button class=\"clear-completed\">Clear completed</button>\n</footer>",
+    "markup": "<footer class=\"todofooter\">\n\t<span class=\"todo-count\">\n    \t<strong>{state.count}</strong>\n    <span></span>\n    <span>items</span>\n    <span> left</span>\n    </span>\n    <ul class=\"filters\">\n    \t<li>\n    \t\t<a href=\"#/\" id=\"all\" class={state.filterAll}>All</a>\n    \t</li>\n    \t<span> </span>\n    \t<li>\n    \t\t<a href=\"#/active\" id=\"active\" class={state.filterActive}>Active</a>\n    \t</li>\n    \t<span> </span>\n    \t<li>\n    \t<a href=\"#/completed\" id=\"completed\" class={state.filterCompleted}>Completed</a>\n    \t</li>\n    </ul>\n    <button class=\"clear-completed\">Clear completed</button>\n</footer>",
     "events": [
       {
         "id": "active",
@@ -1599,7 +1599,7 @@ window.sampleComponents = [
         }
       }
     ],
-    "state": "{\n    \"filterAll\": \"selected\",\n    \"filterActive\": \"\",\n    \"filterCompleted\": \"\"\n}",
+    "state": "{\n    \"filterAll\": \"selected\",\n    \"filterActive\": \"\",\n    \"filterCompleted\": \"\",\n    \"count\": 0\n}",
     "style": ".todofooter {\n    color: #777;\n    padding: 10px 15px;\n    height: 20px;\n    text-align: center;\n    border-top: 1px solid #e6e6e6;\n}\n\n.todofooter:before {\n    content: '';\n    position: absolute;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    height: 50px;\n    overflow: hidden;\n    box-shadow: 0 1px 1px rgb(0 0 0 / 20%), 0 8px 0 -3px #f6f6f6, 0 9px 1px -3px rgb(0 0 0 / 20%), 0 16px 0 -6px #f6f6f6, 0 17px 2px -6px rgb(0 0 0 / 20%);\n}\n\n.todofooter .todo-count {\n    float: left;\n    text-align: left;\n}\n\n.todofooter .todo-count strong {\n    font-weight: 300;\n}\n\n.todofooter .filters {\n    margin: 0;\n    padding: 0;\n    list-style: none;\n    position: absolute;\n    right: 0;\n    left: -510;\n}\n\n.todofooter .filters li {\n    display: inline;\n}\n\n.todofooter .clear-completed, html .clear-completed:active {\n    float: right;\n    position: relative;\n    line-height: 20px;\n    text-decoration: none;\n    cursor: pointer;\n}\n\n.todofooter button {\n    margin: 0;\n    padding: 0;\n    border: 0;\n    background: none;\n    font-size: 100%;\n    vertical-align: baseline;\n    font-family: inherit;\n    font-weight: inherit;\n    color: inherit;\n    -webkit-appearance: none;\n    appearance: none;\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n}\n\n\n.todofooter .filters li a.selected {\n    border-color: rgba(175, 47, 47, 0.2);\n}\n\n.todofooter .filters li a:hover {\n    border-color: rgba(175, 47, 47, 0.1);\n}\n\n.todofooter .filters li a {\n    color: inherit;\n    margin: 3px;\n    padding: 3px 7px;\n    text-decoration: none;\n    border: 1px solid transparent;\n    border-radius: 3px;\n}",
     "children": [],
     "id": 255,
@@ -1615,7 +1615,7 @@ window.sampleComponents = [
         "index": 0,
         "name": "onNewTodo",
         "reducer": {
-          "reducer": "debugger;\nstate.TodoItem.push({\n\t\"item\":e.currentTarget.value,\n\t\"checked\":false\n})\n\nstate.Todo.push({\n\t\"item\":e.currentTarget.value,\n\t\"checked\":false\n})\n\n",
+          "reducer": "debugger;\nstate.TodoItem.push({\n\t\"item\":e.currentTarget.value,\n\t\"checked\":false\n})\n\nstate.Todo.push({\n\t\"item\":e.currentTarget.value,\n\t\"checked\":false\n})\n\nstate.TodoFooter[0].count = state.TodoItem.length;",
           "publishes": []
         }
       },
@@ -1633,7 +1633,7 @@ window.sampleComponents = [
         "index": 2,
         "name": "onAllFilter",
         "reducer": {
-          "reducer": "state.TodoItem = state.Todo;",
+          "reducer": "state.TodoItem = state.Todo;\nstate.TodoFooter=[\n        {\n            \"filterAll\": \"selected\",\n            \"filterActive\": \"\",\n            \"filterCompleted\": \"\",\n            \"count\":  state.TodoItem.length\n        }\n    ]",
           "publishes": []
         }
       },
@@ -1642,7 +1642,7 @@ window.sampleComponents = [
         "index": 3,
         "name": "onCompletedFilter",
         "reducer": {
-          "reducer": "state.TodoItem = state.Todo.filter(todo=>todo.checked==true)",
+          "reducer": "state.TodoItem = state.Todo.filter(todo=>todo.checked==true)\nstate.TodoFooter=[\n        {\n            \"filterAll\": \"\",\n            \"filterActive\": \"\",\n            \"filterCompleted\": \"selected\",\n            \"count\":  state.TodoItem.length\n        }\n    ]",
           "publishes": []
         }
       },
@@ -1651,16 +1651,16 @@ window.sampleComponents = [
         "index": 4,
         "name": "onActiveFilter",
         "reducer": {
-          "reducer": "state.TodoItem = state.Todo.filter(todo=>todo.checked==false)",
+          "reducer": "state.TodoItem = state.Todo.filter(todo=>todo.checked==false)\nstate.TodoFooter = [\n        {\n            \"filterAll\": \"\",\n            \"filterActive\": \"selected\",\n            \"filterCompleted\": \"\",\n            \"count\":  state.TodoItem.length\n        }\n    ]",
           "publishes": []
         }
       }
     ],
-    "state": "{\"TodoItem\":[],\"Todo\":[]}",
+    "state": "{\"TodoItem\":[],\"Todo\":[],\"TodoFooter\":[{\"filterAll\":\"selected\",\"filterActive\":\"\",\"filterCompleted\":\"\",\"count\":0}]}",
     "style": "",
     "children": [],
     "id": 947,
-    "config": "{\"TodoItem\":{\"override\":true},\"Todo\":{\"override\":true}}",
+    "config": "{\"TodoItem\":{\"override\":true},\"Todo\":{\"override\":true},\"TodoFooter\":{\"override\":true}}",
     "trueName": "Todo"
   }
 ]
