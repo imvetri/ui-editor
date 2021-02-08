@@ -1524,9 +1524,25 @@ window.sampleComponents = [
   },
   {
     "name": "TodoItem",
-    "markup": "<div class=\"view\"><input class=\"toggle\" type=\"checkbox\"></input><label >{state.item}</label><button class=\"destroy\">x</button></div>",
-    "events": [],
-    "state": "{\n    \"item\": \"sdf\"\n}",
+    "markup": "<div class=\"view\"><input class=\"toggle\" id=\"checkbox\" type=\"checkbox\" checked={state.checked}></input><label >{state.item}</label><button class=\"destroy\">x</button></div>",
+    "events": [
+      {
+        "id": "checkbox",
+        "index": 0,
+        "name": "onChange",
+        "reducer": {
+          "reducer": "state.checked = !state.checked;\ndebugger;",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onStatusChange",
+              "publishCondition": "true"
+            }
+          ]
+        }
+      }
+    ],
+    "state": "{\n    \"item\": \"sdf\",\n    \"checked\": \"false\"\n}",
     "style": ".view .toggle {\n    text-align: center;\n    width: 40px;\n    height: auto;\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    margin: auto 0;\n    border: none;\n    -webkit-appearance: none;\n    appearance: none;\n        opacity: 0;\n}\n\n.view label {\n    word-break: break-all;\n    padding: 15px 15px 15px 60px;\n    display: block;\n    line-height: 1.2;\n    transition: color 0.4s;\n}\n\n.view .destroy {\n    display: none;\n    position: absolute;\n    top: 0;\n    right: 10px;\n    bottom: 0;\n    width: 40px;\n    height: 40px;\n    margin: auto 0;\n    font-size: 30px;\n    color: #cc9a9a;\n    margin-bottom: 11px;\n    transition: color 0.2s ease-out;\n}\n\n.view .toggle + label {\n    background-image: url(data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23ededed%22%20stroke-width%3D%223%22/%3E%3C/svg%3E);\n    background-repeat: no-repeat;\n    background-position: center left;\n}\n\n.view  label {\n    word-break: break-all;\n    padding: 15px 15px 15px 60px;\n    display: block;\n    line-height: 1.2;\n    transition: color 0.4s;\n    font-size: 24px;\n}\n\n.view .toggle:checked+label {\n    color: #d9d9d9;\n    text-decoration: line-through;\n\n}\n.view .toggle:checked + label {\n\tbackground-image: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23bddad5%22%20stroke-width%3D%223%22/%3E%3Cpath%20fill%3D%22%235dc2af%22%20d%3D%22M72%2025L42%2071%2027%2056l-4%204%2020%2020%2034-52z%22/%3E%3C/svg%3E');\n}",
     "children": [],
     "id": 98,
@@ -1543,7 +1559,13 @@ window.sampleComponents = [
         "name": "onClick",
         "reducer": {
           "reducer": "\n    state.filterAll = \"\";\n    state.filterActive = \"selected\";\n    state.filterCompleted = \"\";\n",
-          "publishes": []
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onActiveFilter",
+              "publishCondition": "true"
+            }
+          ]
         }
       },
       {
@@ -1552,7 +1574,13 @@ window.sampleComponents = [
         "name": "onClick",
         "reducer": {
           "reducer": "\n    state.filterAll = \"\";\n    state.filterActive = \"\";\n    state.filterCompleted = \"selected\";\n",
-          "publishes": []
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onCompletedFilter",
+              "publishCondition": "true"
+            }
+          ]
         }
       },
       {
@@ -1561,7 +1589,13 @@ window.sampleComponents = [
         "name": "onClick",
         "reducer": {
           "reducer": "\n    state.filterAll = \"selected\";\n    state.filterActive = \"\";\n    state.filterCompleted = \"\";\n",
-          "publishes": []
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onAllFilter",
+              "publishCondition": "true"
+            }
+          ]
         }
       }
     ],
@@ -1581,7 +1615,43 @@ window.sampleComponents = [
         "index": 0,
         "name": "onNewTodo",
         "reducer": {
-          "reducer": "debugger;\nstate.TodoItem.push({\n\t\"item\":e.currentTarget.value\n})",
+          "reducer": "debugger;\nstate.TodoItem.push({\n\t\"item\":e.currentTarget.value,\n\t\"checked\":false\n})\n\nstate.Todo.push({\n\t\"item\":e.currentTarget.value,\n\t\"checked\":false\n})\n\n",
+          "publishes": []
+        }
+      },
+      {
+        "id": "TodoItem",
+        "index": 1,
+        "name": "onStatusChange",
+        "reducer": {
+          "reducer": "debugger;\nstate.TodoItem[e.index]= e.state;\nstate.Todo[e.index]=e.state;",
+          "publishes": []
+        }
+      },
+      {
+        "id": "TodoFooter",
+        "index": 2,
+        "name": "onAllFilter",
+        "reducer": {
+          "reducer": "state.TodoItem = state.Todo;",
+          "publishes": []
+        }
+      },
+      {
+        "id": "TodoFooter",
+        "index": 3,
+        "name": "onCompletedFilter",
+        "reducer": {
+          "reducer": "state.TodoItem = state.Todo.filter(todo=>todo.checked==true)",
+          "publishes": []
+        }
+      },
+      {
+        "id": "TodoFooter",
+        "index": 4,
+        "name": "onActiveFilter",
+        "reducer": {
+          "reducer": "state.TodoItem = state.Todo.filter(todo=>todo.checked==false)",
           "publishes": []
         }
       }
