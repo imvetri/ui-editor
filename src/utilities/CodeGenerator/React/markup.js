@@ -67,7 +67,7 @@ let addChildrenConfig = (markup, component) => {
 }
 
 let addChildren= (component)=>{
-    return component.markup.replace(">",`>{this.props.children}`)
+    return component.markup.replace(">",` id="${component.name}" >{this.props.children}`)
 }
 
 
