@@ -1551,7 +1551,7 @@ window.sampleComponents = [
   },
   {
     "name": "TodoFooter",
-    "markup": "<footer class=\"todofooter\">\n\t<span class=\"todo-count\">\n    \t<strong>{state.count}</strong>\n    <span></span>\n    <span>items</span>\n    <span> left</span>\n    </span>\n    <ul class=\"filters\">\n    \t<li>\n    \t\t<a href=\"#/\" id=\"all\" class={state.filterAll}>All</a>\n    \t</li>\n    \t<span> </span>\n    \t<li>\n    \t\t<a href=\"#/active\" id=\"active\" class={state.filterActive}>Active</a>\n    \t</li>\n    \t<span> </span>\n    \t<li>\n    \t<a href=\"#/completed\" id=\"completed\" class={state.filterCompleted}>Completed</a>\n    \t</li>\n    </ul>\n    <button class=\"clear-completed\">Clear completed</button>\n</footer>",
+    "markup": "<footer class=\"todofooter\">\n\t<span class=\"todo-count\">\n    \t<strong>{state.count}</strong>\n    <span></span>\n    <span>items</span>\n    <span> left</span>\n    </span>\n    <ul class=\"filters\">\n    \t<li>\n    \t\t<a href=\"#/\" id=\"all\" class={state.filterAll}>All</a>\n    \t</li>\n    \t<span> </span>\n    \t<li>\n    \t\t<a href=\"#/active\" id=\"active\" class={state.filterActive}>Active</a>\n    \t</li>\n    \t<span> </span>\n    \t<li>\n    \t<a href=\"#/completed\" id=\"completed\" class={state.filterCompleted}>Completed</a>\n    \t</li>\n    </ul>\n    <button class=\"clear-completed\" id=\"clearCompleted\">Clear completed</button>\n</footer>",
     "events": [
       {
         "id": "active",
@@ -1593,6 +1593,21 @@ window.sampleComponents = [
             {
               "publishable": true,
               "publishName": "onAllFilter",
+              "publishCondition": "true"
+            }
+          ]
+        }
+      },
+      {
+        "id": "clearCompleted",
+        "index": 3,
+        "name": "onClick",
+        "reducer": {
+          "reducer": "\"\"",
+          "publishes": [
+            {
+              "publishable": true,
+              "publishName": "onClearCompleted",
               "publishCondition": "true"
             }
           ]
@@ -1652,6 +1667,15 @@ window.sampleComponents = [
         "name": "onActiveFilter",
         "reducer": {
           "reducer": "state.TodoItem = state.Todo.filter(todo=>todo.checked==false)\nstate.TodoFooter = [\n        {\n            \"filterAll\": \"\",\n            \"filterActive\": \"selected\",\n            \"filterCompleted\": \"\",\n            \"count\":  state.TodoItem.length\n        }\n    ]",
+          "publishes": []
+        }
+      },
+      {
+        "id": "TodoFooter",
+        "index": 5,
+        "name": "onClearCompleted",
+        "reducer": {
+          "reducer": "state.TodoItem = state.Todo.filter(todo=>todo.checked==false)\nstate.Todo = state.Todo.filter(todo=>todo.checked==false)\nstate.TodoFooter=[\n        {\n            \"filterAll\": \"selected\",\n            \"filterActive\": \"\",\n            \"filterCompleted\": \"\",\n            \"count\":  state.TodoItem.length\n        }\n    ]",
           "publishes": []
         }
       }
