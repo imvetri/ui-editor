@@ -24,7 +24,7 @@ let addEvents = (markup, events, component) => {
      */
 
     function stateToComponent(state){
-        return `${Object.keys(state.events).map(key=>`${key}={()=>{${state.events[key]}}}`).join(" ")}>`
+        return ` ${Object.keys(state.events).map(key=>`${key}={()=>{${state.events[key]}}}`).join(" ")}>`
     }
 
      let state = JSON.parse(component.state);
