@@ -97,7 +97,14 @@ class Index extends Component {
     openExportTab(e){
         window.visited = {};
         let nestedComponents = getNestedComponents(this.state.selectedComponent)
-        console.log(nestedComponents.map(convertToReact).join("\n\n"))
+        // nested components contain duplicates. we need to remove it
+        let uniqueComponents = {}
+        nestedComponents.forEach(component=>{
+            if(!uniqueComponents[component.name]){
+                uniqueComponents[component.name]=component;
+            }
+        })
+        console.log(Object.values(uniqueComponents).map(convertToReact).join("\n\n"))
     }
 
     onShowContextMenu(e){
