@@ -24,7 +24,7 @@ import Right from "./Utilities/Components/Right";
 // Utility components.
 
 import ContextMenu from "./utilities/Components/ContextMenu";
-import {convertToReact} from "./utilities/CodeGenerator/React";
+import {convertToReact} from "./utilities/CodeGenerator/React/export";
 import { getNestedComponents} from "./utilities/Runtime"
 
 // Reducers.
