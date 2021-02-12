@@ -23,8 +23,6 @@ Code generation - https://vimeo.com/386239546 - this feature speeds up component
 
 Recursive component - https://vimeo.com/464104903 - I attempted to test whether a component can be modified using itself.
 
-### Documentation - https://imvetri.github.io/ui-editor-tutorial/ 
-The project and its documentation is at a very early stage. Contributions are welcome for documentation as well at https://github.com/imvetri/ui-editor-tutorial
 
 ### Getting Started
 
@@ -36,12 +34,8 @@ npm i
 npm start
 
 ```
-### Feedbacks
- 
 
 
-### Roadmap
-Build editor 2.0 https://vimeo.com/495212037
 
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
