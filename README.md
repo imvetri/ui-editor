@@ -23,7 +23,7 @@ Code generation - https://vimeo.com/386239546 - this feature speeds up component
 
 Recursive component - https://vimeo.com/464104903 - I attempted to test whether a component can be modified using itself.
 
-Todo Application - https://vimeo.com/511559933 - I tried to recreate a typical todoMVC, and reuse the code in reactJS codebase.
+Latest - Todo Application - https://vimeo.com/511559933 - I tried to recreate a typical todoMVC, and reuse the code in reactJS codebase.
 
 ### Getting Started
 
