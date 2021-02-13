@@ -37,7 +37,7 @@ npm start
 ```
 
 ### Features
-* <b>Seperation of concerns<b> - Modern frameworks tend to mix and match view, styling, callbacks in single file. There are other best practices like maintaining a separate file as separation of concerns but each is an individual's opinion and will confuse a lot to beginners who are new. Taking that into consideration, I moved view, style, state, callbacks into separate interfaces and it separated the concerns.
+* <b>Seperation of concerns</b> - Modern frameworks tend to mix and match view, styling, callbacks in single file. There are other best practices like maintaining a separate file as separation of concerns but each is an individual's opinion and will confuse a lot to beginners who are new. Taking that into consideration, I moved view, style, state, callbacks into separate interfaces and it separated the concerns.
 
 * <b>Component composability</b> - Component driven development is the trend where we develop lower, more atomic components and build bigger components using the smaller ones. During that process we tend to use toolings such as redux, hooks to manage the state between the components. Instead, we can mirror the event model of DOM that bubbles upwards to components. In this technique a child component can publish actions and a parent component can subscribe to it. This event will carry information about child component's state, source of event and index of the child. By following this technique we can build page from bottom upwards.
 
