@@ -19,11 +19,11 @@ Most recently I tried to build a self editable compoment that can create childre
 
 ### Demo - https://imvetri.github.io/ui-editor/
 ### Recorded demos
-Code generation - https://vimeo.com/386239546 - this feature speeds up component creation and maintenance duration.
+* <b>Code generation</b> - https://vimeo.com/386239546 - this feature speeds up component creation and maintenance duration.
 
-Recursive component - https://vimeo.com/464104903 - I attempted to test whether a component can be modified using itself.
+* <b>Recursive component</b> - https://vimeo.com/464104903 - I attempted to test whether a component can be modified using itself.
 
-Latest - Todo Application - https://vimeo.com/511559933 - I tried to recreate a typical todoMVC, and reuse the code in reactJS codebase.
+* <b>Latest - Todo Application</b> - https://vimeo.com/511559933 - I tried to recreate a typical todoMVC, and reuse the code in reactJS codebase.
 
 ### Getting Started
 
