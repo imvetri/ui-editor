@@ -4,7 +4,9 @@
   </a>
   <br>
   <br>
-  https://travis-ci.com/imvetri/ui-editor.svg?branch=master
+  
+  [![Build Status](https://travis-ci.com/imvetri/ui-editor.svg?branch=master)](https://travis-ci.com/github/imvetri/ui-editor/)
+
   <br>
   <p>
     ui-editor is a web based interface builder built using reactjs. Its main purpose is to build interfaces for rapid application development. It's main aim is to forget learning framework syntax and focus on building just the components using jsx, state, events.
