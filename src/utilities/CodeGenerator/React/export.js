@@ -66,3 +66,8 @@ class ${component.name} extends Component {
 `
     return ReactComponent;
 }
+
+
+export function convertToReactRedux (component) {
+    // For every publishable event
+}

@@ -24,7 +24,7 @@ import Right from "./Utilities/Components/Right";
 // Utility components.
 
 import ContextMenu from "./utilities/Components/ContextMenu";
-import {convertToReact} from "./utilities/CodeGenerator/React/export";
+import {convertToReact, convertToReactRedux} from "./utilities/CodeGenerator/React/export";
 import { getNestedComponents} from "./utilities/Runtime"
 
 // Reducers.
@@ -94,7 +94,7 @@ class Index extends Component {
         })
     }
 
-    openExportTab(e){
+    exportReact(e){
         window.visited = {};
         let nestedComponents = getNestedComponents(this.state.selectedComponent)
         // nested components contain duplicates. we need to remove it
@@ -107,12 +107,26 @@ class Index extends Component {
         console.log(Object.values(uniqueComponents).map(convertToReact).join("\n\n"))
     }
 
+    exportReactRedux(e){
+        window.visited = {};
+        let nestedComponents = getNestedComponents(this.state.selectedComponent)
+        // nested components contain duplicates. we need to remove it
+        let uniqueComponents = {}
+        nestedComponents.forEach(component=>{
+            if(!uniqueComponents[component.name]){
+                uniqueComponents[component.name]=component;
+            }
+        })
+        console.log(Object.values(uniqueComponents).map(convertToReactRedux).join("\n\n"))
+    }
+
     onShowContextMenu(e){
         
         if(e.target.classList.contains("component") || e.target.classList.contains("componentName")) { // check if it is a component.
             this.state.contextMenuChildren = <ul className="contextMenuOptions">
                 <li onClick={onDeleteComponent.bind(this)}><i className="fas fa-trash"></i>Delete</li>
-                <li onClick={this.openExportTab.bind(this)}><i className="fas fa-file-export"></i>Export</li>
+                <li onClick={this.exportReact.bind(this)}><i className="fas fa-file-export"></i>Export</li>
+                <li onClick={this.exportReactRedux.bind(this)}><i className="fas fa-copy"></i>Export ReactJS + Redux</li>
                 <li onClick={onExtendComponent.bind(this)}><i className="fas fa-copy"></i>Extend</li>
             </ul>;
         }
