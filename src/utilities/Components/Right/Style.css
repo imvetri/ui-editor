@@ -5,7 +5,7 @@
     animation: slide-right 0.2s ease;
     height: 100%;
     overflow: scroll;
-    width:42%;
+    width:30%;
 }
 
 @keyframes slide-right {
