@@ -12,9 +12,11 @@ class Asset extends Component {
     }
 
     render() {
+        let asset = assets.find(asset=>asset.name===this.props.asset.name)
         return (
             <div>
                 <p data-name={this.props.asset.name} onClick={this.props.onSelected}>{this.props.asset.name}</p>
+                <img src={asset.url}/>
             </div>
         );
     }
