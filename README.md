@@ -46,6 +46,9 @@ npm start
 
 * <b>Code generation</b> - This IDE seperates the concerns, helps in component composability and helps in getting a readable code by putting all of them together as a react component. This code generation is an independent utility script that can be formatted to generate code as per the needs such as jsx, style, state in a separate file. The current version generates all of them together as a string and it gets printed on browser console.
 
+### Ideas
+* Svelte code generator
+* Styled components page ripper
 
 ### Contributions
 This project is built with one happy path in mind and needs a lot of effort to improve the user experience. It is very hard to type the jsx, css, state, events and reducers without code formatters and code prediction. The component explorer needs more smoother look, The renderer can be extended to support different devices. This project has more potential to evolve into a UX design tool and that is one step that needs filling, with code generation already in place, it will be more powerful in terms of time to build components. If you know someone who is willing to moderate the project, bring in more contributors please spread a word.  With your help and support we can reach there real quick. Please feel free to reach out to me if you have free time to spare https://twitter.com/VetrivelShanmu3.
