@@ -48,7 +48,7 @@ npm start
 
 ### Ideas
 * <b>Svelte code generator</b> - 
-* <b>Styled components page ripper</b> modify reactjs createElement function so that it generates json used by ui-editor
+* <b>Styled components page ripper</b> modify reactjs createElement function so that it generates component meta data in json format for ui-editor
 
 ### Contributions
 This project is built with one happy path in mind and needs a lot of effort to improve the user experience. It is very hard to type the jsx, css, state, events and reducers without code formatters and code prediction. The component explorer needs more smoother look, The renderer can be extended to support different devices. This project has more potential to evolve into a UX design tool and that is one step that needs filling, with code generation already in place, it will be more powerful in terms of time to build components. If you know someone who is willing to moderate the project, bring in more contributors please spread a word.  With your help and support we can reach there real quick. Please feel free to reach out to me if you have free time to spare https://twitter.com/VetrivelShanmu3.
