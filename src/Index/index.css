@@ -69,6 +69,7 @@ ul,li, ul label {
 
 #index{
     margin:-4px;
+    zoom:.3;
 }
 
 .CodeMirror {
