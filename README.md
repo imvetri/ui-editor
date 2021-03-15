@@ -9,7 +9,7 @@
 
   <br>
   <p>
-    ui-editor is a web based interface builder built using reactjs. Its main purpose is to build interfaces for rapid application development. It's main aim is to forget learning framework syntax and focus on building just the components using jsx, state, events.
+    ui-editor is a web based interface builder built using reactjs. Its purpose is to build interfaces for rapid application development. It's aim is to forget learning framework syntax and focus on building just the components using jsx, state, events.
   </p>
  <p>
     It started as an experimental tool to test readable code generation and it was a success. Since then, I have been experimenting with it to test instant renderer and it was a success too.
