@@ -19,12 +19,13 @@ textarea {
 .elements-tab {
     left:0px;
     height: 100vh;
-    width:150px;;
+    width:170px;;
 }
 
 .folders{
     overflow: scroll;  
     height:85vh;
+    padding-top:5px;
 }
 
 .Controls{
