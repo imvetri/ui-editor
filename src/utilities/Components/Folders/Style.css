@@ -1,5 +1,6 @@
 .newFolder{
     user-select: none;
+    padding-left:5px;
 }
 
 .newFolder i{
