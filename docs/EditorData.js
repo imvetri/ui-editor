@@ -1,4 +1,4 @@
-window.sampleComponents = [
+window.sampleComponents =[
     {
         "name": "Resizable",
         "markup": "<div id=\"cover\">\n<div id=\"resizable\" style={state.style}>\n    <div class='resizer' id=\"topLeft\"></div>\n    <div class='resizer' id=\"topRight\"></div>\n    <div class='resizer' id=\"bottomLeft\"></div>\n    <div class='resizer' id=\"bottomRight\"></div>\n</div>\n</div>",
@@ -967,16 +967,6 @@ window.sampleComponents = [
         "trueName": "Div"
     },
     {
-        "name": "Input",
-        "markup": "<input type=\"text\" value=\"hello\"></input>",
-        "events": [],
-        "state": "{}",
-        "style": "",
-        "children": [],
-        "id": 604,
-        "config": "{}"
-    },
-    {
         "name": "H1",
         "markup": "<h1>hello</h1>",
         "events": [],
@@ -1476,17 +1466,6 @@ window.sampleComponents = [
         "trueName": "EventsBuilder"
     },
     {
-        "name": "Hello",
-        "markup": "<h1 {...state}>{state.message}</h1>",
-        "events": [],
-        "state": "{\n    \"message\": \"Hello\"\n}",
-        "style": "",
-        "children": [],
-        "id": 698,
-        "config": "{}",
-        "trueName": "Hello"
-    },
-    {
         "name": "TodoInput",
         "markup": "<input id=\"todoInput\" class=\"new-todo\" placeholder=\"What needs to be done?\" value={state.value}></input>",
         "events": [
@@ -1694,38 +1673,57 @@ window.sampleFolders = [
         "name": "noFolder",
         "contents": [
             {
-                "name": "Headings",
+                "name": "Legacy",
                 "contents": [
-                    "H6",
-                    "H5",
-                    "H4",
-                    "H3",
-                    "H2",
-                    "H1"
+                    {
+                        "name": "References",
+                        "contents": [
+                            "Movable",
+                            "Resizable"
+                        ],
+                        "type": "folder",
+                        "status": "closed"
+                    },
+                    {
+                        "name": "Headings",
+                        "contents": [
+                            "H6",
+                            "H5",
+                            "H4",
+                            "H3",
+                            "H2",
+                            "H1"
+                        ],
+                        "type": "folder",
+                        "status": "open"
+                    },
+                    {
+                        "name": "Todo",
+                        "contents": [
+                            "Todo",
+                            "TodoFooter",
+                            "TodoItem",
+                            "TodoInput"
+                        ],
+                        "type": "folder",
+                        "status": "closed"
+                    },
+                    {
+                        "name": " Builder",
+                        "contents": [
+                            "Div",
+                            "Editor",
+                            "EventsBuilder",
+                            "PropertiesControl",
+                            "CanvasControls"
+                        ],
+                        "type": "folder",
+                        "status": "closed"
+                    }
                 ],
                 "type": "folder",
                 "status": "closed"
-            },
-            {
-                "name": "References",
-                "contents": [
-                    "Movable",
-                    "Resizable"
-                ],
-                "type": "folder",
-                "status": "closed"
-            },
-            "CanvasControls",
-            "PropertiesControl",
-            "Div",
-            "Input",
-            "Editor",
-            "EventsBuilder",
-            "Hello",
-            "TodoInput",
-            "TodoItem",
-            "TodoFooter",
-            "Todo"
+            }
         ]
     }
 ]
