@@ -14,6 +14,7 @@ import Events from "./Events";
 import Assets from "./Assets";
 import History from "./History";
 import DynamicComponent from "./DynamicComponent";
+import ToolBar from "./ToolBar";
 
 // Behaviour components.
 
@@ -194,6 +195,7 @@ class Index extends Component {
                         onFoldersUpdate={this.updateFolders.bind(this)}
                     />
                 </div>
+                <ToolBar />
                 <DynamicComponent onSave={this.props.onSave} key={randomKey} component={selectedComponent}/>
 
                 {this.state.selectedComponent ?
