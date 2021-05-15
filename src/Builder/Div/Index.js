@@ -7,6 +7,10 @@ import React, { Component } from "react";
 import PropertiesControl from "../PropertiesControl";
 import EventsBuilder from "../EventsBuilder";
 
+// State.
+
+import State from "./State";
+
 // Styles.
 
 import "./style.css";
@@ -16,7 +20,7 @@ class Div extends Component {
 
     constructor(props) {
         super(props);
-        this.state = this.props.state || { "style": { "position": "fixed", "top": "226px", "left": "398px", "height": "242px", "width": "466px", "borderWidth": "1px", "borderStyle": "solid", "borderColor": "green", "cursor": "crosshair", "border-width": "9px", "border-color": "#545496", "border-style": "dashed" }, "Div": [{ "style": { "position": "fixed", "top": "280px", "left": "436px", "height": "173px", "width": "353px", "borderWidth": "1px", "borderStyle": "solid", "borderColor": "green", "cursor": "crosshair" }, "Div": [{ "style": { "position": "fixed", "top": "341px", "left": "518px", "height": "73px", "width": "97px", "borderWidth": "1px", "borderStyle": "solid", "borderColor": "green" }, "Div": [], "id": "div59301", "mode": "Draw", "EventsBuilder": [], "PropertiesControl": [{ "style": { "top": "0px", "left": "-170px", "position": "absolute", "display": "none" }, "id": "containement", "class": "black setup", "height": "242px", "width": "466px", "top": "226px", "left": "398px", "color": "#874a4a", "space": "100px", "fontSize": "10px", "borderWidth": "1px", "borderColor": "#545496", "borderStyle": "dashed" }] }], "mode": "Draw", "EventsBuilder": [], "PropertiesControl": [{ "style": { "top": "0px", "left": "-170px", "position": "absolute", "display": "none" }, "id": "containement", "class": "black setup", "height": "242px", "width": "466px", "top": "226px", "left": "398px", "color": "#874a4a", "space": "100px", "fontSize": "10px", "borderWidth": "1px", "borderColor": "#545496", "borderStyle": "dashed" }], "clientX": 518, "clientY": 341, "origin": false, "showOptions": true, "events": { "onClick": "alert();" }, "grabbing": false }], "mode": "Save", "PropertiesControl": [{ "style": { "top": "0px", "left": "-170px", "position": "absolute", "display": "none" }, "id": "containement", "class": "black setup", "height": "242px", "width": "466px", "top": "226px", "left": "398px", "color": "#874a4a", "space": "100px", "fontSize": "10px", "borderWidth": "1px", "borderColor": "#545496", "borderStyle": "dashed" }], "grabbing": false, "origin": false, "divId": "div46035", "id": "div123", "showOptions": true, "clientX": 468, "clientY": 345, "eventReducer": "", "events": { "onClick": "alert('onClick success')", "onMouseOut": "alert('mouse out success')" }, "EventsBuilder": [] };
+        this.state = this.props.state || State;
     }
 
 
@@ -492,7 +496,7 @@ class Div extends Component {
     }
 
     render() {
-        return (<div className="Div" style={this.state.style} id="div123" onMouseUp={this.div123onMouseUp.bind(this)} onMouseMove={this.div123onMouseMove.bind(this)} onMouseDown={this.div123onMouseDown.bind(this)} onMouseOver={this.div123onMouseOver.bind(this)} id="Div" onEventsChange={this.DivonEventsChange.bind(this)} onModeChange={this.DivonModeChange.bind(this)} onStyleChange={this.DivonStyleChange.bind(this)} onDelete={this.DivonDelete.bind(this)} onResizeFinish={this.DivonResizeFinish.bind(this)} onMoveFinish={this.DivonMoveFinish.bind(this)} onDrawFinish={this.DivonDrawFinish.bind(this)} onClick={(e) => { var state = JSON.parse(JSON.stringify(this.state)); alert('onClick success') }} onMouseOut={(e) => { var state = JSON.parse(JSON.stringify(this.state)); alert('mouse out success') }}>{this.props.children}
+        return (<div className="Div" style={this.state.style} id="div123" onMouseUp={this.div123onMouseUp.bind(this)} onMouseMove={this.div123onMouseMove.bind(this)} onMouseDown={this.div123onMouseDown.bind(this)} onMouseOver={this.div123onMouseOver.bind(this)} id="Div" onEventsChange={this.DivonEventsChange.bind(this)} onModeChange={this.DivonModeChange.bind(this)} onStyleChange={this.DivonStyleChange.bind(this)} onDelete={this.DivonDelete.bind(this)} onResizeFinish={this.DivonResizeFinish.bind(this)} onMoveFinish={this.DivonMoveFinish.bind(this)} onDrawFinish={this.DivonDrawFinish.bind(this)}>{this.props.children}
             {
                 this.state.showOptions ?
                     <select name="mode" value={this.state.mode} id="mode" onChange={this.modeonChange.bind(this)} onMouseUp={this.modeonMouseUp.bind(this)} onMouseDown={this.modeonMouseDown.bind(this)}>
