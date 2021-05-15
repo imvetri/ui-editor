@@ -29,7 +29,7 @@ Most recently I tried to build a self editable compoment that can create childre
 
 * <b>Todo Application</b> - https://vimeo.com/511559933 - I tried to recreate a typical todoMVC, and reuse the code in reactJS codebase.
 
-* <b>Reveal</b> - https://vimeo.com/549552977
+* <b>Reveal</b> - https://vimeo.com/549552977 - I'm attempting to abstract the editor. I wanted to reveal layer by layers of tools that will be part of an ideal builder and this is the firs step. I had built a recursive component called Div using the editor, I find it has the most reusable and efficient design so I made it as part of the codebase and will help me to build a design tool. Mystry Revealed.
 
 ### Getting Started
 
