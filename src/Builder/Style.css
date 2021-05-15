@@ -4,4 +4,11 @@
     margin:auto;
     padding: 10px;
     padding-top: 14px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.toolBar button i{
+    display: block;
+    padding: 5px;
 }
