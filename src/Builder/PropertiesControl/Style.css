@@ -1,0 +1,57 @@
+.properties {
+    border: 1px solid #2C3134;
+     width: 165px;
+     font-size: 10px;
+     background: rgb(64, 64, 64);
+     color: rgba(255,255,255,0.5);
+    }
+    
+    .properties input{
+        width: 50px;
+        padding: 5px;
+        margin-left: 4px;
+    }
+    
+    .properties input.long{
+        width: 100px;
+    }
+    
+    .properties > div {
+        border: 1px solid #2C3134;
+        padding: 8px;
+    }
+    
+    .properties > div > div:not(:first-child){
+        margin-top:7px;
+    }
+    
+    .properties span.name {
+        display: inline-block;
+        width: 40px;
+    }
+    
+    .properties .space{
+     border: 1px solid #2C3134;
+    }
+    
+    .properties .less{
+        height: 21px;
+        width: 21px;
+        border: 1px solid #2C3134;
+    }
+    
+    .properties .more{
+        height: 21px;
+        width: 21px;
+        border: 1px solid #2C3134;
+    }
+    
+    .properties select {
+        border: 1px solid black;
+        font-size: 10px;
+        background: #2b2b2b;
+        color: rgba(255,255,255,0.5);
+        width: 100px;
+        padding: 5px;
+        margin-left: 4px;
+    }

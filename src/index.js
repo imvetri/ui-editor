@@ -14,7 +14,7 @@ import Events from "./Events";
 import Assets from "./Assets";
 import History from "./History";
 import DynamicComponent from "./DynamicComponent";
-import ToolBar from "./ToolBar";
+import Builder from "./Builder";
 
 // Behaviour components.
 
@@ -52,7 +52,7 @@ class Index extends Component {
             selectedComponent: "",
             folders: readData("folders"),
             showEditor: false,
-            showTools: true,
+            showTools: false,
             selectedTab: "Events"
         }
         this.updateConfig = updateConfig.bind(this);
@@ -177,7 +177,10 @@ class Index extends Component {
         const randomKey = Math.ceil(Math.random() * 1000);
 
         if(!this.state.showTools){
-            return <DynamicComponent onSave={this.props.onSave} key={randomKey} component={selectedComponent}/>
+            return <div>
+                <Builder />
+                <DynamicComponent onSave={this.props.onSave} key={randomKey} component={selectedComponent}/>
+            </div>
         }
         return (
             <div onContextMenu={this.onShowContextMenu.bind(this)} onClick={this.hideContextMenu.bind(this)}>
@@ -195,7 +198,7 @@ class Index extends Component {
                         onFoldersUpdate={this.updateFolders.bind(this)}
                     />
                 </div>
-                <ToolBar />
+                <Builder />
                 <DynamicComponent onSave={this.props.onSave} key={randomKey} component={selectedComponent}/>
 
                 {this.state.selectedComponent ?
