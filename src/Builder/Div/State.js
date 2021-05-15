@@ -1,17 +1,18 @@
 module.exports = {
     "style": {
       "position": "fixed",
-      "top": "226px",
-      "left": "398px",
-      "height": "242px",
-      "width": "466px",
+      "top": "0px",
+      "left": "0px",
+      "height": window.innerHeight-15+"px",
+      "width": window.innerWidth+"px",
       "borderWidth": "1px",
       "borderStyle": "solid",
       "borderColor": "green",
       "cursor": "crosshair",
       "border-width": "9px",
       "border-color": "#545496",
-      "border-style": "dashed"
+      "border-style": "dashed",
+      "box-sizing": "border-box"
     },
     "Div": [],
     "mode": "Save",

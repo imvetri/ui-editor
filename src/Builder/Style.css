@@ -6,9 +6,13 @@
     padding-top: 14px;
     display: flex;
     justify-content: space-evenly;
+    position: relative;
+    z-index: 1;
 }
 
 .toolBar button i{
     display: block;
     padding: 5px;
+    z-index: 1;
+    position: relative;
 }
