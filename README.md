@@ -49,9 +49,13 @@ npm start
 
 * <b>Code generation</b> - This IDE seperates the concerns, helps in component composability and helps in getting a readable code by putting all of them together as a react component. This code generation is an independent utility script that can be formatted to generate code as per the needs such as jsx, style, state in a separate file. The current version generates all of them together as a string and it gets printed on browser console.
 
+* <b>Slick</b> - Everything is data. HTML, CSS, State, Events, Reducers are all just strings and Code generation is a knacky technique based on the fact that everything is just a string. Pass a string to eval with babel, you get a runtime in browser.
+
 ### Ideas
-* <b>Svelte code generator</b> - 
-* <b>Styled components page ripper</b> modify reactjs createElement function so that it generates component meta data in json format for ui-editor
+* <b>Svelte code generator</b> - Easy - Clean design, clean separation of concern, Simple.
+* <b>Vue code generator</b> - Not possible - Bad design, bad separation of concern, over complicated techniques.
+* <b>React ripper</b> - Interesting - Modify reactjs createElement function, keep track of the calls. Wont do because code around the createElement looks ugly. You can use this to clone/rip off other's website and reuse their components without having to write your own.
+
 
 ### Contributions
 This project is built with one happy path in mind and needs a lot of effort to improve the user experience. It is very hard to type the jsx, css, state, events and reducers without code formatters and code prediction. The component explorer needs more smoother look, The renderer can be extended to support different devices. This project has more potential to evolve into a UX design tool and that is one step where the project can head,and with code generation already in place, it will be more powerful in terms of time to build components. If you know someone who is willing to moderate the project, bring in more contributors please spread a word.  With your help and support we can reach there real quick. Please feel free to reach out to me if you have free time to spare https://twitter.com/VetrivelShanmu3.
