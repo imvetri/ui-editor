@@ -27,7 +27,9 @@ Most recently I tried to build a self editable compoment that can create childre
 
 * <b>Recursive component</b> - https://vimeo.com/464104903 - I attempted to test whether a component can be modified using itself.
 
-* <b>Latest - Todo Application</b> - https://vimeo.com/511559933 - I tried to recreate a typical todoMVC, and reuse the code in reactJS codebase.
+* <b>Todo Application</b> - https://vimeo.com/511559933 - I tried to recreate a typical todoMVC, and reuse the code in reactJS codebase.
+
+* <b>Reveal</b> - https://vimeo.com/549552977
 
 ### Getting Started
 
