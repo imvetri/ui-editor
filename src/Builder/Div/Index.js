@@ -2,10 +2,6 @@
 
 import React, { Component } from "react";
 
-// Components.
-
-import PropertiesControl from "../PropertiesControl";
-import EventsBuilder from "../EventsBuilder";
 
 // State.
 
@@ -151,9 +147,7 @@ class Div extends Component {
                     },
                     Div: [],
                     id: createdDiv.id,
-                    mode: "Draw",
-                    EventsBuilder: [],
-                    PropertiesControl: [state.PropertiesControl[0]]
+                    mode: "Draw"
                 })
             }
             createdDiv.remove();
@@ -204,26 +198,6 @@ class Div extends Component {
         }
     }
 
-    modeonMouseDown(e) {
-        var state = JSON.parse(JSON.stringify(this.state))
-
-        e.stopPropagation();
-        this.setState(state);
-        e.state = state;
-        e.index = this.props.index;
-
-    }
-
-    modeonMouseUp(e) {
-        var state = JSON.parse(JSON.stringify(this.state))
-
-        e.stopPropagation();
-        this.setState(state);
-        e.state = state;
-        e.index = this.props.index;
-
-    }
-
     DivonMoveFinish(e) {
         var state = JSON.parse(JSON.stringify(this.state))
 
@@ -266,89 +240,6 @@ class Div extends Component {
         }
     }
 
-    PropertiesControlonHeightChange(e) {
-        var state = JSON.parse(JSON.stringify(this.state))
-
-        state.style.height = e.state.height;
-        state.PropertiesControl[0].height = state.style.height;
-
-        this.setState(state);
-        e.state = state;
-        e.index = this.props.index;
-
-        if (true) {
-            this.props.onStyleChange ? this.props.onStyleChange(e) : null;
-        }
-    }
-
-    modeonChange(e) {
-        var state = JSON.parse(JSON.stringify(this.state))
-
-        state.mode = e.target.value;
-        if (state.mode === "Resize") {
-            state.style.resize = "both";
-            state.style.overflow = "auto";
-        } else {
-            delete state.style.resize;
-            delete state.style.overflow;
-        } if (state.mode === "Edit") {
-            state.PropertiesControl[0].style.display = "block";
-            state.PropertiesControl[0].style.top = "0px";
-            state.PropertiesControl[0].style.left = "-170px";
-            state.PropertiesControl[0].height = state.style.height;
-            state.PropertiesControl[0].width = state.style.width;
-            state.PropertiesControl[0].top = state.style.top;
-            state.PropertiesControl[0].left = state.style.left;
-            state.PropertiesControl[0].borderWidth = state.style.borderWidth;
-        } else {
-            state.PropertiesControl[0].style.display = "none";
-        } if (state.mode === "Save") {
-            let index = components.findIndex(component => component.name === "Div")
-            components[index].state = JSON.stringify(state);
-            localStorage.setItem("ui-editor", JSON.stringify(components));
-        }
-
-        if (state.mode === "Events") {
-            debugger;
-            let index = components.findIndex(component => component.name === "Div")
-            let events = state.events || {
-                "onClick": ""
-            };
-            components[index].events.filter(event => event.id === state.id).forEach(event => {
-                events[event.name] = event.reducer.reducer;
-            })
-            state.EventsBuilder = [{
-                "style": {
-                    "top": "0px",
-                    "left": "-150px",
-                    "position": "absolute"
-                },
-                "textAreaStyle": {
-                    "position": "absolute",
-                    "top": "40px",
-                    "left": "0px",
-                    "width": "150px"
-                },
-                "eventName": "onClick",
-                "eventReducer": "",
-                "events": events
-            }];
-        } else {
-            state.EventsBuilder = [];
-        }
-        this.setState(state);
-        e.state = state;
-        e.index = this.props.index;
-
-        if (state.mode === "Delete") {
-            this.props.onDelete ? this.props.onDelete(e) : null;
-        }
-
-        if (state.mode !== "Delete") {
-            this.props.onModeChange ? this.props.onModeChange(e) : null;
-        }
-    }
-
     DivonStyleChange(e) {
         var state = JSON.parse(JSON.stringify(this.state))
 
@@ -360,124 +251,6 @@ class Div extends Component {
 
         if (true) {
             this.props.onStyleChange ? this.props.onStyleChange(e) : null;
-        }
-    }
-
-    PropertiesControlonWidthChange(e) {
-        var state = JSON.parse(JSON.stringify(this.state))
-
-        state.style.width = e.state.width;
-        state.PropertiesControl[0].width = state.style.width;
-
-        this.setState(state);
-        e.state = state;
-        e.index = this.props.index;
-
-        if (true) {
-            this.props.onStyleChange ? this.props.onStyleChange(e) : null;
-        }
-    }
-
-    PropertiesControlonTopChange(e) {
-        var state = JSON.parse(JSON.stringify(this.state))
-
-        state.style.top = e.state.top;
-        state.PropertiesControl[0].top = state.style.top;
-
-        this.setState(state);
-        e.state = state;
-        e.index = this.props.index;
-
-        if (true) {
-            this.props.onStyleChange ? this.props.onStyleChange(e) : null;
-        }
-    }
-
-    PropertiesControlonLeftChange(e) {
-        var state = JSON.parse(JSON.stringify(this.state))
-
-        state.style.left = e.state.left;
-        state.PropertiesControl[0].left = state.style.left;
-
-        this.setState(state);
-        e.state = state;
-        e.index = this.props.index;
-
-        if (true) {
-            this.props.onStyleChange ? this.props.onStyleChange(e) : null;
-        }
-    }
-
-    PropertiesControlonBorderWidthChange(e) {
-        var state = JSON.parse(JSON.stringify(this.state))
-
-        state.style['border-width'] = e.state.borderWidth;
-        state.PropertiesControl[0].borderWidth = state.style['border-width'];
-
-        this.setState(state);
-        e.state = state;
-        e.index = this.props.index;
-
-        if (true) {
-            this.props.onStyleChange ? this.props.onStyleChange(e) : null;
-        }
-    }
-
-    DivonModeChange(e) {
-        var state = JSON.parse(JSON.stringify(this.state))
-
-        state.Div[e.index] = e.state;
-
-        this.setState(state);
-        e.state = state;
-        e.index = this.props.index;
-
-        if (true) {
-            this.props.onModeChange ? this.props.onModeChange(e) : null;
-        }
-    }
-
-    PropertiesControlonBorderColorChange(e) {
-        var state = JSON.parse(JSON.stringify(this.state))
-
-        state.style['border-color'] = e.state.borderColor;
-        state.PropertiesControl[0].borderColor = state.style['border-color'];
-
-        this.setState(state);
-        e.state = state;
-        e.index = this.props.index;
-
-        if (true) {
-            this.props.onStyleChange ? this.props.onStyleChange(e) : null;
-        }
-    }
-
-    PropertiesControlonBorderStyleChange(e) {
-        var state = JSON.parse(JSON.stringify(this.state))
-
-        state.style['border-style'] = e.state.borderStyle;
-        state.PropertiesControl[0].borderStyle = state.style['border-style'];
-
-        this.setState(state);
-        e.state = state;
-        e.index = this.props.index;
-
-        if (true) {
-            this.props.onStyleChange ? this.props.onStyleChange(e) : null;
-        }
-    }
-
-    EventsBuilderonSubmit(e) {
-        var state = JSON.parse(JSON.stringify(this.state))
-
-        state.EventsBuilder = [e.state];
-        state.events = e.state.events;
-        this.setState(state);
-        e.state = state;
-        e.index = this.props.index;
-
-        if (true) {
-            this.props.onEventsChange ? this.props.onEventsChange(e) : null;
         }
     }
 
@@ -496,23 +269,7 @@ class Div extends Component {
     }
 
     render() {
-        return (<div className="Div" style={this.state.style} id="div123" onMouseUp={this.div123onMouseUp.bind(this)} onMouseMove={this.div123onMouseMove.bind(this)} onMouseDown={this.div123onMouseDown.bind(this)} onMouseOver={this.div123onMouseOver.bind(this)} id="Div" onEventsChange={this.DivonEventsChange.bind(this)} onModeChange={this.DivonModeChange.bind(this)} onStyleChange={this.DivonStyleChange.bind(this)} onDelete={this.DivonDelete.bind(this)} onResizeFinish={this.DivonResizeFinish.bind(this)} onMoveFinish={this.DivonMoveFinish.bind(this)} onDrawFinish={this.DivonDrawFinish.bind(this)}>{this.props.children}
-            {
-                this.state.showOptions ?
-                    <select name="mode" value={this.state.mode} id="mode" onChange={this.modeonChange.bind(this)} onMouseUp={this.modeonMouseUp.bind(this)} onMouseDown={this.modeonMouseDown.bind(this)}>
-                        <optgroup label="Tools">
-                            <option value="Draw">Draw</option>
-                            <option value="Move">Move</option>
-                            <option value="Resize">Resize</option>
-                            <option value="Delete">Delete</option>
-                            <option value="Save">Save</option>
-                            <option value="Edit">Edit</option>
-                            <option value="Events">Events</option>
-                        </optgroup>
-                    </select>
-                    : null}
-            {this.state.PropertiesControl.map((item, i) => <PropertiesControl onBorderStyleChange={this.PropertiesControlonBorderStyleChange.bind(this)} onBorderColorChange={this.PropertiesControlonBorderColorChange.bind(this)} onBorderWidthChange={this.PropertiesControlonBorderWidthChange.bind(this)} onLeftChange={this.PropertiesControlonLeftChange.bind(this)} onTopChange={this.PropertiesControlonTopChange.bind(this)} onWidthChange={this.PropertiesControlonWidthChange.bind(this)} onHeightChange={this.PropertiesControlonHeightChange.bind(this)} state={item} key={~~(Math.random() * 10000)} index={i}></PropertiesControl>)}
-            {this.state.EventsBuilder.map((item, i) => <EventsBuilder onSubmit={this.EventsBuilderonSubmit.bind(this)} state={item} key={~~(Math.random() * 10000)} index={i}></EventsBuilder>)}
+        return (<div className="Div" style={this.state.style} id="div123" onMouseUp={this.div123onMouseUp.bind(this)} onMouseMove={this.div123onMouseMove.bind(this)} onMouseDown={this.div123onMouseDown.bind(this)} onMouseOver={this.div123onMouseOver.bind(this)} id="Div" onEventsChange={this.DivonEventsChange.bind(this)} onStyleChange={this.DivonStyleChange.bind(this)} onDelete={this.DivonDelete.bind(this)} onResizeFinish={this.DivonResizeFinish.bind(this)} onMoveFinish={this.DivonMoveFinish.bind(this)} onDrawFinish={this.DivonDrawFinish.bind(this)}>{this.props.children}
             {this.state.Div.map((item, i) => <Div state={item} key={~~(Math.random() * 10000)} index={i}></Div>)}
         </div>)
     }
