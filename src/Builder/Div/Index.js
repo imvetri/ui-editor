@@ -110,11 +110,6 @@ class Div extends Component {
         }
 
         e.stopPropagation()
-        console.log("mouseMove")
-
-        this.setState(state);
-        e.state = state;
-        e.index = this.props.index;
 
     }
 
@@ -240,36 +235,9 @@ class Div extends Component {
         }
     }
 
-    DivonStyleChange(e) {
-        var state = JSON.parse(JSON.stringify(this.state))
-
-        state.Div[e.index] = e.state;
-
-        this.setState(state);
-        e.state = state;
-        e.index = this.props.index;
-
-        if (true) {
-            this.props.onStyleChange ? this.props.onStyleChange(e) : null;
-        }
-    }
-
-    DivonEventsChange(e) {
-        var state = JSON.parse(JSON.stringify(this.state))
-
-        state.Div[e.index] = e.state;
-
-        this.setState(state);
-        e.state = state;
-        e.index = this.props.index;
-
-        if (true) {
-            this.props.onEventsChange ? this.props.onEventsChange(e) : null;
-        }
-    }
-
     render() {
-        return (<div className="Div" style={this.state.style} id="div123" onMouseUp={this.div123onMouseUp.bind(this)} onMouseMove={this.div123onMouseMove.bind(this)} onMouseDown={this.div123onMouseDown.bind(this)} onMouseOver={this.div123onMouseOver.bind(this)} id="Div" onEventsChange={this.DivonEventsChange.bind(this)} onStyleChange={this.DivonStyleChange.bind(this)} onDelete={this.DivonDelete.bind(this)} onResizeFinish={this.DivonResizeFinish.bind(this)} onMoveFinish={this.DivonMoveFinish.bind(this)} onDrawFinish={this.DivonDrawFinish.bind(this)}>{this.props.children}
+        console.log("reRender")
+        return (<div className="Div" style={this.state.style} id="div123" onMouseUp={this.div123onMouseUp.bind(this)} onMouseMove={this.div123onMouseMove.bind(this)} onMouseDown={this.div123onMouseDown.bind(this)} onMouseOver={this.div123onMouseOver.bind(this)} id="Div" onDelete={this.DivonDelete.bind(this)} onResizeFinish={this.DivonResizeFinish.bind(this)} onMoveFinish={this.DivonMoveFinish.bind(this)} onDrawFinish={this.DivonDrawFinish.bind(this)}>{this.props.children}
             {this.state.Div.map((item, i) => <Div state={item} key={~~(Math.random() * 10000)} index={i}></Div>)}
         </div>)
     }
