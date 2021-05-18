@@ -15,29 +15,7 @@ module.exports = {
       "box-sizing": "border-box"
     },
     "Div": [],
-    "mode": "Save",
-    "PropertiesControl": [
-      {
-        "style": {
-          "top": "0px",
-          "left": "-170px",
-          "position": "absolute",
-          "display": "none"
-        },
-        "id": "containement",
-        "class": "black setup",
-        "height": "242px",
-        "width": "466px",
-        "top": "226px",
-        "left": "398px",
-        "color": "#874a4a",
-        "space": "100px",
-        "fontSize": "10px",
-        "borderWidth": "1px",
-        "borderColor": "#545496",
-        "borderStyle": "dashed"
-      }
-    ],
+    "mode": "Draw",
     "grabbing": false,
     "origin": false,
     "divId": "div46035",
@@ -49,8 +27,5 @@ module.exports = {
     "events": {
       "onClick": "console.log('onClick success')",
       "onMouseOut": "console.log('mouse out success')"
-    },
-    "EventsBuilder": [
-      
-    ]
+    }
   }
