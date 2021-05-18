@@ -16,3 +16,8 @@
     z-index: 1;
     position: relative;
 }
+
+.toolBar button:focus{
+    color: #fff;
+    background: rgb(35, 35, 35);
+}
