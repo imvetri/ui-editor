@@ -5,7 +5,6 @@ import React, { Component } from "react";
 // Components
 
 import Div from "./Div";
-import Zoom from "./Zoom";
 
 // Styles.
 
@@ -39,7 +38,6 @@ class Builder extends Component {
                 <button onClick={this.changeMode.bind(this)}><i class="fas fa-bolt"></i>Events</button>
             </div>
             <Div mode={this.state.mode}></Div>
-            <Zoom/>
         </div>
         )
     }
