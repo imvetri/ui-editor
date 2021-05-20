@@ -53,8 +53,6 @@ class Div extends Component {
             return item;
         }
 
-        let target = e.target;
-
         if (e.button === 0) {
             if (state.mode === "Draw") {
                 state.clientX = e.clientX;
