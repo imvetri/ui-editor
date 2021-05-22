@@ -22,7 +22,7 @@ class Builder extends Component {
 
     changeMode(e) {
         this.setState({
-            mode: e.currentTarget.innerText
+            onModeChange: e.currentTarget.innerText
         })
     }
 
@@ -110,7 +110,7 @@ class Builder extends Component {
                 <button className={this.state.mode==="Events"?"mode":""} onClick={this.changeMode.bind(this)}><i class="fas fa-bolt"></i>Events</button>
                 <button className={this.state.mode==="Interact"?"mode":""} onClick={this.changeMode.bind(this)}><i class="fas fa-bolt"></i>Interact</button>
             </div>
-            <Div mode={this.state.mode} state={this.state} index={0}key={Math.ceil(Math.random() * 1000)} onDrawFinish={this.DivonDrawFinish.bind(this)}  onDelete={this.DivonDelete.bind(this)} onResizeFinish={this.DivonResizeFinish.bind(this)} onMoveFinish={this.DivonMoveFinish.bind(this)}></Div>
+            <Div builderMode={this.state.builderMode} state={this.state} index={0}key={Math.ceil(Math.random() * 1000)} onDrawFinish={this.DivonDrawFinish.bind(this)}  onDelete={this.DivonDelete.bind(this)} onResizeFinish={this.DivonResizeFinish.bind(this)} onMoveFinish={this.DivonMoveFinish.bind(this)}></Div>
         </div>
         )
     }
