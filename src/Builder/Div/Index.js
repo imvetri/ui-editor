@@ -3,10 +3,6 @@
 import React, { Component } from "react";
 
 
-// State.
-
-import State from "./State";
-
 // Styles.
 
 import "./style.css";
@@ -16,9 +12,17 @@ class Div extends Component {
 
     constructor(props) {
         super(props);
-        this.state = this.props.state || State;
+        var state = this.props.state;
+        
+        if (state.mode === "Resize") {
+            state.style.resize = "both";
+            state.style.overflow = "auto";
+        } else {
+            delete state.style.resize;
+            delete state.style.overflow;
+        }
+        this.state = state;
     }
-
 
     div123onMouseOver(e) {
         var state = JSON.parse(JSON.stringify(this.state))
@@ -177,66 +181,9 @@ class Div extends Component {
         }
     }
 
-    DivonDrawFinish(e) {
-        var state = JSON.parse(JSON.stringify(this.state))
-
-        state.Div[e.index] = e.state;
-
-        this.setState(state);
-        e.state = state;
-        e.index = this.props.index;
-
-        if (true) {
-            this.props.onDrawFinish ? this.props.onDrawFinish(e) : null;
-        }
-    }
-
-    DivonMoveFinish(e) {
-        var state = JSON.parse(JSON.stringify(this.state))
-
-        state.Div[e.index] = e.state;
-
-        this.setState(state);
-        e.state = state;
-        e.index = this.props.index;
-
-        if (true) {
-            this.props.onMoveFinish ? this.props.onMoveFinish(e) : null;
-        }
-    }
-
-    DivonResizeFinish(e) {
-        var state = JSON.parse(JSON.stringify(this.state))
-
-        state.Div[e.index] = e.state;
-
-        this.setState(state);
-        e.state = state;
-        e.index = this.props.index;
-
-        if (true) {
-            this.props.onResizeFinish ? this.props.onResizeFinish(e) : null;
-        }
-    }
-
-    DivonDelete(e) {
-        var state = JSON.parse(JSON.stringify(this.state))
-
-        state.Div.splice(e.index, 1);
-
-        this.setState(state);
-        e.state = state;
-        e.index = this.props.index;
-
-        if (true) {
-            this.props.onModeChange ? this.props.onModeChange(e) : null;
-        }
-    }
-
     render() {
-        console.log("reRender")
         return (<div className="Div" style={this.state.style} id="div123" onMouseUp={this.div123onMouseUp.bind(this)} onMouseMove={this.div123onMouseMove.bind(this)} onMouseDown={this.div123onMouseDown.bind(this)} onMouseOver={this.div123onMouseOver.bind(this)} id="Div">{this.props.children}
-            {this.state.Div.map((item, i) => <Div state={item} key={~~(Math.random() * 10000)} index={i}  onDelete={this.DivonDelete.bind(this)} onResizeFinish={this.DivonResizeFinish.bind(this)} onMoveFinish={this.DivonMoveFinish.bind(this)} onDrawFinish={this.DivonDrawFinish.bind(this)}></Div>)}
+            {this.state.Div.map((item, i) => <Div state={item} key={~~(Math.random() * 10000)} index={i} onDelete={this.props.onDelete.bind(this)} onResizeFinish={this.props.onResizeFinish.bind(this)} onMoveFinish={this.props.onMoveFinish.bind(this)} onDrawFinish={this.props.onDrawFinish.bind(this)}></Div>)}
         </div>)
     }
 }
