@@ -27,52 +27,19 @@ class Builder extends Component {
     }
 
     DivonDrawFinish(e) {
-        
         this.setState(e.state);
-       
     }
 
-
     DivonMoveFinish(e) {
-        var state = JSON.parse(JSON.stringify(this.state))
-
-        state.Div[e.index] = e.state;
-
-        this.setState(state);
-        e.state = state;
-        e.index = this.props.index;
-
-        if (true) {
-            this.props.onMoveFinish ? this.props.onMoveFinish(e) : null;
-        }
+        this.setState(e.state);
     }
 
     DivonResizeFinish(e) {
-        var state = JSON.parse(JSON.stringify(this.state))
-
-        state.Div[e.index] = e.state;
-
-        this.setState(state);
-        e.state = state;
-        e.index = this.props.index;
-
-        if (true) {
-            this.props.onResizeFinish ? this.props.onResizeFinish(e) : null;
-        }
+        this.setState(e.state);
     }
 
     DivonDelete(e) {
-        var state = JSON.parse(JSON.stringify(this.state))
-
-        state.Div.splice(e.index, 1);
-
-        this.setState(state);
-        e.state = state;
-        e.index = this.props.index;
-
-        if (true) {
-            this.props.onModeChange ? this.props.onModeChange(e) : null;
-        }
+        this.setState(e.state);
     }
 
     render() {

@@ -76,7 +76,6 @@ class EventsBuilder extends Component {
         var state = JSON.parse(JSON.stringify(this.state))
 
         state.eventName = e.target.value;
-        debugger;
 
         this.setState(state);
         e.state = state;
