@@ -17,7 +17,7 @@
     position: relative;
 }
 
-.toolBar button:focus{
+.toolBar button:focus, .toolBar button.mode{
     color: #fff;
     background: rgb(35, 35, 35);
 }
