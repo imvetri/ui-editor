@@ -14,7 +14,7 @@ class Div extends Component {
         super(props);
         var state = this.props.state;
         
-        if (this.props.builderMode === "Resize") {
+        if (state.mode === "Resize") {
             state.style.resize = "both";
             state.style.overflow = "auto";
         } else {
@@ -31,7 +31,6 @@ class Div extends Component {
         state.Div[e.index] = e.state;
 
         this.setState(state);
-        debugger;
         e.state = state;
         e.index = this.props.index;
 
@@ -86,7 +85,7 @@ class Div extends Component {
     div123onMouseOver(e) {
         var state = JSON.parse(JSON.stringify(this.state))
 
-        if (this.props.builderMode === "Draw") {
+        if (this.state.mode === "Draw") {
             state.style.cursor = "crosshair";
         }
         e.stopPropagation();
@@ -117,7 +116,7 @@ class Div extends Component {
         }
 
         if (e.button === 0) {
-            if (this.props.builderMode === "Draw") {
+            if (this.state.mode === "Draw") {
                 state.clientX = e.clientX;
                 state.clientY = e.clientY;
                 var div = create("div", e.clientX, e.clientY);
@@ -129,11 +128,11 @@ class Div extends Component {
             }
         }
 
-        if (this.props.builderMode === "Move") {
+        if (this.state.mode === "Move") {
             state.style.cursor = "grabbing";
             state.grabbing = true;
         }
-        if (this.props.builderMode === "Select"){
+        if (this.state.mode === "Select"){
             state.selected = !state.selected;
             state.style.cursor = "pointer";
         }
@@ -152,7 +151,7 @@ class Div extends Component {
     div123onMouseMove(e) {
         var state = JSON.parse(JSON.stringify(this.state))
 
-        if (this.props.builderMode === "Draw") {
+        if (this.state.mode === "Draw") {
             if (state.origin) {
                 var div = document.getElementById(state.divId);
                 var rect = div.getBoundingClientRect();
@@ -182,7 +181,7 @@ class Div extends Component {
         var state = JSON.parse(JSON.stringify(this.state))
 
 
-        if (this.props.builderMode === "Draw") {
+        if (this.state.mode === "Draw") {
             if (e.button === 0) {
                 state.origin = false;
             }
@@ -212,14 +211,14 @@ class Div extends Component {
             }
             createdDiv.remove();
         }
-        if (this.props.builderMode === "Move") {
+        if (this.state.mode === "Move") {
             e.target.style.cursor = "pointer";
             state.grabbing = false;
             state.style.top = e.target.style.top;
             state.style.left = e.target.style.left;
         }
 
-        if (this.props.builderMode === "Resize") {
+        if (this.state.mode === "Resize") {
             state.style.height = e.target.style.height;
             state.style.width = e.target.style.width;
         }
@@ -231,22 +230,22 @@ class Div extends Component {
         e.state = state;
         e.index = this.props.index;
 
-        if (this.props.builderMode === 'Draw' && e.button === 0) {
+        if (this.state.mode === 'Draw' && e.button === 0) {
             this.props.onDrawFinish ? this.props.onDrawFinish(e) : null;
         }
 
-        if (this.props.builderMode === "Move") {
+        if (this.state.mode === "Move") {
             this.props.onMoveFinish ? this.props.onMoveFinish(e) : null;
         }
 
-        if (this.props.builderMode === "Resize") {
+        if (this.state.mode === "Resize") {
             this.props.onResizeFinish ? this.props.onResizeFinish(e) : null;
         }
     }
 
     render() {
         return (<div className="Div" style={this.state.style} id="div123" onMouseUp={this.div123onMouseUp.bind(this)} onMouseMove={this.div123onMouseMove.bind(this)} onMouseDown={this.div123onMouseDown.bind(this)} onMouseOver={this.div123onMouseOver.bind(this)} id="Div">{this.props.children}
-            {this.state.Div.map((item, i) => <Div builderMode={this.props.builderMode} state={item} key={~~(Math.random() * 10000)} index={i} onDelete={this.DivonDelete.bind(this)} onResizeFinish={this.DivonResizeFinish.bind(this)} onMoveFinish={this.DivonMoveFinish.bind(this)} onDrawFinish={this.DivonDrawFinish.bind(this)}></Div>)}
+            {this.state.Div.map((item, i) => <Div builderMode={this.props.mode} state={item} key={~~(Math.random() * 10000)} index={i} onDelete={this.DivonDelete.bind(this)} onResizeFinish={this.DivonResizeFinish.bind(this)} onMoveFinish={this.DivonMoveFinish.bind(this)} onDrawFinish={this.DivonDrawFinish.bind(this)}></Div>)}
         </div>)
     }
 }
