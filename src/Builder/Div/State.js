@@ -5,14 +5,9 @@ module.exports = {
       "left": "0px",
       "height": window.innerHeight-15+"px",
       "width": window.innerWidth+"px",
-      "borderWidth": "1px",
-      "borderStyle": "solid",
-      "borderColor": "green",
       "cursor": "crosshair",
-      "border-width": "9px",
-      "border-color": "#545496",
-      "border-style": "dashed",
-      "box-sizing": "border-box"
+      "box-sizing": "border-box",
+      "background": "white"
     },
     "Div": [],
     "mode": "Draw",

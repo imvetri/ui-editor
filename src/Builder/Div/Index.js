@@ -14,7 +14,7 @@ class Div extends Component {
         super(props);
         var state = this.props.state;
         
-        if (state.mode === "Resize") {
+        if (this.props.builderMode === "Resize") {
             state.style.resize = "both";
             state.style.overflow = "auto";
         } else {
@@ -31,6 +31,7 @@ class Div extends Component {
         state.Div[e.index] = e.state;
 
         this.setState(state);
+        debugger;
         e.state = state;
         e.index = this.props.index;
 
@@ -85,7 +86,7 @@ class Div extends Component {
     div123onMouseOver(e) {
         var state = JSON.parse(JSON.stringify(this.state))
 
-        if (state.mode === "Draw") {
+        if (this.props.builderMode === "Draw") {
             state.style.cursor = "crosshair";
         }
         e.stopPropagation();
@@ -116,7 +117,7 @@ class Div extends Component {
         }
 
         if (e.button === 0) {
-            if (state.mode === "Draw") {
+            if (this.props.builderMode === "Draw") {
                 state.clientX = e.clientX;
                 state.clientY = e.clientY;
                 var div = create("div", e.clientX, e.clientY);
@@ -128,9 +129,13 @@ class Div extends Component {
             }
         }
 
-        if (state.mode === "Move") {
+        if (this.props.builderMode === "Move") {
             state.style.cursor = "grabbing";
             state.grabbing = true;
+        }
+        if (this.props.builderMode === "Select"){
+            state.selected = !state.selected;
+            state.style.cursor = "pointer";
         }
         delete window.eClientY;
         delete window.eClientX;
@@ -147,7 +152,7 @@ class Div extends Component {
     div123onMouseMove(e) {
         var state = JSON.parse(JSON.stringify(this.state))
 
-        if (state.mode === "Draw") {
+        if (this.props.builderMode === "Draw") {
             if (state.origin) {
                 var div = document.getElementById(state.divId);
                 var rect = div.getBoundingClientRect();
@@ -177,7 +182,7 @@ class Div extends Component {
         var state = JSON.parse(JSON.stringify(this.state))
 
 
-        if (state.mode === "Draw") {
+        if (this.props.builderMode === "Draw") {
             if (e.button === 0) {
                 state.origin = false;
             }
@@ -207,14 +212,14 @@ class Div extends Component {
             }
             createdDiv.remove();
         }
-        if (state.mode === "Move") {
+        if (this.props.builderMode === "Move") {
             e.target.style.cursor = "pointer";
             state.grabbing = false;
             state.style.top = e.target.style.top;
             state.style.left = e.target.style.left;
         }
 
-        if (state.mode === "Resize") {
+        if (this.props.builderMode === "Resize") {
             state.style.height = e.target.style.height;
             state.style.width = e.target.style.width;
         }
@@ -226,15 +231,15 @@ class Div extends Component {
         e.state = state;
         e.index = this.props.index;
 
-        if (state.mode === 'Draw' && e.button === 0) {
+        if (this.props.builderMode === 'Draw' && e.button === 0) {
             this.props.onDrawFinish ? this.props.onDrawFinish(e) : null;
         }
 
-        if (state.mode === "Move") {
+        if (this.props.builderMode === "Move") {
             this.props.onMoveFinish ? this.props.onMoveFinish(e) : null;
         }
 
-        if (state.mode === "Resize") {
+        if (this.props.builderMode === "Resize") {
             this.props.onResizeFinish ? this.props.onResizeFinish(e) : null;
         }
     }
