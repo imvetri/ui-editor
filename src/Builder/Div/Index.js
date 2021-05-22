@@ -21,6 +21,12 @@ class Div extends Component {
             delete state.style.resize;
             delete state.style.overflow;
         }
+        if(state.builderMode === "Select"){
+            state.style.cursor = "pointer";
+        }
+        if (state.builderMode === "Draw") {
+            state.style.cursor = "crosshair";
+        }
         this.state = state;
     }
 
@@ -68,6 +74,15 @@ class Div extends Component {
         }
     }
 
+    DivonSelection(e) {
+        var state = JSON.parse(JSON.stringify(this.state))
+
+        state.Div[e.index] = e.state;
+        e.state = state;
+        e.index = this.props.index;
+        this.props.onSelection(e);
+    }
+
     DivonDelete(e) {
         var state = JSON.parse(JSON.stringify(this.state))
 
@@ -76,25 +91,6 @@ class Div extends Component {
         this.setState(state);
         e.state = state;
         e.index = this.props.index;
-
-        if (true) {
-            this.props.onModeChange ? this.props.onModeChange(e) : null;
-        }
-    }
-
-    div123onMouseOver(e) {
-        var state = JSON.parse(JSON.stringify(this.state))
-
-        if (this.state.mode === "Draw") {
-            state.style.cursor = "crosshair";
-        }
-        e.stopPropagation();
-
-
-        this.setState(state);
-        e.state = state;
-        e.index = this.props.index;
-
     }
 
     div123onMouseDown(e) {
@@ -116,7 +112,7 @@ class Div extends Component {
         }
 
         if (e.button === 0) {
-            if (this.state.mode === "Draw") {
+            if (this.props.builderMode === "Draw") {
                 state.clientX = e.clientX;
                 state.clientY = e.clientY;
                 var div = create("div", e.clientX, e.clientY);
@@ -128,13 +124,17 @@ class Div extends Component {
             }
         }
 
-        if (this.state.mode === "Move") {
+        if (this.props.builderMode === "Move") {
             state.style.cursor = "grabbing";
             state.grabbing = true;
         }
-        if (this.state.mode === "Select"){
+        if (this.props.builderMode === "Select"){
             state.selected = !state.selected;
             state.style.cursor = "pointer";
+
+            state.style.borderColor = "rgb(76, 175, 80)";
+            state.style.borderWidth = "3px"
+            
         }
         delete window.eClientY;
         delete window.eClientX;
@@ -151,7 +151,7 @@ class Div extends Component {
     div123onMouseMove(e) {
         var state = JSON.parse(JSON.stringify(this.state))
 
-        if (this.state.mode === "Draw") {
+        if (this.props.builderMode === "Draw") {
             if (state.origin) {
                 var div = document.getElementById(state.divId);
                 var rect = div.getBoundingClientRect();
@@ -173,6 +173,12 @@ class Div extends Component {
             window.eClientX = e.clientX;
         }
 
+        if (this.props.builderMode === "Select" && !this.state.selected) {
+            state.style.borderColor = "dodgerblue";
+            state.style.borderWidth = "3px"
+            this.setState(state)
+        }
+
         e.stopPropagation()
 
     }
@@ -181,7 +187,7 @@ class Div extends Component {
         var state = JSON.parse(JSON.stringify(this.state))
 
 
-        if (this.state.mode === "Draw") {
+        if (this.props.builderMode === "Draw") {
             if (e.button === 0) {
                 state.origin = false;
             }
@@ -211,14 +217,14 @@ class Div extends Component {
             }
             createdDiv.remove();
         }
-        if (this.state.mode === "Move") {
+        if (this.props.builderMode === "Move") {
             e.target.style.cursor = "pointer";
             state.grabbing = false;
             state.style.top = e.target.style.top;
             state.style.left = e.target.style.left;
         }
 
-        if (this.state.mode === "Resize") {
+        if (this.props.builderMode === "Resize") {
             state.style.height = e.target.style.height;
             state.style.width = e.target.style.width;
         }
@@ -230,22 +236,45 @@ class Div extends Component {
         e.state = state;
         e.index = this.props.index;
 
-        if (this.state.mode === 'Draw' && e.button === 0) {
+        if (this.props.builderMode === 'Draw' && e.button === 0) {
             this.props.onDrawFinish ? this.props.onDrawFinish(e) : null;
         }
 
-        if (this.state.mode === "Move") {
+        if (this.props.builderMode === "Move") {
             this.props.onMoveFinish ? this.props.onMoveFinish(e) : null;
         }
 
-        if (this.state.mode === "Resize") {
+        if (this.props.builderMode === "Resize") {
             this.props.onResizeFinish ? this.props.onResizeFinish(e) : null;
+        }
+
+        if (this.props.builderMode === "Select") {
+            this.props.onSelection ? this.props.onSelection(e) : null;
+        }
+    }
+
+    div123onMouseOut(){
+        var state = JSON.parse(JSON.stringify(this.state));
+        if (this.props.builderMode === "Select") {
+            state.style.borderColor = "green";
+            state.style.borderWidth = "1px"
+            this.setState(state)
         }
     }
 
     render() {
-        return (<div className="Div" style={this.state.style} id="div123" onMouseUp={this.div123onMouseUp.bind(this)} onMouseMove={this.div123onMouseMove.bind(this)} onMouseDown={this.div123onMouseDown.bind(this)} onMouseOver={this.div123onMouseOver.bind(this)} id="Div">{this.props.children}
-            {this.state.Div.map((item, i) => <Div builderMode={this.props.mode} state={item} key={~~(Math.random() * 10000)} index={i} onDelete={this.DivonDelete.bind(this)} onResizeFinish={this.DivonResizeFinish.bind(this)} onMoveFinish={this.DivonMoveFinish.bind(this)} onDrawFinish={this.DivonDrawFinish.bind(this)}></Div>)}
+        return (<div className="Div" style={this.state.style} id="div123" 
+                        onMouseUp={this.div123onMouseUp.bind(this)} 
+                        onMouseMove={this.div123onMouseMove.bind(this)} 
+                        onMouseDown={this.div123onMouseDown.bind(this)}
+                        onMouseOut={this.div123onMouseOut.bind(this)}>{this.props.children}
+            {this.state.Div.map((item, i) => <Div builderMode={this.props.builderMode} state={item} key={~~(Math.random() * 10000)} index={i} 
+                        onDelete={this.DivonDelete.bind(this)} 
+                        onResizeFinish={this.DivonResizeFinish.bind(this)} 
+                        onMoveFinish={this.DivonMoveFinish.bind(this)} 
+                        onDrawFinish={this.DivonDrawFinish.bind(this)}
+                        onSelection={this.DivonSelection.bind(this)}
+            ></Div>)}
         </div>)
     }
 }

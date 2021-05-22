@@ -26,19 +26,7 @@ class Builder extends Component {
         })
     }
 
-    DivonDrawFinish(e) {
-        this.setState(e.state);
-    }
-
-    DivonMoveFinish(e) {
-        this.setState(e.state);
-    }
-
-    DivonResizeFinish(e) {
-        this.setState(e.state);
-    }
-
-    DivonDelete(e) {
+    DivonUpdate(e) {
         this.setState(e.state);
     }
 
@@ -69,7 +57,13 @@ class Builder extends Component {
                 <button className={this.state.mode==="Events"?"mode":""} onClick={this.changeMode.bind(this)}><i class="fas fa-bolt"></i>Events</button>
                 <button className={this.state.mode==="Interact"?"mode":""} onClick={this.changeMode.bind(this)}><i class="fas fa-bolt"></i>Interact</button>
             </div>
-            <Div builderMode={this.state.mode} state={this.state} index={0}key={Math.ceil(Math.random() * 1000)} onDrawFinish={this.DivonDrawFinish.bind(this)}  onDelete={this.DivonDelete.bind(this)} onResizeFinish={this.DivonResizeFinish.bind(this)} onMoveFinish={this.DivonMoveFinish.bind(this)}></Div>
+            <Div builderMode={this.state.mode} state={this.state} index={0}key={Math.ceil(Math.random() * 1000)} 
+                    onDrawFinish={this.DivonUpdate.bind(this)}  
+                    onDelete={this.DivonUpdate.bind(this)} 
+                    onResizeFinish={this.DivonUpdate.bind(this)} 
+                    onMoveFinish={this.DivonUpdate.bind(this)}
+                    onSelection={this.DivonUpdate.bind(this)}>
+            </Div>
         </div>
         )
     }
