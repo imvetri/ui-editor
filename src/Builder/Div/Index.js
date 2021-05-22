@@ -241,7 +241,7 @@ class Div extends Component {
 
     render() {
         return (<div className="Div" style={this.state.style} id="div123" onMouseUp={this.div123onMouseUp.bind(this)} onMouseMove={this.div123onMouseMove.bind(this)} onMouseDown={this.div123onMouseDown.bind(this)} onMouseOver={this.div123onMouseOver.bind(this)} id="Div">{this.props.children}
-            {this.state.Div.map((item, i) => <Div state={item} key={~~(Math.random() * 10000)} index={i} onDelete={this.DivonDelete.bind(this)} onResizeFinish={this.DivonResizeFinish.bind(this)} onMoveFinish={this.DivonMoveFinish.bind(this)} onDrawFinish={this.DivonDrawFinish.bind(this)}></Div>)}
+            {this.state.Div.map((item, i) => <Div builderMode={this.props.builderMode} state={item} key={~~(Math.random() * 10000)} index={i} onDelete={this.DivonDelete.bind(this)} onResizeFinish={this.DivonResizeFinish.bind(this)} onMoveFinish={this.DivonMoveFinish.bind(this)} onDrawFinish={this.DivonDrawFinish.bind(this)}></Div>)}
         </div>)
     }
 }
