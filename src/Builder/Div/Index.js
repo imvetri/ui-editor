@@ -160,7 +160,7 @@ class Div extends Component {
             }
         }
 
-        if (state.style.cursor == "grabbing" && state.grabbing) {
+        if (state.style.cursor == "grabbing" && state.grabbing && state.selected) {
             var rect = e.target.getBoundingClientRect();
 
             window.eClientY = window.eClientY || e.clientY;
