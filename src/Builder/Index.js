@@ -8,7 +8,7 @@ import State from "./Div/State";
 
 // Utility
 
-import {copyDiv, anySelected} from "./Utility";
+import {deleteDiv, copyDiv, anySelected} from "./Utility";
 
 // Components
 
@@ -27,9 +27,15 @@ class Builder extends Component {
     changeMode(e) {
 
         // check if mode is copy and any div is selected.
-        if(e.currentTarget.innerText==="Copy" && anySelected(this.state)){
-            // Then create a copy div
-            copyDiv(this.state);
+        if(anySelected(this.state)){
+            if(e.currentTarget.innerText==="Copy" ){
+                // Then create a copy div
+                copyDiv(this.state);
+            }
+            if(e.currentTarget.innerText==="Delete" ){
+                // Then create a copy div
+                deleteDiv(this.state);
+            }
         }
         this.setState({
             builderMode: e.currentTarget.innerText
