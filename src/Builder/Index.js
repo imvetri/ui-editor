@@ -6,6 +6,10 @@ import React, { Component } from "react";
 
 import State from "./Div/State";
 
+// Utility
+
+import {copyDiv, anySelected} from "./Utility";
+
 // Components
 
 import Div from "./Div";
@@ -21,6 +25,12 @@ class Builder extends Component {
     }
 
     changeMode(e) {
+
+        // check if mode is copy and any div is selected.
+        if(e.currentTarget.innerText==="Copy" && anySelected(this.state)){
+            // Then create a copy div
+            copyDiv(this.state);
+        }
         this.setState({
             builderMode: e.currentTarget.innerText
         })
