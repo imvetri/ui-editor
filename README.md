@@ -60,6 +60,11 @@ npm start
 ### Contributions
 This project is built with one happy path in mind and needs a lot of effort to improve the user experience. It is very hard to type the jsx, css, state, events and reducers without code formatters and code prediction. The component explorer needs more smoother look, The renderer can be extended to support different devices. This project has more potential to evolve into a UX design tool and that is one step where the project can head,and with code generation already in place, it will be more powerful in terms of time to build components. If you know someone who is willing to moderate the project, bring in more contributors please spread a word.  With your help and support we can reach there real quick. Please feel free to reach out to me if you have free time to spare https://twitter.com/VetrivelShanmu3.
 
+1. Moderator -Duty to bring in UX designers, UX help is very much needed as the tool is very rough, their perspective and contribution will definitely help to make the experience smoother.(I can just add animation on hover but the colors look amazing to me but terrible to others), to bring in initial users, to document needed features, to bring in technical writers.
+2. ui-developers - To make visual changes, to implement features.
+3. Utility developers - Code generators (its just string, doesn't use any fancy design pattern), Fixed styled div to DOM layout flow (Just convert fixed style to padding and margins )
+
+
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
 
