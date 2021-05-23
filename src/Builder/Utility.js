@@ -1,6 +1,6 @@
 var selected = "";
 function getSelectedDiv(Div) {
-    if(Div.selected){
+    if (Div.selected) {
         selected = Div;
     }
     Div.Div.find(getSelectedDiv)
@@ -9,17 +9,19 @@ function getSelectedDiv(Div) {
 var selectedDivParent = "";
 
 function getSelectedDivParent(Div) {
-    if(!selectedDivParent){
-        let selectedDiv = Div.Div.find(div=>div.selected);
-        selectedDivParent = Div;
-        if(!selectedDiv){
+    if (!selectedDivParent) {
+        let selectedDiv = Div.Div.find(div => div.selected);
+        if(selectedDiv){
+            selectedDivParent = Div;
+        }
+        if (!selectedDiv) {
             Div.Div.find(getSelectedDivParent)
         }
     }
 }
 
 module.exports = {
-    copyDiv: function (state ){
+    copyDiv: function (state) {
 
         // Find selected DIV
         selected = "";
@@ -32,8 +34,8 @@ module.exports = {
         console.log(selectedDivParent)
 
         // Create the copy
-        let copy = JSON.parse(JSON.stringify( selected));
-        
+        let copy = JSON.parse(JSON.stringify(selected));
+
         // Move its position 
         copy.style.top = Number(copy.style.top.split("px")[0]) + 20 + "px"
         copy.style.left = Number(copy.style.left.split("px")[0]) + 20 + "px"
@@ -42,7 +44,25 @@ module.exports = {
         selectedDivParent.Div.push(copy);
     },
 
-    anySelected: function (state ){
+    deleteDiv: function (state) {
+        // Find selected DIV
+        selected = "";
+        state.Div.find(getSelectedDiv)
+        console.log(selected)
+
+        // Find the selected DIV's parent
+        selectedDivParent = "";
+        getSelectedDivParent(state)
+        console.log(selectedDivParent)
+
+        // Find the index of the div to be deleted
+        let index = selectedDivParent.Div.findIndex(div=>div.id===selected.id);
+
+        // Remove it from the parent.
+        selectedDivParent.Div.splice(index, 1);
+    },
+
+    anySelected: function (state) {
         return JSON.stringify(state).indexOf("selected\":true") !== -1
     }
 }
