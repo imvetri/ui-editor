@@ -7,7 +7,9 @@ module.exports = {
       "width": window.innerWidth+"px",
       "cursor": "crosshair",
       "box-sizing": "border-box",
-      "background": "white"
+      "background": "white",
+      "resize": "",
+      "overflow": "auto"
     },
     "Div": [],
     "mode": "Draw",

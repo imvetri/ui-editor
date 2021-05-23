@@ -12,19 +12,19 @@ class Div extends Component {
 
     constructor(props) {
         super(props);
-        var state = this.props.state;
+        var state = JSON.parse(JSON.stringify(this.props.state));
         
-        if (state.mode === "Resize") {
+        if (this.props.builderMode === "Resize" && state.selected) {
             state.style.resize = "both";
             state.style.overflow = "auto";
         } else {
-            delete state.style.resize;
-            delete state.style.overflow;
+            state.style.resize = "";
+            state.style.overflow = "";
         }
-        if(state.builderMode === "Select"){
+        if(this.props.builderMode === "Select"){
             state.style.cursor = "pointer";
         }
-        if (state.builderMode === "Draw") {
+        if (this.props.builderMode === "Draw") {
             state.style.cursor = "crosshair";
         }
         this.state = state;
@@ -208,7 +208,9 @@ class Div extends Component {
                         width: createdDiv.style.width,
                         borderWidth: createdDiv.style["border-width"],
                         borderStyle: createdDiv.style["border-style"],
-                        borderColor: createdDiv.style["border-color"]
+                        borderColor: createdDiv.style["border-color"],
+                        resize: "",
+                        overflow: ""
                     },
                     Div: [],
                     id: createdDiv.id,
