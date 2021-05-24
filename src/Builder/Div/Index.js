@@ -131,9 +131,13 @@ class Div extends Component {
         if (this.props.builderMode === "Select"){
             state.selected = !state.selected;
             state.style.cursor = "pointer";
-
-            state.style.borderColor = "rgb(76, 175, 80)";
-            state.style.borderWidth = "3px"
+            if(state.selected){
+                state.style.borderColor = "rgb(76, 175, 80)";
+                state.style.borderWidth = "3px"
+            } else {
+                state.style.borderColor = "green";
+                state.style.borderWidth = "1px";
+            }
             
         }
         delete window.eClientY;
