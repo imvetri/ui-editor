@@ -31,7 +31,9 @@ Most recently I tried to build a self editable compoment that can create childre
 
 * <b>Reveal</b> - https://vimeo.com/549552977 - I'm attempting to abstract the editor. I wanted to reveal layer by layers of tools that will be part of an ideal builder and this is the firs step. I had built a recursive component called Div using the editor, I find it has the most reusable and efficient design so I made it as part of the codebase and will help me to build a design tool. Mystry Revealed.
 
-* <b>Layout Designer - Resize Copy Move Delete</b> - https://vimeo.com/manage/videos/554105526
+* <b>Layout Designer</b>  - https://vimeo.com/554105526 - Implemented Select, Resize, Copy, Move, Delete as part of the builder toolbar.
+
+* <b>The Infinite Display</b> https://vimeo.com/554844159 - First step towards infinite display. This is a start for a complete web development workflow that stretches across. In web development requirement start with a visual concept that gets converted into a working version by web developers with API developed by backend followed deployments and testing in different environment before it reaches live. I'm going to create an ugly version of that, starting with a design tool that will help to create components and variants, followed by composing tool that will help to add content and compose bigger components till the page level. Also have an interface besides the component explorer to show / add pages. Schema creator.
 
 ### Getting Started
 
