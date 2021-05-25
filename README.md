@@ -59,7 +59,7 @@ npm start
 * <b>Svelte code generator</b> - Easy - Clean design, clean separation of concern, Simple.
 * <b>Vue code generator</b> - Not possible - Bad design, bad separation of concern, over complicated techniques.
 * <b>React ripper</b> - Interesting - Modify reactjs createElement function, keep track of the calls. Wont do because code around the createElement looks ugly. You can use this to clone/rip off other's website and reuse their components without having to write your own.
-
+* <b>Minimalist designers tool</b> - Productivity - swipe right and use toolbar + designer tool to create concepts or atleast decorated rectangles.
 
 ### Contributions
 This project is built with one happy path in mind and needs a lot of effort to improve the user experience. It is very hard to type the jsx, css, state, events and reducers without code formatters and code prediction. The component explorer needs more smoother look, The renderer can be extended to support different devices. This project has more potential to evolve into a UX design tool and that is one step where the project can head,and with code generation already in place, it will be more powerful in terms of time to build components. If you know someone who is willing to moderate the project, bring in more contributors please spread a word.  With your help and support we can reach there real quick. Please feel free to reach out to me if you have free time to spare https://twitter.com/VetrivelShanmu3.
