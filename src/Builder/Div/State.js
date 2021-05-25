@@ -1,10 +1,10 @@
 module.exports = {
     "style": {
-      "position": "fixed",
-      "top": "0px",
+      "position": "relative",
+      "top": "-74px",
       "left": "0px",
-      "height": window.innerHeight-15+"px",
-      "width": window.innerWidth+"px",
+      "height": window.innerHeight+100+"px",
+      "width": window.innerWidth*4+"px",
       "cursor": "crosshair",
       "box-sizing": "border-box",
       "background": "white",
