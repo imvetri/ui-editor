@@ -172,12 +172,13 @@ class Div extends Component {
 
             e.target.style.top = (-window.eClientY + e.clientY) + rect.top + "px";
             e.target.style.left = (-window.eClientX + e.clientX) + rect.left + "px";
+            e.target.style.position = "fixed";
 
             window.eClientY = e.clientY;
             window.eClientX = e.clientX;
         }
 
-        if (this.props.builderMode === "Select" && !this.state.selected) {
+        if (this.props.builderMode === "Select" && !this.state.selected && !state.selected) {
             state.style.borderColor = "dodgerblue";
             state.style.borderWidth = "3px"
             this.setState(state)
@@ -226,8 +227,11 @@ class Div extends Component {
         if (this.props.builderMode === "Move") {
             e.target.style.cursor = "pointer";
             state.grabbing = false;
-            state.style.top = e.target.style.top;
-            state.style.left = e.target.style.left;
+
+            var coord = document.querySelectorAll('#'+this.props.parent.id)[0].getBoundingClientRect();
+
+            state.style.top = -coord.top + Number(e.currentTarget.style.top.split("px")[0])
+            state.style.left = -coord.left + Number(e.currentTarget.style.left.split("px")[0])
         }
 
         if (this.props.builderMode === "Resize") {
