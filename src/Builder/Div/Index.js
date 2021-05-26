@@ -202,12 +202,12 @@ class Div extends Component {
                 state.showOptions = !state.showOptions;
             }
             else {
-
+                var coord = document.querySelectorAll('#'+this.state.id)[0].getBoundingClientRect();
                 state.Div.push({
                     style: {
-                        position: createdDiv.style.position,
-                        top: createdDiv.style.top,
-                        left: createdDiv.style.left,
+                        position: "absolute",
+                        top: -coord.top + Number(createdDiv.style.top.split("px")[0]),
+                        left: -coord.left + Number(createdDiv.style.left.split("px")[0]),
                         height: createdDiv.style.height,
                         width: createdDiv.style.width,
                         borderWidth: createdDiv.style["border-width"],
@@ -269,12 +269,12 @@ class Div extends Component {
     }
 
     render() {
-        return (<div className="Div" style={this.state.style} id="div123" 
+        return (<div className="Div" style={this.state.style} id={this.state.id} 
                         onMouseUp={this.div123onMouseUp.bind(this)} 
                         onMouseMove={this.div123onMouseMove.bind(this)} 
                         onMouseDown={this.div123onMouseDown.bind(this)}
                         onMouseOut={this.div123onMouseOut.bind(this)}>{this.props.children}
-            {this.state.Div.map((item, i) => <Div builderMode={this.props.builderMode} state={item} key={~~(Math.random() * 10000)} index={i} 
+            {this.state.Div.map((item, i) => <Div parent={this.state} builderMode={this.props.builderMode} state={item} key={~~(Math.random() * 10000)} index={i} 
                         onDelete={this.DivonDelete.bind(this)} 
                         onResizeFinish={this.DivonResizeFinish.bind(this)} 
                         onMoveFinish={this.DivonMoveFinish.bind(this)} 

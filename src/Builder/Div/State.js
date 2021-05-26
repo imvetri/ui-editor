@@ -1,7 +1,7 @@
 module.exports = {
     "style": {
       "position": "relative",
-      "top": "-74px",
+      "top": "0px",
       "left": "0px",
       "height": window.innerHeight+100+"px",
       "width": window.innerWidth*4+"px",
