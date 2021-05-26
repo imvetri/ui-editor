@@ -37,8 +37,8 @@ module.exports = {
         let copy = JSON.parse(JSON.stringify(selected));
 
         // Move its position 
-        copy.style.top = Number(copy.style.top.split("px")[0]) + 20 + "px"
-        copy.style.left = Number(copy.style.left.split("px")[0]) + 20 + "px"
+        copy.style.top = copy.style.top + 20
+        copy.style.left = copy.style.left + 20
 
         // Push it to parent
         selectedDivParent.Div.push(copy);
