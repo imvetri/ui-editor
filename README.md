@@ -33,7 +33,7 @@ Most recently I tried to build a self editable compoment that can create childre
 
 * <b>Layout Designer</b>  - https://vimeo.com/554105526 - Implemented Select, Resize, Copy, Move, Delete as part of the builder toolbar.
 
-* <b>The Infinite Display</b> https://vimeo.com/554844159 - First step towards infinite display. This is a start for a complete web development workflow that stretches across. In web development requirement start with a visual concept that gets converted into a working version by web developers with API developed by backend followed deployments and testing in different environment before it reaches live. I'm going to create an ugly version of that. Design tool, design system manager, component composer, event manager, page manager, Schema creator. **Backend is read and write, frontend is show or hide**. Discard concepts of  CRUD, http, odata. GraphQL will help to map the UI contents to a property via path, get rid of query, mutate, subscribe. Just write get(path) and set(path, value) and no fancy stuffs.
+* <b>The Infinite Display</b> https://vimeo.com/554844159 - First step towards infinite display. This is a start for a complete web development workflow that stretches across. In web development requirement start with a visual concept that gets converted into a working version by web developers with API developed by backend followed deployments and testing in different environment before it reaches live. I'm going to create an ugly version of that. Design tool, design system manager, component composer, event manager, page manager, Schema creator. **Backend is read and write, frontend is show or hide**.
 
 ### Getting Started
 
