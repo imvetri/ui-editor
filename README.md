@@ -21,6 +21,7 @@ Most recently I tried to build a self editable compoment that can create childre
 </div>
 
 ### Demo - https://imvetri.github.io/ui-editor/ 
+Press Alt + R for component explorer
 
 ### Recorded demos
 * <b>Code generation</b> - https://vimeo.com/386239546 - this feature speeds up component creation and maintenance duration.
