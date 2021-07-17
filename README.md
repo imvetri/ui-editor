@@ -54,6 +54,9 @@ npm start
 * <b>UI builder</b> - End result - tool should allow user to create interactive components. Or allow user to create all variants of a component, other components, link them together with an event. tada, done.
 * <b>Schema builder</b> - End result - tool should allow user to create business domain information. a.k.a one big fat json simplified as a class diagram. The tool developer (which is me for now) will figure out generating ugly code for a persistent storage, in-memory storage, a protocol to access the storage via web(http). WITHOUT SESSION MANAGMENT. Let the users build their own session management or create that as part of the schema itself. yeah right, create schema for users for different auth and roles. front UI builder will either show / hide features based on this value.
 
+![image](https://user-images.githubusercontent.com/6542274/126032164-87b2ce4a-6c9a-4809-a87c-75316d0080ec.png)
+
+
 ### Features
 * <b>Seperation of concerns</b> - Modern frameworks tend to mix and match view, styling, callbacks in single file. There are other best practices like maintaining a separate file as separation of concerns but each is an individual's opinion and will confuse a lot to beginners who are new. Taking that into consideration, I moved view, style, state, callbacks into separate interfaces and it separated the concerns.
 
