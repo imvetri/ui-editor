@@ -49,7 +49,7 @@ npm start
 
 ### Goals
 * <b>UX design tool</b> - End result - tool should be allow users to create bunch of rectangles, and a design system (spacing inside, spacing outside, color inside, color outside, content type - text, image, another rectangle)
-![image](https://user-images.githubusercontent.com/6542274/126032138-207c871a-988d-4aca-8338-5fef7dfd68fe.png){:height="50px"}
+![image](https://user-images.githubusercontent.com/6542274/126032138-207c871a-988d-4aca-8338-5fef7dfd68fe.png)
 
 * <b>UI builder</b> - End result - tool should allow user to create interactive components. Or allow user to create all variants of a component, other components, link them together with an event. tada, done.
 
