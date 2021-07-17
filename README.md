@@ -49,15 +49,15 @@ npm start
 
 ### Goals
 * <b>UX design tool</b> - End result - tool should be allow users to create bunch of rectangles, and a design system (spacing inside, spacing outside, color inside, color outside, content type - text, image, another rectangle)
-![image](https://user-images.githubusercontent.com/6542274/126032138-207c871a-988d-4aca-8338-5fef7dfd68fe.png | width=100)
+![image](https://user-images.githubusercontent.com/6542274/126032138-207c871a-988d-4aca-8338-5fef7dfd68fe.png = 100)
 
 * <b>UI builder</b> - End result - tool should allow user to create interactive components. Or allow user to create all variants of a component, other components, link them together with an event. tada, done.
 
-![image](https://user-images.githubusercontent.com/6542274/126032184-3ea1dfbf-7da7-444a-a29a-6ef020f7bc88.png | width=100)
+![image](https://user-images.githubusercontent.com/6542274/126032184-3ea1dfbf-7da7-444a-a29a-6ef020f7bc88.png = 100)
 
 * <b>Schema builder</b> - End result - tool should allow user to create business domain information. a.k.a one big fat json simplified as a class diagram. The tool developer (which is me for now) will figure out generating ugly code for a persistent storage, in-memory storage, a protocol to access the storage via web(http). WITHOUT SESSION MANAGMENT. Let the users build their own session management or create that as part of the schema itself. yeah right, create schema for users for different auth and roles. front UI builder will either show / hide features based on this value.
 
-![image](https://user-images.githubusercontent.com/6542274/126032164-87b2ce4a-6c9a-4809-a87c-75316d0080ec.png | width=100)
+![image](https://user-images.githubusercontent.com/6542274/126032164-87b2ce4a-6c9a-4809-a87c-75316d0080ec.png = 100)
 
 
 ### Features
