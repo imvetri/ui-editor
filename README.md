@@ -23,6 +23,9 @@ Most recently I tried to build a self editable compoment that can create childre
 ### Demo - https://imvetri.github.io/ui-editor/ 
 Press Alt + R for component explorer
 
+![Screens](https://user-images.githubusercontent.com/6542274/128317793-46680b02-ff49-4ce2-82ad-d88317f71385.png)
+
+
 ### Recorded demos
 * <b>Code generation</b> - https://vimeo.com/386239546 - this feature speeds up component creation and maintenance duration.
 
