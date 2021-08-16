@@ -52,7 +52,7 @@ class Index extends Component {
             selectedComponent: "",
             folders: readData("folders"),
             showEditor: false,
-            showTools: false,
+            showTools: true,
             selectedTab: "Events"
         }
         this.updateConfig = updateConfig.bind(this);

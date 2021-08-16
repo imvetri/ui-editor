@@ -8,9 +8,8 @@
     justify-content: space-evenly;
     position: relative;
     z-index: 1;
-    position: fixed;
-    left: 50%;
-    margin-left: -25%;
+    position: absolute;
+    left: 100%;
 }
 
 .toolBar button i{
