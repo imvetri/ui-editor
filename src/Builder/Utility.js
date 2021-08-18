@@ -25,7 +25,7 @@ module.exports = {
 
         // Find selected DIV
         selected = "";
-        state.Div.find(getSelectedDiv)
+        state.children.find(getSelectedDiv)
         console.log(selected)
 
         // Find the selected DIV's parent
@@ -47,7 +47,7 @@ module.exports = {
     deleteDiv: function (state) {
         // Find selected DIV
         selected = "";
-        state.Div.find(getSelectedDiv)
+        state.children.find(getSelectedDiv)
         console.log(selected)
 
         // Find the selected DIV's parent

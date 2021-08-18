@@ -34,7 +34,7 @@ class Div extends Component {
     DivonDrawFinish(e) {
         var state = JSON.parse(JSON.stringify(this.state))
 
-        state.Div[e.index] = e.state;
+        state.children[e.index] = e.state;
 
         this.setState(state);
         e.state = state;
@@ -49,7 +49,7 @@ class Div extends Component {
     DivonMoveFinish(e) {
         var state = JSON.parse(JSON.stringify(this.state))
 
-        state.Div[e.index] = e.state;
+        state.children[e.index] = e.state;
 
         this.setState(state);
         e.state = state;
@@ -63,7 +63,7 @@ class Div extends Component {
     DivonResizeFinish(e) {
         var state = JSON.parse(JSON.stringify(this.state))
 
-        state.Div[e.index] = e.state;
+        state.children[e.index] = e.state;
 
         this.setState(state);
         e.state = state;
@@ -77,7 +77,7 @@ class Div extends Component {
     DivonSelection(e) {
         var state = JSON.parse(JSON.stringify(this.state))
 
-        state.Div[e.index] = e.state;
+        state.children[e.index] = e.state;
         e.state = state;
         e.index = this.props.index;
         this.props.onSelection(e);
@@ -86,7 +86,7 @@ class Div extends Component {
     DivonDelete(e) {
         var state = JSON.parse(JSON.stringify(this.state))
 
-        state.Div.splice(e.index, 1);
+        state.children.splice(e.index, 1);
 
         this.setState(state);
         e.state = state;
@@ -204,7 +204,7 @@ class Div extends Component {
             }
             else {
                 var coord = document.querySelectorAll('#'+this.state.id)[0].getBoundingClientRect();
-                state.Div.push({
+                state.children.push({
                     style: {
                         position: "absolute",
                         top: -coord.top + Number(createdDiv.style.top.split("px")[0]),
@@ -217,7 +217,8 @@ class Div extends Component {
                         resize: "",
                         overflow: ""
                     },
-                    Div: [],
+                    type: "Div",
+                    children: [],
                     id: createdDiv.id,
                     mode: "Draw"
                 })
@@ -272,8 +273,11 @@ class Div extends Component {
         }
     }
 
-    render() {
-        return (<div className="Div" style={this.state.style} id={this.state.id} 
+    /**
+     * Original
+     * 
+     * 
+     *         return (<div className="Div" style={this.state.style} id={this.state.id} 
                         onMouseUp={this.div123onMouseUp.bind(this)} 
                         onMouseMove={this.div123onMouseMove.bind(this)} 
                         onMouseDown={this.div123onMouseDown.bind(this)}
@@ -286,6 +290,29 @@ class Div extends Component {
                         onSelection={this.DivonSelection.bind(this)}
             ></Div>)}
         </div>)
+     * */
+    render() {
+
+        return React.createElement("div", {
+            className: "Div",
+            style: this.state.style,
+            id: this.state.id,
+            onMouseUp: this.div123onMouseUp.bind(this),
+            onMouseMove: this.div123onMouseMove.bind(this),
+            onMouseDown: this.div123onMouseDown.bind(this),
+            onMouseOut: this.div123onMouseOut.bind(this)
+          }, this.state.children.map((child, i) => React.createElement(eval(child.type), {
+            parent: this.state,
+            builderMode: this.props.builderMode,
+            state: child,
+            key: ~~(Math.random() * 10000),
+            index: i,
+            onDelete: this.DivonDelete.bind(this),
+            onResizeFinish: this.DivonResizeFinish.bind(this),
+            onMoveFinish: this.DivonMoveFinish.bind(this),
+            onDrawFinish: this.DivonDrawFinish.bind(this),
+            onSelection: this.DivonSelection.bind(this)
+          })));
     }
 }
 
