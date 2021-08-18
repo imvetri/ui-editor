@@ -3,19 +3,19 @@ function getSelectedDiv(Div) {
     if (Div.selected) {
         selected = Div;
     }
-    Div.Div.find(getSelectedDiv)
+    Div.children.find(getSelectedDiv)
 }
 
 var selectedDivParent = "";
 
 function getSelectedDivParent(Div) {
     if (!selectedDivParent) {
-        let selectedDiv = Div.Div.find(div => div.selected);
+        let selectedDiv = Div.children.find(div => div.selected);
         if(selectedDiv){
             selectedDivParent = Div;
         }
         if (!selectedDiv) {
-            Div.Div.find(getSelectedDivParent)
+            Div.children.find(getSelectedDivParent)
         }
     }
 }
@@ -41,7 +41,7 @@ module.exports = {
         copy.style.left = copy.style.left + 20
 
         // Push it to parent
-        selectedDivParent.Div.push(copy);
+        selectedDivParent.children.push(copy);
     },
 
     deleteDiv: function (state) {
@@ -56,10 +56,10 @@ module.exports = {
         console.log(selectedDivParent)
 
         // Find the index of the div to be deleted
-        let index = selectedDivParent.Div.findIndex(div=>div.id===selected.id);
+        let index = selectedDivParent.children.findIndex(div=>div.id===selected.id);
 
         // Remove it from the parent.
-        selectedDivParent.Div.splice(index, 1);
+        selectedDivParent.children.splice(index, 1);
     },
 
     anySelected: function (state) {

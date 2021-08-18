@@ -124,7 +124,7 @@ class Div extends Component {
             }
         }
 
-        if (this.props.builderMode === "Move") {
+        if (this.props.builderMode === "Move" && state.selected) {
             state.style.cursor = "grabbing";
             state.grabbing = true;
         }
@@ -225,7 +225,7 @@ class Div extends Component {
             }
             createdDiv.remove();
         }
-        if (this.props.builderMode === "Move") {
+        if (this.props.builderMode === "Move" && state.selected) {
             e.target.style.cursor = "pointer";
             state.grabbing = false;
 
@@ -251,7 +251,7 @@ class Div extends Component {
             this.props.onDrawFinish ? this.props.onDrawFinish(e) : null;
         }
 
-        if (this.props.builderMode === "Move") {
+        if (this.props.builderMode === "Move" && state.selected) {
             this.props.onMoveFinish ? this.props.onMoveFinish(e) : null;
         }
 
