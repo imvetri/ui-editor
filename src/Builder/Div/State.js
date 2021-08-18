@@ -11,7 +11,26 @@ module.exports = {
       "resize": "",
       "overflow": "auto"
     },
-    "Div": [],
+    "children": [
+      {
+          "style": {
+              "position": "absolute",
+              "top": 166,
+              "left": 1648,
+              "height": "262px",
+              "width": "430px",
+              "borderWidth": "1px",
+              "borderStyle": "solid",
+              "borderColor": "green",
+              "resize": "",
+              "overflow": ""
+          },
+          "type": "Div",
+          "children": [],
+          "id": "div66742",
+          "mode": "Draw"
+      }
+  ],
     "mode": "Draw",
     "grabbing": false,
     "origin": false,
