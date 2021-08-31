@@ -81,3 +81,18 @@ export function getNestedComponents(parent) {
     }
     return [...new Set(nestedComponents.filter(component => component && component.markup))];
 }
+
+/** Takes a component, checks and saves it on window */
+export function initialiseComponents(component){
+    // Check if it already exists
+    if(!window[component.name]){
+        // visited gets used by getNestedComponents. Helps to prevent recurrent calls
+        window.visited = {};
+        // get components that are used by the currrent component.
+        let nestedComponents = getNestedComponents(component);
+        if (nestedComponents.length > 0) {
+            // save the current component and the components that are used on window.
+            saveComponentsToWindow(nestedComponents);
+        }
+    }
+}

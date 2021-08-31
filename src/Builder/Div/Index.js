@@ -2,6 +2,10 @@
 
 import React, { Component } from "react";
 
+// Utilities.
+
+import {initialiseComponents} from "../../utilities/Runtime";
+
 
 // Styles.
 
@@ -292,6 +296,8 @@ class Div extends Component {
         </div>)
      * */
     render() {
+
+        initialiseComponents(window.components[15])
 
         return React.createElement("div", {
             className: "Div",

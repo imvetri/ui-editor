@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 // Runtime utilities.
 
-import { getNestedComponents, saveComponentsToWindow } from "../utilities/Runtime"
+import {initialiseComponents} from "../utilities/Runtime";
 
 // Styles.
 
@@ -20,13 +20,7 @@ class DynamicComponent extends Component {
 
     render() {
 
-        if(!window[this.props.component.name]){
-            window.visited = {};
-            let nestedComponents = getNestedComponents(this.props.component);
-            if (nestedComponents.length > 0) {
-                saveComponentsToWindow(nestedComponents);
-            }
-        }
+        initialiseComponents(this.props.component)
 
         if(!window[this.props.component.name]){
             return null

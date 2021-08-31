@@ -26,7 +26,16 @@ module.exports = {
               "overflow": ""
           },
           "type": "Div",
-          "children": [],
+          "children": [
+            {
+              "style": {
+              },
+              "type": "TodoFooter",
+              "children": [],
+              "id": "div66d",
+              "mode": "Draw"
+          }
+          ],
           "id": "div66742",
           "mode": "Draw"
       }
