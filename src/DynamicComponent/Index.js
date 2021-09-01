@@ -1,10 +1,10 @@
 // Libraries.
 
 import React, { Component } from "react";
+
 // Runtime utilities.
 
 import {initialiseComponents} from "../utilities/Runtime";
-
 // Styles.
 
 import "./style.css";
