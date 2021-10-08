@@ -316,3 +316,5 @@ class Div extends Component {
 }
 
 export default Div;
+
+window.Div =Div

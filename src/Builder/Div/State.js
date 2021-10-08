@@ -26,7 +26,7 @@ module.exports = {
               "overflow": ""
           },
           "type": "Img",  
-          "imageSource": "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
+          "source": "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
           "children": [],
           "id": "div66742",
           "mode": "Draw"
