@@ -36,6 +36,10 @@ class Builder extends Component {
                 // Then create a copy div
                 deleteDiv(this.state);
             }
+            if(e.currentTarget.innerText==="Load Image"){
+                // create child div with image property
+               
+            }
         }
         this.setState({
             builderMode: e.currentTarget.innerText
@@ -72,6 +76,9 @@ class Builder extends Component {
                 <button className={this.state.builderMode==="Edit"?"mode":""} onClick={this.changeMode.bind(this)}><i class="fas fa-edit"></i>Edit</button>
                 <button className={this.state.builderMode==="Events"?"mode":""} onClick={this.changeMode.bind(this)}><i class="fas fa-bolt"></i>Events</button>
                 <button className={this.state.builderMode==="Interact"?"mode":""} onClick={this.changeMode.bind(this)}><i class="fas fa-bolt"></i>Interact</button>
+                <button className={this.state.builderMode==="LoadImage"?"mode":""} onClick={this.changeMode.bind(this)}><i class="fa fa-file-image-o"></i><input type="file"/>Load Image</button>
+                <button className={this.state.builderMode==="LoadImage"?"mode":""} onClick={this.changeMode.bind(this)}><i class="fa fa-file-image-o"></i>Load Content</button>
+                <button className={this.state.builderMode==="LoadImage"?"mode":""} onClick={this.changeMode.bind(this)}><i class="fa fa-file-image-o"></i>Load Children</button>
             </div>
             <Div parent={this.state} builderMode={this.state.builderMode} state={this.state} index={0}key={Math.ceil(Math.random() * 1000)} 
                     onDrawFinish={this.DivonUpdate.bind(this)}  

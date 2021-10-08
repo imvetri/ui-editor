@@ -191,7 +191,6 @@ class Div extends Component {
     div123onMouseUp(e) {
         var state = JSON.parse(JSON.stringify(this.state))
 
-
         if (this.props.builderMode === "Draw") {
             if (e.button === 0) {
                 state.origin = false;
