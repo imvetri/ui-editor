@@ -11,7 +11,6 @@ module.exports = {
         "resize": "",
         "overflow": ""
     },
-    "type": "p",
     "children": [
       {
           "style": {
@@ -27,7 +26,7 @@ module.exports = {
               "overflow": ""
           },
           "type": "Img",  
-          "source": "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
+          "imageSource": "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
           "children": [],
           "id": "div66742",
           "mode": "Draw"
