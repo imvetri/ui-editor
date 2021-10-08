@@ -11,9 +11,26 @@ module.exports = {
       "resize": "",
       "overflow": "auto"
     },
-    "children": [{
-      "type":'Img'
-    }  
+    "children": [
+      {
+          "style": {
+              "position": "absolute",
+              "top": 166,
+              "left": 1648,
+              "height": "262px",
+              "width": "430px",
+              "borderWidth": "1px",
+              "borderStyle": "solid",
+              "borderColor": "green",
+              "resize": "",
+              "overflow": ""
+          },
+          "type": "Img",  
+          "imageSource": "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
+          "children": [],
+          "id": "div66742",
+          "mode": "Draw"
+      }
   ],
     "mode": "Draw",
     "grabbing": false,

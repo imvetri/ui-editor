@@ -25,7 +25,7 @@ import Right from "./Utilities/Components/Right";
 // Utility components.
 
 import ContextMenu from "./utilities/Components/ContextMenu";
-import {convertToReact, convertToReactRedux} from "./utilities/CodeGenerator/React/export";
+import {convertToReact} from "./utilities/CodeGenerator/React/export";
 import { getNestedComponents} from "./utilities/Runtime"
 
 // Reducers.
@@ -166,7 +166,7 @@ class Index extends Component {
 
         if(!this.state.showTools){
             return <div>
-                <Builder />
+                <Builder components={this.state.components}/>
                 <DynamicComponent onSave={this.props.onSave} key={randomKey} component={selectedComponent}/>
             </div>
         }
@@ -186,7 +186,7 @@ class Index extends Component {
                         onFoldersUpdate={this.updateFolders.bind(this)}
                     />
                 </div>
-                <Builder />
+                <Builder components={this.state.components}/>
                 <DynamicComponent onSave={this.props.onSave} key={randomKey} component={selectedComponent}/>
 
                 {this.state.selectedComponent ?
