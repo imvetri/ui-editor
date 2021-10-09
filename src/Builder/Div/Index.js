@@ -293,6 +293,14 @@ class Div extends Component {
      * */
     render() {
 
+        if(this.state.variety==="img"){
+            return <div style={this.state.style} onMouseUp= {this.div123onMouseUp.bind(this)} onMouseMove= {this.div123onMouseMove.bind(this)}
+            onMouseDown={this.div123onMouseDown.bind(this)} onMouseOut={this.div123onMouseOut.bind(this)}>
+                <img src={this.state.src} id={this.state.id} style={this.state.style}/>
+            </div>
+
+        }
+
         return React.createElement("div", {
             className: "Div",
             style: this.state.style,
