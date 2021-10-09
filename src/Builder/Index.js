@@ -89,6 +89,19 @@ class Builder extends Component {
             // them on the server until the user's session ends.
         }
     }
+    loadImage (evt) {
+        var tgt = evt.target;
+            files = tgt.files;
+    
+        // FileReader support
+        if (FileReader && files && files.length) {
+            var fr = new FileReader();
+            fr.onload = function () {
+                this.imageSource = fr.result;
+            }
+            fr.readAsDataURL(files[0]);
+        }
+    }
 
     render() {
         this.props.components.forEach(saveToWindow)
