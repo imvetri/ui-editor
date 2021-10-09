@@ -292,7 +292,7 @@ class Div extends Component {
      * */
     render() {
 
-        return React.createElement("div", {
+        return React.createElement(this.state.type, {
             className: "Div",
             style: this.state.style,
             id: this.state.id,

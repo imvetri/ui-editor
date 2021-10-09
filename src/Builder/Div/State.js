@@ -11,6 +11,7 @@ module.exports = {
       "resize": "",
       "overflow": "auto"
     },
+    "type": "div",
     "children": [
       {
           "style": {
