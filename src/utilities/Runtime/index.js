@@ -26,7 +26,7 @@ function createStylesheet(style, name) {
 }
 
 /** Takes a component and converts it as a react component */
-function saveToWindow(component) {
+export function saveToWindow(component) {
     if (hasAssets(component.state)) {
         component.state = JSON.parse(nameToURL(JSON.stringify(component.state)))
     }

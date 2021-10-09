@@ -9,7 +9,9 @@ import State from "./Div/State";
 // Utility
 
 import {deleteDiv, copyDiv, anySelected} from "./Utility";
+
 import {initialiseComponents} from  "../utilities/Runtime";
+
 
 // Components
 
@@ -37,6 +39,10 @@ class Builder extends Component {
                 // Then create a copy div
                 deleteDiv(this.state);
             }
+            if(e.currentTarget.innerText==="Load Image"){
+                // create child div with image property
+               
+            }
         }
         this.setState({
             builderMode: e.currentTarget.innerText
@@ -47,8 +53,47 @@ class Builder extends Component {
         this.setState(e.state);
     }
 
+    loadImage(e) {
+        var files = e.target.files;
+
+        // FileReader support
+        if (FileReader && files && files.length) {
+            var fr = new FileReader();
+            fr.onload = function () {
+                this.state.children.push(      {
+                    "style": {
+                        "position": "absolute",
+                        "top": 166,
+                        "left": 1648,
+                        "height": "262px",
+                        "width": "430px",
+                        "borderWidth": "1px",
+                        "borderStyle": "solid",
+                        "borderColor": "green",
+                        "resize": "",
+                        "overflow": ""
+                    },
+                    "type": "Img",  
+                    "imageSource": fr.result,
+                    "children": [],
+                    "id": "Img66742",
+                    "mode": "Draw"
+                })
+                this.setState(this.state)
+            }.bind(this)
+            fr.readAsDataURL(files[0]);
+        }
+
+        // Not supported
+        else {
+            // fallback -- perhaps submit the input to an iframe and temporarily store
+            // them on the server until the user's session ends.
+        }
+    }
+
     render() {
         window.components.forEach(initialiseComponents)
+
         /**
          * when Draw is on - Disable  - Move, Resize, Delete, copy, Save, Edit
          * when Select is on - Enable - Move, Resize, Delete, copy, Save, Edit
@@ -74,6 +119,9 @@ class Builder extends Component {
                 <button className={this.state.builderMode==="Edit"?"mode":""} onClick={this.changeMode.bind(this)}><i class="fas fa-edit"></i>Edit</button>
                 <button className={this.state.builderMode==="Events"?"mode":""} onClick={this.changeMode.bind(this)}><i class="fas fa-bolt"></i>Events</button>
                 <button className={this.state.builderMode==="Interact"?"mode":""} onClick={this.changeMode.bind(this)}><i class="fas fa-bolt"></i>Interact</button>
+                <button className={this.state.builderMode==="LoadImage"?"mode":""} onClick={this.changeMode.bind(this)}><i class="fa fa-file-image-o"></i><input type="file"/>Load Image</button>
+                <button className={this.state.builderMode==="LoadImage"?"mode":""} onClick={this.changeMode.bind(this)}><i class="fa fa-file-image-o"></i>Load Content</button>
+                <button className={this.state.builderMode==="LoadImage"?"mode":""} onClick={this.changeMode.bind(this)}><i class="fa fa-file-image-o"></i>Load Children</button>
             </div>
             <Div parent={this.state} builderMode={this.state.builderMode} state={this.state} index={0}key={Math.ceil(Math.random() * 1000)} 
                     onDrawFinish={this.DivonUpdate.bind(this)}  
