@@ -6,10 +6,9 @@
     padding-top: 14px;
     display: flex;
     justify-content: space-evenly;
-    position: relative;
+    position: fixed;
     z-index: 1;
-    position: absolute;
-    left: 100%;
+    left: 45%;
 }
 
 .toolBar button i{
