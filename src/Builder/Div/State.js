@@ -7,30 +7,11 @@ module.exports = {
       "width": window.innerWidth*4+"px",
       "cursor": "crosshair",
       "box-sizing": "border-box",
-      "background": "white",
       "resize": "",
-      "overflow": "auto"
+      "overflow": "auto",
+      "background": "url(https://i.imgur.com/sfrulNr.png)"
     },
-    "children": [
-      {
-          "style": {
-              "position": "absolute",
-              "top": 166,
-              "left": 1648,
-              "height": "262px",
-              "width": "430px",
-              "borderWidth": "1px",
-              "borderStyle": "solid",
-              "borderColor": "green",
-              "resize": "",
-              "overflow": ""
-          },
-          "type": "Div",
-          "children": [],
-          "id": "div66742",
-          "mode": "Draw"
-      }
-  ],
+    "children": [],
     "mode": "Draw",
     "grabbing": false,
     "origin": false,
