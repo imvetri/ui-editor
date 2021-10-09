@@ -296,22 +296,40 @@ class Div extends Component {
             className: "Div",
             style: this.state.style,
             id: this.state.id,
+            src: this.state.source,
             onMouseUp: this.div123onMouseUp.bind(this),
             onMouseMove: this.div123onMouseMove.bind(this),
             onMouseDown: this.div123onMouseDown.bind(this),
             onMouseOut: this.div123onMouseOut.bind(this)
-          }, this.state.children.map((child, i) => React.createElement(eval(child.type), {
-            parent: this.state,
-            builderMode: this.props.builderMode,
-            state: child,
-            key: ~~(Math.random() * 10000),
-            index: i,
-            onDelete: this.DivonDelete.bind(this),
-            onResizeFinish: this.DivonResizeFinish.bind(this),
-            onMoveFinish: this.DivonMoveFinish.bind(this),
-            onDrawFinish: this.DivonDrawFinish.bind(this),
-            onSelection: this.DivonSelection.bind(this)
-          })));
+          }, this.state.children.map((child, i) => {
+                  debugger;
+              
+            if(child.type==="img"){
+                return React.createElement(child.type, {
+                    className: "Div",
+                    style: child.style,
+                    id: child.id,
+                    src: child.source,
+                    onMouseUp: this.div123onMouseUp.bind(this),
+                    onMouseMove: this.div123onMouseMove.bind(this),
+                    onMouseDown: this.div123onMouseDown.bind(this),
+                    onMouseOut: this.div123onMouseOut.bind(this)
+                  });
+            }else {
+                React.createElement(eval(child.type), {
+                    parent: this.state,
+                    builderMode: this.props.builderMode,
+                    state: child,
+                    key: ~~(Math.random() * 10000),
+                    index: i,
+                    onDelete: this.DivonDelete.bind(this),
+                    onResizeFinish: this.DivonResizeFinish.bind(this),
+                    onMoveFinish: this.DivonMoveFinish.bind(this),
+                    onDrawFinish: this.DivonDrawFinish.bind(this),
+                    onSelection: this.DivonSelection.bind(this)
+                  })
+            }
+        }))
     }
 }
 
