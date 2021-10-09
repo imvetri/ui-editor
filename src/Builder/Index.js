@@ -9,6 +9,7 @@ import State from "./Div/State";
 // Utility
 
 import {deleteDiv, copyDiv, anySelected} from "./Utility";
+import {initialiseComponents} from  "../utilities/Runtime";
 
 // Components
 
@@ -47,6 +48,7 @@ class Builder extends Component {
     }
 
     render() {
+        window.components.forEach(initialiseComponents)
         /**
          * when Draw is on - Disable  - Move, Resize, Delete, copy, Save, Edit
          * when Select is on - Enable - Move, Resize, Delete, copy, Save, Edit

@@ -25,9 +25,10 @@ module.exports = {
               "resize": "",
               "overflow": ""
           },
-          "type": "Div",
+          "type": "Img",
           "children": [],
           "id": "div66742",
+          "source":"https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
           "mode": "Draw"
       }
   ],

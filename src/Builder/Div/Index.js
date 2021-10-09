@@ -191,40 +191,6 @@ class Div extends Component {
     div123onMouseUp(e) {
         var state = JSON.parse(JSON.stringify(this.state))
 
-
-        if (this.props.builderMode === "Draw") {
-            if (e.button === 0) {
-                state.origin = false;
-            }
-            let createdDiv = document.getElementById(state.divId);
-            delete state.divId;
-
-            if (state.clientX == e.clientX && state.clientY == e.clientY) {
-                state.showOptions = !state.showOptions;
-            }
-            else {
-                var coord = document.querySelectorAll('#'+this.state.id)[0].getBoundingClientRect();
-                state.children.push({
-                    style: {
-                        position: "absolute",
-                        top: -coord.top + Number(createdDiv.style.top.split("px")[0]),
-                        left: -coord.left + Number(createdDiv.style.left.split("px")[0]),
-                        height: createdDiv.style.height,
-                        width: createdDiv.style.width,
-                        borderWidth: createdDiv.style["border-width"],
-                        borderStyle: createdDiv.style["border-style"],
-                        borderColor: createdDiv.style["border-color"],
-                        resize: "",
-                        overflow: ""
-                    },
-                    type: "Div",
-                    children: [],
-                    id: createdDiv.id,
-                    mode: "Draw"
-                })
-            }
-            createdDiv.remove();
-        }
         if (this.props.builderMode === "Move" && state.selected) {
             e.target.style.cursor = "pointer";
             state.grabbing = false;
@@ -293,10 +259,13 @@ class Div extends Component {
      * */
     render() {
 
+        
+        
         return React.createElement("div", {
             className: "Div",
             style: this.state.style,
             id: this.state.id,
+            src: this.state.source,
             onMouseUp: this.div123onMouseUp.bind(this),
             onMouseMove: this.div123onMouseMove.bind(this),
             onMouseDown: this.div123onMouseDown.bind(this),
@@ -317,3 +286,4 @@ class Div extends Component {
 }
 
 export default Div;
+window.Div = Div;
