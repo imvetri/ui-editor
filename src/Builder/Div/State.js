@@ -1,15 +1,16 @@
 module.exports = {
     "style": {
       "position": "relative",
-      "top": "0px",
-      "left": "0px",
+      "top": "100px",
+      "left": "240px",
       "height": window.innerHeight+100+"px",
       "width": window.innerWidth*4+"px",
       "cursor": "crosshair",
       "box-sizing": "border-box",
       "resize": "",
       "overflow": "auto",
-      "background": "url(https://i.imgur.com/sfrulNr.png)"
+      "background": "url(https://i.imgur.com/sfrulNr.png)",
+      "background-repeat": "no-repeat"
     },
     "children": [],
     "mode": "Draw",
