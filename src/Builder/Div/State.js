@@ -12,6 +12,7 @@ module.exports = {
       "background": "url(https://i.imgur.com/sfrulNr.png)",
       "background-repeat": "no-repeat"
     },
+    "type":"Div",
     "children": [],
     "mode": "Draw",
     "grabbing": false,
