@@ -36,6 +36,9 @@ class Builder extends Component {
                 // Then create a copy div
                 deleteDiv(this.state);
             }
+            if(e.currentTarget.innerText==="Load Image" ){
+                debugger
+            }
         }
         this.setState({
             builderMode: e.currentTarget.innerText
@@ -44,6 +47,14 @@ class Builder extends Component {
 
     DivonUpdate(e) {
         this.setState(e.state);
+    }
+
+    fileChanged(e){
+        this.setState({
+            files: e.target.files[0]
+        })
+        window.loadedFiles = e.target.files;
+        //URL.createObjectURL(e.target.files[0]);
     }
 
     render() {
@@ -70,10 +81,10 @@ class Builder extends Component {
                 <button className={this.state.builderMode==="Copy"?"mode":""} onClick={this.changeMode.bind(this)}><i class="fas fa-copy"></i>Copy</button>
                 <button className={this.state.builderMode==="Save"?"mode":""} onClick={this.changeMode.bind(this)}><i class="fas fa-save"></i>Save</button>
                 <button className={this.state.builderMode==="Edit"?"mode":""} onClick={this.changeMode.bind(this)}><i class="fas fa-edit"></i>Edit</button>
-                <button className={this.state.builderMode==="Events"?"mode":""} onClick={this.changeMode.bind(this)}><i class="fas fa-bolt"></i>Events</button>
+                <button className={this.state.builderMode==="Events"?"mode":""} onClick={this.changeMode.bind(this)}><i class="fas fa-bolt"></i><input onChange={this.fileChanged.bind(this)} type="file"/>Load Image</button>
                 <button className={this.state.builderMode==="Interact"?"mode":""} onClick={this.changeMode.bind(this)}><i class="fas fa-bolt"></i>Interact</button>
             </div>
-            <Div parent={this.state} builderMode={this.state.builderMode} state={this.state} index={0}key={Math.ceil(Math.random() * 1000)} 
+            <Div parent={this.state} files={this.state.files} builderMode={this.state.builderMode} state={this.state} index={0}key={Math.ceil(Math.random() * 1000)} 
                     onDrawFinish={this.DivonUpdate.bind(this)}  
                     onDelete={this.DivonUpdate.bind(this)} 
                     onResizeFinish={this.DivonUpdate.bind(this)} 

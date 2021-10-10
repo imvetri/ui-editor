@@ -13,7 +13,7 @@ class Div extends Component {
     constructor(props) {
         super(props);
         var state = JSON.parse(JSON.stringify(this.props.state));
-        
+
         if (this.props.builderMode === "Resize" && state.selected) {
             state.style.resize = "both";
             state.style.overflow = "auto";
@@ -21,7 +21,7 @@ class Div extends Component {
             state.style.resize = "";
             state.style.overflow = "";
         }
-        if(this.props.builderMode === "Select"){
+        if (this.props.builderMode === "Select") {
             state.style.cursor = "pointer";
         }
         if (this.props.builderMode === "Draw") {
@@ -128,17 +128,34 @@ class Div extends Component {
             state.style.cursor = "grabbing";
             state.grabbing = true;
         }
-        if (this.props.builderMode === "Select"){
+        if (this.props.builderMode === "Select") {
             state.selected = !state.selected;
             state.style.cursor = "pointer";
-            if(state.selected){
+            if (state.selected) {
                 state.style.borderColor = "rgb(76, 175, 80)";
                 state.style.borderWidth = "3px"
             } else {
                 state.style.borderColor = "green";
                 state.style.borderWidth = "1px";
             }
-            
+            if (state.selected && this.props.files) {
+                state.variety = "img";
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    var state = JSON.parse(JSON.stringify(this.state))
+                    state.style.background = `url("${e.target.result}")`;
+                    e.state = state;
+                    e.index = 0;
+                    this.props.onDrawFinish ? this.props.onDrawFinish(e) : null;
+
+                    this.setState(state);
+                }.bind(this)
+                reader.readAsDataURL(loadedFiles[0]);
+
+                this.setState(state);
+            }
+
         }
         delete window.eClientY;
         delete window.eClientX;
@@ -203,7 +220,7 @@ class Div extends Component {
                 state.showOptions = !state.showOptions;
             }
             else {
-                var coord = document.querySelectorAll('#'+this.state.id)[0].getBoundingClientRect();
+                var coord = document.querySelectorAll('#' + this.state.id)[0].getBoundingClientRect();
                 state.children.push({
                     style: {
                         position: "absolute",
@@ -215,7 +232,8 @@ class Div extends Component {
                         borderStyle: createdDiv.style["border-style"],
                         borderColor: createdDiv.style["border-color"],
                         resize: "",
-                        overflow: ""
+                        overflow: "",
+                        background:""
                     },
                     type: "Div",
                     children: [],
@@ -229,7 +247,7 @@ class Div extends Component {
             e.target.style.cursor = "pointer";
             state.grabbing = false;
 
-            var coord = document.querySelectorAll('#'+this.props.parent.id)[0].getBoundingClientRect();
+            var coord = document.querySelectorAll('#' + this.props.parent.id)[0].getBoundingClientRect();
 
             state.style.top = -coord.top + Number(e.currentTarget.style.top.split("px")[0])
             state.style.left = -coord.left + Number(e.currentTarget.style.left.split("px")[0])
@@ -264,7 +282,7 @@ class Div extends Component {
         }
     }
 
-    div123onMouseOut(){
+    div123onMouseOut() {
         var state = JSON.parse(JSON.stringify(this.state));
         if (this.props.builderMode === "Select") {
             state.style.borderColor = "green";
@@ -293,15 +311,14 @@ class Div extends Component {
      * */
     render() {
 
-        if(this.state.variety==="img"){
-            return <div style={this.state.style} onMouseUp= {this.div123onMouseUp.bind(this)} onMouseMove= {this.div123onMouseMove.bind(this)}
+        if (this.state.variety === "img") {
+            return <div style={this.state.style} onDragStart={(e)=>e.preventDefault()} onMouseUp={this.div123onMouseUp.bind(this)} onMouseMove={this.div123onMouseMove.bind(this)}
             onMouseDown={this.div123onMouseDown.bind(this)} onMouseOut={this.div123onMouseOut.bind(this)}>
-                <img src={this.state.src} id={this.state.id} style={this.state.style}/>
             </div>
 
         }
 
-        return React.createElement("div", {
+        return React.createElement(this.state.type, {
             className: "Div",
             style: this.state.style,
             id: this.state.id,
@@ -309,9 +326,10 @@ class Div extends Component {
             onMouseMove: this.div123onMouseMove.bind(this),
             onMouseDown: this.div123onMouseDown.bind(this),
             onMouseOut: this.div123onMouseOut.bind(this)
-          }, this.state.children.map((child, i) => React.createElement(eval(child.type), {
+        }, this.state.children.map((child, i) => React.createElement(eval(child.type), {
             parent: this.state,
             builderMode: this.props.builderMode,
+            files: this.props.files,
             state: child,
             key: ~~(Math.random() * 10000),
             index: i,
@@ -320,7 +338,7 @@ class Div extends Component {
             onMoveFinish: this.DivonMoveFinish.bind(this),
             onDrawFinish: this.DivonDrawFinish.bind(this),
             onSelection: this.DivonSelection.bind(this)
-          })));
+        })));
     }
 }
 
