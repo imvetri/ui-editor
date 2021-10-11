@@ -26,7 +26,7 @@ import Right from "./Utilities/Components/Right";
 
 import ContextMenu from "./utilities/Components/ContextMenu";
 import {convertToReact, convertToReactRedux} from "./utilities/CodeGenerator/React/export";
-import { getNestedComponents} from "./utilities/Runtime"
+import { getNestedComponents, initialiseComponents} from "./utilities/Runtime"
 
 // Reducers.
 import { updateEvent, updateConfig, saveElement, updateSelectedComponent } from "./Index/Reducer";
@@ -175,6 +175,7 @@ class Index extends Component {
     render() {
         const selectedComponent = this.state.selectedComponent || this.state.component;
         const randomKey = Math.ceil(Math.random() * 1000);
+        window.components.forEach(initialiseComponents)
 
         if(!this.state.showTools){
             return <div>
