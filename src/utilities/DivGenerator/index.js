@@ -1,4 +1,4 @@
-export function generateToDivs(imageSrc){
+export function generateToDivs(that, imageSrc){
     /**
      * 1. create a canvas
      * 2. Load image into canbas
@@ -7,16 +7,18 @@ export function generateToDivs(imageSrc){
     var img = document.createElement("img");
     img.src = imageSrc;
 
-    var canvas = document.createElement("canvas");
-    var ctx = canvas.getContext('2d');
+    var canvas, ctx;
     
     img.onload = function() {
 
+        canvas = document.getElementById(that.state.id);
+        ctx = canvas.getContext('2d');
         canvas.height = img.height;
         canvas.width = img.width;
-        debugger;
         ctx.drawImage(img, 0, 0);
-        document.body.appendChild(canvas)
+        canvas.addEventListener('click', function(event) {
+            pick(event);
+        });
     };
 
 
@@ -33,48 +35,48 @@ export function generateToDivs(imageSrc){
 
         var pixel = ctx.getImageData(x, y, 1, 1);
         var pickedColor = pixel.data;
-        var rect = [];
+        ctx.fillStyle = "green";
 
-        function getColor(x,y){
-            var pixel = ctx.getImageData(x, y, 1, 1);
-            var data = pixel.data;
-            return data;
-        };
+        var visited = {};
         function spread(x,y){
-            rect.push(x,y);
-            // check above pixel
-            if( getColor(x-1,y-1)[0]===pickedColor[0] &&  getColor(x-1,y-1)[1]===pickedColor[1] &&  getColor(x-1,y-1)[2]===pickedColor[2]){
-                spread(x-1,y-1);
-            }
-            // check previous pixel
-            if( getColor(x-1,y)[0]===pickedColor[0] &&  getColor(x-1,y)[1]===pickedColor[1] &&  getColor(x-1,y)[2]===pickedColor[2]){
-                spread(x-1,y);
-            }
-            // check below pixel
-            if( getColor(x+1,y+1)[0]===pickedColor[0] &&  getColor(x+1,y+1)[1]===pickedColor[1] &&  getColor(x+1,y+1)[2]===pickedColor[2]){
-                spread(x+1,y+1);
-            }
-            // check next pixel
-            if( getColor(x+1,y)[0]===pickedColor[0] &&  getColor(x+1,y)[1]===pickedColor[1] &&  getColor(x+1,y)[2]===pickedColor[2]){
-                spread(x+1,y);
-            }
-            //                     spread(x-1,y-1);
-            // spread(x-1,y);                            spread(x+1,y);
-            //                     spread(x+1,y+1);
-        }
 
+            if(!visited[x+""+y]){
+                visited[x+""+y] = true;
+                // rect.push(x,y);
+                ctx.fillRect (x, y, 1, 1);
+
+                let aboveColor = ctx.getImageData(x-1, y-1, 1, 1).data;
+                // check above pixel
+                if( aboveColor[0]===pickedColor[0] &&  aboveColor[1]===pickedColor[1] &&  aboveColor[2]===pickedColor[2]){
+                    spread(x-1,y-1);
+                }
+
+                let previousColor = ctx.getImageData(x-1, y, 1, 1).data;
+                // check previous pixel
+                if( previousColor[0]===pickedColor[0] &&  previousColor[1]===pickedColor[1] &&  previousColor[2]===pickedColor[2]){
+                    spread(x-1,y);
+                }
+                let belowColor = ctx.getImageData(x+1, y+1, 1, 1).data;
+                // check below pixel
+                if( belowColor[0]===pickedColor[0] &&  belowColor[1]===pickedColor[1] &&  belowColor[2]===pickedColor[2]){
+                    spread(x+1,y+1);
+                }
+                let nextColor =ctx.getImageData(x+1, y, 1, 1).data;
+                // check next pixel
+                if( nextColor[0]===pickedColor[0] &&  nextColor[1]===pickedColor[1] &&  nextColor[2]===pickedColor[2]){
+                    spread(x+1,y);
+                }
+                //                     spread(x-1,y-1);
+                // spread(x-1,y);                            spread(x+1,y);
+                //                     spread(x+1,y+1);
+            }
+
+        }
         spread(x,y);
 
-        // paint
-        rect.forEach(pixel=>{
-            ctx.fillStyle = "green";
-            ctx.fillRect (pixel.x, pixel.y, 1, 1);
-        })
     }
 
-    canvas.addEventListener('click', function(event) {
-        pick(event);
-    });
+
 
 }
 
