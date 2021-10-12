@@ -2,7 +2,6 @@
 
 import React, { Component } from "react";
 
-
 // Styles.
 
 import "./style.css";
@@ -145,11 +144,18 @@ class Div extends Component {
                 reader.onload = function (e) {
                     var state = JSON.parse(JSON.stringify(this.state))
                     state.style.background = `url("${e.target.result}")`;
-                    e.state = state;
-                    e.index = 0;
-                    this.props.onDrawFinish ? this.props.onDrawFinish(e) : null;
+                    var img = document.createElement("img");
+                    img.src = e.target.result;
+                    img.onload = function (){
+                        state.style.height = img.height;
+                        state.style.width = img.width;
+                        e.state = state;
+                        e.index = 0;
+                        this.props.onDrawFinish ? this.props.onDrawFinish(e) : null;
+    
+                        this.setState(state);
+                    }.bind(this)
 
-                    this.setState(state);
                 }.bind(this)
                 reader.readAsDataURL(loadedFiles[0]);
 
