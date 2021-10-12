@@ -9,7 +9,6 @@ import State from "./Div/State";
 // Utility
 
 import {deleteDiv, copyDiv, anySelected} from "./Utility";
-import {generateToDivs} from "../utilities/DivGenerator";
 
 // Components
 
@@ -40,18 +39,10 @@ class Builder extends Component {
             if(e.currentTarget.innerText==="Load Image" ){
                 debugger
             }
-            if(e.currentTarget.innerText==="Scan" ){
-                this.convertToRectangles();
-            }
         }
         this.setState({
             builderMode: e.currentTarget.innerText
         })
-    }
-
-    convertToRectangles(){
-        debugger;
-        generateToDivs("https://i.imgur.com/sfrulNr.png");
     }
 
     DivonUpdate(e) {
