@@ -9,6 +9,7 @@ import State from "./Div/State";
 // Utility
 
 import {deleteDiv, copyDiv, anySelected} from "./Utility";
+import {generateToDivs} from "../utilities/DivGenerator";
 
 // Components
 
@@ -49,7 +50,8 @@ class Builder extends Component {
     }
 
     convertToRectangles(){
-
+        debugger;
+        generateToDivs("https://i.imgur.com/sfrulNr.png");
     }
 
     DivonUpdate(e) {

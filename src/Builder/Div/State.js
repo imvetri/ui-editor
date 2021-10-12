@@ -26,7 +26,6 @@ module.exports = {
               "borderColor": "rgb(76, 175, 80)",
               "resize": "both",
               "overflow": "auto",
-              "background": "url('https://i.imgur.com/sfrulNr.png')",
               "background-repeat": "no-repeat round",
               "cursor": "pointer"
           },
@@ -34,7 +33,7 @@ module.exports = {
           "children": [],
           "id": "div64102",
           "mode": "Draw",
-          "selected": true,
+          "selected": false,
           "variety": "img"
       }
   ],
