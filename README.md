@@ -85,6 +85,10 @@ This project is built with one happy path in mind and needs a lot of effort to i
 2. ui-developers - To make visual changes, to implement features.
 3. Utility developers - Code generators (its just string, doesn't use any fancy design pattern), Fixed styled div to DOM layout flow (Just convert fixed style to padding and margins )
 
+### Communication
+* Open Issue
+* checkout discord https://discord.com/channels/901346023283232798/901346023773990954 
+* reachout to me https://twitter.com/VetrivelShanmu3
 
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
