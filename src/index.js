@@ -9,7 +9,6 @@ import "./Index/index.css";
 // Components.
 
 import Components from "./Components";
-import Editor from "./Editor";
 import Events from "./Events";
 import Assets from "./Assets";
 import History from "./History";
@@ -18,8 +17,6 @@ import Builder from "./Builder";
 
 // Behaviour components.
 
-import Center from "./Utilities/Components/Center";
-import Bottom from "./Utilities/Components/Bottom";
 import Right from "./Utilities/Components/Right";
 
 // Utility components.
@@ -51,7 +48,6 @@ class Index extends Component {
             },
             selectedComponent: "",
             folders: readData("folders"),
-            showEditor: false,
             showTools: true,
             selectedTab: "Events"
         }
@@ -60,12 +56,6 @@ class Index extends Component {
         this.saveElement = saveElement.bind(this);
         this.updateSelectedComponent = updateSelectedComponent.bind(this);
         document.onkeydown = function keydown(e){
-            if(e.altKey && e.keyCode==69) { // Alt + E
-                // Open/close editor if any component is selected
-                this.setState({
-                    showEditor: !this.state.showEditor
-                })
-            }
             if(e.altKey && e.keyCode==82){ // Alt + R
                 this.setState({
                     showTools: !this.state.showTools
@@ -87,12 +77,6 @@ class Index extends Component {
             folders: folders
         })
         writeData("folders", folders)
-    }
-
-    openEditor() {
-        this.setState({
-            showEditor: true
-        })
     }
 
     exportReact(e){
@@ -194,7 +178,6 @@ class Index extends Component {
                         showControls={true}
                         key={randomKey}
 
-                        onOpenEditor={this.openEditor.bind(this)}
                         onSelection={this.updateSelectedComponent}
                         onFoldersUpdate={this.updateFolders.bind(this)}
                     />
@@ -221,30 +204,6 @@ class Index extends Component {
                     </Right>
                     :
                     null}
-
-                {this.state.showEditor ?
-                    <Bottom>
-                        <Editor
-                            key={randomKey}
-                            element={selectedComponent}
-                            name={selectedComponent.name}
-                            markup={selectedComponent.markup}
-                            style={selectedComponent.style}
-                            state={selectedComponent.state}
-                            title="Editor"
-                            onSave={this.saveElement}
-                        />
-                    </Bottom>
-                    :
-                    this.state.selectedComponent ?
-                        <Bottom>
-                            <Center>
-                                <button class="showEditor"onClick={() => this.setState({ showEditor: true })}>Open Editor</button>
-                            </Center>
-                        </Bottom>
-                        :
-                        null
-                }
                 {this.state.showContextMenu?<ContextMenu children={this.state.contextMenuChildren} position={this.state.contextMenuPosition} onMessage={this.onContextMenuMessage.bind(this)}/>:null}
             </div>
         );
