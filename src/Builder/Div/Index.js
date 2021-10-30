@@ -2,10 +2,6 @@
 
 import React, { Component } from "react";
 
-// Utilities.
-
-import {generateToDivs} from "../../utilities/DivGenerator";
-
 // Styles.
 
 import "./style.css";
@@ -32,35 +28,6 @@ class Div extends Component {
             state.style.cursor = "crosshair";
         }
     }
-
-    renderImage(){
-        var state = JSON.parse(JSON.stringify(this.state))
-
-        state.variety = "img";
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            var state = JSON.parse(JSON.stringify(this.state))
-            state.style.background = `url("${e.target.result}")`;
-            state.source = e.target.result;
-            var img = document.createElement("img");
-            img.src = e.target.result;
-            img.onload = function (){
-                state.style.height = img.height;
-                state.style.width = img.width;
-                e.state = state;
-                e.index = 0;
-                this.props.onDrawFinish ? this.props.onDrawFinish(e) : null;
-
-                this.setState(state);
-            }.bind(this)
-
-        }.bind(this)
-        reader.readAsDataURL(loadedFiles[0]);
-
-        this.setState(state);
-    }
-
 
     DivonDrawFinish(e) {
         var state = JSON.parse(JSON.stringify(this.state))
@@ -169,9 +136,6 @@ class Div extends Component {
                 state.style.borderColor = "green";
                 state.style.borderWidth = "1px";
             }
-        }
-        if (state.selected && this.props.files) {
-            this.renderImage();
         }
 
         delete window.eClientY;
@@ -328,30 +292,6 @@ class Div extends Component {
      * */
     render() {
 
-        if(this.state.variety==="img") {
-
-            this.result = React.createElement("canvas", {
-                className: "Div",
-                style: this.state.style,
-                id: this.state.id
-            }, this.state.children.map((child, i) => React.createElement(eval(child.type), {
-                parent: this.state,
-                builderMode: this.props.builderMode,
-                files: this.props.files,
-                state: child,
-                key: ~~(Math.random() * 10000),
-                index: i,
-                onDelete: this.DivonDelete.bind(this),
-                onResizeFinish: this.DivonResizeFinish.bind(this),
-                onMoveFinish: this.DivonMoveFinish.bind(this),
-                onDrawFinish: this.DivonDrawFinish.bind(this),
-                onSelection: this.DivonSelection.bind(this)
-            })));
-
-
-            generateToDivs(this,this.state.source)
-            return this.result;
-        }
         return React.createElement(this.state.type, {
             className: "Div",
             style: this.state.style,
