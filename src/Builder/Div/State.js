@@ -14,28 +14,6 @@ module.exports = {
   },
   "type": "Div",
   "children": [
-      {
-          "style": {
-              "position": "absolute",
-              "top": 65,
-              "left": 300,
-              "height": "1970px",
-              "width": "3432px",
-              "borderWidth": "3px",
-              "borderStyle": "solid",
-              "borderColor": "rgb(76, 175, 80)",
-              "resize": "both",
-              "overflow": "auto",
-              "background-repeat": "no-repeat round",
-              "cursor": "pointer"
-          },
-          "type": "Div",
-          "children": [],
-          "id": "div64102",
-          "mode": "Draw",
-          "selected": false,
-          "variety": "img"
-      }
   ],
   "mode": "Draw",
   "grabbing": false,
@@ -51,5 +29,4 @@ module.exports = {
       "onMouseOut": "console.log('mouse out success')"
   },
   "builderMode": "Resize",
-  "files": {}
 }

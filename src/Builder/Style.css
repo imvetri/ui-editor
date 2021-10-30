@@ -1,5 +1,5 @@
 .toolBar{
-    width:50%;
+    width:30%;
     background: #2C3134;
     margin:auto;
     padding: 10px;
@@ -8,7 +8,7 @@
     justify-content: space-evenly;
     position: fixed;
     z-index: 1;
-    left: 45%;
+    left: 25%;
 }
 
 .toolBar button i{
