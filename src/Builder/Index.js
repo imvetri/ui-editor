@@ -49,14 +49,6 @@ class Builder extends Component {
         this.setState(e.state);
     }
 
-    fileChanged(e){
-        this.setState({
-            files: e.target.files[0]
-        })
-        window.loadedFiles = e.target.files;
-        //URL.createObjectURL(e.target.files[0]);
-    }
-
     render() {
         /**
          * when Draw is on - Disable  - Move, Resize, Delete, copy, Save, Edit
@@ -77,7 +69,6 @@ class Builder extends Component {
                 <button className={this.state.builderMode==="Resize"?"mode":""} onClick={this.changeMode.bind(this)}><i class="fas fa-compress-arrows-alt"></i>Resize</button>
                 <button className={this.state.builderMode==="Delete"?"mode":""} onClick={this.changeMode.bind(this)}><i class="fas fa-trash-alt"></i>Delete</button>
                 <button className={this.state.builderMode==="Copy"?"mode":""} onClick={this.changeMode.bind(this)}><i class="fas fa-copy"></i>Copy</button>
-                <button className={this.state.builderMode==="Events"?"mode":""} onClick={this.changeMode.bind(this)}><i class="fas fa-bolt"></i><input onChange={this.fileChanged.bind(this)} type="file"/>Load Image</button>
             </div>
             <Div parent={this.state} files={this.state.files} builderMode={this.state.builderMode} state={this.state} index={0}key={Math.ceil(Math.random() * 1000)} 
                     onDrawFinish={this.DivonUpdate.bind(this)}  
