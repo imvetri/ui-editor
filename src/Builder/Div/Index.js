@@ -303,7 +303,6 @@ class Div extends Component {
         }, this.state.children.map((child, i) => React.createElement(eval(child.type), {
             parent: this.state,
             builderMode: this.props.builderMode,
-            files: this.props.files,
             state: child,
             key: ~~(Math.random() * 10000),
             index: i,

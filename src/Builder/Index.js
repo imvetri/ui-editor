@@ -36,9 +36,6 @@ class Builder extends Component {
                 // Then create a copy div
                 deleteDiv(this.state);
             }
-            if(e.currentTarget.innerText==="Load Image" ){
-                debugger
-            }
         }
         this.setState({
             builderMode: e.currentTarget.innerText
@@ -68,9 +65,8 @@ class Builder extends Component {
                 <button className={this.state.builderMode==="Move"?"mode":""} onClick={this.changeMode.bind(this)}><i class="fas fa-arrows-alt"></i>Move</button>
                 <button className={this.state.builderMode==="Resize"?"mode":""} onClick={this.changeMode.bind(this)}><i class="fas fa-compress-arrows-alt"></i>Resize</button>
                 <button className={this.state.builderMode==="Delete"?"mode":""} onClick={this.changeMode.bind(this)}><i class="fas fa-trash-alt"></i>Delete</button>
-                <button className={this.state.builderMode==="Copy"?"mode":""} onClick={this.changeMode.bind(this)}><i class="fas fa-copy"></i>Copy</button>
             </div>
-            <Div parent={this.state} files={this.state.files} builderMode={this.state.builderMode} state={this.state} index={0}key={Math.ceil(Math.random() * 1000)} 
+            <Div parent={this.state} builderMode={this.state.builderMode} state={this.state} index={0}key={Math.ceil(Math.random() * 1000)} 
                     onDrawFinish={this.DivonUpdate.bind(this)}  
                     onDelete={this.DivonUpdate.bind(this)} 
                     onResizeFinish={this.DivonUpdate.bind(this)} 
