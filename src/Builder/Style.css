@@ -2,13 +2,13 @@
     width:30%;
     background: #2C3134;
     margin:auto;
-    padding: 5px;
+    padding: 10px;
     padding-top: 14px;
     display: flex;
     justify-content: space-evenly;
     position: fixed;
     z-index: 1;
-    left: 30%;
+    left: 25%;
 }
 
 .toolBar button i{

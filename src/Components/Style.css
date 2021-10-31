@@ -18,10 +18,8 @@ textarea {
 
 .elements-tab {
     left:0px;
-    height: 25vh;
-    width:170px;
-    background: none;
-    position:fixed;
+    height: 100vh;
+    width:170px;;
 }
 
 .folders{
