@@ -30,9 +30,6 @@ class Components extends Component {
         this.setState({ folders })
     }
 
-    addComponent() {
-        this.props.onOpenEditor();
-    }
 
     render() {
         let props = this.props;
@@ -43,7 +40,6 @@ class Components extends Component {
                     Components
                 </div>
                 <div className="Controls">
-                    <button onClick={this.addComponent.bind(this)}><i className="fa fa-edit"></i>{props.selectedComponent ? "Edit" : "Add"}</button>
                     <button onClick={this.addFolder.bind(this)}><i className="fa fa-folder"></i>Folder</button>
                 </div>
                 <div className="folders">
