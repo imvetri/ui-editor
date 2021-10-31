@@ -206,8 +206,8 @@ class Div extends Component {
                 state.children.push({
                     style: {
                         position: "absolute",
-                        top: -coord.top + Number(createdDiv.style.top.split("px")[0]),
-                        left: -coord.left + Number(createdDiv.style.left.split("px")[0]),
+                        top: -coord.top + Number(createdDiv.style.top.split("px")[0]-3),
+                        left: -coord.left + Number(createdDiv.style.left.split("px")[0]-3),
                         height: createdDiv.style.height,
                         width: createdDiv.style.width,
                         borderWidth: createdDiv.style["border-width"],

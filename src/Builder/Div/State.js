@@ -3,8 +3,8 @@ module.exports = {
       "position": "relative",
       "top": "100px",
       "left": "240px",
-      "height": window.innerHeight+100+"px",
-      "width": window.innerWidth*4+"px",
+      "height": 100+"px",
+      "width": 100+"px",
       "cursor": "pointer",
       "box-sizing": "border-box",
       "resize": "",
@@ -28,5 +28,5 @@ module.exports = {
       "onClick": "console.log('onClick success')",
       "onMouseOut": "console.log('mouse out success')"
   },
-  "builderMode": "Resize",
+  "builderMode": "Select",
 }
