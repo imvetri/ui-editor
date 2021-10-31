@@ -1,9 +1,9 @@
 .RightItem{
-    position: fixed;
+    position: absolute;
     right:0px;
     top: 0px;
     animation: slide-right 0.2s ease;
-    height: 50%;
+    height: 100%;
     overflow: scroll;
     width:30%;
 }

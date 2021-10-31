@@ -126,6 +126,7 @@ export function saveElement (element) {
             state: element.state,
             events: element.events || []
         },
+        showEditor: false,
         folders: this.state.folders
     });
 
