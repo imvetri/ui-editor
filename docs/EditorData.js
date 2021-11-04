@@ -1331,8 +1331,7 @@ window.sampleFolders = [
                 "contents": [
                     "Editor",
                     "EventsBuilder",
-                    "PropertiesControl",
-                    "CanvasControls"
+                    "PropertiesControl"
                 ],
                 "type": "folder",
                 "status": "open"
