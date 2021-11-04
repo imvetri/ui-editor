@@ -276,58 +276,6 @@ window.sampleComponents =[
         "trueName": "Movable"
     },
     {
-        "name": "CanvasControls",
-        "markup": "<div id=\"menu\" style={state.style}>\n    <div id=\"history-control\">\n        <div className={state.undo}>\n            <i className=\"fa fa-undo\"></i>\n            <span>Undo</span>\n\t\t</div>\n        <div className={state.redo}>\n\t\t\t<i className=\"fa fa-redo\"></i>\n        \t<span>Redo</span>\n\t\t</div>\n    </div>\n    <div id=\"content-control\">\n        <div className={state.draw}>\n            <i className=\"fa fa-edit\"></i>\n        \t<span>Draw</span>\n        </div>\n        <div className={state.text}>\n            <i className=\"fa fa-font\"></i>\n        \t<span>Text</span>\n        </div>\n        <div className={state.image}>\n            <i className=\"fas fa-image\"></i>\n        \t<span>Image</span>\n        </div>\n    </div>\n    <div id=\"edit-control\">\n        <div className={state.edit}>\n            <i className=\"fa fa-edit\"></i>\n        \t<span>Edit</span>\n        </div>\n        <div className={state.delete}>\n            <i className=\"fa fa-trash\"></i>\n        \t<span>Delete</span>\n        </div>\n    </div>\n    <div>\n        <div className={state.select}>\n        \t<i className=\"fa fa-mouse-pointer\"></i>\n        \t<span>Select</span>\n        </div>\n    </div>\n</div>",
-        "events": [
-            {
-                "name": "onClick",
-                "index": 0,
-                "id": "menu",
-                "reducer": {
-                    "reducer": "state.item = e.target.innerText;\n\nswitch (state.item){\n\tcase \"Draw\":\n\t\tstate.text = \"enabled\";\n        state.select = \"enabled\"\n        break;\n\tcase \"Select\":\n\t\tstate.edit = \"enabled\";\n        break;\n}",
-                    "publishes": [
-                        {
-                            "publishable": true,
-                            "publishName": "onDraw",
-                            "publishCondition": "state.item === 'Draw'"
-                        },
-                        {
-                            "publishable": true,
-                            "publishName": "onText",
-                            "publishCondition": "state.item === 'Text'"
-                        },
-                        {
-                            "publishable": true,
-                            "publishName": "onSelect",
-                            "publishCondition": "state.item === 'Select'"
-                        },
-                        {
-                            "publishable": true,
-                            "publishName": "onEdit",
-                            "publishCondition": "state.item === 'Edit'"
-                        },
-                        {
-                            "publishable": true,
-                            "publishName": "onUndo",
-                            "publishCondition": "state.item === 'Undo'"
-                        },
-                        {
-                            "publishable": true,
-                            "publishName": "onRedo",
-                            "publishCondition": "state.item === 'Redo'"
-                        }
-                    ]
-                }
-            }
-        ],
-        "state": "{\n\t\"undo\":\"enabled\",\n    \"redo\":\"enabled\",\n\t\"draw\":\"enabled\",\n    \"text\":\"disabled\",\n    \"image\":\"disabled\",\n\t\"group\":\"disabled\",\n    \"ungroup\":\"disabled\",\n\t\"duplicate\":\"disabled\",\n    \"delete\":\"disabled\",\n\t\"select\":\"disabled\",\n    \"edit\":\"disabled\",\n    \"save\":\"disabled\",\n    \"load\":\"disabled\",\n    \"style\" : {\n    \t\"top\": \"100px\",\n        \"left\":\"200px\"\n    }\n}",
-        "style": "#menu {\n    position: fixed;\n    font-size:10px;\n    user-select: none;\n    color: rgba(255,255,255,0.5);\n    background: rgb(64, 64, 64);\n}\n\n#menu > div > div:hover:not(.disabled){\n    background: rgb(43, 43, 43);\n    color: white;\n}\n\n.disabled{\n    cursor: not-allowed;\n    background: #333333;\n    color: #4a4a4a;\n}\n\n\n\n#menu > div > div span {\n    padding-left: 9px;\n}\n\n#menu > div > div {\n    box-sizing: border-box;\n    padding: 10px;\n    height: 29px;\n}\n\n#history-control {\n    border: 1px solid #2C3134;\n    height: 60px;\n}\n\n#content-control {\n    border: 1px solid #2C3134;\n    height: 90px;\n}\n\n#edit-control {\n    border: 1px solid #2C3134;\n}\n\n#selection-control {\n    border: 1px solid #2C3134;\n    height: 60px;\n}\n",
-        "children": [],
-        "id": 550,
-        "config": "{}",
-        "trueName": "CanvasControls"
-    },
-    {
         "name": "PropertiesControl",
         "markup": "<div class=\"properties\" id=\"properties\" style={state.style}>\n\n    <div>\n        <div>\n            <span class=\"name\">Height</span>\n            <button class=\"less\" id=\"lessheight\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.height}/>\n            <button class=\"more\" id=\"moreheight\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n        <div>\n            <span class=\"name\">Width</span>\n            <button class=\"less\" id=\"lesswidth\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.width}/>\n            <button class=\"more\" id=\"morewidth\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n    </div>\n\n    <div>\n        <div>\n            <span class=\"name\">Position</span> \n            <select name=\"position\" value={state.position} id=\"position\">\n                <option>static</option>\n                <option>relative</option>\n                <option>absolute</option>\n                <option>fixed</option>\n            </select>\n        </div>\n        \n        <div>\n            <span class=\"name\">Top</span>\n            <button class=\"less\" id=\"lesstop\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.top}/>\n            <button class=\"more\" id=\"moretop\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n        <div>\n            <span class=\"name\">Left</span>\n            <button class=\"less\" id=\"moreleft\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.left}/>\n            <button class=\"more\" id=\"lessleft\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n        <div>\n            <span class=\"name\">Right</span>\n            <button class=\"less\" id=\"lessRight\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.right}/>\n            <button class=\"more\" id=\"moreRight\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n        <div>\n            <span class=\"name\">Bottom</span>\n            <button class=\"less\" id=\"moreBottom\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.bottom}/>\n            <button class=\"more\" id=\"lessBottom\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n    </div>\n\n    <div>\n        <div>\n            <span class=\"name\">Display</span> \n            <select name=\"display\" value={state.display} id=\"display\">\n                <option>block</option>\n                <option>inline</option>\n                <option>inline-block</option>\n                <option>flex</option>\n                <option>grid</option>\n            </select>\n        </div>\n    </div>\n\n    <div>\n        <div>\n            <span class=\"name\">Border</span>\n        </div>\n        <div>\n            <span class=\"name\">Width</span>\n            <button class=\"less\" id=\"lessborder\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.borderWidth}/>\n            <button class=\"more\" id=\"moreborder\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n    \n        <div>\n            <span class=\"name\">Color</span>\n            <input type=\"color\" id=\"morecolor\" value={state.borderColor}/>\n        </div>\n        <div>\n            <span class=\"name\">Style</span>\n            <select name=\"borderStyle\" value={state.borderStyle} id=\"borderStyle\">\n                <option>dotted</option>\n                <option>dashed</option>\n                <option>solid</option>\n                <option>double</option>\n                <option>groove</option>\n                <option>ridge</option>\n                <option>inset</option>\n                <option>outset</option>\n                <option>none</option>\n                <option>hidden</option>\n            </select>\n        </div>\n    </div>\n\n    <div>\n        <div>\n            <span class=\"name\">Padding</span> \n        </div>\n        \n        <div >\n            <span class=\"name\">Top</span>\n            <button class=\"less\" id=\"lesspaddingtop\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.paddingtop}/>\n            <button class=\"more\" id=\"morepaddingtop\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n        <div >\n            <span class=\"name\">Left</span>\n            <button class=\"less\" id=\"morepaddingleft\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.paddingleft}/>\n            <button class=\"more\" id=\"lesspaddingleft\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n        <div >\n            <span class=\"name\">Right</span>\n            <button class=\"less\" id=\"lesspaddingRight\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.paddingright}/>\n            <button class=\"more\" id=\"morepaddingRight\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n        <div class=\"bottomPadding\">\n            <span class=\"name\">Bottom</span>\n            <button class=\"less\" id=\"morepaddingBottom\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\" value={state.paddingbottom}/>\n            <button class=\"more\" id=\"lesspaddingBottom\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n    </div>\n\n\n\n    <div>\n\n        <div>\n            <span class=\"name\">Font</span>\n        </div>\n        <div>\n            <span class=\"name\">Family</span>\n            <input type=\"text\" class=\"long\" value={state.fontFamily}/>\n        </div>\n        <div>\n            <span class=\"name\">Size</span>\n            <button class=\"less\" id=\"lessSize\"><i class=\"fa fa-minus\"></i></button>\n            <input type=\"text\"  value={state.fontSize}/>\n            <button class=\"more\" id=\"moreSize\"><i class=\"fa fa-plus\"></i></button>\n        </div>\n\n        <div>\n            <span class=\"name\">Color</span>\n            <input type=\"color\" id=\"fontcolor\" value={state.color}/>\n        </div>\n    </div>\n</div>",
         "events": [
