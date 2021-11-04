@@ -989,7 +989,7 @@ window.sampleComponents =[
             }
         ],
         "state": "{\"style\":{\"position\":\"fixed\",\"top\":\"23px\",\"left\":\"185px\",\"height\":\"679px\",\"width\":\"591px\",\"border\":\"1px solid green\",\"cursor\":\"crosshair\"},\"selectedComponent\":\"\",\"mode\":\"Load\",\"components\":[\"\",\"Resizable\",\"Movable\",\"CanvasControls\",\"PropertiesControl\",\"Div\",\"Input\",\"Button\",\"Span\",\"P\",\"H1\",\"H2\",\"H3\",\"H4\",\"H5\",\"Editor\",\"CanvasControl\",\"H6\",\"EventsBuilder\",\"Hello\"],\"PropertiesControl\":[{\"style\":{\"top\":\"0px\",\"left\":\"-170px\",\"position\":\"absolute\",\"display\":\"none\"},\"id\":\"containement\",\"class\":\"black setup\",\"height\":\"679px\",\"width\":\"591px\",\"top\":\"23px\",\"left\":\"185px\",\"color\":\"#874a4a\",\"space\":\"100px\",\"fontSize\":\"10px\"}],\"grabbing\":false,\"divId\":\"0.9794908078276479\",\"origin\":false,\"changedComponent\":\"H2\"}",
-        "style": ".Div{\n    position: fixed;\n    background-color: black;\n    border: 1px solid red;\n\ttop: 25%;\n    left: 20%;\n    cursor: \"move\";\n}\n",
+        "style": ".Div{\n    position: fixed;\n   ;\n    border: 1px solid red;\n\ttop: 25%;\n    left: 20%;\n    cursor: \"move\";\n}\n",
         "children": [],
         "id": 198,
         "config": "{\"Resizable\":{\"override\":false},\"Div\":{\"override\":false},\"Resizer\":{\"override\":true},\"PropertiesControl\":{\"override\":true}}",
@@ -1346,55 +1346,48 @@ window.sampleFolders = [
         "name": "noFolder",
         "contents": [
             {
-                "name": "Legacy",
+                "name": "References",
                 "contents": [
-                    {
-                        "name": "References",
-                        "contents": [
-                            "Movable",
-                            "Resizable"
-                        ],
-                        "type": "folder",
-                        "status": "closed"
-                    },
-                    {
-                        "name": "Headings",
-                        "contents": [
-                            "H6",
-                            "H5",
-                            "H4",
-                            "H3",
-                            "H2",
-                            "H1"
-                        ],
-                        "type": "folder",
-                        "status": "open"
-                    },
-                    {
-                        "name": "Todo",
-                        "contents": [
-                            "Todo",
-                            "TodoFooter",
-                            "TodoItem",
-                            "TodoInput"
-                        ],
-                        "type": "folder",
-                        "status": "closed"
-                    },
-                    {
-                        "name": " Builder",
-                        "contents": [
-                            "Editor",
-                            "EventsBuilder",
-                            "PropertiesControl",
-                            "CanvasControls"
-                        ],
-                        "type": "folder",
-                        "status": "closed"
-                    }
+                    "Movable",
+                    "Resizable"
                 ],
                 "type": "folder",
-                "status": "closed"
+                "status": "open"
+            },
+            {
+                "name": "Headings",
+                "contents": [
+                    "H6",
+                    "H5",
+                    "H4",
+                    "H3",
+                    "H2",
+                    "H1"
+                ],
+                "type": "folder",
+                "status": "open"
+            },
+            {
+                "name": "Todo",
+                "contents": [
+                    "Todo",
+                    "TodoFooter",
+                    "TodoItem",
+                    "TodoInput"
+                ],
+                "type": "folder",
+                "status": "open"
+            },
+            {
+                "name": " Builder",
+                "contents": [
+                    "Editor",
+                    "EventsBuilder",
+                    "PropertiesControl",
+                    "CanvasControls"
+                ],
+                "type": "folder",
+                "status": "open"
             }
         ]
     }

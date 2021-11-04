@@ -3,7 +3,6 @@ body {
     color: #d9d9d9;
     font-family: "Nunito Sans",-apple-system,".SFNSText-Regular","San Francisco",BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
     margin: 0px;
-    background: black;
 }
 
 li , label, p, .rules , input, textarea{
