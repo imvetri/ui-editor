@@ -274,9 +274,12 @@ class Div extends Component {
         var state = JSON.parse(JSON.stringify(this.state));
         e.preventDefault();
         if (this.props.builderMode === "Draw") {
-            state.children.push({
+            let component = components.find(component=>component.name=== e.dataTransfer.getData("component-name"));
+            // get the state of the component
+
+            state.children.push(Object.assign(JSON.parse(component.state),{
                 type: e.dataTransfer.getData("component-name")
-            })
+            }));
             this.setState(state);
             e.state = state;
             e.index = this.props.index;
@@ -333,28 +336,6 @@ class Div extends Component {
                 onSelection: this.DivonSelection.bind(this)
             })));
         }
-        return React.createElement(eval(this.state.type), {
-            className: "Div",
-            style: this.state.style,
-            id: this.state.id,
-            onMouseUp: this.div123onMouseUp.bind(this),
-            onMouseMove: this.div123onMouseMove.bind(this),
-            onMouseDown: this.div123onMouseDown.bind(this),
-            onMouseOut: this.div123onMouseOut.bind(this),
-            onDrop: this.div123onDrop.bind(this),
-            onDragOver: this.div123onDragOver.bind(this)
-        }, this.state.children.map((child, i) => React.createElement(eval(child.type), {
-            parent: this.state,
-            builderMode: this.props.builderMode,
-            state: child,
-            key: ~~(Math.random() * 10000),
-            index: i,
-            onDelete: this.DivonDelete.bind(this),
-            onResizeFinish: this.DivonResizeFinish.bind(this),
-            onMoveFinish: this.DivonMoveFinish.bind(this),
-            onDrawFinish: this.DivonDrawFinish.bind(this),
-            onSelection: this.DivonSelection.bind(this)
-        })));
     }
 }
 
