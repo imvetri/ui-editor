@@ -21,9 +21,9 @@ class Componentt extends Component {
 
         /** Pass details about component or folder in the drag event */
         
-        let name = event.target.getAttribute("data-name")
-
+        let name = e.target.getAttribute("data-name")
         e.dataTransfer.setData("component-name", name);
+        console.log(e.dataTransfer.getData("component-name"))
         e.dataTransfer.setData("parent-folder-name", e.currentTarget.parentElement.getAttribute("data-folder-name"))
         e.stopPropagation();
     }
