@@ -39,7 +39,9 @@ Update - its Broken
 
 * <b>The Infinite Display</b> https://vimeo.com/554844159 - First step towards infinite display. This is a start for a complete web development workflow that stretches across. In web development requirement start with a visual concept that gets converted into a working version by web developers with API developed by backend followed deployments and testing in different environment before it reaches live. I'm going to create an ugly version of that. Design tool, design system manager, component composer, event manager, page manager, Schema creator. **Backend is read and write, frontend is show or hide**.
 
-* <b>Drag and drop</b> https://vimeo.com/642926286 - Any components can be dragged and dropped on the builder to compose bigger components. This is just a PoC and plans for complex component composability is in future feature list. 
+* <b>Drag and drop - Simple components</b> https://vimeo.com/642926286 - Any components can be dragged and dropped on the builder to compose bigger components. This is just a PoC and plans for complex component composability is in future feature list. 
+
+* <b>Drag and drop - Complex component - Todo</b> - Tried and tested. Drag and drop renderer work flawlessly with complex components without tampering its functionality. Here is the recorded video for a working version https://vimeo.com/642966428
 
 ### Getting Started
 
