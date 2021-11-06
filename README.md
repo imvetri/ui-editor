@@ -26,7 +26,7 @@ Update - its Broken
 ![Screens](https://user-images.githubusercontent.com/6542274/128317793-46680b02-ff49-4ce2-82ad-d88317f71385.png)
 
 
-### Recorded demos
+### Challenging features
 * <b>Code generation</b> - https://vimeo.com/386239546 - this feature speeds up component creation and maintenance duration.
 
 * <b>Recursive component</b> - https://vimeo.com/464104903 - I attempted to test whether a component can be modified using itself.
