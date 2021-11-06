@@ -90,183 +90,196 @@ class Div extends Component {
     }
 
     div123onMouseDown(e) {
-        var state = JSON.parse(JSON.stringify(this.state))
+        if (this.props.builderMode !== "Interact") {
 
-        function create(type, x, y, text) {
-            var item = document.createElement(type);
-            item.style.position = "fixed";
-            item.style.left = x + "px";
-            item.style.top = y + "px";
-            item.style['border-width'] = "1px";
-            item.style['border-color'] = "green";
-            item.style['border-style'] = "solid";
-            item.id = "div" + ~~(Math.random() * 100000);
-            if (text) {
-                item.innerText = text;
+            var state = JSON.parse(JSON.stringify(this.state))
+
+            function create(type, x, y, text) {
+                var item = document.createElement(type);
+                item.style.position = "fixed";
+                item.style.left = x + "px";
+                item.style.top = y + "px";
+                item.style['border-width'] = "1px";
+                item.style['border-color'] = "green";
+                item.style['border-style'] = "solid";
+                item.id = "div" + ~~(Math.random() * 100000);
+                if (text) {
+                    item.innerText = text;
+                }
+                return item;
             }
-            return item;
-        }
 
-        if (e.button === 0) {
-            if (this.props.builderMode === "Draw") {
-                state.clientX = e.clientX;
-                state.clientY = e.clientY;
-                var div = create("div", e.clientX, e.clientY);
-                var parent = e.target;
-                parent.appendChild(div);
+            if (e.button === 0) {
+                if (this.props.builderMode === "Draw") {
+                    state.clientX = e.clientX;
+                    state.clientY = e.clientY;
+                    var div = create("div", e.clientX, e.clientY);
+                    var parent = e.target;
+                    parent.appendChild(div);
 
-                state.divId = div.id;
-                state.origin = true;
+                    state.divId = div.id;
+                    state.origin = true;
+                }
             }
-        }
 
-        if (this.props.builderMode === "Move" && state.selected) {
-            state.style.cursor = "grabbing";
-            state.grabbing = true;
-        }
-        if (this.props.builderMode === "Select") {
-            state.selected = !state.selected;
-            state.style.cursor = "pointer";
-            if (state.selected) {
-                state.style.borderColor = "rgb(76, 175, 80)";
-                state.style.borderWidth = "3px"
-            } else {
-                state.style.borderColor = "green";
-                state.style.borderWidth = "1px";
+            if (this.props.builderMode === "Move" && state.selected) {
+                state.style.cursor = "grabbing";
+                state.grabbing = true;
             }
+            if (this.props.builderMode === "Select") {
+                state.selected = !state.selected;
+                state.style.cursor = "pointer";
+                if (state.selected) {
+                    state.style.borderColor = "rgb(76, 175, 80)";
+                    state.style.borderWidth = "3px"
+                } else {
+                    state.style.borderColor = "green";
+                    state.style.borderWidth = "1px";
+                }
+            }
+
+            delete window.eClientY;
+            delete window.eClientX;
+
+
+            e.stopPropagation()
+            console.log("mouseDown")
+            this.setState(state);
+            e.state = state;
+            e.index = this.props.index;
+
         }
-
-        delete window.eClientY;
-        delete window.eClientX;
-
-
-        e.stopPropagation()
-        console.log("mouseDown")
-        this.setState(state);
-        e.state = state;
-        e.index = this.props.index;
 
     }
 
     div123onMouseMove(e) {
-        var state = JSON.parse(JSON.stringify(this.state))
+        if (this.props.builderMode !== "Interact") {
 
-        if (this.props.builderMode === "Draw") {
-            if (state.origin) {
-                var div = document.getElementById(state.divId);
-                var rect = div.getBoundingClientRect();
-                div.style.width = e.clientX - rect.left;
-                div.style.height = e.clientY - rect.top;
+            var state = JSON.parse(JSON.stringify(this.state))
+
+            if (this.props.builderMode === "Draw") {
+                if (state.origin) {
+                    var div = document.getElementById(state.divId);
+                    var rect = div.getBoundingClientRect();
+                    div.style.width = e.clientX - rect.left;
+                    div.style.height = e.clientY - rect.top;
+                }
             }
+
+            if (state.style.cursor == "grabbing" && state.grabbing && state.selected) {
+                var rect = e.target.getBoundingClientRect();
+
+                window.eClientY = window.eClientY || e.clientY;
+                window.eClientX = window.eClientX || e.clientX;
+
+                e.target.style.top = (-window.eClientY + e.clientY) + rect.top + "px";
+                e.target.style.left = (-window.eClientX + e.clientX) + rect.left + "px";
+                e.target.style.position = "fixed";
+
+                window.eClientY = e.clientY;
+                window.eClientX = e.clientX;
+            }
+
+            if (this.props.builderMode === "Select" && !this.state.selected && !state.selected) {
+                state.style.borderColor = "dodgerblue";
+                state.style.borderWidth = "3px"
+                this.setState(state)
+            }
+
+            e.stopPropagation()
+
         }
-
-        if (state.style.cursor == "grabbing" && state.grabbing && state.selected) {
-            var rect = e.target.getBoundingClientRect();
-
-            window.eClientY = window.eClientY || e.clientY;
-            window.eClientX = window.eClientX || e.clientX;
-
-            e.target.style.top = (-window.eClientY + e.clientY) + rect.top + "px";
-            e.target.style.left = (-window.eClientX + e.clientX) + rect.left + "px";
-            e.target.style.position = "fixed";
-
-            window.eClientY = e.clientY;
-            window.eClientX = e.clientX;
-        }
-
-        if (this.props.builderMode === "Select" && !this.state.selected && !state.selected) {
-            state.style.borderColor = "dodgerblue";
-            state.style.borderWidth = "3px"
-            this.setState(state)
-        }
-
-        e.stopPropagation()
-
     }
 
     div123onMouseUp(e) {
-        var state = JSON.parse(JSON.stringify(this.state))
+        if (this.props.builderMode !== "Interact") {
+
+            var state = JSON.parse(JSON.stringify(this.state))
 
 
-        if (this.props.builderMode === "Draw") {
-            if (e.button === 0) {
-                state.origin = false;
+            if (this.props.builderMode === "Draw") {
+                if (e.button === 0) {
+                    state.origin = false;
+                }
+                let createdDiv = document.getElementById(state.divId);
+                delete state.divId;
+
+                if (state.clientX == e.clientX && state.clientY == e.clientY) {
+                    state.showOptions = !state.showOptions;
+                }
+                else {
+                    var coord = document.querySelectorAll('#' + this.state.id)[0].getBoundingClientRect();
+                    state.children.push({
+                        style: {
+                            position: "absolute",
+                            top: -coord.top + Number(createdDiv.style.top.split("px")[0] - 3),
+                            left: -coord.left + Number(createdDiv.style.left.split("px")[0] - 3),
+                            height: createdDiv.style.height,
+                            width: createdDiv.style.width,
+                            borderWidth: createdDiv.style["border-width"],
+                            borderStyle: createdDiv.style["border-style"],
+                            borderColor: createdDiv.style["border-color"],
+                            resize: "",
+                            overflow: "",
+                            background: ""
+                        },
+                        type: "Div",
+                        children: [],
+                        id: createdDiv.id,
+                        mode: "Draw"
+                    })
+                }
+                createdDiv.remove();
             }
-            let createdDiv = document.getElementById(state.divId);
-            delete state.divId;
+            if (this.props.builderMode === "Move" && state.selected) {
+                e.target.style.cursor = "pointer";
+                state.grabbing = false;
 
-            if (state.clientX == e.clientX && state.clientY == e.clientY) {
-                state.showOptions = !state.showOptions;
+                var coord = document.querySelectorAll('#' + this.props.parent.id)[0].getBoundingClientRect();
+
+                state.style.top = -coord.top + Number(e.currentTarget.style.top.split("px")[0])
+                state.style.left = -coord.left + Number(e.currentTarget.style.left.split("px")[0])
             }
-            else {
-                var coord = document.querySelectorAll('#' + this.state.id)[0].getBoundingClientRect();
-                state.children.push({
-                    style: {
-                        position: "absolute",
-                        top: -coord.top + Number(createdDiv.style.top.split("px")[0]-3),
-                        left: -coord.left + Number(createdDiv.style.left.split("px")[0]-3),
-                        height: createdDiv.style.height,
-                        width: createdDiv.style.width,
-                        borderWidth: createdDiv.style["border-width"],
-                        borderStyle: createdDiv.style["border-style"],
-                        borderColor: createdDiv.style["border-color"],
-                        resize: "",
-                        overflow: "",
-                        background:""
-                    },
-                    type: "Div",
-                    children: [],
-                    id: createdDiv.id,
-                    mode: "Draw"
-                })
+
+            if (this.props.builderMode === "Resize") {
+                state.style.height = e.target.style.height;
+                state.style.width = e.target.style.width;
             }
-            createdDiv.remove();
-        }
-        if (this.props.builderMode === "Move" && state.selected) {
-            e.target.style.cursor = "pointer";
-            state.grabbing = false;
 
-            var coord = document.querySelectorAll('#' + this.props.parent.id)[0].getBoundingClientRect();
+            e.stopPropagation()
+            console.log("mouseUp")
 
-            state.style.top = -coord.top + Number(e.currentTarget.style.top.split("px")[0])
-            state.style.left = -coord.left + Number(e.currentTarget.style.left.split("px")[0])
-        }
+            this.setState(state);
+            e.state = state;
+            e.index = this.props.index;
 
-        if (this.props.builderMode === "Resize") {
-            state.style.height = e.target.style.height;
-            state.style.width = e.target.style.width;
-        }
+            if (this.props.builderMode === 'Draw' && e.button === 0) {
+                this.props.onDrawFinish ? this.props.onDrawFinish(e) : null;
+            }
 
-        e.stopPropagation()
-        console.log("mouseUp")
+            if (this.props.builderMode === "Move" && state.selected) {
+                this.props.onMoveFinish ? this.props.onMoveFinish(e) : null;
+            }
 
-        this.setState(state);
-        e.state = state;
-        e.index = this.props.index;
+            if (this.props.builderMode === "Resize") {
+                this.props.onResizeFinish ? this.props.onResizeFinish(e) : null;
+            }
 
-        if (this.props.builderMode === 'Draw' && e.button === 0) {
-            this.props.onDrawFinish ? this.props.onDrawFinish(e) : null;
-        }
-
-        if (this.props.builderMode === "Move" && state.selected) {
-            this.props.onMoveFinish ? this.props.onMoveFinish(e) : null;
-        }
-
-        if (this.props.builderMode === "Resize") {
-            this.props.onResizeFinish ? this.props.onResizeFinish(e) : null;
-        }
-
-        if (this.props.builderMode === "Select") {
-            this.props.onSelection ? this.props.onSelection(e) : null;
+            if (this.props.builderMode === "Select") {
+                this.props.onSelection ? this.props.onSelection(e) : null;
+            }
         }
     }
 
     div123onMouseOut() {
-        var state = JSON.parse(JSON.stringify(this.state));
-        if (this.props.builderMode === "Select") {
-            state.style.borderColor = "green";
-            state.style.borderWidth = "1px"
-            this.setState(state)
+        if (this.props.builderMode !== "Interact") {
+
+            var state = JSON.parse(JSON.stringify(this.state));
+            if (this.props.builderMode === "Select") {
+                state.style.borderColor = "green";
+                state.style.borderWidth = "1px"
+                this.setState(state)
+            }
         }
     }
 
@@ -274,10 +287,10 @@ class Div extends Component {
         var state = JSON.parse(JSON.stringify(this.state));
         e.preventDefault();
         if (this.props.builderMode === "Draw") {
-            let component = components.find(component=>component.name=== e.dataTransfer.getData("component-name"));
+            let component = components.find(component => component.name === e.dataTransfer.getData("component-name"));
             // get the state of the component
 
-            state.children.push(Object.assign(JSON.parse(component.state),{
+            state.children.push(Object.assign(JSON.parse(component.state), {
                 type: e.dataTransfer.getData("component-name")
             }));
             this.setState(state);
@@ -312,7 +325,7 @@ class Div extends Component {
      * */
     render() {
 
-        if(this.state.type === "Div"){
+        if (this.state.type === "Div") {
             return React.createElement(this.state.type, {
                 className: "Div",
                 style: this.state.style,
