@@ -43,6 +43,8 @@ Update - its Broken
 
 * <b>Drag and drop - Complex component - Todo Component</b> - Tried and tested. https://vimeo.com/642966428 Drag and drop renderer work flawlessly with complex components without tampering its functionality. 
 
+* <b>Drag and drop - Multiple drop points </b> https://vimeo.com/642968726 In this I tried to create a layout with different points having different components both simple and complex component. It works!
+
 ### Getting Started
 
 
