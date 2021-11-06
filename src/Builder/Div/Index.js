@@ -286,6 +286,7 @@ class Div extends Component {
     div123onDrop(e) {
         var state = JSON.parse(JSON.stringify(this.state));
         e.preventDefault();
+        e.stopPropagation()
         if (this.props.builderMode === "Draw") {
             let component = components.find(component => component.name === e.dataTransfer.getData("component-name"));
             // get the state of the component
