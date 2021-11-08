@@ -21,7 +21,6 @@ Most recently I tried to build a self editable compoment that can create childre
 </div>
 
 ### Demo - https://imvetri.github.io/ui-editor/ 
-Update - its Broken
 
 ![Screens](https://raw.githubusercontent.com/imvetri/ui-editor/master/docs/gifs/Screenshot.png)
 
