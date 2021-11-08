@@ -23,7 +23,7 @@ Most recently I tried to build a self editable compoment that can create childre
 ### Demo - https://imvetri.github.io/ui-editor/ 
 Update - its Broken
 
-![Screens](https://user-images.githubusercontent.com/6542274/128317793-46680b02-ff49-4ce2-82ad-d88317f71385.png)
+![Screens](https://raw.githubusercontent.com/imvetri/ui-editor/master/docs/gifs/Screenshot.png)
 
 
 ### Challenging features
