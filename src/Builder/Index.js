@@ -9,6 +9,7 @@ import State from "./Div/State";
 // Utility
 
 import {deleteDiv, copyDiv, anySelected} from "./Utility";
+import {buildJSX} from "../utilities/CodeGenerator/JSX";
 
 // Components
 
@@ -36,6 +37,12 @@ class Builder extends Component {
                 // Then create a copy div
                 deleteDiv(this.state);
             }
+        }
+        if(e.currentTarget.innerText==="Save" ){
+            // Then generate the jsx and with empty state create new component
+            console.log(buildJSX)
+            var jsx = [this.state].map(buildJSX);
+            console.log(jsx);
         }
         this.setState({
             builderMode: e.currentTarget.innerText
@@ -69,6 +76,7 @@ class Builder extends Component {
                 <button className={this.state.builderMode==="Delete"?"mode":""} onClick={this.changeMode.bind(this)}><i class="fas fa-trash-alt"></i>Delete</button>
                 <button className={this.state.builderMode==="Copy"?"mode":""} onClick={this.changeMode.bind(this)}><i class="fas fa-copy"></i>Copy</button> 
                 <button className={this.state.builderMode==="Interact"?"mode":""} onClick={this.changeMode.bind(this)}><i class="fas fa-bolt"></i>Interact</button> 
+                <button className={this.state.builderMode==="Save"?"mode":""} onClick={this.changeMode.bind(this)}><i class="fas fa-save"></i>Save</button> 
             </div>
             <Div parent={this.state} builderMode={this.state.builderMode} state={this.state} index={0}key={Math.ceil(Math.random() * 1000)} 
                     onDrawFinish={this.DivonUpdate.bind(this)}  
