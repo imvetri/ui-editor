@@ -49,7 +49,7 @@ Most recently I tried to build a self editable compoment that can create childre
 
 ### Getting Started
 
-
+Install nodeJS and Git. Then try below command.
 ```
 git clone https://github.com/imvetri/ui-editor.git
 cd ui-editor
