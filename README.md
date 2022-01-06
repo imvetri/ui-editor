@@ -24,6 +24,8 @@ Most recently I tried to build a self editable compoment that can create childre
 
 ![Screens](https://raw.githubusercontent.com/imvetri/ui-editor/master/docs/gifs/Screenshot.png)
 
+![Screens](https://raw.githubusercontent.com/imvetri/ui-editor/master/docs/gifs/Layout_2.png)
+
 ### Architecture
 ![Architecture](https://raw.githubusercontent.com/imvetri/ui-editor/master/docs/gifs/Architecture.png)
 
