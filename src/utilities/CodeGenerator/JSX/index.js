@@ -4,6 +4,7 @@
  * @returns {string} - Returns the JSX string.
  */
 function buildJSX(item){
+    debugger;
     var start = `<${item.type}>`;
     var end = `</${item.type}>`;
     if(item.children===undefined){

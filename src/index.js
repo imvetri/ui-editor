@@ -179,7 +179,7 @@ class Index extends Component {
 
         if(!this.state.showTools){
             return <div>
-                <Builder />
+                <Builder onSave={this.saveElement.bind(this)}/>
                 <DynamicComponent onSave={this.props.onSave} key={randomKey} component={selectedComponent}/>
             </div>
         }
@@ -199,7 +199,7 @@ class Index extends Component {
                         onFoldersUpdate={this.updateFolders.bind(this)}
                     />
                 </div>
-                <Builder />
+                <Builder onSave={this.saveElement.bind(this)}/>
                 <DynamicComponent onSave={this.props.onSave} key={randomKey} component={selectedComponent}/>
 
                 {this.state.selectedComponent ?

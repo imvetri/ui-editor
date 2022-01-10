@@ -24,6 +24,7 @@ class Tags extends Component {
 
         // Report error.
         if (nodeTree.error !== undefined) {
+            console.log('%c Oh my heavens! ', 'background: #222; color: #bada55' , nodeTree.error);
             return nodeTree.error;
         }
 

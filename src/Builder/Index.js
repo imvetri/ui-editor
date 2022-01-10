@@ -40,9 +40,14 @@ class Builder extends Component {
         }
         if(e.currentTarget.innerText==="Save" ){
             // Then generate the jsx and with empty state create new component
-            console.log(buildJSX)
-            var jsx = [this.state].map(buildJSX);
-            console.log(jsx);
+            var jsx = [this.state].map(buildJSX)[0];
+            this.props.onSave({
+                trueName: "",
+                name: this.state.name|| "Layout"+Math.ceil(Math.random() * 1000),
+                markup: jsx,
+                style: "",
+                state: JSON.stringify(this.state)
+            });
         }
         this.setState({
             builderMode: e.currentTarget.innerText
