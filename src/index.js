@@ -35,6 +35,9 @@ import { updateEvent, updateConfig, saveElement, updateSelectedComponent } from 
 import { readData, writeData } from "./utilities/Storage";
 import {onDeleteComponent, onDeleteFolder, onExtendComponent} from "./Components/Events";
 
+// Constants
+import { CONSTANTS } from "./utilities/Constants"; 
+
 class Index extends Component {
     constructor(props) {
         super(props);

@@ -5,7 +5,7 @@
  */
 function buildJSX(item){
     debugger;
-    var start = `<${item.type}>`;
+    var start = `<${item.type} parent={${JSON.stringify(item)}} state={${JSON.stringify(item)}}>`;
     var end = `</${item.type}>`;
     if(item.children===undefined){
         return start+end;
