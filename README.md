@@ -22,6 +22,8 @@ Most recently I tried to build a self editable compoment that can create childre
 
 ### Demo - https://imvetri.github.io/ui-editor/ 
 
+### Wireframe - https://raw.githubusercontent.com/imvetri/ui-editor/6e8bf195a6826ea11b97b61e06dd23fbda6a6a39/docs/gifs/wireframe.png 
+
 ![Screens](https://raw.githubusercontent.com/imvetri/ui-editor/master/docs/gifs/Screenshot.png)
 
 ![Screens](https://raw.githubusercontent.com/imvetri/ui-editor/master/docs/gifs/Layout_2.png)
