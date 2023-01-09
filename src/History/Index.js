@@ -3,6 +3,9 @@ import { readData, writeData } from "../utilities/Storage"
 
 // Components.
 import Change from "./Change";
+// Behaviour components.
+
+import Window from '../Window';
 
 import "./Style.css";
 
@@ -20,9 +23,11 @@ class History extends Component {
 
     render() {
         return (
+            <Window>
             <ul>
                 {this.state.history.map((item, index)=><Change index={index} item={item} itemChanged={this.updateHistory.bind(this)}/>)}
             </ul>
+            </Window>
         );
     }
 }

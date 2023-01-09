@@ -627,7 +627,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 // Styles.
 
+// Behaviour components.
+
 // Components.
+
 
 var Components = function (_Component) {
     _inherits(Components, _Component);
@@ -1579,6 +1582,10 @@ var _Reducer = __webpack_require__(53);
 
 var _Reducer2 = _interopRequireDefault(_Reducer);
 
+var _Window = __webpack_require__(4);
+
+var _Window2 = _interopRequireDefault(_Window);
+
 __webpack_require__(58);
 
 var _Reducer3 = __webpack_require__(60);
@@ -1720,10 +1727,10 @@ var Events = function (_Component) {
                 });
             }
 
-            // when tag is selected
-            if (selectedTag) {
-
-                return _react2.default.createElement(
+            return _react2.default.createElement(
+                _Window2.default,
+                null,
+                _react2.default.createElement(
                     "ul",
                     { className: "container events-tab" },
                     _react2.default.createElement(_Tags2.default, { component: component, onSelectedTagChanged: _Reducer3.selectedTagChanged.bind(this) }),
@@ -1784,15 +1791,8 @@ var Events = function (_Component) {
                             )
                         )
                     )
-                );
-            } else {
-                // Tag is not selected
-                return _react2.default.createElement(
-                    "ul",
-                    { className: "container events-tab" },
-                    _react2.default.createElement(_Tags2.default, { component: component, onSelectedTagChanged: _Reducer3.selectedTagChanged.bind(this) })
-                );
-            }
+                )
+            );
         }
     }]);
 
@@ -3033,6 +3033,10 @@ var _Asset = __webpack_require__(64);
 
 var _Asset2 = _interopRequireDefault(_Asset);
 
+var _Window = __webpack_require__(4);
+
+var _Window2 = _interopRequireDefault(_Window);
+
 var _Reducer = __webpack_require__(67);
 
 var _db = __webpack_require__(68);
@@ -3048,6 +3052,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 // Styles.
 
 // Components.
+
+// Behaviour components.
 
 // Events.
 
@@ -3112,32 +3118,36 @@ var Assets = function (_Component) {
             });
 
             return _react2.default.createElement(
-                "ul",
-                { className: "assets" },
+                _Window2.default,
+                null,
                 _react2.default.createElement(
-                    "button",
-                    { onClick: _db.fetchFromDB.bind(this) },
-                    "Load Assets"
-                ),
-                _react2.default.createElement(
-                    "div",
-                    {
-                        className: this.state.class,
-                        onDrop: _Reducer.dropHandler.bind(this),
-                        onDragOver: _Reducer.dragOverHandler.bind(this),
-                        onDragLeave: _Reducer.dragLeaveHandler.bind(this) },
+                    "ul",
+                    { className: "assets" },
                     _react2.default.createElement(
-                        "p",
+                        "button",
+                        { onClick: _db.fetchFromDB.bind(this) },
+                        "Load Assets"
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        {
+                            className: this.state.class,
+                            onDrop: _Reducer.dropHandler.bind(this),
+                            onDragOver: _Reducer.dragOverHandler.bind(this),
+                            onDragLeave: _Reducer.dragLeaveHandler.bind(this) },
+                        _react2.default.createElement(
+                            "p",
+                            null,
+                            "Drag one or more files to this Drop Zone ..."
+                        )
+                    ),
+                    _react2.default.createElement(
+                        "div",
                         null,
-                        "Drag one or more files to this Drop Zone ..."
-                    )
-                ),
-                _react2.default.createElement(
-                    "div",
-                    null,
-                    this.state.selectedAsset.name
-                ),
-                assets
+                        this.state.selectedAsset.name
+                    ),
+                    assets
+                )
             );
         }
     }]);
@@ -3411,6 +3421,10 @@ var _Change = __webpack_require__(70);
 
 var _Change2 = _interopRequireDefault(_Change);
 
+var _Window = __webpack_require__(4);
+
+var _Window2 = _interopRequireDefault(_Window);
+
 __webpack_require__(73);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -3423,6 +3437,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 // Components.
 
+// Behaviour components.
 
 var History = function (_Component) {
     _inherits(History, _Component);
@@ -3449,11 +3464,15 @@ var History = function (_Component) {
             var _this2 = this;
 
             return _react2.default.createElement(
-                "ul",
+                _Window2.default,
                 null,
-                this.state.history.map(function (item, index) {
-                    return _react2.default.createElement(_Change2.default, { index: index, item: item, itemChanged: _this2.updateHistory.bind(_this2) });
-                })
+                _react2.default.createElement(
+                    "ul",
+                    null,
+                    this.state.history.map(function (item, index) {
+                        return _react2.default.createElement(_Change2.default, { index: index, item: item, itemChanged: _this2.updateHistory.bind(_this2) });
+                    })
+                )
             );
         }
     }]);
@@ -3747,6 +3766,10 @@ var _Div = __webpack_require__(82);
 
 var _Div2 = _interopRequireDefault(_Div);
 
+var _Window = __webpack_require__(4);
+
+var _Window2 = _interopRequireDefault(_Window);
+
 __webpack_require__(85);
 
 var _Constants = __webpack_require__(11);
@@ -3833,66 +3856,70 @@ var Builder = function (_Component) {
              * 4. Interact - Helps to preview the changes.
              */
             return _react2.default.createElement(
-                "div",
-                { className: "builder" },
+                _Window2.default,
+                null,
                 _react2.default.createElement(
                     "div",
-                    { className: "toolBar" },
+                    { className: "builder" },
                     _react2.default.createElement(
-                        "button",
-                        { className: this.state.builderMode === "Draw" ? "mode" : "", onClick: this.changeMode.bind(this) },
-                        _react2.default.createElement("i", { "class": "fas fa-pen" }),
-                        "Draw"
+                        "div",
+                        { className: "toolBar" },
+                        _react2.default.createElement(
+                            "button",
+                            { className: this.state.builderMode === "Draw" ? "mode" : "", onClick: this.changeMode.bind(this) },
+                            _react2.default.createElement("i", { "class": "fas fa-pen" }),
+                            "Draw"
+                        ),
+                        _react2.default.createElement(
+                            "button",
+                            { className: this.state.builderMode === "Select" ? "mode" : "", onClick: this.changeMode.bind(this) },
+                            _react2.default.createElement("i", { "class": "fas fa-check" }),
+                            "Select"
+                        ),
+                        _react2.default.createElement(
+                            "button",
+                            { className: this.state.builderMode === "Move" ? "mode" : "", onClick: this.changeMode.bind(this) },
+                            _react2.default.createElement("i", { "class": "fas fa-arrows-alt" }),
+                            "Move"
+                        ),
+                        _react2.default.createElement(
+                            "button",
+                            { className: this.state.builderMode === "Resize" ? "mode" : "", onClick: this.changeMode.bind(this) },
+                            _react2.default.createElement("i", { "class": "fas fa-compress-arrows-alt" }),
+                            "Resize"
+                        ),
+                        _react2.default.createElement(
+                            "button",
+                            { className: this.state.builderMode === "Delete" ? "mode" : "", onClick: this.changeMode.bind(this) },
+                            _react2.default.createElement("i", { "class": "fas fa-trash-alt" }),
+                            "Delete"
+                        ),
+                        _react2.default.createElement(
+                            "button",
+                            { className: this.state.builderMode === "Copy" ? "mode" : "", onClick: this.changeMode.bind(this) },
+                            _react2.default.createElement("i", { "class": "fas fa-copy" }),
+                            "Copy"
+                        ),
+                        _react2.default.createElement(
+                            "button",
+                            { className: this.state.builderMode === "Interact" ? "mode" : "", onClick: this.changeMode.bind(this) },
+                            _react2.default.createElement("i", { "class": "fas fa-bolt" }),
+                            "Interact"
+                        ),
+                        _react2.default.createElement(
+                            "button",
+                            { className: this.state.builderMode === "Save" ? "mode" : "", onClick: this.changeMode.bind(this) },
+                            _react2.default.createElement("i", { "class": "fas fa-save" }),
+                            "Save"
+                        )
                     ),
-                    _react2.default.createElement(
-                        "button",
-                        { className: this.state.builderMode === "Select" ? "mode" : "", onClick: this.changeMode.bind(this) },
-                        _react2.default.createElement("i", { "class": "fas fa-check" }),
-                        "Select"
-                    ),
-                    _react2.default.createElement(
-                        "button",
-                        { className: this.state.builderMode === "Move" ? "mode" : "", onClick: this.changeMode.bind(this) },
-                        _react2.default.createElement("i", { "class": "fas fa-arrows-alt" }),
-                        "Move"
-                    ),
-                    _react2.default.createElement(
-                        "button",
-                        { className: this.state.builderMode === "Resize" ? "mode" : "", onClick: this.changeMode.bind(this) },
-                        _react2.default.createElement("i", { "class": "fas fa-compress-arrows-alt" }),
-                        "Resize"
-                    ),
-                    _react2.default.createElement(
-                        "button",
-                        { className: this.state.builderMode === "Delete" ? "mode" : "", onClick: this.changeMode.bind(this) },
-                        _react2.default.createElement("i", { "class": "fas fa-trash-alt" }),
-                        "Delete"
-                    ),
-                    _react2.default.createElement(
-                        "button",
-                        { className: this.state.builderMode === "Copy" ? "mode" : "", onClick: this.changeMode.bind(this) },
-                        _react2.default.createElement("i", { "class": "fas fa-copy" }),
-                        "Copy"
-                    ),
-                    _react2.default.createElement(
-                        "button",
-                        { className: this.state.builderMode === "Interact" ? "mode" : "", onClick: this.changeMode.bind(this) },
-                        _react2.default.createElement("i", { "class": "fas fa-bolt" }),
-                        "Interact"
-                    ),
-                    _react2.default.createElement(
-                        "button",
-                        { className: this.state.builderMode === "Save" ? "mode" : "", onClick: this.changeMode.bind(this) },
-                        _react2.default.createElement("i", { "class": "fas fa-save" }),
-                        "Save"
-                    )
-                ),
-                _react2.default.createElement(_Div2.default, { parent: this.state, builderMode: this.state.builderMode, state: this.state, index: 0, key: Math.ceil(Math.random() * 1000),
-                    onDrawFinish: this.DivonUpdate.bind(this),
-                    onDelete: this.DivonUpdate.bind(this),
-                    onResizeFinish: this.DivonUpdate.bind(this),
-                    onMoveFinish: this.DivonUpdate.bind(this),
-                    onSelection: this.DivonUpdate.bind(this) })
+                    _react2.default.createElement(_Div2.default, { parent: this.state, builderMode: this.state.builderMode, state: this.state, index: 0, key: Math.ceil(Math.random() * 1000),
+                        onDrawFinish: this.DivonUpdate.bind(this),
+                        onDelete: this.DivonUpdate.bind(this),
+                        onResizeFinish: this.DivonUpdate.bind(this),
+                        onMoveFinish: this.DivonUpdate.bind(this),
+                        onSelection: this.DivonUpdate.bind(this) })
+                )
             );
         }
     }]);
@@ -4880,216 +4907,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // Libraries.
 
-var Center = function (_Component) {
-    _inherits(Center, _Component);
-
-    function Center(props) {
-        _classCallCheck(this, Center);
-
-        var _this = _possibleConstructorReturn(this, (Center.__proto__ || Object.getPrototypeOf(Center)).call(this, props));
-
-        _this.state = {};
-        return _this;
-    }
-
-    _createClass(Center, [{
-        key: "render",
-        value: function render() {
-
-            return _react2.default.createElement(
-                "div",
-                { className: "center" },
-                this.props.children
-            );
-        }
-    }]);
-
-    return Center;
-}(_react.Component);
-
-exports.default = Center;
-
-/***/ }),
-/* 91 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(92);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(2)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-/* 92 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(false);
-// Module
-exports.push([module.i, ".center{\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    -moz-transform: translateX(-50%) translateY(-50%);\n    -webkit-transform: translateX(-50%) translateY(-50%);\n    transform: translateX(-50%) translateY(-50%);\n}", ""]);
-
-
-
-/***/ }),
-/* 93 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-__webpack_require__(94);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // Libraries.
-
-var Right = function (_Component) {
-    _inherits(Right, _Component);
-
-    function Right(props) {
-        _classCallCheck(this, Right);
-
-        var _this = _possibleConstructorReturn(this, (Right.__proto__ || Object.getPrototypeOf(Right)).call(this, props));
-
-        _this.state = {
-            selected: _this.props.selected
-        };
-        return _this;
-    }
-
-    _createClass(Right, [{
-        key: "updateSelectedTab",
-        value: function updateSelectedTab(event) {
-            this.setState({
-                selected: event.target.innerText
-            });
-        }
-    }, {
-        key: "render",
-        value: function render() {
-            var _this2 = this;
-
-            /** React design can be made slick if it takes care of Math.Rand and this conditional check */
-            /** More opportunity to move towards state driven component development */
-
-            if (this.state.selected !== this.props.selected) {}
-            return _react2.default.createElement(
-                "div",
-                { className: "RightItem container" },
-                this.props.children.map(function (child) {
-
-                    return _react2.default.createElement(
-                        "div",
-                        { className: child.props.title === _this2.state.selected ? "tabs title" : "tabs", onClick: _this2.updateSelectedTab.bind(_this2) },
-                        child.props.title
-                    );
-                }),
-                _react2.default.createElement(
-                    "div",
-                    { className: "tab-content" },
-                    this.props.children.filter(function (child) {
-                        return child.props.title === _this2.state.selected;
-                    })
-                )
-            );
-        }
-    }]);
-
-    return Right;
-}(_react.Component);
-
-exports.default = Right;
-
-/***/ }),
-/* 94 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(95);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(2)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-/* 95 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(false);
-// Module
-exports.push([module.i, ".RightItem{\n    position: absolute;\n    right:0px;\n    top: 0px;\n    animation: slide-right 0.2s ease;\n    height: 100%;\n    overflow: scroll;\n    width:30%;\n}\n\n@keyframes slide-right {\n    0% {\n        opacity: 0;\n        right:-100px;\n    }\n    100% {\n        opacity: 1;\n        right: 0px;\n    }\n}\n\n.tab-content{\n    height:91%;\n    border: 1px #404040 solid;\n}\n\n.tab-content ul {\n    padding: 12px;\n}\n\n.tabs {\n    display: inline-block;\n    cursor: default;\n    \n    margin-top: 15px;\n    margin-bottom: 11px;\n    color: rgba(255,255,255,0.5);\n    padding: 5px;\n    font-size: 12px;\n}", ""]);
-
-
-
-/***/ }),
-/* 96 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-__webpack_require__(97);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // Libraries.
-
 var ContextMenu = function (_Component) {
     _inherits(ContextMenu, _Component);
 
@@ -5125,11 +4942,11 @@ var ContextMenu = function (_Component) {
 exports.default = ContextMenu;
 
 /***/ }),
-/* 97 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(98);
+var content = __webpack_require__(92);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -5150,7 +4967,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 98 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -5160,7 +4977,7 @@ exports.push([module.i, ".ContextMenu{\n    position: absolute;\n    background-
 
 
 /***/ }),
-/* 99 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5224,7 +5041,7 @@ function convertToReactRedux(component) {
 }
 
 /***/ }),
-/* 100 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5401,7 +5218,7 @@ function updateSelectedComponent(componentName, e) {
 }
 
 /***/ }),
-/* 101 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5501,7 +5318,7 @@ function onDeleteFolder(TYPE, folderName) {
 }
 
 /***/ }),
-/* 102 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5555,27 +5372,19 @@ var _Style = __webpack_require__(89);
 
 var _Style2 = _interopRequireDefault(_Style);
 
-var _Center = __webpack_require__(90);
-
-var _Center2 = _interopRequireDefault(_Center);
-
-var _Right = __webpack_require__(93);
-
-var _Right2 = _interopRequireDefault(_Right);
-
-var _ContextMenu = __webpack_require__(96);
+var _ContextMenu = __webpack_require__(90);
 
 var _ContextMenu2 = _interopRequireDefault(_ContextMenu);
 
-var _export = __webpack_require__(99);
+var _export = __webpack_require__(93);
 
 var _Runtime = __webpack_require__(5);
 
-var _Reducer = __webpack_require__(100);
+var _Reducer = __webpack_require__(94);
 
 var _Storage = __webpack_require__(3);
 
-var _Events3 = __webpack_require__(101);
+var _Events3 = __webpack_require__(95);
 
 var _Constants = __webpack_require__(11);
 
@@ -5591,8 +5400,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 // Components.
-
-// Behaviour components.
 
 // Utility components.
 
@@ -5809,24 +5616,19 @@ var Index = function (_Component) {
                 ),
                 _react2.default.createElement(_Builder2.default, { onSave: this.saveElement.bind(this) }),
                 _react2.default.createElement(_DynamicComponent2.default, { onSave: this.props.onSave, key: randomKey, component: selectedComponent }),
-                this.state.selectedComponent ? _react2.default.createElement(
-                    _Right2.default,
-                    {
-                        selected: this.state.selectedTab },
-                    _react2.default.createElement(_Events2.default, {
-                        key: randomKey,
-                        component: selectedComponent,
-                        selectedTag: this.state.selectedTag,
-                        components: this.state.components,
-                        onEventsUpdate: this.updateEvent,
-                        onConfigUpdate: this.updateConfig,
-                        title: "Events"
-                    }),
-                    _react2.default.createElement(_History2.default, {
-                        title: "History" }),
-                    _react2.default.createElement(_Assets2.default, {
-                        title: "Assets" })
-                ) : null
+                _react2.default.createElement(_Events2.default, {
+                    key: randomKey,
+                    component: selectedComponent,
+                    selectedTag: this.state.selectedTag,
+                    components: this.state.components,
+                    onEventsUpdate: this.updateEvent,
+                    onConfigUpdate: this.updateConfig,
+                    title: "Events"
+                }),
+                _react2.default.createElement(_History2.default, {
+                    title: "History" }),
+                _react2.default.createElement(_Assets2.default, {
+                    title: "Assets" })
             );
         }
     }]);

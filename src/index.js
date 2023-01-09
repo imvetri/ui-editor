@@ -19,12 +19,6 @@ import Markup from './Markup';
 import Style from  "./State";
 import State from "./Style";
 
-
-// Behaviour components.
-
-import Center from "./Utilities/Components/Center";
-import Right from "./Utilities/Components/Right";
-
 // Utility components.
 
 import ContextMenu from "./utilities/Components/ContextMenu";
@@ -187,25 +181,20 @@ class Index extends Component {
                 <Builder onSave={this.saveElement.bind(this)}/>
                 <DynamicComponent onSave={this.props.onSave} key={randomKey} component={selectedComponent}/>
 
-                {this.state.selectedComponent ?
-                    <Right 
-                        selected={this.state.selectedTab}>
-                         <Events
-                            key={randomKey}
-                            component={selectedComponent}
-                            selectedTag={this.state.selectedTag}
-                            components={this.state.components}
-                            onEventsUpdate={this.updateEvent}
-                            onConfigUpdate={this.updateConfig}
-                            title="Events"
-                        />
-                        <History 
-                            title="History"/>
-                        <Assets 
-                            title="Assets"/>
-                    </Right>
-                    :
-                    null}
+                <Events
+                key={randomKey}
+                component={selectedComponent}
+                selectedTag={this.state.selectedTag}
+                components={this.state.components}
+                onEventsUpdate={this.updateEvent}
+                onConfigUpdate={this.updateConfig}
+                title="Events"
+            />
+            <History 
+                title="History"/>
+            <Assets 
+                title="Assets"/>
+
             </div>
         );
     }

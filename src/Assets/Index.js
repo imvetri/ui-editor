@@ -8,6 +8,10 @@ import "./Style.css";
 
 import Asset from "./Asset";
 
+// Behaviour components.
+
+import Window from '../Window';
+
 // Events.
 
 import {dropHandler, dragOverHandler, dragLeaveHandler} from "./Reducer";
@@ -63,6 +67,7 @@ class Assets extends Component {
         let assets = this.state.assets.map(asset=> <Asset asset={asset} selected={this.state.selectedAsset} onSelected={this.updatedSelected.bind(this)}/>);
         
         return (
+            <Window>
             <ul className="assets">
                 <button onClick={fetchFromDB.bind(this)}>Load Assets</button>
                 <div 
@@ -78,6 +83,7 @@ class Assets extends Component {
                 </div>
                 {assets}
             </ul>
+            </Window>
         );
     }
 }

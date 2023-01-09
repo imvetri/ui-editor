@@ -4,9 +4,12 @@ import React, { Component } from 'react';
 
 import "./Style.css";
 
-// Components.
+
+// Behaviour components.
 
 import Window from '../Window';
+
+// Components.
 import Folders from "../Utilities/Components/Folders";
 
 
