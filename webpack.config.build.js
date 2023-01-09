@@ -13,6 +13,7 @@ module.exports = {
         clientLogLevel: 'silent'
       },
     optimization: {
+        minimize: false,
         splitChunks:{
             cacheGroups: {
                 modules: {
