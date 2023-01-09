@@ -16,18 +16,6 @@ textarea {
     font-size: 12px;
 }
 
-.elements-tab {
-    left:0px;
-    height: 100vh;
-    width:170px;;
-}
-
-.folders{
-    overflow: scroll;  
-    height:85vh;
-    padding-top:5px;
-}
-
 .Controls{
     display: inline-block;
     opacity: 1;

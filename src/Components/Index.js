@@ -6,6 +6,7 @@ import "./Style.css";
 
 // Components.
 
+import Window from '../Window';
 import Folders from "../Utilities/Components/Folders";
 
 
@@ -38,26 +39,27 @@ class Components extends Component {
         let props = this.props;
         let state = this.state;
         return (
-            <div className="container elements-tab">
-                <div className="title">
-                    Components
+            <Window>
+                <div className="container elements-tab">
+                    <div className="title">
+                        Components
+                    </div>
+                    <div className="Controls">
+                        <button onClick={this.addComponent.bind(this)}><i className="fa fa-edit"></i>{props.selectedComponent ? "Edit" : "Add"}</button>
+                        <button onClick={this.addFolder.bind(this)}><i className="fa fa-folder"></i>Folder</button>
+                    </div>
+                    <div className="folders">
+                        <Folders
+                            key={Math.ceil(Math.random() * 1000)}
+                            components={state.components}
+                            folders={state.folders}
+                            selectedComponent={props.selectedComponent}
+                            onFoldersUpdate={props.onFoldersUpdate}
+                            onSelection={props.onSelection}
+                        />
+                    </div>
                 </div>
-                <div className="Controls">
-                    <button onClick={this.addComponent.bind(this)}><i className="fa fa-edit"></i>{props.selectedComponent ? "Edit" : "Add"}</button>
-                    <button onClick={this.addFolder.bind(this)}><i className="fa fa-folder"></i>Folder</button>
-                </div>
-                <div className="folders">
-                    <Folders
-                        key={Math.ceil(Math.random() * 1000)}
-                        components={state.components}
-                        folders={state.folders}
-                        selectedComponent={props.selectedComponent}
-
-                        onFoldersUpdate={props.onFoldersUpdate}
-                        onSelection={props.onSelection}
-                    />
-                </div>
-            </div>
+            </Window>
         );
     }
 }
