@@ -30,10 +30,6 @@ Most recently I tried to build a self editable compoment that can create childre
 
 ![Screens](https://raw.githubusercontent.com/imvetri/ui-editor/master/docs/gifs/Layout_2.png)
 
-### Architecture
-![Architecture](https://raw.githubusercontent.com/imvetri/ui-editor/master/docs/gifs/Architecture.png)
-
-
 ### Challenging features
 * <b>Code generation</b> - https://vimeo.com/386239546 - this feature speeds up component creation and maintenance duration.
 
