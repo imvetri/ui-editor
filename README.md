@@ -21,10 +21,6 @@ npm start
 
 ```
 
-### Communication
-* Open Issue
-* checkout discord https://discord.com/channels/901346023283232798/901346023773990954 
-* reachout to me https://twitter.com/VetrivelShanmu3 or https://twitter.com/Imvetri1 or email me at svetrivel.91@gmail.com
 
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
