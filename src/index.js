@@ -18,6 +18,7 @@ import Builder from "./Builder";
 import Markup from './Markup';
 import Style from  "./State";
 import State from "./Style";
+import Composer from "./Composer";
 
 // Utility components.
 
@@ -164,6 +165,7 @@ class Index extends Component {
                 <Markup markup={selectedComponent.markup}></Markup>
                 <Style style={selectedComponent.style}></Style>
                 <State state={selectedComponent.state}></State>
+                <Composer state={selectedComponent.state}></Composer>
                 <div className="leftItem">
                     <Components
                         components={this.state.components}

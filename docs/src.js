@@ -8,22 +8,6 @@
 "use strict";
 
 
-var _localStorage = __webpack_require__(51);
-
-module.exports = {
-    readData: _localStorage.readData,
-    writeData: _localStorage.writeData,
-    readComponent: _localStorage.readComponent,
-    writeComponent: _localStorage.writeComponent
-};
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -138,6 +122,22 @@ var Window = function (_Component) {
 exports.default = Window;
 
 /***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _localStorage = __webpack_require__(51);
+
+module.exports = {
+    readData: _localStorage.readData,
+    writeData: _localStorage.writeData,
+    readComponent: _localStorage.readComponent,
+    writeComponent: _localStorage.writeComponent
+};
+
+/***/ }),
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -154,7 +154,7 @@ exports.initialiseComponents = initialiseComponents;
 
 var _createComponent = __webpack_require__(49);
 
-var _Storage = __webpack_require__(3);
+var _Storage = __webpack_require__(4);
 
 var _assetUtils = __webpack_require__(52);
 
@@ -609,7 +609,7 @@ var _react2 = _interopRequireDefault(_react);
 
 __webpack_require__(22);
 
-var _Window = __webpack_require__(4);
+var _Window = __webpack_require__(3);
 
 var _Window2 = _interopRequireDefault(_Window);
 
@@ -1582,7 +1582,7 @@ var _Reducer = __webpack_require__(53);
 
 var _Reducer2 = _interopRequireDefault(_Reducer);
 
-var _Window = __webpack_require__(4);
+var _Window = __webpack_require__(3);
 
 var _Window2 = _interopRequireDefault(_Window);
 
@@ -1590,7 +1590,7 @@ __webpack_require__(58);
 
 var _Reducer3 = __webpack_require__(60);
 
-var _Storage = __webpack_require__(3);
+var _Storage = __webpack_require__(4);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3033,7 +3033,7 @@ var _Asset = __webpack_require__(64);
 
 var _Asset2 = _interopRequireDefault(_Asset);
 
-var _Window = __webpack_require__(4);
+var _Window = __webpack_require__(3);
 
 var _Window2 = _interopRequireDefault(_Window);
 
@@ -3415,13 +3415,13 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Storage = __webpack_require__(3);
+var _Storage = __webpack_require__(4);
 
 var _Change = __webpack_require__(70);
 
 var _Change2 = _interopRequireDefault(_Change);
 
-var _Window = __webpack_require__(4);
+var _Window = __webpack_require__(3);
 
 var _Window2 = _interopRequireDefault(_Window);
 
@@ -3766,7 +3766,7 @@ var _Div = __webpack_require__(82);
 
 var _Div2 = _interopRequireDefault(_Div);
 
-var _Window = __webpack_require__(4);
+var _Window = __webpack_require__(3);
 
 var _Window2 = _interopRequireDefault(_Window);
 
@@ -4560,11 +4560,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Window = __webpack_require__(4);
+var _Window = __webpack_require__(3);
 
 var _Window2 = _interopRequireDefault(_Window);
 
-var _Storage = __webpack_require__(3);
+var _Storage = __webpack_require__(4);
 
 var _reactCodemirror = __webpack_require__(6);
 
@@ -4674,11 +4674,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Window = __webpack_require__(4);
+var _Window = __webpack_require__(3);
 
 var _Window2 = _interopRequireDefault(_Window);
 
-var _Storage = __webpack_require__(3);
+var _Storage = __webpack_require__(4);
 
 var _reactCodemirror = __webpack_require__(6);
 
@@ -4786,11 +4786,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Window = __webpack_require__(4);
+var _Window = __webpack_require__(3);
 
 var _Window2 = _interopRequireDefault(_Window);
 
-var _Storage = __webpack_require__(3);
+var _Storage = __webpack_require__(4);
 
 var _reactCodemirror = __webpack_require__(6);
 
@@ -4897,7 +4897,205 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(91);
+var _Window = __webpack_require__(3);
+
+var _Window2 = _interopRequireDefault(_Window);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+// Libraries.
+
+var Composer = function (_Component) {
+    _inherits(Composer, _Component);
+
+    function Composer(props) {
+        _classCallCheck(this, Composer);
+
+        var _this = _possibleConstructorReturn(this, (Composer.__proto__ || Object.getPrototypeOf(Composer)).call(this, props));
+
+        _this.state = {
+            name: "",
+            configs: []
+        };
+        return _this;
+    }
+
+    _createClass(Composer, [{
+        key: "updateName",
+        value: function updateName(e) {
+            this.setState({
+                name: e.target.value
+            });
+        }
+    }, {
+        key: "onComponentChange",
+        value: function onComponentChange(e) {
+            this.setState({
+                component: e.target.value
+            });
+        }
+    }, {
+        key: "onStateChange",
+        value: function onStateChange(e) {
+            this.setState({
+                state: e.target.value
+            });
+        }
+    }, {
+        key: "addConfig",
+        value: function addConfig() {
+            var configs = this.state.configs;
+            configs.push({
+                name: this.state.name,
+                component: this.state.component,
+                state: this.state.state
+            });
+            this.setState({
+                configs: configs
+            });
+        }
+    }, {
+        key: "render",
+        value: function render() {
+
+            // TODO: Should pass the current data. Instead of accessing it from global
+            return _react2.default.createElement(
+                _Window2.default,
+                null,
+                _react2.default.createElement(
+                    "div",
+                    { className: "container editor-tab" },
+                    _react2.default.createElement(
+                        "div",
+                        { className: "editor state" },
+                        _react2.default.createElement(
+                            "div",
+                            { className: "title" },
+                            "Component Composer"
+                        ),
+                        _react2.default.createElement(
+                            "div",
+                            null,
+                            _react2.default.createElement(
+                                "label",
+                                null,
+                                "State Name"
+                            ),
+                            _react2.default.createElement("input", { type: "text",
+                                value: this.state.name,
+                                onChange: this.updateName.bind(this) }),
+                            _react2.default.createElement("br", null),
+                            _react2.default.createElement(
+                                "label",
+                                null,
+                                "Component"
+                            ),
+                            _react2.default.createElement(
+                                "select",
+                                { onChange: this.onComponentChange.bind(this) },
+                                window.components.map(function (component) {
+                                    return _react2.default.createElement(
+                                        "option",
+                                        { value: component.name },
+                                        component.name
+                                    );
+                                })
+                            ),
+                            _react2.default.createElement(
+                                "label",
+                                null,
+                                "State"
+                            ),
+                            _react2.default.createElement(
+                                "select",
+                                { onChange: this.onStateChange.bind(this) },
+                                _react2.default.createElement(
+                                    "option",
+                                    { value: "show" },
+                                    "Show"
+                                ),
+                                _react2.default.createElement(
+                                    "option",
+                                    { value: "hide" },
+                                    "Hide"
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            "button",
+                            { onClick: this.addConfig.bind(this) },
+                            "Add"
+                        ),
+                        _react2.default.createElement(
+                            "div",
+                            null,
+                            _react2.default.createElement(
+                                "ul",
+                                null,
+                                this.state.configs.map(function (config) {
+                                    return _react2.default.createElement(
+                                        "li",
+                                        null,
+                                        _react2.default.createElement(
+                                            "label",
+                                            null,
+                                            "State Name"
+                                        ),
+                                        _react2.default.createElement("input", { type: "text",
+                                            value: config.name }),
+                                        _react2.default.createElement("br", null),
+                                        _react2.default.createElement(
+                                            "label",
+                                            null,
+                                            "Component"
+                                        ),
+                                        _react2.default.createElement("input", { type: "text",
+                                            value: config.component }),
+                                        _react2.default.createElement(
+                                            "label",
+                                            null,
+                                            "State"
+                                        ),
+                                        _react2.default.createElement("input", { type: "text",
+                                            value: config.state })
+                                    );
+                                })
+                            )
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return Composer;
+}(_react.Component);
+
+exports.default = Composer;
+
+/***/ }),
+/* 91 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+__webpack_require__(92);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -4942,11 +5140,11 @@ var ContextMenu = function (_Component) {
 exports.default = ContextMenu;
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(92);
+var content = __webpack_require__(93);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -4967,7 +5165,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -4977,7 +5175,7 @@ exports.push([module.i, ".ContextMenu{\n    position: absolute;\n    background-
 
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5041,7 +5239,7 @@ function convertToReactRedux(component) {
 }
 
 /***/ }),
-/* 94 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5055,7 +5253,7 @@ exports.updateConfig = updateConfig;
 exports.saveElement = saveElement;
 exports.updateSelectedComponent = updateSelectedComponent;
 
-var _Storage = __webpack_require__(3);
+var _Storage = __webpack_require__(4);
 
 var _findFolders = __webpack_require__(12);
 
@@ -5218,7 +5416,7 @@ function updateSelectedComponent(componentName, e) {
 }
 
 /***/ }),
-/* 95 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5234,7 +5432,7 @@ exports.onDeleteComponent = onDeleteComponent;
 exports.onExtendComponent = onExtendComponent;
 exports.onDeleteFolder = onDeleteFolder;
 
-var _Storage = __webpack_require__(3);
+var _Storage = __webpack_require__(4);
 
 var _findFolders = __webpack_require__(12);
 
@@ -5318,7 +5516,7 @@ function onDeleteFolder(TYPE, folderName) {
 }
 
 /***/ }),
-/* 96 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5372,19 +5570,23 @@ var _Style = __webpack_require__(89);
 
 var _Style2 = _interopRequireDefault(_Style);
 
-var _ContextMenu = __webpack_require__(90);
+var _Composer = __webpack_require__(90);
+
+var _Composer2 = _interopRequireDefault(_Composer);
+
+var _ContextMenu = __webpack_require__(91);
 
 var _ContextMenu2 = _interopRequireDefault(_ContextMenu);
 
-var _export = __webpack_require__(93);
+var _export = __webpack_require__(94);
 
 var _Runtime = __webpack_require__(5);
 
-var _Reducer = __webpack_require__(94);
+var _Reducer = __webpack_require__(95);
 
-var _Storage = __webpack_require__(3);
+var _Storage = __webpack_require__(4);
 
-var _Events3 = __webpack_require__(95);
+var _Events3 = __webpack_require__(96);
 
 var _Constants = __webpack_require__(11);
 
@@ -5598,6 +5800,7 @@ var Index = function (_Component) {
                 _react2.default.createElement(_Markup2.default, { markup: selectedComponent.markup }),
                 _react2.default.createElement(_State2.default, { style: selectedComponent.style }),
                 _react2.default.createElement(_Style2.default, { state: selectedComponent.state }),
+                _react2.default.createElement(_Composer2.default, { state: selectedComponent.state }),
                 _react2.default.createElement(
                     "div",
                     { className: "leftItem" },
