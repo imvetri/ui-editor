@@ -4926,10 +4926,10 @@ var Composer = function (_Component) {
     }
 
     _createClass(Composer, [{
-        key: "updateStateName",
-        value: function updateStateName(e) {
+        key: "updateName",
+        value: function updateName(e) {
             this.setState({
-                stateName: e.target.value
+                name: e.target.value
             });
         }
     }, {
@@ -4987,8 +4987,8 @@ var Composer = function (_Component) {
                                 "State Name"
                             ),
                             _react2.default.createElement("input", { type: "text",
-                                value: this.state.stateName,
-                                onChange: this.updateStateName.bind(this) }),
+                                value: this.state.name,
+                                onChange: this.updateName.bind(this) }),
                             _react2.default.createElement("br", null),
                             _react2.default.createElement(
                                 "label",
@@ -4998,16 +4998,13 @@ var Composer = function (_Component) {
                             _react2.default.createElement(
                                 "select",
                                 { onChange: this.onComponentChange.bind(this) },
-                                _react2.default.createElement(
-                                    "option",
-                                    { value: "hello" },
-                                    "Hello"
-                                ),
-                                _react2.default.createElement(
-                                    "option",
-                                    { value: "world" },
-                                    "World"
-                                )
+                                window.components.map(function (component) {
+                                    return _react2.default.createElement(
+                                        "option",
+                                        { value: component.name },
+                                        component.name
+                                    );
+                                })
                             ),
                             _react2.default.createElement(
                                 "label",

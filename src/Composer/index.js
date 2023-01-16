@@ -15,9 +15,9 @@ class Composer extends Component {
         };
     }
 
-    updateStateName (e) {
+    updateName (e) {
         this.setState({
-            stateName: e.target.value
+            name: e.target.value
         })
     }
     onComponentChange (e) {
@@ -53,13 +53,12 @@ class Composer extends Component {
                         <div>
                             <label>State Name</label>
                             <input type="text" 
-                                value={this.state.stateName} 
-                                onChange={this.updateStateName.bind(this)}/>
+                                value={this.state.name} 
+                                onChange={this.updateName.bind(this)}/>
                             <br/>
                             <label>Component</label>
                             <select onChange={this.onComponentChange.bind(this)}>
-                                <option value="hello">Hello</option>
-                                <option value="world">World</option>
+                                {window.components.map(component=><option value={component.name}>{component.name}</option>)}
                             </select>
                             <label>State</label>
                             <select onChange={this.onStateChange.bind(this)}>
