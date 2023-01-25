@@ -14,6 +14,7 @@ import Assets from "./Assets";
 import History from "./History";
 import DynamicComponent from "./DynamicComponent";
 import Builder from "./Builder";
+import Preview from "./Preview";
 
 import Markup from './Markup';
 import Style from  "./State";
@@ -162,6 +163,7 @@ class Index extends Component {
         window.components.forEach(initialiseComponents)
         return (
             <div onContextMenu={this.onShowContextMenu.bind(this)} onClick={this.hideContextMenu.bind(this)}>
+                <Preview></Preview>
                 <Markup markup={selectedComponent.markup}></Markup>
                 <Style style={selectedComponent.style}></Style>
                 <State state={selectedComponent.state}></State>
