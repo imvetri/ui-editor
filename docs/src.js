@@ -4552,6 +4552,69 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Window = __webpack_require__(3);
+
+var _Window2 = _interopRequireDefault(_Window);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+// Libraries.
+
+var Preview = function (_Component) {
+    _inherits(Preview, _Component);
+
+    function Preview(props) {
+        _classCallCheck(this, Preview);
+
+        var _this = _possibleConstructorReturn(this, (Preview.__proto__ || Object.getPrototypeOf(Preview)).call(this, props));
+
+        _this.state = {
+            name: "",
+            configs: []
+        };
+        return _this;
+    }
+
+    _createClass(Preview, [{
+        key: "render",
+        value: function render() {
+
+            // TODO: Should pass the current data. Instead of accessing it from global
+            return _react2.default.createElement(
+                _Window2.default,
+                null,
+                _react2.default.createElement("div", { className: "container editor-tab" })
+            );
+        }
+    }]);
+
+    return Preview;
+}(_react.Component);
+
+exports.default = Preview;
+
+/***/ }),
+/* 88 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -4656,7 +4719,7 @@ var Markup = function (_Component) {
 exports.default = Markup;
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4768,7 +4831,7 @@ var State = function (_Component) {
 exports.default = State;
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4881,7 +4944,7 @@ var Style = function (_Component) {
 exports.default = Style;
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5079,7 +5142,7 @@ var Composer = function (_Component) {
 exports.default = Composer;
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5095,7 +5158,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(92);
+__webpack_require__(93);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -5140,11 +5203,11 @@ var ContextMenu = function (_Component) {
 exports.default = ContextMenu;
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(93);
+var content = __webpack_require__(94);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -5165,7 +5228,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -5175,7 +5238,7 @@ exports.push([module.i, ".ContextMenu{\n    position: absolute;\n    background-
 
 
 /***/ }),
-/* 94 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5239,7 +5302,7 @@ function convertToReactRedux(component) {
 }
 
 /***/ }),
-/* 95 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5416,7 +5479,7 @@ function updateSelectedComponent(componentName, e) {
 }
 
 /***/ }),
-/* 96 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5516,7 +5579,7 @@ function onDeleteFolder(TYPE, folderName) {
 }
 
 /***/ }),
-/* 97 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5558,35 +5621,39 @@ var _Builder = __webpack_require__(78);
 
 var _Builder2 = _interopRequireDefault(_Builder);
 
-var _Markup = __webpack_require__(87);
+var _Preview = __webpack_require__(87);
+
+var _Preview2 = _interopRequireDefault(_Preview);
+
+var _Markup = __webpack_require__(88);
 
 var _Markup2 = _interopRequireDefault(_Markup);
 
-var _State = __webpack_require__(88);
+var _State = __webpack_require__(89);
 
 var _State2 = _interopRequireDefault(_State);
 
-var _Style = __webpack_require__(89);
+var _Style = __webpack_require__(90);
 
 var _Style2 = _interopRequireDefault(_Style);
 
-var _Composer = __webpack_require__(90);
+var _Composer = __webpack_require__(91);
 
 var _Composer2 = _interopRequireDefault(_Composer);
 
-var _ContextMenu = __webpack_require__(91);
+var _ContextMenu = __webpack_require__(92);
 
 var _ContextMenu2 = _interopRequireDefault(_ContextMenu);
 
-var _export = __webpack_require__(94);
+var _export = __webpack_require__(95);
 
 var _Runtime = __webpack_require__(5);
 
-var _Reducer = __webpack_require__(95);
+var _Reducer = __webpack_require__(96);
 
 var _Storage = __webpack_require__(4);
 
-var _Events3 = __webpack_require__(96);
+var _Events3 = __webpack_require__(97);
 
 var _Constants = __webpack_require__(11);
 
@@ -5797,6 +5864,7 @@ var Index = function (_Component) {
             return _react2.default.createElement(
                 "div",
                 { onContextMenu: this.onShowContextMenu.bind(this), onClick: this.hideContextMenu.bind(this) },
+                _react2.default.createElement(_Preview2.default, null),
                 _react2.default.createElement(_Markup2.default, { markup: selectedComponent.markup }),
                 _react2.default.createElement(_State2.default, { style: selectedComponent.style }),
                 _react2.default.createElement(_Style2.default, { state: selectedComponent.state }),
