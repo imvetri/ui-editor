@@ -167,37 +167,31 @@ class Index extends Component {
                 <Style style={selectedComponent.style} key={randomKey}></Style>
                 <State state={selectedComponent.state} key={randomKey}></State>
                 <Composer state={selectedComponent.state}></Composer>
-                <div className="leftItem">
-                    <Components
-                        components={this.state.components}
-                        folders={this.state.folders}
-                        selectedComponent={this.state.selectedComponent}
-                        title="Components"
-                        showControls={true}
-                        key={randomKey}
+                <Components
+                    components={this.state.components}
+                    folders={this.state.folders}
+                    selectedComponent={this.state.selectedComponent}
+                    title="Components"
+                    key={randomKey}
 
-                        onOpenEditor={this.openEditor.bind(this)}
-                        onSelection={this.updateSelectedComponent}
-                        onFoldersUpdate={this.updateFolders.bind(this)}
-                    />
-                </div>
+                    onOpenEditor={this.openEditor.bind(this)}
+                    onSelection={this.updateSelectedComponent}
+                    onFoldersUpdate={this.updateFolders.bind(this)}
+                />
                 <Builder onSave={this.saveElement.bind(this)}/>
                 <DynamicComponent onSave={this.props.onSave} key={randomKey} component={selectedComponent}/>
 
                 <Events
-                key={randomKey}
-                component={selectedComponent}
-                selectedTag={this.state.selectedTag}
-                components={this.state.components}
-                onEventsUpdate={this.updateEvent}
-                onConfigUpdate={this.updateConfig}
-                title="Events"
-            />
-            <History 
-                title="History"/>
-            <Assets 
-                title="Assets"/>
-
+                    key={randomKey}
+                    component={selectedComponent}
+                    selectedTag={this.state.selectedTag}
+                    components={this.state.components}
+                    onEventsUpdate={this.updateEvent}
+                    onConfigUpdate={this.updateConfig}
+                    title="Events"
+                />
+                <History title="History"/>
+                <Assets title="Assets"/>
             </div>
         );
     }
