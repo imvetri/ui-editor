@@ -29,7 +29,7 @@ class Tags extends Component {
         }
 
         // Report error if component is not 
-        if (nodeTree.result === undefined && this.state.components.length != 0) {
+        if (nodeTree.result === undefined ) {
             return (
                 <ul className="container events-tab">
                     <div className="title">Events</div>
