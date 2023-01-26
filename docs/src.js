@@ -87,7 +87,6 @@ var Window = function (_Component) {
                         "button",
                         {
                             draggable: "true",
-                            onDrag: this.drag.bind(this),
                             onDragEnd: this.drag.bind(this),
                             className: "container" },
                         _react2.default.createElement("i", { "class": "fas fa-arrows-alt" })
@@ -4615,8 +4614,6 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(0);
@@ -4626,8 +4623,6 @@ var _react2 = _interopRequireDefault(_react);
 var _Window = __webpack_require__(3);
 
 var _Window2 = _interopRequireDefault(_Window);
-
-var _Storage = __webpack_require__(4);
 
 var _reactCodemirror = __webpack_require__(6);
 
@@ -4648,47 +4643,33 @@ var Markup = function (_Component) {
 
         var _this = _possibleConstructorReturn(this, (Markup.__proto__ || Object.getPrototypeOf(Markup)).call(this, props));
 
-        var component = (0, _Storage.readComponent)(_this.props.name);
-
         _this.state = {
-            trueName: component ? component.name : "",
-            name: component ? component.name : "",
-            markup: component ? component.markup : "",
-            state: component ? component.state : "",
-            style: component ? component.style : ""
+            markup: _this.props.markup
         };
 
         return _this;
     }
 
     _createClass(Markup, [{
-        key: "render",
+        key: 'render',
         value: function render() {
             var _this2 = this;
 
             var markup = this.state.markup;
-            var style = this.state.style;
-            var state = this.state.state;
-            if (state !== "" && _typeof(JSON.parse(this.state.state)) === "object") {
-                state = JSON.stringify(JSON.parse(this.state.state), null, '    ');
-            } else {
-                state = this.state.state;
-            }
-
             // TODO: Should pass the current data. Instead of accessing it from global
             return _react2.default.createElement(
                 _Window2.default,
                 null,
                 _react2.default.createElement(
-                    "div",
-                    { className: "container editor-tab" },
+                    'div',
+                    { className: 'container editor-tab' },
                     _react2.default.createElement(
-                        "div",
-                        { className: "editor markup" },
+                        'div',
+                        { className: 'editor markup' },
                         _react2.default.createElement(
-                            "div",
-                            { className: "title" },
-                            "Component Markup"
+                            'div',
+                            { className: 'title' },
+                            'Component Markup'
                         ),
                         _react2.default.createElement(_reactCodemirror.UnControlled, {
                             autoCursor: false,
@@ -4729,8 +4710,6 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(0);
@@ -4740,120 +4719,6 @@ var _react2 = _interopRequireDefault(_react);
 var _Window = __webpack_require__(3);
 
 var _Window2 = _interopRequireDefault(_Window);
-
-var _Storage = __webpack_require__(4);
-
-var _reactCodemirror = __webpack_require__(6);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-// Libraries.
-
-var State = function (_Component) {
-    _inherits(State, _Component);
-
-    function State(props) {
-        _classCallCheck(this, State);
-
-        var _this = _possibleConstructorReturn(this, (State.__proto__ || Object.getPrototypeOf(State)).call(this, props));
-
-        var component = (0, _Storage.readComponent)(_this.props.name);
-        _this.state = {
-            trueName: component ? component.name : "",
-            name: component ? component.name : "",
-            markup: component ? component.markup : "",
-            state: component ? component.state : "",
-            style: component ? component.style : ""
-        };
-        return _this;
-    }
-
-    _createClass(State, [{
-        key: "render",
-        value: function render() {
-            var _this2 = this;
-
-            var markup = this.state.markup;
-            var style = this.state.style;
-            var state = this.state.state;
-            if (state !== "" && _typeof(JSON.parse(this.state.state)) === "object") {
-                state = JSON.stringify(JSON.parse(this.state.state), null, '    ');
-            } else {
-                state = this.state.state;
-            }
-
-            // TODO: Should pass the current data. Instead of accessing it from global
-            return _react2.default.createElement(
-                _Window2.default,
-                null,
-                _react2.default.createElement(
-                    "div",
-                    { className: "container editor-tab" },
-                    _react2.default.createElement(
-                        "div",
-                        { className: "editor state" },
-                        _react2.default.createElement(
-                            "div",
-                            { className: "title" },
-                            "Component State"
-                        ),
-                        _react2.default.createElement(_reactCodemirror.UnControlled, {
-                            autoCursor: false,
-                            value: state,
-                            options: {
-                                lineNumbers: false,
-                                mode: "text/javascript",
-                                theme: "darcula",
-                                indentWithTabs: false,
-                                smartIndent: true,
-                                lineWrapping: true
-                            },
-                            onChange: function onChange(editor, data, state) {
-                                _this2.setState({
-                                    state: state
-                                });
-                            }
-                        })
-                    )
-                )
-            );
-        }
-    }]);
-
-    return State;
-}(_react.Component);
-
-exports.default = State;
-
-/***/ }),
-/* 90 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _Window = __webpack_require__(3);
-
-var _Window2 = _interopRequireDefault(_Window);
-
-var _Storage = __webpack_require__(4);
 
 var _reactCodemirror = __webpack_require__(6);
 
@@ -4874,46 +4739,34 @@ var Style = function (_Component) {
 
         var _this = _possibleConstructorReturn(this, (Style.__proto__ || Object.getPrototypeOf(Style)).call(this, props));
 
-        var component = (0, _Storage.readComponent)(_this.props.name);
-
         _this.state = {
-            trueName: component ? component.name : "",
-            name: component ? component.name : "",
-            markup: component ? component.markup : "",
-            state: component ? component.state : "",
-            style: component ? component.style : ""
+            style: _this.props.style
         };
 
         return _this;
     }
 
     _createClass(Style, [{
-        key: "render",
+        key: 'render',
         value: function render() {
             var _this2 = this;
 
             var style = this.state.style;
-            var state = this.state.state;
-            if (state !== "" && _typeof(JSON.parse(this.state.state)) === "object") {
-                state = JSON.stringify(JSON.parse(this.state.state), null, '    ');
-            } else {
-                state = this.state.state;
-            }
 
             // TODO: Should pass the current data. Instead of accessing it from global
             return _react2.default.createElement(
                 _Window2.default,
                 null,
                 _react2.default.createElement(
-                    "div",
-                    { className: "container editor-tab" },
+                    'div',
+                    { className: 'container editor-tab' },
                     _react2.default.createElement(
-                        "div",
-                        { className: "editor css" },
+                        'div',
+                        { className: 'editor css' },
                         _react2.default.createElement(
-                            "div",
-                            { className: "title" },
-                            "Component CSS"
+                            'div',
+                            { className: 'title' },
+                            'Component CSS'
                         ),
                         _react2.default.createElement(_reactCodemirror.UnControlled, {
                             autoCursor: false,
@@ -4942,6 +4795,101 @@ var Style = function (_Component) {
 }(_react.Component);
 
 exports.default = Style;
+
+/***/ }),
+/* 90 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Window = __webpack_require__(3);
+
+var _Window2 = _interopRequireDefault(_Window);
+
+var _reactCodemirror = __webpack_require__(6);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+// Libraries.
+
+var State = function (_Component) {
+    _inherits(State, _Component);
+
+    function State(props) {
+        _classCallCheck(this, State);
+
+        var _this = _possibleConstructorReturn(this, (State.__proto__ || Object.getPrototypeOf(State)).call(this, props));
+
+        _this.state = {
+            state: _this.props.state
+        };
+        return _this;
+    }
+
+    _createClass(State, [{
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            var state = this.state.state;
+            // TODO: Should pass the current data. Instead of accessing it from global
+            return _react2.default.createElement(
+                _Window2.default,
+                null,
+                _react2.default.createElement(
+                    'div',
+                    { className: 'container editor-tab' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'editor state' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'title' },
+                            'Component State'
+                        ),
+                        _react2.default.createElement(_reactCodemirror.UnControlled, {
+                            autoCursor: false,
+                            value: state,
+                            options: {
+                                lineNumbers: false,
+                                mode: "text/javascript",
+                                theme: "darcula",
+                                indentWithTabs: false,
+                                smartIndent: true,
+                                lineWrapping: true
+                            },
+                            onChange: function onChange(editor, data, state) {
+                                _this2.setState({
+                                    state: state
+                                });
+                            }
+                        })
+                    )
+                )
+            );
+        }
+    }]);
+
+    return State;
+}(_react.Component);
+
+exports.default = State;
 
 /***/ }),
 /* 91 */
@@ -5151,102 +5099,6 @@ exports.default = Composer;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-__webpack_require__(93);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // Libraries.
-
-var ContextMenu = function (_Component) {
-    _inherits(ContextMenu, _Component);
-
-    function ContextMenu(props) {
-        _classCallCheck(this, ContextMenu);
-
-        var _this = _possibleConstructorReturn(this, (ContextMenu.__proto__ || Object.getPrototypeOf(ContextMenu)).call(this, props));
-
-        _this.state = {};
-        return _this;
-    }
-
-    _createClass(ContextMenu, [{
-        key: "closeContextMenu",
-        value: function closeContextMenu() {
-            this.props.onMessage("HIDE");
-        }
-    }, {
-        key: "render",
-        value: function render() {
-
-            return _react2.default.createElement(
-                "div",
-                { className: "ContextMenu", style: this.props.position },
-                this.props.children
-            );
-        }
-    }]);
-
-    return ContextMenu;
-}(_react.Component);
-
-exports.default = ContextMenu;
-
-/***/ }),
-/* 93 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(94);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(2)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-/* 94 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(false);
-// Module
-exports.push([module.i, ".ContextMenu{\n    position: absolute;\n    background-color: rgb(64, 64, 64);\n    box-shadow: 0px 0px 30px black;\n    border-radius: 5px;\n    padding:0px;\n    z-index: 10000000;\n}\n.contextMenuOptions li {\n    padding: 8px;\n    user-select: none;\n}\n\n.contextMenuOptions li i {\n    padding-right: 8px;\n}\n\n.contextMenuOptions{\n    padding-left:0px;\n}\n\n/** Demo for resize https://codepen.io/ZeroX-DG/pen/vjdoYe **/", ""]);
-
-
-
-/***/ }),
-/* 95 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
 exports.convertToReact = convertToReact;
 exports.convertToReactRedux = convertToReactRedux;
 
@@ -5302,7 +5154,7 @@ function convertToReactRedux(component) {
 }
 
 /***/ }),
-/* 96 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5479,7 +5331,7 @@ function updateSelectedComponent(componentName, e) {
 }
 
 /***/ }),
-/* 97 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5579,7 +5431,7 @@ function onDeleteFolder(TYPE, folderName) {
 }
 
 /***/ }),
-/* 98 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5629,31 +5481,27 @@ var _Markup = __webpack_require__(88);
 
 var _Markup2 = _interopRequireDefault(_Markup);
 
-var _State = __webpack_require__(89);
-
-var _State2 = _interopRequireDefault(_State);
-
-var _Style = __webpack_require__(90);
+var _Style = __webpack_require__(89);
 
 var _Style2 = _interopRequireDefault(_Style);
+
+var _State = __webpack_require__(90);
+
+var _State2 = _interopRequireDefault(_State);
 
 var _Composer = __webpack_require__(91);
 
 var _Composer2 = _interopRequireDefault(_Composer);
 
-var _ContextMenu = __webpack_require__(92);
-
-var _ContextMenu2 = _interopRequireDefault(_ContextMenu);
-
-var _export = __webpack_require__(95);
+var _export = __webpack_require__(92);
 
 var _Runtime = __webpack_require__(5);
 
-var _Reducer = __webpack_require__(96);
+var _Reducer = __webpack_require__(93);
 
 var _Storage = __webpack_require__(4);
 
-var _Events3 = __webpack_require__(97);
+var _Events3 = __webpack_require__(94);
 
 var _Constants = __webpack_require__(11);
 
@@ -5865,9 +5713,9 @@ var Index = function (_Component) {
                 "div",
                 { onContextMenu: this.onShowContextMenu.bind(this), onClick: this.hideContextMenu.bind(this) },
                 _react2.default.createElement(_Preview2.default, null),
-                _react2.default.createElement(_Markup2.default, { markup: selectedComponent.markup }),
-                _react2.default.createElement(_State2.default, { style: selectedComponent.style }),
-                _react2.default.createElement(_Style2.default, { state: selectedComponent.state }),
+                _react2.default.createElement(_Markup2.default, { markup: selectedComponent.markup, key: randomKey }),
+                _react2.default.createElement(_Style2.default, { style: selectedComponent.style, key: randomKey }),
+                _react2.default.createElement(_State2.default, { state: selectedComponent.state, key: randomKey }),
                 _react2.default.createElement(_Composer2.default, { state: selectedComponent.state }),
                 _react2.default.createElement(
                     "div",
