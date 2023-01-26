@@ -17,13 +17,12 @@ import Builder from "./Builder";
 import Preview from "./Preview";
 
 import Markup from './Markup';
-import Style from  "./State";
-import State from "./Style";
+import Style from  "./Style";
+import State from "./State";
 import Composer from "./Composer";
 
 // Utility components.
 
-import ContextMenu from "./utilities/Components/ContextMenu";
 import {convertToReact, convertToReactRedux} from "./utilities/CodeGenerator/React/export";
 import { getNestedComponents, initialiseComponents} from "./utilities/Runtime"
 
@@ -164,9 +163,9 @@ class Index extends Component {
         return (
             <div onContextMenu={this.onShowContextMenu.bind(this)} onClick={this.hideContextMenu.bind(this)}>
                 <Preview></Preview>
-                <Markup markup={selectedComponent.markup}></Markup>
-                <Style style={selectedComponent.style}></Style>
-                <State state={selectedComponent.state}></State>
+                <Markup markup={selectedComponent.markup} key={randomKey}></Markup>
+                <Style style={selectedComponent.style} key={randomKey}></Style>
+                <State state={selectedComponent.state} key={randomKey}></State>
                 <Composer state={selectedComponent.state}></Composer>
                 <div className="leftItem">
                     <Components

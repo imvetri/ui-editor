@@ -46,7 +46,6 @@ class Window extends Component {
                     <div>
                         <button 
                             draggable="true"
-                            onDrag={this.drag.bind(this)}
                             onDragEnd={this.drag.bind(this)}
                             className="container" >
                                 <i class="fas fa-arrows-alt"></i></button>
