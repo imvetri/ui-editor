@@ -1,21 +1,4 @@
 
-### Demo - https://imvetri.github.io/ui-editor/ 
-### wiki
-Checkout https://github.com/imvetri/ui-editor/wiki video section for more experiments and concepts 
-
-
-
-### Getting Started
-
-Install nodeJS and Git. Then try below command.
-```
-git clone https://github.com/imvetri/ui-editor.git
-cd ui-editor
-npm i
-npm start
-
-```
-
 
 <div align="center">
   <a href="https://github.com/imvetri/ui-editor">
@@ -40,6 +23,9 @@ Most recently I tried to build a self editable compoment that can create childre
 </div>
 
 ### Demo - https://imvetri.github.io/ui-editor/ 
+
+### wiki
+Checkout https://github.com/imvetri/ui-editor/wiki video section for more experiments and concepts 
 
 ![Wireframe](https://raw.githubusercontent.com/imvetri/ui-editor/6e8bf195a6826ea11b97b61e06dd23fbda6a6a39/docs/gifs/wireframe.png)
 
