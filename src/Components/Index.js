@@ -19,7 +19,6 @@ class Components extends Component {
         this.state = {
             components: this.props.components,
             folders: this.props.folders,
-            showControls: this.props.showControls
         };
     }
 
