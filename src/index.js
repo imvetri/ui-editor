@@ -21,6 +21,8 @@ import Style from  "./Style";
 import State from "./State";
 import Composer from "./Composer";
 
+import Flow from "./Flow";
+
 // Utility components.
 
 import {convertToReact, convertToReactRedux} from "./utilities/CodeGenerator/React/export";
@@ -162,6 +164,7 @@ class Index extends Component {
         window.components.forEach(initialiseComponents)
         return (
             <div onContextMenu={this.onShowContextMenu.bind(this)} onClick={this.hideContextMenu.bind(this)}>
+                <Flow/>
                 <Preview></Preview>
                 <Markup markup={selectedComponent.markup} key={randomKey}></Markup>
                 <Style style={selectedComponent.style} key={randomKey}></Style>
