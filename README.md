@@ -17,7 +17,9 @@
     It started as an experimental tool to test readable code generation and it was a success. Since then, I have been experimenting with it to test instant renderer and it was a success too.
   </p>
 <p>
-Most recently I tried to build a self editable compoment that can create children of itself and it worked. Checkit out the <a href="https://vimeo.com/464104903">recorded video</a> and <a href="https://vimeo.com/642968726">drag-and-drop</a> feature. It also comes with an option to edit the styles and it's interesting.
+I tried to build a self editable compoment that can create children of itself and it worked. Checkit out the <a href="https://vimeo.com/464104903">recorded video</a> and <a href="https://vimeo.com/642968726">drag-and-drop</a> feature. It also comes with an option to edit the styles and it's interesting.
+
+Most recently, I introduced react-flow for an infinite canvas - have a look at the demo here https://www.youtube.com/watch?v=Sfe6Qobn8vo 
 </p>
 
 </div>
