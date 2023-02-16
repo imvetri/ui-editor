@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import defaultConfigs from "./config";
 /*
     This component adds behaviour to the child components with colapse and move the component around.
     This component stores the config to local storage
@@ -11,11 +12,7 @@ class Window extends Component {
         super(props);
         this.childComponentName =  this.props.children._owner.stateNode.__proto__.constructor.name;
         let config = localStorage.getItem(this.childComponentName);
-        this.state = config ? JSON.parse(config) : {
-            collapsed: false,
-            top: 0,
-            left: 0
-        };
+        this.state = config ? JSON.parse(config) : defaultConfigs[this.childComponentName]
     }
 
     persist(){
