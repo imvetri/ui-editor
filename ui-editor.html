@@ -4,16 +4,30 @@
     <title>React</title>
 <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-flow-renderer/10.3.17/umd/index.js" integrity="sha512-Oq9I8xnoKiDrPntNaQn1BsWAdYDQ7Vyv2UH6eerqRoMjI9bfDFcn48tEIrSwNM2jTqRwMYRxf1OyB9NOJeQjTQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
  
 </head>
     <body>
-       <script type="text/babel">
+       <script type="text/babel" data-type="module" >
+
+
+	class DynamicComponent extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return <div className="centerItem">hello</div>
+    }
+
+}
+
 
        ReactDOM.render(
-        <h1>Hello World</h1>,
+        <DynamicComponent/>,
         document.body
        );
 
