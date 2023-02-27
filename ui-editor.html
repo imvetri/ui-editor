@@ -14,17 +14,27 @@
        <script type="text/babel" data-type="module" >
 
 
-	class DynamicComponent extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+        function Flow() {
+          return (
+            <div style={{ height: '100vh' }}>
+                <ReactFlow.default>
+                    <ReactFlow.Background />
+                    <ReactFlow.Controls />
+                </ReactFlow.default>
+            </div>
+          );
+        }    
 
-    render() {
-        return <div className="centerItem">hello</div>
-    }
+        class DynamicComponent extends React.Component {
+            constructor(props) {
+                super(props);
+            }
 
-}
+            render() {
+                return <div className="centerItem"><span>Hello</span><Flow/></div>
+            }
 
+        }
 
        ReactDOM.render(
         <DynamicComponent/>,
