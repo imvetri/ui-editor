@@ -38,6 +38,14 @@ import {onDeleteComponent, onDeleteFolder, onExtendComponent} from "./Components
 // Constants
 import { CONSTANTS } from "./utilities/Constants"; 
 
+let feature_flags = {
+    version : 3
+}
+/*
+    version :2 - drag and movable interface
+    version :3 - flow based
+*/
+
 class Index extends Component {
     constructor(props) {
         super(props);
@@ -164,37 +172,41 @@ class Index extends Component {
         window.components.forEach(initialiseComponents)
         return (
             <div onContextMenu={this.onShowContextMenu.bind(this)} onClick={this.hideContextMenu.bind(this)}>
-                <Flow/>
-                <Preview></Preview>
-                <Markup markup={selectedComponent.markup} key={randomKey}></Markup>
-                <Style style={selectedComponent.style} key={randomKey}></Style>
-                <State state={selectedComponent.state} key={randomKey}></State>
-                <Composer state={selectedComponent.state}></Composer>
-                <Components
-                    components={this.state.components}
-                    folders={this.state.folders}
-                    selectedComponent={this.state.selectedComponent}
-                    title="Components"
-                    key={randomKey}
+                {
+                feature_flags.version===3 ? 
+                    <Flow/> :
+                    <div>
+                        <Preview></Preview>
+                        <Markup markup={selectedComponent.markup} key={randomKey}></Markup>
+                        <Style style={selectedComponent.style} key={randomKey}></Style>
+                        <State state={selectedComponent.state} key={randomKey}></State>
+                        <Composer state={selectedComponent.state}></Composer>
+                        <Components
+                            components={this.state.components}
+                            folders={this.state.folders}
+                            selectedComponent={this.state.selectedComponent}
+                            title="Components"
+                            key={randomKey}
 
-                    onOpenEditor={this.openEditor.bind(this)}
-                    onSelection={this.updateSelectedComponent}
-                    onFoldersUpdate={this.updateFolders.bind(this)}
-                />
-                <Builder onSave={this.saveElement.bind(this)}/>
-                <DynamicComponent onSave={this.props.onSave} key={randomKey} component={selectedComponent}/>
+                            onOpenEditor={this.openEditor.bind(this)}
+                            onSelection={this.updateSelectedComponent}
+                            onFoldersUpdate={this.updateFolders.bind(this)}
+                        />
+                        <Builder onSave={this.saveElement.bind(this)}/>
+                        <DynamicComponent onSave={this.props.onSave} key={randomKey} component={selectedComponent}/>
 
-                <Events
-                    key={randomKey}
-                    component={selectedComponent}
-                    selectedTag={this.state.selectedTag}
-                    components={this.state.components}
-                    onEventsUpdate={this.updateEvent}
-                    onConfigUpdate={this.updateConfig}
-                    title="Events"
-                />
-                <History title="History"/>
-                <Assets title="Assets"/>
+                        <Events
+                            key={randomKey}
+                            component={selectedComponent}
+                            selectedTag={this.state.selectedTag}
+                            components={this.state.components}
+                            onEventsUpdate={this.updateEvent}
+                            onConfigUpdate={this.updateConfig}
+                            title="Events"
+                        />
+                        <History title="History"/>
+                        <Assets title="Assets"/> 
+                    </div>}
             </div>
         );
     }

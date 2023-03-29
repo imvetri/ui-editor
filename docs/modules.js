@@ -7,7 +7,7 @@
 
 
 if (true) {
-  module.exports = __webpack_require__(36);
+  module.exports = __webpack_require__(37);
 } else {}
 
 
@@ -20,13 +20,13 @@ if (true) {
 
 
 if (true) {
-  module.exports = __webpack_require__(118);
+  module.exports = __webpack_require__(119);
 } else {}
 
 
 /***/ }),
 
-/***/ 118:
+/***/ 119:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45,7 +45,42 @@ function q(c,a,g){var b,d={},e=null,h=null;void 0!==g&&(e=""+g);void 0!==a.key&&
 
 /***/ }),
 
-/***/ 119:
+/***/ 12:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function checkDCE() {
+  /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */
+  if (
+    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === 'undefined' ||
+    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== 'function'
+  ) {
+    return;
+  }
+  if (false) {}
+  try {
+    // Verify that the code above has been dead code eliminated (DCE'd).
+    __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE(checkDCE);
+  } catch (err) {
+    // DevTools shouldn't crash React, no matter what.
+    // We should still report in case we break this code.
+    console.error(err);
+  }
+}
+
+if (true) {
+  // DCE check should happen before ReactDOM bundle executes so that
+  // DevTools can report bad minification during injection.
+  checkDCE();
+  module.exports = __webpack_require__(38);
+} else {}
+
+
+/***/ }),
+
+/***/ 120:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -103,55 +138,20 @@ exports.default = vanilla;
 
 /***/ }),
 
-/***/ 12:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-function checkDCE() {
-  /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */
-  if (
-    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === 'undefined' ||
-    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== 'function'
-  ) {
-    return;
-  }
-  if (false) {}
-  try {
-    // Verify that the code above has been dead code eliminated (DCE'd).
-    __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE(checkDCE);
-  } catch (err) {
-    // DevTools shouldn't crash React, no matter what.
-    // We should still report in case we break this code.
-    console.error(err);
-  }
-}
-
-if (true) {
-  // DCE check should happen before ReactDOM bundle executes so that
-  // DevTools can report bad minification during injection.
-  checkDCE();
-  module.exports = __webpack_require__(37);
-} else {}
-
-
-/***/ }),
-
-/***/ 120:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-if (true) {
-  module.exports = __webpack_require__(121);
-} else {}
-
-
-/***/ }),
-
 /***/ 121:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+if (true) {
+  module.exports = __webpack_require__(122);
+} else {}
+
+
+/***/ }),
+
+/***/ 122:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -164,27 +164,27 @@ if (true) {
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-var h=__webpack_require__(0),n=__webpack_require__(122);function p(a,b){return a===b&&(0!==a||1/a===1/b)||a!==a&&b!==b}var q="function"===typeof Object.is?Object.is:p,r=n.useSyncExternalStore,t=h.useRef,u=h.useEffect,v=h.useMemo,w=h.useDebugValue;
+var h=__webpack_require__(0),n=__webpack_require__(123);function p(a,b){return a===b&&(0!==a||1/a===1/b)||a!==a&&b!==b}var q="function"===typeof Object.is?Object.is:p,r=n.useSyncExternalStore,t=h.useRef,u=h.useEffect,v=h.useMemo,w=h.useDebugValue;
 exports.useSyncExternalStoreWithSelector=function(a,b,e,l,g){var c=t(null);if(null===c.current){var f={hasValue:!1,value:null};c.current=f}else f=c.current;c=v(function(){function a(a){if(!c){c=!0;d=a;a=l(a);if(void 0!==g&&f.hasValue){var b=f.value;if(g(b,a))return k=b}return k=a}b=k;if(q(d,a))return b;var e=l(a);if(void 0!==g&&g(b,e))return b;d=a;return k=e}var c=!1,d,k,m=void 0===e?null:e;return[function(){return a(b())},null===m?void 0:function(){return a(m())}]},[b,e,l,g]);var d=r(a,c[0],c[1]);
 u(function(){f.hasValue=!0;f.value=d},[d]);w(d);return d};
 
 
 /***/ }),
 
-/***/ 122:
+/***/ 123:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 if (true) {
-  module.exports = __webpack_require__(123);
+  module.exports = __webpack_require__(124);
 } else {}
 
 
 /***/ }),
 
-/***/ 123:
+/***/ 124:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -203,11 +203,11 @@ function r(a){var b=a.getSnapshot;a=a.value;try{var d=b();return!k(a,d)}catch(f)
 
 /***/ }),
 
-/***/ 124:
+/***/ 127:
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(125);
+var content = __webpack_require__(128);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -229,7 +229,7 @@ if(false) {}
 
 /***/ }),
 
-/***/ 125:
+/***/ 128:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -240,7 +240,917 @@ exports.push([module.i, "/* this gets exported as style.css and can be used for 
 
 /***/ }),
 
-/***/ 129:
+/***/ 14:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(global) {
+
+function _extends() {
+  _extends = Object.assign || function(target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends.apply(this, arguments);
+}
+
+function _typeof(obj) {
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    _typeof = function _typeof(obj) {
+      return typeof obj;
+    };
+  } else {
+    _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+  return _typeof(obj);
+}
+
+var __extends = void 0 && (void 0).__extends || function() {
+  var _extendStatics = function extendStatics(d, b) {
+    _extendStatics = Object.setPrototypeOf || {
+      __proto__: []
+    }
+    instanceof Array && function(d, b) {
+      d.__proto__ = b;
+    } || function(d, b) {
+      for (var p in b) {
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+      }
+    };
+
+    return _extendStatics(d, b);
+  };
+
+  return function(d, b) {
+    _extendStatics(d, b);
+
+    function __() {
+      this.constructor = d;
+    }
+
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+}();
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
+var React = __webpack_require__(0);
+
+var SERVER_RENDERED = typeof navigator === 'undefined' || global['PREVENT_CODEMIRROR_RENDER'] === true;
+var cm;
+
+if (!SERVER_RENDERED) {
+  cm = __webpack_require__(81);
+}
+
+var Helper = function() {
+  function Helper() {}
+
+  Helper.equals = function(x, y) {
+    var _this = this;
+
+    var ok = Object.keys,
+      tx = _typeof(x),
+      ty = _typeof(y);
+
+    return x && y && tx === 'object' && tx === ty ? ok(x).length === ok(y).length && ok(x).every(function(key) {
+      return _this.equals(x[key], y[key]);
+    }) : x === y;
+  };
+
+  return Helper;
+}();
+
+var Shared = function() {
+  function Shared(editor, props) {
+    this.editor = editor;
+    this.props = props;
+  }
+
+  Shared.prototype.delegateCursor = function(position, scroll, focus) {
+    var doc = this.editor.getDoc();
+
+    if (focus) {
+      this.editor.focus();
+    }
+
+    scroll ? doc.setCursor(position) : doc.setCursor(position, null, {
+      scroll: false
+    });
+  };
+
+  Shared.prototype.delegateScroll = function(coordinates) {
+    this.editor.scrollTo(coordinates.x, coordinates.y);
+  };
+
+  Shared.prototype.delegateSelection = function(ranges, focus) {
+    var doc = this.editor.getDoc();
+    doc.setSelections(ranges);
+
+    if (focus) {
+      this.editor.focus();
+    }
+  };
+
+  Shared.prototype.apply = function(props) {
+    if (props && props.selection && props.selection.ranges) {
+      this.delegateSelection(props.selection.ranges, props.selection.focus || false);
+    }
+
+    if (props && props.cursor) {
+      this.delegateCursor(props.cursor, props.autoScroll || false, this.editor.getOption('autofocus') || false);
+    }
+
+    if (props && props.scroll) {
+      this.delegateScroll(props.scroll);
+    }
+  };
+
+  Shared.prototype.applyNext = function(props, next, preserved) {
+    if (props && props.selection && props.selection.ranges) {
+      if (next && next.selection && next.selection.ranges && !Helper.equals(props.selection.ranges, next.selection.ranges)) {
+        this.delegateSelection(next.selection.ranges, next.selection.focus || false);
+      }
+    }
+
+    if (props && props.cursor) {
+      if (next && next.cursor && !Helper.equals(props.cursor, next.cursor)) {
+        this.delegateCursor(preserved.cursor || next.cursor, next.autoScroll || false, next.autoCursor || false);
+      }
+    }
+
+    if (props && props.scroll) {
+      if (next && next.scroll && !Helper.equals(props.scroll, next.scroll)) {
+        this.delegateScroll(next.scroll);
+      }
+    }
+  };
+
+  Shared.prototype.applyUserDefined = function(props, preserved) {
+    if (preserved && preserved.cursor) {
+      this.delegateCursor(preserved.cursor, props.autoScroll || false, this.editor.getOption('autofocus') || false);
+    }
+  };
+
+  Shared.prototype.wire = function(props) {
+    var _this = this;
+
+    Object.keys(props || {}).filter(function(p) {
+      return /^on/.test(p);
+    }).forEach(function(prop) {
+      switch (prop) {
+        case 'onBlur':
+          {
+            _this.editor.on('blur', function(cm, event) {
+              _this.props.onBlur(_this.editor, event);
+            });
+          }
+          break;
+
+        case 'onContextMenu':
+          {
+            _this.editor.on('contextmenu', function(cm, event) {
+              _this.props.onContextMenu(_this.editor, event);
+            });
+
+            break;
+          }
+
+        case 'onCopy':
+          {
+            _this.editor.on('copy', function(cm, event) {
+              _this.props.onCopy(_this.editor, event);
+            });
+
+            break;
+          }
+
+        case 'onCursor':
+          {
+            _this.editor.on('cursorActivity', function(cm) {
+              _this.props.onCursor(_this.editor, _this.editor.getDoc().getCursor());
+            });
+          }
+          break;
+
+        case 'onCursorActivity':
+          {
+            _this.editor.on('cursorActivity', function(cm) {
+              _this.props.onCursorActivity(_this.editor);
+            });
+          }
+          break;
+
+        case 'onCut':
+          {
+            _this.editor.on('cut', function(cm, event) {
+              _this.props.onCut(_this.editor, event);
+            });
+
+            break;
+          }
+
+        case 'onDblClick':
+          {
+            _this.editor.on('dblclick', function(cm, event) {
+              _this.props.onDblClick(_this.editor, event);
+            });
+
+            break;
+          }
+
+        case 'onDragEnter':
+          {
+            _this.editor.on('dragenter', function(cm, event) {
+              _this.props.onDragEnter(_this.editor, event);
+            });
+          }
+          break;
+
+        case 'onDragLeave':
+          {
+            _this.editor.on('dragleave', function(cm, event) {
+              _this.props.onDragLeave(_this.editor, event);
+            });
+
+            break;
+          }
+
+        case 'onDragOver':
+          {
+            _this.editor.on('dragover', function(cm, event) {
+              _this.props.onDragOver(_this.editor, event);
+            });
+          }
+          break;
+
+        case 'onDragStart':
+          {
+            _this.editor.on('dragstart', function(cm, event) {
+              _this.props.onDragStart(_this.editor, event);
+            });
+
+            break;
+          }
+
+        case 'onDrop':
+          {
+            _this.editor.on('drop', function(cm, event) {
+              _this.props.onDrop(_this.editor, event);
+            });
+          }
+          break;
+
+        case 'onFocus':
+          {
+            _this.editor.on('focus', function(cm, event) {
+              _this.props.onFocus(_this.editor, event);
+            });
+          }
+          break;
+
+        case 'onGutterClick':
+          {
+            _this.editor.on('gutterClick', function(cm, lineNumber, gutter, event) {
+              _this.props.onGutterClick(_this.editor, lineNumber, gutter, event);
+            });
+          }
+          break;
+
+        case 'onKeyDown':
+          {
+            _this.editor.on('keydown', function(cm, event) {
+              _this.props.onKeyDown(_this.editor, event);
+            });
+          }
+          break;
+
+        case 'onKeyPress':
+          {
+            _this.editor.on('keypress', function(cm, event) {
+              _this.props.onKeyPress(_this.editor, event);
+            });
+          }
+          break;
+
+        case 'onKeyUp':
+          {
+            _this.editor.on('keyup', function(cm, event) {
+              _this.props.onKeyUp(_this.editor, event);
+            });
+          }
+          break;
+
+        case 'onMouseDown':
+          {
+            _this.editor.on('mousedown', function(cm, event) {
+              _this.props.onMouseDown(_this.editor, event);
+            });
+
+            break;
+          }
+
+        case 'onPaste':
+          {
+            _this.editor.on('paste', function(cm, event) {
+              _this.props.onPaste(_this.editor, event);
+            });
+
+            break;
+          }
+
+        case 'onRenderLine':
+          {
+            _this.editor.on('renderLine', function(cm, line, element) {
+              _this.props.onRenderLine(_this.editor, line, element);
+            });
+
+            break;
+          }
+
+        case 'onScroll':
+          {
+            _this.editor.on('scroll', function(cm) {
+              _this.props.onScroll(_this.editor, _this.editor.getScrollInfo());
+            });
+          }
+          break;
+
+        case 'onSelection':
+          {
+            _this.editor.on('beforeSelectionChange', function(cm, data) {
+              _this.props.onSelection(_this.editor, data);
+            });
+          }
+          break;
+
+        case 'onTouchStart':
+          {
+            _this.editor.on('touchstart', function(cm, event) {
+              _this.props.onTouchStart(_this.editor, event);
+            });
+
+            break;
+          }
+
+        case 'onUpdate':
+          {
+            _this.editor.on('update', function(cm) {
+              _this.props.onUpdate(_this.editor);
+            });
+          }
+          break;
+
+        case 'onViewportChange':
+          {
+            _this.editor.on('viewportChange', function(cm, from, to) {
+              _this.props.onViewportChange(_this.editor, from, to);
+            });
+          }
+          break;
+      }
+    });
+  };
+
+  return Shared;
+}();
+
+var Controlled = function(_super) {
+  __extends(Controlled, _super);
+
+  function Controlled(props) {
+    var _this = _super.call(this, props) || this;
+
+    if (SERVER_RENDERED) return _this;
+    _this.applied = false;
+    _this.appliedNext = false;
+    _this.appliedUserDefined = false;
+    _this.deferred = null;
+    _this.emulating = false;
+    _this.hydrated = false;
+
+    _this.initCb = function() {
+      if (_this.props.editorDidConfigure) {
+        _this.props.editorDidConfigure(_this.editor);
+      }
+    };
+
+    _this.mounted = false;
+    return _this;
+  }
+
+  Controlled.prototype.hydrate = function(props) {
+    var _this = this;
+
+    var _options = props && props.options ? props.options : {};
+
+    var userDefinedOptions = _extends({}, cm.defaults, this.editor.options, _options);
+
+    var optionDelta = Object.keys(userDefinedOptions).some(function(key) {
+      return _this.editor.getOption(key) !== userDefinedOptions[key];
+    });
+
+    if (optionDelta) {
+      Object.keys(userDefinedOptions).forEach(function(key) {
+        if (_options.hasOwnProperty(key)) {
+          if (_this.editor.getOption(key) !== userDefinedOptions[key]) {
+            _this.editor.setOption(key, userDefinedOptions[key]);
+
+            _this.mirror.setOption(key, userDefinedOptions[key]);
+          }
+        }
+      });
+    }
+
+    if (!this.hydrated) {
+      this.deferred ? this.resolveChange() : this.initChange(props.value || '');
+    }
+
+    this.hydrated = true;
+  };
+
+  Controlled.prototype.initChange = function(value) {
+    this.emulating = true;
+    var doc = this.editor.getDoc();
+    var lastLine = doc.lastLine();
+    var lastChar = doc.getLine(doc.lastLine()).length;
+    doc.replaceRange(value || '', {
+      line: 0,
+      ch: 0
+    }, {
+      line: lastLine,
+      ch: lastChar
+    });
+    this.mirror.setValue(value);
+    doc.clearHistory();
+    this.mirror.clearHistory();
+    this.emulating = false;
+  };
+
+  Controlled.prototype.resolveChange = function() {
+    this.emulating = true;
+    var doc = this.editor.getDoc();
+
+    if (this.deferred.origin === 'undo') {
+      doc.undo();
+    } else if (this.deferred.origin === 'redo') {
+      doc.redo();
+    } else {
+      doc.replaceRange(this.deferred.text, this.deferred.from, this.deferred.to, this.deferred.origin);
+    }
+
+    this.emulating = false;
+    this.deferred = null;
+  };
+
+  Controlled.prototype.mirrorChange = function(deferred) {
+    var doc = this.editor.getDoc();
+
+    if (deferred.origin === 'undo') {
+      doc.setHistory(this.mirror.getHistory());
+      this.mirror.undo();
+    } else if (deferred.origin === 'redo') {
+      doc.setHistory(this.mirror.getHistory());
+      this.mirror.redo();
+    } else {
+      this.mirror.replaceRange(deferred.text, deferred.from, deferred.to, deferred.origin);
+    }
+
+    return this.mirror.getValue();
+  };
+
+  Controlled.prototype.componentDidMount = function() {
+    var _this = this;
+
+    if (SERVER_RENDERED) return;
+
+    if (this.props.defineMode) {
+      if (this.props.defineMode.name && this.props.defineMode.fn) {
+        cm.defineMode(this.props.defineMode.name, this.props.defineMode.fn);
+      }
+    }
+
+    this.editor = cm(this.ref);
+    this.shared = new Shared(this.editor, this.props);
+    this.mirror = cm(function() {});
+    this.editor.on('electricInput', function() {
+      _this.mirror.setHistory(_this.editor.getDoc().getHistory());
+    });
+    this.editor.on('cursorActivity', function() {
+      _this.mirror.setCursor(_this.editor.getDoc().getCursor());
+    });
+    this.editor.on('beforeChange', function(cm, data) {
+      if (_this.emulating) {
+        return;
+      }
+
+      data.cancel();
+      _this.deferred = data;
+
+      var phantomChange = _this.mirrorChange(_this.deferred);
+
+      if (_this.props.onBeforeChange) _this.props.onBeforeChange(_this.editor, _this.deferred, phantomChange);
+    });
+    this.editor.on('change', function(cm, data) {
+      if (!_this.mounted) {
+        return;
+      }
+
+      if (_this.props.onChange) {
+        _this.props.onChange(_this.editor, data, _this.editor.getValue());
+      }
+    });
+    this.hydrate(this.props);
+    this.shared.apply(this.props);
+    this.applied = true;
+    this.mounted = true;
+    this.shared.wire(this.props);
+
+    if (this.editor.getOption('autofocus')) {
+      this.editor.focus();
+    }
+
+    if (this.props.editorDidMount) {
+      this.props.editorDidMount(this.editor, this.editor.getValue(), this.initCb);
+    }
+  };
+
+  Controlled.prototype.componentDidUpdate = function(prevProps) {
+    if (SERVER_RENDERED) return;
+    var preserved = {
+      cursor: null
+    };
+
+    if (this.props.value !== prevProps.value) {
+      this.hydrated = false;
+    }
+
+    if (!this.props.autoCursor && this.props.autoCursor !== undefined) {
+      preserved.cursor = this.editor.getDoc().getCursor();
+    }
+
+    this.hydrate(this.props);
+
+    if (!this.appliedNext) {
+      this.shared.applyNext(prevProps, this.props, preserved);
+      this.appliedNext = true;
+    }
+
+    this.shared.applyUserDefined(prevProps, preserved);
+    this.appliedUserDefined = true;
+  };
+
+  Controlled.prototype.componentWillUnmount = function() {
+    if (SERVER_RENDERED) return;
+
+    if (this.props.editorWillUnmount) {
+      this.props.editorWillUnmount(cm);
+    }
+  };
+
+  Controlled.prototype.shouldComponentUpdate = function(nextProps, nextState) {
+    return !SERVER_RENDERED;
+  };
+
+  Controlled.prototype.render = function() {
+    var _this = this;
+
+    if (SERVER_RENDERED) return null;
+    var className = this.props.className ? 'react-codemirror2 ' + this.props.className : 'react-codemirror2';
+    return React.createElement('div', {
+      className: className,
+      ref: function ref(self) {
+        return _this.ref = self;
+      }
+    });
+  };
+
+  return Controlled;
+}(React.Component);
+
+exports.Controlled = Controlled;
+
+var UnControlled = function(_super) {
+  __extends(UnControlled, _super);
+
+  function UnControlled(props) {
+    var _this = _super.call(this, props) || this;
+
+    if (SERVER_RENDERED) return _this;
+    _this.applied = false;
+    _this.appliedUserDefined = false;
+    _this.continueChange = false;
+    _this.detached = false;
+    _this.hydrated = false;
+
+    _this.initCb = function() {
+      if (_this.props.editorDidConfigure) {
+        _this.props.editorDidConfigure(_this.editor);
+      }
+    };
+
+    _this.mounted = false;
+
+    _this.onBeforeChangeCb = function() {
+      _this.continueChange = true;
+    };
+
+    return _this;
+  }
+
+  UnControlled.prototype.hydrate = function(props) {
+    var _this = this;
+
+    var _options = props && props.options ? props.options : {};
+
+    var userDefinedOptions = _extends({}, cm.defaults, this.editor.options, _options);
+
+    var optionDelta = Object.keys(userDefinedOptions).some(function(key) {
+      return _this.editor.getOption(key) !== userDefinedOptions[key];
+    });
+
+    if (optionDelta) {
+      Object.keys(userDefinedOptions).forEach(function(key) {
+        if (_options.hasOwnProperty(key)) {
+          if (_this.editor.getOption(key) !== userDefinedOptions[key]) {
+            _this.editor.setOption(key, userDefinedOptions[key]);
+          }
+        }
+      });
+    }
+
+    if (!this.hydrated) {
+      var doc = this.editor.getDoc();
+      var lastLine = doc.lastLine();
+      var lastChar = doc.getLine(doc.lastLine()).length;
+      doc.replaceRange(props.value || '', {
+        line: 0,
+        ch: 0
+      }, {
+        line: lastLine,
+        ch: lastChar
+      });
+    }
+
+    this.hydrated = true;
+  };
+
+  UnControlled.prototype.componentDidMount = function() {
+    var _this = this;
+
+    if (SERVER_RENDERED) return;
+    this.detached = this.props.detach === true;
+
+    if (this.props.defineMode) {
+      if (this.props.defineMode.name && this.props.defineMode.fn) {
+        cm.defineMode(this.props.defineMode.name, this.props.defineMode.fn);
+      }
+    }
+
+    this.editor = cm(this.ref);
+    this.shared = new Shared(this.editor, this.props);
+    this.editor.on('beforeChange', function(cm, data) {
+      if (_this.props.onBeforeChange) {
+        _this.props.onBeforeChange(_this.editor, data, _this.editor.getValue(), _this.onBeforeChangeCb);
+      }
+    });
+    this.editor.on('change', function(cm, data) {
+      if (!_this.mounted || !_this.props.onChange) {
+        return;
+      }
+
+      if (_this.props.onBeforeChange) {
+        if (_this.continueChange) {
+          _this.props.onChange(_this.editor, data, _this.editor.getValue());
+        }
+      } else {
+        _this.props.onChange(_this.editor, data, _this.editor.getValue());
+      }
+    });
+    this.hydrate(this.props);
+    this.shared.apply(this.props);
+    this.applied = true;
+    this.mounted = true;
+    this.shared.wire(this.props);
+    this.editor.getDoc().clearHistory();
+
+    if (this.props.editorDidMount) {
+      this.props.editorDidMount(this.editor, this.editor.getValue(), this.initCb);
+    }
+  };
+
+  UnControlled.prototype.componentDidUpdate = function(prevProps) {
+    if (this.detached && this.props.detach === false) {
+      this.detached = false;
+
+      if (prevProps.editorDidAttach) {
+        prevProps.editorDidAttach(this.editor);
+      }
+    }
+
+    if (!this.detached && this.props.detach === true) {
+      this.detached = true;
+
+      if (prevProps.editorDidDetach) {
+        prevProps.editorDidDetach(this.editor);
+      }
+    }
+
+    if (SERVER_RENDERED || this.detached) return;
+    var preserved = {
+      cursor: null
+    };
+
+    if (this.props.value !== prevProps.value) {
+      this.hydrated = false;
+      this.applied = false;
+      this.appliedUserDefined = false;
+    }
+
+    if (!prevProps.autoCursor && prevProps.autoCursor !== undefined) {
+      preserved.cursor = this.editor.getDoc().getCursor();
+    }
+
+    this.hydrate(this.props);
+
+    if (!this.applied) {
+      this.shared.apply(prevProps);
+      this.applied = true;
+    }
+
+    if (!this.appliedUserDefined) {
+      this.shared.applyUserDefined(prevProps, preserved);
+      this.appliedUserDefined = true;
+    }
+  };
+
+  UnControlled.prototype.componentWillUnmount = function() {
+    if (SERVER_RENDERED) return;
+
+    if (this.props.editorWillUnmount) {
+      this.props.editorWillUnmount(cm);
+    }
+  };
+
+  UnControlled.prototype.shouldComponentUpdate = function(nextProps, nextState) {
+    var update = true;
+    if (SERVER_RENDERED) update = false;
+    if (this.detached && nextProps.detach) update = false;
+    return update;
+  };
+
+  UnControlled.prototype.render = function() {
+    var _this = this;
+
+    if (SERVER_RENDERED) return null;
+    var className = this.props.className ? 'react-codemirror2 ' + this.props.className : 'react-codemirror2';
+    return React.createElement('div', {
+      className: className,
+      ref: function ref(self) {
+        return _this.ref = self;
+      }
+    });
+  };
+
+  return UnControlled;
+}(React.Component);
+
+exports.UnControlled = UnControlled;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(20)))
+
+/***/ }),
+
+/***/ 2:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+}
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
+  return arr2;
+}
+function _createForOfIteratorHelperLoose(o, allowArrayLike) {
+  var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"];
+  if (it) return (it = it.call(o)).next.bind(it);
+  if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {
+    if (it) o = it;
+    var i = 0;
+    return function () {
+      if (i >= o.length) return {
+        done: true
+      };
+      return {
+        done: false,
+        value: o[i++]
+      };
+    };
+  }
+  throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+function shallow(objA, objB) {
+  if (Object.is(objA, objB)) {
+    return true;
+  }
+  if (typeof objA !== 'object' || objA === null || typeof objB !== 'object' || objB === null) {
+    return false;
+  }
+  if (objA instanceof Map && objB instanceof Map) {
+    if (objA.size !== objB.size) return false;
+    for (var _iterator = _createForOfIteratorHelperLoose(objA), _step; !(_step = _iterator()).done;) {
+      var _step$value = _step.value,
+        key = _step$value[0],
+        value = _step$value[1];
+      if (!Object.is(value, objB.get(key))) {
+        return false;
+      }
+    }
+    return true;
+  }
+  if (objA instanceof Set && objB instanceof Set) {
+    if (objA.size !== objB.size) return false;
+    for (var _iterator2 = _createForOfIteratorHelperLoose(objA), _step2; !(_step2 = _iterator2()).done;) {
+      var _value = _step2.value;
+      if (!objB.has(_value)) {
+        return false;
+      }
+    }
+    return true;
+  }
+  var keysA = Object.keys(objA);
+  if (keysA.length !== Object.keys(objB).length) {
+    return false;
+  }
+  for (var i = 0; i < keysA.length; i++) {
+    if (!Object.prototype.hasOwnProperty.call(objB, keysA[i]) || !Object.is(objA[keysA[i]], objB[keysA[i]])) {
+      return false;
+    }
+  }
+  return true;
+}
+var shallow$1 = (function (objA, objB) {
+  if (false) {}
+  return shallow(objA, objB);
+});
+
+exports.default = shallow$1;
+exports.shallow = shallow;
+
+;(module.exports = (exports && exports.default) || {}),
+  Object.assign(module.exports, exports)
+
+
+/***/ }),
+
+/***/ 20:
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || new Function("return this")();
+} catch (e) {
+	// This works if the window reference is available
+	if (typeof window === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+
+/***/ 21:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -338,19 +1248,19 @@ function cc(names) {
 }
 
 // EXTERNAL MODULE: ./node_modules/zustand/index.js
-var zustand = __webpack_require__(22);
+var zustand = __webpack_require__(23);
 
 // EXTERNAL MODULE: ./node_modules/zustand/shallow.js
 var shallow = __webpack_require__(2);
 
 // EXTERNAL MODULE: ./node_modules/d3-drag/src/drag.js + 2 modules
-var drag = __webpack_require__(133);
+var drag = __webpack_require__(137);
 
 // EXTERNAL MODULE: ./node_modules/d3-selection/src/select.js
-var src_select = __webpack_require__(31);
+var src_select = __webpack_require__(32);
 
 // EXTERNAL MODULE: ./node_modules/d3-selection/src/pointer.js + 1 modules
-var pointer = __webpack_require__(134);
+var pointer = __webpack_require__(138);
 
 // EXTERNAL MODULE: ./node_modules/d3-zoom/src/index.js + 49 modules
 var src = __webpack_require__(7);
@@ -4448,925 +5358,15 @@ function NodeToolbar({ nodeId, children, className, style, isVisible, position =
 
 /***/ }),
 
-/***/ 14:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(global) {
-
-function _extends() {
-  _extends = Object.assign || function(target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends.apply(this, arguments);
-}
-
-function _typeof(obj) {
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    _typeof = function _typeof(obj) {
-      return typeof obj;
-    };
-  } else {
-    _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    };
-  }
-  return _typeof(obj);
-}
-
-var __extends = void 0 && (void 0).__extends || function() {
-  var _extendStatics = function extendStatics(d, b) {
-    _extendStatics = Object.setPrototypeOf || {
-      __proto__: []
-    }
-    instanceof Array && function(d, b) {
-      d.__proto__ = b;
-    } || function(d, b) {
-      for (var p in b) {
-        if (b.hasOwnProperty(p)) d[p] = b[p];
-      }
-    };
-
-    return _extendStatics(d, b);
-  };
-
-  return function(d, b) {
-    _extendStatics(d, b);
-
-    function __() {
-      this.constructor = d;
-    }
-
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-  };
-}();
-
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
-
-var React = __webpack_require__(0);
-
-var SERVER_RENDERED = typeof navigator === 'undefined' || global['PREVENT_CODEMIRROR_RENDER'] === true;
-var cm;
-
-if (!SERVER_RENDERED) {
-  cm = __webpack_require__(80);
-}
-
-var Helper = function() {
-  function Helper() {}
-
-  Helper.equals = function(x, y) {
-    var _this = this;
-
-    var ok = Object.keys,
-      tx = _typeof(x),
-      ty = _typeof(y);
-
-    return x && y && tx === 'object' && tx === ty ? ok(x).length === ok(y).length && ok(x).every(function(key) {
-      return _this.equals(x[key], y[key]);
-    }) : x === y;
-  };
-
-  return Helper;
-}();
-
-var Shared = function() {
-  function Shared(editor, props) {
-    this.editor = editor;
-    this.props = props;
-  }
-
-  Shared.prototype.delegateCursor = function(position, scroll, focus) {
-    var doc = this.editor.getDoc();
-
-    if (focus) {
-      this.editor.focus();
-    }
-
-    scroll ? doc.setCursor(position) : doc.setCursor(position, null, {
-      scroll: false
-    });
-  };
-
-  Shared.prototype.delegateScroll = function(coordinates) {
-    this.editor.scrollTo(coordinates.x, coordinates.y);
-  };
-
-  Shared.prototype.delegateSelection = function(ranges, focus) {
-    var doc = this.editor.getDoc();
-    doc.setSelections(ranges);
-
-    if (focus) {
-      this.editor.focus();
-    }
-  };
-
-  Shared.prototype.apply = function(props) {
-    if (props && props.selection && props.selection.ranges) {
-      this.delegateSelection(props.selection.ranges, props.selection.focus || false);
-    }
-
-    if (props && props.cursor) {
-      this.delegateCursor(props.cursor, props.autoScroll || false, this.editor.getOption('autofocus') || false);
-    }
-
-    if (props && props.scroll) {
-      this.delegateScroll(props.scroll);
-    }
-  };
-
-  Shared.prototype.applyNext = function(props, next, preserved) {
-    if (props && props.selection && props.selection.ranges) {
-      if (next && next.selection && next.selection.ranges && !Helper.equals(props.selection.ranges, next.selection.ranges)) {
-        this.delegateSelection(next.selection.ranges, next.selection.focus || false);
-      }
-    }
-
-    if (props && props.cursor) {
-      if (next && next.cursor && !Helper.equals(props.cursor, next.cursor)) {
-        this.delegateCursor(preserved.cursor || next.cursor, next.autoScroll || false, next.autoCursor || false);
-      }
-    }
-
-    if (props && props.scroll) {
-      if (next && next.scroll && !Helper.equals(props.scroll, next.scroll)) {
-        this.delegateScroll(next.scroll);
-      }
-    }
-  };
-
-  Shared.prototype.applyUserDefined = function(props, preserved) {
-    if (preserved && preserved.cursor) {
-      this.delegateCursor(preserved.cursor, props.autoScroll || false, this.editor.getOption('autofocus') || false);
-    }
-  };
-
-  Shared.prototype.wire = function(props) {
-    var _this = this;
-
-    Object.keys(props || {}).filter(function(p) {
-      return /^on/.test(p);
-    }).forEach(function(prop) {
-      switch (prop) {
-        case 'onBlur':
-          {
-            _this.editor.on('blur', function(cm, event) {
-              _this.props.onBlur(_this.editor, event);
-            });
-          }
-          break;
-
-        case 'onContextMenu':
-          {
-            _this.editor.on('contextmenu', function(cm, event) {
-              _this.props.onContextMenu(_this.editor, event);
-            });
-
-            break;
-          }
-
-        case 'onCopy':
-          {
-            _this.editor.on('copy', function(cm, event) {
-              _this.props.onCopy(_this.editor, event);
-            });
-
-            break;
-          }
-
-        case 'onCursor':
-          {
-            _this.editor.on('cursorActivity', function(cm) {
-              _this.props.onCursor(_this.editor, _this.editor.getDoc().getCursor());
-            });
-          }
-          break;
-
-        case 'onCursorActivity':
-          {
-            _this.editor.on('cursorActivity', function(cm) {
-              _this.props.onCursorActivity(_this.editor);
-            });
-          }
-          break;
-
-        case 'onCut':
-          {
-            _this.editor.on('cut', function(cm, event) {
-              _this.props.onCut(_this.editor, event);
-            });
-
-            break;
-          }
-
-        case 'onDblClick':
-          {
-            _this.editor.on('dblclick', function(cm, event) {
-              _this.props.onDblClick(_this.editor, event);
-            });
-
-            break;
-          }
-
-        case 'onDragEnter':
-          {
-            _this.editor.on('dragenter', function(cm, event) {
-              _this.props.onDragEnter(_this.editor, event);
-            });
-          }
-          break;
-
-        case 'onDragLeave':
-          {
-            _this.editor.on('dragleave', function(cm, event) {
-              _this.props.onDragLeave(_this.editor, event);
-            });
-
-            break;
-          }
-
-        case 'onDragOver':
-          {
-            _this.editor.on('dragover', function(cm, event) {
-              _this.props.onDragOver(_this.editor, event);
-            });
-          }
-          break;
-
-        case 'onDragStart':
-          {
-            _this.editor.on('dragstart', function(cm, event) {
-              _this.props.onDragStart(_this.editor, event);
-            });
-
-            break;
-          }
-
-        case 'onDrop':
-          {
-            _this.editor.on('drop', function(cm, event) {
-              _this.props.onDrop(_this.editor, event);
-            });
-          }
-          break;
-
-        case 'onFocus':
-          {
-            _this.editor.on('focus', function(cm, event) {
-              _this.props.onFocus(_this.editor, event);
-            });
-          }
-          break;
-
-        case 'onGutterClick':
-          {
-            _this.editor.on('gutterClick', function(cm, lineNumber, gutter, event) {
-              _this.props.onGutterClick(_this.editor, lineNumber, gutter, event);
-            });
-          }
-          break;
-
-        case 'onKeyDown':
-          {
-            _this.editor.on('keydown', function(cm, event) {
-              _this.props.onKeyDown(_this.editor, event);
-            });
-          }
-          break;
-
-        case 'onKeyPress':
-          {
-            _this.editor.on('keypress', function(cm, event) {
-              _this.props.onKeyPress(_this.editor, event);
-            });
-          }
-          break;
-
-        case 'onKeyUp':
-          {
-            _this.editor.on('keyup', function(cm, event) {
-              _this.props.onKeyUp(_this.editor, event);
-            });
-          }
-          break;
-
-        case 'onMouseDown':
-          {
-            _this.editor.on('mousedown', function(cm, event) {
-              _this.props.onMouseDown(_this.editor, event);
-            });
-
-            break;
-          }
-
-        case 'onPaste':
-          {
-            _this.editor.on('paste', function(cm, event) {
-              _this.props.onPaste(_this.editor, event);
-            });
-
-            break;
-          }
-
-        case 'onRenderLine':
-          {
-            _this.editor.on('renderLine', function(cm, line, element) {
-              _this.props.onRenderLine(_this.editor, line, element);
-            });
-
-            break;
-          }
-
-        case 'onScroll':
-          {
-            _this.editor.on('scroll', function(cm) {
-              _this.props.onScroll(_this.editor, _this.editor.getScrollInfo());
-            });
-          }
-          break;
-
-        case 'onSelection':
-          {
-            _this.editor.on('beforeSelectionChange', function(cm, data) {
-              _this.props.onSelection(_this.editor, data);
-            });
-          }
-          break;
-
-        case 'onTouchStart':
-          {
-            _this.editor.on('touchstart', function(cm, event) {
-              _this.props.onTouchStart(_this.editor, event);
-            });
-
-            break;
-          }
-
-        case 'onUpdate':
-          {
-            _this.editor.on('update', function(cm) {
-              _this.props.onUpdate(_this.editor);
-            });
-          }
-          break;
-
-        case 'onViewportChange':
-          {
-            _this.editor.on('viewportChange', function(cm, from, to) {
-              _this.props.onViewportChange(_this.editor, from, to);
-            });
-          }
-          break;
-      }
-    });
-  };
-
-  return Shared;
-}();
-
-var Controlled = function(_super) {
-  __extends(Controlled, _super);
-
-  function Controlled(props) {
-    var _this = _super.call(this, props) || this;
-
-    if (SERVER_RENDERED) return _this;
-    _this.applied = false;
-    _this.appliedNext = false;
-    _this.appliedUserDefined = false;
-    _this.deferred = null;
-    _this.emulating = false;
-    _this.hydrated = false;
-
-    _this.initCb = function() {
-      if (_this.props.editorDidConfigure) {
-        _this.props.editorDidConfigure(_this.editor);
-      }
-    };
-
-    _this.mounted = false;
-    return _this;
-  }
-
-  Controlled.prototype.hydrate = function(props) {
-    var _this = this;
-
-    var _options = props && props.options ? props.options : {};
-
-    var userDefinedOptions = _extends({}, cm.defaults, this.editor.options, _options);
-
-    var optionDelta = Object.keys(userDefinedOptions).some(function(key) {
-      return _this.editor.getOption(key) !== userDefinedOptions[key];
-    });
-
-    if (optionDelta) {
-      Object.keys(userDefinedOptions).forEach(function(key) {
-        if (_options.hasOwnProperty(key)) {
-          if (_this.editor.getOption(key) !== userDefinedOptions[key]) {
-            _this.editor.setOption(key, userDefinedOptions[key]);
-
-            _this.mirror.setOption(key, userDefinedOptions[key]);
-          }
-        }
-      });
-    }
-
-    if (!this.hydrated) {
-      this.deferred ? this.resolveChange() : this.initChange(props.value || '');
-    }
-
-    this.hydrated = true;
-  };
-
-  Controlled.prototype.initChange = function(value) {
-    this.emulating = true;
-    var doc = this.editor.getDoc();
-    var lastLine = doc.lastLine();
-    var lastChar = doc.getLine(doc.lastLine()).length;
-    doc.replaceRange(value || '', {
-      line: 0,
-      ch: 0
-    }, {
-      line: lastLine,
-      ch: lastChar
-    });
-    this.mirror.setValue(value);
-    doc.clearHistory();
-    this.mirror.clearHistory();
-    this.emulating = false;
-  };
-
-  Controlled.prototype.resolveChange = function() {
-    this.emulating = true;
-    var doc = this.editor.getDoc();
-
-    if (this.deferred.origin === 'undo') {
-      doc.undo();
-    } else if (this.deferred.origin === 'redo') {
-      doc.redo();
-    } else {
-      doc.replaceRange(this.deferred.text, this.deferred.from, this.deferred.to, this.deferred.origin);
-    }
-
-    this.emulating = false;
-    this.deferred = null;
-  };
-
-  Controlled.prototype.mirrorChange = function(deferred) {
-    var doc = this.editor.getDoc();
-
-    if (deferred.origin === 'undo') {
-      doc.setHistory(this.mirror.getHistory());
-      this.mirror.undo();
-    } else if (deferred.origin === 'redo') {
-      doc.setHistory(this.mirror.getHistory());
-      this.mirror.redo();
-    } else {
-      this.mirror.replaceRange(deferred.text, deferred.from, deferred.to, deferred.origin);
-    }
-
-    return this.mirror.getValue();
-  };
-
-  Controlled.prototype.componentDidMount = function() {
-    var _this = this;
-
-    if (SERVER_RENDERED) return;
-
-    if (this.props.defineMode) {
-      if (this.props.defineMode.name && this.props.defineMode.fn) {
-        cm.defineMode(this.props.defineMode.name, this.props.defineMode.fn);
-      }
-    }
-
-    this.editor = cm(this.ref);
-    this.shared = new Shared(this.editor, this.props);
-    this.mirror = cm(function() {});
-    this.editor.on('electricInput', function() {
-      _this.mirror.setHistory(_this.editor.getDoc().getHistory());
-    });
-    this.editor.on('cursorActivity', function() {
-      _this.mirror.setCursor(_this.editor.getDoc().getCursor());
-    });
-    this.editor.on('beforeChange', function(cm, data) {
-      if (_this.emulating) {
-        return;
-      }
-
-      data.cancel();
-      _this.deferred = data;
-
-      var phantomChange = _this.mirrorChange(_this.deferred);
-
-      if (_this.props.onBeforeChange) _this.props.onBeforeChange(_this.editor, _this.deferred, phantomChange);
-    });
-    this.editor.on('change', function(cm, data) {
-      if (!_this.mounted) {
-        return;
-      }
-
-      if (_this.props.onChange) {
-        _this.props.onChange(_this.editor, data, _this.editor.getValue());
-      }
-    });
-    this.hydrate(this.props);
-    this.shared.apply(this.props);
-    this.applied = true;
-    this.mounted = true;
-    this.shared.wire(this.props);
-
-    if (this.editor.getOption('autofocus')) {
-      this.editor.focus();
-    }
-
-    if (this.props.editorDidMount) {
-      this.props.editorDidMount(this.editor, this.editor.getValue(), this.initCb);
-    }
-  };
-
-  Controlled.prototype.componentDidUpdate = function(prevProps) {
-    if (SERVER_RENDERED) return;
-    var preserved = {
-      cursor: null
-    };
-
-    if (this.props.value !== prevProps.value) {
-      this.hydrated = false;
-    }
-
-    if (!this.props.autoCursor && this.props.autoCursor !== undefined) {
-      preserved.cursor = this.editor.getDoc().getCursor();
-    }
-
-    this.hydrate(this.props);
-
-    if (!this.appliedNext) {
-      this.shared.applyNext(prevProps, this.props, preserved);
-      this.appliedNext = true;
-    }
-
-    this.shared.applyUserDefined(prevProps, preserved);
-    this.appliedUserDefined = true;
-  };
-
-  Controlled.prototype.componentWillUnmount = function() {
-    if (SERVER_RENDERED) return;
-
-    if (this.props.editorWillUnmount) {
-      this.props.editorWillUnmount(cm);
-    }
-  };
-
-  Controlled.prototype.shouldComponentUpdate = function(nextProps, nextState) {
-    return !SERVER_RENDERED;
-  };
-
-  Controlled.prototype.render = function() {
-    var _this = this;
-
-    if (SERVER_RENDERED) return null;
-    var className = this.props.className ? 'react-codemirror2 ' + this.props.className : 'react-codemirror2';
-    return React.createElement('div', {
-      className: className,
-      ref: function ref(self) {
-        return _this.ref = self;
-      }
-    });
-  };
-
-  return Controlled;
-}(React.Component);
-
-exports.Controlled = Controlled;
-
-var UnControlled = function(_super) {
-  __extends(UnControlled, _super);
-
-  function UnControlled(props) {
-    var _this = _super.call(this, props) || this;
-
-    if (SERVER_RENDERED) return _this;
-    _this.applied = false;
-    _this.appliedUserDefined = false;
-    _this.continueChange = false;
-    _this.detached = false;
-    _this.hydrated = false;
-
-    _this.initCb = function() {
-      if (_this.props.editorDidConfigure) {
-        _this.props.editorDidConfigure(_this.editor);
-      }
-    };
-
-    _this.mounted = false;
-
-    _this.onBeforeChangeCb = function() {
-      _this.continueChange = true;
-    };
-
-    return _this;
-  }
-
-  UnControlled.prototype.hydrate = function(props) {
-    var _this = this;
-
-    var _options = props && props.options ? props.options : {};
-
-    var userDefinedOptions = _extends({}, cm.defaults, this.editor.options, _options);
-
-    var optionDelta = Object.keys(userDefinedOptions).some(function(key) {
-      return _this.editor.getOption(key) !== userDefinedOptions[key];
-    });
-
-    if (optionDelta) {
-      Object.keys(userDefinedOptions).forEach(function(key) {
-        if (_options.hasOwnProperty(key)) {
-          if (_this.editor.getOption(key) !== userDefinedOptions[key]) {
-            _this.editor.setOption(key, userDefinedOptions[key]);
-          }
-        }
-      });
-    }
-
-    if (!this.hydrated) {
-      var doc = this.editor.getDoc();
-      var lastLine = doc.lastLine();
-      var lastChar = doc.getLine(doc.lastLine()).length;
-      doc.replaceRange(props.value || '', {
-        line: 0,
-        ch: 0
-      }, {
-        line: lastLine,
-        ch: lastChar
-      });
-    }
-
-    this.hydrated = true;
-  };
-
-  UnControlled.prototype.componentDidMount = function() {
-    var _this = this;
-
-    if (SERVER_RENDERED) return;
-    this.detached = this.props.detach === true;
-
-    if (this.props.defineMode) {
-      if (this.props.defineMode.name && this.props.defineMode.fn) {
-        cm.defineMode(this.props.defineMode.name, this.props.defineMode.fn);
-      }
-    }
-
-    this.editor = cm(this.ref);
-    this.shared = new Shared(this.editor, this.props);
-    this.editor.on('beforeChange', function(cm, data) {
-      if (_this.props.onBeforeChange) {
-        _this.props.onBeforeChange(_this.editor, data, _this.editor.getValue(), _this.onBeforeChangeCb);
-      }
-    });
-    this.editor.on('change', function(cm, data) {
-      if (!_this.mounted || !_this.props.onChange) {
-        return;
-      }
-
-      if (_this.props.onBeforeChange) {
-        if (_this.continueChange) {
-          _this.props.onChange(_this.editor, data, _this.editor.getValue());
-        }
-      } else {
-        _this.props.onChange(_this.editor, data, _this.editor.getValue());
-      }
-    });
-    this.hydrate(this.props);
-    this.shared.apply(this.props);
-    this.applied = true;
-    this.mounted = true;
-    this.shared.wire(this.props);
-    this.editor.getDoc().clearHistory();
-
-    if (this.props.editorDidMount) {
-      this.props.editorDidMount(this.editor, this.editor.getValue(), this.initCb);
-    }
-  };
-
-  UnControlled.prototype.componentDidUpdate = function(prevProps) {
-    if (this.detached && this.props.detach === false) {
-      this.detached = false;
-
-      if (prevProps.editorDidAttach) {
-        prevProps.editorDidAttach(this.editor);
-      }
-    }
-
-    if (!this.detached && this.props.detach === true) {
-      this.detached = true;
-
-      if (prevProps.editorDidDetach) {
-        prevProps.editorDidDetach(this.editor);
-      }
-    }
-
-    if (SERVER_RENDERED || this.detached) return;
-    var preserved = {
-      cursor: null
-    };
-
-    if (this.props.value !== prevProps.value) {
-      this.hydrated = false;
-      this.applied = false;
-      this.appliedUserDefined = false;
-    }
-
-    if (!prevProps.autoCursor && prevProps.autoCursor !== undefined) {
-      preserved.cursor = this.editor.getDoc().getCursor();
-    }
-
-    this.hydrate(this.props);
-
-    if (!this.applied) {
-      this.shared.apply(prevProps);
-      this.applied = true;
-    }
-
-    if (!this.appliedUserDefined) {
-      this.shared.applyUserDefined(prevProps, preserved);
-      this.appliedUserDefined = true;
-    }
-  };
-
-  UnControlled.prototype.componentWillUnmount = function() {
-    if (SERVER_RENDERED) return;
-
-    if (this.props.editorWillUnmount) {
-      this.props.editorWillUnmount(cm);
-    }
-  };
-
-  UnControlled.prototype.shouldComponentUpdate = function(nextProps, nextState) {
-    var update = true;
-    if (SERVER_RENDERED) update = false;
-    if (this.detached && nextProps.detach) update = false;
-    return update;
-  };
-
-  UnControlled.prototype.render = function() {
-    var _this = this;
-
-    if (SERVER_RENDERED) return null;
-    var className = this.props.className ? 'react-codemirror2 ' + this.props.className : 'react-codemirror2';
-    return React.createElement('div', {
-      className: className,
-      ref: function ref(self) {
-        return _this.ref = self;
-      }
-    });
-  };
-
-  return UnControlled;
-}(React.Component);
-
-exports.UnControlled = UnControlled;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(20)))
-
-/***/ }),
-
-/***/ 2:
+/***/ 23:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === "Object" && o.constructor) n = o.constructor.name;
-  if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
-}
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
-  return arr2;
-}
-function _createForOfIteratorHelperLoose(o, allowArrayLike) {
-  var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"];
-  if (it) return (it = it.call(o)).next.bind(it);
-  if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {
-    if (it) o = it;
-    var i = 0;
-    return function () {
-      if (i >= o.length) return {
-        done: true
-      };
-      return {
-        done: false,
-        value: o[i++]
-      };
-    };
-  }
-  throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-
-function shallow(objA, objB) {
-  if (Object.is(objA, objB)) {
-    return true;
-  }
-  if (typeof objA !== 'object' || objA === null || typeof objB !== 'object' || objB === null) {
-    return false;
-  }
-  if (objA instanceof Map && objB instanceof Map) {
-    if (objA.size !== objB.size) return false;
-    for (var _iterator = _createForOfIteratorHelperLoose(objA), _step; !(_step = _iterator()).done;) {
-      var _step$value = _step.value,
-        key = _step$value[0],
-        value = _step$value[1];
-      if (!Object.is(value, objB.get(key))) {
-        return false;
-      }
-    }
-    return true;
-  }
-  if (objA instanceof Set && objB instanceof Set) {
-    if (objA.size !== objB.size) return false;
-    for (var _iterator2 = _createForOfIteratorHelperLoose(objA), _step2; !(_step2 = _iterator2()).done;) {
-      var _value = _step2.value;
-      if (!objB.has(_value)) {
-        return false;
-      }
-    }
-    return true;
-  }
-  var keysA = Object.keys(objA);
-  if (keysA.length !== Object.keys(objB).length) {
-    return false;
-  }
-  for (var i = 0; i < keysA.length; i++) {
-    if (!Object.prototype.hasOwnProperty.call(objB, keysA[i]) || !Object.is(objA[keysA[i]], objB[keysA[i]])) {
-      return false;
-    }
-  }
-  return true;
-}
-var shallow$1 = (function (objA, objB) {
-  if (false) {}
-  return shallow(objA, objB);
-});
-
-exports.default = shallow$1;
-exports.shallow = shallow;
-
-;(module.exports = (exports && exports.default) || {}),
-  Object.assign(module.exports, exports)
-
-
-/***/ }),
-
-/***/ 20:
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || new Function("return this")();
-} catch (e) {
-	// This works if the window reference is available
-	if (typeof window === "object") g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-
-/***/ 22:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var vanilla = __webpack_require__(119);
+var vanilla = __webpack_require__(120);
 var react$1 = __webpack_require__(0);
-var useSyncExternalStoreExports = __webpack_require__(120);
+var useSyncExternalStoreExports = __webpack_require__(121);
 
 var useSyncExternalStoreWithSelector = useSyncExternalStoreExports.useSyncExternalStoreWithSelector;
 function useStore(api, selector, equalityFn) {
@@ -5502,7 +5502,7 @@ function toComment(sourceMap) {
 
 /***/ }),
 
-/***/ 36:
+/***/ 37:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5536,7 +5536,7 @@ exports.useTransition=function(){return U.current.useTransition()};exports.versi
 
 /***/ }),
 
-/***/ 37:
+/***/ 38:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5552,7 +5552,7 @@ exports.useTransition=function(){return U.current.useTransition()};exports.versi
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(0),ca=__webpack_require__(38);function p(a){for(var b="https://reactjs.org/docs/error-decoder.html?invariant="+a,c=1;c<arguments.length;c++)b+="&args[]="+encodeURIComponent(arguments[c]);return"Minified React error #"+a+"; visit "+b+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings."}var da=new Set,ea={};function fa(a,b){ha(a,b);ha(a+"Capture",b)}
+var aa=__webpack_require__(0),ca=__webpack_require__(39);function p(a){for(var b="https://reactjs.org/docs/error-decoder.html?invariant="+a,c=1;c<arguments.length;c++)b+="&args[]="+encodeURIComponent(arguments[c]);return"Minified React error #"+a+"; visit "+b+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings."}var da=new Set,ea={};function fa(a,b){ha(a,b);ha(a+"Capture",b)}
 function ha(a,b){ea[a]=b;for(a=0;a<b.length;a++)da.add(b[a])}
 var ia=!("undefined"===typeof window||"undefined"===typeof window.document||"undefined"===typeof window.document.createElement),ja=Object.prototype.hasOwnProperty,ka=/^[:A-Z_a-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD][:A-Z_a-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD\-.0-9\u00B7\u0300-\u036F\u203F-\u2040]*$/,la=
 {},ma={};function oa(a){if(ja.call(ma,a))return!0;if(ja.call(la,a))return!1;if(ka.test(a))return ma[a]=!0;la[a]=!0;return!1}function pa(a,b,c,d){if(null!==c&&0===c.type)return!1;switch(typeof b){case "function":case "symbol":return!0;case "boolean":if(d)return!1;if(null!==c)return!c.acceptsBooleans;a=a.toLowerCase().slice(0,5);return"data-"!==a&&"aria-"!==a;default:return!1}}
@@ -5867,44 +5867,16 @@ exports.unstable_renderSubtreeIntoContainer=function(a,b,c,d){if(!pl(c))throw Er
 
 /***/ }),
 
-/***/ 38:
+/***/ 39:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 if (true) {
-  module.exports = __webpack_require__(39);
+  module.exports = __webpack_require__(40);
 } else {}
 
-
-/***/ }),
-
-/***/ 39:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(setImmediate) {/**
- * @license React
- * scheduler.production.min.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-function f(a,b){var c=a.length;a.push(b);a:for(;0<c;){var d=c-1>>>1,e=a[d];if(0<g(e,b))a[d]=b,a[c]=e,c=d;else break a}}function h(a){return 0===a.length?null:a[0]}function k(a){if(0===a.length)return null;var b=a[0],c=a.pop();if(c!==b){a[0]=c;a:for(var d=0,e=a.length,w=e>>>1;d<w;){var m=2*(d+1)-1,C=a[m],n=m+1,x=a[n];if(0>g(C,c))n<e&&0>g(x,C)?(a[d]=x,a[n]=c,d=n):(a[d]=C,a[m]=c,d=m);else if(n<e&&0>g(x,c))a[d]=x,a[n]=c,d=n;else break a}}return b}
-function g(a,b){var c=a.sortIndex-b.sortIndex;return 0!==c?c:a.id-b.id}if("object"===typeof performance&&"function"===typeof performance.now){var l=performance;exports.unstable_now=function(){return l.now()}}else{var p=Date,q=p.now();exports.unstable_now=function(){return p.now()-q}}var r=[],t=[],u=1,v=null,y=3,z=!1,A=!1,B=!1,D="function"===typeof setTimeout?setTimeout:null,E="function"===typeof clearTimeout?clearTimeout:null,F="undefined"!==typeof setImmediate?setImmediate:null;
-"undefined"!==typeof navigator&&void 0!==navigator.scheduling&&void 0!==navigator.scheduling.isInputPending&&navigator.scheduling.isInputPending.bind(navigator.scheduling);function G(a){for(var b=h(t);null!==b;){if(null===b.callback)k(t);else if(b.startTime<=a)k(t),b.sortIndex=b.expirationTime,f(r,b);else break;b=h(t)}}function H(a){B=!1;G(a);if(!A)if(null!==h(r))A=!0,I(J);else{var b=h(t);null!==b&&K(H,b.startTime-a)}}
-function J(a,b){A=!1;B&&(B=!1,E(L),L=-1);z=!0;var c=y;try{G(b);for(v=h(r);null!==v&&(!(v.expirationTime>b)||a&&!M());){var d=v.callback;if("function"===typeof d){v.callback=null;y=v.priorityLevel;var e=d(v.expirationTime<=b);b=exports.unstable_now();"function"===typeof e?v.callback=e:v===h(r)&&k(r);G(b)}else k(r);v=h(r)}if(null!==v)var w=!0;else{var m=h(t);null!==m&&K(H,m.startTime-b);w=!1}return w}finally{v=null,y=c,z=!1}}var N=!1,O=null,L=-1,P=5,Q=-1;
-function M(){return exports.unstable_now()-Q<P?!1:!0}function R(){if(null!==O){var a=exports.unstable_now();Q=a;var b=!0;try{b=O(!0,a)}finally{b?S():(N=!1,O=null)}}else N=!1}var S;if("function"===typeof F)S=function(){F(R)};else if("undefined"!==typeof MessageChannel){var T=new MessageChannel,U=T.port2;T.port1.onmessage=R;S=function(){U.postMessage(null)}}else S=function(){D(R,0)};function I(a){O=a;N||(N=!0,S())}function K(a,b){L=D(function(){a(exports.unstable_now())},b)}
-exports.unstable_IdlePriority=5;exports.unstable_ImmediatePriority=1;exports.unstable_LowPriority=4;exports.unstable_NormalPriority=3;exports.unstable_Profiling=null;exports.unstable_UserBlockingPriority=2;exports.unstable_cancelCallback=function(a){a.callback=null};exports.unstable_continueExecution=function(){A||z||(A=!0,I(J))};
-exports.unstable_forceFrameRate=function(a){0>a||125<a?console.error("forceFrameRate takes a positive int between 0 and 125, forcing frame rates higher than 125 fps is not supported"):P=0<a?Math.floor(1E3/a):5};exports.unstable_getCurrentPriorityLevel=function(){return y};exports.unstable_getFirstCallbackNode=function(){return h(r)};exports.unstable_next=function(a){switch(y){case 1:case 2:case 3:var b=3;break;default:b=y}var c=y;y=b;try{return a()}finally{y=c}};exports.unstable_pauseExecution=function(){};
-exports.unstable_requestPaint=function(){};exports.unstable_runWithPriority=function(a,b){switch(a){case 1:case 2:case 3:case 4:case 5:break;default:a=3}var c=y;y=a;try{return b()}finally{y=c}};
-exports.unstable_scheduleCallback=function(a,b,c){var d=exports.unstable_now();"object"===typeof c&&null!==c?(c=c.delay,c="number"===typeof c&&0<c?d+c:d):c=d;switch(a){case 1:var e=-1;break;case 2:e=250;break;case 5:e=1073741823;break;case 4:e=1E4;break;default:e=5E3}e=c+e;a={id:u++,callback:b,priorityLevel:a,startTime:c,expirationTime:e,sortIndex:-1};c>d?(a.sortIndex=c,f(t,a),null===h(r)&&a===h(t)&&(B?(E(L),L=-1):B=!0,K(H,c-d))):(a.sortIndex=e,f(r,a),A||z||(A=!0,I(J)));return a};
-exports.unstable_shouldYield=M;exports.unstable_wrapCallback=function(a){var b=y;return function(){var c=y;y=b;try{return a.apply(this,arguments)}finally{y=c}}};
-
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(40).setImmediate))
 
 /***/ }),
 
@@ -5977,7 +5949,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(45);
+var	fixUrls = __webpack_require__(46);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -6316,6 +6288,34 @@ function updateLink (link, options, obj) {
 /***/ 40:
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+/* WEBPACK VAR INJECTION */(function(setImmediate) {/**
+ * @license React
+ * scheduler.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+function f(a,b){var c=a.length;a.push(b);a:for(;0<c;){var d=c-1>>>1,e=a[d];if(0<g(e,b))a[d]=b,a[c]=e,c=d;else break a}}function h(a){return 0===a.length?null:a[0]}function k(a){if(0===a.length)return null;var b=a[0],c=a.pop();if(c!==b){a[0]=c;a:for(var d=0,e=a.length,w=e>>>1;d<w;){var m=2*(d+1)-1,C=a[m],n=m+1,x=a[n];if(0>g(C,c))n<e&&0>g(x,C)?(a[d]=x,a[n]=c,d=n):(a[d]=C,a[m]=c,d=m);else if(n<e&&0>g(x,c))a[d]=x,a[n]=c,d=n;else break a}}return b}
+function g(a,b){var c=a.sortIndex-b.sortIndex;return 0!==c?c:a.id-b.id}if("object"===typeof performance&&"function"===typeof performance.now){var l=performance;exports.unstable_now=function(){return l.now()}}else{var p=Date,q=p.now();exports.unstable_now=function(){return p.now()-q}}var r=[],t=[],u=1,v=null,y=3,z=!1,A=!1,B=!1,D="function"===typeof setTimeout?setTimeout:null,E="function"===typeof clearTimeout?clearTimeout:null,F="undefined"!==typeof setImmediate?setImmediate:null;
+"undefined"!==typeof navigator&&void 0!==navigator.scheduling&&void 0!==navigator.scheduling.isInputPending&&navigator.scheduling.isInputPending.bind(navigator.scheduling);function G(a){for(var b=h(t);null!==b;){if(null===b.callback)k(t);else if(b.startTime<=a)k(t),b.sortIndex=b.expirationTime,f(r,b);else break;b=h(t)}}function H(a){B=!1;G(a);if(!A)if(null!==h(r))A=!0,I(J);else{var b=h(t);null!==b&&K(H,b.startTime-a)}}
+function J(a,b){A=!1;B&&(B=!1,E(L),L=-1);z=!0;var c=y;try{G(b);for(v=h(r);null!==v&&(!(v.expirationTime>b)||a&&!M());){var d=v.callback;if("function"===typeof d){v.callback=null;y=v.priorityLevel;var e=d(v.expirationTime<=b);b=exports.unstable_now();"function"===typeof e?v.callback=e:v===h(r)&&k(r);G(b)}else k(r);v=h(r)}if(null!==v)var w=!0;else{var m=h(t);null!==m&&K(H,m.startTime-b);w=!1}return w}finally{v=null,y=c,z=!1}}var N=!1,O=null,L=-1,P=5,Q=-1;
+function M(){return exports.unstable_now()-Q<P?!1:!0}function R(){if(null!==O){var a=exports.unstable_now();Q=a;var b=!0;try{b=O(!0,a)}finally{b?S():(N=!1,O=null)}}else N=!1}var S;if("function"===typeof F)S=function(){F(R)};else if("undefined"!==typeof MessageChannel){var T=new MessageChannel,U=T.port2;T.port1.onmessage=R;S=function(){U.postMessage(null)}}else S=function(){D(R,0)};function I(a){O=a;N||(N=!0,S())}function K(a,b){L=D(function(){a(exports.unstable_now())},b)}
+exports.unstable_IdlePriority=5;exports.unstable_ImmediatePriority=1;exports.unstable_LowPriority=4;exports.unstable_NormalPriority=3;exports.unstable_Profiling=null;exports.unstable_UserBlockingPriority=2;exports.unstable_cancelCallback=function(a){a.callback=null};exports.unstable_continueExecution=function(){A||z||(A=!0,I(J))};
+exports.unstable_forceFrameRate=function(a){0>a||125<a?console.error("forceFrameRate takes a positive int between 0 and 125, forcing frame rates higher than 125 fps is not supported"):P=0<a?Math.floor(1E3/a):5};exports.unstable_getCurrentPriorityLevel=function(){return y};exports.unstable_getFirstCallbackNode=function(){return h(r)};exports.unstable_next=function(a){switch(y){case 1:case 2:case 3:var b=3;break;default:b=y}var c=y;y=b;try{return a()}finally{y=c}};exports.unstable_pauseExecution=function(){};
+exports.unstable_requestPaint=function(){};exports.unstable_runWithPriority=function(a,b){switch(a){case 1:case 2:case 3:case 4:case 5:break;default:a=3}var c=y;y=a;try{return b()}finally{y=c}};
+exports.unstable_scheduleCallback=function(a,b,c){var d=exports.unstable_now();"object"===typeof c&&null!==c?(c=c.delay,c="number"===typeof c&&0<c?d+c:d):c=d;switch(a){case 1:var e=-1;break;case 2:e=250;break;case 5:e=1073741823;break;case 4:e=1E4;break;default:e=5E3}e=c+e;a={id:u++,callback:b,priorityLevel:a,startTime:c,expirationTime:e,sortIndex:-1};c>d?(a.sortIndex=c,f(t,a),null===h(r)&&a===h(t)&&(B?(E(L),L=-1):B=!0,K(H,c-d))):(a.sortIndex=e,f(r,a),A||z||(A=!0,I(J)));return a};
+exports.unstable_shouldYield=M;exports.unstable_wrapCallback=function(a){var b=y;return function(){var c=y;y=b;try{return a.apply(this,arguments)}finally{y=c}}};
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(41).setImmediate))
+
+/***/ }),
+
+/***/ 41:
+/***/ (function(module, exports, __webpack_require__) {
+
 /* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !== "undefined" && global) ||
             (typeof self !== "undefined" && self) ||
             window;
@@ -6369,7 +6369,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(41);
+__webpack_require__(42);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -6384,7 +6384,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
-/***/ 41:
+/***/ 42:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -6574,11 +6574,11 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(20), __webpack_require__(42)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(20), __webpack_require__(43)))
 
 /***/ }),
 
-/***/ 42:
+/***/ 43:
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -6769,7 +6769,7 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
-/***/ 45:
+/***/ 46:
 /***/ (function(module, exports) {
 
 
@@ -6865,7 +6865,7 @@ module.exports = function (css) {
 
 /***/ }),
 
-/***/ 80:
+/***/ 81:
 /***/ (function(module, exports, __webpack_require__) {
 
 // CodeMirror, copyright (c) by Marijn Haverbeke and others

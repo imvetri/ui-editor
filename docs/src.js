@@ -40,10 +40,10 @@ __webpack_require__.d(__webpack_exports__, "b", function() { return /* reexport 
 // UNUSED EXPORTS: zoomTransform, ZoomTransform
 
 // EXTERNAL MODULE: ./node_modules/d3-dispatch/src/dispatch.js
-var dispatch = __webpack_require__(132);
+var dispatch = __webpack_require__(136);
 
 // EXTERNAL MODULE: ./node_modules/d3-drag/src/nodrag.js
-var nodrag = __webpack_require__(21);
+var nodrag = __webpack_require__(22);
 
 // CONCATENATED MODULE: ./node_modules/d3-interpolate/src/zoom.js
 var epsilon2 = 1e-12;
@@ -119,10 +119,10 @@ function tanh(x) {
 })(Math.SQRT2, 2, 4));
 
 // EXTERNAL MODULE: ./node_modules/d3-selection/src/select.js
-var src_select = __webpack_require__(31);
+var src_select = __webpack_require__(32);
 
 // EXTERNAL MODULE: ./node_modules/d3-selection/src/pointer.js + 1 modules
-var pointer = __webpack_require__(134);
+var pointer = __webpack_require__(138);
 
 // EXTERNAL MODULE: ./node_modules/d3-selection/src/selection/index.js + 37 modules
 var src_selection = __webpack_require__(18);
@@ -1590,7 +1590,7 @@ var selector = __webpack_require__(15);
 });
 
 // EXTERNAL MODULE: ./node_modules/d3-selection/src/selectorAll.js
-var selectorAll = __webpack_require__(29);
+var selectorAll = __webpack_require__(30);
 
 // CONCATENATED MODULE: ./node_modules/d3-transition/src/transition/selectAll.js
 
@@ -1630,7 +1630,7 @@ var Selection = src_selection["b" /* default */].prototype.constructor;
 });
 
 // EXTERNAL MODULE: ./node_modules/d3-selection/src/selection/style.js
-var style = __webpack_require__(30);
+var style = __webpack_require__(31);
 
 // CONCATENATED MODULE: ./node_modules/d3-transition/src/transition/style.js
 
@@ -2544,7 +2544,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _config = __webpack_require__(49);
+var _config = __webpack_require__(50);
 
 var _config2 = _interopRequireDefault(_config);
 
@@ -2653,7 +2653,7 @@ exports.default = Window;
 "use strict";
 
 
-var _localStorage = __webpack_require__(77);
+var _localStorage = __webpack_require__(78);
 
 module.exports = {
     readData: _localStorage.readData,
@@ -2715,11 +2715,11 @@ exports.saveComponentsToWindow = saveComponentsToWindow;
 exports.getNestedComponents = getNestedComponents;
 exports.initialiseComponents = initialiseComponents;
 
-var _createComponent = __webpack_require__(75);
+var _createComponent = __webpack_require__(76);
 
 var _Storage = __webpack_require__(9);
 
-var _assetUtils = __webpack_require__(78);
+var _assetUtils = __webpack_require__(79);
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } } // Dependencies.
 
@@ -2906,7 +2906,7 @@ function array(x) {
 }
 
 // EXTERNAL MODULE: ./node_modules/d3-selection/src/selectorAll.js
-var selectorAll = __webpack_require__(29);
+var selectorAll = __webpack_require__(30);
 
 // CONCATENATED MODULE: ./node_modules/d3-selection/src/selection/selectAll.js
 
@@ -3362,7 +3362,7 @@ function attrFunctionNS(fullname, value) {
 });
 
 // EXTERNAL MODULE: ./node_modules/d3-selection/src/selection/style.js
-var style = __webpack_require__(30);
+var style = __webpack_require__(31);
 
 // CONCATENATED MODULE: ./node_modules/d3-selection/src/selection/property.js
 function propertyRemove(name) {
@@ -3844,12 +3844,13 @@ Selection.prototype = selection_selection.prototype = {
 /***/ }),
 /* 19 */,
 /* 20 */,
-/* 21 */
+/* 21 */,
+/* 22 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return yesdrag; });
-/* harmony import */ var d3_selection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(31);
+/* harmony import */ var d3_selection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(32);
 /* harmony import */ var _noevent_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(5);
 
 
@@ -3882,9 +3883,9 @@ function yesdrag(view, noclick) {
 
 
 /***/ }),
-/* 22 */,
 /* 23 */,
-/* 24 */
+/* 24 */,
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3965,7 +3966,7 @@ function findFolder(folderName, folder) {
 }
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4051,7 +4052,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4080,7 +4081,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4093,7 +4094,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4174,7 +4175,7 @@ function findFolder(folderName, folder) {
 }
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4190,7 +4191,7 @@ function empty() {
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4234,7 +4235,7 @@ function styleValue(node, name) {
 
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4249,7 +4250,6 @@ function styleValue(node, name) {
 
 
 /***/ }),
-/* 32 */,
 /* 33 */,
 /* 34 */,
 /* 35 */,
@@ -4260,11 +4260,12 @@ function styleValue(node, name) {
 /* 40 */,
 /* 41 */,
 /* 42 */,
-/* 43 */
+/* 43 */,
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(44);
+var content = __webpack_require__(45);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -4285,7 +4286,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -4295,8 +4296,8 @@ exports.push([module.i, "body {\n    position:relative;\n    color: #d9d9d9;\n  
 
 
 /***/ }),
-/* 45 */,
-/* 46 */
+/* 46 */,
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4312,13 +4313,13 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(47);
+__webpack_require__(48);
 
 var _Window = __webpack_require__(8);
 
 var _Window2 = _interopRequireDefault(_Window);
 
-var _Folders = __webpack_require__(50);
+var _Folders = __webpack_require__(51);
 
 var _Folders2 = _interopRequireDefault(_Folders);
 
@@ -4424,11 +4425,11 @@ var Components = function (_Component) {
 exports.default = Components;
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(48);
+var content = __webpack_require__(49);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -4449,7 +4450,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -4459,7 +4460,7 @@ exports.push([module.i, ".override {\n    line-height: 0%;\n}\n\ntextarea {\n   
 
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4485,7 +4486,7 @@ var config = {
 exports.default = config;
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4503,11 +4504,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _findFolders = __webpack_require__(24);
+var _findFolders = __webpack_require__(25);
 
-__webpack_require__(51);
+__webpack_require__(52);
 
-var _processFolder = __webpack_require__(53);
+var _processFolder = __webpack_require__(54);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -4604,11 +4605,11 @@ var Folders = function (_Component) {
 exports.default = Folders;
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(52);
+var content = __webpack_require__(53);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -4629,7 +4630,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -4639,7 +4640,7 @@ exports.push([module.i, ".newFolder{\n    user-select: none;\n    padding-left:5
 
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4650,11 +4651,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.folderStructure = folderStructure;
 
-var _Folder = __webpack_require__(54);
+var _Folder = __webpack_require__(55);
 
 var _Folder2 = _interopRequireDefault(_Folder);
 
-var _Componentt = __webpack_require__(62);
+var _Componentt = __webpack_require__(63);
 
 var _Componentt2 = _interopRequireDefault(_Componentt);
 
@@ -4729,7 +4730,7 @@ function folderStructure(props, onFolderUpdate, onFolderStatusChanged) {
 }
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4745,15 +4746,15 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(55);
+__webpack_require__(56);
 
-var _NewFolder = __webpack_require__(57);
+var _NewFolder = __webpack_require__(58);
 
 var _NewFolder2 = _interopRequireDefault(_NewFolder);
 
-var _Reducer = __webpack_require__(60);
+var _Reducer = __webpack_require__(61);
 
-var _Events = __webpack_require__(61);
+var _Events = __webpack_require__(62);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -4838,11 +4839,11 @@ var Folder = function (_Component) {
 exports.default = Folder;
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(56);
+var content = __webpack_require__(57);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -4863,7 +4864,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -4873,7 +4874,7 @@ exports.push([module.i, "input.folder{\n    border:none;\n    background:none;\n
 
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4889,7 +4890,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(58);
+__webpack_require__(59);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -4964,11 +4965,11 @@ var NewFolder = function (_Component) {
 exports.default = NewFolder;
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(59);
+var content = __webpack_require__(60);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -4989,7 +4990,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -4999,7 +5000,7 @@ exports.push([module.i, ".newFolder i{\n    color: rgba(255,255,255,0.5);\n    b
 
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5030,7 +5031,7 @@ function toggleFolder() {
 }
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5044,7 +5045,7 @@ exports.dragOverHandler = dragOverHandler;
 exports.dragLeaveHandler = dragLeaveHandler;
 exports.folderStartDrag = folderStartDrag;
 
-var _findFolders = __webpack_require__(24);
+var _findFolders = __webpack_require__(25);
 
 function handleComponentDrop(componentName, oldParent) {
     var contents = Array.from(this.state.contents);
@@ -5137,7 +5138,7 @@ function folderStartDrag(e) {
 }
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5153,9 +5154,9 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Events = __webpack_require__(63);
+var _Events = __webpack_require__(64);
 
-__webpack_require__(64);
+__webpack_require__(65);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -5228,7 +5229,7 @@ var Componentt = function (_Component) {
 exports.default = Componentt;
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5249,11 +5250,11 @@ function selectionChanged(componentName, e) {
 }
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(65);
+var content = __webpack_require__(66);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -5274,7 +5275,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -5284,7 +5285,7 @@ exports.push([module.i, "/* Show green when component is selected*/\n\n.selected
 
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5300,15 +5301,15 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Configurator = __webpack_require__(67);
+var _Configurator = __webpack_require__(68);
 
 var _Configurator2 = _interopRequireDefault(_Configurator);
 
-var _Tags = __webpack_require__(70);
+var _Tags = __webpack_require__(71);
 
 var _Tags2 = _interopRequireDefault(_Tags);
 
-var _Reducer = __webpack_require__(79);
+var _Reducer = __webpack_require__(80);
 
 var _Reducer2 = _interopRequireDefault(_Reducer);
 
@@ -5316,9 +5317,9 @@ var _Window = __webpack_require__(8);
 
 var _Window2 = _interopRequireDefault(_Window);
 
-__webpack_require__(83);
+__webpack_require__(84);
 
-var _Reducer3 = __webpack_require__(85);
+var _Reducer3 = __webpack_require__(86);
 
 var _Storage = __webpack_require__(9);
 
@@ -5532,7 +5533,7 @@ var Events = function (_Component) {
 exports.default = Events;
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5548,7 +5549,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(68);
+__webpack_require__(69);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -5632,11 +5633,11 @@ var Configurator = function (_Component) {
 exports.default = Configurator;
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(69);
+var content = __webpack_require__(70);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -5657,7 +5658,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -5667,7 +5668,7 @@ exports.push([module.i, ".error {\n    color: red;\n}\n\n.info {\n    color: yel
 
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5683,13 +5684,13 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(71);
+__webpack_require__(72);
 
-var _Nodes = __webpack_require__(73);
+var _Nodes = __webpack_require__(74);
 
 var _Nodes2 = _interopRequireDefault(_Nodes);
 
-var _getNodeTree = __webpack_require__(74);
+var _getNodeTree = __webpack_require__(75);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -5761,11 +5762,11 @@ var Tags = function (_Component) {
 exports.default = Tags;
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(72);
+var content = __webpack_require__(73);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -5786,7 +5787,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -5796,7 +5797,7 @@ exports.push([module.i, ".error {\n    color: red;\n}\n\n.tags {\n    max-height
 
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5951,7 +5952,7 @@ var Nodes = function (_Component) {
 exports.default = Nodes;
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5997,13 +5998,13 @@ function getNodeTree(element, jsx, style, state, events) {
 }
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _React = __webpack_require__(76);
+var _React = __webpack_require__(77);
 
 function createComponent(component) {
 
@@ -6018,7 +6019,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6029,9 +6030,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.convertToReact = convertToReact;
 
-var _markup = __webpack_require__(25);
+var _markup = __webpack_require__(26);
 
-var _reducers = __webpack_require__(26);
+var _reducers = __webpack_require__(27);
 
 // Elements to  react component.
 function convertToReact(component) {
@@ -6077,7 +6078,7 @@ function convertToReact(component) {
 }
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6167,7 +6168,7 @@ function writeComponent(parent) {
 }
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6234,7 +6235,7 @@ function hasAssets(state) {
 }
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6252,7 +6253,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactCodemirror = __webpack_require__(14);
 
-var _Publishes = __webpack_require__(81);
+var _Publishes = __webpack_require__(82);
 
 var _Publishes2 = _interopRequireDefault(_Publishes);
 
@@ -6366,8 +6367,8 @@ var Reducer = function (_Component) {
 exports.default = Reducer;
 
 /***/ }),
-/* 80 */,
-/* 81 */
+/* 81 */,
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6383,7 +6384,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Publish = __webpack_require__(82);
+var _Publish = __webpack_require__(83);
 
 var _Publish2 = _interopRequireDefault(_Publish);
 
@@ -6445,7 +6446,7 @@ var Publishes = function (_Component) {
 exports.default = Publishes;
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6572,11 +6573,11 @@ var Publish = function (_Component) {
 exports.default = Publish;
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(84);
+var content = __webpack_require__(85);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -6597,7 +6598,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -6607,7 +6608,7 @@ exports.push([module.i, ".events {\n    border:1px solid black;\n    padding: 5p
 
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6740,7 +6741,7 @@ function updateSelectedEvent(e) {
 }
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6756,9 +6757,9 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(87);
+__webpack_require__(88);
 
-var _Asset = __webpack_require__(89);
+var _Asset = __webpack_require__(90);
 
 var _Asset2 = _interopRequireDefault(_Asset);
 
@@ -6766,9 +6767,9 @@ var _Window = __webpack_require__(8);
 
 var _Window2 = _interopRequireDefault(_Window);
 
-var _Reducer = __webpack_require__(92);
+var _Reducer = __webpack_require__(93);
 
-var _db = __webpack_require__(93);
+var _db = __webpack_require__(94);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -6887,11 +6888,11 @@ var Assets = function (_Component) {
 exports.default = Assets;
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(88);
+var content = __webpack_require__(89);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -6912,7 +6913,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -6922,7 +6923,7 @@ exports.push([module.i, "\n/* Show dashed outline for the drop zone.*/\n\n.drop_
 
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6938,7 +6939,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(90);
+__webpack_require__(91);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -6989,11 +6990,11 @@ var Asset = function (_Component) {
 exports.default = Asset;
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(91);
+var content = __webpack_require__(92);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -7014,7 +7015,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -7024,7 +7025,7 @@ exports.push([module.i, "\n/* Show selected asset with a light dashed outline */
 
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7084,7 +7085,7 @@ function dragLeaveHandler(e) {
 }
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7128,7 +7129,7 @@ function fetchFromDB() {
 }
 
 /***/ }),
-/* 94 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7146,7 +7147,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _Storage = __webpack_require__(9);
 
-var _Change = __webpack_require__(95);
+var _Change = __webpack_require__(96);
 
 var _Change2 = _interopRequireDefault(_Change);
 
@@ -7154,7 +7155,7 @@ var _Window = __webpack_require__(8);
 
 var _Window2 = _interopRequireDefault(_Window);
 
-__webpack_require__(98);
+__webpack_require__(99);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -7212,7 +7213,7 @@ var History = function (_Component) {
 exports.default = History;
 
 /***/ }),
-/* 95 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7228,7 +7229,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(96);
+__webpack_require__(97);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -7292,11 +7293,11 @@ var Change = function (_Component) {
 exports.default = Change;
 
 /***/ }),
-/* 96 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(97);
+var content = __webpack_require__(98);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -7317,7 +7318,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 97 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -7327,11 +7328,11 @@ exports.push([module.i, ".selected, .green {\n    border: 1px solid green;\n    
 
 
 /***/ }),
-/* 98 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(99);
+var content = __webpack_require__(100);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -7352,7 +7353,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 99 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -7362,7 +7363,7 @@ exports.push([module.i, ".selected, .green {\n    border: 1px solid green;\n    
 
 
 /***/ }),
-/* 100 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7380,7 +7381,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _Runtime = __webpack_require__(13);
 
-__webpack_require__(101);
+__webpack_require__(102);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -7432,11 +7433,11 @@ var DynamicComponent = function (_Component) {
 exports.default = DynamicComponent;
 
 /***/ }),
-/* 101 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(102);
+var content = __webpack_require__(103);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -7457,7 +7458,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 102 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -7467,7 +7468,7 @@ exports.push([module.i, ".hint{\n    height:100px;\n    width:100%;\n    border:
 
 
 /***/ }),
-/* 103 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7483,15 +7484,15 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _State = __webpack_require__(104);
+var _State = __webpack_require__(105);
 
 var _State2 = _interopRequireDefault(_State);
 
-var _Utility = __webpack_require__(105);
+var _Utility = __webpack_require__(106);
 
-var _JSX = __webpack_require__(106);
+var _JSX = __webpack_require__(107);
 
-var _Div = __webpack_require__(107);
+var _Div = __webpack_require__(108);
 
 var _Div2 = _interopRequireDefault(_Div);
 
@@ -7499,9 +7500,9 @@ var _Window = __webpack_require__(8);
 
 var _Window2 = _interopRequireDefault(_Window);
 
-__webpack_require__(110);
+__webpack_require__(111);
 
-var _Constants = __webpack_require__(27);
+var _Constants = __webpack_require__(28);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -7659,7 +7660,7 @@ var Builder = function (_Component) {
 exports.default = Builder;
 
 /***/ }),
-/* 104 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7698,7 +7699,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 105 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7778,7 +7779,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 106 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7803,7 +7804,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 107 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7819,7 +7820,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(108);
+__webpack_require__(109);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -8201,11 +8202,11 @@ window.Div = Div;
 exports.default = Div;
 
 /***/ }),
-/* 108 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(109);
+var content = __webpack_require__(110);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -8226,7 +8227,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 109 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -8236,11 +8237,11 @@ exports.push([module.i, ".Div{\n    position: fixed;\n\ttop: 25%;\n    left: 20%
 
 
 /***/ }),
-/* 110 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(111);
+var content = __webpack_require__(112);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -8261,7 +8262,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 111 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -8271,7 +8272,7 @@ exports.push([module.i, ".toolBar{\n    width:30%;\n    background: #2C3134;\n  
 
 
 /***/ }),
-/* 112 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8334,7 +8335,7 @@ var Preview = function (_Component) {
 exports.default = Preview;
 
 /***/ }),
-/* 113 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8430,7 +8431,7 @@ var Markup = function (_Component) {
 exports.default = Markup;
 
 /***/ }),
-/* 114 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8527,7 +8528,7 @@ var Style = function (_Component) {
 exports.default = Style;
 
 /***/ }),
-/* 115 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8622,7 +8623,7 @@ var State = function (_Component) {
 exports.default = State;
 
 /***/ }),
-/* 116 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8820,7 +8821,7 @@ var Composer = function (_Component) {
 exports.default = Composer;
 
 /***/ }),
-/* 117 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8834,26 +8835,44 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
 
 var _react = __webpack_require__(0);
 
-var _reactflow = __webpack_require__(129);
+var _react2 = _interopRequireDefault(_react);
+
+var _reactflow = __webpack_require__(21);
 
 var _reactflow2 = _interopRequireDefault(_reactflow);
 
-__webpack_require__(124);
+var _initialElements = __webpack_require__(125);
+
+var _CustomNode = __webpack_require__(126);
+
+var _CustomNode2 = _interopRequireDefault(_CustomNode);
+
+__webpack_require__(127);
+
+__webpack_require__(129);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var initialNodes = [{ id: '1', position: { x: 0, y: 0 }, data: { label: '1' } }, { id: '2', position: { x: 0, y: 100 }, data: { label: '2' } }];
+var nodeTypes = {
+  custom: (0, _react.memo)(_CustomNode2.default)
+};
 
-var initialEdges = [{ id: 'e1-2', source: '1', target: '2' }];
+var minimapStyle = {
+  height: 120
+};
 
-function Flow() {
-  var _useNodesState = (0, _reactflow.useNodesState)(initialNodes),
+var onInit = function onInit(reactFlowInstance) {
+  return console.log('flow loaded:', reactFlowInstance);
+};
+
+var Flow = function Flow() {
+  var _useNodesState = (0, _reactflow.useNodesState)(_initialElements.nodes),
       _useNodesState2 = _slicedToArray(_useNodesState, 3),
       nodes = _useNodesState2[0],
       setNodes = _useNodesState2[1],
       onNodesChange = _useNodesState2[2];
 
-  var _useEdgesState = (0, _reactflow.useEdgesState)(initialEdges),
+  var _useEdgesState = (0, _reactflow.useEdgesState)(_initialElements.edges),
       _useEdgesState2 = _slicedToArray(_useEdgesState, 3),
       edges = _useEdgesState2[0],
       setEdges = _useEdgesState2[1],
@@ -8863,35 +8882,334 @@ function Flow() {
     return setEdges(function (eds) {
       return (0, _reactflow.addEdge)(params, eds);
     });
-  }, [setEdges]);
+  }, []);
 
-  return React.createElement(
+  // we are using a bit of a shortcut here to adjust the edge type
+  // this could also be done with a custom edge for example
+  var edgesWithUpdatedTypes = edges.map(function (edge) {
+    if (edge.sourceHandle) {
+      var edgeType = nodes.find(function (node) {
+        return node.type === 'custom';
+      }).data.selects[edge.sourceHandle];
+      edge.type = edgeType;
+    }
+
+    return edge;
+  });
+
+  return _react2.default.createElement(
     _reactflow2.default,
     {
       nodes: nodes,
-      edges: edges,
+      edges: edgesWithUpdatedTypes,
       onNodesChange: onNodesChange,
       onEdgesChange: onEdgesChange,
-      onConnect: onConnect
+      onConnect: onConnect,
+      onInit: onInit,
+      fitView: true,
+      attributionPosition: 'top-right',
+      nodeTypes: nodeTypes
     },
-    React.createElement(_reactflow.MiniMap, null),
-    React.createElement(_reactflow.Controls, null),
-    React.createElement(_reactflow.Background, null)
+    _react2.default.createElement(_reactflow.MiniMap, { style: minimapStyle, zoomable: true, pannable: true }),
+    _react2.default.createElement(_reactflow.Controls, null),
+    _react2.default.createElement(_reactflow.Background, { color: '#aaa', gap: 16 })
   );
-}
+};
 
 exports.default = Flow;
 
 /***/ }),
-/* 118 */,
 /* 119 */,
 /* 120 */,
 /* 121 */,
 /* 122 */,
 /* 123 */,
 /* 124 */,
-/* 125 */,
+/* 125 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.edges = exports.nodes = undefined;
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactflow = __webpack_require__(21);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var nodes = exports.nodes = [{
+  id: '1',
+  type: 'input',
+  data: {
+    label: 'Input Node'
+  },
+  position: { x: 250, y: 0 }
+}, {
+  id: '2',
+  data: {
+    label: 'Default Node'
+  },
+  position: { x: 100, y: 100 }
+}, {
+  id: '3',
+  type: 'output',
+  data: {
+    label: 'Output Node'
+  },
+  position: { x: 400, y: 100 }
+}, {
+  id: '4',
+  type: 'custom',
+  position: { x: 100, y: 200 },
+  data: {
+    selects: {
+      'handle-0': 'smoothstep',
+      'handle-1': 'smoothstep'
+    }
+  }
+}, {
+  id: '5',
+  type: 'output',
+  data: {
+    label: 'custom style'
+  },
+  className: 'circle',
+  style: {
+    background: '#2B6CB0',
+    color: 'white'
+  },
+  position: { x: 400, y: 200 },
+  sourcePosition: _reactflow.Position.Right,
+  targetPosition: _reactflow.Position.Left
+}, {
+  id: '6',
+  type: 'output',
+  style: {
+    background: '#63B3ED',
+    color: 'white',
+    width: 100
+  },
+  data: {
+    label: 'Node'
+  },
+  position: { x: 400, y: 325 },
+  sourcePosition: _reactflow.Position.Right,
+  targetPosition: _reactflow.Position.Left
+}, {
+  id: '7',
+  type: 'default',
+  className: 'annotation',
+  data: {
+    label: _react2.default.createElement(
+      'div',
+      null,
+      'On the bottom left you see the ',
+      _react2.default.createElement(
+        'strong',
+        null,
+        'Controls'
+      ),
+      ' and the bottom right the',
+      ' ',
+      _react2.default.createElement(
+        'strong',
+        null,
+        'MiniMap'
+      ),
+      '. This is also just a node \uD83E\uDD73'
+    )
+  },
+  draggable: false,
+  selectable: false,
+  position: { x: 150, y: 400 }
+}];
+
+var edges = exports.edges = [{ id: 'e1-2', source: '1', target: '2', label: 'this is an edge label' }, { id: 'e1-3', source: '1', target: '3', animated: true }, {
+  id: 'e4-5',
+  source: '4',
+  target: '5',
+  type: 'smoothstep',
+  sourceHandle: 'handle-0',
+  data: {
+    selectIndex: 0
+  },
+  markerEnd: {
+    type: _reactflow.MarkerType.ArrowClosed
+  }
+}, {
+  id: 'e4-6',
+  source: '4',
+  target: '6',
+  type: 'smoothstep',
+  sourceHandle: 'handle-1',
+  data: {
+    selectIndex: 1
+  },
+  markerEnd: {
+    type: _reactflow.MarkerType.ArrowClosed
+  }
+}];
+
+/***/ }),
 /* 126 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactflow = __webpack_require__(21);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var options = [{
+  value: 'smoothstep',
+  label: 'Smoothstep'
+}, {
+  value: 'step',
+  label: 'Step'
+}, {
+  value: 'default',
+  label: 'Bezier (default)'
+}, {
+  value: 'straight',
+  label: 'Straight'
+}];
+
+function Select(_ref) {
+  var value = _ref.value,
+      handleId = _ref.handleId,
+      nodeId = _ref.nodeId;
+
+  var _useReactFlow = (0, _reactflow.useReactFlow)(),
+      setNodes = _useReactFlow.setNodes;
+
+  var store = (0, _reactflow.useStoreApi)();
+
+  var onChange = function onChange(evt) {
+    var _store$getState = store.getState(),
+        nodeInternals = _store$getState.nodeInternals;
+
+    setNodes(Array.from(nodeInternals.values()).map(function (node) {
+      if (node.id === nodeId) {
+        node.data = _extends({}, node.data, {
+          selects: _extends({}, node.data.selects, _defineProperty({}, handleId, evt.target.value))
+        });
+      }
+
+      return node;
+    }));
+  };
+
+  return _react2.default.createElement(
+    'div',
+    { className: 'custom-node__select' },
+    _react2.default.createElement(
+      'div',
+      null,
+      'Edge Type'
+    ),
+    _react2.default.createElement(
+      'select',
+      { className: 'nodrag', onChange: onChange, value: value },
+      options.map(function (option) {
+        return _react2.default.createElement(
+          'option',
+          { key: option.value, value: option.value },
+          option.label
+        );
+      })
+    ),
+    _react2.default.createElement(_reactflow.Handle, { type: 'source', position: _reactflow.Position.Right, id: handleId })
+  );
+}
+
+function CustomNode(_ref2) {
+  var id = _ref2.id,
+      data = _ref2.data;
+
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      'div',
+      { className: 'custom-node__header' },
+      'This is a ',
+      _react2.default.createElement(
+        'strong',
+        null,
+        'custom node'
+      )
+    ),
+    _react2.default.createElement(
+      'div',
+      { className: 'custom-node__body' },
+      Object.keys(data.selects).map(function (handleId) {
+        return _react2.default.createElement(Select, { key: handleId, nodeId: id, value: data.selects[handleId], handleId: handleId });
+      })
+    )
+  );
+}
+
+exports.default = CustomNode;
+
+/***/ }),
+/* 127 */,
+/* 128 */,
+/* 129 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(130);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+/* 130 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// Module
+exports.push([module.i, ".react-flow__node-custom {\n    font-size: 10px;\n    width: 180px;\n    background: #f5f5f6;\n    color: #222;\n    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 15%), 0 2px 4px -1px rgb(0 0 0 / 8%);\n    border-radius: 2px;\n  }\n  \n  .react-flow__node-custom .react-flow__handle {\n    top: 24px;\n    right: -15px;\n    width: 6px;\n    height: 10px;\n    border-radius: 2px;\n    background-color: #778899;\n  }\n  \n  .react-flow__node.circle {\n    border-radius: 50%;\n    width: 60px;\n    height: 60px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    font-weight: 700;\n  }\n  \n  .react-flow__node.annotation {\n    border-radius: 0;\n    text-align: left;\n    background: white;\n    border: none;\n    line-height: 1.4;\n    width: 225px;\n    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 15%), 0 2px 4px -1px rgb(0 0 0 / 8%);\n  }\n  \n  .react-flow__node.annotation .react-flow__handle {\n    display: none;\n  }\n  \n  .custom-node__header {\n    padding: 8px 10px;\n    border-bottom: 1px solid #e2e8f0;\n  }\n  \n  .custom-node__body {\n    padding: 10px;\n  }\n  \n  .custom-node__select {\n    position: relative;\n    margin-bottom: 10px;\n  }\n  \n  .custom-node__select select {\n    width: 100%;\n    margin-top: 5px;\n    font-size: 10px;\n  }\n  ", ""]);
+
+
+
+/***/ }),
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8903,9 +9221,9 @@ Object.defineProperty(exports, "__esModule", {
 exports.convertToReact = convertToReact;
 exports.convertToReactRedux = convertToReactRedux;
 
-var _markup = __webpack_require__(25);
+var _markup = __webpack_require__(26);
 
-var _reducers = __webpack_require__(26);
+var _reducers = __webpack_require__(27);
 
 // Elements to  react component.
 function convertToReact(component) {
@@ -8955,7 +9273,7 @@ function convertToReactRedux(component) {
 }
 
 /***/ }),
-/* 127 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8971,7 +9289,7 @@ exports.updateSelectedComponent = updateSelectedComponent;
 
 var _Storage = __webpack_require__(9);
 
-var _findFolders = __webpack_require__(28);
+var _findFolders = __webpack_require__(29);
 
 var _Runtime = __webpack_require__(13);
 
@@ -9132,7 +9450,7 @@ function updateSelectedComponent(componentName, e) {
 }
 
 /***/ }),
-/* 128 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9150,7 +9468,7 @@ exports.onDeleteFolder = onDeleteFolder;
 
 var _Storage = __webpack_require__(9);
 
-var _findFolders = __webpack_require__(28);
+var _findFolders = __webpack_require__(29);
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
@@ -9232,8 +9550,7 @@ function onDeleteFolder(TYPE, folderName) {
 }
 
 /***/ }),
-/* 129 */,
-/* 130 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9249,67 +9566,67 @@ var _reactDom = __webpack_require__(12);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-__webpack_require__(43);
+__webpack_require__(44);
 
-var _Components = __webpack_require__(46);
+var _Components = __webpack_require__(47);
 
 var _Components2 = _interopRequireDefault(_Components);
 
-var _Events = __webpack_require__(66);
+var _Events = __webpack_require__(67);
 
 var _Events2 = _interopRequireDefault(_Events);
 
-var _Assets = __webpack_require__(86);
+var _Assets = __webpack_require__(87);
 
 var _Assets2 = _interopRequireDefault(_Assets);
 
-var _History = __webpack_require__(94);
+var _History = __webpack_require__(95);
 
 var _History2 = _interopRequireDefault(_History);
 
-var _DynamicComponent = __webpack_require__(100);
+var _DynamicComponent = __webpack_require__(101);
 
 var _DynamicComponent2 = _interopRequireDefault(_DynamicComponent);
 
-var _Builder = __webpack_require__(103);
+var _Builder = __webpack_require__(104);
 
 var _Builder2 = _interopRequireDefault(_Builder);
 
-var _Preview = __webpack_require__(112);
+var _Preview = __webpack_require__(113);
 
 var _Preview2 = _interopRequireDefault(_Preview);
 
-var _Markup = __webpack_require__(113);
+var _Markup = __webpack_require__(114);
 
 var _Markup2 = _interopRequireDefault(_Markup);
 
-var _Style = __webpack_require__(114);
+var _Style = __webpack_require__(115);
 
 var _Style2 = _interopRequireDefault(_Style);
 
-var _State = __webpack_require__(115);
+var _State = __webpack_require__(116);
 
 var _State2 = _interopRequireDefault(_State);
 
-var _Composer = __webpack_require__(116);
+var _Composer = __webpack_require__(117);
 
 var _Composer2 = _interopRequireDefault(_Composer);
 
-var _Flow = __webpack_require__(117);
+var _Flow = __webpack_require__(118);
 
 var _Flow2 = _interopRequireDefault(_Flow);
 
-var _export = __webpack_require__(126);
+var _export = __webpack_require__(131);
 
 var _Runtime = __webpack_require__(13);
 
-var _Reducer = __webpack_require__(127);
+var _Reducer = __webpack_require__(132);
 
 var _Storage = __webpack_require__(9);
 
-var _Events3 = __webpack_require__(128);
+var _Events3 = __webpack_require__(133);
 
-var _Constants = __webpack_require__(27);
+var _Constants = __webpack_require__(28);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -9335,6 +9652,14 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 // Constants
 
 
+var feature_flags = {
+    version: 3
+    /*
+        version :2 - drag and movable interface
+        version :3 - flow based
+    */
+
+};
 var Index = function (_Component) {
     _inherits(Index, _Component);
 
@@ -9518,36 +9843,39 @@ var Index = function (_Component) {
             return _react2.default.createElement(
                 "div",
                 { onContextMenu: this.onShowContextMenu.bind(this), onClick: this.hideContextMenu.bind(this) },
-                _react2.default.createElement(_Flow2.default, null),
-                _react2.default.createElement(_Preview2.default, null),
-                _react2.default.createElement(_Markup2.default, { markup: selectedComponent.markup, key: randomKey }),
-                _react2.default.createElement(_Style2.default, { style: selectedComponent.style, key: randomKey }),
-                _react2.default.createElement(_State2.default, { state: selectedComponent.state, key: randomKey }),
-                _react2.default.createElement(_Composer2.default, { state: selectedComponent.state }),
-                _react2.default.createElement(_Components2.default, {
-                    components: this.state.components,
-                    folders: this.state.folders,
-                    selectedComponent: this.state.selectedComponent,
-                    title: "Components",
-                    key: randomKey,
+                feature_flags.version === 3 ? _react2.default.createElement(_Flow2.default, null) : _react2.default.createElement(
+                    "div",
+                    null,
+                    _react2.default.createElement(_Preview2.default, null),
+                    _react2.default.createElement(_Markup2.default, { markup: selectedComponent.markup, key: randomKey }),
+                    _react2.default.createElement(_Style2.default, { style: selectedComponent.style, key: randomKey }),
+                    _react2.default.createElement(_State2.default, { state: selectedComponent.state, key: randomKey }),
+                    _react2.default.createElement(_Composer2.default, { state: selectedComponent.state }),
+                    _react2.default.createElement(_Components2.default, {
+                        components: this.state.components,
+                        folders: this.state.folders,
+                        selectedComponent: this.state.selectedComponent,
+                        title: "Components",
+                        key: randomKey,
 
-                    onOpenEditor: this.openEditor.bind(this),
-                    onSelection: this.updateSelectedComponent,
-                    onFoldersUpdate: this.updateFolders.bind(this)
-                }),
-                _react2.default.createElement(_Builder2.default, { onSave: this.saveElement.bind(this) }),
-                _react2.default.createElement(_DynamicComponent2.default, { onSave: this.props.onSave, key: randomKey, component: selectedComponent }),
-                _react2.default.createElement(_Events2.default, {
-                    key: randomKey,
-                    component: selectedComponent,
-                    selectedTag: this.state.selectedTag,
-                    components: this.state.components,
-                    onEventsUpdate: this.updateEvent,
-                    onConfigUpdate: this.updateConfig,
-                    title: "Events"
-                }),
-                _react2.default.createElement(_History2.default, { title: "History" }),
-                _react2.default.createElement(_Assets2.default, { title: "Assets" })
+                        onOpenEditor: this.openEditor.bind(this),
+                        onSelection: this.updateSelectedComponent,
+                        onFoldersUpdate: this.updateFolders.bind(this)
+                    }),
+                    _react2.default.createElement(_Builder2.default, { onSave: this.saveElement.bind(this) }),
+                    _react2.default.createElement(_DynamicComponent2.default, { onSave: this.props.onSave, key: randomKey, component: selectedComponent }),
+                    _react2.default.createElement(_Events2.default, {
+                        key: randomKey,
+                        component: selectedComponent,
+                        selectedTag: this.state.selectedTag,
+                        components: this.state.components,
+                        onEventsUpdate: this.updateEvent,
+                        onConfigUpdate: this.updateConfig,
+                        title: "Events"
+                    }),
+                    _react2.default.createElement(_History2.default, { title: "History" }),
+                    _react2.default.createElement(_Assets2.default, { title: "Assets" })
+                )
             );
         }
     }]);
@@ -9559,8 +9887,8 @@ console.log("Source code https://github.com/imvetri/ui-editor");
 _reactDom2.default.render(_react2.default.createElement(Index, null), document.getElementById("index"));
 
 /***/ }),
-/* 131 */,
-/* 132 */
+/* 135 */,
+/* 136 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9651,22 +9979,22 @@ function set(type, name, callback) {
 
 
 /***/ }),
-/* 133 */
+/* 137 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 
 // EXTERNAL MODULE: ./node_modules/d3-dispatch/src/dispatch.js
-var src_dispatch = __webpack_require__(132);
+var src_dispatch = __webpack_require__(136);
 
 // EXTERNAL MODULE: ./node_modules/d3-selection/src/select.js
-var src_select = __webpack_require__(31);
+var src_select = __webpack_require__(32);
 
 // EXTERNAL MODULE: ./node_modules/d3-selection/src/pointer.js + 1 modules
-var pointer = __webpack_require__(134);
+var pointer = __webpack_require__(138);
 
 // EXTERNAL MODULE: ./node_modules/d3-drag/src/nodrag.js
-var nodrag = __webpack_require__(21);
+var nodrag = __webpack_require__(22);
 
 // EXTERNAL MODULE: ./node_modules/d3-drag/src/noevent.js
 var noevent = __webpack_require__(5);
@@ -9902,7 +10230,7 @@ function defaultTouchable() {
 
 
 /***/ }),
-/* 134 */
+/* 138 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

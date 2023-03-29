@@ -1,41 +1,62 @@
-import { useCallback } from 'react';
+import React, { useCallback, memo } from 'react';
 import ReactFlow, {
+  addEdge,
   MiniMap,
   Controls,
   Background,
   useNodesState,
   useEdgesState,
-  addEdge,
 } from 'reactflow';
 
+import { nodes as initialNodes, edges as initialEdges } from './initial-elements';
+import CustomNode from './CustomNode.js';
+
 import 'reactflow/dist/style.css';
+import './overview.css';
 
-const initialNodes = [
-  { id: '1', position: { x: 0, y: 0 }, data: { label: '1' } },
-  { id: '2', position: { x: 0, y: 100 }, data: { label: '2' } },
-];
+const nodeTypes = {
+  custom: memo(CustomNode),
+};
 
-const initialEdges = [{ id: 'e1-2', source: '1', target: '2' }];
+const minimapStyle = {
+  height: 120,
+};
 
-function Flow() {
+const onInit = (reactFlowInstance) => console.log('flow loaded:', reactFlowInstance);
+
+const Flow = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+  const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), []);
 
-  const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), [setEdges]);
+  // we are using a bit of a shortcut here to adjust the edge type
+  // this could also be done with a custom edge for example
+  const edgesWithUpdatedTypes = edges.map((edge) => {
+    if (edge.sourceHandle) {
+      const edgeType = nodes.find((node) => node.type === 'custom').data.selects[edge.sourceHandle];
+      edge.type = edgeType;
+    }
+
+    return edge;
+  });
 
   return (
     <ReactFlow
       nodes={nodes}
-      edges={edges}
+      edges={edgesWithUpdatedTypes}
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       onConnect={onConnect}
+      onInit={onInit}
+      fitView
+      attributionPosition="top-right"
+      nodeTypes={nodeTypes}
     >
-      <MiniMap />
+      <MiniMap style={minimapStyle} zoomable pannable />
       <Controls />
-      <Background />
+      <Background color="#aaa" gap={16} />
     </ReactFlow>
   );
-}
+};
 
 export default Flow;
