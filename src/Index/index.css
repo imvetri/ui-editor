@@ -95,3 +95,11 @@ ul,li, ul label {
   background-color: darkgrey;
   outline: 1px solid slategrey;
 }
+
+
+.topLeft{
+    position: fixed;
+    z-index: 3;
+    left: 0px;
+    top: 0px;
+}

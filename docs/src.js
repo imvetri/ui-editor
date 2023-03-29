@@ -4291,7 +4291,7 @@ if(false) {}
 
 exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, "body {\n    position:relative;\n    color: #d9d9d9;\n    font-family: \"Nunito Sans\",-apple-system,\".SFNSText-Regular\",\"San Francisco\",BlinkMacSystemFont,\"Segoe UI\",\"Helvetica Neue\",Helvetica,Arial,sans-serif;\n    margin: 0px;\n}\n\nli , label, p, .rules , input, textarea{\n    font-size: 9px;\n}\n\ninput, textarea { \n    background: #2b2b2b;\n    color: #d9d9d9;\n    opacity: 0.75;\n    vertical-align: bottom;\n}\n\ninput[type=\"text\"] {\n    -webkit-appearance: textarea;\n    color: rgba(255,255,255,0.5);\n    border-color: rgba(0,0,0,0.9);\n    border-width: 1px;\n    padding: 7px;\n}\n\nul label input {\n    width: 10px;\n}\n\nul, li {\n    padding-left: 5px;\n    margin-top: 0px;\n    margin-bottom: 0px;\n}\n\nbutton, select{\n    color: rgba(255,255,255,0.5);\n    border-color: rgba(0,0,0,0.9);\n    border-width: 0px;\n    padding: 5px;\n    background-color: transparent;\n    margin-left: 4px;\n}\n\nselect:focus{\n    \n    outline: 1px solid white;\n}\n\nbutton i{\n    padding-right:4px;\n}\n\nselect:focus, \nul label:hover, \nli:hover, \n.content:hover {\n    color: #fff;\n    background: rgb(43, 43, 43);\n}\n\nbutton:hover{\n    color: #fff;\n}\n\nul,li, ul label {\n    color: rgba(255,255,255,0.5);\n}\n\n\n#index{\n    margin:-4px;\n}\n\n.CodeMirror {\n    border: 1px solid black;\n    margin-top:5px;\n}\n\n.container{\n    padding: 5px;\n    background: #2C3134;\n}\n\n*::-webkit-scrollbar {\n  width: 1px;\n}\n \n*::-webkit-scrollbar-track {\n  box-shadow: inset 0 0 0px rgba(0, 0, 0, 0.3);\n}\n \n*::-webkit-scrollbar-thumb {\n  background-color: darkgrey;\n  outline: 1px solid slategrey;\n}", ""]);
+exports.push([module.i, "body {\n    position:relative;\n    color: #d9d9d9;\n    font-family: \"Nunito Sans\",-apple-system,\".SFNSText-Regular\",\"San Francisco\",BlinkMacSystemFont,\"Segoe UI\",\"Helvetica Neue\",Helvetica,Arial,sans-serif;\n    margin: 0px;\n}\n\nli , label, p, .rules , input, textarea{\n    font-size: 9px;\n}\n\ninput, textarea { \n    background: #2b2b2b;\n    color: #d9d9d9;\n    opacity: 0.75;\n    vertical-align: bottom;\n}\n\ninput[type=\"text\"] {\n    -webkit-appearance: textarea;\n    color: rgba(255,255,255,0.5);\n    border-color: rgba(0,0,0,0.9);\n    border-width: 1px;\n    padding: 7px;\n}\n\nul label input {\n    width: 10px;\n}\n\nul, li {\n    padding-left: 5px;\n    margin-top: 0px;\n    margin-bottom: 0px;\n}\n\nbutton, select{\n    color: rgba(255,255,255,0.5);\n    border-color: rgba(0,0,0,0.9);\n    border-width: 0px;\n    padding: 5px;\n    background-color: transparent;\n    margin-left: 4px;\n}\n\nselect:focus{\n    \n    outline: 1px solid white;\n}\n\nbutton i{\n    padding-right:4px;\n}\n\nselect:focus, \nul label:hover, \nli:hover, \n.content:hover {\n    color: #fff;\n    background: rgb(43, 43, 43);\n}\n\nbutton:hover{\n    color: #fff;\n}\n\nul,li, ul label {\n    color: rgba(255,255,255,0.5);\n}\n\n\n#index{\n    margin:-4px;\n}\n\n.CodeMirror {\n    border: 1px solid black;\n    margin-top:5px;\n}\n\n.container{\n    padding: 5px;\n    background: #2C3134;\n}\n\n*::-webkit-scrollbar {\n  width: 1px;\n}\n \n*::-webkit-scrollbar-track {\n  box-shadow: inset 0 0 0px rgba(0, 0, 0, 0.3);\n}\n \n*::-webkit-scrollbar-thumb {\n  background-color: darkgrey;\n  outline: 1px solid slategrey;\n}\n\n\n.topLeft{\n    position: fixed;\n    z-index: 3;\n    left: 0px;\n    top: 0px;\n}", ""]);
 
 
 
@@ -9681,7 +9681,8 @@ var Index = function (_Component) {
             },
             selectedComponent: "",
             folders: (0, _Storage.readData)("folders"),
-            selectedTab: "Events"
+            selectedTab: "Events",
+            feature_flags: feature_flags
         };
         _this.updateConfig = _Reducer.updateConfig.bind(_this);
         _this.updateEvent = _Reducer.updateEvent.bind(_this);
@@ -9835,6 +9836,15 @@ var Index = function (_Component) {
             }
         }
     }, {
+        key: "toggleVersion",
+        value: function toggleVersion(e) {
+            this.setState({
+                feature_flags: {
+                    version: e.target.checked ? 2 : 3
+                }
+            });
+        }
+    }, {
         key: "render",
         value: function render() {
             var selectedComponent = this.state.selectedComponent || this.state.component;
@@ -9843,7 +9853,17 @@ var Index = function (_Component) {
             return _react2.default.createElement(
                 "div",
                 { onContextMenu: this.onShowContextMenu.bind(this), onClick: this.hideContextMenu.bind(this) },
-                feature_flags.version === 3 ? _react2.default.createElement(_Flow2.default, null) : _react2.default.createElement(
+                _react2.default.createElement(
+                    "div",
+                    { className: "topLeft" },
+                    _react2.default.createElement("input", { type: "checkbox", id: "version", onChange: this.toggleVersion.bind(this), name: "version", value: "Bike" }),
+                    _react2.default.createElement(
+                        "label",
+                        { "for": "version" },
+                        "Older Version"
+                    )
+                ),
+                this.state.feature_flags.version === 3 ? _react2.default.createElement(_Flow2.default, null) : _react2.default.createElement(
                     "div",
                     null,
                     _react2.default.createElement(_Preview2.default, null),

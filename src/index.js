@@ -62,7 +62,8 @@ class Index extends Component {
             },
             selectedComponent: "",
             folders: readData("folders"),
-            selectedTab: "Events"
+            selectedTab: "Events",
+            feature_flags: feature_flags
         }
         this.updateConfig = updateConfig.bind(this);
         this.updateEvent = updateEvent.bind(this);
@@ -166,14 +167,26 @@ class Index extends Component {
         }
     }
 
+    toggleVersion(e){
+        this.setState({
+            feature_flags:{
+                version:e.target.checked? 2: 3
+            }
+        })
+    }
+
     render() {
         const selectedComponent = this.state.selectedComponent || this.state.component;
         const randomKey = Math.ceil(Math.random() * 1000);
         window.components.forEach(initialiseComponents)
         return (
             <div onContextMenu={this.onShowContextMenu.bind(this)} onClick={this.hideContextMenu.bind(this)}>
+                <div className="topLeft">
+                    <input type="checkbox" id="version" onChange={this.toggleVersion.bind(this)} name="version" value="Bike"/>
+                    <label for="version">Older Version</label>
+                </div>
                 {
-                feature_flags.version===3 ? 
+                this.state.feature_flags.version===3 ? 
                     <Flow/> :
                     <div>
                         <Preview></Preview>
