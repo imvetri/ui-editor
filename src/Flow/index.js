@@ -4,6 +4,7 @@ import ReactFlow, {
   MiniMap,
   Controls,
   Background,
+  Panel,
   useNodesState,
   useEdgesState,
 } from 'reactflow';
@@ -55,6 +56,12 @@ const Flow = () => {
       <MiniMap style={minimapStyle} zoomable pannable />
       <Controls />
       <Background color="#aaa" gap={16} />
+      <Panel>
+        <div>variant:</div>
+        <button onClick={() => setVariant('dots')}>dots</button>
+        <button onClick={() => setVariant('lines')}>lines</button>
+        <button onClick={() => setVariant('cross')}>cross</button>
+      </Panel>
     </ReactFlow>
   );
 };
