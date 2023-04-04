@@ -148,14 +148,14 @@
 /******/
 /******/
 /******/ 	// add entry module to deferred list
-/******/ 	deferredModules.push([12,1]);
+/******/ 	deferredModules.push([33,1]);
 /******/ 	// run deferred modules when ready
 /******/ 	return checkDeferredModules();
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 12:
+/***/ 33:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -167,13 +167,13 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(4);
+var _reactDom = __webpack_require__(19);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-__webpack_require__(24);
+__webpack_require__(44);
 
-var _Flow = __webpack_require__(27);
+var _Flow = __webpack_require__(47);
 
 var _Flow2 = _interopRequireDefault(_Flow);
 
@@ -212,11 +212,11 @@ _reactDom2.default.render(_react2.default.createElement(Index, null), document.g
 
 /***/ }),
 
-/***/ 24:
+/***/ 44:
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(25);
+var content = __webpack_require__(45);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -230,7 +230,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(7)(content, options);
+var update = __webpack_require__(18)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -238,10 +238,10 @@ if(false) {}
 
 /***/ }),
 
-/***/ 25:
+/***/ 45:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(6)(false);
+exports = module.exports = __webpack_require__(17)(false);
 // Module
 exports.push([module.i, "", ""]);
 
@@ -249,7 +249,7 @@ exports.push([module.i, "", ""]);
 
 /***/ }),
 
-/***/ 27:
+/***/ 47:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -265,26 +265,36 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactflow = __webpack_require__(8);
+var _reactflow = __webpack_require__(22);
 
 var _reactflow2 = _interopRequireDefault(_reactflow);
 
-var _initialElements = __webpack_require__(34);
+var _initialElements = __webpack_require__(54);
 
-var _CustomNode = __webpack_require__(35);
+var _CustomNode = __webpack_require__(55);
 
 var _CustomNode2 = _interopRequireDefault(_CustomNode);
 
-__webpack_require__(36);
+__webpack_require__(56);
 
-__webpack_require__(38);
+__webpack_require__(58);
+
+var _ResizeRotateNode = __webpack_require__(60);
+
+var _ResizeRotateNode2 = _interopRequireDefault(_ResizeRotateNode);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var nodeTypes = {
-  custom: (0, _react.memo)(_CustomNode2.default)
+  custom: (0, _react.memo)(_CustomNode2.default),
+  resizeRotate: _ResizeRotateNode2.default
 };
-
+var defaultEdgeOptions = {
+  style: { strokeWidth: 2, stroke: '#9ca8b3' },
+  markerEnd: {
+    type: 'arrowclosed'
+  }
+};
 var minimapStyle = {
   height: 120
 };
@@ -325,6 +335,11 @@ var Flow = function Flow() {
     return edge;
   });
 
+  var _useState = (0, _react.useState)('cross'),
+      _useState2 = _slicedToArray(_useState, 2),
+      variant = _useState2[0],
+      setVariant = _useState2[1];
+
   return _react2.default.createElement(
     _reactflow2.default,
     {
@@ -340,14 +355,14 @@ var Flow = function Flow() {
     },
     _react2.default.createElement(_reactflow.MiniMap, { style: minimapStyle, zoomable: true, pannable: true }),
     _react2.default.createElement(_reactflow.Controls, null),
-    _react2.default.createElement(_reactflow.Background, { color: '#aaa', gap: 16 }),
+    _react2.default.createElement(_reactflow.Background, { color: '#aaa', gap: 16, variant: variant }),
     _react2.default.createElement(
       _reactflow.Panel,
       null,
       _react2.default.createElement(
         'div',
         null,
-        'variant:'
+        'Background variants:'
       ),
       _react2.default.createElement(
         'button',
@@ -378,7 +393,7 @@ exports.default = Flow;
 
 /***/ }),
 
-/***/ 34:
+/***/ 54:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -393,7 +408,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactflow = __webpack_require__(8);
+var _reactflow = __webpack_require__(22);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -482,9 +497,31 @@ var nodes = exports.nodes = [{
   draggable: false,
   selectable: false,
   position: { x: 150, y: 400 }
+}, {
+  id: '1R',
+  position: { x: 100, y: 100 },
+  data: { label: 'Node 1' },
+  type: 'resizeRotate',
+  sourcePosition: _reactflow.Position.Bottom,
+  targetPosition: _reactflow.Position.Top,
+  selected: true,
+  style: { width: 180, height: 100 }
+}, {
+  id: '2R',
+  position: { x: 100, y: 400 },
+  data: { label: 'Node 2' },
+  type: 'resizeRotate',
+  sourcePosition: _reactflow.Position.Bottom,
+  targetPosition: _reactflow.Position.Top,
+  style: { width: 180, height: 100 }
 }];
 
-var edges = exports.edges = [{ id: 'e1-2', source: '1', target: '2', label: 'this is an edge label' }, { id: 'e1-3', source: '1', target: '3', animated: true }, {
+var edges = exports.edges = [{
+  id: '1->2',
+  source: '1R',
+  target: '2R',
+  type: 'smoothstep'
+}, { id: 'e1-2', source: '1', target: '2', label: 'this is an edge label' }, { id: 'e1-3', source: '1', target: '3', animated: true }, {
   id: 'e4-5',
   source: '4',
   target: '5',
@@ -512,7 +549,7 @@ var edges = exports.edges = [{ id: 'e1-2', source: '1', target: '2', label: 'thi
 
 /***/ }),
 
-/***/ 35:
+/***/ 55:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -528,7 +565,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactflow = __webpack_require__(8);
+var _reactflow = __webpack_require__(22);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -627,11 +664,11 @@ exports.default = CustomNode;
 
 /***/ }),
 
-/***/ 38:
+/***/ 58:
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(39);
+var content = __webpack_require__(59);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -645,7 +682,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(7)(content, options);
+var update = __webpack_require__(18)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -653,12 +690,191 @@ if(false) {}
 
 /***/ }),
 
-/***/ 39:
+/***/ 59:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(6)(false);
+exports = module.exports = __webpack_require__(17)(false);
 // Module
 exports.push([module.i, ".react-flow__node-custom {\n    font-size: 10px;\n    width: 180px;\n    background: #f5f5f6;\n    color: #222;\n    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 15%), 0 2px 4px -1px rgb(0 0 0 / 8%);\n    border-radius: 2px;\n  }\n  \n  .react-flow__node-custom .react-flow__handle {\n    top: 24px;\n    right: -15px;\n    width: 6px;\n    height: 10px;\n    border-radius: 2px;\n    background-color: #778899;\n  }\n  \n  .react-flow__node.circle {\n    border-radius: 50%;\n    width: 60px;\n    height: 60px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    font-weight: 700;\n  }\n  \n  .react-flow__node.annotation {\n    border-radius: 0;\n    text-align: left;\n    background: white;\n    border: none;\n    line-height: 1.4;\n    width: 225px;\n    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 15%), 0 2px 4px -1px rgb(0 0 0 / 8%);\n  }\n  \n  .react-flow__node.annotation .react-flow__handle {\n    display: none;\n  }\n  \n  .custom-node__header {\n    padding: 8px 10px;\n    border-bottom: 1px solid #e2e8f0;\n  }\n  \n  .custom-node__body {\n    padding: 10px;\n  }\n  \n  .custom-node__select {\n    position: relative;\n    margin-bottom: 10px;\n  }\n  \n  .custom-node__select select {\n    width: 100%;\n    margin-top: 5px;\n    font-size: 10px;\n  }\n  ", ""]);
+
+
+
+/***/ }),
+
+/***/ 60:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+exports.default = ResizeRotateNode;
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactflow = __webpack_require__(22);
+
+var _d3Drag = __webpack_require__(21);
+
+var _d3Selection = __webpack_require__(6);
+
+var _nodeResizer = __webpack_require__(29);
+
+var _styleModule = __webpack_require__(61);
+
+var _styleModule2 = _interopRequireDefault(_styleModule);
+
+__webpack_require__(63);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function ResizeRotateNode(_ref) {
+  var id = _ref.id,
+      _ref$sourcePosition = _ref.sourcePosition,
+      sourcePosition = _ref$sourcePosition === undefined ? _reactflow.Position.Left : _ref$sourcePosition,
+      _ref$targetPosition = _ref.targetPosition,
+      targetPosition = _ref$targetPosition === undefined ? _reactflow.Position.Right : _ref$targetPosition,
+      data = _ref.data;
+
+  var rotateControlRef = (0, _react.useRef)(null);
+  var updateNodeInternals = (0, _reactflow.useUpdateNodeInternals)();
+
+  var _useState = (0, _react.useState)(0),
+      _useState2 = _slicedToArray(_useState, 2),
+      rotation = _useState2[0],
+      setRotation = _useState2[1];
+
+  var _useState3 = (0, _react.useState)(true),
+      _useState4 = _slicedToArray(_useState3, 2),
+      resizable = _useState4[0],
+      setResizable = _useState4[1];
+
+  var _useState5 = (0, _react.useState)(true),
+      _useState6 = _slicedToArray(_useState5, 2),
+      rotatable = _useState6[0],
+      setRotatable = _useState6[1];
+
+  (0, _react.useEffect)(function () {
+    if (!rotateControlRef.current) {
+      return;
+    }
+
+    var selection = (0, _d3Selection.select)(rotateControlRef.current);
+    var dragHandler = (0, _d3Drag.drag)().on('drag', function (evt) {
+      var dx = evt.x - 100;
+      var dy = evt.y - 100;
+      var rad = Math.atan2(dx, dy);
+      var deg = rad * (180 / Math.PI);
+      setRotation(180 - deg);
+      updateNodeInternals(id);
+    });
+
+    selection.call(dragHandler);
+  }, [id, updateNodeInternals]);
+
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      'div',
+      {
+        style: {
+          transform: 'rotate(' + rotation + 'deg)'
+        },
+        className: _styleModule2.default.node
+      },
+      _react2.default.createElement(_nodeResizer.NodeResizer, { isVisible: resizable, minWidth: 180, minHeight: 100 }),
+      _react2.default.createElement('div', {
+        ref: rotateControlRef,
+        style: {
+          display: rotatable ? 'block' : 'none'
+        },
+        className: 'nodrag ' + _styleModule2.default.rotateHandle
+      }),
+      _react2.default.createElement(
+        'div',
+        null,
+        data ? data.label : "",
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            'label',
+            null,
+            _react2.default.createElement('input', {
+              type: 'checkbox',
+              checked: resizable,
+              onChange: function onChange(evt) {
+                return setResizable(evt.target.checked);
+              }
+            }),
+            'resizable'
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(
+            'label',
+            null,
+            _react2.default.createElement('input', {
+              type: 'checkbox',
+              checked: rotatable,
+              onChange: function onChange(evt) {
+                return setRotatable(evt.target.checked);
+              }
+            }),
+            'rotatable'
+          )
+        )
+      ),
+      _react2.default.createElement(_reactflow.Handle, { style: { opacity: 0 }, position: sourcePosition, type: 'source' }),
+      _react2.default.createElement(_reactflow.Handle, { style: { opacity: 0 }, position: targetPosition, type: 'target' })
+    )
+  );
+}
+
+/***/ }),
+
+/***/ 61:
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(62);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(18)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ 62:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(17)(false);
+// Module
+exports.push([module.i, ".node {\n    width: 100%;\n    height: 100%;\n    border-radius: 15px;\n    border: 1px solid #000;\n    background-color: #fff;\n    padding: 20px;\n    box-sizing: border-box;\n  }\n  \n  .node :global .react-flow__resize-control.handle {\n    width: 10px;\n    height: 10px;\n    border-radius: 100%;\n  }\n  \n  .rotateHandle {\n    position: absolute;\n    width: 10px;\n    height: 10px;\n    background: #3367d9;\n    left: 50%;\n    top: -30px;\n    border-radius: 100%;\n    transform: translate(-50%, -50%);\n    cursor: alias;\n  }\n  \n  .rotateHandle:after {\n    content: '';\n    display: block;\n    position: absolute;\n    width: 1px;\n    height: 30px;\n    background: #3367d9;\n    left: 4px;\n    top: 5px;\n  }\n  ", ""]);
 
 
 

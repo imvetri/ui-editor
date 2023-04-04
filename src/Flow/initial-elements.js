@@ -82,9 +82,34 @@ export const nodes = [
     selectable: false,
     position: { x: 150, y: 400 },
   },
+  {
+    id: '1R',
+    position: { x: 100, y: 100 },
+    data: { label: 'Node 1' },
+    type: 'resizeRotate',
+    sourcePosition: Position.Bottom,
+    targetPosition: Position.Top,
+    selected: true,
+    style: { width: 180, height: 100 },
+  },
+  {
+    id: '2R',
+    position: { x: 100, y: 400 },
+    data: { label: 'Node 2' },
+    type: 'resizeRotate',
+    sourcePosition: Position.Bottom,
+    targetPosition: Position.Top,
+    style: { width: 180, height: 100 },
+  }
 ];
 
 export const edges = [
+  {
+    id: '1->2',
+    source: '1R',
+    target: '2R',
+    type: 'smoothstep',
+  },
   { id: 'e1-2', source: '1', target: '2', label: 'this is an edge label' },
   { id: 'e1-3', source: '1', target: '3', animated: true },
   {

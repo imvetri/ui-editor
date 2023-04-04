@@ -5,9 +5,13 @@ import ReactFlow, {
   Controls,
   Background,
   Panel,
+  Edge,
+  Position,
+  ReactFlowProvider,
   useNodesState,
   useEdgesState,
 } from 'reactflow';
+import { useState } from 'react';
 
 import { nodes as initialNodes, edges as initialEdges } from './initial-elements';
 import CustomNode from './CustomNode.js';
@@ -15,10 +19,18 @@ import CustomNode from './CustomNode.js';
 import 'reactflow/dist/style.css';
 import './overview.css';
 
+import ResizeRotateNode from './ResizeRotateNode';
+
 const nodeTypes = {
   custom: memo(CustomNode),
+  resizeRotate: ResizeRotateNode
 };
-
+const defaultEdgeOptions = {
+  style: { strokeWidth: 2, stroke: '#9ca8b3' },
+  markerEnd: {
+    type: 'arrowclosed',
+  },
+};
 const minimapStyle = {
   height: 120,
 };
@@ -41,6 +53,8 @@ const Flow = () => {
     return edge;
   });
 
+  const [variant, setVariant] = useState('cross');
+
   return (
     <ReactFlow
       nodes={nodes}
@@ -55,9 +69,9 @@ const Flow = () => {
     >
       <MiniMap style={minimapStyle} zoomable pannable />
       <Controls />
-      <Background color="#aaa" gap={16} />
+      <Background color="#aaa" gap={16} variant={variant}/>
       <Panel>
-        <div>variant:</div>
+        <div>Background variants:</div>
         <button onClick={() => setVariant('dots')}>dots</button>
         <button onClick={() => setVariant('lines')}>lines</button>
         <button onClick={() => setVariant('cross')}>cross</button>

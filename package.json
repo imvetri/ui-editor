@@ -12,10 +12,14 @@
     "build-dev": "webpack"
   },
   "dependencies": {
+    "@reactflow/node-resizer": "^2.1.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "canny-edge-detector": "^1.0.0",
     "codemirror": "^5.52.0",
+    "d3-drag": "^3.0.0",
+    "d3-selection": "^3.0.0",
+    "d3-transition": "^3.0.1",
     "image-js": "^0.33.0",
     "react": "^18.2.0",
     "react-codemirror2": "^6.0.0",
