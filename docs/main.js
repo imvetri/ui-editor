@@ -754,7 +754,11 @@ var edges = exports.edges = [{
     "source": "15",
     "target": "19",
     "id": "reactflow__edge-19-15",
-    "animated": true
+    "animated": true,
+    style: {
+        animation: "dashdraw 0.2s linear infinite",
+        strokeDasharray: 5
+    }
 }];
 
 /***/ }),
