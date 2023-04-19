@@ -260,6 +260,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+// pick all the node events and consolidate them to onChange event to propagate events to next targetNodes TODO
+
 
 var _react = __webpack_require__(0);
 
@@ -271,19 +273,15 @@ var _reactflow2 = _interopRequireDefault(_reactflow);
 
 var _initialElements = __webpack_require__(34);
 
-var _CustomNode = __webpack_require__(35);
+var _CustomNode = __webpack_require__(37);
 
 var _CustomNode2 = _interopRequireDefault(_CustomNode);
 
-__webpack_require__(36);
-
 __webpack_require__(38);
 
+__webpack_require__(40);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// pick all the node events and consolidate them to onChange event to propagate events to next targetNodes TODO
-console.log(_reactflow2.default);
-
 
 var nodeTypes = {
   custom: (0, _react.memo)(_CustomNode2.default)
@@ -297,9 +295,12 @@ var defaultEdgeOptions = {
 var minimapStyle = {
   height: 120
 };
-
+var project = void 0;
 var onInit = function onInit(reactFlowInstance) {
-  return console.log('flow loaded:', reactFlowInstance);
+  debugger;
+  console.log('flow loaded:', reactFlowInstance);
+  window.reactFlowInstance = reactFlowInstance;
+  project = reactFlowInstance.project;
 };
 
 var Flow = function Flow() {
@@ -339,6 +340,54 @@ var Flow = function Flow() {
     return edge;
   });
 
+  var connectingNodeId = (0, _react.useRef)(null);
+
+  var onConnectStart = (0, _react.useCallback)(function (_, _ref) {
+    var nodeId = _ref.nodeId;
+
+    connectingNodeId.current = nodeId;
+  }, []);
+
+  var onConnectEnd = (0, _react.useCallback)(function (event) {
+    debugger;
+    var targetIsPane = event.target.classList.contains('react-flow__pane');
+
+    if (targetIsPane) {
+      var id = Math.floor(Math.random() * 1010);
+      var newNode = {
+        id: "" + id,
+        // we are removing the half of the node width (75) to center the new node
+        position: window.reactFlowInstance.project({ x: event.clientX - 75, y: event.clientY }),
+        data: { label: 'Node ' + id },
+        type: "default",
+        "sourcePosition": "left",
+        "targetPosition": "right",
+        "width": 150,
+        "height": 36,
+        "selected": false,
+        "dragging": false
+      };
+
+      var newEdge = {
+        id: "" + id,
+        source: "" + connectingNodeId.current,
+        target: "" + id,
+        targetHandle: null,
+        animated: true,
+        markerEnd: {
+          type: _reactflow.MarkerType.Arrow
+        }
+      };
+
+      setNodes(function (nds) {
+        return nds.concat(newNode);
+      });
+      setEdges(function (eds) {
+        return eds.concat(newEdge);
+      });
+    }
+  });
+
   return _react2.default.createElement(
     _reactflow2.default,
     {
@@ -346,6 +395,9 @@ var Flow = function Flow() {
       edges: edgesWithUpdatedTypes,
       onNodesChange: onNodesChange,
       onEdgesChange: onEdgesChange,
+      onConnectStart: onConnectStart,
+
+      onConnectEnd: onConnectEnd,
       onConnect: onConnect,
       onInit: onInit,
       fitView: true,
@@ -368,18 +420,28 @@ exports.default = Flow;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 exports.edges = exports.nodes = undefined;
 
-var _react = __webpack_require__(0);
+var _Nodes = __webpack_require__(35);
 
-var _react2 = _interopRequireDefault(_react);
+var _Edges = __webpack_require__(36);
 
-var _reactflow = __webpack_require__(8);
+exports.nodes = _Nodes.nodes;
+exports.edges = _Edges.edges;
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+/***/ }),
 
+/***/ 35:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 var nodes = exports.nodes = [{
     "id": "13",
     "type": "default",
@@ -555,7 +617,7 @@ var nodes = exports.nodes = [{
     "targetPosition": "right",
     "width": 150,
     "height": 36,
-    "selected": true,
+    "selected": false,
     "positionAbsolute": {
         "x": 1201.4416625817782,
         "y": 222.74707052643868
@@ -647,26 +709,11 @@ var nodes = exports.nodes = [{
     "id": "35",
     "type": "default",
     "data": {
-        "label": "pulse emitter" // TODO this is the energy source that blasts for beats. This helps to carry information about any changes on nodes
+        "label": "pulse emitter"
     },
-    // use this node to control the speed of even propagation through the nodes
-    // write onChange event handler for each node that will detect any change that happens, example move, edge change, node change, 
-    // have source node inforamtion and current node information
-    // any change happens, will update the current node's data
-    // 1. find how to update visual stayle of current node - not important
-    // 2. find how to add a focus ring that cross from left to right?
-    // start with a vertical line
-    // no that does not look like emitter. light flow or a fluid flow effect that gets triggered from the node and the edge as well.
-    // mimic how the animate on edge happen, try the same on edge and the node as well.
-    // beam and the 
-    // stop running in circles.
-    // A node receives event from its input node
-    // A node can modify the event object
-    // A node passes the event to all its output nodes
-
     "position": {
         "x": 1872.0760590915545,
-        "y": -121.709226760550578
+        "y": -121.70922676055058
     },
     "sourcePosition": "left",
     "targetPosition": "right",
@@ -676,6 +723,146 @@ var nodes = exports.nodes = [{
     "positionAbsolute": {
         "x": 1872.0760590915545,
         "y": -21.709226760550578
+    },
+    "dragging": false
+}, {
+    "id": "36",
+    "type": "default",
+    "data": {
+        "label": "PagerDuty"
+    },
+    "position": {
+        "x": 1860.7403287383427,
+        "y": -564.5002939421724
+    },
+    "sourcePosition": "left",
+    "targetPosition": "right",
+    "width": 150,
+    "height": 36,
+    "selected": false,
+    "positionAbsolute": {
+        "x": 1860.7403287383427,
+        "y": -564.5002939421724
+    },
+    "dragging": false
+}, {
+    "id": "37",
+    "type": "default",
+    "data": {
+        "label": "Call"
+    },
+    "position": {
+        "x": 1584.4462518628675,
+        "y": -663.1827970160771
+    },
+    "sourcePosition": "left",
+    "targetPosition": "right",
+    "width": 150,
+    "height": 36,
+    "selected": false,
+    "positionAbsolute": {
+        "x": 1584.4462518628675,
+        "y": -663.1827970160771
+    },
+    "dragging": false
+}, {
+    "id": "38",
+    "type": "default",
+    "data": {
+        "label": "SMS"
+    },
+    "position": {
+        "x": 1479.7894271906848,
+        "y": -579.0727586616322
+    },
+    "sourcePosition": "left",
+    "targetPosition": "right",
+    "width": 150,
+    "height": 36,
+    "selected": false,
+    "positionAbsolute": {
+        "x": 1479.7894271906848,
+        "y": -579.0727586616322
+    },
+    "dragging": false
+}, {
+    "id": "39",
+    "type": "default",
+    "data": {
+        "label": "E-Mail"
+    },
+    "position": {
+        "x": 1359.6248885765615,
+        "y": -491.8814312487152
+    },
+    "sourcePosition": "left",
+    "targetPosition": "right",
+    "width": 150,
+    "height": 36,
+    "selected": true,
+    "positionAbsolute": {
+        "x": 1359.6248885765615,
+        "y": -491.8814312487152
+    },
+    "dragging": false
+}, {
+    "id": "40",
+    "type": "default",
+    "data": {
+        "label": "unKnown"
+    },
+    "position": {
+        "x": 971.8325981877128,
+        "y": -49.09036406709337
+    },
+    "sourcePosition": "left",
+    "targetPosition": "right",
+    "width": 150,
+    "height": 36,
+    "selected": false,
+    "positionAbsolute": {
+        "x": 1371.8325981877128,
+        "y": -49.09036406709337
+    },
+    "dragging": false
+}, {
+    "id": "41",
+    "type": "default",
+    "data": {
+        "label": "known"
+    },
+    "position": {
+        "x": 771.8325981877128,
+        "y": -39.09036406709337
+    },
+    "sourcePosition": "left",
+    "targetPosition": "right",
+    "width": 150,
+    "height": 36,
+    "selected": false,
+    "positionAbsolute": {
+        "x": 1371.8325981877128,
+        "y": -49.09036406709337
+    },
+    "dragging": false
+}, {
+    "id": "42",
+    "type": "default",
+    "data": {
+        "label": "New Relic"
+    },
+    "position": {
+        "x": 1860.8791684214038,
+        "y": -437.58488494539415
+    },
+    "sourcePosition": "left",
+    "targetPosition": "right",
+    "width": 150,
+    "height": 36,
+    "selected": false,
+    "positionAbsolute": {
+        "x": 1860.8791684214038,
+        "y": -437.58488494539415
     },
     "dragging": false
 }].map(function (node) {
@@ -696,74 +883,165 @@ var nodes = exports.nodes = [{
     return node;
 });
 
+/***/ }),
+
+/***/ 36:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.edges = undefined;
+
+var _reactflow = __webpack_require__(8);
+
 var edges = exports.edges = [{
     "source": "24",
     "target": "20",
     "id": "reactflow__edge-20-24",
-    "animated": true
+    "animated": true,
+    markerEnd: {
+        type: _reactflow.MarkerType.Arrow
+    }
 }, {
     "source": "23",
     "target": "20",
     "id": "reactflow__edge-20-23",
-    "animated": true
+    "animated": true,
+    markerEnd: {
+        type: _reactflow.MarkerType.Arrow
+    }
 }, {
     "source": "22",
     "target": "20",
-    "id": "reactflow__edge-20-22"
+    "id": "reactflow__edge-20-22",
+    markerEnd: {
+        type: _reactflow.MarkerType.Arrow
+    }
 }, {
     "source": "20",
     "target": "18",
     "id": "reactflow__edge-18-20",
-    "animated": true
+    "animated": true,
+    markerEnd: {
+        type: _reactflow.MarkerType.Arrow
+    }
 }, {
     "source": "14",
     "target": "16",
     "id": "reactflow__edge-16-14",
-    "animated": true
+    "animated": true,
+    markerEnd: {
+        type: _reactflow.MarkerType.Arrow
+    }
 }, {
     "source": "16",
     "target": "18",
     "id": "reactflow__edge-18-16",
-    "animated": true
+    "animated": true,
+    markerEnd: {
+        type: _reactflow.MarkerType.Arrow
+    }
 }, {
     "source": "18",
     "target": "17",
     "id": "reactflow__edge-17-18",
-    "animated": true
+    "animated": true,
+    markerEnd: {
+        type: _reactflow.MarkerType.Arrow
+    }
 }, {
     "source": "17",
     "target": "19",
     "id": "reactflow__edge-19-17",
-    "animated": true
+    "animated": true,
+    markerEnd: {
+        type: _reactflow.MarkerType.Arrow
+    }
 }, {
     "source": "25",
     "target": "21",
     "id": "reactflow__edge-21-25",
-    "animated": true
+    "animated": true,
+    markerEnd: {
+        type: _reactflow.MarkerType.Arrow
+    }
 }, {
     "source": "21",
     "target": "19",
     "id": "reactflow__edge-19-21",
-    "animated": true
+    "animated": true,
+    markerEnd: {
+        type: _reactflow.MarkerType.Arrow
+    }
 }, {
     "source": "13",
     "target": "15",
     "id": "reactflow__edge-15-13",
-    "animated": true
+    "animated": true,
+    markerEnd: {
+        type: _reactflow.MarkerType.Arrow
+    }
 }, {
     "source": "15",
     "target": "19",
     "id": "reactflow__edge-19-15",
     "animated": true,
-    style: {
-        animation: "dashdraw 0.2s linear infinite",
-        strokeDasharray: 5
+    "style": {
+        "animation": "dashdraw 0.2s linear infinite",
+        "strokeDasharray": 5
+    },
+    markerEnd: {
+        type: _reactflow.MarkerType.Arrow
+    }
+}, {
+    "source": "36",
+    "sourceHandle": null,
+    "target": "37",
+    "targetHandle": null,
+    "id": "reactflow__edge-36-37",
+    "animated": true,
+    markerEnd: {
+        type: _reactflow.MarkerType.Arrow
+    }
+}, {
+    "source": "36",
+    "sourceHandle": null,
+    "target": "38",
+    "targetHandle": null,
+    "id": "reactflow__edge-36-3",
+    "animated": true,
+    markerEnd: {
+        type: _reactflow.MarkerType.Arrow
+    }
+}, {
+    "source": "36",
+    "sourceHandle": null,
+    "target": "39",
+    "targetHandle": null,
+    "id": "reactflow__edge-36-8",
+    "animated": true,
+    markerEnd: {
+        type: _reactflow.MarkerType.Arrow
+    }
+}, {
+    "source": "40",
+    "sourceHandle": null,
+    "target": "41",
+    "targetHandle": null,
+    "id": "reactflow__edge-6-39",
+    "animated": true,
+    markerEnd: {
+        type: _reactflow.MarkerType.Arrow
     }
 }];
 
 /***/ }),
 
-/***/ 35:
+/***/ 37:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -878,11 +1156,11 @@ exports.default = CustomNode;
 
 /***/ }),
 
-/***/ 38:
+/***/ 40:
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(39);
+var content = __webpack_require__(41);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -904,7 +1182,7 @@ if(false) {}
 
 /***/ }),
 
-/***/ 39:
+/***/ 41:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(6)(false);
