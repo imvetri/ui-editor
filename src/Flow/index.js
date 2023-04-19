@@ -15,11 +15,13 @@ import CustomNode from './CustomNode.js';
 
 import 'reactflow/dist/style.css';
 import './overview.css';
-import react from 'react';
 
 
+import ResizeRotateNode from './ResizeRotateNode';
 const nodeTypes = {
-  custom: memo(CustomNode)
+  custom: memo(CustomNode),
+  resizeRotate: ResizeRotateNode,
+
 };
 const defaultEdgeOptions = {
   style: { strokeWidth: 2, stroke: '#9ca8b3' },

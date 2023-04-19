@@ -1,3 +1,5 @@
+import {Position } from 'reactflow';
+
 export const nodes = [
     {
         "id": "13",
@@ -442,7 +444,25 @@ export const nodes = [
             "y": -437.58488494539415
         },
         "dragging": false
-    }
+    } , {
+        id: '1',
+        position: { x: 100, y: 100 },
+        data: { label: 'Node 1' },
+        type: 'resizeRotate',
+        sourcePosition: Position.Bottom,
+        targetPosition: Position.Top,
+        selected: true,
+        style: { width: 180, height: 100 },
+      },
+      {
+        id: '2',
+        position: { x: 100, y: 400 },
+        data: { label: 'Node 2' },
+        type: 'resizeRotate',
+        sourcePosition: Position.Bottom,
+        targetPosition: Position.Top,
+        style: { width: 180, height: 100 },
+      }
 ].map(node=>{
   // add onConnect for each node.
 
