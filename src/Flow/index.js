@@ -1,18 +1,21 @@
-import React, { useCallback, memo } from 'react';
+import React, { useCallback, memo, useRef } from 'react';
 import ReactFlow, {
   addEdge,
   MiniMap,
   Controls,
   useNodesState,
   useEdgesState,
+  useReactFlow
 } from 'reactflow';
 // pick all the node events and consolidate them to onChange event to propagate events to next targetNodes TODO
-console.log(ReactFlow)
+import { MarkerType } from 'reactflow';
+
 import { nodes as initialNodes, edges as initialEdges } from './initial-elements';
 import CustomNode from './CustomNode.js';
 
 import 'reactflow/dist/style.css';
 import './overview.css';
+import react from 'react';
 
 
 const nodeTypes = {
@@ -27,8 +30,13 @@ const defaultEdgeOptions = {
 const minimapStyle = {
   height: 120,
 };
-
-const onInit = (reactFlowInstance) => console.log('flow loaded:', reactFlowInstance);
+let project;
+const onInit = (reactFlowInstance) => {
+  debugger;
+  console.log('flow loaded:', reactFlowInstance)
+  window.reactFlowInstance = reactFlowInstance
+  project = reactFlowInstance.project;
+};
 
 const Flow = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
@@ -51,12 +59,59 @@ const Flow = () => {
     return edge;
   });
 
+  const connectingNodeId = useRef(null);
+
+  const onConnectStart = useCallback((_, { nodeId }) => {
+    connectingNodeId.current = nodeId;
+  }, []);
+
+  const onConnectEnd = useCallback(
+    (event) => {
+      debugger;
+      const targetIsPane = event.target.classList.contains('react-flow__pane');
+
+      if (targetIsPane) {
+        var id = Math.floor(Math.random() * 1010);
+        const newNode = {
+          id: ""+id,
+          // we are removing the half of the node width (75) to center the new node
+          position: window.reactFlowInstance.project({ x: event.clientX  - 75, y: event.clientY }),
+          data: { label: `Node ${id}` },
+          type: "default",
+          "sourcePosition": "left",
+          "targetPosition": "right",
+          "width": 150,
+          "height": 36,
+          "selected": false,
+          "dragging": false
+        };
+
+        const newEdge = { 
+          id: ""+id,
+          source: ""+connectingNodeId.current,
+          target: ""+id,
+          targetHandle: null,
+          animated: true,
+          markerEnd: {
+            type: MarkerType.Arrow,
+          }
+        }
+
+        setNodes((nds) => nds.concat(newNode));
+        setEdges((eds) => eds.concat(newEdge));
+      }
+    }
+  );
+
   return (
     <ReactFlow
       nodes={nodes}
       edges={edgesWithUpdatedTypes}
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
+      onConnectStart={onConnectStart}
+
+      onConnectEnd={onConnectEnd}
       onConnect={onConnect}
       onInit={onInit}
       fitView
