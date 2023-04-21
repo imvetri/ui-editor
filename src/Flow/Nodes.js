@@ -2,6 +2,13 @@ import {Position } from 'reactflow';
 
 export const nodes = [
     {
+        id: 'w2',
+        type: 'ResizableNodeSelected',
+        data: { label: 'NodeResizer when selected' },
+        position: { x: 100, y: 300 },
+        style: { background: '#fff', border: '1px solid black', borderRadius: 15, fontSize: 12 },
+      },
+    {
         "id": "13",
         "type": "default",
         "data": {
@@ -448,20 +455,20 @@ export const nodes = [
         id: '1',
         position: { x: 100, y: 100 },
         data: { label: 'Node 1' },
-        type: 'resizeRotate',
+        type: 'ResizableNodeSelected',
         sourcePosition: Position.Bottom,
         targetPosition: Position.Top,
         selected: true,
-        style: { width: 180, height: 100 },
+        style: { background: '#fff', border: '1px solid black', borderRadius: 15, fontSize: 12 },
       },
       {
         id: '2',
         position: { x: 100, y: 400 },
         data: { label: 'Node 2' },
-        type: 'resizeRotate',
+        type: 'ResizableNodeSelected',
         sourcePosition: Position.Bottom,
         targetPosition: Position.Top,
-        style: { width: 180, height: 100 },
+        style: { background: '#fff', border: '1px solid black', borderRadius: 15, fontSize: 12 },
       }
 ].map(node=>{
   // add onConnect for each node.

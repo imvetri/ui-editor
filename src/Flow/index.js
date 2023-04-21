@@ -5,7 +5,8 @@ import ReactFlow, {
   Controls,
   useNodesState,
   useEdgesState,
-  useReactFlow
+  useReactFlow,
+  Background, BackgroundVariant, 
 } from 'reactflow';
 // pick all the node events and consolidate them to onChange event to propagate events to next targetNodes TODO
 import { MarkerType } from 'reactflow';
@@ -16,11 +17,11 @@ import CustomNode from './CustomNode.js';
 import 'reactflow/dist/style.css';
 import './overview.css';
 
+import ResizableNodeSelected from './ResizableNodeSelected';
 
-import ResizeRotateNode from './ResizeRotateNode';
 const nodeTypes = {
   custom: memo(CustomNode),
-  resizeRotate: ResizeRotateNode,
+  ResizableNodeSelected: memo(ResizableNodeSelected)
 
 };
 const defaultEdgeOptions = {
@@ -112,6 +113,7 @@ const Flow = () => {
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       onConnectStart={onConnectStart}
+      defaultEdgeOptions={defaultEdgeOptions}
 
       onConnectEnd={onConnectEnd}
       onConnect={onConnect}
@@ -122,6 +124,8 @@ const Flow = () => {
     >
       <MiniMap style={minimapStyle} zoomable pannable />
       <Controls />
+      <Background variant={BackgroundVariant.Dots} />
+
     </ReactFlow>
   );
 };
