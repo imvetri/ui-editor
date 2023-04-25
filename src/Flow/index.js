@@ -8,6 +8,7 @@ import ReactFlow, {
   useReactFlow,
   Background, BackgroundVariant, 
 } from 'reactflow';
+
 // pick all the node events and consolidate them to onChange event to propagate events to next targetNodes TODO
 import { MarkerType } from 'reactflow';
 
@@ -35,9 +36,9 @@ const minimapStyle = {
 };
 let project;
 const onInit = (reactFlowInstance) => {
-  debugger;
   console.log('flow loaded:', reactFlowInstance)
   window.reactFlowInstance = reactFlowInstance
+  window.reactFlowInstance.existingEdge = false;
   project = reactFlowInstance.project;
 };
 
@@ -45,10 +46,12 @@ const Flow = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const onConnect = useCallback((params) => {
+    window.reactFlowInstance.existingEdge = true;
     const { source, target } = params;
+    params.animated = true;
     // for event propagation TODO
     target && target.data && target.data.onConnect && target.data.onConnect(params); // alternative to element?.source?.data?.onDisconnect?.(element); // propagate event to source node
-    setEdges((eds) => addEdge(params, eds)), []
+    setEdges((eds) =>  addEdge(params, eds)), []
   });
 
   // we are using a bit of a shortcut here to adjust the edge type
@@ -65,22 +68,24 @@ const Flow = () => {
   const connectingNodeId = useRef(null);
 
   const onConnectStart = useCallback((_, { nodeId }) => {
+    console.log("START")
     connectingNodeId.current = nodeId;
   }, []);
 
   const onConnectEnd = useCallback(
     (event) => {
-      debugger;
+
       const targetIsPane = event.target.classList.contains('react-flow__pane');
 
-      if (targetIsPane) {
+      if (targetIsPane && !window.reactFlowInstance.existingEdge) {
         var id = Math.floor(Math.random() * 1010);
         const newNode = {
           id: ""+id,
           // we are removing the half of the node width (75) to center the new node
           position: window.reactFlowInstance.project({ x: event.clientX  - 75, y: event.clientY }),
           data: { label: `Node ${id}` },
-          type: "default",
+          type: reactFlowInstance.getNode(connectingNodeId.current).type,
+          style: reactFlowInstance.getNode(connectingNodeId.current).style,
           "sourcePosition": "left",
           "targetPosition": "right",
           "width": 150,
@@ -105,6 +110,12 @@ const Flow = () => {
       }
     }
   );
+  // write the nodes back into localstorage
+  localStorage.setItem("nodes", JSON.stringify(nodes))
+  localStorage.setItem("edges", JSON.stringify(edges))
+  if(window.reactFlowInstance){
+    window.reactFlowInstance.existingEdge = false;
+  } 
 
   return (
     <ReactFlow
@@ -124,7 +135,7 @@ const Flow = () => {
     >
       <MiniMap style={minimapStyle} zoomable pannable />
       <Controls />
-      <Background variant={BackgroundVariant.Dots} />
+      <Background variant={BackgroundVariant.Dots}  />
 
     </ReactFlow>
   );
