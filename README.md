@@ -1,5 +1,8 @@
 
-
+<p>
+Checkout https://ui-editor.github.io/flow/ for a fork and on the latest design. 
+Source for current changes are part of https://github.com/ui-editor/flow
+</p>
 <div align="center">
   <a href="https://github.com/imvetri/ui-editor">
     <img width="200" height="200" src="https://github.com/imvetri/ui-editor/blob/master/docs/logo_size.jpg">
