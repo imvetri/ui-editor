@@ -72,6 +72,29 @@ const Flow = () => {
     connectingNodeId.current = nodeId;
   }, []);
 
+  const onPaneClick = useCallback((event)=>{
+    if( !window.reactFlowInstance.stopPanelClick){
+    var id = Math.floor(Math.random() * 1010);
+    const newNode = {
+      id: ""+id,
+      // we are removing the half of the node width (75) to center the new node
+      position: window.reactFlowInstance.project({ x: event.clientX  - 75, y: event.clientY }),
+      data: { label: `Node ${id} panelcic` },
+      type: "custom",
+      "sourcePosition": "left",
+      "targetPosition": "right",
+      "width": 150,
+      "height": 36,
+      "selected": false,
+      "dragging": false,
+      style: { background: '#fff', border: '1px solid black', borderRadius: 15, fontSize: 12 }
+    };
+
+
+    setNodes((nds) => nds.concat(newNode));
+  }
+  })
+
   const onConnectEnd = useCallback(
     (event) => {
 
@@ -107,6 +130,9 @@ const Flow = () => {
 
         setNodes((nds) => nds.concat(newNode));
         setEdges((eds) => eds.concat(newEdge));
+        event.stopImmediatePropagation()
+        event.stopPropagation()
+        window.reactFlowInstance.stopPanelClick = true;
       }
     }
   );
@@ -115,6 +141,8 @@ const Flow = () => {
   localStorage.setItem("edges", JSON.stringify(edges))
   if(window.reactFlowInstance){
     window.reactFlowInstance.existingEdge = false;
+    window.reactFlowInstance.stopPanelClick = false;
+
   } 
 
   return (
@@ -129,13 +157,15 @@ const Flow = () => {
       onConnectEnd={onConnectEnd}
       onConnect={onConnect}
       onInit={onInit}
+
+      onPaneClick={onPaneClick}
       fitView
       attributionPosition="top-right"
       nodeTypes={nodeTypes}
     >
       <MiniMap style={minimapStyle} zoomable pannable />
       <Controls />
-      <Background variant={BackgroundVariant.Dots}  />
+      <Background  color="#1a202c"  variant={BackgroundVariant.Dots}/>
 
     </ReactFlow>
   );

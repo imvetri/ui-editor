@@ -7,13 +7,7 @@ if(localStorageNodes!== null) {
 }
 else {
     localStorageNodes= [
-        {
-            id: 'w2',
-            type: 'ResizableNodeSelected',
-            data: { label: 'NodeResizer when selected' },
-            position: { x: 100, y: 300 },
-            style: { background: '#fff', border: '1px solid black', borderRadius: 15, fontSize: 12 },
-          },
+        
         {
             "id": "13",
             "type": "default",
@@ -480,36 +474,7 @@ else {
                 "y": -437.58488494539415
             },
             "dragging": false
-        } , {
-            id: '1',
-            position: { x: 100, y: 100 },
-            data: { label: 'Node 1' },
-            type: 'ResizableNodeSelected',
-            sourcePosition: Position.Right,
-            targetPosition: Position.Left,
-            "sourcePosition": "right",
-            "targetPosition": "left",
-            selected: true,
-            style: { background: '#fff', border: '1px solid black', borderRadius: 15, fontSize: 12 },
-          },
-          {
-            id: '2',
-            position: { x: 100, y: 400 },
-            data: { label: 'Node 2' },
-            type: 'ResizableNodeSelected',
-            sourcePosition: Position.Bottom,
-            targetPosition: Position.Top,
-            style: { background: '#fff', border: '1px solid black', borderRadius: 15, fontSize: 12 },
-          },
-          {
-            id: '2123',
-            position: { x: 200, y: 400 },
-            data: { label: 'Custom Node' },
-            type: 'custom',
-            sourcePosition: Position.Bottom,
-            targetPosition: Position.Top,
-            style: { background: '#fff', border: '1px solid black', borderRadius: 15, fontSize: 12 },
-          }
+        }
     ].map(node=>{
       // add onConnect for each node.
     

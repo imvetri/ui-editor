@@ -1,8 +1,8 @@
-import { Handle, Position } from 'reactflow';
+import { Handle, Position , NodeResizer} from 'reactflow';
 import React, { useCallback, memo, useRef } from 'react';
 
 
-const CustomNode = ({ data }) => {
+const CustomNode = ({ data , selected}) => {
 
   const onChange = useCallback((evt) => {
     debugger;
@@ -11,6 +11,7 @@ const CustomNode = ({ data }) => {
 
   return (
     <div>
+      <NodeResizer color="#ff0071" isVisible={selected} minWidth={100} minHeight={30} />
 
       <div  style={{ padding: '10px 20px' }}>
         <input onChange={onChange} type="text" style={{ border: 'none' }} value={data.label}/>

@@ -146,6 +146,30 @@ var Flow = function Flow() {
     connectingNodeId.current = nodeId;
   }, []);
 
+  var onPaneClick = (0, _react.useCallback)(function (event) {
+    if (!window.reactFlowInstance.stopPanelClick) {
+      var id = Math.floor(Math.random() * 1010);
+      var newNode = {
+        id: "" + id,
+        // we are removing the half of the node width (75) to center the new node
+        position: window.reactFlowInstance.project({ x: event.clientX - 75, y: event.clientY }),
+        data: { label: 'Node ' + id + ' panelcic' },
+        type: "custom",
+        "sourcePosition": "left",
+        "targetPosition": "right",
+        "width": 150,
+        "height": 36,
+        "selected": false,
+        "dragging": false,
+        style: { background: '#fff', border: '1px solid black', borderRadius: 15, fontSize: 12 }
+      };
+
+      setNodes(function (nds) {
+        return nds.concat(newNode);
+      });
+    }
+  });
+
   var onConnectEnd = (0, _react.useCallback)(function (event) {
 
     var targetIsPane = event.target.classList.contains('react-flow__pane');
@@ -184,6 +208,9 @@ var Flow = function Flow() {
       setEdges(function (eds) {
         return eds.concat(newEdge);
       });
+      event.stopImmediatePropagation();
+      event.stopPropagation();
+      window.reactFlowInstance.stopPanelClick = true;
     }
   });
   // write the nodes back into localstorage
@@ -191,6 +218,7 @@ var Flow = function Flow() {
   localStorage.setItem("edges", JSON.stringify(edges));
   if (window.reactFlowInstance) {
     window.reactFlowInstance.existingEdge = false;
+    window.reactFlowInstance.stopPanelClick = false;
   }
 
   return _react2.default.createElement(
@@ -206,13 +234,15 @@ var Flow = function Flow() {
       onConnectEnd: onConnectEnd,
       onConnect: onConnect,
       onInit: onInit,
+
+      onPaneClick: onPaneClick,
       fitView: true,
       attributionPosition: 'top-right',
       nodeTypes: nodeTypes
     },
     _react2.default.createElement(_reactflow.MiniMap, { style: minimapStyle, zoomable: true, pannable: true }),
     _react2.default.createElement(_reactflow.Controls, null),
-    _react2.default.createElement(_reactflow.Background, { variant: _reactflow.BackgroundVariant.Dots })
+    _react2.default.createElement(_reactflow.Background, { color: '#1a202c', variant: _reactflow.BackgroundVariant.Dots })
   );
 };
 
@@ -253,22 +283,12 @@ exports.nodes = undefined;
 
 var _reactflow = __webpack_require__(4);
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 // read from the localstorage 
 var localStorageNodes = localStorage.getItem("nodes");
 if (localStorageNodes !== null) {
     localStorageNodes = JSON.parse(localStorageNodes);
 } else {
-    var _ref;
-
     localStorageNodes = [{
-        id: 'w2',
-        type: 'ResizableNodeSelected',
-        data: { label: 'NodeResizer when selected' },
-        position: { x: 100, y: 300 },
-        style: { background: '#fff', border: '1px solid black', borderRadius: 15, fontSize: 12 }
-    }, {
         "id": "13",
         "type": "default",
         "data": {
@@ -713,29 +733,6 @@ if (localStorageNodes !== null) {
             "y": -437.58488494539415
         },
         "dragging": false
-    }, (_ref = {
-        id: '1',
-        position: { x: 100, y: 100 },
-        data: { label: 'Node 1' },
-        type: 'ResizableNodeSelected',
-        sourcePosition: _reactflow.Position.Right,
-        targetPosition: _reactflow.Position.Left
-    }, _defineProperty(_ref, 'sourcePosition', "right"), _defineProperty(_ref, 'targetPosition', "left"), _defineProperty(_ref, 'selected', true), _defineProperty(_ref, 'style', { background: '#fff', border: '1px solid black', borderRadius: 15, fontSize: 12 }), _ref), {
-        id: '2',
-        position: { x: 100, y: 400 },
-        data: { label: 'Node 2' },
-        type: 'ResizableNodeSelected',
-        sourcePosition: _reactflow.Position.Bottom,
-        targetPosition: _reactflow.Position.Top,
-        style: { background: '#fff', border: '1px solid black', borderRadius: 15, fontSize: 12 }
-    }, {
-        id: '2123',
-        position: { x: 200, y: 400 },
-        data: { label: 'Custom Node' },
-        type: 'custom',
-        sourcePosition: _reactflow.Position.Bottom,
-        targetPosition: _reactflow.Position.Top,
-        style: { background: '#fff', border: '1px solid black', borderRadius: 15, fontSize: 12 }
     }].map(function (node) {
         // add onConnect for each node.
 
@@ -791,12 +788,6 @@ if (localStorageEdges !== null) {
         markerEnd: {
             type: _reactflow.MarkerType.Arrow
         }
-    }, {
-        id: '1->2',
-        source: '1',
-        target: '2',
-        type: 'smoothstep',
-        animated: true
     }, {
         "source": "22",
         "target": "20",
@@ -946,7 +937,8 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var CustomNode = function CustomNode(_ref) {
-  var data = _ref.data;
+  var data = _ref.data,
+      selected = _ref.selected;
 
 
   var onChange = (0, _react.useCallback)(function (evt) {
@@ -957,6 +949,7 @@ var CustomNode = function CustomNode(_ref) {
   return _react2.default.createElement(
     'div',
     null,
+    _react2.default.createElement(_reactflow.NodeResizer, { color: '#ff0071', isVisible: selected, minWidth: 100, minHeight: 30 }),
     _react2.default.createElement(
       'div',
       { style: { padding: '10px 20px' } },

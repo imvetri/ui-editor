@@ -24,13 +24,7 @@ else {
         markerEnd: {
             type: MarkerType.Arrow,
         }
-    },{
-        id: '1->2',
-        source: '1',
-        target: '2',
-        type: 'smoothstep',
-        animated: true
-      },
+    },
     {
         "source": "22",
         "target": "20",
