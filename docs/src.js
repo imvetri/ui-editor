@@ -1,10 +1,51 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[2],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[2],[
+/* 0 */,
+/* 1 */,
+/* 2 */,
+/* 3 */,
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */,
+/* 11 */,
+/* 12 */,
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
 
-/***/ 23:
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.edges = exports.nodes = undefined;
+
+var _Nodes = __webpack_require__(34);
+
+var _Edges = __webpack_require__(35);
+
+exports.nodes = _Nodes.nodes;
+exports.edges = _Edges.edges;
+
+/***/ }),
+/* 14 */,
+/* 15 */,
+/* 16 */,
+/* 17 */,
+/* 18 */,
+/* 19 */,
+/* 20 */,
+/* 21 */,
+/* 22 */,
+/* 23 */,
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(24);
+var content = __webpack_require__(25);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -25,8 +66,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-
-/***/ 24:
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(7)(false);
@@ -36,8 +76,8 @@ exports.push([module.i, "", ""]);
 
 
 /***/ }),
-
-/***/ 26:
+/* 26 */,
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60,7 +100,7 @@ var _reactflow = __webpack_require__(4);
 
 var _reactflow2 = _interopRequireDefault(_reactflow);
 
-var _initialElements = __webpack_require__(33);
+var _initialElements = __webpack_require__(13);
 
 var _CustomNode = __webpack_require__(36);
 
@@ -249,28 +289,13 @@ var Flow = function Flow() {
 exports.default = Flow;
 
 /***/ }),
-
-/***/ 33:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.edges = exports.nodes = undefined;
-
-var _Nodes = __webpack_require__(34);
-
-var _Edges = __webpack_require__(35);
-
-exports.nodes = _Nodes.nodes;
-exports.edges = _Edges.edges;
-
-/***/ }),
-
-/***/ 34:
+/* 28 */,
+/* 29 */,
+/* 30 */,
+/* 31 */,
+/* 32 */,
+/* 33 */,
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -753,8 +778,7 @@ if (localStorageNodes !== null) {
 var nodes = exports.nodes = localStorageNodes;
 
 /***/ }),
-
-/***/ 35:
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -917,8 +941,7 @@ if (localStorageEdges !== null) {
 var edges = exports.edges = localStorageEdges;
 
 /***/ }),
-
-/***/ 36:
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -928,23 +951,43 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _reactflow = __webpack_require__(4);
 
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _initialElements = __webpack_require__(13);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+console.log(_initialElements.nodes);
 var CustomNode = function CustomNode(_ref) {
-  var data = _ref.data,
+  var id = _ref.id,
+      data = _ref.data,
       selected = _ref.selected;
 
+  var _useReactFlow = (0, _reactflow.useReactFlow)(),
+      setNodes = _useReactFlow.setNodes;
 
-  var onChange = (0, _react.useCallback)(function (evt) {
-    debugger;
-    console.log(evt.target.value);
-  }, []);
+  var store = (0, _reactflow.useStoreApi)();
+
+  var onChange = function onChange(evt) {
+    var _store$getState = store.getState(),
+        nodeInternals = _store$getState.nodeInternals;
+
+    setNodes(Array.from(nodeInternals.values()).map(function (node) {
+      if (node.id === id) {
+        node.data = _extends({}, node.data, {
+          label: evt.target.value
+        });
+      }
+
+      return node;
+    }));
+  };
 
   return _react2.default.createElement(
     'div',
@@ -963,8 +1006,9 @@ var CustomNode = function CustomNode(_ref) {
 exports.default = CustomNode;
 
 /***/ }),
-
-/***/ 39:
+/* 37 */,
+/* 38 */,
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -989,8 +1033,7 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-
-/***/ 40:
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(7)(false);
@@ -1000,8 +1043,7 @@ exports.push([module.i, "\n  \n  .react-flow__node.circle {\n    border-radius: 
 
 
 /***/ }),
-
-/***/ 41:
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1040,8 +1082,7 @@ var ResizableNodeSelected = function ResizableNodeSelected(_ref) {
 exports.default = ResizableNodeSelected;
 
 /***/ }),
-
-/***/ 42:
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1057,9 +1098,9 @@ var _reactDom = __webpack_require__(5);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-__webpack_require__(23);
+__webpack_require__(24);
 
-var _Flow = __webpack_require__(26);
+var _Flow = __webpack_require__(27);
 
 var _Flow2 = _interopRequireDefault(_Flow);
 
@@ -1097,5 +1138,4 @@ console.log("Source code https://github.com/imvetri/ui-editor");
 _reactDom2.default.render(_react2.default.createElement(Index, null), document.getElementById("index"));
 
 /***/ })
-
-}]);
+]]);
