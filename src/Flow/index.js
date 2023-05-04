@@ -72,26 +72,77 @@ const Flow = () => {
     connectingNodeId.current = nodeId;
   }, []);
 
+  // by default, click on panel creates new node
   const onPaneClick = useCallback((event)=>{
     if( !window.reactFlowInstance.stopPanelClick){
-    var id = Math.floor(Math.random() * 1010);
-    const newNode = {
-      id: ""+id,
-      // we are removing the half of the node width (75) to center the new node
-      position: window.reactFlowInstance.project({ x: event.clientX  - 75, y: event.clientY }),
-      data: { label: `Node ${id} panelcic` },
-      type: "custom",
-      "sourcePosition": "left",
-      "targetPosition": "right",
-      "width": 150,
-      "height": 36,
-      "selected": false,
-      "dragging": false,
-      style: { background: '#fff', border: '1px solid black', borderRadius: 15, fontSize: 12 }
-    };
+    
+      // get nodes
+      let selectedNodes = reactFlowInstance.getNodes().filter(node=>node.selected)
+    
+      // get edges
+      let selectedEdges = reactFlowInstance.getEdges().filter(edge=>edge.selected)
 
 
-    setNodes((nds) => nds.concat(newNode));
+      // Check if there are nodes selected
+      if(selectedNodes.length!==0){
+        // duplicate these nodes
+        let duplicateNodes = selectedNodes.map(node=>{
+                  // append dup id
+          node = JSON.parse(JSON.stringify(node))
+          node.id = "dup"+node.id
+                    // make original deselected
+
+          return node;
+        })
+        // duplicate the edges
+        let duplicateEdges = selectedEdges.map(edge=>{
+                            // append dup id
+                            edge = JSON.parse(JSON.stringify(edge))
+          edge.source = "dup"+edge.source;
+          edge.target = "dup"+edge.target;
+
+          edge.id = "dup"+edge.id
+
+
+          return edge;
+        })
+
+          // make original nodes deselected
+          selectedNodes.forEach(node=>{
+            node.selected = false
+          })
+          // make original edges deselected
+
+          selectedEdges.forEach(edge=>{
+            edge.selected = false
+          })
+        // set new nodes and edges p
+
+        setNodes((nds) => nds.concat(...duplicateNodes));
+        setEdges((eds) => eds.concat(...duplicateEdges));
+      }
+      else { // create a new node
+
+        var id = Math.floor(Math.random() * 1010);
+        const newNode = {
+          id: ""+id,
+          // we are removing the half of the node width (75) to center the new node
+          position: window.reactFlowInstance.project({ x: event.clientX  - 75, y: event.clientY }),
+          data: { label: `Node ${id} panelcic` },
+          type: "custom", // Custom that enables resize on selection
+          "sourcePosition": "left",
+          "targetPosition": "right",
+          "width": 150,
+          "height": 36,
+          "selected": false,
+          "dragging": false,
+          style: { background: '#fff', border: '1px solid black', borderRadius: 15, fontSize: 12 }
+        };
+    
+    
+        setNodes((nds) => nds.concat(newNode));
+      }
+
   }
   })
 
