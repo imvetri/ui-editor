@@ -22,15 +22,16 @@ const CustomNode = ({ id, data , selected}) => {
         return node;
       })
     );
+    data.onChange();
   };
 
+  let children =       <div  style={{ padding: '10px 20px' }}>
+  <input onChange={onChange} type="text" style={{ border: 'none' }} value={data.label} children={children}/>
+</div>
   return (
     <div>
-      <NodeResizer color="#ff0071" isVisible={selected} minWidth={100} minHeight={30} />
-
-      <div  style={{ padding: '10px 20px' }}>
-        <input onChange={onChange} type="text" style={{ border: 'none' }} value={data.label}/>
-      </div>
+      <NodeResizer color="#ff0071" isVisible={selected} minWidth={100} minHeight={30} children={children}/>
+      {children}
       <Handle type="source" position={Position.Left}  style={{ background: '#000' }} />
       <Handle type="target" position={Position.Right}  style={{ background: '#000' }} />
     </div>
