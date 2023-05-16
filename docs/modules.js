@@ -8489,11 +8489,11 @@ var ResizeControl$1 = Object(react["memo"])(ResizeControl);
 
 const handleControls = ['top-left', 'top-right', 'bottom-left', 'bottom-right'];
 const lineControls = ['top', 'right', 'bottom', 'left'];
-function NodeResizer({ nodeId, isVisible = true, handleClassName, handleStyle, lineClassName, lineStyle, color, minWidth = 10, minHeight = 10, maxWidth = Number.MAX_VALUE, maxHeight = Number.MAX_VALUE, keepAspectRatio = false, shouldResize, onResizeStart, onResize, onResizeEnd, }) {
+function NodeResizer({ nodeId, isVisible = true, handleClassName, handleStyle, children, lineClassName, lineStyle, color, minWidth = 10, minHeight = 10, maxWidth = Number.MAX_VALUE, maxHeight = Number.MAX_VALUE, keepAspectRatio = false, shouldResize, onResizeStart, onResize, onResizeEnd, }) {
     if (!isVisible) {
         return null;
     }
-    return (Object(jsx_runtime["jsxs"])(jsx_runtime["Fragment"], { children: [lineControls.map((c) => (Object(jsx_runtime["jsx"])(ResizeControl$1, { className: lineClassName, style: lineStyle, nodeId: nodeId, position: c, variant: ResizeControlVariant.Line, color: color, minWidth: minWidth, minHeight: minHeight, maxWidth: maxWidth, maxHeight: maxHeight, onResizeStart: onResizeStart, keepAspectRatio: keepAspectRatio, shouldResize: shouldResize, onResize: onResize, onResizeEnd: onResizeEnd }, c))), handleControls.map((c) => (Object(jsx_runtime["jsx"])(ResizeControl$1, { className: handleClassName, style: handleStyle, nodeId: nodeId, position: c, color: color, minWidth: minWidth, minHeight: minHeight, maxWidth: maxWidth, maxHeight: maxHeight, onResizeStart: onResizeStart, keepAspectRatio: keepAspectRatio, shouldResize: shouldResize, onResize: onResize, onResizeEnd: onResizeEnd }, c)))] }));
+    return (Object(jsx_runtime["jsxs"])(jsx_runtime["Fragment"], { children: [children, lineControls.map((c) => (Object(jsx_runtime["jsx"])(ResizeControl$1, { className: lineClassName, style: lineStyle, nodeId: nodeId, position: c, variant: ResizeControlVariant.Line, color: color, minWidth: minWidth, minHeight: minHeight, maxWidth: maxWidth, maxHeight: maxHeight, onResizeStart: onResizeStart, keepAspectRatio: keepAspectRatio, shouldResize: shouldResize, onResize: onResize, onResizeEnd: onResizeEnd }, c))), handleControls.map((c) => (Object(jsx_runtime["jsx"])(ResizeControl$1, { className: handleClassName, style: handleStyle, nodeId: nodeId, position: c, color: color, minWidth: minWidth, minHeight: minHeight, maxWidth: maxWidth, maxHeight: maxHeight, onResizeStart: onResizeStart, keepAspectRatio: keepAspectRatio, shouldResize: shouldResize, onResize: onResize, onResizeEnd: onResizeEnd }, c)))] }));
 }
 
 
