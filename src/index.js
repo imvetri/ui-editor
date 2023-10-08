@@ -13,7 +13,6 @@ import Events from "./Events";
 import Assets from "./Assets";
 import History from "./History";
 import DynamicComponent from "./DynamicComponent";
-import Builder from "./Builder";
 import Preview from "./Preview";
 
 import Markup from './Markup';
@@ -154,11 +153,9 @@ class Index extends Component {
         const randomKey = Math.ceil(Math.random() * 1000);
         return (
             <div onContextMenu={this.onShowContextMenu.bind(this)} onClick={this.hideContextMenu.bind(this)}>
-                <Preview></Preview>
                 <Markup markup={selectedComponent.markup} key={randomKey}></Markup>
                 <Style style={selectedComponent.style} key={randomKey}></Style>
                 <State state={selectedComponent.state} key={randomKey}></State>
-                <Composer state={selectedComponent.state}></Composer>
                 <Components
                     components={this.state.components}
                     folders={this.state.folders}
@@ -170,7 +167,6 @@ class Index extends Component {
                     onSelection={this.updateSelectedComponent}
                     onFoldersUpdate={this.updateFolders.bind(this)}
                 />
-                <Builder onSave={this.saveElement.bind(this)}/>
                 <DynamicComponent onSave={this.props.onSave} key={randomKey} component={selectedComponent}/>
 
                 <Events
@@ -182,8 +178,6 @@ class Index extends Component {
                     onConfigUpdate={this.updateConfig}
                     title="Events"
                 />
-                <History title="History"/>
-                <Assets title="Assets"/>
             </div>
         );
     }

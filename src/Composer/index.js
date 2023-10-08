@@ -44,6 +44,7 @@ class Composer extends Component {
 
     render() {
 
+        window.components = window.components || [];
         // TODO: Should pass the current data. Instead of accessing it from global
         return (
             <Window>
