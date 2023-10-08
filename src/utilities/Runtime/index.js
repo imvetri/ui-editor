@@ -1,7 +1,6 @@
 // Dependencies.
 
 import { createComponent } from "../create-component";
-import { readData } from "../Storage";
 
 // Utilities.
 
@@ -36,7 +35,6 @@ function saveToWindow(component) {
 
 function checkNestedComponents(markup) {
 
-    var components = readData("ui-editor");
 
     return components.filter(component => markup.includes(component.name)).length > 0;
 }
@@ -70,7 +68,6 @@ export function saveComponentsToWindow(nestedComponents) {
 export function getNestedComponents(parent) {
     // Should be able to detect nested component.
 
-    let components = readData("ui-editor");
     let nestedComponents = [parent]; // Problem 1. When creating recursive components, automatically set component.config[componentName].override = true when you save.
     if (checkNestedComponents(parent.markup) && !componentVisited(parent.name)) {
         // find all the nested components from the markup and push it to nestedComponents.

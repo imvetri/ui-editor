@@ -20,9 +20,6 @@ import "./Style.css";
 import { selectedTagChanged, deleteEvent, updateConfiguration, updateSelectedEvent } from "./Reducer";
 
 
-// Utils.
-
-import { readData } from "../utilities/Storage";
 
 class Events extends Component {
     constructor(props) {
@@ -94,8 +91,6 @@ class Events extends Component {
             // Get child component name from the selected tag.
             let childComponentName = selectedTag.split("child-component-")[1];
 
-            // Get list of components.
-            let components = readData("ui-editor");
 
             // Find the child component from the list of components.
             let childComponent = components.find(component => component.name === childComponentName);

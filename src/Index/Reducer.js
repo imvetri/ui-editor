@@ -1,6 +1,3 @@
-import {writeData, readData} from "../utilities/Storage";
-
-
 import {componentRecursive} from "../utilities/Runtime";
 
 export function updateEvent (events) {
@@ -14,8 +11,6 @@ export function updateEvent (events) {
     this.setState({
         elements: newElements
     });
-
-    writeData("ui-editor", newElements)
 
 }
 
@@ -50,8 +45,6 @@ export function updateConfig(config){
     this.setState({
         elements: newElements
     })
-
-    writeData("ui-editor", newElements)
 }
 
 
@@ -123,21 +116,5 @@ export function saveElement (element) {
         showEditor: false,
         folders: this.state.folders
     });
-
-
-    writeData("folders", this.state.folders)
-    writeData("ui-editor", components)
 }
 
-
-export function updateSelectedComponent ( componentName, e) {
-
-
-    // Find the element from state that matches the currently selected element.
-    let selectedComponent = components.find(component=>component.name===componentName);
-
-    // Update the state with selectedElement.
-    this.setState({
-        selectedComponent
-    })
-}

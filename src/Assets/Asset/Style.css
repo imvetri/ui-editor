@@ -1,6 +1,0 @@
-
-/* Show selected asset with a light dashed outline */
-
-.selectedAsset{
-    border: 1px lightgray dashed;
-}

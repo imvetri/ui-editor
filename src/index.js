@@ -8,29 +8,22 @@ import "./Index/index.css";
 
 // Components.
 
-import Components from "./Components";
 import Events from "./Events";
-import Assets from "./Assets";
-import History from "./History";
 import DynamicComponent from "./DynamicComponent";
-import Preview from "./Preview";
 
 import Markup from './Markup';
 import Style from  "./Style";
 import State from "./State";
-import Composer from "./Composer";
 
 
 // Utility components.
 
-import {convertToReact, convertToReactRedux} from "./utilities/CodeGenerator/React/export";
+import {convertToReact} from "./utilities/CodeGenerator/React/export";
 import { getNestedComponents} from "./utilities/Runtime"
 
 // Reducers.
-import { updateEvent, updateConfig, saveElement, updateSelectedComponent } from "./Index/Reducer";
+import { updateEvent, updateConfig, saveElement } from "./Index/Reducer";
 
-// Utils
-import { readData, writeData } from "./utilities/Storage";
 
 // Constants
 
@@ -49,14 +42,12 @@ class Index extends Component {
                 events: []
             },
             selectedComponent: "",
-            folders: readData("folders"),
             selectedTab: "Events"
         }
         this.updateConfig = updateConfig.bind(this);
         this.updateEvent = updateEvent.bind(this);
         this.saveElement = saveElement.bind(this);
 
-        window.refreshComponents = this.refreshComponents.bind(this);
     }
 
 
