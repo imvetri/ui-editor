@@ -2958,42 +2958,10 @@ var Index = /*#__PURE__*/function (_Component) {
     _this.updateConfig = _Reducer.updateConfig.bind(_assertThisInitialized(_this));
     _this.updateEvent = _Reducer.updateEvent.bind(_assertThisInitialized(_this));
     _this.saveElement = _Reducer.saveElement.bind(_assertThisInitialized(_this));
-    _this.updateSelectedComponent = _Reducer.updateSelectedComponent.bind(_assertThisInitialized(_this));
-    document.onkeydown = function keydown(e) {
-      if (e.altKey && e.keyCode == 69) {
-        // Alt + E
-        // Open/close editor if any component is selected
-        this.setState({
-          showEditor: !this.state.showEditor
-        });
-      }
-    }.bind(_assertThisInitialized(_this));
     window.refreshComponents = _this.refreshComponents.bind(_assertThisInitialized(_this));
     return _this;
   }
   _createClass(Index, [{
-    key: "refreshComponents",
-    value: function refreshComponents() {
-      this.setState({
-        components: window.components || []
-      });
-    }
-  }, {
-    key: "updateFolders",
-    value: function updateFolders(folders) {
-      this.setState({
-        folders: folders
-      });
-      (0, _Storage.writeData)("folders", folders);
-    }
-  }, {
-    key: "openEditor",
-    value: function openEditor() {
-      this.setState({
-        showEditor: true
-      });
-    }
-  }, {
     key: "exportReact",
     value: function exportReact(e) {
       window.visited = {};
@@ -3008,71 +2976,11 @@ var Index = /*#__PURE__*/function (_Component) {
       console.log(Object.values(uniqueComponents).map(_export.convertToReact).join("\n\n"));
     }
   }, {
-    key: "exportReactRedux",
-    value: function exportReactRedux(e) {
-      window.visited = {};
-      var nestedComponents = (0, _Runtime.getNestedComponents)(this.state.selectedComponent);
-      // nested components contain duplicates. we need to remove it
-      var uniqueComponents = {};
-      nestedComponents.forEach(function (component) {
-        if (!uniqueComponents[component.name]) {
-          uniqueComponents[component.name] = component;
-        }
-      });
-      console.log(Object.values(uniqueComponents).map(_export.convertToReactRedux).join("\n\n"));
-    }
-  }, {
-    key: "onShowContextMenu",
-    value: function onShowContextMenu(e) {
-      if (e.target.classList.contains("component") || e.target.classList.contains("componentName")) {
-        // check if it is a component.
-        this.state.contextMenuChildren = /*#__PURE__*/_react["default"].createElement("ul", {
-          className: "contextMenuOptions"
-        }, /*#__PURE__*/_react["default"].createElement("li", {
-          onClick: this.exportReact.bind(this)
-        }, /*#__PURE__*/_react["default"].createElement("i", {
-          className: "fas fa-file-export"
-        }), "Export"), /*#__PURE__*/_react["default"].createElement("li", {
-          onClick: this.exportReactRedux.bind(this)
-        }, /*#__PURE__*/_react["default"].createElement("i", {
-          className: "fas fa-copy"
-        }), "Export ReactJS + Redux"));
-      } else if (e.target.classList.contains("fa-folder-open") || e.target.classList.contains("fa-folder")) {
-        // check if it is a folder.
-
-        this.state.contextMenuChildren = /*#__PURE__*/_react["default"].createElement("ul", {
-          className: "contextMenuOptions"
-        }, /*#__PURE__*/_react["default"].createElement("li", {
-          onClick: this.openExportTab.bind(this)
-        }, "Export Folder"));
-      }
-      this.setState({
-        showContextMenu: true,
-        contextMenuPosition: {
-          top: "".concat(e.clientY, "px"),
-          left: "".concat(e.clientX, "px")
-        }
-      });
-      e.preventDefault();
-    }
-  }, {
-    key: "hideContextMenu",
-    value: function hideContextMenu() {
-      if (this.state.showContextMenu) {
-        this.setState({
-          showContextMenu: false
-        });
-      }
-    }
-  }, {
     key: "render",
     value: function render() {
       var selectedComponent = this.state.selectedComponent || this.state.component;
       var randomKey = Math.ceil(Math.random() * 1000);
-      return /*#__PURE__*/_react["default"].createElement("div", {
-        onContextMenu: this.onShowContextMenu.bind(this),
-        onClick: this.hideContextMenu.bind(this)
-      }, /*#__PURE__*/_react["default"].createElement(_Markup["default"], {
+      return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_Markup["default"], {
         markup: selectedComponent.markup,
         key: randomKey
       }), /*#__PURE__*/_react["default"].createElement(_Style["default"], {
@@ -3081,15 +2989,6 @@ var Index = /*#__PURE__*/function (_Component) {
       }), /*#__PURE__*/_react["default"].createElement(_State["default"], {
         state: selectedComponent.state,
         key: randomKey
-      }), /*#__PURE__*/_react["default"].createElement(_Components["default"], {
-        components: this.state.components,
-        folders: this.state.folders,
-        selectedComponent: this.state.selectedComponent,
-        title: "Components",
-        key: randomKey,
-        onOpenEditor: this.openEditor.bind(this),
-        onSelection: this.updateSelectedComponent,
-        onFoldersUpdate: this.updateFolders.bind(this)
       }), /*#__PURE__*/_react["default"].createElement(_DynamicComponent["default"], {
         onSave: this.props.onSave,
         key: randomKey,
