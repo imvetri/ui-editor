@@ -21,27 +21,24 @@ import Style from  "./Style";
 import State from "./State";
 import Composer from "./Composer";
 
-import Flow from "./Flow";
 
 // Utility components.
 
 import {convertToReact, convertToReactRedux} from "./utilities/CodeGenerator/React/export";
-import { getNestedComponents, initialiseComponents} from "./utilities/Runtime"
+import { getNestedComponents} from "./utilities/Runtime"
 
 // Reducers.
 import { updateEvent, updateConfig, saveElement, updateSelectedComponent } from "./Index/Reducer";
 
 // Utils
 import { readData, writeData } from "./utilities/Storage";
-import {onDeleteComponent, onDeleteFolder, onExtendComponent} from "./Components/Events";
 
 // Constants
-import { CONSTANTS } from "./utilities/Constants"; 
 
 class Index extends Component {
     constructor(props) {
         super(props);
-        let components = readData("ui-editor");
+        let components = [];
         this.state = {
             components: components,
             selectedTag: "",
@@ -74,7 +71,7 @@ class Index extends Component {
 
     refreshComponents() {
         this.setState({
-            components: window.components
+            components: window.components || []
         })
     }
 
@@ -121,19 +118,13 @@ class Index extends Component {
         
         if(e.target.classList.contains("component") || e.target.classList.contains("componentName")) { // check if it is a component.
             this.state.contextMenuChildren = <ul className="contextMenuOptions">
-                <li onClick={onDeleteComponent.bind(this)}><i className="fas fa-trash"></i>Delete</li>
                 <li onClick={this.exportReact.bind(this)}><i className="fas fa-file-export"></i>Export</li>
                 <li onClick={this.exportReactRedux.bind(this)}><i className="fas fa-copy"></i>Export ReactJS + Redux</li>
-                <li onClick={onExtendComponent.bind(this)}><i className="fas fa-copy"></i>Extend</li>
             </ul>;
         }
         else if(e.target.classList.contains("fa-folder-open") || e.target.classList.contains("fa-folder")) {// check if it is a folder.
-            let folderName = e.target.parentElement.getAttribute("data-folder-name");
 
             this.state.contextMenuChildren =  <ul className="contextMenuOptions">
-            <li onClick={onDeleteFolder.bind(this, "FOLDER_RETAIN_CONTENTS", folderName)}>Delete folder and retain contents</li>
-            <li onClick={onDeleteFolder.bind(this, "RETAIN_FOLDER_DELETE_CONTENTS",folderName)}>Keep Folder and delete contents</li>
-            <li onClick={onDeleteFolder.bind(this, "ENTIRE_FOLDER",folderName)}>Delete Folder and contents</li>
             <li onClick={this.openExportTab.bind(this)}>Export Folder</li>
         </ul>;
 
@@ -161,10 +152,8 @@ class Index extends Component {
     render() {
         const selectedComponent = this.state.selectedComponent || this.state.component;
         const randomKey = Math.ceil(Math.random() * 1000);
-        window.components.forEach(initialiseComponents)
         return (
             <div onContextMenu={this.onShowContextMenu.bind(this)} onClick={this.hideContextMenu.bind(this)}>
-                <Flow/>
                 <Preview></Preview>
                 <Markup markup={selectedComponent.markup} key={randomKey}></Markup>
                 <Style style={selectedComponent.style} key={randomKey}></Style>

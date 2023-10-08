@@ -16,14 +16,11 @@
     "codemirror": "^5.52.0",
     "image-js": "^0.33.0",
     "react": "^18.2.0",
-    "react-codemirror2": "^6.0.0",
     "react-dom": "^18.2.0",
-    "react-inspector": "^2.3.1",
-    "reactflow": "^11.5.3",
     "react-scripts": "5.0.0"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
+    "babel-core": "^7.0.0",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
@@ -36,6 +33,6 @@
     "webpack-dev-server": "^3.1.14"
   },
   "resolutions": {
-      "acorn": "8.0.1"
+    "acorn": "8.0.1"
   }
 }

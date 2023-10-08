@@ -15,7 +15,7 @@ export function readData(key){
 
     if(key ==="ui-editor"){
         if(!window.components ){
-            window.components = JSON.parse(localStorage.getItem(key)) || window.sampleComponents;
+            window.components = JSON.parse(localStorage.getItem(key)) || [];
         }
         return JSON.parse(JSON.stringify(window.components));
     }
@@ -45,7 +45,7 @@ export function writeData(key, components, noPush){
     }
     if(key=="ui-editor"){
         console.log("WRITE")
-        window.components = components;
+        window.components = [];
         localStorage.setItem(key, JSON.stringify(components));
         if(!noPush){
             pushHistory(components);

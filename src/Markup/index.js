@@ -5,7 +5,6 @@ import React, { Component } from 'react';
 
 import Window from "../Window";
 
-import {UnControlled as CodeMirror} from 'react-codemirror2';
 
 class Markup extends Component {
     constructor(props) {
@@ -25,18 +24,10 @@ class Markup extends Component {
             <div className="container editor-tab">
                     <div className="editor markup">
                         <div className="title">Component Markup</div>
-                        <CodeMirror
-                            autoCursor={false}
+                        <input
+                            type="text"
                             value={markup}
-                            options={{
-                                lineNumbers: false,
-                                mode: "text/javascript",
-                                theme: "darcula",
-                                indentWithTabs: false,
-                                smartIndent: true,
-                                lineWrapping: true
-                            }}
-                            onChange={(editor, data, markup) => {
+                            onChange={(event, markup) => {
                                 this.setState({
                                     markup: markup
                                 })

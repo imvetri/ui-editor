@@ -21,8 +21,6 @@ import Window from "../Window"
 import "./style.css";
 
 
-// Constants
-import { CONSTANTS } from "../utilities/Constants"; 
 
 class Builder extends Component {
     constructor(props) {
@@ -48,7 +46,7 @@ class Builder extends Component {
             var jsx = [this.state].map(buildJSX)[0];
             this.props.onSave({
                 trueName: "",
-                name: this.state.name|| CONSTANTS.component_name_prefix+Math.ceil(Math.random() * 1000),
+                name: this.state.name,
                 markup: jsx,
                 style: "",
                 state: JSON.stringify(this.state)

@@ -4,7 +4,6 @@ import React, { Component } from "react";
 
 // Components.
 
-import { UnControlled as CodeMirror } from 'react-codemirror2';
 import Publishes from "./Publishes";
 
 // Events.
@@ -45,17 +44,9 @@ class Reducer extends Component {
             <div>
                 <div class="spacing" onMouseLeave={this.syncChanges.bind(this)}>
                     <label>Reducer Definition</label>
-                    <CodeMirror
+                    <input
                         value={reducer}
-                        autoCursor={false}
-                        options={{
-                            lineNumbers: false,
-                            mode: "text/javascript",
-                            theme: "darcula",
-                            indentWithTabs: false,
-                            smartIndent: true
-                        }}
-                        onChange={(editor, data, reducer) => {
+                        onChange={(event, data, reducer) => {
                             this.setState({
                                 reducer: reducer
                             })

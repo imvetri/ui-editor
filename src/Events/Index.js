@@ -6,8 +6,6 @@ import React, { Component } from "react";
 
 
 // Components. 
-
-import Configurator from "./Configurator";
 import Tags from "./Tags"
 import Reducer from  "./Event/Reducers/Reducer";
 import Window from "../Window";
@@ -112,12 +110,7 @@ class Events extends Component {
                         }
                 })
             })
-            // Create view for config.
-            configurator = <Configurator
-                key={Math.ceil(Math.random() * 1000)}
-                onChange={updateConfiguration.bind(this)}
-                childName={childComponentName}
-                parent={component} />;
+
         }
         else {
             eventNames = component.events.filter(e => e.id === selectedTag.split("-")[1]).map(e => e.name);
@@ -129,7 +122,6 @@ class Events extends Component {
                 <Window>
                 <ul className="container events-tab">
                     <Tags component={component} onSelectedTagChanged={selectedTagChanged.bind(this)} />
-                    {configurator}
                     <div className="title">
                         Event
                     </div>

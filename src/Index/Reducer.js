@@ -1,6 +1,5 @@
 import {writeData, readData} from "../utilities/Storage";
 
-import {findParent} from "../utilities/Components/Folders/findFolders";
 
 import {componentRecursive} from "../utilities/Runtime";
 
@@ -110,12 +109,7 @@ export function saveElement (element) {
         // Push new component into contents.
     }
     
-    if(element.trueName!==element.name && element.trueName!==""){ // rename the folder
-        // Find the content from folder
-        let parent = findParent( element.trueName, this.state.folders[0] )
-        let index = parent.contents.findIndex(content=>content===element.trueName)
-        parent.contents.splice(index,1, element.name);
-    }
+
 
     this.setState({
         elements: components,

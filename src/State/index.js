@@ -6,7 +6,6 @@ import React, { Component } from 'react';
 
 import Window from "../Window";
 
-import {UnControlled as CodeMirror} from 'react-codemirror2';
 
 class State extends Component {
     constructor(props) {
@@ -24,17 +23,9 @@ class State extends Component {
             <div className="container editor-tab">
                     <div className="editor state">
                         <div className="title">Component State</div>
-                        <CodeMirror
-                            autoCursor={false}
+                        <input
+                            type="text"
                             value={state}
-                            options={{
-                                lineNumbers: false,
-                                mode: "text/javascript",
-                                theme: "darcula",
-                                indentWithTabs: false,
-                                smartIndent: true,
-                                lineWrapping: true
-                            }}
                             onChange={(editor, data, state) => {
                                 this.setState({
                                     state: state

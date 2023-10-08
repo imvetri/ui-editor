@@ -10,7 +10,6 @@ import "./Style.css";
 import Window from '../Window';
 
 // Components.
-import Folders from "../Utilities/Components/Folders";
 
 
 class Components extends Component {
@@ -50,16 +49,7 @@ class Components extends Component {
                         <button onClick={this.addComponent.bind(this)}><i className="fa fa-edit"></i>{props.selectedComponent ? "Edit" : "Add"}</button>
                         <button onClick={this.addFolder.bind(this)}><i className="fa fa-folder"></i>Folder</button>
                     </div>
-                    <div className="folders">
-                        <Folders
-                            key={Math.ceil(Math.random() * 1000)}
-                            components={state.components}
-                            folders={state.folders}
-                            selectedComponent={props.selectedComponent}
-                            onFoldersUpdate={props.onFoldersUpdate}
-                            onSelection={props.onSelection}
-                        />
-                    </div>
+    
                 </div>
             </Window>
         );
