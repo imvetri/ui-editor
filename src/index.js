@@ -6,7 +6,6 @@ import ReactDOM from "react-dom";
 
 // Components.
 
-import Events from "./Events";
 import DynamicComponent from "./DynamicComponent";
 
 import Markup from './Markup';
@@ -24,39 +23,26 @@ class Index extends Component {
         let components = [];
         this.state = {
             components: components,
-            selectedTag: "",
             component: {
                 name: "",
                 markup: "",
                 style: "",
                 state: "{ }",
                 events: []
-            },
-            selectedComponent: "",
-            selectedTab: "Events"
+            }
         }
-        this.updateConfig = updateConfig.bind(this);
 
     }
 
 
     render() {
-        const selectedComponent = this.state.selectedComponent || this.state.component;
         const randomKey = Math.ceil(Math.random() * 1000);
         return (
             <div>
-                <Markup markup={selectedComponent.markup} key={randomKey}></Markup>
-                <Style style={selectedComponent.style} key={randomKey}></Style>
-                <State state={selectedComponent.state} key={randomKey}></State>
-                <DynamicComponent onSave={this.props.onSave} key={randomKey} component={selectedComponent}/>
-
-                <Events
-                    key={randomKey}
-                    component={selectedComponent}
-                    selectedTag={this.state.selectedTag}
-                    components={this.state.components}
-                    title="Events"
-                />
+                <Markup markup={this.state.component.markup} key={randomKey}></Markup>
+                <Style style={this.state.component.style} key={randomKey}></Style>
+                <State state={this.state.component.state} key={randomKey}></State>
+                <DynamicComponent onSave={this.props.onSave} key={randomKey} component={this.state.component}/>
             </div>
         );
     }
