@@ -6,7 +6,6 @@ import ReactDOM from "react-dom";
 
 // Components.
 
-import DynamicComponent from "./DynamicComponent";
 
 import Markup from './Markup';
 import Style from  "./Style";
@@ -42,7 +41,6 @@ class Index extends Component {
                 <Markup markup={this.state.component.markup} key={randomKey}></Markup>
                 <Style style={this.state.component.style} key={randomKey}></Style>
                 <State state={this.state.component.state} key={randomKey}></State>
-                <DynamicComponent onSave={this.props.onSave} key={randomKey} component={this.state.component}/>
             </div>
         );
     }

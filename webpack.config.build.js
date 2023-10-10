@@ -6,7 +6,7 @@ const htmlWebpackPlugin = new HtmlWebPackPlugin({
 
 module.exports = {
     output: {
-        path: __dirname + '/docs'
+        path: __dirname + '/dist'
     },
     stats: 'errors-only',
     devServer: {
