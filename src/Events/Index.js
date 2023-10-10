@@ -11,9 +11,6 @@ import Reducer from  "./Event/Reducers/Reducer";
 import Window from "../Window";
 
 
-// Styles.
-
-import "./Style.css";
 
 // Reducers.
 

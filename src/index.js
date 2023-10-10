@@ -3,8 +3,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
-// Dependencies.
-import "./Index/index.css";
 
 // Components.
 

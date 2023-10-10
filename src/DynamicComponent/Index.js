@@ -1,9 +1,6 @@
 // Libraries.
 
 import React, { Component } from "react";
-// Styles.
-
-import "./style.css";
 
 class DynamicComponent extends Component {
     constructor(props) {
@@ -20,7 +17,7 @@ class DynamicComponent extends Component {
         if(!window[this.props.component.name]){
             return null
         }
-        return <div className="centerItem">{React.createElement( window[this.props.component.name] )}</div>
+        return <div>{React.createElement( window[this.props.component.name] )}</div>
     }
 
 }

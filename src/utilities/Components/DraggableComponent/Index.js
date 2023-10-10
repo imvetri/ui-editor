@@ -2,8 +2,6 @@
 
 import React, { Component } from "react";
 
-import "./style.css";
-
 import config from "./config";
 
 class DraggableComponent extends Component {

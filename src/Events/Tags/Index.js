@@ -2,8 +2,6 @@
 
 import React, { Component } from "react";
 
-import "./Style.css"
-
 import Nodes from "../../utilities/Components/Nodes";
 
 import { getNodeTree } from "../../utilities/get-node-tree.js";
