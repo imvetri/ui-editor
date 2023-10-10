@@ -16,10 +16,6 @@ import Style from  "./Style";
 import State from "./State";
 
 
-// Utility components.
-
-import {convertToReact} from "./utilities/CodeGenerator/React/export";
-import { getNestedComponents} from "./utilities/Runtime"
 
 // Reducers.
 import { updateEvent, updateConfig, saveElement } from "./Index/Reducer";
@@ -50,19 +46,6 @@ class Index extends Component {
 
     }
 
-
-    exportReact(e){
-        window.visited = {};
-        let nestedComponents = getNestedComponents(this.state.selectedComponent)
-        // nested components contain duplicates. we need to remove it
-        let uniqueComponents = {}
-        nestedComponents.forEach(component=>{
-            if(!uniqueComponents[component.name]){
-                uniqueComponents[component.name]=component;
-            }
-        })
-        console.log(Object.values(uniqueComponents).map(convertToReact).join("\n\n"))
-    }
 
     render() {
         const selectedComponent = this.state.selectedComponent || this.state.component;

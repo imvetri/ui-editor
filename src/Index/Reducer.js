@@ -1,4 +1,3 @@
-import {componentRecursive} from "../utilities/Runtime";
 
 export function updateEvent (events) {
     // Create new state.
@@ -58,18 +57,6 @@ export function saveElement (element) {
     let selectedIndex = components.findIndex(component=>component.name===this.state.selectedComponent.name);
     if(elementExist){
 
-        if(componentRecursive(element)){
-            // Edit the config
-            let config = JSON.parse(selectedComponent.config);
-            config[element.name] = config[element.name] || {};
-            config[element.name].override = true;
-            selectedComponent.config = JSON.stringify(config);
-
-            // Edit the state.
-            let state = JSON.parse(element.state);
-            state[element.name]=state[element.name] || [];
-            element.state = JSON.stringify(state);
-        }
 
         // Find the element.
         let elementUnderEdit = selectedComponent;

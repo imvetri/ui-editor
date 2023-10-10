@@ -1,10 +1,6 @@
 // Libraries.
 
 import React, { Component } from "react";
-
-// Runtime utilities.
-
-import {initialiseComponents} from "../utilities/Runtime";
 // Styles.
 
 import "./style.css";
@@ -20,7 +16,6 @@ class DynamicComponent extends Component {
 
     render() {
 
-        initialiseComponents(this.props.component)
 
         if(!window[this.props.component.name]){
             return null
