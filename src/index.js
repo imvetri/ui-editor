@@ -15,9 +15,6 @@ import State from "./State";
 
 
 
-// Reducers.
-import { updateEvent, updateConfig, saveElement } from "./Index/Reducer";
-
 
 // Constants
 
@@ -39,8 +36,6 @@ class Index extends Component {
             selectedTab: "Events"
         }
         this.updateConfig = updateConfig.bind(this);
-        this.updateEvent = updateEvent.bind(this);
-        this.saveElement = saveElement.bind(this);
 
     }
 
@@ -60,8 +55,6 @@ class Index extends Component {
                     component={selectedComponent}
                     selectedTag={this.state.selectedTag}
                     components={this.state.components}
-                    onEventsUpdate={this.updateEvent}
-                    onConfigUpdate={this.updateConfig}
                     title="Events"
                 />
             </div>

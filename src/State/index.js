@@ -17,7 +17,6 @@ class State extends Component {
 
     render() {
         let state = this.state.state;
-        // TODO: Should pass the current data. Instead of accessing it from global
         return (
             <Window>
             <div className="container editor-tab">

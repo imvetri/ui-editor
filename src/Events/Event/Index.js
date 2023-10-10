@@ -4,8 +4,6 @@ import React, { Component } from "react";
 
 // Components.
 
-import Publishes from "./Publishes";
-
 // Events.
 
 class Reducer extends Component {
@@ -17,22 +15,7 @@ class Reducer extends Component {
         }
     }
 
-    addNewPublish(){
-        this.setState({
-            publishes: (this.state.publishes.push({
-                publishable: true,
-                publishName: "",
-                publishCondition: ""
-            }), this.state.publishes)
-        })
-    }
 
-    syncChanges(){
-        this.props.onChange({
-            publishes: this.state.publishes,
-            reducer: this.state.reducer
-        })
-    }
 
     render() {
 

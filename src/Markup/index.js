@@ -18,7 +18,6 @@ class Markup extends Component {
 
     render() {
         let markup= this.state.markup;
-        // TODO: Should pass the current data. Instead of accessing it from global
         return (
             <Window>
             <div className="container editor-tab">

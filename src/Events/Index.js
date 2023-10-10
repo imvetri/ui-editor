@@ -7,14 +7,13 @@ import React, { Component } from "react";
 
 // Components. 
 import Tags from "./Tags"
-import Reducer from  "./Event/Reducers/Reducer";
 import Window from "../Window";
 
 
 
 // Reducers.
 
-import { selectedTagChanged, deleteEvent, updateConfiguration, updateSelectedEvent } from "./Reducer";
+import { selectedTagChanged, updateSelectedEvent } from "./Reducer";
 
 
 
@@ -47,24 +46,6 @@ class Events extends Component {
         })
     }
 
-    saveEvent(){
-        let events = Array.from(this.props.component.events);
-        let changedEvent = events.find(event=>event.name===this.state.selectedEvent.name && this.state.eventID=== event.id);
-        if(changedEvent){
-            // its a existing event
-            changedEvent.reducer = this.state.selectedEvent.reducer;
-        }
-        else{
-            // its a new event
-            events.push({
-                id: this.state.eventID,
-                index: events.length,
-                name: this.state.selectedEvent.name,
-                reducer: this.state.selectedEvent.reducer
-            })
-        }
-        this.props.onEventsUpdate(events);
-    }
 
     render() {
         const component = this.props.component;
@@ -124,8 +105,6 @@ class Events extends Component {
                             <datalist id="eventNames">
                                 {eventNames.map(eventName => <option value={eventName}></option>)}
                             </datalist>
-                            <button onClick={this.saveEvent.bind(this)} id="saveEvent"><i className="fas fa-save"></i>Save Event</button>
-                            <button onClick={deleteEvent.bind(this)} id="deleteEvent"><i className="fas fa-trash"></i>Delete Event</button>
                         </div>
                     </div>
                     <div className="event">

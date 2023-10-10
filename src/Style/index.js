@@ -20,7 +20,6 @@ class Style extends Component {
     render() {
         let style= this.state.style;
 
-        // TODO: Should pass the current data. Instead of accessing it from global
         return (
             <Window>
             <div className="container editor-tab">
