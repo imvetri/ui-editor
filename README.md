@@ -89,6 +89,29 @@ npm start
 
 ![image](https://user-images.githubusercontent.com/6542274/126032164-87b2ce4a-6c9a-4809-a87c-75316d0080ec.png)
 
+### User experience design inspiration
+
+* <b>Drawflow</b> - Create components and its variants on the left bar, link them to parent to compose bigger copmonents on the righ pane
+![image](https://github.com/imvetri/ui-editor/blob/master/docs/gifs/DrawFlow%20diagram.png?raw=true)
+
+* <b>GoJS State Chart</b> - Create components on click on canvas, resize for spacing, connect it with other components for composition
+![image](https://github.com/imvetri/ui-editor/blob/master/docs/gifs/GoJS,%20state%20chart.png?raw=true)
+
+* <b>WebGL State diagram</b> Create nodes that connect one with another with field values in form of text. This is the first inspiration leading to other designs.
+![image](https://github.com/imvetri/ui-editor/blob/master/docs/gifs/WebGL%20state%20diagram.png?raw=true)
+
+* <b>Stately</b> Treating the component design and variants as the states, here is an interface that helps to design on a pane, and allows the user to simulate the changes on another pane.
+![image](https://github.com/imvetri/ui-editor/blob/master/docs/gifs/Stately.png?raw=true)
+
+#### User experience
+
+* User should be able to design and interact - Pick the experience from the stately
+* User should be able to create new component,resize on the fly by clicking on the pane. - Pick from goJs state diagram.
+* User should be able to zoom in and zoom out with infinite space possiblity -
+* User should be able to add images 
+
+Next steps - Get rid of unwanted code from excalidraw, retain only rectangle and arrow shape.
+
 
 ### Features
 * <b>Seperation of concerns</b> - Modern frameworks tend to mix and match view, styling, callbacks in single file. There are other best practices like maintaining a separate file as separation of concerns but each is an individual's opinion and will confuse a lot to beginners who are new. Taking that into consideration, I moved view, style, state, callbacks into separate interfaces and it separated the concerns.
