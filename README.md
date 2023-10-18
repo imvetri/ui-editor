@@ -11,7 +11,7 @@
   <br>
   
 </div>
-<h2>About</h2>
+<h1>About</h1>
   <p>
     ui-editor is a web based interface builder built using reactjs. Its purpose is to build interfaces for rapid application development. It's aim is to forget learning framework syntax and focus on building just the components using jsx, state, events.
   </p>
@@ -48,7 +48,7 @@ Checkout https://ui-editor.github.io/flow/ for a fork and on the latest design.
 Source for current changes are part of https://github.com/ui-editor/flow
 </p>
 
-<h2>Blueprint - Architecture - Design Wireframe </h2>
+<h1>Blueprint - Architecture - Design Wireframe </h1>
 
 <br/>
 <br/>
@@ -67,7 +67,7 @@ Source for current changes are part of https://github.com/ui-editor/flow
 <br/>
 <br/>
 
-<h2>Challenging features</h2> 
+<h1>Challenging features</h1> 
 <br/>
 
 * <b>Code generation</b> - https://vimeo.com/386239546 - this feature speeds up component creation and maintenance duration.
@@ -90,7 +90,7 @@ Source for current changes are part of https://github.com/ui-editor/flow
   
 <br/>
 <br/>
-<h2>Getting Started </h2>
+<h1>Getting Started </h1>
 <br/>
 <br/>
 
@@ -104,7 +104,7 @@ npm start
 ```
 <br/>
 <br/>
-<h2>Goals </h2>
+<h1>Goals </h1>
 <br/>
 <br/>
 * <b>UX design tool</b> - End result - tool should be allow users to create bunch of rectangles, and a design system (spacing inside, spacing outside, color inside, color outside, content type - text, image, another rectangle)
@@ -120,7 +120,7 @@ npm start
 
 <br/>
 <br/>
-<h2> User experience design inspiration</h2>
+<h1> User experience design inspiration</h1>
 <br/>
 <br/>
 * <b>Drawflow</b> - Create components and its variants on the left bar, link them to parent to compose bigger copmonents on the righ pane
@@ -146,7 +146,7 @@ Next steps - Get rid of unwanted code from excalidraw, retain only rectangle and
 
 <br/>
 <br/>
-<h2> Features</h2>
+<h1> Features</h1>
 <br/>
 <br/>
 * <b>Seperation of concerns</b> - Modern frameworks tend to mix and match view, styling, callbacks in single file. There are other best practices like maintaining a separate file as separation of concerns but each is an individual's opinion and will confuse a lot to beginners who are new. Taking that into consideration, I moved view, style, state, callbacks into separate interfaces and it separated the concerns.
@@ -159,7 +159,7 @@ Next steps - Get rid of unwanted code from excalidraw, retain only rectangle and
 
 <br/>
 <br/>
-<h2>Contributions</h2>
+<h1>Contributions</h1>
 <br/>
 <br/>
 This project is built with one happy path in mind and needs a lot of effort to improve the user experience. It is very hard to type the jsx, css, state, events and reducers without code formatters and code prediction. The component explorer needs more smoother look, The renderer can be extended to support different devices. This project has more potential to evolve into a UX design tool and that is one step where the project can head,and with code generation already in place, it will be more powerful in terms of time to build components. If you know someone who is willing to moderate the project, bring in more contributors please spread a word.  With your help and support we can reach there real quick. Please feel free to reach out to me if you have free time to spare https://twitter.com/VetrivelShanmu3.
@@ -171,7 +171,7 @@ This project is built with one happy path in mind and needs a lot of effort to i
 
 <br/>
 <br/>
-<h2> Communication</h2>
+<h1> Communication</h1>
 <br/>
 <br/>
 * Open Issue
