@@ -1,4 +1,13 @@
-
+<div>
+  <h1>Philosophy</h1>
+  <ul>
+    <li>Artificial Intelligence is based on probabilistic unsolved function, where as tools like mine are based on solved functions</li>
+    <li>Artificial Intelligence competitor are low code, no code systems, this project helps to builds low code no code application in any domain</li>
+    <li>Engineering Excellence - A code that can be extended to build an infinite space for teams to work.</li>
+    <li>An efficient tool to replace modern bloatware like jira, slack, confluence, excel</li>
+    <li>Built with Javascript</li>
+  </ul>
+</div>
 <p>
 Checkout https://ui-editor.github.io/flow/ for a fork and on the latest design. 
 <br>
