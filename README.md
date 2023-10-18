@@ -79,6 +79,7 @@ Source for current changes are part of https://github.com/ui-editor/flow
 
 <h1>Challenging features</h1> 
 <br/>
+<br/>
 
 * <b>Code generation</b> - https://vimeo.com/386239546 - this feature speeds up component creation and maintenance duration.
 
@@ -145,8 +146,12 @@ npm start
 * <b>Stately</b> Treating the component design and variants as the states, here is an interface that helps to design on a pane, and allows the user to simulate the changes on another pane.
 ![image](https://github.com/imvetri/ui-editor/blob/master/docs/gifs/Stately.png?raw=true)
 
+<br/>
+<br/>
 <h1>User experience</h1>
 
+<br/>
+<br/>
 * User should be able to design and interact - Pick the experience from the stately
 * User should be able to create new component,resize on the fly by clicking on the pane. - Pick from goJs state diagram.
 * User should be able to zoom in and zoom out with infinite space possiblity -
