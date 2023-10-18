@@ -47,6 +47,17 @@ Checkout https://ui-editor.github.io/flow/ for a fork and on the latest design.
 Source for current changes are part of https://github.com/ui-editor/flow
 </p>
 
+<h1>Engineering Efficiency </h1>
+
+<br/>
+<br/>
+
+
+![Illustration](https://raw.githubusercontent.com/imvetri/ui-editor/master/docs/gifs/Illustration.png)
+
+<br/>
+<br/>
+
 <h1>Blueprint - Architecture - Design Wireframe </h1>
 
 <br/>
