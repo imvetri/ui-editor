@@ -9,6 +9,7 @@
     <li>Everything is rectangle</li>
   </ul>
 </div>
+<h2></h2>
 <p>
 Checkout https://ui-editor.github.io/flow/ for a fork and on the latest design. 
 <br>
@@ -24,6 +25,7 @@ Source for current changes are part of https://github.com/ui-editor/flow
   [![Build Status](https://travis-ci.com/imvetri/ui-editor.svg?branch=master)](https://travis-ci.com/github/imvetri/ui-editor/)
 
   <br>
+<h2>About</h2>
   <p>
     ui-editor is a web based interface builder built using reactjs. Its purpose is to build interfaces for rapid application development. It's aim is to forget learning framework syntax and focus on building just the components using jsx, state, events.
   </p>
