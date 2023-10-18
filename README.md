@@ -6,6 +6,7 @@
     <li>Engineering Excellence - A code that can be extended to build an infinite space for teams to work.</li>
     <li>An efficient tool to replace modern bloatware like jira, slack, confluence, excel</li>
     <li>Built with Javascript</li>
+    <li>Everything is rectangle</li>
   </ul>
 </div>
 <p>
