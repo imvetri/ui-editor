@@ -25,6 +25,8 @@ Source for current changes are part of https://github.com/ui-editor/flow
   [![Build Status](https://travis-ci.com/imvetri/ui-editor.svg?branch=master)](https://travis-ci.com/github/imvetri/ui-editor/)
 
   <br>
+  
+</div>
 <h2>About</h2>
   <p>
     ui-editor is a web based interface builder built using reactjs. Its purpose is to build interfaces for rapid application development. It's aim is to forget learning framework syntax and focus on building just the components using jsx, state, events.
@@ -36,16 +38,21 @@ Source for current changes are part of https://github.com/ui-editor/flow
 I tried to build a self editable compoment that can create children of itself and it worked. Checkit out the <a href="https://vimeo.com/464104903">recorded video</a> and <a href="https://vimeo.com/642968726">drag-and-drop</a> feature. It also comes with an option to edit the styles and it's interesting.
 
 Most recently, I introduced react-flow for an infinite canvas - have a look at the demo here https://www.youtube.com/watch?v=Sfe6Qobn8vo 
-</p>
-
-</div>
-
 ### Demo - https://imvetri.github.io/ui-editor/ 
 
 ### wiki
 Checkout https://github.com/imvetri/ui-editor/wiki video section for more experiments and concepts 
+</p>
+
+<br/>
+<br/>
+
 
 <h2>Blueprint - Architecture - Design </h2>
+
+<br/>
+<br/>
+
 
 ![Wireframe](https://raw.githubusercontent.com/imvetri/ui-editor/6e8bf195a6826ea11b97b61e06dd23fbda6a6a39/docs/gifs/wireframe.png)
 
