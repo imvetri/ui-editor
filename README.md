@@ -9,7 +9,7 @@
   [![Build Status](https://travis-ci.com/imvetri/ui-editor.svg?branch=master)](https://travis-ci.com/github/imvetri/ui-editor/)
 
   <br>
-  
+  ![Illustration](https://raw.githubusercontent.com/imvetri/ui-editor/master/docs/gifs/Illustration.png)
 </div>
 <h1>About</h1>
   <p>
