@@ -107,7 +107,7 @@ Source for current changes are part of https://github.com/ui-editor/flow
 <br/>
 <br/>
 
-Install nodeJS and Git. Then try below command.
+Install nodeJS and Git. Then try below command. Note: use nodejs < 16
 ```
 git clone https://github.com/imvetri/ui-editor.git
 cd ui-editor
