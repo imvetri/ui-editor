@@ -73,7 +73,7 @@ Find the source for current changes at [ui-editor/flow](https://github.com/ui-ed
 - **Layout Designer Extraordinaire:** [Experience the power](https://vimeo.com/554105526) of Select, Resize, Copy, Move, Delete in the builder toolbar.
 - **The Infinite Display Saga:** [Embark on the journey](https://vimeo.com/554844159) towards a complete web development workflow – design tool, system manager, component composer, and more!
 
-### Get Inspired - [Watch the Series](https://vimeo.com/user139074050)
+### Get Inspired - [Watch the Series](https://vimeo.com/manage/folders/2388312)
 
 <br/>
 <br/>
