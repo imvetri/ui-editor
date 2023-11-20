@@ -10,6 +10,8 @@ import ReactDOM from "react-dom";
 import Markup from './Markup';
 import Style from  "./Style";
 import State from "./State";
+import { Excalidraw } from "@excalidraw/excalidraw";
+
 
 
 
@@ -41,6 +43,9 @@ class Index extends Component {
                 <Markup markup={this.state.component.markup} key={randomKey}></Markup>
                 <Style style={this.state.component.style} key={randomKey}></Style>
                 <State state={this.state.component.state} key={randomKey}></State>
+                <div style={{ height: "100vh", width: "50vw" }}>
+                    <Excalidraw />
+                </div>
             </div>
         );
     }
