@@ -10,7 +10,7 @@
   <br/>
 </div>
 
-# Unleash Your Designing Potential with ui-editor 🔥
+# Unleash 🔥
 
 ## About
 
