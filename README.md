@@ -22,7 +22,7 @@ And that's not all! I've integrated react-flow for an infinite canvas. Check out
 
 ### See it in action - [Demo](https://imvetri.github.io/ui-editor/)
 
-#### Draw on left, see the code on right
+#### Draw on left, see the code on right (working on it)
 <img width="612" alt="excalidraw+ui-editor" src="https://github.com/imvetri/ui-editor/assets/6542274/4a736ffe-2e7f-4c18-aba9-9027d7ed2dd2">
 
 
