@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --mode development --open",
-    "build": "webpack --config webpack.config.build.js",
+    "build": "webpack --mode development --config webpack.config.build.js",
     "build-dev": "webpack"
   },
   "dependencies": {
