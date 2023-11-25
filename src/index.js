@@ -35,6 +35,9 @@ class Index extends Component {
 
     }
 
+    onExcalidrawChange (elements, appState, files) {
+        console.log(elements, appState, files)
+    }
 
     render() {
         const randomKey = Math.ceil(Math.random() * 1000);
@@ -44,7 +47,7 @@ class Index extends Component {
                 <Style style={this.state.component.style} key={randomKey}></Style>
                 <State state={this.state.component.state} key={randomKey}></State>
                 <div style={{ height: "100vh", width: "50vw" }}>
-                    <Excalidraw />
+                    <Excalidraw onChange={this.onExcalidrawChange}/>
                 </div>
             </div>
         );
