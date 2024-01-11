@@ -37,4 +37,7 @@
         locations[~~(index / 4)] = locations[~~(index / 4)] || {}
         locations[~~(index / 4)][heap.snapshot.meta.location_fields[index % 4]] = item
     })
+    
+    // get node for a location 
+    nodes[locations[0].object_index/7]
 </script>
