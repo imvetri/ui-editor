@@ -1,4 +1,4 @@
-<script src="./Heap-20240111T122101.heaptimeline.js"></script>
+<script src="./Heap-20240116T144927.js"></script>
 <script>
     var value = {
         comeobjectreallybigsothatdonthavetothinkwhatsthebesthingoutofthemindtobetrutornottobeisahardestquestionmashastoask: {}
@@ -40,4 +40,23 @@
     
     // get node for a location 
     nodes[locations[0].object_index/7]
+
+    nodes.forEach(node=>{
+        node.type = heap.snapshot.meta.node_types[0][node.type];
+        node.name = heap.strings[node.name];
+    })
+    edges.forEach(edge=>{
+        edge.name_or_index = heap.strings[edge.name_or_index ]
+        edge.type=heap.snapshot.meta.node_types[0][edge.type]
+        edge.to_node = nodes[edge.to_node]
+    })
+
+    locations.forEach(location=>{
+        location.object_index = nodes[location.object_index/7]
+    })
+    var samples = []
+    heap.samples.forEach((sample,index)=>{
+        samples[~~(index/2)]=samples[~~(index/2)] || {};
+        samples[~~(index/2)][heap.snapshot.meta.sample_fields[index%2]] = sample
+    })
 </script>
