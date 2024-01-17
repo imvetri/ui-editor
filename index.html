@@ -1,9 +1,26 @@
-<script src="./Heap-20240116T144927.js"></script>
-<script>
-    var value = {
-        comeobjectreallybigsothatdonthavetothinkwhatsthebesthingoutofthemindtobetrutornottobeisahardestquestionmashastoask: {}
-    }
-</script>
+<head>
+    <style> body { margin: 0; } </style>
+  
+    <script src="https://unpkg.com/3d-force-graph@1.73.0/dist/3d-force-graph.min.js"></script>
+  </head>
+  
+  <body>
+  
+    <div id="3d-graph"></div>
+  
+    <script>
+      const elem = document.getElementById('3d-graph');
+  
+      const Graph = ForceGraph3D()(elem)
+        .jsonUrl('https://vasturiano.github.io/3d-force-graph/example/datasets/blocks.json')
+        .nodeAutoColorBy('user')
+        .nodeLabel(node => `${node.user}: ${node.description}`)
+        .onNodeClick(node => window.open(`https://bl.ocks.org/${node.user}/${node.id}`, '_blank'));
+    </script>
+  </body>
+<script src="./Heap-20240116T164055.js"></script>
+
+
 <script>
     var graph = {
         nodes: heap.nodes,
