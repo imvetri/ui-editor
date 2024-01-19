@@ -7,14 +7,65 @@
   <body>
   
     <div id="3d-graph"></div>
-  
+    <script src="./Heap-20240116T144927.js"></script>
+    <script>    
+        var graph = {
+              nodes: heap.nodes,
+              edges: heap.edges
+          }
+        var edgeHash = {}
+
+        var edges = [];
+        graph.edges.forEach((item, index) => {
+            edges[~~(index / 3)] = edges[~~(index / 3)] || {}
+            edges[~~(index / 3)][heap.snapshot.meta.edge_fields[index % 3]] = item
+        })
+        edges.forEach((edge,id)=>{
+          edge.id = id
+        })
+
+        var nodes = [];
+        graph.nodes.forEach((item, index) => {
+            nodes[~~(index / 7)] = nodes[~~(index / 7)] || {}
+            nodes[~~(index / 7)][heap.snapshot.meta.node_fields[index % 7]] = item
+        })
+
+        var current = 0;
+        nodes.forEach(node=>{
+            node.edges = edges.slice(current,current+node.edge_count)
+            current = current+node.edge_count
+        })
+
+        var edgeHash = {};
+        edges.forEach(edge=>{
+          edgeHash[edge.id] = edge
+        })
+
+        nodes.forEach(node=>{
+          node.edges.forEach(edge=>{
+            edgeHash[edge.id].source = node.id;
+          })
+        })
+
+         
+        var blocks = {
+          nodes : nodes,
+          links : edges.map(edge=>{
+            return {
+              target: nodes[edge.to_node/7].id,
+              source: edgeHash[edge.id].source
+            }
+          })
+        }
+
+    </script>
     <script>
       const elem = document.getElementById('3d-graph');
   
       const Graph = ForceGraph3D()(elem)
-        .jsonUrl('https://vasturiano.github.io/3d-force-graph/example/datasets/blocks.json')
+        .graphData(blocks)
         .nodeAutoColorBy('user')
-        .nodeLabel(node => `${node.user}: ${node.description}`)
-        .onNodeClick(node => window.open(`https://bl.ocks.org/${node.user}/${node.id}`, '_blank'));
+        .nodeLabel(node => `${node.id}: ${node}`)
+        .onNodeClick(node => window.open('https://github.com/vasturiano/3d-force-graph', '_blank'));
     </script>
   </body>
