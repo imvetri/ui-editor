@@ -30,19 +30,11 @@ And that's not all! I've integrated react-flow for an infinite canvas. Check out
 
 ### Crisp - [Illustrative story](https://www.linkedin.com/pulse/introducing-web-designers-developer-vetrivel-shanmugam/)
 
-Unleash your creativity and dive into more experiments and concepts in the video section.
 
 <br/>
 <br/>
 
-## Philosophy
 
-- **Artificial Intelligence Unleashed:** While AI is rooted in unsolved functions, ui-editor thrives on solved functions.
-- **Defying Competitors:** Face off against low-code, no-code systems. ui-editor empowers you to build applications in any domain effortlessly.
-- **Engineering Excellence:** Extend code to create an infinite space for teams to collaborate seamlessly.
-- **Bloatware Slayer:** Bid farewell to modern bloatware like Jira, Slack, Confluence, and Excel.
-- **JavaScript Mastery:** Crafted with love using JavaScript.
-- **Everything is a Rectangle:** Simplifying complexity, one rectangle at a time.
 
 ### Discover More - [Latest Design](https://ui-editor.github.io/flow/)
 
@@ -95,46 +87,8 @@ npm i (or try yarn install)
 npm start
 
 ```
-# Goals
 
-## UX Design Tool
-End result: A tool empowering users to create a multitude of rectangles and a design system. Define spacing inside/outside, color inside/outside, content type (text, image, another rectangle).
-![UX Design Tool](https://user-images.githubusercontent.com/6542274/126032138-207c871a-988d-4aca-8338-5fef7dfd68fe.png)
 
-## UI Builder
-End result: A tool enabling users to create interactive components. Create all variants of a component, link them together with an event. Voila, you're done!
-![UI Builder](https://user-images.githubusercontent.com/6542274/126032184-3ea1dfbf-7da7-444a-a29a-6ef020f7bc88.png)
-
-## Schema Builder
-End result: A tool allowing users to create business domain information – a.k.a one big fat JSON simplified as a class diagram. Develop ugly code for persistent storage, in-memory storage, and a protocol to access storage via web(HTTP). No session management – let users build their session management or integrate it into the schema. Create schemas for different auth and roles. Front UI builder will show/hide features based on this value.
-![Schema Builder](https://user-images.githubusercontent.com/6542274/126032164-87b2ce4a-6c9a-4809-a87c-75316d0080ec.png)
-
-# User Experience Design Inspiration
-
-## Drawflow
-Create components and their variants on the left bar, linking them to parents to compose larger components on the right pane.
-![Drawflow](https://github.com/imvetri/ui-editor/blob/master/docs/gifs/DrawFlow%20diagram.png?raw=true)
-
-## GoJS State Chart
-Create components with a click on the canvas, resize for spacing, connect with other components for composition.
-![GoJS State Chart](https://github.com/imvetri/ui-editor/blob/master/docs/gifs/GoJS,%20state%20chart.png?raw=true)
-
-## WebGL State Diagram
-Create nodes that connect with one another with field values in the form of text. This is the initial inspiration leading to other designs.
-![WebGL State Diagram](https://github.com/imvetri/ui-editor/blob/master/docs/gifs/WebGL%20state%20diagram.png?raw=true)
-
-## Stately
-Treating the component design and variants as states, here is an interface that helps to design on a pane and allows the user to simulate the changes on another pane.
-![Stately](https://github.com/imvetri/ui-editor/blob/master/docs/gifs/Stately.png?raw=true)
-
-# User Experience
-
-- Users should be able to design and interact, drawing inspiration from Stately.
-- Users should be able to create a new component, resize on the fly by clicking on the pane – inspired by GoJS State Diagram.
-- Users should be able to zoom in and out with infinite space possibilities.
-- Users should be able to add images.
-
-Next steps: Get rid of unwanted code from Excalidraw, retaining only rectangle and arrow shapes.
 
 # Features
 
