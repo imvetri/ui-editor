@@ -10,7 +10,6 @@ import ReactDOM from "react-dom";
 import Markup from './Markup';
 import Style from  "./Style";
 import State from "./State";
-import { Excalidraw } from "@excalidraw/excalidraw";
 
 
 
@@ -36,24 +35,6 @@ class Index extends Component {
         window.count=0;
     }
 
-    onExcalidrawChange (elements, appState, files) {
-        count++;
-        console.log(count)
-        if(count>500){
-            console.log(elements, appState, files)
-
-            this.setState({drawelements: elements})
-            count=0;
-        }
-    }
-
-    onExcalidrawFinish() {
-        console.log("FINISH")
-    }
-
-    onExcalidrawStart(){
-        console.log("START")
-    }
     render() {
         const randomKey = Math.ceil(Math.random() * 1000);
         return (
@@ -76,11 +57,7 @@ class Index extends Component {
                 <Markup markup={this.state.component.markup} key={randomKey}></Markup>
                 <Style style={this.state.component.style} key={randomKey}></Style>
                 <State state={this.state.component.state} key={randomKey}></State>
-                <div style={{ height: "90vh", width: "50vw" }}>
-                    <Excalidraw onChange={this.onExcalidrawChange.bind(this)}
-                                onPointerUp={this.onExcalidrawFinish.bind(this)}
-                                onPointerDown={this.onExcalidrawStart.bind(this)}/>
-                </div>
+
             </div>
         );
     }
