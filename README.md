@@ -83,8 +83,8 @@ Install NodeJS and Git. Then, unleash the power with these commands. Note: use n
 ```bash
 git clone https://github.com/imvetri/ui-editor.git
 cd ui-editor
-npm i (or try yarn install)
-npm start
+yarn
+yarn start
 
 ```
 
