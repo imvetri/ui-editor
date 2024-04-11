@@ -1,51 +1,129 @@
 <!DOCTYPE html>
 <html>
-    <head>
+
+<head>
     <title>React</title>
-<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react-flow-renderer/10.3.17/umd/index.js" integrity="sha512-Oq9I8xnoKiDrPntNaQn1BsWAdYDQ7Vyv2UH6eerqRoMjI9bfDFcn48tEIrSwNM2jTqRwMYRxf1OyB9NOJeQjTQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-flow-renderer/10.3.17/umd/index.js"
+        integrity="sha512-Oq9I8xnoKiDrPntNaQn1BsWAdYDQ7Vyv2UH6eerqRoMjI9bfDFcn48tEIrSwNM2jTqRwMYRxf1OyB9NOJeQjTQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
 
- 
+        table,
+        tr,
+        td,
+        th {
+            border: 1px solid black;
+            text-align: left;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+
 </head>
-    <body>
-       <script type="text/babel" data-type="module" >
 
+<body>
+    <script type="text/babel" data-type="module">
 
         function Flow() {
-          return (
-            <div style={{ height: '100vh' }}>
-                <ReactFlow.default>
-                    <ReactFlow.Background />
-                    <ReactFlow.Controls />
-                </ReactFlow.default>
+            return (
+                <div style={{ height: '100vh' }}>
+                    <ReactFlow.default nodes={state.nodes} edges={state.edges}>
+                        <ReactFlow.Background />
+                        <ReactFlow.Controls />
+                    </ReactFlow.default>
+                </div>
+            );
+        }
+
+        let state = {
+            nodes: [{
+                id: 1,
+                type: "input",
+                data: {
+                    label: "Input node"
+                },
+                position: {
+                    x: 250,
+                    y: 0
+                }
+            },
+
+            {
+                id: '2',
+                data: {
+                    label: 'Default Node',
+                },
+                position: { x: 100, y: 100 },
+            },],
+            edges: [{ id: 'e1-2', source: '1', target: '2', label: 'this is an edge label' },
+            ]
+        };
+        function State(props) {
+
+            debugger;
+            return <div>
+                <table>
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                        <th>IsObject</th>
+                        <th>IsArray</th>
+                    </tr>
+                    {Object.keys(props).map(key=> {
+                        debugger;
+                        return <tr>
+                            <td><input type="text" value={key}/></td>
+                            <td>{typeof props[key] ==="object" ? <State {...props[key]}/> : <input type="text" value={props[key]}/>}</td>
+                            <td><input name="isObject" type="checkbox" checked={typeof props[key] === "object"} /></td>
+                            <td><input name="isArray" type="checkbox" checked={Array.isArray(state[key])}/></td>
+                        </tr>
+                    })
+                    }
+                </table>
             </div>
-          );
-        }    
+        }
 
         class DynamicComponent extends React.Component {
             constructor(props) {
                 super(props);
             }
 
+            // <State {...state}/>
             render() {
-                return <div className="centerItem"><span>Hello</span><Flow/></div>
+                return <div className="centerItem">
+                    
+                    <Flow />
+                </div>
             }
 
         }
 
-       ReactDOM.render(
-        <DynamicComponent/>,
-        document.body
-       );
+        ReactDOM.render(
+            <DynamicComponent />,
+            document.body
+        );
 
-        </script>
-<script>
-</script>
-    </body>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/react-flow-renderer/10.3.17/theme-default.min.css" integrity="sha512-JhOl+sQgFPNBNg//So8DZrXC0cztBb2b6wlGlt/SbbuXhQHdmEAqukweX2MAaWnA4fWDPLV+UkZAjcyqRNVS0A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/react-flow-renderer/10.3.17/style.min.css" integrity="sha512-at7QYFWN06yirG72VsZTxXKz7g+kSYVkp+2ubonjDmXOvLmvqo3eScDW3on+Ig6rkr0syaQIxQr8v0ydizhu+A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </script>
+    <script>
+    </script>
+</body>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/react-flow-renderer/10.3.17/theme-default.min.css"
+    integrity="sha512-JhOl+sQgFPNBNg//So8DZrXC0cztBb2b6wlGlt/SbbuXhQHdmEAqukweX2MAaWnA4fWDPLV+UkZAjcyqRNVS0A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/react-flow-renderer/10.3.17/style.min.css"
+    integrity="sha512-at7QYFWN06yirG72VsZTxXKz7g+kSYVkp+2ubonjDmXOvLmvqo3eScDW3on+Ig6rkr0syaQIxQr8v0ydizhu+A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </html>
