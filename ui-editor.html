@@ -36,43 +36,45 @@
     <script type="text/babel" data-type="module">
 
         function Flow() {
+            const divStyle = {
+                height: '100vh',  
+            };
             return (
-                <div style={{ height: '100vh' }}>
+                <div style={divStyle}>
                     <ReactFlow.default nodes={state.nodes} edges={state.edges}>
                         <ReactFlow.Background />
                         <ReactFlow.Controls />
+                        <ReactFlow.MiniMap />
                     </ReactFlow.default>
                 </div>
             );
         }
 
         let state = {
-            nodes: [{
-                id: 1,
-                type: "input",
-                data: {
-                    label: "Input node"
+            nodes: [
+                {
+                    id: '1',
+                    data: {
+                        label: "Input node"
+                    },
+                    position: {
+                        x: 250,
+                        y: 0
+                    }
                 },
-                position: {
-                    x: 250,
-                    y: 0
-                }
-            },
-
-            {
-                id: '2',
-                data: {
-                    label: 'Default Node',
+                {
+                    id: '2',
+                    data: {
+                        label: 'Default Node',
+                    },
+                    position: { x: 100, y: 100 },
                 },
-                position: { x: 100, y: 100 },
-            },],
+            ],
             edges: [{ id: 'e1-2', source: '1', target: '2', label: 'this is an edge label' },
             ]
         };
         function State(props) {
-
-            debugger;
-            return <div>
+                return <div>
                 <table>
                     <tr>
                         <th>Key</th>
@@ -101,21 +103,16 @@
 
             // <State {...state}/>
             render() {
-                return <div className="centerItem">
-                    
-                    <Flow />
-                </div>
+                const divStyle = {
+                    padding: '0px',
+                    margin: '0px',
+                };
+                return <div style={divStyle}><Flow /></div>
             }
 
         }
 
-        ReactDOM.render(
-            <DynamicComponent />,
-            document.body
-        );
-
-    </script>
-    <script>
+        ReactDOM.render(<DynamicComponent />,document.body);     
     </script>
 </body>
 
