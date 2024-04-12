@@ -28,8 +28,9 @@
         tr:nth-child(even) {
             background-color: #dddddd;
         }
-        body{
-            margin:0px;
+
+        body {
+            margin: 0px;
         }
     </style>
 
@@ -39,45 +40,50 @@
     <script type="text/babel" data-type="module">
 
         function Flow() {
-            const divStyle = {
-                height: '100vh',  
-            };
+            const divStyle={ display: "inline-block", height: '98vh', width: '98vw' };
             return (
                 <div style={divStyle}>
                     <ReactFlow.default nodes={state.nodes} edges={state.edges}>
                         <ReactFlow.Background />
                         <ReactFlow.Controls />
-                        <ReactFlow.MiniMap />
                     </ReactFlow.default>
                 </div>
             );
         }
 
-        let state = {
-            nodes: [
-                {
-                    id: '1',
-                    data: {
-                        label: "Input node"
-                    },
-                    position: {
-                        x: 250,
-                        y: 0
-                    }
+        window.state = {
+            nodes: [{
+                id: "1",
+                type: "input",
+                data: {
+                    label: "Input node"
                 },
-                {
-                    id: '2',
-                    data: {
-                        label: 'Default Node',
-                    },
-                    position: { x: 100, y: 100 },
+                position: {
+                    x: 250,
+                    y: 0
+                }
+            },
+
+            {
+                id: '2',
+                data: {
+                    label: 'Default Node',
                 },
-            ],
+                position: { x: 100, y: 100 },
+            },],
             edges: [{ id: 'e1-2', source: '1', target: '2', label: 'this is an edge label' },
             ]
         };
+
+        // convert this into class based. Somehow, third recursive call is missing out the props
         function State(props) {
-                return <div>
+
+            function onChange(e){
+                debugger;
+                props.onChange(e);
+            }
+
+            return <div>
                 <table>
                     <tr>
                         <th>Key</th>
@@ -85,16 +91,20 @@
                         <th>IsObject</th>
                         <th>IsArray</th>
                     </tr>
-                    {Object.keys(props).map(key=> {
-                        debugger;
+                    {Object.keys(props).map(key => {
                         return <tr>
-                            <td><input type="text" value={key}/></td>
-                            <td>{typeof props[key] ==="object" ? <State {...props[key]}/> : <input type="text" value={props[key]}/>}</td>
+                            <td><input type="text" value={key} /></td>
+                            <td>{typeof props[key] === "object" ? <State {...props[key]} /> : <input type="text" value={props[key]} />}</td>
                             <td><input name="isObject" type="checkbox" checked={typeof props[key] === "object"} /></td>
-                            <td><input name="isArray" type="checkbox" checked={Array.isArray(state[key])}/></td>
+                            <td><input name="isArray" type="checkbox" checked={Array.isArray(state[key])} /></td>
                         </tr>
                     })
                     }
+                    <tfoot>
+                        <tr>
+                            <button onClick={onChange.bind(this,props)}>Add</button>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
         }
@@ -104,18 +114,27 @@
                 super(props);
             }
 
-            // <State {...state}/>
+            onChange(e,props){
+                debugger
+            }
+
             render() {
-                const divStyle = {
-                    padding: '0px',
-                    margin: '0px',
-                };
-                return <div style={divStyle}><Flow /></div>
+                return <div className="centerItem">
+
+                    <Flow />
+                    <State {...window.state} onChange={this.onChange.bind(this)}/>
+                </div>
             }
 
         }
 
-        ReactDOM.render(<DynamicComponent />,document.body);     
+        ReactDOM.render(
+            <DynamicComponent />,
+            document.body
+        );
+
+    </script>
+    <script>
     </script>
 </body>
 
