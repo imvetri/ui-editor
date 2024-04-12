@@ -28,6 +28,10 @@
         tr:nth-child(even) {
             background-color: #dddddd;
         }
+
+        body{
+            margin:0px;
+        }
     </style>
 
 </head>
@@ -37,7 +41,7 @@
 
         function Flow() {
             return (
-                <div style={{ height: '100vh' }}>
+                <div style={{ display:"inline-block", height: '98vh', width: '98vw' }}>
                     <ReactFlow.default nodes={state.nodes} edges={state.edges}>
                         <ReactFlow.Background />
                         <ReactFlow.Controls />
@@ -48,7 +52,7 @@
 
         let state = {
             nodes: [{
-                id: 1,
+                id: "1",
                 type: "input",
                 data: {
                     label: "Input node"
@@ -71,7 +75,6 @@
         };
         function State(props) {
 
-            debugger;
             return <div>
                 <table>
                     <tr>
@@ -81,7 +84,6 @@
                         <th>IsArray</th>
                     </tr>
                     {Object.keys(props).map(key=> {
-                        debugger;
                         return <tr>
                             <td><input type="text" value={key}/></td>
                             <td>{typeof props[key] ==="object" ? <State {...props[key]}/> : <input type="text" value={props[key]}/>}</td>
@@ -99,11 +101,11 @@
                 super(props);
             }
 
-            // <State {...state}/>
             render() {
                 return <div className="centerItem">
                     
                     <Flow />
+                    <State {...state}/>
                 </div>
             }
 
