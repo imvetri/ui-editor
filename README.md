@@ -72,8 +72,6 @@ crisp solution, light weight, easy for maintainance.
 
 Thanks
 
-i'm happy to finish what i started. stronger beliefs, faith, hope, most importantly peace. this time, i was in right atmosphere, bible , family support, and family elder's wisdom. bible helped me to make second voice in head to be a healthy one. plus learning from community.
-
 ## contact
 
 Reach www.ui-editor.com/contact-us or www.ui-editor.com/support or click chat icon in www.ui-editor.com. for commercial liscense
