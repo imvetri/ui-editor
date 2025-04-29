@@ -32,7 +32,7 @@ https://ui-editor.com/experiments
 4. preview and Test: review the prototype in the preview window and test the interactions.
 5. you can use this part of your dev server and build apps in real time or you can set a toggle between html.html and result.html , merge them in a single file, to build apps in production or you can set this up in internal network for designers to design and you to check result in production.
 
-## UI commands
+## ui commands
 
 1. create box - **press "Space"**
 2. move box - **press Shift + Arrow keys**
