@@ -20,21 +20,6 @@ I have not finalised pricing model yet, to sustain living and tool development, 
 4. you may open www.ui-editor.com/pricing and click on registration fee of 11$ + Tax. 
 5. you may open an issue here or www.ui-editor.com/contact-us or www.ui-editor.com/support to reach about questions, feedbacks, road map
 
-## contact
-
-Reach www.ui-editor.com/contact-us or www.ui-editor.com/support or click chat icon in www.ui-editor.com. for commercial liscense
-
-Shield: [![CC BY-NC 4.0][cc-by-nc-shield]][cc-by-nc]
-
-This work is licensed under a
-[Creative Commons Attribution-NonCommercial 4.0 International License][cc-by-nc].
-
-[![CC BY-NC 4.0][cc-by-nc-image]][cc-by-nc]
-
-[cc-by-nc]: https://creativecommons.org/licenses/by-nc/4.0/
-[cc-by-nc-image]: https://licensebuttons.net/l/by-nc/4.0/88x31.png
-[cc-by-nc-shield]: https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg
-
 ## past work 
 
 https://ui-editor.com/experiments
@@ -88,3 +73,18 @@ crisp solution, light weight, easy for maintainance.
 Thanks
 
 i'm happy to finish what i started. stronger beliefs, faith, hope, most importantly peace. this time, i was in right atmosphere, bible , family support, and family elder's wisdom. bible helped me to make second voice in head to be a healthy one. plus learning from community.
+
+## contact
+
+Reach www.ui-editor.com/contact-us or www.ui-editor.com/support or click chat icon in www.ui-editor.com. for commercial liscense
+
+Shield: [![CC BY-NC 4.0][cc-by-nc-shield]][cc-by-nc]
+
+This work is licensed under a
+[Creative Commons Attribution-NonCommercial 4.0 International License][cc-by-nc].
+
+[![CC BY-NC 4.0][cc-by-nc-image]][cc-by-nc]
+
+[cc-by-nc]: https://creativecommons.org/licenses/by-nc/4.0/
+[cc-by-nc-image]: https://licensebuttons.net/l/by-nc/4.0/88x31.png
+[cc-by-nc-shield]: https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg
