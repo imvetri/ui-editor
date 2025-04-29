@@ -38,9 +38,10 @@ https://ui-editor.com/experiments
 2. move box - **press Shift + Arrow keys**
 3. resize box - **press Alt + Arrow keys**
 4. keyboard navigate mode - default behaviour. **press arrow keys to navigate boxes.** up and down navigates parent, child. left and right navigates sibblings
-5. mouse navigate mode - **press m** this allows to navigate canvas using mouse movement. mouse will be hidden, release mouse to reset this behaviour.
-6. mouse mode - box resize and box move - **press m** move the canvas so that target box is in cross bar. **press Shift and move mouse** to move box. press **Alt and arrow** to adjust box size.
-7. contextmenu - few more steps
+5. mouse mode speed - s - increase by 1. default 0. so remember to press s once. d resets s to 1
+6. mouse navigate mode - **press m** this allows to navigate canvas using mouse movement. mouse will be hidden, release mouse to reset this behaviour.
+7. mouse mode - box resize and box move - **press m** move the canvas so that target box is in cross bar. **press Shift and move mouse** to move box. press **Alt and arrow** to adjust box size.
+8. contextmenu - few more steps
 
 ## steps to convert design to protype / product - (goal)
 
