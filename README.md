@@ -1,5 +1,5 @@
 
-## Introduction
+## introduction
 
 ui-editor is a design to code tool. 
 
@@ -11,7 +11,7 @@ last year nov, i left my job and started working on this, from scratch, again.
 
 are most welcome. read further for contact details.
 
-## Pricing
+## pricing
 
 I have not finalised pricing model yet, to sustain living and tool development, I have planned to put a one time fee for registered users/ subscribers.
 
@@ -21,11 +21,11 @@ I have not finalised pricing model yet, to sustain living and tool development, 
 4. you may open www.ui-editor.com/pricing and click on registration fee of 11$ + Tax. 
 5. you may open an issue here or www.ui-editor.com/contact-us or www.ui-editor.com/support to reach about questions, feedbacks, road map
 
-## Contact
+## contact
 
 Reach www.ui-editor.com/contact-us or www.ui-editor.com/support or click chat icon in www.ui-editor.com.
 
-## step by step actions
+## getting started
 
 1. open the tool: open imvetri.github.io/ui-editor or start local server in 3000, download the repo files, open localhost:3000/html.html
 2. import your designs: click the 'import' button and select your design file.
@@ -38,7 +38,7 @@ Reach www.ui-editor.com/contact-us or www.ui-editor.com/support or click chat ic
 1. to add more design token, currently there is a bug. "Wouldn't take long to fix it. Its just a design. Priority is the app functionality" - A web cant use this excuse anymore. Neither I can. "But customers are waiting". I totally understand. but for that, whatever is there is, lets share, take feedback.
 
 
-## Conclusion
+## conclusion
 
 Most open source tools are heavy on stack, so code generation is tricky - penpot
 Figma, appsmith and other proprietary tools are influenced by AI to gain investors, hence they wont focus this challenge.
