@@ -8,18 +8,6 @@ ui-editor is a design to code tool for web development.
 
 are most welcome. read further for contact details.
 
-
-
-## pricing
-
-I have not finalised pricing model yet, to sustain living and tool development, I have planned to put a one time fee for registered users/ subscribers.
-
-1. Free to use, try, open issues, get features if you need for learning, practicing.
-2. Get paid license for businesses or for learning purpose also you may get learners license to get education material.  www.ui-editor.com/pricing 
-3. You may get registered or subscribe at www.ui-editor.com for news or feature releases
-4. you may open www.ui-editor.com/pricing and click on registration fee of 11$.
-5. you may open an issue here or www.ui-editor.com/contact-us or www.ui-editor.com/support to reach about questions, feedbacks, road map
-
 ## past work 
 
 https://ui-editor.com/experiments
@@ -72,6 +60,16 @@ uses html, few js files. no bundlers, no package.json.
 crisp solution, light weight, easy for maintainance.
 
 Thanks
+
+## pricing
+
+I have not finalised pricing model yet, to sustain living and tool development, I have planned to put a one time fee for registered users/ subscribers.
+
+1. Free to use, try, open issues, get features if you need for learning, practicing.
+2. Get paid license for businesses or for learning purpose also you may get learners license to get education material.  www.ui-editor.com/pricing 
+3. You may get registered or subscribe at www.ui-editor.com for news or feature releases
+4. you may open www.ui-editor.com/pricing and click on registration fee of 11$.
+5. you may open an issue here or www.ui-editor.com/contact-us or www.ui-editor.com/support to reach about questions, feedbacks, road map
 
 ## contact
 
