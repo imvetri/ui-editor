@@ -13,7 +13,7 @@ https://github.com/imvetri/ui-editor/wiki/
 
 ## latest version doc
 
-https://github.com/imvetri/ui-editor/wiki/Documentation-%E2%80%90-part-1-%E2%80%90-draw-boxes
+[label](https://github.com/imvetri/ui-editor/wiki/Documentation-%E2%80%90-part-1-%E2%80%90-draw-boxes)
 https://github.com/imvetri/ui-editor/wiki/Documentation-%E2%80%90-part-2-%E2%80%90-design-%E2%80%90-add--&-apply
 https://github.com/imvetri/ui-editor/wiki/Documentation-%E2%80%90-part-3-%E2%80%90-mark-input
 https://github.com/imvetri/ui-editor/wiki/Documentation-%E2%80%90-part-4-%E2%80%90-input-box
