@@ -1,5 +1,5 @@
-var dChildren = boxes;
-var shows = boxes.filter(box=>box.show).map(s=>s.show)
+var dChildren = boxes || [];
+var shows = boxes.filter(box=>box?.show)?.map(s=>s.show) || []
 var types = boxes[0].types || []
 var flows = boxes.filter(box=>box.flows).map(d=>d.flows).flat()
 function boxtree(){
@@ -49,6 +49,7 @@ var f;
 function addFocus(){
 	f&&f.remove();
 	f=document.createElement("div")
+	f.id="focus"
 	var eleHeight = Number(dChildren[currentParent].element.style.height.split("px")[0])
 	var eleWidth = Number(dChildren[currentParent].element.style.width.split("px")[0])
 	var firstpointx, firstpointy;

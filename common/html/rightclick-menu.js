@@ -75,6 +75,7 @@ function addstyle(e) {
     var name = prompt("Name")
     var property = prompt("Property")
     var value = prompt("Value")
+    styles=JSON.parse(localStorage.styles || "{}")
     styles[name] = styles[name] || {}
     styles[name][property] = styles[name][property] || {}
     styles[name][property][value] = styles[name][property][value] || "";
@@ -394,8 +395,8 @@ var c = {
         children: [],
         click: () => {
             var boxindex = boxes.findIndex(s => window.currentbox === s)
-            console.log("http://localhost:3000/ui-editor-result.html?index:${boxindex};storageindex:0")
-            window.openresult(`http://localhost:3000/ui-editor-result.html?index:${boxindex};storageindex:0`)
+            console.log("http://localhost:3000/result.html?index:${boxindex};storageindex:0")
+            window.openresult(`http://localhost:3000/result.html?index:${boxindex};storageindex:0`)
         }
     }]
 }
