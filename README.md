@@ -7,6 +7,24 @@ ui-editor is a design to code tool for web development.
 
 docs, demos, examples, tutorials from basic top medium to advanced to scalable aspp
 
+## old version docs
+
+https://github.com/imvetri/ui-editor/wiki/ 
+
+## latest version doc
+
+https://github.com/imvetri/ui-editor/wiki/Documentation-%E2%80%90-part-1-%E2%80%90-draw-boxes
+https://github.com/imvetri/ui-editor/wiki/Documentation-%E2%80%90-part-2-%E2%80%90-design-%E2%80%90-add--&-apply
+https://github.com/imvetri/ui-editor/wiki/Documentation-%E2%80%90-part-3-%E2%80%90-mark-input
+https://github.com/imvetri/ui-editor/wiki/Documentation-%E2%80%90-part-4-%E2%80%90-input-box
+https://github.com/imvetri/ui-editor/wiki/Documentation-%E2%80%90-part-5-%E2%80%90-storage-box
+https://github.com/imvetri/ui-editor/wiki/Documentation-%E2%80%90-part-6-%E2%80%90-navigate-storage
+https://github.com/imvetri/ui-editor/wiki/Documentation-%E2%80%90-part-7-%E2%80%90-output-%E2%80%90-type-text
+https://github.com/imvetri/ui-editor/wiki/Documentation-%E2%80%90-part-8-%E2%80%90-output-type-image
+https://github.com/imvetri/ui-editor/wiki/Documentation-%E2%80%90-part-9-%E2%80%90-output-type-%E2%80%90-from-storage
+https://github.com/imvetri/ui-editor/wiki/Documentation-%E2%80%90-part-10-%E2%80%90-data-type-%E2%80%90-unique
+https://github.com/imvetri/ui-editor/wiki/Documentation-%E2%80%90-part-11-%E2%80%90-show-invalid-design-variant-for-invalid-input
+
 ## feedbacks/next steps/todo/roadmap
 
 are most welcome. read further for contact details.
