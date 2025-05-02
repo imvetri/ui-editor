@@ -14,15 +14,25 @@ https://github.com/imvetri/ui-editor/wiki/
 ## latest version doc
 
 [click here ](https://github.com/imvetri/ui-editor/wiki/Documentation-%E2%80%90-part-1-%E2%80%90-draw-boxes)
+
 [click here ](https://github.com/imvetri/ui-editor/wiki/Documentation-%E2%80%90-part-2-%E2%80%90-design-%E2%80%90-add--&-apply)
+
 [click here ](https://github.com/imvetri/ui-editor/wiki/Documentation-%E2%80%90-part-3-%E2%80%90-mark-input)
+
 [click here ](https://github.com/imvetri/ui-editor/wiki/Documentation-%E2%80%90-part-4-%E2%80%90-input-box)
+
 [click here ](https://github.com/imvetri/ui-editor/wiki/Documentation-%E2%80%90-part-5-%E2%80%90-storage-box)
+
 [click here ](https://github.com/imvetri/ui-editor/wiki/Documentation-%E2%80%90-part-6-%E2%80%90-navigate-storage)
+
 [click here ](https://github.com/imvetri/ui-editor/wiki/Documentation-%E2%80%90-part-7-%E2%80%90-output-%E2%80%90-type-text)
+
 [click here ](https://github.com/imvetri/ui-editor/wiki/Documentation-%E2%80%90-part-8-%E2%80%90-output-type-image)
+
 [click here ](https://github.com/imvetri/ui-editor/wiki/Documentation-%E2%80%90-part-9-%E2%80%90-output-type-%E2%80%90-from-storage)
+
 [click here ](https://github.com/imvetri/ui-editor/wiki/Documentation-%E2%80%90-part-10-%E2%80%90-data-type-%E2%80%90-unique)
+
 [click here ](https://github.com/imvetri/ui-editor/wiki/Documentation-%E2%80%90-part-11-%E2%80%90-show-invalid-design-variant-for-invalid-input)
 
 ## feedbacks/next steps/todo/roadmap
