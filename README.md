@@ -64,7 +64,7 @@ Documentation ‐ part 11 ‐ show invalid design variant for invalid input [cli
 8. mark storage - to allow user to configure the table index moving button. prev and next from stored table data. this allows to view a row in the frontend.
 9. move - to allow user to move data from input box to storage. this helps to configure persistance with validation or without for typed input as well. to do this , go to target input box -> contextmenu -> move -> from. then navigate to storage box or create on prior then contextmenu-> move -> to. then configure when to move. go to input-> contextmenu -> move-> on -> Enter for submit after enter on input box. or navigate to box where end user may click -> contextmenu->move->on-> Click. This will move from input to storage on click of this box. Finally optional navigate to input box ->contextmenu->move->on->valid. this will save value only if data input matches input type.
 10. show - to allow user to mark ui designer's variants of a component. go to happy path screen box -> contextmenu-> show-> this. go to where to show and contextmenu->show->here and contextmenu->show->on->valid. to show error message on invalid input then contextmenu->show->on>invalid. this includes data type
-11. result- to allow user to test the designed app navigate to box -> right click-> look
+11.  result- to allow user to test the designed app navigate to box -> right click-> look
 
 
 
