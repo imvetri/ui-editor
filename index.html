@@ -1,0 +1,603 @@
+<html>
+    <head>
+        <style>
+            body {
+                /* margin:0px; */
+                font-family: monospace;
+                position: absolute;
+            }
+
+            .ITEM:focus, .ITEM:hover {
+                background-color: black;
+                color: white;
+            }
+
+            .CONTENT {
+                width: fit-content;
+                display: none;
+                border: 1px solid black;
+                position: absolute;
+                background-color: white;
+                cursor: default;
+                z-index: 1;
+            }
+
+            .ITEM {
+                display: block;
+                border: 1px solid black;
+                /* position:absolute; */
+                background-color: white;
+            }
+
+            #MENU.ITEM {
+                position: absolute;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            window.openresult = window.open;
+        </script>
+        <script src="./common/html/rightclick-menu.js"></script>
+        <script src="./common/html/rightclick-menu-steps.js"></script>
+        <script src="./common/data.js"></script>
+        <script>
+            var boxes = localStorage.boxes ? JSON.parse(localStorage.boxes) : boxes
+        </script>
+        <script>
+            var mode = "wireframe"
+        </script>
+        <script src="./common/render.js"></script>
+        <script src="./common/boxtree.js"></script>
+        <script>
+            boxes.forEach(render)
+        </script>
+        <div id="horizontalLine" style="border:1px solid black; border-bottom: none;position:fixed; left:0%; top:50%; width:100vw; height:0px;z-index:1;background-color:black"></div>
+        <div id="verticalLine" style="border:1px solid black;border-right: none; position:fixed; left:50%; top:0%; width:0px; height:100vh;z-index:1;background-color:black"></div>
+        <div id="focusPoint" style="z-index:1;background-color:white;height:1px;width:1px; position:fixed;left:50%;top:50%;"></div>
+        <button id="start">Start streaming</button>
+        <audio id="audio"></audio>
+        <script>
+            var startButton = document.getElementById('start');
+            startButton.addEventListener('click', startStreaming);
+
+            function startStreaming() {
+            }
+        </script>
+    </body>
+    <script>
+        var focusPoint = document.getElementById("focusPoint"), scaleLeft, scaleTop, speed = 0;
+        document.addEventListener("keyup", (e) => {
+            if (e.code === "Space") {
+                var div = document.createElement("div")
+                div.style = "border:1px solid black; min-width:20px; min-height:20px;position:absolute"
+                div.style.left = focusPoint.getBoundingClientRect().left - document.body.getBoundingClientRect().left - speed;
+                div.style.top = focusPoint.getBoundingClientRect().top - document.body.getBoundingClientRect().top - speed;
+                document.body.appendChild(div)
+            }
+        }
+        );
+        var spressed = false, epressed = false, m = false, s, a;
+        var zoom = 1;
+        leave = 0;
+        function movement(e) {
+            if (m) {
+                document.body.style.cursor = "none"
+                document.body.style.left = Number(document.body.style.left.split("px")[0]) + e.movementX * speed;
+                document.body.style.top = Number(document.body.style.top.split("px")[0]) + e.movementY * speed;
+                let element = getElement();
+                if (element.id !== "root" && element.id !== "horizontalLine") {
+                    if (a) {
+                        element.style.height = Number(getComputedStyle(element).height.split("px")[0]) - e.movementY * speed;
+                        element.style.width = Number(getComputedStyle(element).width.split("px")[0]) - e.movementX * speed;
+                    }
+                    if (s) {
+                        element.style.top = Number(getComputedStyle(element).top.split("px")[0]) - e.movementY * speed;
+                        element.style.left = Number(getComputedStyle(element).left.split("px")[0]) - e.movementX * speed;
+                    }
+                }
+                e.stopPropagation()
+            }
+            e.preventDefault()
+        }
+        document.addEventListener("mousemove", movement)
+        document.addEventListener("mouseup", (e) => {
+            m = false;
+            s = false;
+            a = false;
+            e.stopPropagation();
+            document.body.style.cursor = ""
+        }
+        )
+        document.addEventListener("keyup", (e) => {
+            if (e.shiftKey) {
+                s = false;
+            }
+            if (e.altKey) {
+                a = false;
+            }
+        }
+        )
+        document.addEventListener("keydown", (e) => {
+
+            if (e.key === "m") {
+                m = !m;
+                e.stopPropagation();
+            } else {
+                // navigation mode leaf only
+                if (e.key === "F6") {
+                    var leaf = l[leave];
+                    currentParent = dChildren.findIndex(d => d === leaf);
+                    leave = (leave + 1) % l.length;
+                    addFocus();
+                }
+                if (e.key === "F5") {
+                    var leaf = l[leave]
+                    currentParent = dChildren.findIndex(d => d === leaf)
+                    leave = (leave - 1) % l.length
+                    addFocus()
+                }
+                // zoom 
+                if (e.key === "i") {
+                    zoom = zoom + 0.1
+                    document.body.style.zoom = zoom;
+                    addFocus()
+                }
+                if (e.key === "o") {
+                    zoom = zoom - 0.1
+                    document.body.style.zoom = zoom;
+                    addFocus()
+                }
+                // mover from keyboard only
+                if (e.shiftKey) {
+                    f.element = f;
+                    if (e.code === "ArrowRight") {
+                        move("right", f)
+                        move("right", dChildren[currentParent])
+                    }
+                    if (e.code === "ArrowLeft") {
+                        move("left", f)
+                        move("left", dChildren[currentParent])
+                    }
+                    if (e.code === "ArrowUp") {
+                        move("up", f)
+                        move("up", dChildren[currentParent])
+                    }
+                    if (e.code === "ArrowDown") {
+                        move("down", f)
+                        move("down", dChildren[currentParent])
+                    }
+                }
+                // size altar
+                if (e.altKey) {
+                    if (e.code === "ArrowRight") {
+                        size("increasewidth", f)
+                        size("increasewidth", dChildren[currentParent].element)
+                    }
+                    if (e.code === "ArrowLeft") {
+                        size("decreasewidth", f)
+                        size("decreasewidth", dChildren[currentParent].element)
+                    }
+                    if (e.code === "ArrowUp") {
+                        size("increaseheight", f)
+                        size("increaseheight", dChildren[currentParent].element)
+                    }
+                    if (e.code === "ArrowDown") {
+                        size("decreaseheight", f)
+                        size("decreaseheight", dChildren[currentParent].element)
+                    }
+                }
+                // navigation mode hierarchy
+                // focus up aboveParent
+                // focus down first child
+                // focus next sibbling
+                // focus prev sibbling
+                // write comments for keyboard inputs and context menu
+                // write steps
+                // input works?
+                // storage works?
+                // ... write the same for others
+                if (!e.altKey && !e.shiftKey && e.code === "ArrowRight") {
+                    nextChild()
+                    addFocus()
+                }
+                if (!e.altKey && !e.shiftKey && e.code === "ArrowLeft") {
+                    prevChild()
+                    addFocus()
+                }
+                if (!e.altKey && !e.shiftKey && e.code === "ArrowUp") {
+                    aboveParent()
+                    addFocus()
+                }
+                if (!e.altKey && !e.shiftKey && e.code === "ArrowDown") {
+                    belowParent()
+                    addFocus()
+                }
+                if (e.code === "Delete") {
+                    dChildren[currentParent].element.remove()
+                    dChildren.splice(0, currentParent)
+                }
+            }
+
+            if (e.ctrlKey && e.key === 's') {
+                var divs = [...document.querySelectorAll("div")].filter(d => d.id !== "focusPoint" && d.id !== "verticalLine" && d.id !== "horizontalLine" && d.id !== "focus")
+                var boxes = [...divs].map(d => {
+                    return {
+                        height: Number(getComputedStyle(d).height.split("px")[0]),
+                        width: Number(getComputedStyle(d).width.split("px")[0]),
+                        top: Number(getComputedStyle(d).top.split("px")[0]),
+                        left: Number(getComputedStyle(d).left.split("px")[0]),
+                        id: d.getAttribute("id"),
+                        type: d.tagName,
+                        boxChildren: [],
+                        immediateParent: "",
+                        volume: d.getBoundingClientRect().height * d.getBoundingClientRect().width,
+                        src: d.children && d.children[0] && d.children[0].tagName === "IMG" ? d.children[0].src : "",
+                        rtype: d.json && d.json.rtype,
+                        rname: d.json && d.json.rname,
+                        rctype: d.json && d.json.rctype,
+                        rctypename: d.json && d.json.rctypename,
+                        rcname: d.json && d.json.rcname,
+                        rcvalue: d.json && d.json.rcvalue,
+                        rcprop: d.json && d.json.rcprop,
+                        name: d.json && d.json.name,
+                        markinput: d.json && d.json.markinput,
+                        markoutput: d.json && d.json.markoutput,
+                        markstorage: d.json && d.json.markstorage,
+                        flows: d.json && d.json.flows,
+                        flow: d.json && d.json.flow,
+                        shows: d.json && d.json.shows,
+                        show: d.json && d.json.show,
+                        storage: d.json && d.json.storage,
+                        storagemovenext: d.json && d.json.storagemovenext,
+                        storagemoveprev: d.json && d.json.storagemoveprev,
+                        types: d.json && d.json.types || [],
+                        decorate: d.json && d.json.decorate || {}
+                    }
+                }
+                )
+                localStorage.boxes = JSON.stringify(boxes)
+                e.preventDefault();
+                window.location.reload()
+            }
+            if (e.key === 's') {
+                spressed = true;
+            }
+            if (spressed) {
+                speed++;
+            }
+            if (e.key === 'd') {
+                speed = 1;
+                spressed = false;
+            }
+            if (e.ctrlKey && e.key === 'r') {
+                window.location.reload()
+            }
+            let element = getElement();
+            if (element.id !== "root" && element.id !== "horizontalLine") {
+                if (e.altKey) {
+                    a = true;
+                }
+                if (e.key == "Delete") {
+                    element.remove();
+                }
+                if (e.key == "Enter") {
+                    var design = document.createElement("img")
+                    design.src = prompt("Enter image location path", "./Design/SUBSCRIBE VARIANTS/second.jpg")
+                    element.appendChild(design)
+                } else if (e.shiftKey) {
+                    s = true;
+                }
+            }
+            e.preventDefault()
+        }
+        )
+        function getElement() {
+            return getElements()[3]
+        }
+        function getElements() {
+            return document.elementsFromPoint(Number(getComputedStyle(focusPoint).left.split("px")[0]), Number(getComputedStyle(focusPoint).top.split("px")[0]))
+        }
+    </script>
+          </html><html>
+    <head>
+        <style>
+            body {
+                /* margin:0px; */
+                font-family: monospace;
+                position: absolute;
+            }
+
+            .ITEM:focus, .ITEM:hover {
+                background-color: black;
+                color: white;
+            }
+
+            .CONTENT {
+                width: fit-content;
+                display: none;
+                border: 1px solid black;
+                position: absolute;
+                background-color: white;
+                cursor: default;
+                z-index: 1;
+            }
+
+            .ITEM {
+                display: block;
+                border: 1px solid black;
+                /* position:absolute; */
+                background-color: white;
+            }
+
+            #MENU.ITEM {
+                position: absolute;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            window.openresult = window.open;
+        </script>
+        <script src="./common/html/rightclick-menu.js"></script>
+        <script src="./common/html/rightclick-menu-steps.js"></script>
+        <script src="./common/data.js"></script>
+        <script>
+            var boxes = localStorage.boxes ? JSON.parse(localStorage.boxes) : boxes
+        </script>
+        <script>
+            var mode = "wireframe"
+        </script>
+        <script src="./common/render.js"></script>
+        <script src="./common/boxtree.js"></script>
+        <script>
+            boxes.forEach(render)
+        </script>
+        <div id="horizontalLine" style="border:1px solid black; border-bottom: none;position:fixed; left:0%; top:50%; width:100vw; height:0px;z-index:1;background-color:black"></div>
+        <div id="verticalLine" style="border:1px solid black;border-right: none; position:fixed; left:50%; top:0%; width:0px; height:100vh;z-index:1;background-color:black"></div>
+        <div id="focusPoint" style="z-index:1;background-color:white;height:1px;width:1px; position:fixed;left:50%;top:50%;"></div>
+        <button id="start">Start streaming</button>
+        <audio id="audio"></audio>
+        <script>
+            var startButton = document.getElementById('start');
+            startButton.addEventListener('click', startStreaming);
+
+            function startStreaming() {
+            }
+        </script>
+    </body>
+    <script>
+        var focusPoint = document.getElementById("focusPoint"), scaleLeft, scaleTop, speed = 0;
+        document.addEventListener("keyup", (e) => {
+            if (e.code === "Space") {
+                var div = document.createElement("div")
+                div.style = "border:1px solid black; min-width:20px; min-height:20px;position:absolute"
+                div.style.left = focusPoint.getBoundingClientRect().left - document.body.getBoundingClientRect().left - speed;
+                div.style.top = focusPoint.getBoundingClientRect().top - document.body.getBoundingClientRect().top - speed;
+                document.body.appendChild(div)
+            }
+        }
+        );
+        var spressed = false, epressed = false, m = false, s, a;
+        var zoom = 1;
+        leave = 0;
+        function movement(e) {
+            if (m) {
+                document.body.style.cursor = "none"
+                document.body.style.left = Number(document.body.style.left.split("px")[0]) + e.movementX * speed;
+                document.body.style.top = Number(document.body.style.top.split("px")[0]) + e.movementY * speed;
+                let element = getElement();
+                if (element.id !== "root" && element.id !== "horizontalLine") {
+                    if (a) {
+                        element.style.height = Number(getComputedStyle(element).height.split("px")[0]) - e.movementY * speed;
+                        element.style.width = Number(getComputedStyle(element).width.split("px")[0]) - e.movementX * speed;
+                    }
+                    if (s) {
+                        element.style.top = Number(getComputedStyle(element).top.split("px")[0]) - e.movementY * speed;
+                        element.style.left = Number(getComputedStyle(element).left.split("px")[0]) - e.movementX * speed;
+                    }
+                }
+                e.stopPropagation()
+            }
+            e.preventDefault()
+        }
+        document.addEventListener("mousemove", movement)
+        document.addEventListener("mouseup", (e) => {
+            m = false;
+            s = false;
+            a = false;
+            e.stopPropagation();
+            document.body.style.cursor = ""
+        }
+        )
+        document.addEventListener("keyup", (e) => {
+            if (e.shiftKey) {
+                s = false;
+            }
+            if (e.altKey) {
+                a = false;
+            }
+        }
+        )
+        document.addEventListener("keydown", (e) => {
+
+            if (e.key === "m") {
+                m = !m;
+                e.stopPropagation();
+            } else {
+                // navigation mode leaf only
+                if (e.key === "F6") {
+                    var leaf = l[leave];
+                    currentParent = dChildren.findIndex(d => d === leaf);
+                    leave = (leave + 1) % l.length;
+                    addFocus();
+                }
+                if (e.key === "F5") {
+                    var leaf = l[leave]
+                    currentParent = dChildren.findIndex(d => d === leaf)
+                    leave = (leave - 1) % l.length
+                    addFocus()
+                }
+                // zoom 
+                if (e.key === "i") {
+                    zoom = zoom + 0.1
+                    document.body.style.zoom = zoom;
+                    addFocus()
+                }
+                if (e.key === "o") {
+                    zoom = zoom - 0.1
+                    document.body.style.zoom = zoom;
+                    addFocus()
+                }
+                // mover from keyboard only
+                if (e.shiftKey) {
+                    f.element = f;
+                    if (e.code === "ArrowRight") {
+                        move("right", f)
+                        move("right", dChildren[currentParent])
+                    }
+                    if (e.code === "ArrowLeft") {
+                        move("left", f)
+                        move("left", dChildren[currentParent])
+                    }
+                    if (e.code === "ArrowUp") {
+                        move("up", f)
+                        move("up", dChildren[currentParent])
+                    }
+                    if (e.code === "ArrowDown") {
+                        move("down", f)
+                        move("down", dChildren[currentParent])
+                    }
+                }
+                // size altar
+                if (e.altKey) {
+                    if (e.code === "ArrowRight") {
+                        size("increasewidth", f)
+                        size("increasewidth", dChildren[currentParent].element)
+                    }
+                    if (e.code === "ArrowLeft") {
+                        size("decreasewidth", f)
+                        size("decreasewidth", dChildren[currentParent].element)
+                    }
+                    if (e.code === "ArrowUp") {
+                        size("increaseheight", f)
+                        size("increaseheight", dChildren[currentParent].element)
+                    }
+                    if (e.code === "ArrowDown") {
+                        size("decreaseheight", f)
+                        size("decreaseheight", dChildren[currentParent].element)
+                    }
+                }
+                // navigation mode hierarchy
+                // focus up aboveParent
+                // focus down first child
+                // focus next sibbling
+                // focus prev sibbling
+                // write comments for keyboard inputs and context menu
+                // write steps
+                // input works?
+                // storage works?
+                // ... write the same for others
+                if (!e.altKey && !e.shiftKey && e.code === "ArrowRight") {
+                    nextChild()
+                    addFocus()
+                }
+                if (!e.altKey && !e.shiftKey && e.code === "ArrowLeft") {
+                    prevChild()
+                    addFocus()
+                }
+                if (!e.altKey && !e.shiftKey && e.code === "ArrowUp") {
+                    aboveParent()
+                    addFocus()
+                }
+                if (!e.altKey && !e.shiftKey && e.code === "ArrowDown") {
+                    belowParent()
+                    addFocus()
+                }
+                if (e.code === "Delete") {
+                    dChildren[currentParent].element.remove()
+                    dChildren.splice(0, currentParent)
+                }
+            }
+
+            if (e.ctrlKey && e.key === 's') {
+                var divs = [...document.querySelectorAll("div")].filter(d => d.id !== "focusPoint" && d.id !== "verticalLine" && d.id !== "horizontalLine" && d.id !== "focus")
+                var boxes = [...divs].map(d => {
+                    return {
+                        height: Number(getComputedStyle(d).height.split("px")[0]),
+                        width: Number(getComputedStyle(d).width.split("px")[0]),
+                        top: Number(getComputedStyle(d).top.split("px")[0]),
+                        left: Number(getComputedStyle(d).left.split("px")[0]),
+                        id: d.getAttribute("id"),
+                        type: d.tagName,
+                        boxChildren: [],
+                        immediateParent: "",
+                        volume: d.getBoundingClientRect().height * d.getBoundingClientRect().width,
+                        src: d.children && d.children[0] && d.children[0].tagName === "IMG" ? d.children[0].src : "",
+                        rtype: d.json && d.json.rtype,
+                        rname: d.json && d.json.rname,
+                        rctype: d.json && d.json.rctype,
+                        rctypename: d.json && d.json.rctypename,
+                        rcname: d.json && d.json.rcname,
+                        rcvalue: d.json && d.json.rcvalue,
+                        rcprop: d.json && d.json.rcprop,
+                        name: d.json && d.json.name,
+                        markinput: d.json && d.json.markinput,
+                        markoutput: d.json && d.json.markoutput,
+                        markstorage: d.json && d.json.markstorage,
+                        flows: d.json && d.json.flows,
+                        flow: d.json && d.json.flow,
+                        shows: d.json && d.json.shows,
+                        show: d.json && d.json.show,
+                        storage: d.json && d.json.storage,
+                        storagemovenext: d.json && d.json.storagemovenext,
+                        storagemoveprev: d.json && d.json.storagemoveprev,
+                        types: d.json && d.json.types || [],
+                        decorate: d.json && d.json.decorate || {}
+                    }
+                }
+                )
+                localStorage.boxes = JSON.stringify(boxes)
+                e.preventDefault();
+                window.location.reload()
+            }
+            if (e.key === 's') {
+                spressed = true;
+            }
+            if (spressed) {
+                speed++;
+            }
+            if (e.key === 'd') {
+                speed = 1;
+                spressed = false;
+            }
+            if (e.ctrlKey && e.key === 'r') {
+                window.location.reload()
+            }
+            let element = getElement();
+            if (element.id !== "root" && element.id !== "horizontalLine") {
+                if (e.altKey) {
+                    a = true;
+                }
+                if (e.key == "Delete") {
+                    element.remove();
+                }
+                if (e.key == "Enter") {
+                    var design = document.createElement("img")
+                    design.src = prompt("Enter image location path", "./Design/SUBSCRIBE VARIANTS/second.jpg")
+                    element.appendChild(design)
+                } else if (e.shiftKey) {
+                    s = true;
+                }
+            }
+            e.preventDefault()
+        }
+        )
+        function getElement() {
+            return getElements()[3]
+        }
+        function getElements() {
+            return document.elementsFromPoint(Number(getComputedStyle(focusPoint).left.split("px")[0]), Number(getComputedStyle(focusPoint).top.split("px")[0]))
+        }
+    </script>
+  </html>
