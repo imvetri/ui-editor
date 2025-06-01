@@ -7,11 +7,9 @@ ui-editor is a design to code tool for web development.
 
 docs, demos, examples, tutorials from basic top medium to advanced to scalable aspp
 
-## old version docs
 
-https://github.com/imvetri/ui-editor/wiki/ 
 
-## latest version doc
+##  doc
 
 Documentation ‐ part 1 ‐ draw boxes [click here ](https://github.com/imvetri/ui-editor/wiki/Documentation-%E2%80%90-part-1-%E2%80%90-draw-boxes)
 
@@ -34,14 +32,6 @@ Documentation ‐ part 9 ‐ output type ‐ from storage [click here ](https://
 Documentation ‐ part 10 ‐ data type ‐ unique [click here ](https://github.com/imvetri/ui-editor/wiki/Documentation-%E2%80%90-part-10-%E2%80%90-data-type-%E2%80%90-unique)
 
 Documentation ‐ part 11 ‐ show invalid design variant for invalid input [click here ](https://github.com/imvetri/ui-editor/wiki/Documentation-%E2%80%90-part-11-%E2%80%90-show-invalid-design-variant-for-invalid-input)
-
-## feedbacks/next steps/todo/roadmap
-
-are most welcome. read further for contact details.
-
-## past work 
-
-https://ui-editor.com/experiments
 
 ## getting started -setup
 
@@ -76,31 +66,8 @@ https://ui-editor.com/experiments
 10. show - to allow user to mark ui designer's variants of a component. go to happy path screen box -> contextmenu-> show-> this. go to where to show and contextmenu->show->here and contextmenu->show->on->valid. to show error message on invalid input then contextmenu->show->on>invalid. this includes data type
 11. result- to allow user to test the designed app navigate to box -> right click-> look
 
-## warnings / notes: 
-
-1. to add more design token, currently there is a bug. "Wouldn't take long to fix it. Its just a design. Priority is the app functionality" - A web cant use this excuse anymore. Neither I can. "But customers are waiting". I totally understand. but for that, whatever is there is, lets share, take feedback.
 
 
-## conclusion
-
-Most open source tools are heavy on stack, so code generation is tricky - penpot
-Figma, appsmith and other proprietary tools are influenced by AI to gain investors, hence they wont focus this challenge.
-the technique is integratable with other existing tools.
-uses own framework designed for this particular challenge.
-uses html, few js files. no bundlers, no package.json.
-crisp solution, light weight, easy for maintainance.
-
-Thanks
-
-## pricing
-
-I have not finalised pricing model yet, to sustain living and tool development, I have planned to put a one time fee for registered users/ subscribers.
-
-1. Free to use, try, open issues, get features if you need for learning, practicing.
-2. Get paid license for businesses or for learning purpose also you may get learners license to get education material.  www.ui-editor.com/pricing 
-3. You may get registered or subscribe at www.ui-editor.com for news or feature releases
-4. you may open www.ui-editor.com/pricing and click on registration fee of 11$.
-5. you may open an issue here or www.ui-editor.com/contact-us or www.ui-editor.com/support to reach about questions, feedbacks, road map
 
 ## contact
 
